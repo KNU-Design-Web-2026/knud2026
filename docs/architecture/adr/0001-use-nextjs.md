@@ -157,10 +157,10 @@ Route Handler에 데이터베이스 로직을 직접 작성하지 않는다. 요
 
 ## 참고 자료
 
-- [React: Creating a React App](https://react.dev/learn/creating-a-react-app)
-- [Next.js: App Router Getting Started](https://nextjs.org/docs/app/getting-started)
-- [Next.js: Route Handlers](https://nextjs.org/docs/app/getting-started/route-handlers)
-- [Next.js: generateStaticParams](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
-- [Next.js: Metadata and Open Graph images](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)
-- [Next.js: Authentication](https://nextjs.org/docs/app/guides/authentication)
-- [NestJS: Workspaces](https://docs.nestjs.com/cli/monorepo)
+- [React 앱 생성 안내](https://react.dev/learn/creating-a-react-app)
+- [Next.js App Router 시작하기](https://nextjs.org/docs/app/getting-started)
+- [Next.js Route Handler](https://nextjs.org/docs/app/getting-started/route-handlers)
+- [Next.js generateStaticParams](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
+- [Next.js 메타데이터와 Open Graph 이미지](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)
+- [Next.js 인증](https://nextjs.org/docs/app/guides/authentication)
+- [NestJS 워크스페이스](https://docs.nestjs.com/cli/monorepo)
