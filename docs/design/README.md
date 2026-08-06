@@ -7,6 +7,7 @@
 ```text
 docs/design/
 ├── README.md
+├── common-components.md  # 공통 UI의 기준과 반응형 규격
 ├── qa/                    # 날짜별 질문과 개발 답변
 └── interaction-specs/     # 확정된 화면 전환과 동작 명세
 ```
@@ -32,4 +33,5 @@ docs/design/
 ## 현재 기록
 
 - [2026-07-16 디자이너 QA](./qa/2026-07-16-designer-qa.md)
+- [공통 컴포넌트 기준](./common-components.md)
 - [ADR-0002: Storybook과 Chromatic 사용](../architecture/adr/0002-use-storybook-and-chromatic.md)
