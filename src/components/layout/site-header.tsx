@@ -26,7 +26,7 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             <span className="block">42th KNUD Graduation Exhibition Archive</span>
           </span>
         </Link>
-        <nav className="flex h-full shrink-0 items-center max-[1020px]:hidden" aria-label="주요 메뉴">
+        <nav className="flex h-full shrink-0 items-center gap-[var(--header-nav-gap)] max-[1020px]:hidden" aria-label="주요 메뉴">
           {navigation.map((item) => {
             const isActive = item.href === activePath;
 
@@ -34,7 +34,7 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
               <Link
                 aria-current={isActive ? "page" : undefined}
                 className={[
-                  "group relative flex h-full w-[var(--header-nav-width)] flex-col items-center justify-center overflow-hidden text-[var(--header-nav-size)] leading-[1.3] tracking-[-0.002em] transition-colors hover:text-knud-navigation-active",
+                  "group relative flex h-full flex-col items-center justify-center overflow-hidden text-[var(--header-nav-size)] leading-[1.3] tracking-[-0.002em] transition-colors hover:text-knud-navigation-active min-[1351px]:w-auto max-[1350px]:w-[var(--header-nav-width)]",
                   isActive && "font-bold text-knud-navigation-active after:absolute after:inset-x-0 after:bottom-0 after:h-2 after:bg-knud-navigation-active",
                 ]
                   .filter(Boolean)
@@ -55,8 +55,8 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             );
           })}
         </nav>
-        <button className="hidden size-12 items-center justify-end max-[1020px]:flex max-[400px]:size-7.5" type="button" aria-label="메뉴 열기">
-          <span className="flex h-12 w-8 flex-col justify-center gap-3 overflow-hidden px-0 max-[400px]:h-7.5 max-[400px]:w-5 max-[400px]:gap-2">
+        <button className="hidden size-[var(--header-menu-size)] items-center justify-end max-[1020px]:flex" type="button" aria-label="메뉴 열기">
+          <span className="flex h-full w-8 flex-col justify-center gap-3 overflow-hidden px-0 max-[400px]:w-5 max-[400px]:gap-2">
             {[0, 1, 2].map((line) => (
               <Image alt="" className="block h-px w-full" height={1} key={line} src="/assets/figma/menu-line.svg" width={33} />
             ))}
