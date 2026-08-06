@@ -31,18 +31,18 @@
 Conventional Commits 형태를 사용한다.
 
 ```text
-<type>(<optional-scope>): <summary>
+<type>(<optional-scope>): <한국어로 작성한 구체적인 변경 목적>
 ```
 
 예시:
 
 ```text
-feat(letters): add anonymous letter form
-fix(header): prevent mobile menu overflow
-docs: define project conventions
-refactor(works): separate work data mapper
-test(letters): cover invalid content
-chore: configure TypeScript
+feat(rolling-paper): 익명 편지 작성 폼을 추가
+fix(header): 모바일 메뉴의 가로 넘침을 수정
+docs: 프로젝트 작업 규칙을 정의
+refactor(works): 작업 데이터 변환 로직을 분리
+test(letters): 잘못된 편지 내용 검증을 추가
+build: TypeScript 빌드 환경을 구성
 ```
 
 ### 커밋 type
@@ -61,11 +61,28 @@ chore: configure TypeScript
 
 ### 작성 규칙
 
-- 제목은 영문 명령형 현재 시제로 작성하고 마침표를 붙이지 않는다.
-- 제목은 무엇을 했는지가 드러나게 작성한다.
-- 한 커밋에는 하나의 논리적 변경만 담는다.
+- 제목과 본문은 한국어로 작성하고 제목 끝에 마침표를 붙이지 않는다. Conventional Commit의 `type`은 영문으로 유지한다.
+- 제목은 변경 목적이 드러나도록 구체적으로 작성한다. `수정`, `작업`, `업데이트`처럼 의미가 넓은 표현만 사용하지 않는다.
+- 모든 커밋에 상세 본문을 작성한다. 본문은 빈 줄 뒤에 `변경 내용`, `변경 이유`를 각각 기록한다.
+- 한 커밋에는 하나의 작고 독립적인 논리 변경만 담는다. 의존성·설정, 기능, 테스트, 문서, 리팩터링은 가능한 한 분리한다.
 - scope는 기능이나 영역을 명확히 할 때만 사용한다.
 - 호환성을 깨는 변경은 본문에 `BREAKING CHANGE:`를 기록한다.
+
+### 본문 형식
+
+```text
+feat(header): 반응형 공통 헤더를 추가
+
+변경 내용:
+- Web·Tab·Mobile 규격의 메뉴 그리드와 활성 상태를 구현
+- Main, About, Work, Profile, Message 탐색을 제공
+
+변경 이유:
+- 화면별 구현 전에 공통 탐색 구조와 반응형 기준을 고정하기 위해
+```
+
+- `변경 내용`에는 실제 동작이나 구조 변경을 적는다. 수정한 파일의 목록이나 코드 줄을 그대로 나열하지 않는다.
+- `변경 이유`에는 문제, 사용자 가치, 후속 작업과의 관계를 적는다.
 
 ## 풀 리퀘스트
 
