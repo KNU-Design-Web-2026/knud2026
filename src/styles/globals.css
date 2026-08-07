@@ -89,3 +89,9 @@
   transform: translateX(-50%) translateY(0) rotate(2.89deg) scale(1);
   opacity: 1;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .main-hero {
+    cursor: none;
+  }
+}
