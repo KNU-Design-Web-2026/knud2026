@@ -1,5 +1,6 @@
 import { MainArtwork } from "@/components/main/main-artwork";
 import { MainCursor } from "@/components/main/main-cursor";
+import { SprayCanvas } from "@/components/main/spray-canvas";
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
         2026 제42회 경북대학교 디자인학과 졸업전시회
       </h1>
       <MainArtwork />
+      <SprayCanvas />
       <MainCursor />
     </section>
   );
