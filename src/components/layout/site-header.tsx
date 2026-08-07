@@ -21,12 +21,12 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
       <PageContainer className="flex h-full items-center justify-between gap-8">
         <Link className="flex w-[32.9375rem] min-w-0 items-center gap-[var(--header-brand-gap)] max-[1350.1px]:w-[31.8125rem]" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
           <KnudLogo />
-          <span className="w-[24.5rem] min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)] max-[1350.1px]:w-[24.3125rem] max-[1020.1px]:min-w-[13.6rem] max-[600.1px]:min-w-[13.2rem] max-[400.1px]:min-w-0 max-[400.1px]:w-auto">
-            <span className="block">2026 제<span className="max-[1350.1px]:hidden"> </span>42회 경북대학교 디자인학과 졸업전시회</span>
-            <span className="block">42th KNUD Graduation Exhibition Archive</span>
+          <span className="w-[24.5rem] min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)] max-[1350.1px]:w-[24.3125rem] max-[1020.1px]:min-w-[13.6rem] max-[600.1px]:min-w-[13.2rem] max-[400.1px]:min-w-0 max-[400.1px]:w-auto max-[360.1px]:shrink-0">
+            <span className="block whitespace-nowrap">2026 제<span className="max-[1350.1px]:hidden"> </span>42회 경북대학교 디자인학과 졸업전시회</span>
+            <span className="block whitespace-nowrap">42th KNUD Graduation Exhibition Archive</span>
           </span>
         </Link>
-        <nav className="flex h-full w-[var(--header-nav-container-width)] shrink-0 items-center gap-[var(--header-nav-gap)] min-[1350.1px]:justify-between max-[1020.1px]:hidden" aria-label="주요 메뉴">
+        <nav className="flex h-full w-[var(--header-nav-container-width)] shrink-0 items-center gap-[var(--header-nav-gap)] min-[1350.1px]:justify-between max-[1349.9px]:hidden" aria-label="주요 메뉴">
           {navigation.map((item) => {
             const isActive = item.href === activePath;
 
@@ -59,12 +59,10 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             );
           })}
         </nav>
-        <button className="hidden size-[var(--header-menu-size)] items-center justify-end max-[1020.1px]:flex" type="button" aria-label="메뉴 열기">
-          <span className="flex h-full w-8 flex-col justify-center gap-3 overflow-hidden px-0 max-[400.1px]:w-5 max-[400.1px]:gap-2">
-            {[0, 1, 2].map((line) => (
-              <Image alt="" className="block h-px w-full" height={1} key={line} src="/assets/figma/menu-line.svg" width={33} />
-            ))}
-          </span>
+        <button className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label="메뉴 열기">
+          <Image alt="" className="hidden size-full min-[600.1px]:max-[1349.9px]:block" height={48} src="/assets/figma/menu-list-1020.svg" width={48} />
+          <Image alt="" className="hidden size-full min-[480.1px]:max-[600.1px]:block" height={48} src="/assets/figma/menu-list-600.svg" width={48} />
+          <Image alt="" className="hidden size-full max-[480.1px]:block" height={30} src="/assets/figma/menu-list-400.svg" width={30} />
         </button>
       </PageContainer>
     </header>
