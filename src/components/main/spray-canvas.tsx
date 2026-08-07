@@ -7,6 +7,7 @@ const STAMP_DURATION = 4_000;
 const STAMP_VISIBLE_DURATION = 3_000;
 const MAX_STAMPS = 180;
 const MAX_DEVICE_PIXEL_RATIO = 2;
+const SPRAY_SCALE = 1.4;
 
 type Point = {
   x: number;
@@ -35,20 +36,20 @@ function createStamp(
   direction: number,
 ): SprayStamp {
   const particles: SprayParticle[] = [];
-  const bodyWidth = 32 + Math.random() * 18;
-  const bodyHeight = 7 + Math.random() * 5;
+  const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
+  const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE;
 
   for (let index = 0; index < 64; index += 1) {
     const isOverspray = index >= 46;
-    const localX = (Math.random() - 0.5) * (isOverspray ? 106 : 66);
-    const localY = (Math.random() - 0.5) * (isOverspray ? 48 : 26);
+    const localX = (Math.random() - 0.5) * (isOverspray ? 106 : 66) * SPRAY_SCALE;
+    const localY = (Math.random() - 0.5) * (isOverspray ? 48 : 26) * SPRAY_SCALE;
     const cosine = Math.cos(direction);
     const sine = Math.sin(direction);
 
     particles.push({
       x: localX * cosine - localY * sine,
       y: localX * sine + localY * cosine,
-      radius: isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4,
+      radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE,
       alpha: isOverspray ? 0.1 + Math.random() * 0.24 : 0.32 + Math.random() * 0.48,
     });
   }
@@ -63,8 +64,8 @@ function createStamp(
       ? {
           bend: (Math.random() - 0.5) * 1.5,
           offsetX: (Math.random() - 0.5) * bodyWidth,
-          length: 20 + Math.random() * 36,
-          width: 2 + Math.random() * 3,
+          length: (20 + Math.random() * 36) * SPRAY_SCALE,
+          width: (2 + Math.random() * 3) * SPRAY_SCALE,
         }
       : null,
     particles,

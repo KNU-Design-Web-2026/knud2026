@@ -44,7 +44,7 @@ export function MainCursor() {
 
   return (
     <div
-      className="main-cursor fixed top-0 left-0 z-20 h-[clamp(3.75rem,5vw,5.78rem)] w-[clamp(2.507rem,3.34vw,3.864rem)] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0"
+      className="main-cursor fixed top-0 left-0 z-20 h-[clamp(7.5rem,10vw,11.56rem)] w-[clamp(5.014rem,6.68vw,7.728rem)] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0"
       ref={cursorRef}
       aria-hidden="true"
     >
