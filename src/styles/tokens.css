@@ -8,8 +8,8 @@
   --color-knud-footer: #606060;
   --color-knud-footer-muted: #cccccc;
   --color-knud-muted: #7e7e7e;
-  --font-sans: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  --font-display: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-sans: var(--font-pretendard), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-display: var(--font-pretendard), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --text-display: clamp(3.5rem, 12vw, 12.5rem);
 }
 
@@ -20,8 +20,12 @@
   --header-logo-height: 4.25rem;
   --header-brand-gap: 1.25rem;
   --header-title-size: 1.25rem;
+  --header-title-tracking: -0.002em;
   --header-nav-gap: 3.75rem;
+  --header-nav-container-width: 50.4375rem;
   --header-nav-size: 2rem;
+  --header-nav-tracking: -0.002em;
+  --header-nav-hover-size: 1.75rem;
   --header-menu-size: 3rem;
   --main-hero-height: 75rem;
   --footer-height: 17.5rem;
@@ -41,11 +45,26 @@
     --header-logo-height: 3.625rem;
     --header-brand-gap: 1.25rem;
     --header-nav-gap: 0.5rem;
+    --header-nav-container-width: 38.875rem;
     --header-nav-width: 7.375rem;
     --header-nav-size: 1.5rem;
     --main-hero-height: 48.75rem;
     --footer-logo-width: 5rem;
     --footer-logo-height: 5.2036rem;
+  }
+}
+
+@media (min-width: 84.4375rem) and (max-width: 119.9375rem) {
+  :root {
+    --page-gutter: clamp(3.125rem, calc(8.7719vw - 4.2763rem), 6.25rem);
+    --header-height: clamp(7.5rem, calc(3.5088vw + 4.5394rem), 8.75rem);
+    --header-logo-width: clamp(6.25rem, calc(2.6316vw + 4.0263rem), 7.1875rem);
+    --header-logo-height: clamp(3.625rem, calc(1.7544vw + 2.1447rem), 4.25rem);
+    --header-nav-gap: clamp(0.5rem, calc(9.1228vw - 7.1974rem), 3.75rem);
+    --header-nav-container-width: clamp(38.875rem, calc(32.4561vw + 11.489rem), 50.4375rem);
+    --header-nav-size: clamp(1.5rem, calc(1.4035vw + 0.3158rem), 2rem);
+    --header-nav-hover-size: clamp(1.5rem, calc(0.7018vw + 0.9079rem), 1.75rem);
+    --main-hero-height: clamp(48.75rem, calc(73.6842vw - 13.4211rem), 75rem);
   }
 }
 

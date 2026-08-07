@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import type { PropsWithChildren } from "react";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import "@/styles/globals.css";
+
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+  display: "swap",
+  fallback: ["Apple SD Gothic Neo", "Noto Sans KR", "sans-serif"],
+  variable: "--font-pretendard",
+  weight: "45 920",
+});
 
 export const metadata: Metadata = {
   title: "KNUD 2026 Graduation Exhibition",
@@ -11,11 +19,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="ko">
+    <html className={pretendard.variable} lang="ko">
       <body>
         <SiteHeader />
         <main>{children}</main>
-        <SiteFooter />
       </body>
     </html>
   );
