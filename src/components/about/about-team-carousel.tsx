@@ -31,7 +31,7 @@ export function AboutTeamCarousel({ teams }: AboutTeamCarouselProps) {
   };
 
   return (
-    <div className="relative max-w-full overflow-hidden">
+    <div className="relative max-w-full overflow-hidden" data-about-reveal="rise">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#f1f1f1] to-transparent max-[600px]:w-5" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#f1f1f1] to-transparent max-[600px]:w-5" />
       <div ref={carouselRef} className="flex snap-x snap-mandatory gap-[50px] overflow-x-auto overscroll-x-contain px-[max(24px,8.17vw)] pb-6 [scrollbar-width:none] touch-pan-x max-[600px]:gap-5 max-[600px]:px-5 [&::-webkit-scrollbar]:hidden" role="region" aria-label="졸업준비팀 소개">

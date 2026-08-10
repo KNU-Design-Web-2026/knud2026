@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AboutMotion } from "@/components/about/about-motion";
 import { AboutTeamCarousel } from "@/components/about/about-team-carousel";
 import { SiteFooter } from "@/components/layout/site-footer";
 
@@ -56,7 +57,7 @@ export function AboutPage() {
   return (
     <div className="max-w-full overflow-x-clip bg-[#f1f1f1] text-[#111]">
       <section className="about-intro relative min-h-[1353px] overflow-hidden bg-[linear-gradient(180deg,#0dadfb_0%,#0dadfb_37%,#f1f1f1_77%)] px-[max(24px,11.82vw)] pt-[225px] pb-[220px] max-[1020px]:min-h-0 max-[1020px]:px-10 max-[1020px]:pt-28 max-[600px]:px-5 max-[600px]:pt-12 max-[600px]:pb-24">
-        <div className="relative mx-auto h-[880px] max-w-[1471.5px] max-[1020px]:h-auto max-[1020px]:bg-[#fcd519] max-[1020px]:p-2.5">
+        <div className="relative mx-auto h-[880px] max-w-[1471.5px] max-[1020px]:h-auto max-[1020px]:bg-[#fcd519] max-[1020px]:p-2.5" data-about-reveal="scale">
           <Image alt="" aria-hidden className="absolute inset-0 h-full w-full max-[1020px]:hidden" height={900} src="/assets/figma/about/intro-panel-border.svg" unoptimized width={1492} />
           <Image alt="" aria-hidden className="absolute inset-[30px_19px_10px] h-[calc(100%-40px)] w-[calc(100%-38px)] max-[1020px]:hidden" height={819} src="/assets/figma/about/intro-panel-fill.svg" unoptimized width={1421} />
           <div className="relative grid h-full grid-cols-[490px_minmax(0,1fr)] gap-[50px] px-[85px] py-[90px] max-[1280px]:grid-cols-[minmax(320px,42%)_minmax(0,1fr)] max-[1280px]:gap-12 max-[1280px]:px-[6%] max-[1020px]:h-auto max-[1020px]:grid-cols-1 max-[1020px]:gap-12 max-[1020px]:bg-[#f1f1f1] max-[1020px]:px-12 max-[1020px]:py-16 max-[600px]:px-8 max-[600px]:py-10">
@@ -74,8 +75,8 @@ export function AboutPage() {
       </section>
 
       <section className="px-[max(24px,7.81vw)] pt-[18px] pb-[260px] max-[1020px]:px-10 max-[1020px]:pb-32 max-[600px]:px-5 max-[600px]:pb-20">
-        <h2 className="text-[80px] leading-[1.3] font-bold tracking-[-0.045em] max-[600px]:text-[3.25rem]">Offline Exhibition</h2>
-        <div className="mt-[80px] grid grid-cols-[minmax(0,1fr)_minmax(420px,1.05fr)] items-end gap-[90px] max-[1280px]:gap-12 max-[1020px]:grid-cols-1 max-[1020px]:gap-14 max-[600px]:mt-10">
+        <h2 className="text-[80px] leading-[1.3] font-bold tracking-[-0.045em] max-[600px]:text-[3.25rem]" data-about-reveal="rise">Offline Exhibition</h2>
+        <div className="mt-[80px] grid grid-cols-[minmax(0,1fr)_minmax(420px,1.05fr)] items-end gap-[90px] max-[1280px]:gap-12 max-[1020px]:grid-cols-1 max-[1020px]:gap-14 max-[600px]:mt-10" data-about-reveal="rise">
           <Image alt="경북대학교 스페이스 9 위치 지도" className="w-full max-w-[1093px] justify-self-center" height={690} src="/assets/figma/about/exhibition-map.png" unoptimized width={1093} />
           <div className="pb-0 max-[1020px]:max-w-[600px]">
             <p className="text-[32px] leading-[1.3] font-bold tracking-[-0.04em] max-[600px]:text-2xl">2026.10.20(화) — 10.31(토)</p>
@@ -93,8 +94,8 @@ export function AboutPage() {
       </section>
 
       <section className="relative min-h-[855px] overflow-hidden pt-[55px] max-[1020px]:min-h-0 max-[1020px]:pb-28 max-[600px]:pb-16">
-        <h2 className="relative z-10 ml-[max(24px,7.81vw)] text-[80px] leading-[1.3] font-bold tracking-[-0.045em] max-[600px]:ml-5 max-[600px]:text-[3.25rem]">Professors</h2>
-        <div className="relative mt-[-3px] h-[720px] max-[1020px]:mt-8 max-[1020px]:h-auto max-[1020px]:bg-[#0dadfb] max-[1020px]:px-10 max-[1020px]:py-16 max-[600px]:px-5 max-[600px]:py-12">
+        <h2 className="relative z-10 ml-[max(24px,7.81vw)] text-[80px] leading-[1.3] font-bold tracking-[-0.045em] max-[600px]:ml-5 max-[600px]:text-[3.25rem]" data-about-reveal="rise">Professors</h2>
+        <div className="relative mt-[-3px] h-[720px] max-[1020px]:mt-8 max-[1020px]:h-auto max-[1020px]:bg-[#0dadfb] max-[1020px]:px-10 max-[1020px]:py-16 max-[600px]:px-5 max-[600px]:py-12" data-about-reveal="rise">
           <Image alt="" aria-hidden className="absolute inset-0 h-full w-[min(81.875%,1572px)] object-fill max-[1020px]:hidden" height={720} src="/assets/figma/about/professors-wave.svg" unoptimized width={1572} />
           <Image alt="" aria-hidden className="absolute bottom-0 left-[55.36%] h-[895px] w-[657px] max-[1280px]:left-[52%] max-[1020px]:hidden" height={895} src="/assets/figma/about/professors-lion.png" unoptimized width={657} />
           <div className="relative z-10 ml-[max(24px,7.81vw)] grid w-[670px] grid-cols-2 gap-x-[325px] gap-y-10 pt-[255px] text-[24px] leading-[1.3] tracking-[-0.04em] max-[1020px]:ml-0 max-[1020px]:w-full max-[1020px]:max-w-[620px] max-[1020px]:gap-x-12 max-[1020px]:pt-0 max-[600px]:grid-cols-1 max-[600px]:gap-y-7 max-[600px]:text-lg">
@@ -109,8 +110,8 @@ export function AboutPage() {
       </section>
 
       <section className="relative min-h-[1062px] overflow-hidden pt-[118px] max-[1020px]:min-h-0 max-[1020px]:pt-28 max-[600px]:pt-16">
-        <h2 className="relative z-10 ml-auto mr-[max(24px,7.81vw)] max-w-[789px] text-[80px] leading-[1.1] font-bold tracking-[-0.055em] max-[1020px]:mx-10 max-[1020px]:max-w-none max-[600px]:mx-5 max-[600px]:text-[3.25rem]">Graduation Committee Members</h2>
-        <div className="relative mt-4 h-[720px] max-[1020px]:mt-8 max-[1020px]:h-auto max-[1020px]:bg-[#0dadfb] max-[1020px]:px-10 max-[1020px]:py-16 max-[600px]:px-5 max-[600px]:py-12">
+        <h2 className="relative z-10 ml-auto mr-[max(24px,7.81vw)] max-w-[789px] text-[80px] leading-[1.1] font-bold tracking-[-0.055em] max-[1020px]:mx-10 max-[1020px]:max-w-none max-[600px]:mx-5 max-[600px]:text-[3.25rem]" data-about-reveal="rise">Graduation Committee Members</h2>
+        <div className="relative mt-4 h-[720px] max-[1020px]:mt-8 max-[1020px]:h-auto max-[1020px]:bg-[#0dadfb] max-[1020px]:px-10 max-[1020px]:py-16 max-[600px]:px-5 max-[600px]:py-12" data-about-reveal="rise">
           <Image alt="" aria-hidden className="absolute inset-0 ml-auto h-full w-[min(81.875%,1572px)] object-fill max-[1020px]:hidden" height={720} src="/assets/figma/about/committee-wave.svg" unoptimized width={1572} />
           <Image alt="" aria-hidden className="absolute bottom-[41px] left-[14.58%] h-[326px] w-[527px] max-[1020px]:hidden" height={326} src="/assets/figma/about/committee-illustration.png" unoptimized width={527} />
           <div className="relative z-10 ml-auto mr-[max(24px,7.81vw)] grid max-w-[1063px] grid-cols-[210px_194px_194px_1fr] gap-y-5 pt-[203px] text-[24px] leading-[1.3] tracking-[-0.04em] max-[1020px]:mx-0 max-[1020px]:max-w-[780px] max-[1020px]:grid-cols-[190px_1fr] max-[1020px]:gap-x-8 max-[1020px]:gap-y-4 max-[1020px]:pt-0 max-[600px]:grid-cols-1 max-[600px]:gap-y-1 max-[600px]:text-base">
@@ -126,6 +127,7 @@ export function AboutPage() {
         <AboutTeamCarousel teams={teams} />
       </section>
       <SiteFooter />
+      <AboutMotion />
     </div>
   );
 }
