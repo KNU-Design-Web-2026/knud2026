@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { KnudLogo } from "@/components/layout/knud-logo";
 
@@ -11,14 +14,83 @@ const navigation = [
   { href: "/message", label: "MESSAGE", hoverAsset: "/assets/figma/nav-message-hover-2026.svg" },
 ];
 
+const mobileNavigation = [
+  { href: "/about", label: "ABOUT" },
+  { href: "/work", label: "WORK" },
+  { href: "/profile", label: "PROFILE" },
+  { href: "/message", label: "MESSAGE" },
+  { href: "/space", label: "SPACE" },
+];
+
 type SiteHeaderProps = {
   activePath?: string;
 };
 
 export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
+  const [isHidden, setIsHidden] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const animationFrameRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+
+    const updateHeaderVisibility = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDistance = currentScrollY - lastScrollYRef.current;
+
+      if (currentScrollY <= 0) {
+        setIsHidden(false);
+      } else if (Math.abs(scrollDistance) >= 8) {
+        setIsHidden(scrollDistance > 0);
+      }
+
+      lastScrollYRef.current = currentScrollY;
+      animationFrameRef.current = null;
+    };
+
+    const handleScroll = () => {
+      if (animationFrameRef.current === null) {
+        animationFrameRef.current = window.requestAnimationFrame(updateHeaderVisibility);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (animationFrameRef.current !== null) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className="relative z-10 h-[var(--header-height)] bg-black text-white">
-      <PageContainer className="flex h-full items-center justify-between gap-8">
+    <div className="h-[var(--header-height)] bg-[#0dadfb]">
+      <header className={`fixed inset-x-0 top-0 z-50 h-[var(--header-height)] bg-black text-white transition-opacity duration-220 ease-out ${isHidden ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+        <PageContainer className="flex h-full items-center justify-between gap-8">
         <Link className="flex w-[32.9375rem] min-w-0 items-center gap-[var(--header-brand-gap)] max-[1350.1px]:w-[31.8125rem]" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
           <KnudLogo />
           <span className="w-[24.5rem] min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)] max-[1350.1px]:w-[24.3125rem] max-[1020.1px]:min-w-[13.6rem] max-[600.1px]:min-w-[13.2rem] max-[400.1px]:min-w-0 max-[400.1px]:w-auto max-[360.1px]:shrink-0">
@@ -59,12 +131,29 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             );
           })}
         </nav>
-        <button className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label="메뉴 열기">
+        <button aria-controls="mobile-navigation" aria-expanded={isMenuOpen} className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label="메뉴 열기" onClick={() => setIsMenuOpen(true)}>
           <Image alt="" className="hidden size-full min-[600.1px]:max-[1349.9px]:block" height={48} src="/assets/figma/menu-list-1020.svg" width={48} />
           <Image alt="" className="hidden size-full min-[480.1px]:max-[600.1px]:block" height={48} src="/assets/figma/menu-list-600.svg" width={48} />
           <Image alt="" className="hidden size-full max-[480.1px]:block" height={30} src="/assets/figma/menu-list-400.svg" width={30} />
         </button>
-      </PageContainer>
-    </header>
+        </PageContainer>
+      </header>
+      {isMenuOpen && (
+        <div aria-modal="true" className="fixed inset-0 z-[60] bg-black/50 px-[50px] py-10 max-[600.1px]:px-5 max-[400.1px]:px-2.5" role="dialog" aria-label="모바일 메뉴">
+          <div className="flex w-full flex-col items-end gap-[60px] max-[600.1px]:gap-[90px]">
+            <button aria-label="메뉴 닫기" className="size-10" type="button" onClick={() => setIsMenuOpen(false)}>
+              <Image alt="" className="size-full" height={40} src="/assets/figma/menu-close.svg" width={40} />
+            </button>
+            <nav className="flex w-full flex-col items-start gap-[50px]" id="mobile-navigation" aria-label="모바일 주요 메뉴">
+              {mobileNavigation.map((item) => (
+                <Link className="text-[60px] leading-[1.3] font-bold tracking-[-0.12px] text-white max-[400.1px]:font-normal" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
