@@ -12,7 +12,7 @@ export function MainArtwork() {
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
       {artwork.map((piece) => (
-        <Image alt="" className={`absolute object-fill ${piece.className}`} height={typeof piece.height === "number" ? piece.height : 1340} key={piece.src} priority src={piece.src} style={{ height: piece.height, left: piece.left, top: piece.top, width: piece.width }} width={typeof piece.width === "number" ? piece.width : 1920} />
+        <Image alt="" className={`absolute object-fill ${piece.className}`} height={typeof piece.height === "number" ? piece.height : 1340} key={piece.src} priority src={piece.src} style={{ height: piece.height, left: piece.left, top: piece.top, width: piece.width }} unoptimized width={typeof piece.width === "number" ? piece.width : 1920} />
       ))}
     </div>
   );
