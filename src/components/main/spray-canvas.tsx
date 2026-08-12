@@ -30,7 +30,7 @@ type SprayStamp = Point & {
   direction: number;
   drip: { bend: number; length: number; offsetX: number; width: number } | null;
   particles: SprayParticle[];
-  tail: { length: number; spread: number; width: number };
+  trailingParticles: SprayParticle[];
 };
 
 function createStamp(
@@ -40,6 +40,7 @@ function createStamp(
   color: string,
 ): SprayStamp {
   const particles: SprayParticle[] = [];
+  const trailingParticles: SprayParticle[] = [];
   const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
   const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE;
 
@@ -55,6 +56,20 @@ function createStamp(
       y: localX * sine + localY * cosine,
       radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE,
       alpha: isOverspray ? 0.1 + Math.random() * 0.24 : 0.32 + Math.random() * 0.48,
+    });
+  }
+
+  for (let index = 0; index < 18; index += 1) {
+    const distance = (18 + Math.random() * 32) * SPRAY_SCALE;
+    const lateralOffset = (Math.random() - 0.5) * (10 + Math.random() * 18) * SPRAY_SCALE;
+    const cosine = Math.cos(direction);
+    const sine = Math.sin(direction);
+
+    trailingParticles.push({
+      x: -distance * cosine - lateralOffset * sine,
+      y: -distance * sine + lateralOffset * cosine,
+      radius: (0.45 + Math.random() * 1.3) * SPRAY_SCALE,
+      alpha: 0.06 + Math.random() * 0.18,
     });
   }
 
@@ -74,11 +89,7 @@ function createStamp(
         }
       : null,
     particles,
-    tail: {
-      length: (52 + Math.random() * 58) * SPRAY_SCALE,
-      spread: (12 + Math.random() * 12) * SPRAY_SCALE,
-      width: (3 + Math.random() * 4) * SPRAY_SCALE,
-    },
+    trailingParticles,
   };
 }
 
@@ -135,26 +146,8 @@ export function SprayCanvas() {
           ? 1
           : (STAMP_DURATION - age) / (STAMP_DURATION - STAMP_VISIBLE_DURATION);
 
-        const backwardX = Math.cos(stamp.direction + Math.PI);
-        const backwardY = Math.sin(stamp.direction + Math.PI);
-
         context.strokeStyle = stamp.color;
         context.fillStyle = stamp.color;
-        context.save();
-        context.globalAlpha = 0.18 * fade;
-        context.lineCap = "round";
-        context.lineWidth = stamp.tail.width;
-        context.beginPath();
-        context.moveTo(stamp.x, stamp.y);
-        context.quadraticCurveTo(
-          stamp.x + backwardX * stamp.tail.length * 0.45 - backwardY * stamp.tail.spread,
-          stamp.y + backwardY * stamp.tail.length * 0.45 + backwardX * stamp.tail.spread,
-          stamp.x + backwardX * stamp.tail.length,
-          stamp.y + backwardY * stamp.tail.length,
-        );
-        context.stroke();
-        context.restore();
-
         context.save();
         context.translate(stamp.x, stamp.y);
         context.rotate(stamp.direction);
@@ -165,6 +158,19 @@ export function SprayCanvas() {
         context.restore();
 
         for (const particle of stamp.particles) {
+          context.globalAlpha = particle.alpha * fade;
+          context.beginPath();
+          context.arc(
+            stamp.x + particle.x,
+            stamp.y + particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2,
+          );
+          context.fill();
+        }
+
+        for (const particle of stamp.trailingParticles) {
           context.globalAlpha = particle.alpha * fade;
           context.beginPath();
           context.arc(
