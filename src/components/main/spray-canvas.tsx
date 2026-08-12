@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 const STAMP_SPACING = 12;
 const STAMP_DURATION = 2_400;
 const STAMP_VISIBLE_DURATION = 1_800;
-const MAX_STAMPS = 96;
 const MAX_DEVICE_PIXEL_RATIO = 2;
 const SPRAY_SCALE = 1.9;
 const SPRAY_COLORS = ["#F8D622", "#FF3030", "#F7F7F2", "#B6EE57"];
@@ -186,10 +185,6 @@ export function SprayCanvas() {
       stampsRef.current.push(
         createStamp(point, performance.now(), direction, activeColorRef.current),
       );
-
-      if (stampsRef.current.length > MAX_STAMPS) {
-        stampsRef.current.splice(0, stampsRef.current.length - MAX_STAMPS);
-      }
 
       startRendering();
     };
