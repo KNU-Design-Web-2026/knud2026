@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const STAMP_SPACING = 12;
+const STAMP_SPACING = 6;
 const STAMP_DURATION = 4_000;
 const STAMP_VISIBLE_DURATION = 3_000;
 const MAX_STAMPS = 180;
@@ -215,7 +215,7 @@ export function SprayCanvas() {
       const deltaX = nextPoint.x - previousPoint.x;
       const deltaY = nextPoint.y - previousPoint.y;
       const distance = Math.hypot(deltaX, deltaY);
-      const steps = Math.min(Math.floor(distance / STAMP_SPACING), 10);
+      const steps = Math.min(Math.floor(distance / STAMP_SPACING), 32);
       const direction = Math.atan2(deltaY, deltaX);
 
       if (steps === 0) {
