@@ -7,7 +7,10 @@ const STAMP_DURATION = 4_000;
 const STAMP_VISIBLE_DURATION = 3_000;
 const MAX_STAMPS = 180;
 const MAX_DEVICE_PIXEL_RATIO = 2;
-const SPRAY_SCALE = 1.4;
+const SPRAY_SCALE = 1.9;
+const MIN_PRESSURE_SCALE = 0.62;
+const MAX_PRESSURE_SCALE = 1.55;
+const SPRAY_COLORS = ["#F8D622", "#FF3030", "#F7F7F2", "#B6EE57"];
 
 type Point = {
   x: number;
@@ -24,32 +27,36 @@ type SprayParticle = {
 type SprayStamp = Point & {
   bodyHeight: number;
   bodyWidth: number;
+  color: string;
   createdAt: number;
   direction: number;
   drip: { bend: number; length: number; offsetX: number; width: number } | null;
   particles: SprayParticle[];
+  tail: { length: number; spread: number; width: number };
 };
 
 function createStamp(
   point: Point,
   createdAt: number,
   direction: number,
+  pressureScale: number,
+  color: string,
 ): SprayStamp {
   const particles: SprayParticle[] = [];
-  const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
-  const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE;
+  const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE * pressureScale;
+  const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE * pressureScale;
 
   for (let index = 0; index < 64; index += 1) {
     const isOverspray = index >= 46;
-    const localX = (Math.random() - 0.5) * (isOverspray ? 106 : 66) * SPRAY_SCALE;
-    const localY = (Math.random() - 0.5) * (isOverspray ? 48 : 26) * SPRAY_SCALE;
+    const localX = (Math.random() - 0.5) * (isOverspray ? 106 : 66) * SPRAY_SCALE * pressureScale;
+    const localY = (Math.random() - 0.5) * (isOverspray ? 48 : 26) * SPRAY_SCALE * pressureScale;
     const cosine = Math.cos(direction);
     const sine = Math.sin(direction);
 
     particles.push({
       x: localX * cosine - localY * sine,
       y: localX * sine + localY * cosine,
-      radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE,
+      radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE * pressureScale,
       alpha: isOverspray ? 0.1 + Math.random() * 0.24 : 0.32 + Math.random() * 0.48,
     });
   }
@@ -58,17 +65,23 @@ function createStamp(
     ...point,
     bodyHeight,
     bodyWidth,
+    color,
     createdAt,
     direction,
     drip: Math.random() < 0.045
       ? {
           bend: (Math.random() - 0.5) * 1.5,
           offsetX: (Math.random() - 0.5) * bodyWidth,
-          length: (20 + Math.random() * 36) * SPRAY_SCALE,
-          width: (2 + Math.random() * 3) * SPRAY_SCALE,
+          length: (30 + Math.random() * 48) * SPRAY_SCALE * pressureScale,
+          width: (2 + Math.random() * 3) * SPRAY_SCALE * pressureScale,
         }
       : null,
     particles,
+    tail: {
+      length: (52 + Math.random() * 58) * SPRAY_SCALE * pressureScale,
+      spread: (12 + Math.random() * 12) * SPRAY_SCALE * pressureScale,
+      width: (3 + Math.random() * 4) * SPRAY_SCALE * pressureScale,
+    },
   };
 }
 
@@ -79,6 +92,8 @@ export function SprayCanvas() {
   const activePointerIdRef = useRef<number | null>(null);
   const isSprayingRef = useRef(false);
   const animationFrameRef = useRef<number | null>(null);
+  const colorIndexRef = useRef(-1);
+  const activeColorRef = useRef(SPRAY_COLORS[0]);
 
   useEffect(() => {
     const hero = document.getElementById("main-hero");
@@ -122,6 +137,26 @@ export function SprayCanvas() {
         const fade = age <= STAMP_VISIBLE_DURATION
           ? 1
           : (STAMP_DURATION - age) / (STAMP_DURATION - STAMP_VISIBLE_DURATION);
+
+        const backwardX = Math.cos(stamp.direction + Math.PI);
+        const backwardY = Math.sin(stamp.direction + Math.PI);
+
+        context.strokeStyle = stamp.color;
+        context.fillStyle = stamp.color;
+        context.save();
+        context.globalAlpha = 0.18 * fade;
+        context.lineCap = "round";
+        context.lineWidth = stamp.tail.width;
+        context.beginPath();
+        context.moveTo(stamp.x, stamp.y);
+        context.quadraticCurveTo(
+          stamp.x + backwardX * stamp.tail.length * 0.45 - backwardY * stamp.tail.spread,
+          stamp.y + backwardY * stamp.tail.length * 0.45 + backwardX * stamp.tail.spread,
+          stamp.x + backwardX * stamp.tail.length,
+          stamp.y + backwardY * stamp.tail.length,
+        );
+        context.stroke();
+        context.restore();
 
         context.save();
         context.translate(stamp.x, stamp.y);
@@ -174,8 +209,18 @@ export function SprayCanvas() {
       }
     };
 
-    const addStamp = (point: Point, direction: number) => {
-      stampsRef.current.push(createStamp(point, performance.now(), direction));
+    const pressureScaleFromEvent = (event: PointerEvent) => {
+      const pressure = event.pointerType === "pen" && event.pressure > 0
+        ? event.pressure
+        : 0.65;
+
+      return MIN_PRESSURE_SCALE + (MAX_PRESSURE_SCALE - MIN_PRESSURE_SCALE) * pressure;
+    };
+
+    const addStamp = (point: Point, direction: number, pressureScale: number) => {
+      stampsRef.current.push(
+        createStamp(point, performance.now(), direction, pressureScale, activeColorRef.current),
+      );
 
       if (stampsRef.current.length > MAX_STAMPS) {
         stampsRef.current.splice(0, stampsRef.current.length - MAX_STAMPS);
@@ -193,11 +238,11 @@ export function SprayCanvas() {
       };
     };
 
-    const sprayAlongPath = (nextPoint: Point) => {
+    const sprayAlongPath = (nextPoint: Point, pressureScale: number) => {
       const previousPoint = lastPointRef.current;
 
       if (!previousPoint) {
-        addStamp(nextPoint, 0);
+        addStamp(nextPoint, 0, pressureScale);
         lastPointRef.current = nextPoint;
         return;
       }
@@ -214,10 +259,14 @@ export function SprayCanvas() {
 
       for (let step = 1; step <= steps; step += 1) {
         const progress = (step * STAMP_SPACING) / distance;
-        addStamp({
-          x: previousPoint.x + deltaX * progress,
-          y: previousPoint.y + deltaY * progress,
-        }, direction);
+        addStamp(
+          {
+            x: previousPoint.x + deltaX * progress,
+            y: previousPoint.y + deltaY * progress,
+          },
+          direction,
+          pressureScale,
+        );
       }
 
       const coveredDistance = steps * STAMP_SPACING;
@@ -248,10 +297,12 @@ export function SprayCanvas() {
 
       activePointerIdRef.current = event.pointerId;
       isSprayingRef.current = true;
+      colorIndexRef.current = (colorIndexRef.current + 1) % SPRAY_COLORS.length;
+      activeColorRef.current = SPRAY_COLORS[colorIndexRef.current];
       hero.setPointerCapture(event.pointerId);
       const point = pointFromEvent(event);
       lastPointRef.current = point;
-      addStamp(point, 0);
+      addStamp(point, 0, pressureScaleFromEvent(event));
     };
 
     const handlePointerMove = (event: PointerEvent) => {
@@ -259,11 +310,9 @@ export function SprayCanvas() {
         return;
       }
 
-      sprayAlongPath(pointFromEvent(event));
+      sprayAlongPath(pointFromEvent(event), pressureScaleFromEvent(event));
     };
 
-    context.fillStyle = "#F8D622";
-    context.strokeStyle = "#F8D622";
     resizeCanvas();
 
     const resizeObserver = new ResizeObserver(resizeCanvas);
