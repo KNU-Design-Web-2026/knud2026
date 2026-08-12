@@ -30,7 +30,6 @@ type SprayStamp = Point & {
   direction: number;
   drip: { bend: number; length: number; offsetX: number; width: number } | null;
   particles: SprayParticle[];
-  trailingParticles: SprayParticle[];
 };
 
 function createStamp(
@@ -40,36 +39,21 @@ function createStamp(
   color: string,
 ): SprayStamp {
   const particles: SprayParticle[] = [];
-  const trailingParticles: SprayParticle[] = [];
-  const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
-  const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE;
+  const bodyWidth = (20 + Math.random() * 12) * SPRAY_SCALE;
+  const bodyHeight = (4 + Math.random() * 3) * SPRAY_SCALE;
 
-  for (let index = 0; index < 64; index += 1) {
-    const isOverspray = index >= 46;
-    const localX = (Math.random() - 0.5) * (isOverspray ? 106 : 66) * SPRAY_SCALE;
-    const localY = (Math.random() - 0.5) * (isOverspray ? 48 : 26) * SPRAY_SCALE;
+  for (let index = 0; index < 112; index += 1) {
+    const isMist = index >= 72;
+    const localX = (Math.random() + Math.random() - 1) * (isMist ? 48 : 24) * SPRAY_SCALE;
+    const localY = (Math.random() + Math.random() - 1) * (isMist ? 20 : 7) * SPRAY_SCALE;
     const cosine = Math.cos(direction);
     const sine = Math.sin(direction);
 
     particles.push({
       x: localX * cosine - localY * sine,
       y: localX * sine + localY * cosine,
-      radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE,
-      alpha: isOverspray ? 0.1 + Math.random() * 0.24 : 0.32 + Math.random() * 0.48,
-    });
-  }
-
-  for (let index = 0; index < 18; index += 1) {
-    const distance = (18 + Math.random() * 32) * SPRAY_SCALE;
-    const lateralOffset = (Math.random() - 0.5) * (10 + Math.random() * 18) * SPRAY_SCALE;
-    const cosine = Math.cos(direction);
-    const sine = Math.sin(direction);
-
-    trailingParticles.push({
-      x: -distance * cosine - lateralOffset * sine,
-      y: -distance * sine + lateralOffset * cosine,
-      radius: (0.45 + Math.random() * 1.3) * SPRAY_SCALE,
-      alpha: 0.06 + Math.random() * 0.18,
+      radius: (isMist ? 0.3 + Math.random() * 1.1 : 0.7 + Math.random() * 2.2) * SPRAY_SCALE,
+      alpha: isMist ? 0.04 + Math.random() * 0.16 : 0.18 + Math.random() * 0.42,
     });
   }
 
@@ -89,7 +73,6 @@ function createStamp(
         }
       : null,
     particles,
-    trailingParticles,
   };
 }
 
@@ -151,26 +134,13 @@ export function SprayCanvas() {
         context.save();
         context.translate(stamp.x, stamp.y);
         context.rotate(stamp.direction);
-        context.globalAlpha = 0.24 * fade;
+        context.globalAlpha = 0.32 * fade;
         context.beginPath();
         context.ellipse(0, 0, stamp.bodyWidth, stamp.bodyHeight, 0, 0, Math.PI * 2);
         context.fill();
         context.restore();
 
         for (const particle of stamp.particles) {
-          context.globalAlpha = particle.alpha * fade;
-          context.beginPath();
-          context.arc(
-            stamp.x + particle.x,
-            stamp.y + particle.y,
-            particle.radius,
-            0,
-            Math.PI * 2,
-          );
-          context.fill();
-        }
-
-        for (const particle of stamp.trailingParticles) {
           context.globalAlpha = particle.alpha * fade;
           context.beginPath();
           context.arc(
