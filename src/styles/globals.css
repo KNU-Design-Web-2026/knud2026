@@ -168,7 +168,9 @@
   transform: translateY(-0.75rem);
   transition:
     opacity 260ms ease-out,
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 160ms ease-out,
+    color 120ms ease-out;
 }
 
 .mobile-menu-panel[data-open="true"] .mobile-menu-panel__item {
@@ -194,6 +196,18 @@
 
 .mobile-menu-panel[data-open="true"] .mobile-menu-panel__item:nth-child(5) {
   transition-delay: 260ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mobile-menu-panel__item:hover {
+    background: var(--color-knud-navigation-active);
+    color: var(--color-knud-ink);
+  }
+}
+
+.mobile-menu-panel__item:focus-visible {
+  background: var(--color-knud-navigation-active);
+  color: var(--color-knud-ink);
 }
 
 @media (max-width: 600px) {
