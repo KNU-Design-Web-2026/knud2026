@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 
 const STAMP_SPACING = 12;
-const STAMP_DURATION = 4_000;
-const STAMP_VISIBLE_DURATION = 3_000;
-const MAX_STAMPS = 180;
+const STAMP_DURATION = 2_400;
+const STAMP_VISIBLE_DURATION = 1_800;
+const MAX_STAMPS = 96;
 const MAX_DEVICE_PIXEL_RATIO = 2;
 const SPRAY_SCALE = 1.9;
 const SPRAY_COLORS = ["#F8D622", "#FF3030", "#F7F7F2", "#B6EE57"];
@@ -30,7 +30,6 @@ type SprayStamp = Point & {
   direction: number;
   drip: { bend: number; length: number; offsetX: number; width: number } | null;
   particles: SprayParticle[];
-  trailingParticles: SprayParticle[];
 };
 
 function createStamp(
@@ -40,7 +39,6 @@ function createStamp(
   color: string,
 ): SprayStamp {
   const particles: SprayParticle[] = [];
-  const trailingParticles: SprayParticle[] = [];
   const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
   const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE;
 
@@ -56,20 +54,6 @@ function createStamp(
       y: localX * sine + localY * cosine,
       radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE,
       alpha: isOverspray ? 0.1 + Math.random() * 0.24 : 0.32 + Math.random() * 0.48,
-    });
-  }
-
-  for (let index = 0; index < 18; index += 1) {
-    const distance = (18 + Math.random() * 32) * SPRAY_SCALE;
-    const lateralOffset = (Math.random() - 0.5) * (10 + Math.random() * 18) * SPRAY_SCALE;
-    const cosine = Math.cos(direction);
-    const sine = Math.sin(direction);
-
-    trailingParticles.push({
-      x: -distance * cosine - lateralOffset * sine,
-      y: -distance * sine + lateralOffset * cosine,
-      radius: (0.45 + Math.random() * 1.3) * SPRAY_SCALE,
-      alpha: 0.06 + Math.random() * 0.18,
     });
   }
 
@@ -89,7 +73,6 @@ function createStamp(
         }
       : null,
     particles,
-    trailingParticles,
   };
 }
 
@@ -158,19 +141,6 @@ export function SprayCanvas() {
         context.restore();
 
         for (const particle of stamp.particles) {
-          context.globalAlpha = particle.alpha * fade;
-          context.beginPath();
-          context.arc(
-            stamp.x + particle.x,
-            stamp.y + particle.y,
-            particle.radius,
-            0,
-            Math.PI * 2,
-          );
-          context.fill();
-        }
-
-        for (const particle of stamp.trailingParticles) {
           context.globalAlpha = particle.alpha * fade;
           context.beginPath();
           context.arc(
