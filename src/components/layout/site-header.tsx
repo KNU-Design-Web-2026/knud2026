@@ -18,8 +18,8 @@ const mobileNavigation = [
   { href: "/about", label: "ABOUT" },
   { href: "/work", label: "WORK" },
   { href: "/profile", label: "PROFILE" },
-  { href: "/message", label: "MESSAGE" },
   { href: "/space", label: "SPACE" },
+  { href: "/message", label: "MESSAGE" },
 ];
 
 type SiteHeaderProps = {
@@ -131,7 +131,7 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             );
           })}
         </nav>
-        <button aria-controls="mobile-navigation" aria-expanded={isMenuOpen} className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label="메뉴 열기" onClick={() => setIsMenuOpen(true)}>
+        <button aria-controls="mobile-navigation" aria-expanded={isMenuOpen} className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}>
           <Image alt="" className="hidden size-full min-[600.1px]:max-[1349.9px]:block" height={48} src="/assets/figma/menu-list-1020.svg" width={48} />
           <Image alt="" className="hidden size-full min-[480.1px]:max-[600.1px]:block" height={48} src="/assets/figma/menu-list-600.svg" width={48} />
           <Image alt="" className="hidden size-full max-[480.1px]:block" height={30} src="/assets/figma/menu-list-400.svg" width={30} />
@@ -139,19 +139,14 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
         </PageContainer>
       </header>
       {isMenuOpen && (
-        <div aria-modal="true" className="fixed inset-0 z-[60] bg-black/50 px-[50px] py-10 max-[600.1px]:px-5 max-[400.1px]:px-2.5" role="dialog" aria-label="모바일 메뉴">
-          <div className="flex w-full flex-col items-end gap-[60px] max-[600.1px]:gap-[90px]">
-            <button aria-label="메뉴 닫기" className="size-10" type="button" onClick={() => setIsMenuOpen(false)}>
-              <Image alt="" className="size-full" height={40} src="/assets/figma/menu-close.svg" width={40} />
-            </button>
-            <nav className="flex w-full flex-col items-start gap-[50px]" id="mobile-navigation" aria-label="모바일 주요 메뉴">
-              {mobileNavigation.map((item) => (
-                <Link className="text-[60px] leading-[1.3] font-bold tracking-[-0.12px] text-white max-[400.1px]:font-normal" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+        <div className="fixed inset-x-0 top-[var(--header-height)] z-40 border-b border-white/70 bg-black/[0.77] backdrop-blur-[9px]" role="dialog" aria-label="모바일 메뉴">
+          <nav className="flex w-full flex-col" id="mobile-navigation" aria-label="모바일 주요 메뉴">
+            {mobileNavigation.map((item) => (
+              <Link className="flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </div>
