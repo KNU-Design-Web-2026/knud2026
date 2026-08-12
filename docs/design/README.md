@@ -35,5 +35,6 @@ docs/design/
 - [2026-07-16 디자이너 QA](./qa/2026-07-16-designer-qa.md)
 - [2026-08-06 메인 페이지 구현 기준](./2026-08-06-main-page.md)
 - [2026-08-12 메인 스프레이 인터랙션 규격](./interaction-specs/2026-08-12-main-spray.md)
+- [2026-08-12 반응형 모바일 메뉴 규격](./interaction-specs/2026-08-12-mobile-navigation.md)
 - [공통 컴포넌트 기준](./common-components.md)
 - [ADR-0002: Storybook과 Chromatic 사용](../architecture/adr/0002-use-storybook-and-chromatic.md)
