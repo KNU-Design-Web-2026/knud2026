@@ -131,24 +131,32 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             );
           })}
         </nav>
-        <button aria-controls="mobile-navigation" aria-expanded={isMenuOpen} className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}>
-          <Image alt="" className="hidden size-full min-[600.1px]:max-[1349.9px]:block" height={48} src="/assets/figma/menu-list-1020.svg" width={48} />
-          <Image alt="" className="hidden size-full min-[480.1px]:max-[600.1px]:block" height={48} src="/assets/figma/menu-list-600.svg" width={48} />
-          <Image alt="" className="hidden size-full max-[480.1px]:block" height={30} src="/assets/figma/menu-list-400.svg" width={30} />
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+          className="mobile-menu-trigger hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex"
+          data-open={isMenuOpen}
+          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          type="button"
+        >
+          <span aria-hidden="true" className="mobile-menu-trigger__icon">
+            <span className="mobile-menu-trigger__line" />
+            <span className="mobile-menu-trigger__line" />
+            <span className="mobile-menu-trigger__line" />
+          </span>
         </button>
         </PageContainer>
       </header>
-      {isMenuOpen && (
-        <div className="fixed inset-x-0 top-[var(--header-height)] z-40 border-b border-white/70 bg-black/[0.77] backdrop-blur-[9px]" role="dialog" aria-label="모바일 메뉴">
+      <div aria-hidden={!isMenuOpen} className="mobile-menu-panel fixed inset-x-0 top-[var(--header-height)] z-40 border-b border-white/70 bg-black/[0.77] backdrop-blur-[9px]" data-open={isMenuOpen} role="dialog" aria-label="모바일 메뉴">
           <nav className="flex w-full flex-col" id="mobile-navigation" aria-label="모바일 주요 메뉴">
             {mobileNavigation.map((item) => (
-              <Link className="flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>
+              <Link className="mobile-menu-panel__item flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)} tabIndex={isMenuOpen ? 0 : -1}>
                 {item.label}
               </Link>
             ))}
           </nav>
         </div>
-      )}
     </div>
   );
 }
