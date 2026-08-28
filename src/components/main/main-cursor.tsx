@@ -15,12 +15,12 @@ export function MainCursor() {
   const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("main-hero");
+    const sprayZone = document.getElementById("main-spray-zone");
     const supportsFinePointer = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
     );
 
-    if (!hero || !supportsFinePointer.matches) {
+    if (!sprayZone || !supportsFinePointer.matches) {
       return;
     }
 
@@ -70,16 +70,16 @@ export function MainCursor() {
       positionCursor(event, false);
     };
 
-    hero.addEventListener("pointermove", moveCursor);
-    hero.addEventListener("pointerleave", hideCursor);
-    hero.addEventListener("pointerdown", showPressedCursor);
+    sprayZone.addEventListener("pointermove", moveCursor);
+    sprayZone.addEventListener("pointerleave", hideCursor);
+    sprayZone.addEventListener("pointerdown", showPressedCursor);
     window.addEventListener("pointerup", showDefaultCursor);
     window.addEventListener("pointercancel", showDefaultCursor);
 
     return () => {
-      hero.removeEventListener("pointermove", moveCursor);
-      hero.removeEventListener("pointerleave", hideCursor);
-      hero.removeEventListener("pointerdown", showPressedCursor);
+      sprayZone.removeEventListener("pointermove", moveCursor);
+      sprayZone.removeEventListener("pointerleave", hideCursor);
+      sprayZone.removeEventListener("pointerdown", showPressedCursor);
       window.removeEventListener("pointerup", showDefaultCursor);
       window.removeEventListener("pointercancel", showDefaultCursor);
     };

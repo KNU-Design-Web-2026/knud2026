@@ -10,6 +10,11 @@ export default function HomePage() {
       </h1>
       <MainArtwork />
       <SprayCanvas />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-20"
+        id="main-spray-zone"
+      />
       <MainCursor />
     </section>
   );

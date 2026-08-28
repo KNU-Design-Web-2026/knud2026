@@ -27,11 +27,11 @@ export function SiteCursor() {
         return;
       }
 
-      const isInsideMainHero = (event.target as Element | null)?.closest(
-        "#main-hero",
+      const isInsideSprayZone = (event.target as Element | null)?.closest(
+        "#main-spray-zone",
       );
 
-      cursor.style.opacity = isInsideMainHero ? "0" : "1";
+      cursor.style.opacity = isInsideSprayZone ? "0" : "1";
       cursor.style.transform = `translate3d(${event.clientX + SITE_CURSOR_OFFSET.x}px, ${event.clientY + SITE_CURSOR_OFFSET.y}px, 0) translate(-50%, -50%)`;
     };
 

@@ -87,6 +87,7 @@ export function SprayCanvas() {
 
   useEffect(() => {
     const hero = document.getElementById("main-hero");
+    const sprayZone = document.getElementById("main-spray-zone");
     const canvas = canvasRef.current;
     const supportsFinePointer = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
@@ -95,7 +96,7 @@ export function SprayCanvas() {
       "(prefers-reduced-motion: reduce)",
     );
 
-    if (!hero || !canvas || !supportsFinePointer.matches || prefersReducedMotion.matches) {
+    if (!hero || !sprayZone || !canvas || !supportsFinePointer.matches || prefersReducedMotion.matches) {
       return;
     }
 
@@ -244,8 +245,8 @@ export function SprayCanvas() {
       lastPointRef.current = null;
       activePointerIdRef.current = null;
 
-      if (hero.hasPointerCapture(event.pointerId)) {
-        hero.releasePointerCapture(event.pointerId);
+      if (sprayZone.hasPointerCapture(event.pointerId)) {
+        sprayZone.releasePointerCapture(event.pointerId);
       }
     };
 
@@ -258,7 +259,7 @@ export function SprayCanvas() {
       isSprayingRef.current = true;
       colorIndexRef.current = (colorIndexRef.current + 1) % SPRAY_COLORS.length;
       activeColorRef.current = SPRAY_COLORS[colorIndexRef.current];
-      hero.setPointerCapture(event.pointerId);
+      sprayZone.setPointerCapture(event.pointerId);
       const point = pointFromEvent(event);
       lastPointRef.current = point;
       addStamp(point, 0);
@@ -276,17 +277,17 @@ export function SprayCanvas() {
 
     const resizeObserver = new ResizeObserver(resizeCanvas);
     resizeObserver.observe(hero);
-    hero.addEventListener("pointerdown", handlePointerDown);
-    hero.addEventListener("pointermove", handlePointerMove);
-    hero.addEventListener("pointerup", stopSpraying);
-    hero.addEventListener("pointercancel", stopSpraying);
+    sprayZone.addEventListener("pointerdown", handlePointerDown);
+    sprayZone.addEventListener("pointermove", handlePointerMove);
+    sprayZone.addEventListener("pointerup", stopSpraying);
+    sprayZone.addEventListener("pointercancel", stopSpraying);
 
     return () => {
       resizeObserver.disconnect();
-      hero.removeEventListener("pointerdown", handlePointerDown);
-      hero.removeEventListener("pointermove", handlePointerMove);
-      hero.removeEventListener("pointerup", stopSpraying);
-      hero.removeEventListener("pointercancel", stopSpraying);
+      sprayZone.removeEventListener("pointerdown", handlePointerDown);
+      sprayZone.removeEventListener("pointermove", handlePointerMove);
+      sprayZone.removeEventListener("pointerup", stopSpraying);
+      sprayZone.removeEventListener("pointercancel", stopSpraying);
 
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
