@@ -44,7 +44,8 @@
 }
 
 .main-hero {
-  background: linear-gradient(180deg, #06affd 0%, #06affd 67.523%, #005176 100%);
+  /* Figma Frame PNG의 하단 색과 일치시켜 이미지 종료 후에도 경계가 생기지 않게 한다. */
+  background: #005176;
 }
 
 @media (prefers-reduced-motion: reduce) {
