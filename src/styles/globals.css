@@ -270,7 +270,8 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .main-hero {
+  .has-custom-cursor,
+  .has-custom-cursor * {
     cursor: none;
   }
 }
