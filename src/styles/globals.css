@@ -199,6 +199,17 @@
   transition-delay: 0s;
 }
 
+.mobile-menu-backdrop {
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.mobile-menu-backdrop[data-open="true"] {
+  visibility: visible;
+  pointer-events: auto;
+}
+
 .mobile-menu-panel__item {
   opacity: 0;
   transform: translateY(-0.75rem);
@@ -247,9 +258,13 @@
 }
 
 @media (max-width: 600px) {
+  .mobile-menu-trigger {
+    padding-inline: 0.3125rem;
+  }
+
   .mobile-menu-trigger__icon {
-    width: 1.875rem;
-    height: 1.25rem;
+    width: 1.2890625rem;
+    height: 1.125rem;
   }
 }
 
