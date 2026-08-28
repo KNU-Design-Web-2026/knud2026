@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { KnudLogo } from "@/components/layout/knud-logo";
+import { isNavigationPathActive } from "@/components/layout/navigation";
 
 const navigation = [
   { href: "/about", label: "ABOUT", hoverAsset: "/assets/figma/nav-about-hover-2026.svg" },
@@ -26,11 +28,13 @@ type SiteHeaderProps = {
   activePath?: string;
 };
 
-export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
+export function SiteHeader({ activePath }: SiteHeaderProps) {
   const [isHidden, setIsHidden] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   const lastScrollYRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
+  const currentPath = activePath ?? pathname;
 
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
@@ -100,7 +104,7 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
         </Link>
         <nav className="flex h-full w-[var(--header-nav-container-width)] shrink-0 items-center gap-[var(--header-nav-gap)] min-[1350.1px]:justify-between max-[1349.9px]:hidden" aria-label="주요 메뉴">
           {navigation.map((item) => {
-            const isActive = item.href === activePath;
+            const isActive = isNavigationPathActive(currentPath, item.href);
 
             return (
               <Link
@@ -150,11 +154,27 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
       </header>
       <div aria-hidden={!isMenuOpen} className="mobile-menu-panel fixed inset-x-0 top-[var(--header-height)] z-40 border-b border-white/70 bg-black/[0.77] backdrop-blur-[9px]" data-open={isMenuOpen} role="dialog" aria-label="모바일 메뉴">
           <nav className="flex w-full flex-col" id="mobile-navigation" aria-label="모바일 주요 메뉴">
-            {mobileNavigation.map((item) => (
-              <Link className="mobile-menu-panel__item flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)} tabIndex={isMenuOpen ? 0 : -1}>
-                {item.label}
-              </Link>
-            ))}
+            {mobileNavigation.map((item) => {
+              const isActive = isNavigationPathActive(currentPath, item.href);
+
+              return (
+                <Link
+                  aria-current={isActive ? "page" : undefined}
+                  className={[
+                    "mobile-menu-panel__item relative flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl",
+                    isActive && "font-bold text-knud-navigation-active after:absolute after:inset-x-0 after:bottom-0 after:h-2 after:bg-knud-navigation-active",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  href={item.href}
+                  key={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  tabIndex={isMenuOpen ? 0 : -1}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
     </div>
