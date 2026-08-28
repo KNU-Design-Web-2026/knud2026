@@ -111,7 +111,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                 aria-current={isActive ? "page" : undefined}
                 className={[
                   "header-nav-link group relative flex h-full items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)] min-[1350.1px]:w-auto max-[1350.1px]:w-[var(--header-nav-width)]",
-                  isActive && "font-bold text-knud-navigation-active after:absolute after:inset-x-0 after:bottom-0 after:h-2 after:bg-knud-navigation-active",
+                  isActive && "header-nav-link--active font-bold text-knud-navigation-active",
                 ]
                   .filter(Boolean)
                   .join(" ")}

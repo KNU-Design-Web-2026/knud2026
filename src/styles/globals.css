@@ -56,35 +56,35 @@
 
 .header-nav-link__label {
   transition:
-    color 200ms ease-in,
-    font-size 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    font-weight 200ms ease-in;
+    color 260ms cubic-bezier(0.4, 0, 0.2, 1),
+    font-size 440ms cubic-bezier(0.4, 0, 0.2, 1),
+    font-weight 260ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-nav-link__bar {
-  transform: translateX(-50%) scaleX(0.76);
+  transform: translateX(-50%) scaleX(0.88);
   transform-origin: center;
   opacity: 0;
   transition:
-    opacity 180ms ease-in,
-    transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 440ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-nav-link__decoration {
-  transform: translateX(-50%) translateY(0.25rem) rotate(2.89deg) scale(0.92);
+  transform: translateX(-50%) translateY(0.125rem) rotate(2.89deg) scale(0.97);
   transform-origin: center bottom;
   opacity: 0;
   transition:
-    opacity 180ms ease-in,
-    transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 480ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-nav-link:hover .header-nav-link__label,
 .header-nav-link:focus-visible .header-nav-link__label {
   transition:
-    color 160ms ease-out,
-    font-size 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    font-weight 160ms ease-out;
+    color 260ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    font-size 420ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    font-weight 260ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .header-nav-link:hover .header-nav-link__bar,
@@ -92,8 +92,8 @@
   transform: translateX(-50%) scaleX(1);
   opacity: 1;
   transition:
-    opacity 140ms ease-out,
-    transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 240ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 420ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .header-nav-link:hover .header-nav-link__decoration,
@@ -101,8 +101,25 @@
   transform: translateX(-50%) translateY(0) rotate(2.89deg) scale(1);
   opacity: 1;
   transition:
-    opacity 160ms ease-out,
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 260ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 460ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.header-nav-link--active::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8.625rem;
+  height: 0.5rem;
+  content: "";
+  background: var(--color-knud-navigation-active);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 1350.1px) {
+  .header-nav-link--active::after {
+    width: var(--header-nav-width);
+  }
 }
 
 .mobile-menu-trigger {
