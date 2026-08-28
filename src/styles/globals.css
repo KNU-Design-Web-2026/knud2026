@@ -3,7 +3,7 @@
 
 @layer base {
   html {
-    background: #001a27;
+    background: #005176;
     color: var(--color-knud-ink);
     overscroll-behavior-y: none;
   }
@@ -11,7 +11,7 @@
   body {
     min-width: 20rem;
     margin: 0;
-    background: #001a27;
+    background: #005176;
     font-family: var(--font-pretendard), var(--font-sans);
     font-size: 1rem;
     line-height: 1.4;
@@ -41,6 +41,10 @@
     outline: 0.1875rem solid var(--color-knud-lime);
     outline-offset: 0.25rem;
   }
+}
+
+.main-hero {
+  background: linear-gradient(180deg, #06affd 0%, #06affd 67.523%, #005176 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {
