@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { KnudLogo } from "@/components/layout/knud-logo";
-import { isNavigationPathActive } from "@/components/layout/navigation";
+import { getHeaderSpacerBackgroundClass, isNavigationPathActive } from "@/components/layout/navigation";
 
 const navigation = [
   { href: "/about", label: "ABOUT", hoverAsset: "/assets/figma/nav-about-hover-2026.svg" },
@@ -35,6 +35,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   const lastScrollYRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
   const currentPath = activePath ?? pathname;
+  const spacerBackgroundClass = getHeaderSpacerBackgroundClass(currentPath);
 
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
@@ -92,7 +93,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   }, [isMenuOpen]);
 
   return (
-    <div className="h-[var(--header-height)] bg-[#0dadfb]">
+    <div className={`h-[var(--header-height)] ${spacerBackgroundClass}`}>
       <header className={`fixed inset-x-0 top-0 z-50 h-[var(--header-height)] bg-black text-white transition-opacity duration-220 ease-out ${isHidden ? "pointer-events-none opacity-0" : "opacity-100"}`}>
         <PageContainer className="flex h-full items-center justify-between gap-8 max-[600.1px]:gap-2">
         <Link className="flex w-[32.9375rem] min-w-0 items-center gap-[var(--header-brand-gap)] max-[1350.1px]:w-[31.8125rem] max-[600.1px]:w-auto max-[600.1px]:flex-1" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
