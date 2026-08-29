@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import type { PropsWithChildren } from "react";
+import { SiteCursor } from "@/components/layout/site-cursor";
 import { SiteHeader } from "@/components/layout/site-header";
 import "@/styles/globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body>
         <SiteHeader />
         <main>{children}</main>
+        <SiteCursor />
       </body>
     </html>
   );

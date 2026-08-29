@@ -11,6 +11,7 @@
 - [리뷰 기준](./review.md): 작업 완료 및 PR 검증 기준
 - [ADR-0001](../architecture/adr/0001-use-nextjs.md): Next.js 선정 근거
 - [ADR-0002](../architecture/adr/0002-use-storybook-and-chromatic.md): Storybook·Chromatic 선정 근거
+- [ADR-0003](../architecture/adr/0003-use-pressure-assisted-layered-spray-rendering.md): 메인 스프레이 렌더링 선정 근거
 - [디자인 문서](../design/README.md): 디자인 QA와 인터랙션 명세
 
 ## 적용 원칙

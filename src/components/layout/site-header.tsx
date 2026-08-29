@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { KnudLogo } from "@/components/layout/knud-logo";
+import { isNavigationPathActive } from "@/components/layout/navigation";
 
 const navigation = [
   { href: "/about", label: "ABOUT", hoverAsset: "/assets/figma/nav-about-hover-2026.svg" },
@@ -18,19 +20,21 @@ const mobileNavigation = [
   { href: "/about", label: "ABOUT" },
   { href: "/work", label: "WORK" },
   { href: "/profile", label: "PROFILE" },
-  { href: "/message", label: "MESSAGE" },
   { href: "/space", label: "SPACE" },
+  { href: "/message", label: "MESSAGE" },
 ];
 
 type SiteHeaderProps = {
   activePath?: string;
 };
 
-export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
+export function SiteHeader({ activePath }: SiteHeaderProps) {
   const [isHidden, setIsHidden] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   const lastScrollYRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
+  const currentPath = activePath ?? pathname;
 
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
@@ -90,8 +94,8 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
   return (
     <div className="h-[var(--header-height)] bg-[#0dadfb]">
       <header className={`fixed inset-x-0 top-0 z-50 h-[var(--header-height)] bg-black text-white transition-opacity duration-220 ease-out ${isHidden ? "pointer-events-none opacity-0" : "opacity-100"}`}>
-        <PageContainer className="flex h-full items-center justify-between gap-8">
-        <Link className="flex w-[32.9375rem] min-w-0 items-center gap-[var(--header-brand-gap)] max-[1350.1px]:w-[31.8125rem]" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
+        <PageContainer className="flex h-full items-center justify-between gap-8 max-[600.1px]:gap-2">
+        <Link className="flex w-[32.9375rem] min-w-0 items-center gap-[var(--header-brand-gap)] max-[1350.1px]:w-[31.8125rem] max-[600.1px]:w-auto max-[600.1px]:flex-1" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
           <KnudLogo />
           <span className="w-[24.5rem] min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)] max-[1350.1px]:w-[24.3125rem] max-[1020.1px]:min-w-[13.6rem] max-[600.1px]:min-w-[13.2rem] max-[400.1px]:min-w-0 max-[400.1px]:w-auto max-[360.1px]:shrink-0">
             <span className="block whitespace-nowrap">2026 제<span className="max-[1350.1px]:hidden"> </span>42회 경북대학교 디자인학과 졸업전시회</span>
@@ -100,14 +104,14 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
         </Link>
         <nav className="flex h-full w-[var(--header-nav-container-width)] shrink-0 items-center gap-[var(--header-nav-gap)] min-[1350.1px]:justify-between max-[1349.9px]:hidden" aria-label="주요 메뉴">
           {navigation.map((item) => {
-            const isActive = item.href === activePath;
+            const isActive = isNavigationPathActive(currentPath, item.href);
 
             return (
               <Link
                 aria-current={isActive ? "page" : undefined}
                 className={[
                   "header-nav-link group relative flex h-full items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)] min-[1350.1px]:w-auto max-[1350.1px]:w-[var(--header-nav-width)]",
-                  isActive && "font-bold text-knud-navigation-active after:absolute after:inset-x-0 after:bottom-0 after:h-2 after:bg-knud-navigation-active",
+                  isActive && "header-nav-link--active font-bold text-knud-navigation-active",
                 ]
                   .filter(Boolean)
                   .join(" ")}
@@ -131,29 +135,56 @@ export function SiteHeader({ activePath = "/" }: SiteHeaderProps) {
             );
           })}
         </nav>
-        <button aria-controls="mobile-navigation" aria-expanded={isMenuOpen} className="hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex" type="button" aria-label="메뉴 열기" onClick={() => setIsMenuOpen(true)}>
-          <Image alt="" className="hidden size-full min-[600.1px]:max-[1349.9px]:block" height={48} src="/assets/figma/menu-list-1020.svg" width={48} />
-          <Image alt="" className="hidden size-full min-[480.1px]:max-[600.1px]:block" height={48} src="/assets/figma/menu-list-600.svg" width={48} />
-          <Image alt="" className="hidden size-full max-[480.1px]:block" height={30} src="/assets/figma/menu-list-400.svg" width={30} />
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+          className="mobile-menu-trigger hidden size-[var(--header-menu-size)] shrink-0 max-[1349.9px]:flex"
+          data-open={isMenuOpen}
+          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          type="button"
+        >
+          <span aria-hidden="true" className="mobile-menu-trigger__icon">
+            <span className="mobile-menu-trigger__line" />
+            <span className="mobile-menu-trigger__line" />
+            <span className="mobile-menu-trigger__line" />
+          </span>
         </button>
         </PageContainer>
       </header>
-      {isMenuOpen && (
-        <div aria-modal="true" className="fixed inset-0 z-[60] bg-black/50 px-[50px] py-10 max-[600.1px]:px-5 max-[400.1px]:px-2.5" role="dialog" aria-label="모바일 메뉴">
-          <div className="flex w-full flex-col items-end gap-[60px] max-[600.1px]:gap-[90px]">
-            <button aria-label="메뉴 닫기" className="size-10" type="button" onClick={() => setIsMenuOpen(false)}>
-              <Image alt="" className="size-full" height={40} src="/assets/figma/menu-close.svg" width={40} />
-            </button>
-            <nav className="flex w-full flex-col items-start gap-[50px]" id="mobile-navigation" aria-label="모바일 주요 메뉴">
-              {mobileNavigation.map((item) => (
-                <Link className="text-[60px] leading-[1.3] font-bold tracking-[-0.12px] text-white max-[400.1px]:font-normal" href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>
+      <button
+        aria-label="메뉴 닫기"
+        className="mobile-menu-backdrop fixed inset-x-0 bottom-0 top-[var(--header-height)] z-30 hidden max-[1349.9px]:block"
+        data-open={isMenuOpen}
+        onClick={() => setIsMenuOpen(false)}
+        tabIndex={isMenuOpen ? 0 : -1}
+        type="button"
+      />
+      <div aria-hidden={!isMenuOpen} className="mobile-menu-panel fixed inset-x-0 top-[var(--header-height)] z-40 border-b border-white/70 bg-black/[0.77] backdrop-blur-[9px]" data-open={isMenuOpen} role="dialog" aria-label="모바일 메뉴">
+          <nav className="flex w-full flex-col" id="mobile-navigation" aria-label="모바일 주요 메뉴">
+            {mobileNavigation.map((item) => {
+              const isActive = isNavigationPathActive(currentPath, item.href);
+
+              return (
+                <Link
+                  aria-current={isActive ? "page" : undefined}
+                  className={[
+                    "mobile-menu-panel__item relative flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl",
+                    isActive && "font-bold text-knud-navigation-active after:absolute after:inset-x-0 after:bottom-0 after:h-2 after:bg-knud-navigation-active",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  href={item.href}
+                  key={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  tabIndex={isMenuOpen ? 0 : -1}
+                >
                   {item.label}
                 </Link>
-              ))}
-            </nav>
-          </div>
+              );
+            })}
+          </nav>
         </div>
-      )}
     </div>
   );
 }

@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react";
 
 const STAMP_SPACING = 12;
-const STAMP_DURATION = 4_000;
-const STAMP_VISIBLE_DURATION = 3_000;
-const MAX_STAMPS = 180;
+const STAMP_DURATION = 2_400;
+const STAMP_VISIBLE_DURATION = 1_800;
 const MAX_DEVICE_PIXEL_RATIO = 2;
-const SPRAY_SCALE = 1.4;
+const SPRAY_SCALE = 1.9;
+const SPRAY_COLORS = ["#F8D622", "#FF3030", "#F7F7F2", "#B6EE57"];
 
 type Point = {
   x: number;
@@ -24,6 +24,7 @@ type SprayParticle = {
 type SprayStamp = Point & {
   bodyHeight: number;
   bodyWidth: number;
+  color: string;
   createdAt: number;
   direction: number;
   drip: { bend: number; length: number; offsetX: number; width: number } | null;
@@ -34,6 +35,7 @@ function createStamp(
   point: Point,
   createdAt: number,
   direction: number,
+  color: string,
 ): SprayStamp {
   const particles: SprayParticle[] = [];
   const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
@@ -58,13 +60,14 @@ function createStamp(
     ...point,
     bodyHeight,
     bodyWidth,
+    color,
     createdAt,
     direction,
     drip: Math.random() < 0.045
       ? {
           bend: (Math.random() - 0.5) * 1.5,
           offsetX: (Math.random() - 0.5) * bodyWidth,
-          length: (20 + Math.random() * 36) * SPRAY_SCALE,
+          length: (30 + Math.random() * 48) * SPRAY_SCALE,
           width: (2 + Math.random() * 3) * SPRAY_SCALE,
         }
       : null,
@@ -79,9 +82,12 @@ export function SprayCanvas() {
   const activePointerIdRef = useRef<number | null>(null);
   const isSprayingRef = useRef(false);
   const animationFrameRef = useRef<number | null>(null);
+  const colorIndexRef = useRef(-1);
+  const activeColorRef = useRef(SPRAY_COLORS[0]);
 
   useEffect(() => {
     const hero = document.getElementById("main-hero");
+    const sprayZone = document.getElementById("main-spray-zone");
     const canvas = canvasRef.current;
     const supportsFinePointer = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
@@ -90,7 +96,7 @@ export function SprayCanvas() {
       "(prefers-reduced-motion: reduce)",
     );
 
-    if (!hero || !canvas || !supportsFinePointer.matches || prefersReducedMotion.matches) {
+    if (!hero || !sprayZone || !canvas || !supportsFinePointer.matches || prefersReducedMotion.matches) {
       return;
     }
 
@@ -123,6 +129,8 @@ export function SprayCanvas() {
           ? 1
           : (STAMP_DURATION - age) / (STAMP_DURATION - STAMP_VISIBLE_DURATION);
 
+        context.strokeStyle = stamp.color;
+        context.fillStyle = stamp.color;
         context.save();
         context.translate(stamp.x, stamp.y);
         context.rotate(stamp.direction);
@@ -175,11 +183,9 @@ export function SprayCanvas() {
     };
 
     const addStamp = (point: Point, direction: number) => {
-      stampsRef.current.push(createStamp(point, performance.now(), direction));
-
-      if (stampsRef.current.length > MAX_STAMPS) {
-        stampsRef.current.splice(0, stampsRef.current.length - MAX_STAMPS);
-      }
+      stampsRef.current.push(
+        createStamp(point, performance.now(), direction, activeColorRef.current),
+      );
 
       startRendering();
     };
@@ -214,10 +220,13 @@ export function SprayCanvas() {
 
       for (let step = 1; step <= steps; step += 1) {
         const progress = (step * STAMP_SPACING) / distance;
-        addStamp({
-          x: previousPoint.x + deltaX * progress,
-          y: previousPoint.y + deltaY * progress,
-        }, direction);
+        addStamp(
+          {
+            x: previousPoint.x + deltaX * progress,
+            y: previousPoint.y + deltaY * progress,
+          },
+          direction,
+        );
       }
 
       const coveredDistance = steps * STAMP_SPACING;
@@ -236,8 +245,8 @@ export function SprayCanvas() {
       lastPointRef.current = null;
       activePointerIdRef.current = null;
 
-      if (hero.hasPointerCapture(event.pointerId)) {
-        hero.releasePointerCapture(event.pointerId);
+      if (sprayZone.hasPointerCapture(event.pointerId)) {
+        sprayZone.releasePointerCapture(event.pointerId);
       }
     };
 
@@ -248,7 +257,9 @@ export function SprayCanvas() {
 
       activePointerIdRef.current = event.pointerId;
       isSprayingRef.current = true;
-      hero.setPointerCapture(event.pointerId);
+      colorIndexRef.current = (colorIndexRef.current + 1) % SPRAY_COLORS.length;
+      activeColorRef.current = SPRAY_COLORS[colorIndexRef.current];
+      sprayZone.setPointerCapture(event.pointerId);
       const point = pointFromEvent(event);
       lastPointRef.current = point;
       addStamp(point, 0);
@@ -262,23 +273,21 @@ export function SprayCanvas() {
       sprayAlongPath(pointFromEvent(event));
     };
 
-    context.fillStyle = "#F8D622";
-    context.strokeStyle = "#F8D622";
     resizeCanvas();
 
     const resizeObserver = new ResizeObserver(resizeCanvas);
     resizeObserver.observe(hero);
-    hero.addEventListener("pointerdown", handlePointerDown);
-    hero.addEventListener("pointermove", handlePointerMove);
-    hero.addEventListener("pointerup", stopSpraying);
-    hero.addEventListener("pointercancel", stopSpraying);
+    sprayZone.addEventListener("pointerdown", handlePointerDown);
+    sprayZone.addEventListener("pointermove", handlePointerMove);
+    sprayZone.addEventListener("pointerup", stopSpraying);
+    sprayZone.addEventListener("pointercancel", stopSpraying);
 
     return () => {
       resizeObserver.disconnect();
-      hero.removeEventListener("pointerdown", handlePointerDown);
-      hero.removeEventListener("pointermove", handlePointerMove);
-      hero.removeEventListener("pointerup", stopSpraying);
-      hero.removeEventListener("pointercancel", stopSpraying);
+      sprayZone.removeEventListener("pointerdown", handlePointerDown);
+      sprayZone.removeEventListener("pointermove", handlePointerMove);
+      sprayZone.removeEventListener("pointerup", stopSpraying);
+      sprayZone.removeEventListener("pointercancel", stopSpraying);
 
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
