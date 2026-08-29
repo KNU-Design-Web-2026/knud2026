@@ -18,7 +18,7 @@
 | Mobile | `1464:15795` | 400×3009px | 59px | 2열, 181×241px | 10px, 열 18px·행 32px | 없음 | y=99px |
 
 - 카드 이미지는 모든 반응형 Frame에서 3:4 비율을 유지한다.
-- 카드 hover는 `hover: hover` 및 `pointer: fine`에서만 유지한다. 터치 폭에서는 기본 이미지 상태만 표시한다.
+- 카드 hover는 `hover: hover` 및 `pointer: fine`에서만 유지한다. Tab→Mobile·Mobile 구간은 좌우 여백을 보존하기 위해 이름 패널과 프레임만 표시하고 이미지는 확대하지 않는다.
 - 1350~1020px, 1020~600px, 600~400px 사이의 폭은 각 Frame의 열 수·간격을 상한으로 삼는 CSS 보간 규칙이다. 중간 폭은 Figma 원본의 픽셀 일치 대상으로 주장하지 않는다.
 
 ### Hover 이름 패널
@@ -51,6 +51,7 @@
 
 - Figma motion context에는 키프레임 데이터가 없어 duration·easing은 영상 관찰값이다.
 - Auto Layout preview에서 주변 카드가 함께 이동하는 현상은 구현하지 않는다. 확장은 카드 내부 `transform`으로 처리해 다른 카드의 위치를 고정한다.
+- 600px 이하에는 Web용 `413×543px` 프레임을 비율로 늘리지 않는다. Figma 원본 `265×353px`(Tab→Mobile), `181×241px`(Mobile) 프레임 SVG를 각 구간에 사용해 테두리 밖 배경 노출과 여백 차이를 막는다.
 - 제공된 Frame에는 참여자별 이름 override가 없으므로, 현재는 컴포넌트 기본 이름 값을 연결했다. 실제 명단이 전달되면 `src/data/profile-members.ts`에서 각 카드의 `nameKo`, `nameEn`만 교체한다.
 
 ## 검수 계획
