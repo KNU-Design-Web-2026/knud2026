@@ -969,7 +969,7 @@
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
   .has-custom-cursor,
   .has-custom-cursor * {
     cursor: none;
