@@ -574,6 +574,17 @@
     width: 100%;
   }
 
+  .profile-detail__tags {
+    flex-wrap: nowrap;
+    gap: 0 0.625rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .profile-detail__contact {
+    gap: 0.875rem;
+  }
+
   .profile-detail__section {
     gap: 1.25rem;
   }

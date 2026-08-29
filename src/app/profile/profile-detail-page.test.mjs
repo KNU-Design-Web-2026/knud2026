@@ -70,6 +70,12 @@ test("상세 페이지는 좁은 뷰포트에서 가로 넘침으로 배경이 �
   assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.profile-detail__intro \{[\s\S]*?min-width: 0;/);
 });
 
+test("iPhone SE 폭에서는 프로필 태그가 한 줄로 유지된다", async () => {
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /@media \(max-width: 460px\)[\s\S]*?\.profile-detail__tags \{[\s\S]*?flex-wrap: nowrap;[\s\S]*?gap: 0 0\.625rem;[\s\S]*?font-size: 0\.875rem;/);
+});
+
 test("상세 소개와 인터뷰 답변은 운영 글자 수 제한을 표현한다", async () => {
   const data = await readFile(detailDataPath, "utf8");
 
