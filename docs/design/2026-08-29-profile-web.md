@@ -47,7 +47,7 @@
 | 고정 영역 | Web-Profile 카드 Frame | 카드 셀 413×543px와 그리드 위치는 변경하지 않음 |
 | 이미지 상태 | Figma hover 컴포넌트·비교 캡처 | Web은 중심 기준 1.064배 확대, Web→Tab·Tab은 각 상태의 내부 좌표로 재배치 |
 | 표시 요소 | Figma hover 컴포넌트 | 파란 프레임 SVG와 하단 노란 이름 패널을 동시에 노출 |
-| 타이밍 | 영상 기반 추정 | 이미지 460ms, 프레임·정보 패널 opacity 180ms, `cubic-bezier(0.22, 1, 0.36, 1)` |
+| 타이밍 | 2026-08-29 프로토타입 녹화 영상 기반 추정 | 이미지·Tab 내부 좌표 1100ms, 프레임 opacity 420ms(100ms 뒤), 정보 패널 opacity 420ms·이동 900ms(160ms 뒤), `cubic-bezier(0.22, 1, 0.36, 1)` |
 
 - Figma motion context에는 키프레임 데이터가 없어 duration·easing은 영상 관찰값이다.
 - Auto Layout preview에서 주변 카드가 함께 이동하는 현상은 구현하지 않는다. 확장은 카드 내부 `transform`으로 처리해 다른 카드의 위치를 고정한다.
