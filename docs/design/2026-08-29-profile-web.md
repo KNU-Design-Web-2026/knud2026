@@ -17,7 +17,7 @@
 | Tab→Mobile | `1464:14976` | 600×4380px | 80px | 2열, 265×353px | 20px, 열 30px·행 50px | 없음 | y=140px |
 | Mobile | `1464:15795` | 400×3009px | 59px | 2열, 181×241px | 10px, 열 18px·행 32px | 없음 | y=99px |
 
-- 카드 이미지는 모든 반응형 Frame에서 3:4 비율을 유지한다.
+- 카드 비율은 각 Figma Frame의 실제 카드 크기(319×424px, 315×418px, 265×353px, 181×241px)를 사용한다. 단순 3:4 비율로 통일하지 않는다.
 - 카드 hover는 `hover: hover` 및 `pointer: fine`에서만 유지한다. Tab→Mobile·Mobile 구간은 좌우 여백을 보존하기 위해 이름 패널과 프레임만 표시하고 이미지는 확대하지 않는다.
 - 1350~1020px, 1020~600px, 600~400px 사이의 폭은 각 Frame의 열 수·간격을 상한으로 삼는 CSS 보간 규칙이다. 중간 폭은 Figma 원본의 픽셀 일치 대상으로 주장하지 않는다.
 
@@ -45,12 +45,13 @@
 | --- | --- | --- |
 | Trigger | 2026-08-29 프로토타입 녹화 영상 | fine pointer hover 및 키보드 focus |
 | 고정 영역 | Web-Profile 카드 Frame | 카드 셀 413×543px와 그리드 위치는 변경하지 않음 |
-| 이미지 확대 | Figma hover 컴포넌트·비교 캡처 | 기본 이미지가 프레임 안쪽 경계까지 차도록 중심 기준 1.064배 확대 |
+| 이미지 상태 | Figma hover 컴포넌트·비교 캡처 | Web은 중심 기준 1.064배 확대, Web→Tab·Tab은 각 상태의 내부 좌표로 재배치 |
 | 표시 요소 | Figma hover 컴포넌트 | 파란 프레임 SVG와 하단 노란 이름 패널을 동시에 노출 |
 | 타이밍 | 영상 기반 추정 | 이미지 460ms, 프레임·정보 패널 opacity 180ms, `cubic-bezier(0.22, 1, 0.36, 1)` |
 
 - Figma motion context에는 키프레임 데이터가 없어 duration·easing은 영상 관찰값이다.
 - Auto Layout preview에서 주변 카드가 함께 이동하는 현상은 구현하지 않는다. 확장은 카드 내부 `transform`으로 처리해 다른 카드의 위치를 고정한다.
+- Web→Tab·Tab hover는 Web과 달리 확대 배율을 적용하지 않는다. Figma의 `left: 3.6%`, `right: 3.38%`, `top: 10.87px/10.75px` 좌표로 내부 이미지를 재배치해 프레임과 이미지의 여백을 맞춘다.
 - 600px 이하에는 Web용 `413×543px` 프레임을 비율로 늘리지 않는다. Figma 원본 `265×353px`(Tab→Mobile), `181×241px`(Mobile) 프레임 SVG를 각 구간에 사용해 테두리 밖 배경 노출과 여백 차이를 막는다.
 - 제공된 Frame에는 참여자별 이름 override가 없으므로, 현재는 컴포넌트 기본 이름 값을 연결했다. 실제 명단이 전달되면 `src/data/profile-members.ts`에서 각 카드의 `nameKo`, `nameEn`만 교체한다.
 
