@@ -100,3 +100,13 @@ test("Profile Tab hover는 확대 대신 Figma 내부 이미지 좌표를 사용
   assert.match(globalStyles, /right: 3\.38%/);
   assert.match(globalStyles, /width: auto/);
 });
+
+test("Profile hover는 영상 기준의 완만한 순차 전환을 사용한다", () => {
+  const globalStyles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(globalStyles, /transform 1100ms cubic-bezier\(0\.22, 1, 0\.36, 1\)/);
+  assert.match(globalStyles, /opacity 420ms cubic-bezier\(0\.22, 1, 0\.36, 1\)/);
+  assert.match(globalStyles, /transform 900ms cubic-bezier\(0\.22, 1, 0\.36, 1\)/);
+  assert.match(globalStyles, /transition-delay: 100ms/);
+  assert.match(globalStyles, /transition-delay: 160ms/);
+});
