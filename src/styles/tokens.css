@@ -107,8 +107,8 @@
     --profile-grid-column-gap: 0.125rem;
     --profile-grid-row-gap: 1.5rem;
     --profile-grid-columns: 3;
-    --profile-card-padding-x: clamp(0px, calc(5vw - 36px), 0.9375rem);
-    --profile-card-padding-y: clamp(0px, calc(6.261vw - 45.0792px), 1.1739rem);
+    --profile-card-padding-x: 0.9375rem;
+    --profile-card-padding-y: 1.1875rem;
     --profile-card-aspect-ratio: 315 / 418;
     --profile-detail-height: 16.51%;
     --profile-detail-padding-x: 1.375rem;
