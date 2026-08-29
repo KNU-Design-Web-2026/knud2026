@@ -33,6 +33,22 @@ export function ProfileCard({ member }: ProfileCardProps) {
       <Image
         alt=""
         aria-hidden="true"
+        className="profile-card__border profile-card__border--web-tab pointer-events-none absolute inset-0 h-full w-full"
+        height={424}
+        src="/assets/figma/profile-hover-border-web-tab.svg"
+        width={319}
+      />
+      <Image
+        alt=""
+        aria-hidden="true"
+        className="profile-card__border profile-card__border--tab pointer-events-none absolute inset-0 h-full w-full"
+        height={418}
+        src="/assets/figma/profile-hover-border-tab.svg"
+        width={315}
+      />
+      <Image
+        alt=""
+        aria-hidden="true"
         className="profile-card__border profile-card__border--tab-mobile pointer-events-none absolute inset-0 h-full w-full"
         height={353}
         src="/assets/figma/profile-hover-border-tab-mobile.svg"
