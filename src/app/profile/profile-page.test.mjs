@@ -68,3 +68,14 @@ test("Profile hover 이름 패널은 Figma 기준 폭마다 타이포그래피�
   assert.match(tokens, /@media \(max-width: 37\.5rem\)[\s\S]*?--profile-detail-name-size: 1\.375rem/);
   assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--profile-detail-name-size: 1rem/);
 });
+
+test("Profile 터치 구간은 확대 없이 해당 폭의 Figma 외곽 프레임을 사용한다", () => {
+  const profileCard = readFileSync(profileCardPath, "utf8");
+  const globalStyles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(profileCard, /profile-hover-border-tab-mobile\.svg/);
+  assert.match(profileCard, /profile-hover-border-mobile\.svg/);
+  assert.match(globalStyles, /min-width: 600\.0625px/);
+  assert.match(globalStyles, /max-width: 600px/);
+  assert.match(globalStyles, /max-width: 400px/);
+});
