@@ -90,6 +90,10 @@ test("Profile 터치 구간은 확대 없이 해당 폭의 Figma 외곽 프레�
 test("Profile Tab hover는 확대 대신 Figma 내부 이미지 좌표를 사용한다", () => {
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
+  assert.match(globalStyles, /bottom: var\(--profile-card-padding-y\)/);
+  assert.match(globalStyles, /left: var\(--profile-card-padding-x\)/);
+  assert.match(globalStyles, /right: var\(--profile-card-padding-x\)/);
+  assert.match(globalStyles, /top: var\(--profile-card-padding-y\)/);
   assert.match(globalStyles, /min-width: 1020\.0625px\) and \(max-width: 1350px\)/);
   assert.match(globalStyles, /min-width: 600\.0625px\) and \(max-width: 1020px\)/);
   assert.match(globalStyles, /left: 3\.6%/);
