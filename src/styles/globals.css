@@ -510,7 +510,8 @@
   }
 }
 
-@media (max-width: 400px) {
+/* iPhone 16 Pro(402px)처럼 400px을 조금 넘는 기기에서도 Mobile 구성을 유지한다. */
+@media (max-width: 460px) {
   .profile-detail {
     padding-top: 2.5rem;
   }
