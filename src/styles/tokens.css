@@ -35,15 +35,30 @@
   --footer-brand-gap: 2.8125rem;
   --footer-content-gap: 1.5625rem;
   --footer-font-size: 1.25rem;
+  --profile-page-top-gap: 5rem;
+  --profile-grid-gutter: 8.1875rem;
+  --profile-grid-column-gap: 0.125rem;
+  --profile-grid-row-gap: 1.875rem;
+  --profile-grid-columns: 4;
+  --profile-card-padding-x: 1.1875rem;
+  --profile-card-padding-y: 1.375rem;
+  --profile-card-aspect-ratio: 413 / 543;
+  --profile-detail-height: 16.94%;
+  --profile-detail-padding-x: 1.875rem;
+  --profile-detail-gap: 1.5rem;
+  --profile-detail-name-size: 2rem;
+  --profile-detail-name-en-size: 1.5rem;
 }
 
 @media (max-width: 84.375rem) {
   :root {
-    --page-gutter: 3.125rem;
-    --header-height: 7.5rem;
-    --header-logo-width: 6.25rem;
-    --header-logo-height: 3.625rem;
+    --page-gutter: clamp(1.25rem, 3.92vw, 3.125rem);
+    --header-height: clamp(5rem, calc(5.3333vw + 3rem), 7.5rem);
+    --header-logo-width: clamp(5rem, calc(2.6667vw + 4rem), 6.25rem);
+    --header-logo-height: clamp(2.9375rem, calc(1.8333vw + 2.25rem), 3.625rem);
     --header-brand-gap: 1.25rem;
+    --header-title-size: clamp(0.78125rem, calc(1vw + 0.40625rem), 1.25rem);
+    --header-menu-size: clamp(1.875rem, 7.5vw, 3rem);
     --header-nav-gap: 0.5rem;
     --header-nav-container-width: 38.875rem;
     --header-nav-width: 7.375rem;
@@ -51,6 +66,19 @@
     --main-hero-height: 57.7778vw;
     --footer-logo-width: 5rem;
     --footer-logo-height: 5.2036rem;
+    --profile-page-top-gap: 5rem;
+    --profile-grid-gutter: 2.125rem;
+    --profile-grid-column-gap: 0.125rem;
+    --profile-grid-row-gap: 1.5rem;
+    --profile-grid-columns: 4;
+    --profile-card-padding-x: 0.9375rem;
+    --profile-card-padding-y: 1.1875rem;
+    --profile-card-aspect-ratio: 319 / 424;
+    --profile-detail-height: 16.75%;
+    --profile-detail-padding-x: 1.5rem;
+    --profile-detail-gap: 1.125rem;
+    --profile-detail-name-size: 1.5rem;
+    --profile-detail-name-en-size: 1.125rem;
   }
 }
 
@@ -76,17 +104,31 @@
     --footer-logo-width: 3.524rem;
     --footer-logo-height: 3.668rem;
     --footer-brand-gap: 1.5625rem;
+    --profile-page-top-gap: 3.75rem;
+    --profile-grid-gutter: 2.25rem;
+    --profile-grid-column-gap: 0.125rem;
+    --profile-grid-row-gap: 1.5rem;
+    --profile-grid-columns: 3;
+    --profile-card-padding-x: 0.9375rem;
+    --profile-card-padding-y: 1.1875rem;
+    --profile-card-aspect-ratio: 315 / 418;
+    --profile-detail-height: 16.51%;
+    --profile-detail-padding-x: 1.375rem;
+    --profile-detail-gap: 1.125rem;
+    --profile-detail-name-size: 1.5rem;
+    --profile-detail-name-en-size: 1.125rem;
   }
 }
 
 @media (max-width: 37.5rem) {
   :root {
-    --page-gutter: 1.25rem;
-    --header-height: 5rem;
-    --header-logo-width: 5rem;
-    --header-logo-height: 2.9375rem;
-    --header-brand-gap: 1.125rem;
-    --header-title-size: 0.875rem;
+    --page-gutter: clamp(0.625rem, calc(4.1667vw - 0.3125rem), 1.25rem);
+    --header-height: clamp(3.125rem, calc(12.5vw + 0.3125rem), 5rem);
+    --header-logo-width: clamp(3.125rem, calc(12.5vw + 0.3125rem), 5rem);
+    --header-logo-height: clamp(1.823rem, calc(7.43vw + 0.15rem), 2.9375rem);
+    --header-brand-gap: clamp(0.5rem, calc(5vw - 0.625rem), 1.25rem);
+    --header-title-size: clamp(0.625rem, calc(1.25vw + 0.3125rem), 0.78125rem);
+    --header-menu-size: clamp(1.875rem, 7.5vw, 2.8125rem);
     --main-hero-height: 150vw;
     --footer-height: 12.5rem;
     --footer-padding-y: 2.25rem;
@@ -95,47 +137,44 @@
     --footer-brand-gap: 1rem;
     --footer-content-gap: 1rem;
     --footer-font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 30rem) {
-  :root {
-    --page-gutter: 0.625rem;
-    --header-height: 3.75rem;
-    --header-logo-width: 3.75rem;
-    --header-logo-height: 2.1875rem;
-    --header-brand-gap: 0.625rem;
-    --header-title-size: 0.625rem;
-    --header-menu-size: 1.875rem;
+    --profile-page-top-gap: 3.75rem;
+    --profile-grid-gutter: 1.25rem;
+    --profile-grid-column-gap: 1.875rem;
+    --profile-grid-row-gap: 3.125rem;
+    --profile-grid-columns: 2;
+    --profile-card-padding-x: 0;
+    --profile-card-padding-y: 0;
+    --profile-card-aspect-ratio: 265 / 353;
+    --profile-detail-height: 19.26%;
+    --profile-detail-padding-x: 1.375rem;
+    --profile-detail-gap: 0.875rem;
+    --profile-detail-name-size: 1.375rem;
+    --profile-detail-name-en-size: 1rem;
   }
 }
 
 @media (max-width: 25rem) {
   :root {
-    --page-gutter: 0.625rem;
-    --header-height: 3.75rem;
-    --header-logo-width: 3.75rem;
-    --header-logo-height: 2.1875rem;
-    --header-brand-gap: 0.625rem;
-    --header-title-size: 0.625rem;
+    --header-title-size: clamp(0.5rem, calc(5vw - 0.625rem), 0.625rem);
     --main-hero-height: 200vw;
-    --header-menu-size: 1.875rem;
     --footer-height: 10rem;
     --footer-padding-y: 1.5625rem;
     --footer-logo-width: 1.895rem;
     --footer-logo-height: 1.972rem;
     --footer-brand-gap: 0.4375rem;
     --footer-font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 22.5rem) {
-  :root {
-    --page-gutter: 0.5rem;
-    --header-height: 3.125rem;
-    --header-logo-width: 3.125rem;
-    --header-logo-height: 1.823rem;
-    --header-brand-gap: 0.5rem;
-    --header-title-size: 0.5rem;
+    --profile-page-top-gap: 2.5rem;
+    --profile-grid-gutter: 0.625rem;
+    --profile-grid-column-gap: 1.125rem;
+    --profile-grid-row-gap: 2rem;
+    --profile-grid-columns: 2;
+    --profile-card-padding-x: 0;
+    --profile-card-padding-y: 0;
+    --profile-card-aspect-ratio: 181 / 241;
+    --profile-detail-height: 18.6%;
+    --profile-detail-padding-x: 0.875rem;
+    --profile-detail-gap: 0.595rem;
+    --profile-detail-name-size: 1rem;
+    --profile-detail-name-en-size: 0.75rem;
   }
 }

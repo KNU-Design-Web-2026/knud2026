@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { KnudLogo } from "@/components/layout/knud-logo";
-import { isNavigationPathActive } from "@/components/layout/navigation";
+import { getHeaderSpacerBackgroundClass, isNavigationPathActive } from "@/components/layout/navigation";
 
 const navigation = [
   { href: "/about", label: "ABOUT", hoverAsset: "/assets/figma/nav-about-hover-2026.svg" },
@@ -35,6 +35,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   const lastScrollYRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
   const currentPath = activePath ?? pathname;
+  const spacerBackgroundClass = getHeaderSpacerBackgroundClass(currentPath);
 
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
@@ -92,12 +93,12 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   }, [isMenuOpen]);
 
   return (
-    <div className="h-[var(--header-height)] bg-[#0dadfb]">
+    <div className={`h-[var(--header-height)] ${spacerBackgroundClass}`}>
       <header className={`fixed inset-x-0 top-0 z-50 h-[var(--header-height)] bg-black text-white transition-opacity duration-220 ease-out ${isHidden ? "pointer-events-none opacity-0" : "opacity-100"}`}>
-        <PageContainer className="flex h-full items-center justify-between gap-8 max-[600.1px]:gap-2">
-        <Link className="flex w-[32.9375rem] min-w-0 items-center gap-[var(--header-brand-gap)] max-[1350.1px]:w-[31.8125rem] max-[600.1px]:w-auto max-[600.1px]:flex-1" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
+        <PageContainer className="flex h-full items-center justify-between gap-[clamp(0.5rem,2.35vw,2rem)]">
+        <Link className="site-header__brand flex min-w-0 items-center gap-[var(--header-brand-gap)]" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
           <KnudLogo />
-          <span className="w-[24.5rem] min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)] max-[1350.1px]:w-[24.3125rem] max-[1020.1px]:min-w-[13.6rem] max-[600.1px]:min-w-[13.2rem] max-[400.1px]:min-w-0 max-[400.1px]:w-auto max-[360.1px]:shrink-0">
+          <span className="site-header__title min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)]">
             <span className="block whitespace-nowrap">2026 제<span className="max-[1350.1px]:hidden"> </span>42회 경북대학교 디자인학과 졸업전시회</span>
             <span className="block whitespace-nowrap">42th KNUD Graduation Exhibition Archive</span>
           </span>

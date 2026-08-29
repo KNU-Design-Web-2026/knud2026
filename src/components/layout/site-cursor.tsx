@@ -11,16 +11,16 @@ export function SiteCursor() {
 
   useEffect(() => {
     const supportsFinePointer = window.matchMedia(
-      "(hover: hover) and (pointer: fine)",
+      "(hover: hover) and (pointer: fine) and (min-width: 600.0625px)",
     );
-
-    if (!supportsFinePointer.matches) {
-      return;
-    }
 
     const root = document.documentElement;
 
     const moveCursor = (event: PointerEvent) => {
+      if (!supportsFinePointer.matches) {
+        return;
+      }
+
       const cursor = cursorRef.current;
 
       if (!cursor) {
@@ -41,14 +41,24 @@ export function SiteCursor() {
       }
     };
 
-    root.classList.add("has-custom-cursor");
+    const syncCursorMode = () => {
+      root.classList.toggle("has-custom-cursor", supportsFinePointer.matches);
+
+      if (!supportsFinePointer.matches) {
+        hideCursor();
+      }
+    };
+
+    syncCursorMode();
     window.addEventListener("pointermove", moveCursor);
     document.addEventListener("pointerleave", hideCursor);
+    supportsFinePointer.addEventListener("change", syncCursorMode);
 
     return () => {
       root.classList.remove("has-custom-cursor");
       window.removeEventListener("pointermove", moveCursor);
       document.removeEventListener("pointerleave", hideCursor);
+      supportsFinePointer.removeEventListener("change", syncCursorMode);
     };
   }, []);
 
