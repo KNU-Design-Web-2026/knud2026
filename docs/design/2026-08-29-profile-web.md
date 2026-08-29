@@ -52,8 +52,8 @@
 
 - Figma motion context에는 키프레임 데이터가 없어 duration·easing은 영상 관찰값이다.
 - Auto Layout preview에서 주변 카드가 함께 이동하는 현상은 구현하지 않는다. 확장은 카드 내부 `transform`으로 처리해 다른 카드의 위치를 고정한다.
-- Web→Tab·Tab hover는 Web과 달리 확대 배율을 적용하지 않는다. Figma의 `left: 3.6%`, `right: 3.38%`, `top: 10.87px/10.75px` 좌표로 내부 이미지를 재배치해 프레임과 이미지의 여백을 맞춘다.
-- Web→Tab·Tab의 기본 이미지도 카드 내부의 명시적 `top/right/bottom/left` 좌표로 배치한다. hover 때 `position`이 바뀌지 않아 기본 이미지 잔상이나 카드 밖의 회색 띠가 남지 않는다.
+- 600px 초과 Web·Web→Tab·Tab 구간은 이미지와 파란 프레임을 함께 1.064배 확대한다. 600px 이하 Tab→Mobile·Mobile은 좌우 여백 제약 때문에 확대하지 않는다.
+- Web→Tab·Tab의 기본 이미지와 hover 프레임은 모두 카드 내부의 명시적 `top/right/bottom/left` 좌표를 공유한다. hover 때 `position`이 바뀌지 않아 기본 이미지 잔상이나 카드 밖의 회색 띠가 남지 않는다.
 - 600px 이하에는 Web용 `413×543px` 프레임을 비율로 늘리지 않는다. Figma 원본 `265×353px`(Tab→Mobile), `181×241px`(Mobile) 프레임 SVG를 각 구간에 사용해 테두리 밖 배경 노출과 여백 차이를 막는다.
 - 제공된 Frame에는 참여자별 이름 override가 없으므로, 현재는 컴포넌트 기본 이름 값을 연결했다. 실제 명단이 전달되면 `src/data/profile-members.ts`에서 각 카드의 `nameKo`, `nameEn`만 교체한다.
 
