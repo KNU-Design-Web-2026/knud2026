@@ -49,9 +49,18 @@
 }
 
 .profile-card {
+  aspect-ratio: var(--profile-card-aspect-ratio);
   position: relative;
   isolation: isolate;
   overflow: visible;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--profile-grid-columns), minmax(0, 1fr));
+  column-gap: var(--profile-grid-column-gap);
+  row-gap: var(--profile-grid-row-gap);
+  padding-inline: var(--profile-grid-gutter);
 }
 
 .profile-card__image {

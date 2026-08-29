@@ -9,7 +9,7 @@ export function ProfileCard({ member }: ProfileCardProps) {
   return (
     <article
       aria-label={`${member.nameKo} ${member.nameEn} 프로필`}
-      className="profile-card group/profile-card flex aspect-[413/543] items-center px-[var(--profile-card-padding-x)] py-[var(--profile-card-padding-y)]"
+      className="profile-card group/profile-card flex items-center px-[var(--profile-card-padding-x)] py-[var(--profile-card-padding-y)]"
       tabIndex={0}
     >
       <div className="profile-card__image relative h-full w-full">
@@ -17,7 +17,7 @@ export function ProfileCard({ member }: ProfileCardProps) {
           alt={`${member.nameKo} 프로필 이미지`}
           className="h-full w-full object-cover"
           height={499}
-          sizes="(min-width: 1920px) 375px, 19.6vw"
+          sizes="(min-width: 1351px) 19.6vw, (min-width: 1021px) 28vw, (min-width: 601px) 44.2vw, 45.25vw"
           src={member.imageSrc}
           width={375}
         />
@@ -30,10 +30,10 @@ export function ProfileCard({ member }: ProfileCardProps) {
         src="/assets/figma/profile-hover-border.svg"
         width={413}
       />
-      <div className="profile-card__detail pointer-events-none absolute inset-x-0 bottom-0 flex h-[16.94%] items-center bg-knud-navigation-active px-[1.875rem]">
-        <p className="flex items-center gap-6 whitespace-nowrap leading-[1.3] tracking-[-0.2px] text-knud-ink">
-          <span className="text-[2rem] font-bold">{member.nameKo}</span>
-          <span className="text-[1.5rem]">{member.nameEn}</span>
+      <div className="profile-card__detail pointer-events-none absolute inset-x-0 bottom-0 flex h-[var(--profile-detail-height)] items-center bg-knud-navigation-active px-[var(--profile-detail-padding-x)]">
+        <p className="flex items-center gap-[var(--profile-detail-gap)] whitespace-nowrap leading-[1.3] tracking-[-0.2px] text-knud-ink">
+          <span className="text-[length:var(--profile-detail-name-size)] font-bold">{member.nameKo}</span>
+          <span className="text-[length:var(--profile-detail-name-en-size)]">{member.nameEn}</span>
         </p>
       </div>
     </article>
