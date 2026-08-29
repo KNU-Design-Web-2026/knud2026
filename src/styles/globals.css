@@ -406,6 +406,13 @@
   }
 }
 
+/* Tab과 Tab>mobile 사이의 좁은 폭에서는 정보 블록이 사진 상단을 넘지 않게 고정한다. */
+@media (min-width: 600.0625px) and (max-width: 740px) {
+  .profile-detail__intro {
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 400px) {
   .profile-detail {
     padding-top: 2.5rem;
