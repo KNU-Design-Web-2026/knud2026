@@ -62,11 +62,13 @@ test("Profile 카드는 기준 폭별 Figma 카드 비율을 유지한다", () =
   assert.match(tokens, /--profile-card-aspect-ratio: 181 \/ 241/);
 });
 
-test("Profile 중간 반응형 폭에서는 카드 내부 여백을 0까지 보간한다", () => {
-  const tokens = readFileSync(tokensPath, "utf8");
+test("Profile 반응형 hover 프레임은 실제 프로필 이미지 외곽에 맞춘다", () => {
+  const globalStyles = readFileSync(globalStylesPath, "utf8");
 
-  assert.match(tokens, /--profile-card-padding-x: clamp\(0px, calc\(5vw - 36px\), 0\.9375rem\)/);
-  assert.match(tokens, /--profile-card-padding-y: clamp\(0px, calc\(6\.261vw - 45\.0792px\), 1\.1739rem\)/);
+  assert.match(globalStyles, /\.profile-card__border \{[\s\S]*?height: calc\(100% - \(var\(--profile-card-padding-y\) \* 2\)\)/);
+  assert.match(globalStyles, /\.profile-card__border \{[\s\S]*?left: var\(--profile-card-padding-x\)/);
+  assert.match(globalStyles, /\.profile-card__border \{[\s\S]*?width: calc\(100% - \(var\(--profile-card-padding-x\) \* 2\)\)/);
+  assert.match(globalStyles, /\.profile-card__detail \{[\s\S]*?bottom: var\(--profile-card-padding-y\)/);
 });
 
 test("Profile hover 이름 패널은 Figma 기준 폭마다 타이포그래피를 축소한다", () => {
@@ -94,18 +96,15 @@ test("Profile 터치 구간은 확대 없이 해당 폭의 Figma 외곽 프레�
   assert.match(globalStyles, /max-width: 400px/);
 });
 
-test("Profile Tab hover는 확대 대신 Figma 내부 이미지 좌표를 사용한다", () => {
+test("Profile Tab hover는 기본 프로필 이미지 크기를 유지한다", () => {
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(globalStyles, /bottom: var\(--profile-card-padding-y\)/);
   assert.match(globalStyles, /left: var\(--profile-card-padding-x\)/);
   assert.match(globalStyles, /right: var\(--profile-card-padding-x\)/);
   assert.match(globalStyles, /top: var\(--profile-card-padding-y\)/);
-  assert.match(globalStyles, /min-width: 1020\.0625px\) and \(max-width: 1350px\)/);
-  assert.match(globalStyles, /min-width: 600\.0625px\) and \(max-width: 1020px\)/);
-  assert.match(globalStyles, /left: 3\.6%/);
-  assert.match(globalStyles, /right: 3\.38%/);
   assert.match(globalStyles, /width: auto/);
+  assert.match(globalStyles, /min-width: 1350\.0625px/);
 });
 
 test("Profile hover는 영상 기준의 완만한 순차 전환을 사용한다", () => {
