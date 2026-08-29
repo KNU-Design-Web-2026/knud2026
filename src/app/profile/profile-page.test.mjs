@@ -63,12 +63,13 @@ test("Profile 카드는 기준 폭별 Figma 카드 비율을 유지한다", () =
 });
 
 test("Profile 반응형 hover 프레임은 실제 프로필 이미지 외곽에 맞춘다", () => {
+  const profileCard = readFileSync(profileCardPath, "utf8");
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(globalStyles, /\.profile-card__border \{[\s\S]*?height: calc\(100% - \(var\(--profile-card-padding-y\) \* 2\)\)/);
   assert.match(globalStyles, /\.profile-card__border \{[\s\S]*?left: var\(--profile-card-padding-x\)/);
   assert.match(globalStyles, /\.profile-card__border \{[\s\S]*?width: calc\(100% - \(var\(--profile-card-padding-x\) \* 2\)\)/);
-  assert.match(globalStyles, /\.profile-card__detail \{[\s\S]*?bottom: var\(--profile-card-padding-y\)/);
+  assert.match(profileCard, /profile-card__detail pointer-events-none absolute inset-x-0 bottom-0/);
 });
 
 test("Profile hover 이름 패널은 Figma 기준 폭마다 타이포그래피를 축소한다", () => {
