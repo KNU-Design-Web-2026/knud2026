@@ -59,6 +59,7 @@ test("상세 페이지는 Figma 기준 폭에서 콘텐츠 구성을 전환한�
   assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?flex-basis: 11\.8125rem/);
   assert.match(styles, /@media \(max-width: 400px\)[\s\S]*?flex-basis: 7\.9375rem/);
   assert.match(styles, /@media \(min-width: 600\.0625px\) and \(max-width: 740px\)[\s\S]*?align-items: flex-start/);
+  assert.match(styles, /@media \(min-width: 400\.0625px\) and \(max-width: 460px\)[\s\S]*?align-items: flex-start/);
   assert.match(styles, /aspect-ratio: 1\.8/);
 });
 

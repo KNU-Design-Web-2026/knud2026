@@ -413,6 +413,13 @@
   }
 }
 
+/* 400~460px에서도 정보 블록 높이가 사진을 넘어설 때 상단 기준을 유지한다. */
+@media (min-width: 400.0625px) and (max-width: 460px) {
+  .profile-detail__intro {
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 400px) {
   .profile-detail {
     padding-top: 2.5rem;
