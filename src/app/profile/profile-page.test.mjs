@@ -6,6 +6,7 @@ const profilePagePath = new URL("./page.tsx", import.meta.url);
 const profileCardPath = new URL("../../components/profile/profile-card.tsx", import.meta.url);
 const profileMembersPath = new URL("../../data/profile-members.ts", import.meta.url);
 const globalStylesPath = new URL("../../styles/globals.css", import.meta.url);
+const tokensPath = new URL("../../styles/tokens.css", import.meta.url);
 
 test("Profile 경로는 Figma의 20개 프로필 카드를 렌더한다", () => {
   assert.equal(existsSync(profilePagePath), true);
@@ -32,4 +33,38 @@ test("Profile hover 이미지는 프레임의 안쪽 경계까지 확대된다",
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(globalStyles, /transform: scale\(1\.064\)/);
+});
+
+test("Profile 그리드는 Figma 네 기준 폭에서 열 수와 카드 여백을 전환한다", () => {
+  const profilePage = readFileSync(profilePagePath, "utf8");
+  const tokens = readFileSync(tokensPath, "utf8");
+
+  assert.match(profilePage, /profile-grid/);
+  assert.match(tokens, /--profile-grid-columns: 4/);
+  assert.match(tokens, /@media \(max-width: 63\.75rem\)[\s\S]*?--profile-grid-columns: 3/);
+  assert.match(tokens, /@media \(max-width: 37\.5rem\)[\s\S]*?--profile-grid-columns: 2/);
+  assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--profile-grid-gutter: 0\.625rem/);
+  assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--header-height: 3\.6875rem/);
+});
+
+test("Profile 카드는 터치 기준 폭에서 Figma의 3:4 이미지 비율을 유지한다", () => {
+  const profileCard = readFileSync(profileCardPath, "utf8");
+  const globalStyles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(profileCard, /profile-card/);
+  assert.match(globalStyles, /aspect-ratio: var\(--profile-card-aspect-ratio\)/);
+  assert.match(profileCard, /--profile-card-padding-x/);
+  assert.match(profileCard, /--profile-card-padding-y/);
+});
+
+test("Profile hover 이름 패널은 Figma 기준 폭마다 타이포그래피를 축소한다", () => {
+  const profileCard = readFileSync(profileCardPath, "utf8");
+  const tokens = readFileSync(tokensPath, "utf8");
+
+  assert.match(profileCard, /--profile-detail-name-size/);
+  assert.match(profileCard, /--profile-detail-name-en-size/);
+  assert.match(tokens, /--profile-detail-name-size: 2rem/);
+  assert.match(tokens, /@media \(max-width: 84\.375rem\)[\s\S]*?--profile-detail-name-size: 1\.5rem/);
+  assert.match(tokens, /@media \(max-width: 37\.5rem\)[\s\S]*?--profile-detail-name-size: 1\.375rem/);
+  assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--profile-detail-name-size: 1rem/);
 });
