@@ -62,6 +62,13 @@ test("Profile 카드는 기준 폭별 Figma 카드 비율을 유지한다", () =
   assert.match(tokens, /--profile-card-aspect-ratio: 181 \/ 241/);
 });
 
+test("Profile 중간 반응형 폭에서는 카드 내부 여백을 0까지 보간한다", () => {
+  const tokens = readFileSync(tokensPath, "utf8");
+
+  assert.match(tokens, /--profile-card-padding-x: clamp\(0px, calc\(5vw - 36px\), 0\.9375rem\)/);
+  assert.match(tokens, /--profile-card-padding-y: clamp\(0px, calc\(6\.261vw - 45\.0792px\), 1\.1739rem\)/);
+});
+
 test("Profile hover 이름 패널은 Figma 기준 폭마다 타이포그래피를 축소한다", () => {
   const profileCard = readFileSync(profileCardPath, "utf8");
   const tokens = readFileSync(tokensPath, "utf8");
