@@ -120,11 +120,6 @@
     width: calc(100% - (var(--profile-card-padding-x) * 2));
   }
 
-  .profile-card__detail {
-    bottom: var(--profile-card-padding-y);
-    left: var(--profile-card-padding-x);
-    right: var(--profile-card-padding-x);
-  }
 }
 
 @media (hover: hover) and (pointer: fine) {
