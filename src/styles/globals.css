@@ -185,6 +185,14 @@
 }
 
 /* Profile detail: Figma frames 1157:28722, 28645, 28413, 28568, 28491 */
+.profile-detail {
+  /* 좁은 화면에서 내부 Flex 항목이 넓어져도 페이지 배경이 우측에 드러나지 않게 한다. */
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  width: 100%;
+}
+
 .profile-detail__container {
   padding-inline: 9.375rem;
 }
@@ -403,6 +411,7 @@
   .profile-detail__intro {
     flex-wrap: nowrap;
     gap: 1.75rem;
+    min-width: 0;
   }
 
   .profile-detail__portrait {
@@ -414,6 +423,10 @@
   .profile-detail__copy {
     flex-basis: 18.4375rem;
     gap: 1.5rem;
+    min-width: 0;
+  }
+
+  .profile-detail__contact {
     min-width: 0;
   }
 

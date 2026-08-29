@@ -63,6 +63,13 @@ test("상세 페이지는 Figma 기준 폭에서 콘텐츠 구성을 전환한�
   assert.match(styles, /aspect-ratio: 1\.8/);
 });
 
+test("상세 페이지는 좁은 뷰포트에서 가로 넘침으로 배경이 드러나지 않는다", async () => {
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.profile-detail \{[\s\S]*?max-width: 100%;[\s\S]*?overflow-x: clip;[\s\S]*?width: 100%;/);
+  assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.profile-detail__intro \{[\s\S]*?min-width: 0;/);
+});
+
 test("상세 소개와 인터뷰 답변은 운영 글자 수 제한을 표현한다", async () => {
   const data = await readFile(detailDataPath, "utf8");
 
