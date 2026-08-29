@@ -25,10 +25,26 @@ export function ProfileCard({ member }: ProfileCardProps) {
       <Image
         alt=""
         aria-hidden="true"
-        className="profile-card__border pointer-events-none absolute inset-0 h-full w-full"
+        className="profile-card__border profile-card__border--desktop pointer-events-none absolute inset-0 h-full w-full"
         height={543}
         src="/assets/figma/profile-hover-border.svg"
         width={413}
+      />
+      <Image
+        alt=""
+        aria-hidden="true"
+        className="profile-card__border profile-card__border--tab-mobile pointer-events-none absolute inset-0 h-full w-full"
+        height={353}
+        src="/assets/figma/profile-hover-border-tab-mobile.svg"
+        width={265}
+      />
+      <Image
+        alt=""
+        aria-hidden="true"
+        className="profile-card__border profile-card__border--mobile pointer-events-none absolute inset-0 h-full w-full"
+        height={241}
+        src="/assets/figma/profile-hover-border-mobile.svg"
+        width={181}
       />
       <div className="profile-card__detail pointer-events-none absolute inset-x-0 bottom-0 flex h-[var(--profile-detail-height)] items-center bg-knud-navigation-active px-[var(--profile-detail-padding-x)]">
         <p className="flex items-center gap-[var(--profile-detail-gap)] whitespace-nowrap leading-[1.3] tracking-[-0.2px] text-knud-ink">
