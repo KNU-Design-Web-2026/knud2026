@@ -29,7 +29,7 @@ test("Profile 카드는 고정 셀 안에서 hover 정보와 확대 상태를 �
   assert.match(profileMembers, /nameEn:/);
 });
 
-test("Profile hover 이미지는 프레임의 안쪽 경계까지 확대된다", () => {
+test("Profile Web hover 이미지는 프레임의 안쪽 경계까지 확대된다", () => {
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(globalStyles, /transform: scale\(1\.064\)/);
@@ -47,14 +47,19 @@ test("Profile 그리드는 Figma 네 기준 폭에서 열 수와 카드 여백�
   assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--header-height: 3\.6875rem/);
 });
 
-test("Profile 카드는 터치 기준 폭에서 Figma의 3:4 이미지 비율을 유지한다", () => {
+test("Profile 카드는 기준 폭별 Figma 카드 비율을 유지한다", () => {
   const profileCard = readFileSync(profileCardPath, "utf8");
   const globalStyles = readFileSync(globalStylesPath, "utf8");
+  const tokens = readFileSync(tokensPath, "utf8");
 
   assert.match(profileCard, /profile-card/);
   assert.match(globalStyles, /aspect-ratio: var\(--profile-card-aspect-ratio\)/);
   assert.match(profileCard, /--profile-card-padding-x/);
   assert.match(profileCard, /--profile-card-padding-y/);
+  assert.match(tokens, /--profile-card-aspect-ratio: 319 \/ 424/);
+  assert.match(tokens, /--profile-card-aspect-ratio: 315 \/ 418/);
+  assert.match(tokens, /--profile-card-aspect-ratio: 265 \/ 353/);
+  assert.match(tokens, /--profile-card-aspect-ratio: 181 \/ 241/);
 });
 
 test("Profile hover 이름 패널은 Figma 기준 폭마다 타이포그래피를 축소한다", () => {
@@ -75,7 +80,19 @@ test("Profile 터치 구간은 확대 없이 해당 폭의 Figma 외곽 프레�
 
   assert.match(profileCard, /profile-hover-border-tab-mobile\.svg/);
   assert.match(profileCard, /profile-hover-border-mobile\.svg/);
+  assert.match(profileCard, /profile-hover-border-web-tab\.svg/);
+  assert.match(profileCard, /profile-hover-border-tab\.svg/);
   assert.match(globalStyles, /min-width: 600\.0625px/);
   assert.match(globalStyles, /max-width: 600px/);
   assert.match(globalStyles, /max-width: 400px/);
+});
+
+test("Profile Tab hover는 확대 대신 Figma 내부 이미지 좌표를 사용한다", () => {
+  const globalStyles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(globalStyles, /min-width: 1020\.0625px\) and \(max-width: 1350px\)/);
+  assert.match(globalStyles, /min-width: 600\.0625px\) and \(max-width: 1020px\)/);
+  assert.match(globalStyles, /left: 3\.6%/);
+  assert.match(globalStyles, /right: 3\.38%/);
+  assert.match(globalStyles, /width: auto/);
 });
