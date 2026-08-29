@@ -96,7 +96,7 @@ test("Profile 터치 구간은 확대 없이 해당 폭의 Figma 외곽 프레�
   assert.match(globalStyles, /max-width: 400px/);
 });
 
-test("Profile Tab hover는 기본 프로필 이미지 크기를 유지한다", () => {
+test("Profile Tab hover는 모바일을 제외하고 이미지와 프레임을 함께 확대한다", () => {
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(globalStyles, /bottom: var\(--profile-card-padding-y\)/);
@@ -105,6 +105,9 @@ test("Profile Tab hover는 기본 프로필 이미지 크기를 유지한다", (
   assert.match(globalStyles, /top: var\(--profile-card-padding-y\)/);
   assert.match(globalStyles, /width: auto/);
   assert.match(globalStyles, /min-width: 1350\.0625px/);
+  assert.match(globalStyles, /min-width: 600\.0625px\) and \(max-width: 1350px\)/);
+  assert.match(globalStyles, /\.profile-card:hover \.profile-card__border/);
+  assert.match(globalStyles, /transform: scale\(1\.064\)/);
 });
 
 test("Profile hover는 영상 기준의 완만한 순차 전환을 사용한다", () => {
