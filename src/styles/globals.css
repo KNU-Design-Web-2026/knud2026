@@ -84,11 +84,7 @@
   width: 100%;
   z-index: 2;
   opacity: 0;
-  transform: scale(1);
-  transform-origin: center;
-  transition:
-    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .profile-card__border--tab-mobile,
@@ -149,31 +145,12 @@
     opacity: 1;
   }
 
-  .profile-card:hover .profile-card__border {
-    transition-delay: 100ms;
-  }
-
-  .profile-card:hover .profile-card__detail {
-    transition-delay: 160ms;
-  }
-
-  .profile-card:hover .profile-card__detail {
-    transform: translateY(0);
-  }
 }
 
-@media (hover: hover) and (pointer: fine) and (min-width: 1350.0625px) {
-  .profile-card:hover .profile-card__image,
-  .profile-card:focus-visible .profile-card__image {
-    transform: scale(1.064);
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) and (max-width: 1350px) {
-  .profile-card:hover .profile-card__image,
-  .profile-card:hover .profile-card__border,
-  .profile-card:focus-visible .profile-card__image,
-  .profile-card:focus-visible .profile-card__border {
+@media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
+  .profile-card:hover .profile-card__surface,
+  .profile-card:focus-visible .profile-card__surface {
+    /* 영상 기준: 프레임·사진·이름 패널을 한 surface로 함께 확대한다. */
     transform: scale(1.064);
   }
 }
@@ -181,10 +158,6 @@
 .profile-card:focus-visible .profile-card__border,
 .profile-card:focus-visible .profile-card__detail {
   opacity: 1;
-}
-
-.profile-card:focus-visible .profile-card__detail {
-  transform: translateY(0);
 }
 
 @media (max-width: 600px) {
