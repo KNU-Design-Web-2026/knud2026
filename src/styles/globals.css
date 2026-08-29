@@ -48,6 +48,61 @@
   background: #005176;
 }
 
+.profile-card {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.profile-card__image {
+  z-index: 1;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profile-card__border,
+.profile-card__detail {
+  z-index: 2;
+  opacity: 0;
+  transition:
+    opacity 180ms ease-out,
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profile-card__detail {
+  z-index: 3;
+  transform: translateY(0.5rem);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .profile-card:hover .profile-card__image {
+    transform: scale(1.064);
+  }
+
+  .profile-card:hover .profile-card__border,
+  .profile-card:hover .profile-card__detail {
+    opacity: 1;
+  }
+
+  .profile-card:hover .profile-card__detail {
+    transform: translateY(0);
+  }
+}
+
+.profile-card:focus-visible .profile-card__image {
+  transform: scale(1.064);
+}
+
+.profile-card:focus-visible .profile-card__border,
+.profile-card:focus-visible .profile-card__detail {
+  opacity: 1;
+}
+
+.profile-card:focus-visible .profile-card__detail {
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
