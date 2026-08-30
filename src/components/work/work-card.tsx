@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { WorkItem } from "@/data/work-items";
 
 type WorkCardProps = {
@@ -7,23 +8,23 @@ type WorkCardProps = {
 
 export function WorkCard({ item }: WorkCardProps) {
   return (
-    <article className="work-card flex min-w-0 flex-col" tabIndex={0}>
-      <div className="work-card__image relative aspect-[384/280] overflow-hidden">
+    <Link aria-label={`${item.title} 상세 보기`} className="work-card" href={`/work/${item.id}`}>
+      <div className="work-card__image">
         <Image
           alt={`${item.title} - ${item.artistKo}`}
           className="absolute top-0 left-[-14.99%] h-full w-[129.98%] max-w-none object-cover"
           fill
-          sizes="(min-width: 1300px) 20vw, 100vw"
+          sizes="(min-width: 1350.0625px) 20vw, (min-width: 1020.0625px) 25vw, (min-width: 600.0625px) 33vw, 50vw"
           src={item.imageSrc}
         />
       </div>
-      <div className="work-card__detail flex flex-col items-start gap-2 bg-[#f2f2f2] pt-3.5 pb-4 pl-[1.125rem] leading-[1.3] tracking-[-0.2px] text-black">
-        <h2 className="w-full text-2xl font-bold">{item.title}</h2>
-        <div className="flex items-center gap-[1.625rem] whitespace-nowrap text-center text-lg">
-          <p className="font-bold">{item.artistKo}</p>
+      <div className="work-card__detail">
+        <h2 className="work-card__title">{item.title}</h2>
+        <div className="work-card__artists">
+          <p className="work-card__artist-ko">{item.artistKo}</p>
           <p>{item.artistEn}</p>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
