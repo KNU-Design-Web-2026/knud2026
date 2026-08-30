@@ -139,6 +139,7 @@ test("Work 상세은 600px에서 정보·소개문 2열, 480px 이하에서는 �
 
   assert.match(detail, /work-detail__identity/);
   assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-detail__content \{[\s\S]*?grid-template-columns: 10\.625rem minmax\(0, 1fr\)/);
+  assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-detail__content \{[\s\S]*?gap: 3rem/);
   assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-detail__story \{[\s\S]*?grid-column: 2;[\s\S]*?grid-row: 1/);
   assert.match(styles, /@media \(max-width: 30rem\) \{[\s\S]*?\.work-detail__content \{[\s\S]*?display: flex/);
   assert.match(styles, /@media \(max-width: 30rem\) \{[\s\S]*?\.work-detail__story \{[\s\S]*?grid-column: auto;[\s\S]*?grid-row: auto/);

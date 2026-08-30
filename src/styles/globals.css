@@ -559,7 +559,7 @@
   .work-detail__content {
     box-sizing: border-box;
     display: grid;
-    gap: 0;
+    gap: 3rem;
     grid-template-columns: 10.625rem minmax(0, 1fr);
     grid-template-rows: auto;
     min-height: 81.4375rem;
