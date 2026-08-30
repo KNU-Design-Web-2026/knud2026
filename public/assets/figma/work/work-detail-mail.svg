@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="EnvelopeSimple" clip-path="url(#clip0_0_9)">
+<g id="Vector">
+</g>
+<path id="Vector_2" d="M4 9C4 7.89543 4.89543 7 6 7H26C27.1046 7 28 7.89543 28 9V24C28 24.2652 27.8946 24.5196 27.7071 24.7071C27.5196 24.8946 27.2652 25 27 25H5C4.73478 25 4.48043 24.8946 4.29289 24.7071C4.10536 24.5196 4 24.2652 4 24V9Z" stroke="#4A4A4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M27 8L17.3158 16.8038C16.5655 17.4859 15.4233 17.4986 14.6581 16.8331L4.5 8" stroke="#4A4A4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_9">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
