@@ -3,9 +3,12 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 import { getHeaderSpacerBackgroundClass, isNavigationPathActive } from "./navigation.ts";
 
-test("현재 경로와 일치하는 메뉴만 활성 상태로 판별한다", () => {
+test("현재 경로와 해당 메뉴의 상세 경로에서 메뉴를 활성 상태로 판별한다", () => {
   assert.equal(isNavigationPathActive("/about", "/about"), true);
   assert.equal(isNavigationPathActive("/about", "/work"), false);
+  assert.equal(isNavigationPathActive("/profile/1", "/profile"), true);
+  assert.equal(isNavigationPathActive("/work/1", "/work"), true);
+  assert.equal(isNavigationPathActive("/profile/1", "/work"), false);
 });
 
 test("헤더 보정 배경은 메인 Hero에서만 파란색을 사용한다", () => {
