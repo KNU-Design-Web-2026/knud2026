@@ -3,5 +3,5 @@ export function isNavigationPathActive(pathname: string, href: string) {
 }
 
 export function getHeaderSpacerBackgroundClass(pathname: string) {
-  return pathname === "/" ? "bg-[#0dadfb]" : "bg-white";
+  return pathname === "/" || pathname === "/message" ? "bg-[#0dadfb]" : "bg-white";
 }

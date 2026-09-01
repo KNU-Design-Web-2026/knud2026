@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 // 스프레이 Hero 안의 기본·클릭 커서 위치를 각각 조정한다. 양수는 오른쪽·아래 방향이다.
 const MAIN_CURSOR_OFFSET = {
-  default: { x: 100, y: 100 },
-  pressed: { x: 100, y: 100 },
+  default: { x: 75, y: 75 },
+  pressed: { x: 75, y: 75 },
 } as const;
 
 export function MainCursor() {
@@ -87,7 +87,7 @@ export function MainCursor() {
 
   return (
     <div
-      className="main-cursor fixed top-0 left-0 z-20 h-[clamp(7.5rem,10vw,11.56rem)] w-[clamp(6.74rem,8.99vw,10.39rem)] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0"
+      className="main-cursor fixed top-0 left-0 z-20 h-[6.841rem] w-[6.05rem] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0"
       ref={cursorRef}
       aria-hidden="true"
     >
@@ -95,7 +95,7 @@ export function MainCursor() {
         alt=""
         fill
         priority
-        sizes="221.82px"
+        sizes="120px"
         className="object-contain object-bottom"
         src={
           isPressed

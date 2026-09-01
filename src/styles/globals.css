@@ -1,4 +1,183 @@
 @import "tailwindcss";
+
+/* Screenshot-only experiment: no Figma node/context is used by this route. */
+.screenshot-message-baseline {
+  position: relative;
+  isolation: isolate;
+  min-height: 2600px;
+  overflow: hidden;
+  padding: clamp(10rem, 14.3vw, 17.125rem) clamp(2rem, 7.4vw, 9.5rem) 10rem;
+  background: #0dadfb;
+}
+
+.screenshot-message-baseline__art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/assets/experiments/screenshot-message-background.png");
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.48;
+}
+
+.screenshot-message-baseline__form {
+  width: min(100%, 1368px);
+  margin: 0 auto clamp(24rem, 39vw, 48rem);
+  padding: clamp(2rem, 3.7vw, 4.5rem);
+  border: clamp(0.65rem, 1vw, 1.2rem) solid #fcd519;
+  background: #f8f8f8;
+  transform: rotate(-1.2deg);
+}
+
+.screenshot-message-baseline__fields {
+  display: flex;
+  gap: clamp(1.75rem, 5vw, 7rem);
+  align-items: center;
+  margin-bottom: clamp(1.25rem, 2.8vw, 3.5rem);
+}
+
+.screenshot-message-baseline__fields label {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  color: #111;
+  font-size: clamp(1.1rem, 1.5vw, 1.9rem);
+}
+
+.screenshot-message-baseline__fields strong {
+  font-weight: 800;
+}
+
+.screenshot-message-baseline__fields input,
+.screenshot-message-baseline__fields select,
+.screenshot-message-baseline__textarea-wrap textarea {
+  border: 0;
+  border-radius: 0;
+  background: #d9d9d9;
+  color: #111;
+  font: inherit;
+}
+
+.screenshot-message-baseline__fields input,
+.screenshot-message-baseline__fields select {
+  width: clamp(8.5rem, 11vw, 13.5rem);
+  padding: 0.65em 0.8em;
+  font-size: 0.6em;
+  font-weight: 700;
+}
+
+.screenshot-message-baseline__textarea-wrap {
+  position: relative;
+}
+
+.screenshot-message-baseline__textarea-wrap textarea {
+  display: block;
+  width: 100%;
+  min-height: clamp(12rem, 22vw, 26rem);
+  padding: clamp(1.3rem, 2.6vw, 3.25rem);
+  resize: vertical;
+  font-size: clamp(0.9rem, 1.1vw, 1.35rem);
+  line-height: 1.45;
+}
+
+.screenshot-message-baseline__textarea-wrap button {
+  position: absolute;
+  right: clamp(1rem, 2.3vw, 2.8rem);
+  bottom: clamp(1rem, 2.3vw, 2.8rem);
+  border: 0;
+  background: #a6a6a6;
+  padding: 0.75em 1.35em;
+  color: #111;
+  font-size: clamp(0.8rem, 1vw, 1.25rem);
+  font-weight: 800;
+}
+
+.screenshot-message-baseline__messages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3.5vw, 4.125rem);
+  width: min(100%, 102.875rem);
+  margin: 0 auto;
+}
+
+.screenshot-message-baseline__card {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(13rem, 27vw, 31.25rem);
+  padding: clamp(1.4rem, 2.6vw, 3.25rem);
+  background: #f7f7f7;
+  color: #111;
+}
+
+.screenshot-message-baseline__to,
+.screenshot-message-baseline__from {
+  margin: 0;
+  font-size: clamp(0.72rem, 0.9vw, 1rem);
+  font-weight: 700;
+}
+
+.screenshot-message-baseline__body {
+  display: grid;
+  gap: 0.12em;
+  margin: clamp(1.25rem, 2.2vw, 2.6rem) 0 auto;
+  font-size: clamp(1rem, 1.35vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.screenshot-message-baseline__body span {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .screenshot-message-baseline {
+    padding-inline: 1.5rem;
+  }
+
+  .screenshot-message-baseline__messages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .screenshot-message-baseline {
+    min-height: 1300px;
+    padding: 3.5rem 1rem 5rem;
+  }
+
+  .screenshot-message-baseline__form {
+    margin-bottom: 7rem;
+    padding: 1.2rem;
+    border-width: 0.65rem;
+    transform: none;
+  }
+
+  .screenshot-message-baseline__fields {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .screenshot-message-baseline__fields label {
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  .screenshot-message-baseline__fields input,
+  .screenshot-message-baseline__fields select {
+    width: 70%;
+  }
+
+  .screenshot-message-baseline__messages {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .screenshot-message-baseline__card {
+    min-height: 12.5rem;
+  }
+}
 @import "./tokens.css";
 
 @layer base {
@@ -334,7 +513,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-.work-card__detail {
+  .work-card__detail {
     transition-duration: 1ms;
   }
 }
@@ -1186,7 +1365,6 @@
   .profile-card:hover .profile-card__detail {
     opacity: 1;
   }
-
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
@@ -1470,7 +1648,6 @@
   .mobile-menu-trigger {
     padding-inline: 0.3125rem;
   }
-
 }
 
 @media (max-width: 400px) {
@@ -1479,8 +1656,10 @@
   }
 
   .mobile-menu-trigger__line:nth-child(2),
-  .mobile-menu-trigger[data-open="true"] .mobile-menu-trigger__line:nth-child(1),
-  .mobile-menu-trigger[data-open="true"] .mobile-menu-trigger__line:nth-child(3) {
+  .mobile-menu-trigger[data-open="true"]
+    .mobile-menu-trigger__line:nth-child(1),
+  .mobile-menu-trigger[data-open="true"]
+    .mobile-menu-trigger__line:nth-child(3) {
     top: calc(50% - 0.046875rem);
   }
 
@@ -1493,5 +1672,1265 @@
   .has-custom-cursor,
   .has-custom-cursor * {
     cursor: none;
+  }
+}
+
+/* Message page — desktop Figma frame (1742:84657) */
+.message-page {
+  position: relative;
+  overflow: hidden;
+  /* The graffiti image is transparent; Figma places it over this blue canvas. */
+  background: #0dadfb;
+  color: #111;
+}
+
+.message-page__intro {
+  position: relative;
+  height: 1709.5px;
+  /* The Figma decor intentionally continues behind the first message cards. */
+  overflow: visible;
+}
+
+.message-page__decor {
+  position: absolute;
+  z-index: 0;
+  top: -140px;
+  left: 50%;
+  display: block;
+  width: 1918px;
+  height: 1924px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.message-page__decor img,
+.message-page__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.message-page__frame {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  pointer-events: none;
+}
+
+.message-page__frame--outer {
+  top: 255.339px;
+  width: 1348.445px;
+  height: 696.164px;
+  transform: translateX(-50%) rotate(-0.41deg);
+}
+
+.message-page__frame--inner {
+  top: 279.5px;
+  width: 1289.332px;
+  height: 647.43px;
+  transform: translateX(-50%);
+}
+
+.message-page__frame--compact {
+  display: none;
+}
+
+.message-form {
+  position: absolute;
+  z-index: 3;
+  top: 279.5px;
+  left: 50%;
+  width: 1289.332px;
+  height: 647.43px;
+  transform: translateX(-50%);
+}
+
+.message-form__fields {
+  position: absolute;
+  inset: 0;
+}
+
+.message-form__field {
+  position: absolute;
+  display: block;
+  color: #111;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  /* Both responsive fields occupy the form canvas; only their visible controls should receive input. */
+  pointer-events: none;
+}
+
+.message-form__field span,
+.message-form__field input,
+.message-form__recipient-trigger,
+.message-form__recipient-menu {
+  position: absolute;
+  pointer-events: auto;
+}
+
+.message-form__field--to.is-open {
+  z-index: 5;
+}
+
+.message-form__field--to span {
+  top: 61.03px;
+  left: 77.216px;
+}
+
+.message-form__field--to input {
+  top: 58.69px;
+  left: 139.716px;
+}
+
+.message-form__field--from span {
+  top: 61.03px;
+  left: 386.956px;
+}
+
+.message-form__field--from input {
+  top: 58.69px;
+  left: 500.926px;
+}
+
+.message-form__field input {
+  width: 200.37px;
+  height: 49.633px;
+  border: 0;
+  border-radius: 0;
+  background: #d9d9d9;
+  padding: 0 15.63px;
+  color: #111;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  outline: none;
+}
+
+.message-form__select-icon {
+  display: none;
+}
+
+.message-form__field input::placeholder,
+.message-form__body textarea::placeholder {
+  color: #777;
+  opacity: 1;
+}
+
+.message-form__body {
+  position: absolute;
+  top: 147.42px;
+  left: 77.216px;
+  width: 1117.661px;
+  height: 420.961px;
+}
+
+.message-form__body textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: 0;
+  border-radius: 0;
+  background: #d9d9d9;
+  padding: 29.84px 41.36px;
+  color: #111;
+  font-size: 20px;
+  line-height: 1.3;
+  outline: none;
+}
+
+.message-form__body button {
+  position: absolute;
+  top: 338.66px;
+  right: 43.199px;
+  width: 125.002px;
+  height: 49.633px;
+  border: 0;
+  border-radius: 0;
+  background: #a9a9a9;
+  color: #111;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.04px;
+}
+
+.message-form__validation {
+  position: absolute;
+  z-index: 4;
+  top: calc(100% + clamp(0.5rem, 0.84vw, 1rem));
+  left: 0;
+  margin: 0;
+  color: #d82121;
+  font-size: clamp(0.75rem, 1.042vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.message-list-container {
+  /* Keep the 1,620px Figma grid centered with its 150px minimum canvas margin. */
+  position: relative;
+  z-index: 1;
+  padding-inline: 150px !important;
+}
+
+/* Translated post-its may extend past their grid track; the opaque footer must stay above them. */
+.message-page .site-footer {
+  position: relative;
+  z-index: 5;
+}
+
+.message-list {
+  display: grid;
+  width: min(1620px, 100%);
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 66px;
+}
+
+.message-card {
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+  background: #f3f3f3;
+  padding: 41px 54px;
+}
+
+/* Figma staggers the center column by one vertical grid gap. */
+.message-card:nth-child(3n + 2) {
+  transform: translateY(66px);
+}
+
+.message-card__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.message-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.message-card__to,
+.message-card__from {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.message-card__body {
+  font-size: 28px;
+  line-height: 1.3;
+  letter-spacing: -0.056px;
+  word-break: break-word;
+}
+
+/* Figma frame 1742:88621 — 1350px */
+@media (max-width: 1350px) {
+  .message-page__intro {
+    height: 1274px;
+  }
+  .message-page__decor {
+    top: -86px;
+    width: 1350px;
+    height: 1485px;
+  }
+  .message-page__frame--outer {
+    top: 193px;
+    width: 1040.257px;
+    height: 537.055px;
+  }
+  .message-page__frame--inner,
+  .message-form {
+    top: 215.37px;
+    width: 994.655px;
+    height: 499.459px;
+  }
+
+  .message-form__field {
+    font-size: 24px;
+  }
+  .message-form__field--to span {
+    top: 47.63px;
+    left: 59.838px;
+  }
+  .message-form__field--to input {
+    top: 45.28px;
+    left: 108.058px;
+  }
+  .message-form__field--from span {
+    top: 47.63px;
+    left: 298.948px;
+  }
+  .message-form__field--from input {
+    top: 45.28px;
+    left: 388.568px;
+  }
+  .message-form__field input {
+    width: 154.575px;
+    height: 38.289px;
+    padding: 0 12px;
+    font-size: 16px;
+  }
+  .message-form__body {
+    top: 113.73px;
+    left: 59.838px;
+    width: 862.219px;
+    height: 324.75px;
+  }
+  .message-form__body textarea {
+    padding: 22.9px 31.49px;
+    font-size: 18px;
+  }
+  .message-form__body button {
+    top: 261.26px;
+    right: 42.128px;
+    width: 96.432px;
+    height: 38.289px;
+    font-size: 16px;
+  }
+  .message-form__validation {
+    top: calc(100% + clamp(0.5rem, 1.33vw, 0.75rem));
+    left: 0;
+    font-size: clamp(0.5625rem, 2vw, 0.75rem);
+  }
+
+  .message-list-container {
+    padding-inline: 50px !important;
+  }
+  .message-list {
+    width: min(1249.748px, 100%);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 50.916px;
+  }
+  .message-card {
+    padding: 33px 46px;
+  }
+  .message-card__copy {
+    gap: 19.286px;
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: 16px;
+  }
+  .message-card__body {
+    font-size: 20px;
+    letter-spacing: -0.04px;
+  }
+  .message-card:nth-child(3n + 2) {
+    transform: translateY(50.916px);
+  }
+}
+
+/* Figma frame 1742:92591 — 1020px */
+@media (max-width: 1020px) {
+  .message-page__intro {
+    height: 1032px;
+  }
+  .message-page__decor {
+    top: -70px;
+    width: 1020px;
+    height: 1102px;
+  }
+  .message-page__frame--outer {
+    top: 137px;
+    width: 772.162px;
+    height: 398.645px;
+  }
+  .message-page__frame--inner,
+  .message-form {
+    top: 153.61px;
+    width: 738.312px;
+    height: 370.738px;
+  }
+
+  .message-form__field {
+    font-size: 18px;
+  }
+  .message-form__field--to span {
+    top: 35.29px;
+    left: 43.886px;
+  }
+  .message-form__field--to input {
+    top: 33.6px;
+    left: 79.676px;
+  }
+  .message-form__field--from span {
+    top: 35.29px;
+    left: 177.37px;
+  }
+  .message-form__field--from input {
+    top: 33.6px;
+    left: 199.214px;
+  }
+  .message-form__field input {
+    width: 114.738px;
+    height: 28.421px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  .message-form__body {
+    top: 84.42px;
+    left: 43.886px;
+    width: 640.008px;
+    height: 241.056px;
+  }
+  .message-form__body textarea {
+    padding: 16.87px 23.27px;
+    font-size: 16px;
+  }
+  .message-form__body button {
+    top: 193.92px;
+    right: 40.722px;
+    width: 71.58px;
+    height: 28.421px;
+    font-size: 12px;
+  }
+
+  .message-list-container {
+    padding-inline: 102px !important;
+  }
+  .message-list {
+    width: min(816.194px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50.916px;
+  }
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
+}
+
+/* Figma frame 1742:96389 — 600px */
+@media (max-width: 600px) {
+  .message-page__intro {
+    height: 649px;
+  }
+  .message-page__decor {
+    top: -44px;
+    width: 600px;
+    height: 693px;
+  }
+  .message-page__frame--outer,
+  .message-page__frame--inner {
+    display: none;
+  }
+  .message-page__frame--compact {
+    display: block;
+    top: 91px;
+    left: 50%;
+    width: 484.781px;
+    height: 277px;
+    transform: translateX(-50%);
+  }
+  .message-form {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 448px;
+    transform: none;
+  }
+
+  .message-form__field {
+    font-size: 18px;
+  }
+  .message-form__field--to span {
+    top: 127.88px;
+    left: 94.78px;
+  }
+  .message-form__field--to input {
+    top: 126px;
+    left: 131.05px;
+  }
+  .message-form__field--from span {
+    top: 127.88px;
+    left: 272.15px;
+  }
+  .message-form__field--from input {
+    top: 126px;
+    left: 337.05px;
+  }
+  .message-form__field input {
+    width: 88px;
+    height: 29px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .message-form__select-icon {
+    position: absolute;
+    top: 134px;
+    left: 196.1px;
+    display: block;
+    width: 14.316px;
+    height: 12.025px;
+    transform: rotate(180deg);
+  }
+  .message-form__select-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .message-form__body {
+    top: 177px;
+    left: 95.05px;
+    width: 409px;
+    height: 152px;
+  }
+  .message-form__body textarea {
+    padding: 10.98px 11px;
+    font-size: 12px;
+  }
+  .message-form__body button {
+    top: 110px;
+    right: 18.37px;
+    width: 71.58px;
+    height: 28.421px;
+    font-size: 12px;
+  }
+
+  .message-list-container {
+    padding-inline: 44px !important;
+  }
+  .message-list {
+    width: min(512px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32.015px;
+  }
+  .message-card {
+    padding: 17px 28px 17px 20px;
+  }
+  .message-card__copy {
+    gap: 12.127px;
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: 12px;
+  }
+  .message-card__body {
+    font-size: 14px;
+    letter-spacing: -0.028px;
+    white-space: nowrap;
+  }
+}
+
+/* Figma frame 1742:100190 — 400px */
+@media (max-width: 400px) {
+  .message-page__intro {
+    height: 472.758px;
+  }
+  .message-page__decor {
+    top: -33px;
+    width: 400px;
+    height: 513px;
+  }
+  .message-page__frame--compact {
+    top: 62px;
+    width: 376px;
+    height: 214.843px;
+  }
+  .message-form {
+    height: 337px;
+  }
+
+  .message-form__field--to span {
+    top: 89px;
+    left: 41px;
+  }
+  .message-form__field--to input {
+    top: 89px;
+    left: 74px;
+  }
+  .message-form__field--from span {
+    top: 89px;
+    left: 178px;
+  }
+  .message-form__field--from input {
+    top: 89px;
+    left: 234px;
+  }
+  .message-form__field input {
+    width: 78px;
+    height: 23px;
+    padding: 0 7px;
+  }
+  .message-form__select-icon {
+    top: 95.35px;
+    left: 135px;
+    width: 11.103px;
+    height: 9.327px;
+  }
+  .message-form__body {
+    top: 128.7px;
+    left: 40.73px;
+    width: 317.223px;
+    height: 117.892px;
+  }
+  .message-form__body textarea {
+    padding: 8.3px 8.27px;
+    font-size: 12px;
+  }
+  .message-form__body button {
+    top: 85.32px;
+    right: 11.75px;
+    width: 55.518px;
+    height: 22.044px;
+  }
+
+  .message-list-container {
+    padding-inline: 16px !important;
+  }
+  .message-list {
+    width: min(368px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+  .message-card {
+    padding: 15px 20px 15px 14px;
+  }
+  .message-card__copy {
+    gap: 8.979px;
+  }
+  .message-card__body {
+    font-size: 12px;
+    letter-spacing: -0.024px;
+  }
+}
+
+/* Message confirmation modal (Figma 2185:11378) and recipient filter (2185:11429). */
+.message-form__recipient-trigger {
+  position: absolute;
+  top: 58.69px;
+  left: 139.716px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 200.37px;
+  height: 49.633px;
+  padding: 0 15.63px;
+  border: 0;
+  border-radius: 0;
+  background: #d9d9d9;
+  color: #111;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  text-align: left;
+}
+
+.message-form__recipient-arrow {
+  display: block;
+  flex: 0 0 auto;
+  width: 14.316px;
+  height: 12.025px;
+  /* The exported Figma asset points up; a closed select should point down. */
+  transform: rotate(180deg);
+  transition: transform 160ms ease;
+}
+
+.message-form__recipient-arrow.is-open {
+  transform: rotate(0deg);
+}
+
+.message-form__recipient-arrow img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.message-form__recipient-menu {
+  position: absolute;
+  z-index: 12;
+  top: 110px;
+  left: 139.716px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  background: #f3f3f3;
+  box-shadow: 0 8px 20px rgb(15 14 15 / 16%);
+  list-style: none;
+}
+
+.message-form__recipient-menu li {
+  height: 54px;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+}
+
+.message-form__recipient-menu li:last-child {
+  border-bottom: 1px solid #ddd;
+}
+
+.message-form__recipient-menu li[aria-selected="true"] {
+  background: #0dadfb;
+}
+
+.message-form__recipient-menu button {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  color: #848484;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  text-align: center;
+}
+
+.message-form__recipient-menu li[aria-selected="true"] button {
+  color: #fff;
+  font-weight: 700;
+}
+
+.message-confirm-modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 16px;
+  background: rgb(15 14 15 / 45%);
+}
+
+.message-confirm-modal__panel {
+  box-sizing: border-box;
+  width: min(620px, 100%);
+  padding: 50px;
+  background: #fff;
+  color: #0f0e0f;
+}
+
+.message-confirm-modal__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.message-confirm-modal__copy h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.message-confirm-modal__copy p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.message-confirm-modal__actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 66px;
+}
+
+.message-confirm-modal__actions button {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.message-confirm-modal__edit {
+  background: #ddd;
+  color: #6d6d6d;
+}
+.message-confirm-modal__submit {
+  background: #0dadfb;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 1350px) {
+  .message-form__recipient-trigger {
+    top: 45.28px;
+    left: 108.058px;
+    width: 154.575px;
+    height: 38.289px;
+    padding: 0 12px;
+    font-size: 16px;
+  }
+  .message-form__recipient-menu {
+    top: 92px;
+    left: 108.058px;
+    width: 154.575px;
+  }
+  .message-form__recipient-menu li {
+    height: 42px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .message-form__recipient-trigger {
+    top: 33.6px;
+    left: 79.676px;
+    width: 114.738px;
+    height: 28.421px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  .message-form__recipient-menu {
+    top: 70px;
+    left: 79.676px;
+    width: 114.738px;
+  }
+  .message-form__recipient-menu li {
+    height: 32px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .message-form__recipient-trigger {
+    top: 126px;
+    left: 131.05px;
+    width: 88px;
+    height: 29px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .message-form__recipient-menu {
+    top: 160px;
+    left: 131.05px;
+    width: 88px;
+  }
+  .message-form__recipient-menu li {
+    height: 30px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 2px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .message-form__recipient-trigger {
+    top: 89px;
+    left: 74px;
+    width: 78px;
+    height: 23px;
+    padding: 0 7px;
+    font-size: 12px;
+  }
+  .message-form__recipient-menu {
+    top: 118px;
+    left: 74px;
+    width: 78px;
+  }
+  .message-form__recipient-menu li {
+    height: 24px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 1px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .message-confirm-modal__panel {
+    padding: 32px 20px;
+  }
+  .message-confirm-modal__copy h2 {
+    font-size: 20px;
+  }
+  .message-confirm-modal__copy p {
+    font-size: 14px;
+  }
+  .message-confirm-modal__actions {
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .message-confirm-modal__actions button {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+}
+
+/*
+ * Message responsive interpolation
+ *
+ * Figma provides reference frames at 1920, 1350, 1020, 600, and 400px.  The
+ * first implementation swapped every pixel value at those boundaries, which
+ * made the form and cards visibly jump while resizing.  Keep the structural
+ * changes (three to two columns and the compact mobile form), but interpolate
+ * all dimensions within each structure with fluid values.
+ */
+@media (min-width: 601px) {
+  .message-page {
+    --message-form-width: min(80.58325rem, 73.68vw);
+    --message-outer-frame-width: min(84.27781rem, 77.06vw);
+    --message-card-gap: clamp(2rem, 3.4375vw, 4.125rem);
+    --message-field-gap: clamp(0.5rem, 0.85vw, 1rem);
+  }
+
+  .message-page__intro {
+    height: clamp(64.5rem, calc(76.3vw + 15.25rem), 106.84375rem);
+  }
+
+  .message-page__frame--outer {
+    top: clamp(8.5625rem, calc(10.88vw + 2.88rem), 15.95875rem);
+    width: var(--message-outer-frame-width);
+    height: auto;
+    aspect-ratio: 1348.445 / 696.164;
+  }
+
+  .message-page__frame--inner,
+  .message-form {
+    top: clamp(9.60125rem, calc(11.25vw + 3.97rem), 17.46875rem);
+    width: var(--message-form-width);
+    height: auto;
+    aspect-ratio: 1289.332 / 647.43;
+  }
+
+  .message-form__field {
+    /* Percentage-based children must use the form canvas as their containing block. */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(1.125rem, 1.667vw, 2rem);
+  }
+
+  .message-form__field--to span {
+    top: 9.43%;
+    left: 5.99%;
+  }
+  .message-form__field--from span {
+    top: 9.43%;
+    left: 30.01%;
+  }
+
+  .message-form__field input,
+  .message-form__recipient-trigger {
+    top: calc(9.07% - clamp(0.125rem, 0.23vw, 0.25rem));
+    width: 15.54%;
+    height: 7.67%;
+    min-height: 1.775rem;
+    padding-inline: clamp(0.5rem, 0.814vw, 0.977rem);
+    font-size: clamp(0.75rem, 1.042vw, 1.25rem);
+  }
+
+  .message-form__field--to input,
+  .message-form__recipient-trigger {
+    left: max(10.84%, calc(5.99% + clamp(1.75rem, 2.7vw, 3.25rem) + var(--message-field-gap)));
+  }
+  .message-form__field--from input {
+    left: max(38.85%, calc(30.01% + clamp(2.875rem, 4.5vw, 5.5rem) + var(--message-field-gap)));
+  }
+
+  .message-form__body {
+    top: 22.77%;
+    left: 5.99%;
+    width: 86.69%;
+    height: 65.02%;
+  }
+
+  .message-form__body textarea {
+    padding: clamp(1.05rem, 1.554vw, 1.865rem) clamp(1.45rem, 2.154vw, 2.585rem);
+    font-size: clamp(1rem, 1.042vw, 1.25rem);
+  }
+
+  .message-form__body button {
+    top: 80.57%;
+    right: 3.87%;
+    width: 11.18%;
+    height: 11.79%;
+    min-height: 1.775rem;
+    font-size: clamp(0.75rem, 1.042vw, 1.25rem);
+  }
+
+  .message-form__recipient-menu {
+    top: 17%;
+    left: 10.84%;
+    width: 15.54%;
+  }
+
+  .message-form__recipient-menu li {
+    height: clamp(2rem, 2.8125vw, 3.375rem);
+  }
+  .message-form__recipient-menu button {
+    font-size: clamp(0.75rem, 1.042vw, 1.25rem);
+  }
+
+  .message-list-container {
+    padding-inline: clamp(3rem, 7.8125vw, 9.375rem) !important;
+  }
+
+  .message-list {
+    width: min(101.25rem, 100%);
+    gap: var(--message-card-gap);
+  }
+
+  .message-card {
+    padding: clamp(2rem, 2.135vw, 2.5625rem) clamp(2.5rem, 2.8125vw, 3.375rem);
+  }
+
+  .message-card:nth-child(3n + 2) {
+    /* Keep the center post-it visibly lower than the left and right columns. */
+    transform: translateY(calc(var(--message-card-gap) * 3.3));
+  }
+
+  .message-card__copy {
+    gap: clamp(1rem, 1.302vw, 1.5625rem);
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: clamp(1rem, 1.042vw, 1.25rem);
+  }
+  .message-card__body {
+    font-size: clamp(1.25rem, 1.4583vw, 1.75rem);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 63.75rem) {
+  .message-page__intro {
+    height: clamp(51rem, calc(76.3vw + 15.25rem), 64.5rem);
+  }
+  .message-list-container {
+    padding-inline: clamp(3rem, 7.8125vw, 5rem) !important;
+  }
+  .message-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .message-form__field {
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  }
+
+  .message-form__field input,
+  .message-form__recipient-trigger,
+  .message-form__body button {
+    font-size: clamp(0.625rem, 1.1vw, 0.75rem);
+  }
+
+  .message-form__body textarea {
+    font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+  }
+}
+
+/* Keep the two compact field groups from collapsing into each other at 601–700px. */
+@media (min-width: 37.5625rem) and (max-width: 43.75rem) {
+  .message-page {
+    --message-field-gap: 1rem;
+  }
+
+  .message-form__recipient-trigger {
+    left: calc(5.99% + 3.25rem);
+  }
+
+  .message-form__field--from span {
+    left: calc(5.99% + 3.25rem + 15.54% + 1rem);
+  }
+
+  .message-form__field--from input {
+    left: calc(30.01% + 5.75rem);
+  }
+}
+
+/*
+ * The 1350→1020 scene uses a separate Figma background asset.  Scale that
+ * asset and the list's scene boundary together: otherwise the cards move
+ * while the lower graffiti guide remains still.
+ */
+@media (min-width: 63.8125rem) and (max-width: 84.375rem) {
+  .message-page__intro {
+    /* Match the scaled decor's lower edge so the card scene keeps its gap. */
+    height: calc(111.21vw - 6.39125rem);
+  }
+
+  .message-page__decor {
+    top: calc(-4.85vw - 1.28125rem);
+    width: 100vw;
+    height: calc(116.06vw - 5.11rem);
+  }
+}
+
+/* Continue the web artwork from the 1350px scene instead of resetting it. */
+@media (min-width: 84.4375rem) {
+  .message-page {
+    --message-web-decor-height: clamp(
+      92.8125rem,
+      calc(77.15vw + 27.67rem),
+      120.25rem
+    );
+  }
+
+  .message-page__intro {
+    height: calc(var(--message-web-decor-height) + 2.619rem - 9.474vw);
+  }
+
+  .message-page__decor {
+    top: calc(2.619rem - 9.474vw);
+    width: clamp(92.5rem, calc(77vw + 27.48rem), 119.875rem);
+    height: var(--message-web-decor-height);
+  }
+}
+
+@media (max-width: 600px) {
+  .message-page { --message-field-gap: clamp(0.5rem, 1.6vw, 0.875rem); }
+
+  .message-page__intro {
+    height: clamp(29.547rem, calc(88.12vw + 7.52rem), 40.5625rem);
+  }
+  .message-page__decor {
+    top: -5.5vw;
+    width: 100vw;
+    height: calc(90vw + 9.5625rem);
+  }
+  .message-page__frame--compact {
+    top: calc(14.5vw + 0.25rem);
+    width: calc(54.4vw + 9.9rem);
+    height: auto;
+    aspect-ratio: 484.781 / 277;
+  }
+  .message-form {
+    width: 100%;
+    height: calc(55.5vw + 7.1875rem);
+  }
+  .message-form__field--to span {
+    top: 28.54%;
+    left: 15.8%;
+  }
+  .message-form__field--from span {
+    top: 28.54%;
+    left: 45.36%;
+  }
+  .message-form__field input,
+  .message-form__recipient-trigger {
+    top: calc(28.13% - clamp(0.125rem, 0.75vw, 0.25rem));
+    height: 6.47%;
+    min-height: 1.4375rem;
+    font-size: 0.75rem;
+  }
+  .message-form__field--to input,
+  .message-form__recipient-trigger {
+    left: max(21.84%, calc(15.8% + clamp(0.9375rem, 4.2vw, 1.35rem) + var(--message-field-gap)));
+    width: 14.67%;
+  }
+  .message-form__field--from input {
+    left: max(53.5%, calc(43.5% + clamp(1.75rem, 7.64vw, 2.55rem) + var(--message-field-gap)));
+    width: 14.67%;
+  }
+  .message-form__body {
+    top: 39.51%;
+    left: 15.84%;
+    width: 68.17%;
+    height: 33.93%;
+  }
+  .message-form__body textarea {
+    padding: clamp(0.5rem, 1.83vw, 0.6875rem);
+    font-size: 0.75rem;
+  }
+  .message-form__body button {
+    top: 72.37%;
+    right: 4.49%;
+    width: 17.5%;
+    height: 18.7%;
+    min-height: 1.37775rem;
+    font-size: 0.75rem;
+  }
+  .message-form__recipient-menu {
+    top: 35.8%;
+    left: 21.84%;
+    width: 14.67%;
+  }
+  .message-form__recipient-menu li {
+    height: 1.875rem;
+  }
+  .message-form__recipient-menu button {
+    font-size: 0.75rem;
+  }
+  .message-list-container {
+    padding-inline: clamp(1rem, 7.33vw, 2.75rem) !important;
+  }
+  .message-list {
+    width: min(32rem, 100%);
+    gap: clamp(1.125rem, 5.336vw, 2rem);
+  }
+  .message-card {
+    padding: clamp(0.9375rem, 2.833vw, 1.0625rem)
+      clamp(1.25rem, 4.667vw, 1.75rem);
+  }
+  .message-card__copy {
+    gap: clamp(0.5625rem, 2.021vw, 0.758rem);
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: 0.75rem;
+  }
+  .message-card__body {
+    font-size: clamp(0.75rem, 2.333vw, 0.875rem);
+  }
+}
+
+/* Keep the compact cards readable without forcing their copy beyond the edge. */
+@media (max-width: 600px) {
+  .message-form__field {
+    /* Mobile coordinates are also measured from the complete form canvas. */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(0.6875rem, 2.7vw, 0.875rem);
+  }
+
+  .message-form__field--from span { left: 43.5%; }
+
+  .message-form__field input,
+  .message-form__recipient-trigger {
+    padding-inline: clamp(0.1875rem, 0.9vw, 0.375rem);
+    font-size: clamp(0.5rem, 1.8vw, 0.6875rem);
+  }
+
+  .message-form__recipient-arrow {
+    width: clamp(0.4375rem, 1.6vw, 0.5625rem);
+    height: auto;
+  }
+
+  .message-card__to,
+  .message-card__from {
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
+  }
+
+  .message-card__body {
+    font-size: clamp(0.75rem, 3.333vw, 1.25rem);
+    line-height: 1.32;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+
+  .message-card__body p {
+    min-width: 0;
+  }
+
+  .message-form__body textarea {
+    font-size: clamp(0.5625rem, 2.1vw, 0.75rem);
+    line-height: 1.35;
+  }
+
+  .message-form__field input,
+  .message-form__recipient-trigger,
+  .message-form__body button {
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
   }
 }
