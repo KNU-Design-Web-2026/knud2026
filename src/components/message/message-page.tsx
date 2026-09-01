@@ -34,6 +34,7 @@ export function MessagePage() {
   const [body, setBody] = useState("");
   const [isRecipientOpen, setIsRecipientOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [formError, setFormError] = useState("");
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -48,8 +49,19 @@ export function MessagePage() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!to.trim() || !from.trim() || !body.trim()) return;
 
+    const missingFields = [
+      !to.trim() && "받는 사람",
+      !from.trim() && "보내는 사람",
+      !body.trim() && "메시지",
+    ].filter(Boolean);
+
+    if (missingFields.length > 0) {
+      setFormError(`${missingFields.join(", ")}을(를) 입력해주세요.`);
+      return;
+    }
+
+    setFormError("");
     setIsConfirmOpen(true);
   };
 
@@ -116,6 +128,7 @@ export function MessagePage() {
                         onClick={() => {
                           setTo(recipient);
                           setIsRecipientOpen(false);
+                          setFormError("");
                         }}
                       >
                         {recipient}
@@ -127,14 +140,21 @@ export function MessagePage() {
             </div>
             <label className="message-form__field message-form__field--from">
               <span>From.</span>
-              <input aria-label="보내는 사람" placeholder="보낸이" value={from} onChange={(event) => setFrom(event.target.value)} />
+              <input aria-label="보내는 사람" aria-describedby={formError ? "message-form-error" : undefined} placeholder="보낸이" value={from} onChange={(event) => {
+                setFrom(event.target.value);
+                setFormError("");
+              }} />
             </label>
           </div>
-          <label className="message-form__body">
+          <div className="message-form__body">
             <span className="sr-only">메시지</span>
-            <textarea aria-label="메시지" placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 ○○회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => setBody(event.target.value)} />
+            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error" : undefined} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 ○○회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
+              setBody(event.target.value);
+              setFormError("");
+            }} />
             <button type="submit">IGNITE</button>
-          </label>
+            {formError && <p className="message-form__validation" id="message-form-error" role="alert">{formError}</p>}
+          </div>
         </form>
       </div>
       <PageContainer className="message-list-container">
