@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 // 일반 화면의 흰 화살표 위치를 조정한다. 양수는 오른쪽·아래 방향이다.
-const SITE_CURSOR_OFFSET = { x: 65, y: 70 } as const;
+const SITE_CURSOR_OFFSET = { x: 65, y: 80 } as const;
 
 export function SiteCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
