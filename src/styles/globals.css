@@ -2381,6 +2381,13 @@
 
 /* Keep the compact cards readable without forcing their copy beyond the edge. */
 @media (max-width: 600px) {
+  .message-form__field {
+    /* Mobile coordinates are also measured from the complete form canvas. */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   .message-card__to,
   .message-card__from {
     font-size: clamp(0.625rem, 2vw, 0.75rem);
