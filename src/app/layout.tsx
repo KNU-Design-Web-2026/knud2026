@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import type { PropsWithChildren } from "react";
 import { SiteCursor } from "@/components/layout/site-cursor";
+import { QaRouteBridge } from "@/components/layout/qa-route-bridge";
 import { SiteHeader } from "@/components/layout/site-header";
 import "@/styles/globals.css";
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html className={pretendard.variable} lang="ko">
       <body>
+        <QaRouteBridge />
         <SiteHeader />
         <main>{children}</main>
         <SiteCursor />
