@@ -2378,3 +2378,32 @@
   .message-card__from { font-size: 0.75rem; }
   .message-card__body { font-size: clamp(0.75rem, 2.333vw, 0.875rem); }
 }
+
+/* Keep the compact cards readable without forcing their copy beyond the edge. */
+@media (max-width: 600px) {
+  .message-card__to,
+  .message-card__from {
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
+  }
+
+  .message-card__body {
+    font-size: clamp(0.75rem, 3.333vw, 1.25rem);
+    line-height: 1.32;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+
+  .message-card__body p { min-width: 0; }
+
+  .message-form__body textarea {
+    font-size: clamp(0.625rem, 2.667vw, 1rem);
+    line-height: 1.35;
+  }
+
+  .message-form__field input,
+  .message-form__recipient-trigger,
+  .message-form__body button {
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
+  }
+}

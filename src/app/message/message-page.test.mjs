@@ -33,6 +33,7 @@ assert.match(styles, /\.message-page__intro\s*\{[\s\S]*overflow:\s*visible/);
 assert.match(styles, /--message-form-width/);
 assert.match(styles, /clamp\(2rem, 3\.4375vw, 4\.125rem\)/);
 assert.match(styles, /\.message-form__field\s*\{[\s\S]*inset:\s*0/);
+assert.match(styles, /\.message-card__body\s*\{[\s\S]*white-space:\s*normal/);
 assert.match(styles, /max-width: 1350px/);
 assert.match(styles, /max-width: 1020px/);
 assert.match(styles, /max-width: 600px/);
