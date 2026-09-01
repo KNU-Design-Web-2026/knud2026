@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { messages as initialMessages, type Message } from "@/data/messages";
@@ -29,27 +29,19 @@ const recipientOptions = [
 
 export function MessagePage() {
   const [messageList, setMessageList] = useState(initialMessages);
-  const [to, setTo] = useState("");
+  const [to, setTo] = useState("전체(모두)");
   const [from, setFrom] = useState("");
   const [body, setBody] = useState("");
   const [isRecipientOpen, setIsRecipientOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-  const recipientRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const closeOnOutsideClick = (event: MouseEvent) => {
-      if (!recipientRef.current?.contains(event.target as Node)) setIsRecipientOpen(false);
-    };
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsRecipientOpen(false);
         setIsConfirmOpen(false);
       }
     };
-    document.addEventListener("mousedown", closeOnOutsideClick);
     document.addEventListener("keydown", closeOnEscape);
     return () => {
-      document.removeEventListener("mousedown", closeOnOutsideClick);
       document.removeEventListener("keydown", closeOnEscape);
     };
   }, []);
@@ -66,7 +58,7 @@ export function MessagePage() {
       { id: Date.now(), to: to.trim(), from: from.trim(), body: body.trim() },
       ...current,
     ]);
-    setTo("");
+    setTo("전체(모두)");
     setFrom("");
     setBody("");
     setIsConfirmOpen(false);
@@ -99,11 +91,18 @@ export function MessagePage() {
         </picture>
         <form className="message-form" onSubmit={handleSubmit}>
           <div className="message-form__fields">
-            <div className="message-form__field message-form__field--to" ref={recipientRef}>
+            <div className={`message-form__field message-form__field--to${isRecipientOpen ? " is-open" : ""}`}>
               <span>To.</span>
-              <button aria-expanded={isRecipientOpen} aria-haspopup="listbox" aria-label="받는 사람" className="message-form__recipient-trigger" type="button" onClick={() => setIsRecipientOpen((open) => !open)}>
-                {to || "전체(모두)"}
-                <picture className="message-form__recipient-arrow">
+              <button
+                aria-expanded={isRecipientOpen}
+                aria-haspopup="listbox"
+                aria-label="받는 사람"
+                className="message-form__recipient-trigger"
+                onClick={() => setIsRecipientOpen((isOpen) => !isOpen)}
+                type="button"
+              >
+                {to}
+                <picture className={`message-form__recipient-arrow${isRecipientOpen ? " is-open" : ""}`}>
                   <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-select-arrow-mobile.svg" />
                   <img alt="" src="/assets/figma/message/message-select-arrow-tab-mobile.svg" />
                 </picture>
@@ -111,8 +110,16 @@ export function MessagePage() {
               {isRecipientOpen && (
                 <ul aria-label="받는 사람 선택" className="message-form__recipient-menu" role="listbox">
                   {recipientOptions.map((recipient) => (
-                    <li key={recipient} aria-selected={to === recipient || (!to && recipient === "전체(모두)")} role="option">
-                      <button type="button" onClick={() => { setTo(recipient); setIsRecipientOpen(false); }}>{recipient}</button>
+                    <li key={recipient} aria-selected={to === recipient} role="option">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setTo(recipient);
+                          setIsRecipientOpen(false);
+                        }}
+                      >
+                        {recipient}
+                      </button>
                     </li>
                   ))}
                 </ul>

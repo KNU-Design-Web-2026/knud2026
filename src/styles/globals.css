@@ -513,7 +513,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-.work-card__detail {
+  .work-card__detail {
     transition-duration: 1ms;
   }
 }
@@ -1365,7 +1365,6 @@
   .profile-card:hover .profile-card__detail {
     opacity: 1;
   }
-
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
@@ -1649,7 +1648,6 @@
   .mobile-menu-trigger {
     padding-inline: 0.3125rem;
   }
-
 }
 
 @media (max-width: 400px) {
@@ -1658,8 +1656,10 @@
   }
 
   .mobile-menu-trigger__line:nth-child(2),
-  .mobile-menu-trigger[data-open="true"] .mobile-menu-trigger__line:nth-child(1),
-  .mobile-menu-trigger[data-open="true"] .mobile-menu-trigger__line:nth-child(3) {
+  .mobile-menu-trigger[data-open="true"]
+    .mobile-menu-trigger__line:nth-child(1),
+  .mobile-menu-trigger[data-open="true"]
+    .mobile-menu-trigger__line:nth-child(3) {
     top: calc(50% - 0.046875rem);
   }
 
@@ -1758,11 +1758,20 @@
   font-weight: 700;
   line-height: 1.3;
   white-space: nowrap;
+  /* Both responsive fields occupy the form canvas; only their visible controls should receive input. */
+  pointer-events: none;
 }
 
 .message-form__field span,
-.message-form__field input {
+.message-form__field input,
+.message-form__recipient-trigger,
+.message-form__recipient-menu {
   position: absolute;
+  pointer-events: auto;
+}
+
+.message-form__field--to.is-open {
+  z-index: 5;
 }
 
 .message-form__field--to span {
@@ -1855,6 +1864,12 @@
   padding-inline: 150px !important;
 }
 
+/* Translated post-its may extend past their grid track; the opaque footer must stay above them. */
+.message-page .site-footer {
+  position: relative;
+  z-index: 5;
+}
+
 .message-list {
   display: grid;
   width: min(1620px, 100%);
@@ -1905,70 +1920,229 @@
 
 /* Figma frame 1742:88621 — 1350px */
 @media (max-width: 1350px) {
-  .message-page__intro { height: 1274px; }
-  .message-page__decor { top: -86px; width: 1350px; height: 1485px; }
-  .message-page__frame--outer { top: 193px; width: 1040.257px; height: 537.055px; }
+  .message-page__intro {
+    height: 1274px;
+  }
+  .message-page__decor {
+    top: -86px;
+    width: 1350px;
+    height: 1485px;
+  }
+  .message-page__frame--outer {
+    top: 193px;
+    width: 1040.257px;
+    height: 537.055px;
+  }
   .message-page__frame--inner,
-  .message-form { top: 215.37px; width: 994.655px; height: 499.459px; }
+  .message-form {
+    top: 215.37px;
+    width: 994.655px;
+    height: 499.459px;
+  }
 
-  .message-form__field { font-size: 24px; }
-  .message-form__field--to span { top: 47.63px; left: 59.838px; }
-  .message-form__field--to input { top: 45.28px; left: 108.058px; }
-  .message-form__field--from span { top: 47.63px; left: 298.948px; }
-  .message-form__field--from input { top: 45.28px; left: 388.568px; }
-  .message-form__field input { width: 154.575px; height: 38.289px; padding: 0 12px; font-size: 16px; }
-  .message-form__body { top: 113.73px; left: 59.838px; width: 862.219px; height: 324.75px; }
-  .message-form__body textarea { padding: 22.9px 31.49px; font-size: 18px; }
-  .message-form__body button { top: 261.26px; right: 42.128px; width: 96.432px; height: 38.289px; font-size: 16px; }
+  .message-form__field {
+    font-size: 24px;
+  }
+  .message-form__field--to span {
+    top: 47.63px;
+    left: 59.838px;
+  }
+  .message-form__field--to input {
+    top: 45.28px;
+    left: 108.058px;
+  }
+  .message-form__field--from span {
+    top: 47.63px;
+    left: 298.948px;
+  }
+  .message-form__field--from input {
+    top: 45.28px;
+    left: 388.568px;
+  }
+  .message-form__field input {
+    width: 154.575px;
+    height: 38.289px;
+    padding: 0 12px;
+    font-size: 16px;
+  }
+  .message-form__body {
+    top: 113.73px;
+    left: 59.838px;
+    width: 862.219px;
+    height: 324.75px;
+  }
+  .message-form__body textarea {
+    padding: 22.9px 31.49px;
+    font-size: 18px;
+  }
+  .message-form__body button {
+    top: 261.26px;
+    right: 42.128px;
+    width: 96.432px;
+    height: 38.289px;
+    font-size: 16px;
+  }
 
-  .message-list-container { padding-inline: 50px !important; }
-  .message-list { width: min(1249.748px, 100%); grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 50.916px; }
-  .message-card { padding: 33px 46px; }
-  .message-card__copy { gap: 19.286px; }
+  .message-list-container {
+    padding-inline: 50px !important;
+  }
+  .message-list {
+    width: min(1249.748px, 100%);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 50.916px;
+  }
+  .message-card {
+    padding: 33px 46px;
+  }
+  .message-card__copy {
+    gap: 19.286px;
+  }
   .message-card__to,
-  .message-card__from { font-size: 16px; }
-  .message-card__body { font-size: 20px; letter-spacing: -0.04px; }
-  .message-card:nth-child(3n + 2) { transform: translateY(50.916px); }
+  .message-card__from {
+    font-size: 16px;
+  }
+  .message-card__body {
+    font-size: 20px;
+    letter-spacing: -0.04px;
+  }
+  .message-card:nth-child(3n + 2) {
+    transform: translateY(50.916px);
+  }
 }
 
 /* Figma frame 1742:92591 — 1020px */
 @media (max-width: 1020px) {
-  .message-page__intro { height: 1032px; }
-  .message-page__decor { top: -70px; width: 1020px; height: 1102px; }
-  .message-page__frame--outer { top: 137px; width: 772.162px; height: 398.645px; }
+  .message-page__intro {
+    height: 1032px;
+  }
+  .message-page__decor {
+    top: -70px;
+    width: 1020px;
+    height: 1102px;
+  }
+  .message-page__frame--outer {
+    top: 137px;
+    width: 772.162px;
+    height: 398.645px;
+  }
   .message-page__frame--inner,
-  .message-form { top: 153.61px; width: 738.312px; height: 370.738px; }
+  .message-form {
+    top: 153.61px;
+    width: 738.312px;
+    height: 370.738px;
+  }
 
-  .message-form__field { font-size: 18px; }
-  .message-form__field--to span { top: 35.29px; left: 43.886px; }
-  .message-form__field--to input { top: 33.6px; left: 79.676px; }
-  .message-form__field--from span { top: 35.29px; left: 177.37px; }
-  .message-form__field--from input { top: 33.6px; left: 199.214px; }
-  .message-form__field input { width: 114.738px; height: 28.421px; padding: 0 8px; font-size: 12px; }
-  .message-form__body { top: 84.42px; left: 43.886px; width: 640.008px; height: 241.056px; }
-  .message-form__body textarea { padding: 16.87px 23.27px; font-size: 16px; }
-  .message-form__body button { top: 193.92px; right: 40.722px; width: 71.58px; height: 28.421px; font-size: 12px; }
+  .message-form__field {
+    font-size: 18px;
+  }
+  .message-form__field--to span {
+    top: 35.29px;
+    left: 43.886px;
+  }
+  .message-form__field--to input {
+    top: 33.6px;
+    left: 79.676px;
+  }
+  .message-form__field--from span {
+    top: 35.29px;
+    left: 177.37px;
+  }
+  .message-form__field--from input {
+    top: 33.6px;
+    left: 199.214px;
+  }
+  .message-form__field input {
+    width: 114.738px;
+    height: 28.421px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  .message-form__body {
+    top: 84.42px;
+    left: 43.886px;
+    width: 640.008px;
+    height: 241.056px;
+  }
+  .message-form__body textarea {
+    padding: 16.87px 23.27px;
+    font-size: 16px;
+  }
+  .message-form__body button {
+    top: 193.92px;
+    right: 40.722px;
+    width: 71.58px;
+    height: 28.421px;
+    font-size: 12px;
+  }
 
-  .message-list-container { padding-inline: 102px !important; }
-  .message-list { width: min(816.194px, 100%); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 50.916px; }
-  .message-card:nth-child(3n + 2) { transform: none; }
+  .message-list-container {
+    padding-inline: 102px !important;
+  }
+  .message-list {
+    width: min(816.194px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50.916px;
+  }
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
 }
 
 /* Figma frame 1742:96389 — 600px */
 @media (max-width: 600px) {
-  .message-page__intro { height: 649px; }
-  .message-page__decor { top: -44px; width: 600px; height: 693px; }
+  .message-page__intro {
+    height: 649px;
+  }
+  .message-page__decor {
+    top: -44px;
+    width: 600px;
+    height: 693px;
+  }
   .message-page__frame--outer,
-  .message-page__frame--inner { display: none; }
-  .message-page__frame--compact { display: block; top: 91px; left: 50%; width: 484.781px; height: 277px; transform: translateX(-50%); }
-  .message-form { top: 0; left: 0; width: 100%; height: 448px; transform: none; }
+  .message-page__frame--inner {
+    display: none;
+  }
+  .message-page__frame--compact {
+    display: block;
+    top: 91px;
+    left: 50%;
+    width: 484.781px;
+    height: 277px;
+    transform: translateX(-50%);
+  }
+  .message-form {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 448px;
+    transform: none;
+  }
 
-  .message-form__field { font-size: 18px; }
-  .message-form__field--to span { top: 127.88px; left: 94.78px; }
-  .message-form__field--to input { top: 126px; left: 131.05px; }
-  .message-form__field--from span { top: 127.88px; left: 272.15px; }
-  .message-form__field--from input { top: 126px; left: 337.05px; }
-  .message-form__field input { width: 88px; height: 29px; padding: 0 10px; font-size: 12px; }
+  .message-form__field {
+    font-size: 18px;
+  }
+  .message-form__field--to span {
+    top: 127.88px;
+    left: 94.78px;
+  }
+  .message-form__field--to input {
+    top: 126px;
+    left: 131.05px;
+  }
+  .message-form__field--from span {
+    top: 127.88px;
+    left: 272.15px;
+  }
+  .message-form__field--from input {
+    top: 126px;
+    left: 337.05px;
+  }
+  .message-form__field input {
+    width: 88px;
+    height: 29px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
   .message-form__select-icon {
     position: absolute;
     top: 134px;
@@ -1978,42 +2152,135 @@
     height: 12.025px;
     transform: rotate(180deg);
   }
-  .message-form__select-icon img { display: block; width: 100%; height: 100%; }
-  .message-form__body { top: 177px; left: 95.05px; width: 409px; height: 152px; }
-  .message-form__body textarea { padding: 10.98px 11px; font-size: 12px; }
-  .message-form__body button { top: 110px; right: 18.37px; width: 71.58px; height: 28.421px; font-size: 12px; }
+  .message-form__select-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .message-form__body {
+    top: 177px;
+    left: 95.05px;
+    width: 409px;
+    height: 152px;
+  }
+  .message-form__body textarea {
+    padding: 10.98px 11px;
+    font-size: 12px;
+  }
+  .message-form__body button {
+    top: 110px;
+    right: 18.37px;
+    width: 71.58px;
+    height: 28.421px;
+    font-size: 12px;
+  }
 
-  .message-list-container { padding-inline: 44px !important; }
-  .message-list { width: min(512px, 100%); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32.015px; }
-  .message-card { padding: 17px 28px 17px 20px; }
-  .message-card__copy { gap: 12.127px; }
+  .message-list-container {
+    padding-inline: 44px !important;
+  }
+  .message-list {
+    width: min(512px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32.015px;
+  }
+  .message-card {
+    padding: 17px 28px 17px 20px;
+  }
+  .message-card__copy {
+    gap: 12.127px;
+  }
   .message-card__to,
-  .message-card__from { font-size: 12px; }
-  .message-card__body { font-size: 14px; letter-spacing: -0.028px; white-space: nowrap; }
+  .message-card__from {
+    font-size: 12px;
+  }
+  .message-card__body {
+    font-size: 14px;
+    letter-spacing: -0.028px;
+    white-space: nowrap;
+  }
 }
 
 /* Figma frame 1742:100190 — 400px */
 @media (max-width: 400px) {
-  .message-page__intro { height: 472.758px; }
-  .message-page__decor { top: -33px; width: 400px; height: 513px; }
-  .message-page__frame--compact { top: 62px; width: 376px; height: 214.843px; }
-  .message-form { height: 337px; }
+  .message-page__intro {
+    height: 472.758px;
+  }
+  .message-page__decor {
+    top: -33px;
+    width: 400px;
+    height: 513px;
+  }
+  .message-page__frame--compact {
+    top: 62px;
+    width: 376px;
+    height: 214.843px;
+  }
+  .message-form {
+    height: 337px;
+  }
 
-  .message-form__field--to span { top: 89px; left: 41px; }
-  .message-form__field--to input { top: 89px; left: 74px; }
-  .message-form__field--from span { top: 89px; left: 178px; }
-  .message-form__field--from input { top: 89px; left: 234px; }
-  .message-form__field input { width: 78px; height: 23px; padding: 0 7px; }
-  .message-form__select-icon { top: 95.35px; left: 135px; width: 11.103px; height: 9.327px; }
-  .message-form__body { top: 128.7px; left: 40.73px; width: 317.223px; height: 117.892px; }
-  .message-form__body textarea { padding: 8.3px 8.27px; font-size: 12px; }
-  .message-form__body button { top: 85.32px; right: 11.75px; width: 55.518px; height: 22.044px; }
+  .message-form__field--to span {
+    top: 89px;
+    left: 41px;
+  }
+  .message-form__field--to input {
+    top: 89px;
+    left: 74px;
+  }
+  .message-form__field--from span {
+    top: 89px;
+    left: 178px;
+  }
+  .message-form__field--from input {
+    top: 89px;
+    left: 234px;
+  }
+  .message-form__field input {
+    width: 78px;
+    height: 23px;
+    padding: 0 7px;
+  }
+  .message-form__select-icon {
+    top: 95.35px;
+    left: 135px;
+    width: 11.103px;
+    height: 9.327px;
+  }
+  .message-form__body {
+    top: 128.7px;
+    left: 40.73px;
+    width: 317.223px;
+    height: 117.892px;
+  }
+  .message-form__body textarea {
+    padding: 8.3px 8.27px;
+    font-size: 12px;
+  }
+  .message-form__body button {
+    top: 85.32px;
+    right: 11.75px;
+    width: 55.518px;
+    height: 22.044px;
+  }
 
-  .message-list-container { padding-inline: 16px !important; }
-  .message-list { width: min(368px, 100%); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
-  .message-card { padding: 15px 20px 15px 14px; }
-  .message-card__copy { gap: 8.979px; }
-  .message-card__body { font-size: 12px; letter-spacing: -0.024px; }
+  .message-list-container {
+    padding-inline: 16px !important;
+  }
+  .message-list {
+    width: min(368px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+  .message-card {
+    padding: 15px 20px 15px 14px;
+  }
+  .message-card__copy {
+    gap: 8.979px;
+  }
+  .message-card__body {
+    font-size: 12px;
+    letter-spacing: -0.024px;
+  }
 }
 
 /* Message confirmation modal (Figma 2185:11378) and recipient filter (2185:11429). */
@@ -2043,6 +2310,13 @@
   flex: 0 0 auto;
   width: 14.316px;
   height: 12.025px;
+  /* The exported Figma asset points up; a closed select should point down. */
+  transform: rotate(180deg);
+  transition: transform 160ms ease;
+}
+
+.message-form__recipient-arrow.is-open {
+  transform: rotate(0deg);
 }
 
 .message-form__recipient-arrow img {
@@ -2070,9 +2344,13 @@
   border-bottom: 0;
 }
 
-.message-form__recipient-menu li:last-child { border-bottom: 1px solid #ddd; }
+.message-form__recipient-menu li:last-child {
+  border-bottom: 1px solid #ddd;
+}
 
-.message-form__recipient-menu li[aria-selected="true"] { background: #0dadfb; }
+.message-form__recipient-menu li[aria-selected="true"] {
+  background: #0dadfb;
+}
 
 .message-form__recipient-menu button {
   width: 100%;
@@ -2147,43 +2425,126 @@
   line-height: 1.3;
 }
 
-.message-confirm-modal__edit { background: #ddd; color: #6d6d6d; }
-.message-confirm-modal__submit { background: #0dadfb; color: #fff; font-weight: 700; }
+.message-confirm-modal__edit {
+  background: #ddd;
+  color: #6d6d6d;
+}
+.message-confirm-modal__submit {
+  background: #0dadfb;
+  color: #fff;
+  font-weight: 700;
+}
 
 @media (max-width: 1350px) {
-  .message-form__recipient-trigger { top: 45.28px; left: 108.058px; width: 154.575px; height: 38.289px; padding: 0 12px; font-size: 16px; }
-  .message-form__recipient-menu { top: 92px; left: 108.058px; width: 154.575px; }
-  .message-form__recipient-menu li { height: 42px; }
-  .message-form__recipient-menu button { padding-inline: 8px; font-size: 16px; }
+  .message-form__recipient-trigger {
+    top: 45.28px;
+    left: 108.058px;
+    width: 154.575px;
+    height: 38.289px;
+    padding: 0 12px;
+    font-size: 16px;
+  }
+  .message-form__recipient-menu {
+    top: 92px;
+    left: 108.058px;
+    width: 154.575px;
+  }
+  .message-form__recipient-menu li {
+    height: 42px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 8px;
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 1020px) {
-  .message-form__recipient-trigger { top: 33.6px; left: 79.676px; width: 114.738px; height: 28.421px; padding: 0 8px; font-size: 12px; }
-  .message-form__recipient-menu { top: 70px; left: 79.676px; width: 114.738px; }
-  .message-form__recipient-menu li { height: 32px; }
-  .message-form__recipient-menu button { padding-inline: 4px; font-size: 12px; }
+  .message-form__recipient-trigger {
+    top: 33.6px;
+    left: 79.676px;
+    width: 114.738px;
+    height: 28.421px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  .message-form__recipient-menu {
+    top: 70px;
+    left: 79.676px;
+    width: 114.738px;
+  }
+  .message-form__recipient-menu li {
+    height: 32px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 600px) {
-  .message-form__recipient-trigger { top: 126px; left: 131.05px; width: 88px; height: 29px; padding: 0 10px; font-size: 12px; }
-  .message-form__recipient-menu { top: 160px; left: 131.05px; width: 88px; }
-  .message-form__recipient-menu li { height: 30px; }
-  .message-form__recipient-menu button { padding-inline: 2px; font-size: 12px; }
+  .message-form__recipient-trigger {
+    top: 126px;
+    left: 131.05px;
+    width: 88px;
+    height: 29px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .message-form__recipient-menu {
+    top: 160px;
+    left: 131.05px;
+    width: 88px;
+  }
+  .message-form__recipient-menu li {
+    height: 30px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 2px;
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 400px) {
-  .message-form__recipient-trigger { top: 89px; left: 74px; width: 78px; height: 23px; padding: 0 7px; font-size: 12px; }
-  .message-form__recipient-menu { top: 118px; left: 74px; width: 78px; }
-  .message-form__recipient-menu li { height: 24px; }
-  .message-form__recipient-menu button { padding-inline: 1px; font-size: 11px; }
+  .message-form__recipient-trigger {
+    top: 89px;
+    left: 74px;
+    width: 78px;
+    height: 23px;
+    padding: 0 7px;
+    font-size: 12px;
+  }
+  .message-form__recipient-menu {
+    top: 118px;
+    left: 74px;
+    width: 78px;
+  }
+  .message-form__recipient-menu li {
+    height: 24px;
+  }
+  .message-form__recipient-menu button {
+    padding-inline: 1px;
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 600px) {
-  .message-confirm-modal__panel { padding: 32px 20px; }
-  .message-confirm-modal__copy h2 { font-size: 20px; }
-  .message-confirm-modal__copy p { font-size: 14px; }
-  .message-confirm-modal__actions { gap: 12px; margin-top: 36px; }
-  .message-confirm-modal__actions button { padding: 10px 12px; font-size: 16px; }
+  .message-confirm-modal__panel {
+    padding: 32px 20px;
+  }
+  .message-confirm-modal__copy h2 {
+    font-size: 20px;
+  }
+  .message-confirm-modal__copy p {
+    font-size: 14px;
+  }
+  .message-confirm-modal__actions {
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .message-confirm-modal__actions button {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
 }
 
 /*
@@ -2229,8 +2590,14 @@
     font-size: clamp(1.125rem, 1.667vw, 2rem);
   }
 
-  .message-form__field--to span { top: 9.43%; left: 5.99%; }
-  .message-form__field--from span { top: 9.43%; left: 30.01%; }
+  .message-form__field--to span {
+    top: 9.43%;
+    left: 5.99%;
+  }
+  .message-form__field--from span {
+    top: 9.43%;
+    left: 30.01%;
+  }
 
   .message-form__field input,
   .message-form__recipient-trigger {
@@ -2243,8 +2610,12 @@
   }
 
   .message-form__field--to input,
-  .message-form__recipient-trigger { left: 10.84%; }
-  .message-form__field--from input { left: 38.85%; }
+  .message-form__recipient-trigger {
+    left: 10.84%;
+  }
+  .message-form__field--from input {
+    left: 38.85%;
+  }
 
   .message-form__body {
     top: 22.77%;
@@ -2273,8 +2644,12 @@
     width: 15.54%;
   }
 
-  .message-form__recipient-menu li { height: clamp(2rem, 2.8125vw, 3.375rem); }
-  .message-form__recipient-menu button { font-size: clamp(0.75rem, 1.042vw, 1.25rem); }
+  .message-form__recipient-menu li {
+    height: clamp(2rem, 2.8125vw, 3.375rem);
+  }
+  .message-form__recipient-menu button {
+    font-size: clamp(0.75rem, 1.042vw, 1.25rem);
+  }
 
   .message-list-container {
     padding-inline: clamp(3rem, 7.8125vw, 9.375rem) !important;
@@ -2291,20 +2666,34 @@
 
   .message-card:nth-child(3n + 2) {
     /* Keep the center post-it visibly lower than the left and right columns. */
-    transform: translateY(calc(var(--message-card-gap) * 1.5));
+    transform: translateY(calc(var(--message-card-gap) * 3.3));
   }
 
-  .message-card__copy { gap: clamp(1rem, 1.302vw, 1.5625rem); }
+  .message-card__copy {
+    gap: clamp(1rem, 1.302vw, 1.5625rem);
+  }
   .message-card__to,
-  .message-card__from { font-size: clamp(1rem, 1.042vw, 1.25rem); }
-  .message-card__body { font-size: clamp(1.25rem, 1.4583vw, 1.75rem); }
+  .message-card__from {
+    font-size: clamp(1rem, 1.042vw, 1.25rem);
+  }
+  .message-card__body {
+    font-size: clamp(1.25rem, 1.4583vw, 1.75rem);
+  }
 }
 
 @media (min-width: 601px) and (max-width: 63.75rem) {
-  .message-page__intro { height: clamp(51rem, calc(76.3vw + 15.25rem), 64.5rem); }
-  .message-list-container { padding-inline: clamp(3rem, 7.8125vw, 5rem) !important; }
-  .message-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .message-card:nth-child(3n + 2) { transform: none; }
+  .message-page__intro {
+    height: clamp(51rem, calc(76.3vw + 15.25rem), 64.5rem);
+  }
+  .message-list-container {
+    padding-inline: clamp(3rem, 7.8125vw, 5rem) !important;
+  }
+  .message-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
 }
 
 /*
@@ -2328,7 +2717,11 @@
 /* Continue the web artwork from the 1350px scene instead of resetting it. */
 @media (min-width: 84.4375rem) {
   .message-page {
-    --message-web-decor-height: clamp(92.8125rem, calc(77.15vw + 27.67rem), 120.25rem);
+    --message-web-decor-height: clamp(
+      92.8125rem,
+      calc(77.15vw + 27.67rem),
+      120.25rem
+    );
   }
 
   .message-page__intro {
@@ -2343,17 +2736,32 @@
 }
 
 @media (max-width: 600px) {
-  .message-page__intro { height: clamp(29.547rem, calc(88.12vw + 7.52rem), 40.5625rem); }
-  .message-page__decor { top: -5.5vw; width: 100vw; height: calc(90vw + 9.5625rem); }
+  .message-page__intro {
+    height: clamp(29.547rem, calc(88.12vw + 7.52rem), 40.5625rem);
+  }
+  .message-page__decor {
+    top: -5.5vw;
+    width: 100vw;
+    height: calc(90vw + 9.5625rem);
+  }
   .message-page__frame--compact {
     top: calc(14.5vw + 0.25rem);
     width: calc(54.4vw + 9.9rem);
     height: auto;
     aspect-ratio: 484.781 / 277;
   }
-  .message-form { width: 100%; height: calc(55.5vw + 7.1875rem); }
-  .message-form__field--to span { top: 28.54%; left: 15.8%; }
-  .message-form__field--from span { top: 28.54%; left: 45.36%; }
+  .message-form {
+    width: 100%;
+    height: calc(55.5vw + 7.1875rem);
+  }
+  .message-form__field--to span {
+    top: 28.54%;
+    left: 15.8%;
+  }
+  .message-form__field--from span {
+    top: 28.54%;
+    left: 45.36%;
+  }
   .message-form__field input,
   .message-form__recipient-trigger {
     top: 28.13%;
@@ -2362,21 +2770,64 @@
     font-size: 0.75rem;
   }
   .message-form__field--to input,
-  .message-form__recipient-trigger { left: 21.84%; width: 14.67%; }
-  .message-form__field--from input { left: 56.18%; width: 14.67%; }
-  .message-form__body { top: 39.51%; left: 15.84%; width: 68.17%; height: 33.93%; }
-  .message-form__body textarea { padding: clamp(0.5rem, 1.83vw, 0.6875rem); font-size: 0.75rem; }
-  .message-form__body button { top: 72.37%; right: 4.49%; width: 17.5%; height: 18.7%; min-height: 1.37775rem; font-size: 0.75rem; }
-  .message-form__recipient-menu { top: 35.8%; left: 21.84%; width: 14.67%; }
-  .message-form__recipient-menu li { height: 1.875rem; }
-  .message-form__recipient-menu button { font-size: 0.75rem; }
-  .message-list-container { padding-inline: clamp(1rem, 7.33vw, 2.75rem) !important; }
-  .message-list { width: min(32rem, 100%); gap: clamp(1.125rem, 5.336vw, 2rem); }
-  .message-card { padding: clamp(0.9375rem, 2.833vw, 1.0625rem) clamp(1.25rem, 4.667vw, 1.75rem); }
-  .message-card__copy { gap: clamp(0.5625rem, 2.021vw, 0.758rem); }
+  .message-form__recipient-trigger {
+    left: 21.84%;
+    width: 14.67%;
+  }
+  .message-form__field--from input {
+    left: 56.18%;
+    width: 14.67%;
+  }
+  .message-form__body {
+    top: 39.51%;
+    left: 15.84%;
+    width: 68.17%;
+    height: 33.93%;
+  }
+  .message-form__body textarea {
+    padding: clamp(0.5rem, 1.83vw, 0.6875rem);
+    font-size: 0.75rem;
+  }
+  .message-form__body button {
+    top: 72.37%;
+    right: 4.49%;
+    width: 17.5%;
+    height: 18.7%;
+    min-height: 1.37775rem;
+    font-size: 0.75rem;
+  }
+  .message-form__recipient-menu {
+    top: 35.8%;
+    left: 21.84%;
+    width: 14.67%;
+  }
+  .message-form__recipient-menu li {
+    height: 1.875rem;
+  }
+  .message-form__recipient-menu button {
+    font-size: 0.75rem;
+  }
+  .message-list-container {
+    padding-inline: clamp(1rem, 7.33vw, 2.75rem) !important;
+  }
+  .message-list {
+    width: min(32rem, 100%);
+    gap: clamp(1.125rem, 5.336vw, 2rem);
+  }
+  .message-card {
+    padding: clamp(0.9375rem, 2.833vw, 1.0625rem)
+      clamp(1.25rem, 4.667vw, 1.75rem);
+  }
+  .message-card__copy {
+    gap: clamp(0.5625rem, 2.021vw, 0.758rem);
+  }
   .message-card__to,
-  .message-card__from { font-size: 0.75rem; }
-  .message-card__body { font-size: clamp(0.75rem, 2.333vw, 0.875rem); }
+  .message-card__from {
+    font-size: 0.75rem;
+  }
+  .message-card__body {
+    font-size: clamp(0.75rem, 2.333vw, 0.875rem);
+  }
 }
 
 /* Keep the compact cards readable without forcing their copy beyond the edge. */
@@ -2401,7 +2852,9 @@
     word-break: keep-all;
   }
 
-  .message-card__body p { min-width: 0; }
+  .message-card__body p {
+    min-width: 0;
+  }
 
   .message-form__body textarea {
     font-size: clamp(0.625rem, 2.667vw, 1rem);
