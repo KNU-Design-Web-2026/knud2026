@@ -27,6 +27,8 @@ test("Profile 카드는 고정 셀 안에서 hover 정보와 확대 상태를 �
   assert.match(profileCard, /member\.nameEn/);
   assert.match(profileMembers, /nameKo:/);
   assert.match(profileMembers, /nameEn:/);
+  assert.match(profileMembers, /공예원/);
+  assert.match(profileMembers, /현연이/);
 });
 
 test("Profile Web hover 이미지는 프레임의 안쪽 경계까지 확대된다", () => {
