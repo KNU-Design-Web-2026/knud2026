@@ -21,13 +21,27 @@ type SprayParticle = {
   y: number;
 };
 
+type SprayEdgePoint = {
+  x: number;
+  y: number;
+};
+
+type SprayDrip = {
+  bend: number;
+  length: number;
+  offsetX: number;
+  tipRadius: number;
+  width: number;
+};
+
 type SprayStamp = Point & {
   bodyHeight: number;
   bodyWidth: number;
   color: string;
   createdAt: number;
   direction: number;
-  drip: { bend: number; length: number; offsetX: number; width: number } | null;
+  drip: SprayDrip | null;
+  edgePoints: SprayEdgePoint[];
   particles: SprayParticle[];
 };
 
@@ -40,19 +54,29 @@ function createStamp(
   const particles: SprayParticle[] = [];
   const bodyWidth = (32 + Math.random() * 18) * SPRAY_SCALE;
   const bodyHeight = (7 + Math.random() * 5) * SPRAY_SCALE;
+  const edgePoints: SprayEdgePoint[] = Array.from({ length: 20 }, (_, index) => {
+    const angle = (index / 20) * Math.PI * 2;
+    const edgeJitter = 0.72 + Math.random() * 0.48;
+    const tooth = index % 3 === 0 ? 1.14 : 1;
 
-  for (let index = 0; index < 64; index += 1) {
-    const isOverspray = index >= 46;
-    const localX = (Math.random() - 0.5) * (isOverspray ? 106 : 66) * SPRAY_SCALE;
-    const localY = (Math.random() - 0.5) * (isOverspray ? 48 : 26) * SPRAY_SCALE;
+    return {
+      x: Math.cos(angle) * bodyWidth * edgeJitter * tooth,
+      y: Math.sin(angle) * bodyHeight * edgeJitter,
+    };
+  });
+
+  for (let index = 0; index < 82; index += 1) {
+    const isOverspray = index >= 52;
+    const localX = (Math.random() - 0.5) * (isOverspray ? 118 : 72) * SPRAY_SCALE;
+    const localY = (Math.random() - 0.5) * (isOverspray ? 56 : 30) * SPRAY_SCALE;
     const cosine = Math.cos(direction);
     const sine = Math.sin(direction);
 
     particles.push({
       x: localX * cosine - localY * sine,
       y: localX * sine + localY * cosine,
-      radius: (isOverspray ? 0.6 + Math.random() * 1.5 : 0.95 + Math.random() * 2.4) * SPRAY_SCALE,
-      alpha: isOverspray ? 0.1 + Math.random() * 0.24 : 0.32 + Math.random() * 0.48,
+      radius: (isOverspray ? 0.35 + Math.random() * 1.35 : 0.7 + Math.random() * 2.8) * SPRAY_SCALE,
+      alpha: isOverspray ? 0.08 + Math.random() * 0.3 : 0.28 + Math.random() * 0.58,
     });
   }
 
@@ -63,14 +87,16 @@ function createStamp(
     color,
     createdAt,
     direction,
-    drip: Math.random() < 0.045
+    drip: Math.random() < 0.075
       ? {
-          bend: (Math.random() - 0.5) * 1.5,
+          bend: (Math.random() - 0.5) * 14 * SPRAY_SCALE,
           offsetX: (Math.random() - 0.5) * bodyWidth,
-          length: (30 + Math.random() * 48) * SPRAY_SCALE,
-          width: (2 + Math.random() * 3) * SPRAY_SCALE,
+          length: (24 + Math.random() * 52) * SPRAY_SCALE,
+          tipRadius: (1.5 + Math.random() * 3.5) * SPRAY_SCALE,
+          width: (1.5 + Math.random() * 3.5) * SPRAY_SCALE,
         }
       : null,
+    edgePoints,
     particles,
   };
 }
@@ -134,9 +160,17 @@ export function SprayCanvas() {
         context.save();
         context.translate(stamp.x, stamp.y);
         context.rotate(stamp.direction);
-        context.globalAlpha = 0.24 * fade;
+        context.globalAlpha = 0.3 * fade;
         context.beginPath();
-        context.ellipse(0, 0, stamp.bodyWidth, stamp.bodyHeight, 0, 0, Math.PI * 2);
+        stamp.edgePoints.forEach((edgePoint, index) => {
+          if (index === 0) {
+            context.moveTo(edgePoint.x, edgePoint.y);
+            return;
+          }
+
+          context.lineTo(edgePoint.x, edgePoint.y);
+        });
+        context.closePath();
         context.fill();
         context.restore();
 
@@ -154,16 +188,27 @@ export function SprayCanvas() {
         }
 
         if (stamp.drip) {
-          context.globalAlpha = 0.62 * fade;
-          context.lineCap = "round";
-          context.lineWidth = stamp.drip.width;
+          const startX = stamp.x + stamp.drip.offsetX;
+          const startY = stamp.y + stamp.bodyHeight * 0.45;
+          const middleX = startX + stamp.drip.bend * 0.38;
+          const middleY = startY + stamp.drip.length * 0.46;
+          const endX = startX + stamp.drip.bend;
+          const endY = startY + stamp.drip.length;
+
+          context.save();
+          context.globalAlpha = 0.68 * fade;
+          context.lineJoin = "miter";
           context.beginPath();
-          context.moveTo(stamp.x + stamp.drip.offsetX, stamp.y + stamp.bodyHeight * 0.5);
-          context.lineTo(
-            stamp.x + stamp.drip.offsetX + stamp.drip.bend,
-            stamp.y + stamp.bodyHeight * 0.5 + stamp.drip.length,
-          );
-          context.stroke();
+          context.moveTo(startX - stamp.drip.width * 0.55, startY);
+          context.lineTo(middleX - stamp.drip.width * 0.4, middleY);
+          context.lineTo(endX - stamp.drip.tipRadius * 0.15, endY - stamp.drip.tipRadius);
+          context.lineTo(endX + stamp.drip.tipRadius, endY);
+          context.lineTo(endX - stamp.drip.tipRadius * 0.7, endY + stamp.drip.tipRadius * 0.35);
+          context.lineTo(middleX + stamp.drip.width * 0.52, middleY + stamp.drip.width * 0.4);
+          context.lineTo(startX + stamp.drip.width * 0.72, startY);
+          context.closePath();
+          context.fill();
+          context.restore();
         }
       }
 
