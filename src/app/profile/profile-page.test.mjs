@@ -31,6 +31,13 @@ test("Profile 카드는 고정 셀 안에서 hover 정보와 확대 상태를 �
   assert.match(profileMembers, /현연이/);
 });
 
+test("Profile 영문 이름은 이름 다음에 성을 표시한다", () => {
+  const profileMembers = readFileSync(profileMembersPath, "utf8");
+
+  assert.match(profileMembers, /\["이서윤", "Seoyun Lee"\]/);
+  assert.doesNotMatch(profileMembers, /\["이서윤", "Lee Seoyun"\]/);
+});
+
 test("Profile Web hover 이미지는 프레임의 안쪽 경계까지 확대된다", () => {
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
