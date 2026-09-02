@@ -72,7 +72,7 @@ export function SiteCursor() {
         alt=""
         fill
         priority
-        sizes="116px"
+        sizes="34px"
         src="/assets/figma/cursor-default.png"
       />
     </div>
