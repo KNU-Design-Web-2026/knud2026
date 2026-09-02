@@ -22,7 +22,9 @@ export function WorkCard({ item }: WorkCardProps) {
         <h2 className="work-card__title">{item.title}</h2>
         <div className="work-card__artists">
           <p className="work-card__artist-ko">{item.artistKo}</p>
-          <p>{item.artistEn}</p>
+          <p className="work-card__artist-en work-card__artist-en--web">{item.artistEn}</p>
+          <p className="work-card__artist-en work-card__artist-en--tab">{item.artistEnTab}</p>
+          <p className="work-card__artist-en work-card__artist-en--mobile">{item.artistEnMobile}</p>
         </div>
       </div>
     </Link>

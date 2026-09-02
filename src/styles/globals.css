@@ -388,8 +388,25 @@
   font-weight: 700;
 }
 
+.work-card__artist-en--tab,
+.work-card__artist-en--mobile,
+.work-detail__artist-en--tab,
+.work-detail__artist-en--mobile {
+  display: none;
+}
+
 /* Figma 1157:29969 — Web > Tab (1350px). */
 @media (max-width: 84.375rem) {
+  .work-card__artist-en--web,
+  .work-detail__artist-en--web {
+    display: none;
+  }
+
+  .work-card__artist-en--tab,
+  .work-detail__artist-en--tab {
+    display: inline;
+  }
+
   .work-grid {
     column-gap: 1.1875rem;
     padding-inline: 3.125rem;
@@ -443,6 +460,16 @@
 
 /* Figma 1157:29747 — Tab > Mobile (600px). */
 @media (max-width: 37.5rem) {
+  .work-card__artist-en--tab,
+  .work-detail__artist-en--tab {
+    display: none;
+  }
+
+  .work-card__artist-en--mobile,
+  .work-detail__artist-en--mobile {
+    display: inline;
+  }
+
   .work-page {
     padding-top: 2.5rem;
   }

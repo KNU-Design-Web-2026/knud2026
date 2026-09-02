@@ -26,7 +26,12 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
             <p className="work-detail__category">{detail.category}</p>
             <div className="work-detail__title-group">
               <h1 id="work-detail-title">{detail.title}</h1>
-              <p>{detail.artistKo} &nbsp;{detail.artistEn}</p>
+              <p>
+                {detail.artistKo} &nbsp;
+                <span className="work-detail__artist-en work-detail__artist-en--web">{detail.artistEn}</span>
+                <span className="work-detail__artist-en work-detail__artist-en--tab">{detail.artistEnTab}</span>
+                <span className="work-detail__artist-en work-detail__artist-en--mobile">{detail.artistEnMobile}</span>
+              </p>
             </div>
           </header>
 

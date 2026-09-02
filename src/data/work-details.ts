@@ -2,6 +2,8 @@ import { WORK_ITEMS } from "@/data/work-items";
 
 export type WorkDetail = {
   artistEn: string;
+  artistEnMobile: string;
+  artistEnTab: string;
   artistKo: string;
   category: string;
   email: string;
@@ -12,7 +14,7 @@ export type WorkDetail = {
   title: string;
 };
 
-const FIGMA_WORK_DETAIL: Omit<WorkDetail, "artistEn" | "artistKo"> = {
+const FIGMA_WORK_DETAIL: Omit<WorkDetail, "artistEn" | "artistEnMobile" | "artistEnTab" | "artistKo"> = {
   category: "UI/UX",
   email: "leeseoyun0561@naver.com",
   heroSrc: "/assets/figma/work/work-detail-hero.png",
@@ -30,6 +32,8 @@ export const WORK_DETAILS: Readonly<Record<string, WorkDetail>> = Object.fromEnt
     {
       ...FIGMA_WORK_DETAIL,
       artistEn: item.id === 1 ? "Seoyun Lee" : item.artistEn,
+      artistEnMobile: item.id === 1 ? "Seoyun Lee" : item.artistEnMobile,
+      artistEnTab: item.id === 1 ? "Seoyun Lee" : item.artistEnTab,
       artistKo: item.id === 1 ? "이서윤" : item.artistKo,
     },
   ]),

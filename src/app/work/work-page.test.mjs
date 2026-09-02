@@ -98,6 +98,30 @@ test("Work 카드는 각 작품의 상세 경로로 이동한다", () => {
   assert.match(card, /href=\{`\/work\/\$\{item\.id\}`\}/);
 });
 
+test("박규리·이다혜 작품 작가명은 화면 폭별 표기 규칙을 사용한다", () => {
+  const items = readFileSync(workItemsPath, "utf8");
+  const card = readFileSync(workCardPath, "utf8");
+  const styles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(items, /규리 박 & 다혜 이/);
+  assert.match(items, /artistEnTab: index === 8 \? "PKR & LDH"/);
+  assert.match(items, /artistEnMobile: index === 8 \? "KR & DH"/);
+  assert.match(card, /work-card__artist-en--web/);
+  assert.match(card, /work-card__artist-en--tab/);
+  assert.match(card, /work-card__artist-en--mobile/);
+  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-card__artist-en--web,[\s\S]*?\.work-card__artist-en--tab/);
+  assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-card__artist-en--tab,[\s\S]*?\.work-card__artist-en--mobile/);
+});
+
+test("Work 작가명은 프로필의 한국어·영문 매칭 데이터를 재사용한다", () => {
+  const items = readFileSync(workItemsPath, "utf8");
+
+  assert.match(items, /from "@\/data\/profile-members"/);
+  assert.match(items, /PROFILE_MEMBERS/);
+  assert.match(items, /PROFILE_ENGLISH_BY_KOREAN/);
+  assert.match(items, /matchArtistEnglishName/);
+});
+
 test("Work 상세 경로는 Figma Web 상세 데이터와 화면을 사용한다", () => {
   assert.equal(existsSync(workDetailRoutePath), true);
   assert.equal(existsSync(workDetailPagePath), true);
