@@ -69,7 +69,7 @@ function ExhibitionInformation() {
 
 export function AboutPage() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-about-page>
       <section className={styles.introSection}>
         <div className={styles.introWide} data-about-reveal="scale">
           <div className={styles.introWideInner}>
@@ -103,7 +103,7 @@ export function AboutPage() {
           <div className={styles.professorsPanel} data-about-reveal="rise">
             <picture className={styles.panelPaper}>
               <source media="(max-width: 400px)" srcSet="/assets/figma/about/professors-wave-mobile.svg" />
-              <source media="(max-width: 600px)" srcSet="/assets/figma/about/professors-wave-tab-mobile.svg" />
+              <source media="(max-width: 821px)" srcSet="/assets/figma/about/professors-wave-tab-mobile.svg" />
               <img alt="" src="/assets/figma/about/professors-wave.svg" />
             </picture>
             <div className={styles.professorsGrid}>
@@ -114,7 +114,24 @@ export function AboutPage() {
                 </div>
               ))}
             </div>
-            <Image alt="" aria-hidden className={styles.professorsLion} height={895} src="/assets/figma/about/professors-lion-transparent.png" unoptimized width={657} />
+            <Image
+              alt=""
+              aria-hidden
+              className={`${styles.professorsLion} ${styles.professorsLionWide}`}
+              height={895}
+              src="/assets/figma/about/professors-lion-transparent.png"
+              unoptimized
+              width={657}
+            />
+            <Image
+              alt=""
+              aria-hidden
+              className={`${styles.professorsLion} ${styles.professorsLionNarrow}`}
+              height={216}
+              src="/assets/figma/about/professors-lion-tab-mobile.svg"
+              unoptimized
+              width={225}
+            />
           </div>
         </section>
 
@@ -123,13 +140,16 @@ export function AboutPage() {
           <div className={styles.committeePanel} data-about-reveal="rise">
             <picture className={styles.panelPaper}>
               <source media="(max-width: 400px)" srcSet="/assets/figma/about/committee-wave-mobile.svg" />
-              <source media="(max-width: 600px)" srcSet="/assets/figma/about/committee-wave-tab-mobile.svg" />
+              <source media="(max-width: 821px)" srcSet="/assets/figma/about/committee-wave-tab-mobile.svg" />
               <img alt="" src="/assets/figma/about/committee-wave.svg" />
             </picture>
             <div className={styles.committeeInformation}>
               <div className={styles.committeeChairs}>
                 <strong>졸업준비 위원회</strong>
-                <span>윤이지 김가연</span>
+                <span className={styles.chairNames}>
+                  <span>윤이지</span>
+                  <span>김가연</span>
+                </span>
               </div>
               <div className={styles.committeeTeams}>
                 {committee.map(([role, members]) => (

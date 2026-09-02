@@ -5,11 +5,40 @@
   background: #f1f1f1;
 }
 
+/*
+ * The About page keeps the <=600px composition through the tablet handoff.
+ * These tokens affect the header/footer spacer as well, so the page does not
+ * jump vertically when the general site token switches at 600px.
+ */
+@media (min-width: 37.5rem) and (max-width: 51.3125rem) {
+  :global(body:has([data-about-page])) {
+    --page-gutter: 1.25rem;
+    --header-height: 5rem;
+    --header-logo-width: 5rem;
+    --header-logo-height: 2.9375rem;
+    --header-brand-gap: 1.125rem;
+    --header-title-size: 0.875rem;
+    --header-menu-size: 3rem;
+    --footer-height: 12.5rem;
+    --footer-padding-y: 2.25rem;
+    --footer-logo-width: 2.476rem;
+    --footer-logo-height: 2.577rem;
+    --footer-brand-gap: 1rem;
+    --footer-content-gap: 1rem;
+    --footer-font-size: 0.75rem;
+  }
+}
+
 .introSection {
   position: relative;
   height: 1216px;
   overflow: hidden;
-  background: linear-gradient(180deg, #06affd 0%, #06affd 45.941%, #f1f1f1 100%);
+  background: linear-gradient(
+    180deg,
+    #06affd 0%,
+    #06affd 45.941%,
+    #f1f1f1 100%
+  );
 }
 
 .introWide {
@@ -178,6 +207,10 @@
   letter-spacing: -0.002em;
 }
 
+.professorsGrid > div {
+  min-width: 0;
+}
+
 .professorsGrid p,
 .committeeInformation span {
   word-break: keep-all;
@@ -194,11 +227,15 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: -69px;
-  left: 842px;
-  width: 657px;
-  height: 895px;
+  bottom: 3.51%;
+  left: 63.544%;
+  width: 36.456%;
+  height: auto;
   object-fit: contain;
+}
+
+.professorsLionNarrow {
+  display: none;
 }
 
 .committeeSection {
@@ -245,9 +282,14 @@
 }
 
 .committeeChairs {
-  grid-template-columns: 211px 63px;
+  grid-template-columns: 1fr auto;
   align-content: start;
   row-gap: 30px;
+}
+
+.chairNames {
+  display: grid;
+  row-gap: 18px;
 }
 
 .committeeTeams {
@@ -255,7 +297,7 @@
 }
 
 .committeeTeams > div {
-  grid-template-columns: 194px minmax(0, 1fr);
+  grid-template-columns: 224px minmax(0, 1fr);
 }
 
 .committeeInformation strong {
@@ -265,8 +307,8 @@
 .committeeIllustration {
   position: absolute;
   z-index: 1;
-  bottom: -29px;
-  left: 30px;
+  bottom: 10px;
+  left: 70px;
   width: 527px;
   height: 326px;
   object-fit: contain;
@@ -319,8 +361,8 @@
 
   .offlineWide {
     top: calc(-91.737px + 19.46vw);
-    left: calc(-102.632px + 9.211vw);
-    width: calc(366.316px + 65.789vw);
+    left: calc(-5.842px + 4.211vw);
+    width: calc(366.947px + 65.263vw);
     height: auto;
   }
 
@@ -358,14 +400,6 @@
     font-size: calc(18.53px + 0.702vw);
   }
 
-  .professorsLion {
-    right: auto;
-    bottom: calc(59px - 6.667vw);
-    left: calc(488.3px + 18.421vw);
-    width: calc(-222.15px + 45.789vw);
-    height: auto;
-  }
-
   .committeeSection {
     height: calc(189.95px + 38.596vw);
     margin-top: calc(52.1px + 9.474vw);
@@ -387,21 +421,29 @@
   }
 
   .committeeInformation {
-    width: calc(1018.95px - 1.404vw);
-    margin-left: calc(-220px + 26.667vw);
+    width: calc(796.632px + 10.175vw);
+    margin-left: calc(231.368px + 3.158vw);
     padding-top: calc(69.74px + 6.316vw);
-    grid-template-columns: calc(159.47px + 5.965vw) minmax(0, 1fr);
-    column-gap: calc(-13.42px + 5.439vw);
-    font-size: calc(3.79px + 1.053vw);
+    grid-template-columns: calc(71.895px + 10.526vw) minmax(0, 1fr);
+    column-gap: calc(114.579px - 1.228vw);
+    font-size: calc(17.263px + 0.351vw);
+  }
+
+  .chairNames {
+    row-gap: calc(4.526px + 0.702vw);
+  }
+
+  .committeeTeams {
+    row-gap: calc(-3.684px + 1.754vw);
   }
 
   .committeeTeams > div {
-    grid-template-columns: calc(96.3px + 5.088vw) minmax(0, 1fr);
+    grid-template-columns: calc(38.737px + 9.649vw) minmax(0, 1fr);
   }
 
   .committeeIllustration {
-    bottom: calc(35px - 3.333vw);
-    left: calc(131.05px - 5.263vw);
+    bottom: calc(43.684px - 1.754vw);
+    left: calc(137.368px - 3.509vw);
     width: calc(55.44px + 24.561vw);
     height: auto;
   }
@@ -412,23 +454,23 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1350px) {
+@media (min-width: 822px) and (max-width: 1350px) {
   .introSection {
-    height: clamp(776px, calc(-296.909px + 105.294vw), 1123px);
+    height: calc(-296.909px + 105.294vw);
   }
 
   .introWide {
-    top: clamp(105px, calc(-18.636px + 12.121vw), 145px);
-    width: clamp(902px, calc(-37.636px + 92.121vw), 1206px);
-    height: clamp(566px, calc(-39.818px + 59.394vw), 762px);
-    padding: clamp(19.449px, calc(-0.793px + 1.984vw), 26px);
-    border-width: clamp(7.48px, calc(-0.309px + 0.764vw), 10px);
+    top: calc(-18.636px + 12.121vw);
+    width: calc(-37.636px + 92.121vw);
+    height: calc(-39.818px + 59.394vw);
+    padding: calc(-0.793px + 1.984vw);
+    border-width: calc(-0.309px + 0.764vw);
   }
 
   .introWideInner {
-    grid-template-columns: clamp(245px, calc(-12.182px + 33.03vw), 434px) minmax(0, 1fr);
-    padding: clamp(24px, calc(-18.273px + 4.727vw), 40px) clamp(28px, calc(-1.455px + 4.545vw), 47px);
-    gap: clamp(32px, calc(-1.455px + 4.545vw), 60px);
+    grid-template-columns: calc(-12.182px + 33.03vw) minmax(0, 1fr);
+    padding: calc(-18.273px + 4.727vw) calc(-1.455px + 4.545vw);
+    gap: calc(-1.455px + 4.545vw);
   }
 
   .posterWide {
@@ -438,7 +480,7 @@
   }
 
   .introductionBody h1 {
-    font-size: clamp(20px, calc(-0.727px + 2.424vw), 32px);
+    font-size: clamp(18px, calc(-0.727px + 2.424vw), 32px);
   }
 
   .introductionParagraphs {
@@ -472,9 +514,12 @@
   }
 
   .offlineWide {
+    --offline-side: clamp(38px, 4.902vw, 51px);
+
     top: clamp(129px, calc(-0.818px + 12.727vw), 171px);
-    left: clamp(50px, calc(46.909px + 0.303vw), 51px);
-    width: clamp(920px, calc(-94.545px + 99.455vw), 1248px);
+    left: var(--offline-side);
+    width: calc(100vw - var(--offline-side) - var(--offline-side));
+    max-width: none;
     height: auto;
   }
 
@@ -488,6 +533,9 @@
   }
 
   .professorsPanel {
+    --professors-grid-width: clamp(430px, calc(108.182px + 31.515vw), 534px);
+    --professors-grid-left: clamp(80px, calc(-250.909px + 32.424vw), 187px);
+
     width: clamp(849px, calc(-4.273px + 83.636vw), 1123px);
     height: clamp(361px, calc(1.909px + 35.152vw), 477px);
     margin-top: 34px;
@@ -500,8 +548,8 @@
   }
 
   .professorsGrid {
-    width: clamp(430px, calc(108.182px + 31.515vw), 534px);
-    margin-left: clamp(80px, calc(-250.909px + 32.424vw), 187px);
+    width: var(--professors-grid-width);
+    margin-left: var(--professors-grid-left);
     padding-top: clamp(88px, calc(-60.364px + 14.545vw), 136px);
     column-gap: clamp(35px, calc(-51.364px + 8.485vw), 63px);
     row-gap: clamp(30px, calc(-8.182px + 4.545vw), 53px);
@@ -513,12 +561,15 @@
     font-size: clamp(20px, calc(-4.727px + 2.424vw), 28px);
   }
 
-  .professorsLion {
-    right: clamp(-20px, calc(-51px + 3.03vw), -10px);
-    bottom: clamp(-40px, calc(-67.818px + 2.727vw), -31px);
-    left: auto;
-    width: clamp(299px, calc(-0.273px + 29.333vw), 396px);
-    height: auto;
+  .professorsLionWide {
+    /* Keep the artwork clear of the second professor column as the panel scales. */
+    left: max(
+      63.544%,
+      calc(
+        var(--professors-grid-left) + var(--professors-grid-width) +
+          clamp(18px, calc(6.364px + 1.176vw), 24px)
+      )
+    );
   }
 
   .committeeSection {
@@ -542,30 +593,38 @@
   }
 
   .committeeInformation {
-    width: clamp(750px, calc(-23.636px + 75.758vw), 1000px);
-    margin-left: clamp(90px, calc(-64.545px + 15.152vw), 140px);
-    padding-top: clamp(105px, calc(-49.545px + 15.152vw), 155px);
-    grid-template-columns: clamp(190px, calc(35.455px + 15.152vw), 240px) minmax(0, 1fr);
-    column-gap: clamp(35px, calc(-42.273px + 7.576vw), 60px);
-    font-size: clamp(14px, calc(1.636px + 1.212vw), 18px);
+    --committee-info-left: calc(-58.366px + 24.62vw);
+
+    width: calc(64.547px + 64.404vw);
+    margin-left: var(--committee-info-left);
+    padding-top: 11.482vw;
+    grid-template-columns: calc(35.726px + 13.205vw) minmax(0, 1fr);
+    column-gap: calc(-0.002px + 7.259vw);
+    font-size: calc(5.636px + 1.212vw);
   }
 
   .committeeChairs {
-    grid-template-columns: minmax(130px, 1fr) auto;
+    grid-template-columns: 1fr auto;
     row-gap: 22px;
   }
 
+  .chairNames {
+    row-gap: 14px;
+    font-size: 1.63vw;
+  }
+
   .committeeTeams {
-    row-gap: clamp(18px, calc(-6.727px + 2.424vw), 26px);
+    row-gap: clamp(15px, 1.482vw, 20px);
   }
 
   .committeeTeams > div {
-    grid-template-columns: clamp(125px, calc(1.364px + 12.121vw), 165px) minmax(0, 1fr);
+    grid-template-columns: calc(29.909px + 10.303vw) minmax(0, 1fr);
   }
 
   .committeeIllustration {
-    bottom: -10px;
-    left: clamp(35px, calc(-42.273px + 7.576vw), 60px);
+    /* Match the desktop composition: artwork sits inside the blue paper's lower-left space. */
+    bottom: clamp(12px, 2vw, 20px);
+    left: clamp(35px, calc(-50.4px + 10.4vw), 90px);
     width: clamp(292px, calc(-1.455px + 28.788vw), 387px);
     height: auto;
   }
@@ -576,7 +635,28 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 822px) and (max-width: 1020px) {
+  .introductionBody h1 {
+    font-size: calc(-8.51px + 3.187vw);
+  }
+
+  .introductionParagraphs {
+    margin-top: calc(-2.255px + 1.594vw);
+    font-size: calc(-6.348px + 2.191vw);
+  }
+
+  .introductionParagraphs p + p {
+    margin-top: calc(3.872px + 0.797vw);
+  }
+
+  .introductionCopy a {
+    margin-top: calc(-4.382px + 2.39vw);
+    font-size: calc(-0.227px + 1.395vw);
+  }
+}
+
+/* Keep the mobile composition through the 770px transition range. */
+@media (max-width: 821px) {
   .introSection {
     height: clamp(1167px, calc(1027px + 35vw), 1237px);
   }
@@ -620,7 +700,8 @@
   .introNarrowInner {
     width: 100%;
     height: 100%;
-    padding: clamp(24px, calc(22px + 1vw), 28px) clamp(12px, calc(-8px + 5vw), 22px);
+    padding: clamp(24px, calc(22px + 1vw), 28px)
+      clamp(12px, calc(-8px + 5vw), 22px);
     background: #fff;
   }
 
@@ -658,7 +739,7 @@
   .offlineSection h2,
   .professorsSection h2,
   .committeeSection h2 {
-    font-size: clamp(28px, calc(20px + 2vw), 32px);
+    font-size: clamp(22px, calc(2px + 5vw), 32px);
   }
 
   .offlineSection h2 {
@@ -728,63 +809,70 @@
   }
 
   .professorsSection {
-    width: clamp(398px, calc(66px + 83vw), 564px);
-    height: clamp(404px, calc(392px + 3vw), 410px);
+    /* Keep scaling through 821px; only the mobile minimum is constrained. */
+    width: max(398px, calc(66px + 83vw));
+    height: max(302px, calc(86px + 54vw));
     margin: clamp(100px, calc(160px - 10vw), 120px) auto 0;
   }
 
   .professorsSection h2 {
-    margin-left: clamp(10px, 3.333vw, 20px);
+    margin-left: clamp(14px, calc(2px + 3vw), 20px);
   }
 
   .professorsPanel {
     width: 100%;
-    height: 348px;
+    height: max(246px, calc(42px + 51vw));
     margin-top: 20px;
   }
 
   .professorsPanel .panelPaper {
     top: 0;
     width: 100%;
-    height: 348px;
+    height: 100%;
   }
 
   .professorsGrid {
-    width: clamp(242px, calc(16px + 56.5vw), 355px);
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: clamp(64px, calc(48px + 4vw), 72px);
+    box-sizing: border-box;
+    width: 62.943%;
+    margin-left: 10.993%;
+    margin-right: 0;
+    padding: clamp(51px, calc(9px + 10.5vw), 72px) 10px 0;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: space-between;
-    column-gap: clamp(31px, calc(124px - 15.5vw), 62px);
-    row-gap: clamp(36px, calc(12px + 6vw), 48px);
-    font-size: 14px;
+    column-gap: clamp(22px, calc(4px + 4.5vw), 31px);
+    row-gap: clamp(34px, calc(6px + 7vw), 48px);
+    font-size: clamp(10px, calc(2px + 2vw), 14px);
   }
 
   .professorsGrid strong {
-    margin-top: 12px;
-    font-size: 20px;
+    margin-top: clamp(8px, calc(0px + 2vw), 12px);
+    font-size: clamp(14px, calc(2px + 3vw), 20px);
   }
 
-  .professorsLion {
-    right: clamp(-2px, calc(28px - 5vw), 8px);
-    bottom: clamp(-9px, calc(-1px - 2vw), -5px);
+  .professorsLionWide {
+    display: none;
+  }
+
+  .professorsLionNarrow {
+    display: block;
+    /* Keep the lion on the lower-right paper edge, with its feet outside the panel. */
+    right: clamp(-9px, calc(15px - 4vw), -1px);
+    bottom: clamp(-52px, calc(1px - 8.833vw), -34px);
     left: auto;
-    width: clamp(144px, calc(-18px + 40.5vw), 225px);
+    width: clamp(144px, 37.5vw, 225px);
     height: auto;
-    transform: scaleY(0.7);
-    transform-origin: right bottom;
   }
 
   .committeeSection {
-    width: clamp(398px, calc(66px + 83vw), 564px);
-    height: clamp(693px, calc(669px + 6vw), 705px);
+    /* Match the professors panel: fluid mobile scaling continues to 821px. */
+    width: max(398px, calc(66px + 83vw));
+    height: max(497px, calc(81px + 104vw));
     margin: clamp(100px, calc(160px - 10vw), 120px) auto 0;
   }
 
   .committeeSection h2 {
     width: auto;
-    margin-left: clamp(10px, 3.333vw, 20px);
+    margin-left: clamp(14px, calc(2px + 3vw), 20px);
     align-items: flex-start;
     line-height: 1.3;
     text-align: left;
@@ -792,39 +880,43 @@
 
   .committeePanel {
     width: 100%;
-    height: 601px;
-    margin-top: 20px;
+    height: max(424px, calc(70px + 88.5vw));
+    margin-top: clamp(14px, calc(2px + 3vw), 20px);
     margin-left: 0;
   }
 
   .committeeInformation {
     display: flex;
-    width: clamp(309px, calc(119px + 47.5vw), 404px);
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: clamp(83px, calc(63px + 5vw), 93px);
+    width: clamp(276px, calc(46px + 57.5vw), 391px);
+    margin-left: clamp(66px, calc(10px + 14vw), 94px);
+    margin-right: 0;
+    padding-top: clamp(66px, calc(12px + 13.5vw), 93px);
     flex-direction: column;
-    gap: clamp(32px, calc(26px + 1.5vw), 35px);
-    font-size: 14px;
+    gap: clamp(25px, calc(5px + 5vw), 35px);
+    font-size: clamp(10px, calc(2px + 2vw), 14px);
   }
 
   .committeeChairs,
   .committeeTeams > div {
     display: grid;
-    grid-template-columns: clamp(126px, calc(98px + 7vw), 140px) minmax(0, 1fr);
-    column-gap: clamp(45px, calc(87px - 7vw), 59px);
+    grid-template-columns: clamp(158px, calc(26px + 33vw), 224px) minmax(0, 1fr);
+    column-gap: 0;
   }
 
   .committeeChairs {
     row-gap: 0;
   }
 
+  .chairNames {
+    row-gap: clamp(7px, calc(1px + 1.5vw), 10px);
+  }
+
   .committeeTeams {
-    row-gap: 32px;
+    row-gap: clamp(25px, calc(5px + 5vw), 35px);
   }
 
   .committeeInformation strong {
-    font-size: 20px;
+    font-size: clamp(14px, calc(2px + 3vw), 20px);
   }
 
   .committeeInformation span {
@@ -832,14 +924,57 @@
   }
 
   .committeeIllustration {
-    bottom: clamp(-12px, calc(-28px + 4vw), -4px);
-    left: clamp(33px, calc(-37px + 17.5vw), 68px);
-    width: clamp(165px, calc(33px + 33vw), 231px);
+    /* Reserve the lower-left panel edge for the illustration, below the last text row. */
+    bottom: clamp(-40px, calc(-8px - 9vw), -44px);
+    left: clamp(36px, calc(4px + 8vw), 52px);
+    width: clamp(170px, calc(28px + 35.5vw), 241px);
     height: auto;
   }
 
   .teamsSection {
     padding: clamp(62px, calc(-14px + 19vw), 100px) 0 clamp(80px, 20vw, 120px);
+  }
+}
+
+/*
+ * At the wider end of the mobile composition the blue professor panel was
+ * gaining empty vertical space too quickly. Keep the 600px measurements, but
+ * use a gentler fluid height curve until the 822px tablet handoff.
+ */
+@media (min-width: 600.0625px) and (max-width: 821px) {
+  .professorsSection {
+    height: calc(260.68px + 24.887vw);
+  }
+
+  .professorsPanel {
+    height: calc(149.69px + 33.052vw);
+  }
+}
+
+/*
+ * Remove the same lower whitespace that was previously between the final row
+ * and the illustration, so the blue paper itself closes up with the artwork.
+ */
+@media (min-width: 650px) and (max-width: 800px) {
+  .professorsSection {
+    height: calc(434.013px - 1.78vw);
+  }
+
+  .professorsPanel {
+    height: calc(323.023px + 6.385vw);
+  }
+
+  .professorsLionNarrow {
+    /* Keep the artwork clear of the lower-right professor name as the panel closes up. */
+    bottom: calc(121.333px - 26.667vw);
+  }
+
+  .committeeSection {
+    height: calc(661.667px + 14.667vw);
+  }
+
+  .committeePanel {
+    height: calc(647.417px - 0.333vw);
   }
 }
 
@@ -863,15 +998,5 @@
   .introNarrow .introductionParagraphs,
   .introNarrow .introductionCopy a {
     font-size: 13px;
-  }
-
-  .professorsGrid,
-  .committeeInformation {
-    font-size: 13px;
-  }
-
-  .committeeInformation strong,
-  .professorsGrid strong {
-    font-size: 18px;
   }
 }
