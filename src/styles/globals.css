@@ -1510,7 +1510,7 @@
 
 @media (max-width: 1350.1px) {
   .header-nav-link--active::after {
-    width: var(--header-nav-width);
+    width: var(--header-nav-item-width);
   }
 }
 
@@ -1522,8 +1522,8 @@
 .mobile-menu-trigger__icon {
   position: relative;
   display: block;
-  width: clamp(1.2890625rem, 4.9vw, 2.0625rem);
-  height: clamp(1rem, 3.56vw, 1.5rem);
+  width: clamp(1.2890625rem, calc(6.1875vw - 0.2578125rem), 2.0625rem);
+  height: clamp(1rem, 4vw, 1.5rem);
 }
 
 .mobile-menu-trigger__line {
@@ -1675,6 +1675,10 @@
 }
 
 @media (max-width: 400px) {
+  .mobile-menu-trigger {
+    padding-inline: 0;
+  }
+
   .mobile-menu-trigger__line {
     height: 0.09375rem;
   }

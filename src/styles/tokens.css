@@ -14,16 +14,17 @@
 }
 
 :root {
-  --page-gutter: 6.25rem;
+  --page-gutter: 9.375rem;
   --header-height: 8.75rem;
-  --header-logo-width: 7.1875rem;
-  --header-logo-height: 4.25rem;
-  --header-brand-gap: 1.25rem;
+  --header-logo-width: 8.125rem;
+  --header-logo-height: 4.75rem;
+  --header-brand-gap: 2.125rem;
   --header-title-size: 1.25rem;
   --header-title-tracking: -0.002em;
-  --header-nav-gap: 3.75rem;
-  --header-nav-container-width: 50.4375rem;
-  --header-nav-size: 2rem;
+  --header-nav-gap: 0;
+  --header-nav-item-width: 8.625rem;
+  --header-nav-container-width: calc(var(--header-nav-item-width) * 5);
+  --header-nav-size: 1.75rem;
   --header-nav-tracking: -0.002em;
   --header-nav-hover-size: 1.75rem;
   --header-menu-size: 3rem;
@@ -52,16 +53,16 @@
 
 @media (max-width: 84.375rem) {
   :root {
-    --page-gutter: clamp(1.25rem, 3.92vw, 3.125rem);
-    --header-height: clamp(5rem, calc(5.3333vw + 3rem), 7.5rem);
-    --header-logo-width: clamp(5rem, calc(2.6667vw + 4rem), 6.25rem);
-    --header-logo-height: clamp(2.9375rem, calc(1.8333vw + 2.25rem), 3.625rem);
+    --page-gutter: 3.125rem;
+    --header-height: 7.5rem;
+    --header-logo-width: 6.25rem;
+    --header-logo-height: 3.625rem;
     --header-brand-gap: 1.25rem;
-    --header-title-size: clamp(0.78125rem, calc(1vw + 0.40625rem), 1.25rem);
-    --header-menu-size: clamp(1.875rem, 7.5vw, 3rem);
-    --header-nav-gap: 0.5rem;
-    --header-nav-container-width: 38.875rem;
-    --header-nav-width: 7.375rem;
+    --header-title-size: 1.25rem;
+    --header-menu-size: 3rem;
+    --header-nav-gap: 0;
+    --header-nav-item-width: 7.375rem;
+    --header-nav-container-width: calc(var(--header-nav-item-width) * 5);
     --header-nav-size: 1.5rem;
     --main-hero-height: 57.7778vw;
     --footer-logo-width: 5rem;
@@ -84,20 +85,26 @@
 
 @media (min-width: 84.4375rem) and (max-width: 119.9375rem) {
   :root {
-    --page-gutter: clamp(3.125rem, calc(8.7719vw - 4.2763rem), 6.25rem);
+    --page-gutter: clamp(3.125rem, calc(17.5439vw - 11.6776rem), 9.375rem);
     --header-height: clamp(7.5rem, calc(3.5088vw + 4.5394rem), 8.75rem);
-    --header-logo-width: clamp(6.25rem, calc(2.6316vw + 4.0263rem), 7.1875rem);
-    --header-logo-height: clamp(3.625rem, calc(1.7544vw + 2.1447rem), 4.25rem);
-    --header-nav-gap: clamp(0.5rem, calc(9.1228vw - 7.1974rem), 3.75rem);
-    --header-nav-container-width: clamp(38.875rem, calc(32.4561vw + 11.489rem), 50.4375rem);
-    --header-nav-size: clamp(1.5rem, calc(1.4035vw + 0.3158rem), 2rem);
-    --header-nav-hover-size: clamp(1.5rem, calc(0.7018vw + 0.9079rem), 1.75rem);
+    --header-logo-width: clamp(6.25rem, calc(5.2632vw + 1.8092rem), 8.125rem);
+    --header-logo-height: clamp(3.625rem, calc(3.1579vw + 0.9605rem), 4.75rem);
+    --header-brand-gap: clamp(1.25rem, calc(2.4561vw - 0.8224rem), 2.125rem);
+    --header-nav-size: clamp(1.5rem, calc(0.7018vw + 0.9079rem), 1.75rem);
+    --header-nav-hover-size: var(--header-nav-size);
     --main-hero-height: clamp(48.75rem, calc(73.6842vw - 13.4211rem), 75rem);
   }
 }
 
 @media (max-width: 63.75rem) {
   :root {
+    --page-gutter: clamp(1.25rem, calc(7.1429vw - 1.4286rem), 3.125rem);
+    --header-height: clamp(5rem, calc(9.5238vw + 1.4286rem), 7.5rem);
+    --header-logo-width: clamp(5rem, calc(4.7619vw + 3.2143rem), 6.25rem);
+    --header-logo-height: clamp(2.9375rem, calc(2.619vw + 1.9554rem), 3.625rem);
+    --header-brand-gap: clamp(1.125rem, calc(0.4762vw + 0.9464rem), 1.25rem);
+    --header-title-size: clamp(0.875rem, calc(1.4286vw + 0.339rem), 1.25rem);
+    --header-menu-size: 3rem;
     --main-hero-height: 122.549vw;
     --footer-height: 15.9375rem;
     --footer-font-size: 1rem;
@@ -122,13 +129,13 @@
 
 @media (max-width: 37.5rem) {
   :root {
-    --page-gutter: clamp(0.625rem, calc(4.1667vw - 0.3125rem), 1.25rem);
-    --header-height: clamp(3.125rem, calc(12.5vw + 0.3125rem), 5rem);
-    --header-logo-width: clamp(3.125rem, calc(12.5vw + 0.3125rem), 5rem);
-    --header-logo-height: clamp(1.823rem, calc(7.43vw + 0.15rem), 2.9375rem);
-    --header-brand-gap: clamp(0.5rem, calc(5vw - 0.625rem), 1.25rem);
-    --header-title-size: clamp(0.625rem, calc(1.25vw + 0.3125rem), 0.78125rem);
-    --header-menu-size: clamp(1.875rem, 7.5vw, 2.8125rem);
+    --page-gutter: clamp(0.625rem, calc(5vw - 0.625rem), 1.25rem);
+    --header-height: clamp(3.6875rem, calc(10.5vw + 1.0625rem), 5rem);
+    --header-logo-width: clamp(3.75rem, calc(10vw + 1.25rem), 5rem);
+    --header-logo-height: clamp(2.1875rem, calc(6vw + 0.6875rem), 2.9375rem);
+    --header-brand-gap: clamp(0.625rem, calc(4vw - 0.375rem), 1.125rem);
+    --header-title-size: clamp(0.625rem, calc(2vw + 0.125rem), 0.875rem);
+    --header-menu-size: clamp(1.875rem, calc(9vw - 0.375rem), 3rem);
     --main-hero-height: 150vw;
     --footer-height: 12.5rem;
     --footer-padding-y: 2.25rem;
@@ -155,7 +162,7 @@
 
 @media (max-width: 25rem) {
   :root {
-    --header-title-size: clamp(0.5rem, calc(5vw - 0.625rem), 0.625rem);
+    --header-title-size: 0.625rem;
     --main-hero-height: 200vw;
     --footer-height: 10rem;
     --footer-padding-y: 1.5625rem;

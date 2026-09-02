@@ -111,7 +111,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
               <Link
                 aria-current={isActive ? "page" : undefined}
                 className={[
-                  "header-nav-link group relative flex h-full items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)] min-[1350.1px]:w-auto max-[1350.1px]:w-[var(--header-nav-width)]",
+                  "header-nav-link group relative flex h-full w-[var(--header-nav-item-width)] items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)]",
                   isActive && "header-nav-link--active font-bold text-knud-navigation-active",
                 ]
                   .filter(Boolean)
@@ -122,7 +122,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                 <span className="header-nav-link__label relative z-10 group-hover:text-[length:var(--header-nav-hover-size)] group-hover:font-bold group-hover:text-knud-navigation-active max-[1350.1px]:group-hover:text-[length:var(--header-nav-size)]">
                   {item.label}
                 </span>
-                {!isActive && <span className="header-nav-link__bar pointer-events-none absolute bottom-0 left-1/2 h-2 w-[8.625rem] bg-knud-navigation-active max-[1350.1px]:w-[var(--header-nav-width)]" />}
+                {!isActive && <span className="header-nav-link__bar pointer-events-none absolute bottom-0 left-1/2 h-2 w-[var(--header-nav-item-width)] bg-knud-navigation-active" />}
                 {!isActive && (
                   <Image
                     alt=""
