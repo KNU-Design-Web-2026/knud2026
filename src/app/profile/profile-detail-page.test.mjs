@@ -22,11 +22,11 @@ test("상세 초안은 Figma 원본 자산과 Web 섹션 구조를 사용한다"
 
   assert.match(data, /profile-01\.jpeg/);
   assert.match(data, /profile-01-work-01\.png/);
-  assert.match(component, /grid-cols-\[31\.25rem_minmax\(0,1fr\)\]/);
-  assert.match(component, /h-\[42\.6875rem\] w-\[31\.25rem\]/);
-  assert.match(component, /w-\[16\.875rem\] flex-col gap-2\.5/);
-  assert.match(component, /flex flex-col gap-\[3\.75rem\]/);
-  assert.match(component, /grid grid-cols-2 gap-\[4\.75rem\]/);
+  assert.match(component, /profile-detail__intro flex items-end gap-\[3\.6875rem\]/);
+  assert.match(component, /h-\[31\.8125rem\] w-\[23\.3125rem\]/);
+  assert.match(component, /w-\[13\.375rem\] flex-col gap-\[0\.3125rem\]/);
+  assert.match(component, /flex flex-col gap-\[2\.5rem\]/);
+  assert.match(component, /grid grid-cols-2 gap-0/);
   assert.match(component, /profile-detail-work/);
   assert.match(component, /PROJECT NAME/);
   assert.match(component, /Interview/);
@@ -52,7 +52,7 @@ test("상세 페이지는 Figma 기준 폭에서 콘텐츠 구성을 전환한�
   assert.match(component, /profile-detail__intro/);
   assert.match(component, /profile-detail__portrait/);
   assert.match(component, /profile-detail__interview-item/);
-  assert.doesNotMatch(component, /!px-\[9\.375rem\]/);
+  assert.doesNotMatch(component, /grid-cols-\[31\.25rem_minmax\(0,1fr\)\]/);
   assert.match(styles, /@media \(max-width: 1350px\)[\s\S]*?flex: 0 0 23\.3125rem/);
   assert.match(styles, /@media \(max-width: 1020px\)[\s\S]*?flex-wrap: nowrap/);
   assert.match(styles, /@media \(max-width: 1020px\)[\s\S]*?calc\(34\.444vw - 0\.243rem\)/);
@@ -61,6 +61,20 @@ test("상세 페이지는 Figma 기준 폭에서 콘텐츠 구성을 전환한�
   assert.match(styles, /@media \(min-width: 600\.0625px\) and \(max-width: 740px\)[\s\S]*?align-items: flex-start/);
   assert.match(styles, /@media \(min-width: 400\.0625px\) and \(max-width: 460px\)[\s\S]*?align-items: flex-start/);
   assert.match(styles, /aspect-ratio: 1\.8/);
+});
+
+test("프로필 상세는 1350px 이전의 컴팩트한 Web 레이아웃을 기본으로 사용한다", async () => {
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.profile-detail__container \{[\s\S]*?padding-inline: 3\.125rem;/);
+});
+
+test("1350px 이상에서는 Web 원본 비율까지 연속적으로 확장한다", async () => {
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /@media \(min-width: 1350\.1px\)[\s\S]*?padding-inline: clamp\(3\.125rem,[\s\S]*?9\.375rem\)/);
+  assert.match(styles, /@media \(min-width: 1350\.1px\)[\s\S]*?flex: 0 0 clamp\(23\.3125rem,[\s\S]*?31\.25rem\)/);
+  assert.match(styles, /@media \(min-width: 1350\.1px\)[\s\S]*?font-size: clamp\(3\.75rem,[\s\S]*?5rem\)/);
 });
 
 test("상세 페이지는 좁은 뷰포트에서 가로 넘침으로 배경이 드러나지 않는다", async () => {

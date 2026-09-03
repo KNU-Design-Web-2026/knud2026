@@ -1,0 +1,1002 @@
+.page {
+  max-width: 100%;
+  overflow-x: clip;
+  color: #0f0e0f;
+  background: #f1f1f1;
+}
+
+/*
+ * The About page keeps the <=600px composition through the tablet handoff.
+ * These tokens affect the header/footer spacer as well, so the page does not
+ * jump vertically when the general site token switches at 600px.
+ */
+@media (min-width: 37.5rem) and (max-width: 51.3125rem) {
+  :global(body:has([data-about-page])) {
+    --page-gutter: 1.25rem;
+    --header-height: 5rem;
+    --header-logo-width: 5rem;
+    --header-logo-height: 2.9375rem;
+    --header-brand-gap: 1.125rem;
+    --header-title-size: 0.875rem;
+    --header-menu-size: 3rem;
+    --footer-height: 12.5rem;
+    --footer-padding-y: 2.25rem;
+    --footer-logo-width: 2.476rem;
+    --footer-logo-height: 2.577rem;
+    --footer-brand-gap: 1rem;
+    --footer-content-gap: 1rem;
+    --footer-font-size: 0.75rem;
+  }
+}
+
+.introSection {
+  position: relative;
+  height: 1216px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #06affd 0%,
+    #06affd 45.941%,
+    #f1f1f1 100%
+  );
+}
+
+.introWide {
+  position: absolute;
+  top: 235px;
+  left: 50%;
+  box-sizing: border-box;
+  width: 1568px;
+  height: 746px;
+  padding: 26px;
+  transform: translateX(-50%);
+  border: 10px solid #838383;
+  background: #fcd519;
+}
+
+.introWideInner {
+  display: grid;
+  grid-template-columns: 434px minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 39px 72px;
+  gap: 68px;
+  background: #fff;
+}
+
+.posterWide {
+  display: block;
+  width: 434px;
+  height: 615px;
+  object-fit: cover;
+}
+
+.introductionCopy {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.introductionBody h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.introductionParagraphs {
+  margin-top: 24px;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+  overflow-wrap: anywhere;
+}
+
+.introductionParagraphs p + p {
+  margin-top: 24px;
+}
+
+.introductionCopy a {
+  margin-top: 40px;
+  color: #808080;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.introNarrow {
+  display: none;
+}
+
+.mainContent {
+  position: relative;
+}
+
+.offlineSection {
+  position: relative;
+  width: 1920px;
+  height: 820px;
+  margin-top: 61px;
+}
+
+.offlineSection h2,
+.professorsSection h2,
+.committeeSection h2 {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.offlineSection h2 {
+  position: absolute;
+  top: 0;
+  left: 150px;
+}
+
+.offlineWide {
+  position: absolute;
+  top: 282px;
+  left: 75px;
+  width: 1620px;
+  height: 538px;
+}
+
+.offlineNarrow {
+  display: none;
+}
+
+.professorsSection {
+  position: relative;
+  height: 850px;
+  margin-top: 250px;
+}
+
+.professorsSection h2 {
+  margin-left: 150px;
+}
+
+.professorsPanel {
+  position: relative;
+  isolation: isolate;
+  width: 1580px;
+  height: 826px;
+  margin-top: -80px;
+}
+
+.panelPaper,
+.panelPaper img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.panelPaper {
+  z-index: 0;
+}
+
+.panelPaper img {
+  object-fit: fill;
+}
+
+.professorsPanel .panelPaper {
+  top: 158px;
+  width: 1572px;
+  height: 668px;
+}
+
+.professorsGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 607px;
+  margin-left: 353px;
+  padding-top: 350px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 85px;
+  row-gap: 51px;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.professorsGrid > div {
+  min-width: 0;
+}
+
+.professorsGrid p,
+.committeeInformation span {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.professorsGrid strong {
+  display: block;
+  margin-top: 14px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.professorsLion {
+  position: absolute;
+  z-index: 1;
+  bottom: 3.51%;
+  left: 63.544%;
+  width: 36.456%;
+  height: auto;
+  object-fit: contain;
+}
+
+.professorsLionNarrow {
+  display: none;
+}
+
+.committeeSection {
+  position: relative;
+  height: 931px;
+  margin-top: 234px;
+}
+
+.committeeSection h2 {
+  display: flex;
+  width: 789px;
+  margin-left: 980px;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.committeePanel {
+  position: relative;
+  isolation: isolate;
+  width: 1670px;
+  height: 675px;
+  margin-top: 80px;
+  margin-left: 250px;
+}
+
+.committeeInformation {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 992px;
+  margin-left: 292px;
+  padding-top: 191px;
+  grid-template-columns: 274px minmax(0, 1fr);
+  column-gap: 91px;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.committeeChairs,
+.committeeTeams,
+.committeeTeams > div {
+  display: grid;
+}
+
+.committeeChairs {
+  grid-template-columns: 1fr auto;
+  align-content: start;
+  row-gap: 30px;
+}
+
+.chairNames {
+  display: grid;
+  row-gap: 18px;
+}
+
+.committeeTeams {
+  row-gap: 30px;
+}
+
+.committeeTeams > div {
+  grid-template-columns: 224px minmax(0, 1fr);
+}
+
+.committeeInformation strong {
+  font-weight: 700;
+}
+
+.committeeIllustration {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  left: 70px;
+  width: 527px;
+  height: 326px;
+  object-fit: contain;
+}
+
+.teamsSection {
+  padding: 154px 0 130px;
+}
+
+@media (min-width: 1351px) and (max-width: 1919px) {
+  .introSection {
+    height: calc(903px + 16.2963vw);
+  }
+
+  .introWide {
+    top: calc(-68.158px + 15.7895vw);
+    width: calc(348.632px + 63.1579vw);
+    height: calc(800.105px - 2.807vw);
+  }
+
+  .introWideInner {
+    padding-right: calc(-12.474px + 4.398vw);
+    padding-left: calc(-12.474px + 4.398vw);
+    gap: calc(41.053px + 1.404vw);
+  }
+
+  .introductionParagraphs {
+    font-size: calc(10.526px + 0.702vw);
+  }
+
+  .introductionCopy a {
+    font-size: calc(13.263px + 0.351vw);
+  }
+
+  .offlineSection {
+    width: 100vw;
+    height: calc(-89.474px + 47.368vw);
+    margin-top: calc(57.895px + 0.164vw);
+  }
+
+  .offlineSection h2,
+  .professorsSection h2,
+  .committeeSection h2 {
+    font-size: calc(12.632px + 3.509vw);
+  }
+
+  .offlineSection h2 {
+    left: calc(-184.211px + 17.544vw);
+  }
+
+  .offlineWide {
+    top: calc(-91.737px + 19.46vw);
+    left: calc(-5.842px + 4.211vw);
+    width: calc(366.947px + 65.263vw);
+    height: auto;
+  }
+
+  .professorsSection {
+    height: calc(-29.2px + 45.789vw);
+    margin-top: calc(260.1px - 0.526vw);
+  }
+
+  .professorsSection h2 {
+    margin-left: calc(-183.47px + 17.368vw);
+  }
+
+  .professorsPanel {
+    width: calc(40.64px + 80.175vw);
+    height: calc(-349.58px + 61.228vw);
+    margin-top: calc(304px - 20vw);
+  }
+
+  .professorsPanel .panelPaper {
+    top: calc(-374.2px + 27.72vw);
+    width: calc(100% - calc(-18.95px + 1.404vw));
+    height: calc(24.63px + 33.509vw);
+  }
+
+  .professorsGrid {
+    width: calc(361.1px + 12.807vw);
+    margin-left: calc(-206.16px + 29.123vw);
+    padding-top: calc(-370.84px + 37.544vw);
+    column-gap: calc(10.9px + 3.86vw);
+    row-gap: calc(57.74px - 0.351vw);
+    font-size: calc(3.79px + 1.053vw);
+  }
+
+  .professorsGrid strong {
+    font-size: calc(18.53px + 0.702vw);
+  }
+
+  .committeeSection {
+    height: calc(189.95px + 38.596vw);
+    margin-top: calc(52.1px + 9.474vw);
+  }
+
+  .committeeSection h2 {
+    width: 100%;
+    margin-left: 0;
+    padding-right: calc(-192.58px + 17.895vw);
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .committeePanel {
+    width: calc(592.1px + 56.14vw);
+    height: calc(213.5px + 24.035vw);
+    margin-top: calc(-132.2px + 11.05vw);
+    margin-left: calc(-592.1px + 43.86vw);
+  }
+
+  .committeeInformation {
+    width: calc(796.632px + 10.175vw);
+    margin-left: calc(231.368px + 3.158vw);
+    padding-top: calc(69.74px + 6.316vw);
+    grid-template-columns: calc(71.895px + 10.526vw) minmax(0, 1fr);
+    column-gap: calc(114.579px - 1.228vw);
+    font-size: calc(17.263px + 0.351vw);
+  }
+
+  .chairNames {
+    row-gap: calc(4.526px + 0.702vw);
+  }
+
+  .committeeTeams {
+    row-gap: calc(-3.684px + 1.754vw);
+  }
+
+  .committeeTeams > div {
+    grid-template-columns: calc(38.737px + 9.649vw) minmax(0, 1fr);
+  }
+
+  .committeeIllustration {
+    bottom: calc(43.684px - 1.754vw);
+    left: calc(137.368px - 3.509vw);
+    width: calc(55.44px + 24.561vw);
+    height: auto;
+  }
+
+  .teamsSection {
+    padding-top: calc(59.68px + 4.912vw);
+    padding-bottom: calc(28.95px + 5.263vw);
+  }
+}
+
+@media (min-width: 822px) and (max-width: 1350px) {
+  .introSection {
+    height: calc(-296.909px + 105.294vw);
+  }
+
+  .introWide {
+    top: calc(-18.636px + 12.121vw);
+    width: calc(-37.636px + 92.121vw);
+    height: calc(-39.818px + 59.394vw);
+    padding: calc(-0.793px + 1.984vw);
+    border-width: calc(-0.309px + 0.764vw);
+  }
+
+  .introWideInner {
+    grid-template-columns: calc(-12.182px + 33.03vw) minmax(0, 1fr);
+    padding: calc(-18.273px + 4.727vw) calc(-1.455px + 4.545vw);
+    gap: calc(-1.455px + 4.545vw);
+  }
+
+  .posterWide {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 434 / 615;
+  }
+
+  .introductionBody h1 {
+    font-size: clamp(18px, calc(-0.727px + 2.424vw), 32px);
+  }
+
+  .introductionParagraphs {
+    margin-top: clamp(14px, calc(0.091px + 1.364vw), 24px);
+    font-size: clamp(12px, calc(3.636px + 1.212vw), 20px);
+  }
+
+  .introductionParagraphs p + p {
+    margin-top: clamp(12px, calc(-1.091px + 1.818vw), 24px);
+  }
+
+  .introductionCopy a {
+    margin-top: clamp(20px, calc(-1.818px + 3.03vw), 40px);
+    font-size: clamp(12px, calc(1.091px + 1.515vw), 18px);
+  }
+
+  .offlineSection {
+    width: 100vw;
+    height: clamp(406px, calc(-39.091px + 43.636vw), 550px);
+    margin-top: clamp(22px, calc(-95.273px + 11.515vw), 60px);
+  }
+
+  .offlineSection h2,
+  .professorsSection h2,
+  .committeeSection h2 {
+    font-size: clamp(50px, calc(19.091px + 3.03vw), 60px);
+  }
+
+  .offlineSection h2 {
+    left: clamp(50px, calc(46.909px + 0.303vw), 51px);
+  }
+
+  .offlineWide {
+    --offline-side: clamp(38px, 4.902vw, 51px);
+
+    top: clamp(129px, calc(-0.818px + 12.727vw), 171px);
+    left: var(--offline-side);
+    width: calc(100vw - var(--offline-side) - var(--offline-side));
+    max-width: none;
+    height: auto;
+  }
+
+  .professorsSection {
+    height: clamp(452px, calc(27.636px + 41.576vw), 589px);
+    margin-top: clamp(218px, calc(109.818px + 10.606vw), 253px);
+  }
+
+  .professorsSection h2 {
+    margin-left: clamp(50px, calc(46.909px + 0.303vw), 51px);
+  }
+
+  .professorsPanel {
+    --professors-grid-width: clamp(430px, calc(108.182px + 31.515vw), 534px);
+    --professors-grid-left: clamp(80px, calc(-250.909px + 32.424vw), 187px);
+
+    width: clamp(849px, calc(-4.273px + 83.636vw), 1123px);
+    height: clamp(361px, calc(1.909px + 35.152vw), 477px);
+    margin-top: 34px;
+  }
+
+  .professorsPanel .panelPaper {
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .professorsGrid {
+    width: var(--professors-grid-width);
+    margin-left: var(--professors-grid-left);
+    padding-top: clamp(88px, calc(-60.364px + 14.545vw), 136px);
+    column-gap: clamp(35px, calc(-51.364px + 8.485vw), 63px);
+    row-gap: clamp(30px, calc(-8.182px + 4.545vw), 53px);
+    font-size: clamp(14px, calc(1.636px + 1.212vw), 18px);
+  }
+
+  .professorsGrid strong {
+    margin-top: 10px;
+    font-size: clamp(20px, calc(-4.727px + 2.424vw), 28px);
+  }
+
+  .professorsLionWide {
+    /* Keep the artwork clear of the second professor column as the panel scales. */
+    left: max(
+      63.544%,
+      calc(
+        var(--professors-grid-left) + var(--professors-grid-width) +
+          clamp(18px, calc(6.364px + 1.176vw), 24px)
+      )
+    );
+  }
+
+  .committeeSection {
+    height: clamp(555px, calc(70.455px + 47.576vw), 711px);
+    margin-top: clamp(136px, calc(-0.364px + 13.636vw), 180px);
+  }
+
+  .committeeSection h2 {
+    width: auto;
+    margin-left: 0;
+    padding-right: clamp(48px, calc(45px + 0.303vw), 49px);
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .committeePanel {
+    width: 100vw;
+    height: clamp(407px, calc(-0.818px + 40vw), 538px);
+    margin-top: clamp(18px, calc(21.091px - 0.303vw), 17px);
+    margin-left: 0;
+  }
+
+  .committeeInformation {
+    --committee-info-left: calc(-58.366px + 24.62vw);
+
+    width: calc(64.547px + 64.404vw);
+    margin-left: var(--committee-info-left);
+    padding-top: 11.482vw;
+    grid-template-columns: calc(35.726px + 13.205vw) minmax(0, 1fr);
+    column-gap: calc(-0.002px + 7.259vw);
+    font-size: calc(5.636px + 1.212vw);
+  }
+
+  .committeeChairs {
+    grid-template-columns: 1fr auto;
+    row-gap: 22px;
+  }
+
+  .chairNames {
+    row-gap: 14px;
+    font-size: 1.63vw;
+  }
+
+  .committeeTeams {
+    row-gap: clamp(15px, 1.482vw, 20px);
+  }
+
+  .committeeTeams > div {
+    grid-template-columns: calc(29.909px + 10.303vw) minmax(0, 1fr);
+  }
+
+  .committeeIllustration {
+    /* Match the desktop composition: artwork sits inside the blue paper's lower-left space. */
+    bottom: clamp(12px, 2vw, 20px);
+    left: clamp(35px, calc(-50.4px + 10.4vw), 90px);
+    width: clamp(292px, calc(-1.455px + 28.788vw), 387px);
+    height: auto;
+  }
+
+  .teamsSection {
+    padding-top: clamp(78px, calc(-70.364px + 14.545vw), 126px);
+    padding-bottom: 100px;
+  }
+}
+
+@media (min-width: 822px) and (max-width: 1020px) {
+  .introductionBody h1 {
+    font-size: calc(-8.51px + 3.187vw);
+  }
+
+  .introductionParagraphs {
+    margin-top: calc(-2.255px + 1.594vw);
+    font-size: calc(-6.348px + 2.191vw);
+  }
+
+  .introductionParagraphs p + p {
+    margin-top: calc(3.872px + 0.797vw);
+  }
+
+  .introductionCopy a {
+    margin-top: calc(-4.382px + 2.39vw);
+    font-size: calc(-0.227px + 1.395vw);
+  }
+}
+
+/* Keep the mobile composition through the 770px transition range. */
+@media (max-width: 821px) {
+  .introSection {
+    height: clamp(1167px, calc(1027px + 35vw), 1237px);
+  }
+
+  .introWide {
+    display: none;
+  }
+
+  .introNarrow {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .posterNarrow {
+    position: absolute;
+    top: clamp(81px, calc(93px - 2vw), 85px);
+    left: 50%;
+    display: block;
+    width: clamp(356px, calc(188px + 42vw), 440px);
+    height: auto;
+    transform: translateX(-50%);
+    aspect-ratio: 2893 / 4096;
+    object-fit: cover;
+  }
+
+  .introNarrowFrame {
+    position: absolute;
+    top: clamp(628px, calc(404px + 56vw), 740px);
+    left: 50%;
+    box-sizing: border-box;
+    width: clamp(357px, calc(-11px + 92vw), 541px);
+    height: clamp(392px, calc(569px - 29.5vw), 451px);
+    padding: clamp(10px, 2.5vw, 15px);
+    transform: translateX(-50%);
+    border: clamp(4px, 1vw, 6px) solid #838383;
+    background: #fcd519;
+  }
+
+  .introNarrowInner {
+    width: 100%;
+    height: 100%;
+    padding: clamp(24px, calc(22px + 1vw), 28px)
+      clamp(12px, calc(-8px + 5vw), 22px);
+    background: #fff;
+  }
+
+  .introNarrow .introductionCopy {
+    justify-content: space-between;
+  }
+
+  .introNarrow .introductionBody h1 {
+    font-size: 16px;
+  }
+
+  .introNarrow .introductionParagraphs {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .introNarrow .introductionParagraphs p + p {
+    margin-top: 18px;
+  }
+
+  .introNarrow .introductionCopy a {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .offlineSection {
+    width: clamp(398px, calc(66px + 83vw), 564px);
+    height: clamp(610px, calc(476px + 33.5vw), 677px);
+    margin-top: clamp(15px, calc(63px - 8vw), 31px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .offlineSection h2,
+  .professorsSection h2,
+  .committeeSection h2 {
+    font-size: clamp(22px, calc(2px + 5vw), 32px);
+  }
+
+  .offlineSection h2 {
+    position: static;
+    width: 100%;
+    padding-left: clamp(10px, 3.333vw, 20px);
+  }
+
+  .offlineWide {
+    display: none;
+  }
+
+  .offlineNarrow {
+    display: flex;
+    width: 100%;
+    margin-top: clamp(31px, calc(-41px + 18vw), 67px);
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mapCrop {
+    position: relative;
+    width: clamp(380px, calc(56px + 81vw), 542px);
+    overflow: hidden;
+    aspect-ratio: 851.433 / 538;
+  }
+
+  .mapCrop img {
+    position: absolute;
+    top: 0;
+    left: -25.84%;
+    width: 190.27%;
+    max-width: none;
+    height: 100%;
+  }
+
+  .exhibitionInformation {
+    display: flex;
+    width: 250px;
+    margin-top: clamp(38px, calc(18px + 5vw), 48px);
+    flex-direction: column;
+    gap: 46px;
+    text-align: center;
+  }
+
+  .exhibitionInformation > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .exhibitionInformation strong {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .exhibitionInformation dl,
+  .exhibitionInformation p {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .exhibitionInformation dl > div {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    text-align: left;
+  }
+
+  .professorsSection {
+    /* Keep scaling through 821px; only the mobile minimum is constrained. */
+    width: max(398px, calc(66px + 83vw));
+    height: max(302px, calc(86px + 54vw));
+    margin: clamp(100px, calc(160px - 10vw), 120px) auto 0;
+  }
+
+  .professorsSection h2 {
+    margin-left: clamp(14px, calc(2px + 3vw), 20px);
+  }
+
+  .professorsPanel {
+    width: 100%;
+    height: max(246px, calc(42px + 51vw));
+    margin-top: 20px;
+  }
+
+  .professorsPanel .panelPaper {
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .professorsGrid {
+    box-sizing: border-box;
+    width: 62.943%;
+    margin-left: 10.993%;
+    margin-right: 0;
+    padding: clamp(51px, calc(9px + 10.5vw), 72px) 10px 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: space-between;
+    column-gap: clamp(22px, calc(4px + 4.5vw), 31px);
+    row-gap: clamp(34px, calc(6px + 7vw), 48px);
+    font-size: clamp(10px, calc(2px + 2vw), 14px);
+  }
+
+  .professorsGrid strong {
+    margin-top: clamp(8px, calc(0px + 2vw), 12px);
+    font-size: clamp(14px, calc(2px + 3vw), 20px);
+  }
+
+  .professorsLionWide {
+    display: none;
+  }
+
+  .professorsLionNarrow {
+    display: block;
+    /* Keep the lion on the lower-right paper edge, with its feet outside the panel. */
+    right: clamp(-9px, calc(15px - 4vw), -1px);
+    bottom: clamp(-52px, calc(1px - 8.833vw), -34px);
+    left: auto;
+    width: clamp(144px, 37.5vw, 225px);
+    height: auto;
+  }
+
+  .committeeSection {
+    /* Match the professors panel: fluid mobile scaling continues to 821px. */
+    width: max(398px, calc(66px + 83vw));
+    height: max(497px, calc(81px + 104vw));
+    margin: clamp(100px, calc(160px - 10vw), 120px) auto 0;
+  }
+
+  .committeeSection h2 {
+    width: auto;
+    margin-left: clamp(14px, calc(2px + 3vw), 20px);
+    align-items: flex-start;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .committeePanel {
+    width: 100%;
+    height: max(424px, calc(70px + 88.5vw));
+    margin-top: clamp(14px, calc(2px + 3vw), 20px);
+    margin-left: 0;
+  }
+
+  .committeeInformation {
+    display: flex;
+    width: clamp(276px, calc(46px + 57.5vw), 391px);
+    margin-left: clamp(66px, calc(10px + 14vw), 94px);
+    margin-right: 0;
+    padding-top: clamp(66px, calc(12px + 13.5vw), 93px);
+    flex-direction: column;
+    gap: clamp(25px, calc(5px + 5vw), 35px);
+    font-size: clamp(10px, calc(2px + 2vw), 14px);
+  }
+
+  .committeeChairs,
+  .committeeTeams > div {
+    display: grid;
+    grid-template-columns: clamp(158px, calc(26px + 33vw), 224px) minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .committeeChairs {
+    row-gap: 0;
+  }
+
+  .chairNames {
+    row-gap: clamp(7px, calc(1px + 1.5vw), 10px);
+  }
+
+  .committeeTeams {
+    row-gap: clamp(25px, calc(5px + 5vw), 35px);
+  }
+
+  .committeeInformation strong {
+    font-size: clamp(14px, calc(2px + 3vw), 20px);
+  }
+
+  .committeeInformation span {
+    min-width: 0;
+  }
+
+  .committeeIllustration {
+    /* Reserve the lower-left panel edge for the illustration, below the last text row. */
+    bottom: clamp(-40px, calc(-8px - 9vw), -44px);
+    left: clamp(36px, calc(4px + 8vw), 52px);
+    width: clamp(170px, calc(28px + 35.5vw), 241px);
+    height: auto;
+  }
+
+  .teamsSection {
+    padding: clamp(62px, calc(-14px + 19vw), 100px) 0 clamp(80px, 20vw, 120px);
+  }
+}
+
+/*
+ * At the wider end of the mobile composition the blue professor panel was
+ * gaining empty vertical space too quickly. Keep the 600px measurements, but
+ * use a gentler fluid height curve until the 822px tablet handoff.
+ */
+@media (min-width: 600.0625px) and (max-width: 821px) {
+  .professorsSection {
+    height: calc(260.68px + 24.887vw);
+  }
+
+  .professorsPanel {
+    height: calc(149.69px + 33.052vw);
+  }
+}
+
+/*
+ * Remove the same lower whitespace that was previously between the final row
+ * and the illustration, so the blue paper itself closes up with the artwork.
+ */
+@media (min-width: 650px) and (max-width: 800px) {
+  .professorsSection {
+    height: calc(434.013px - 1.78vw);
+  }
+
+  .professorsPanel {
+    height: calc(323.023px + 6.385vw);
+  }
+
+  .professorsLionNarrow {
+    /* Keep the artwork clear of the lower-right professor name as the panel closes up. */
+    bottom: calc(121.333px - 26.667vw);
+  }
+
+  .committeeSection {
+    height: calc(661.667px + 14.667vw);
+  }
+
+  .committeePanel {
+    height: calc(647.417px - 0.333vw);
+  }
+}
+
+@media (max-width: 420px) {
+  .professorsGrid > :nth-child(1) {
+    order: 4;
+  }
+
+  .professorsGrid > :nth-child(2) {
+    order: 3;
+  }
+
+  .professorsGrid > :nth-child(3) {
+    order: 1;
+  }
+
+  .professorsGrid > :nth-child(4) {
+    order: 2;
+  }
+
+  .introNarrow .introductionParagraphs,
+  .introNarrow .introductionCopy a {
+    font-size: 13px;
+  }
+}

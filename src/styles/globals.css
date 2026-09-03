@@ -388,8 +388,25 @@
   font-weight: 700;
 }
 
+.work-card__artist-en--tab,
+.work-card__artist-en--mobile,
+.work-detail__artist-en--tab,
+.work-detail__artist-en--mobile {
+  display: none;
+}
+
 /* Figma 1157:29969 — Web > Tab (1350px). */
 @media (max-width: 84.375rem) {
+  .work-card__artist-en--web,
+  .work-detail__artist-en--web {
+    display: none;
+  }
+
+  .work-card__artist-en--tab,
+  .work-detail__artist-en--tab {
+    display: inline;
+  }
+
   .work-grid {
     column-gap: 1.1875rem;
     padding-inline: 3.125rem;
@@ -443,6 +460,16 @@
 
 /* Figma 1157:29747 — Tab > Mobile (600px). */
 @media (max-width: 37.5rem) {
+  .work-card__artist-en--tab,
+  .work-detail__artist-en--tab {
+    display: none;
+  }
+
+  .work-card__artist-en--mobile,
+  .work-detail__artist-en--mobile {
+    display: inline;
+  }
+
   .work-page {
     padding-top: 2.5rem;
   }
@@ -882,7 +909,7 @@
 }
 
 .profile-detail__container {
-  padding-inline: 9.375rem;
+  padding-inline: 3.125rem;
 }
 
 @media (max-width: 1350px) {
@@ -980,6 +1007,104 @@
 
   .profile-detail-work__overlay {
     font-size: 2.25rem;
+  }
+}
+
+/*
+ * Profile detail Web interpolation
+ *
+ * 1350px Web→Tab 프레임의 컴팩트한 구성에서 시작해, 1920px Web 프레임의
+ * 원본 비율까지 연속적으로 확장한다. 따라서 1350px를 넘는 순간 이미지와
+ * 타이포그래피가 한 번에 커지는 현상을 피하면서도 큰 Web 규격을 유지한다.
+ */
+@media (min-width: 1350.1px) {
+  .profile-detail {
+    padding-top: clamp(5rem, calc(3.509vw + 2.039rem), 6.25rem);
+  }
+
+  .profile-detail__container {
+    padding-inline: clamp(3.125rem, calc(17.544vw - 11.7rem), 9.375rem);
+  }
+
+  .profile-detail__content {
+    gap: clamp(5rem, calc(7.018vw - 0.987rem), 7.5rem);
+    padding-bottom: clamp(5rem, calc(7.018vw - 0.987rem), 7.5rem);
+  }
+
+  .profile-detail__intro {
+    gap: clamp(3.6875rem, calc(4.737vw - 4.365rem), 5.375rem);
+  }
+
+  .profile-detail__portrait {
+    flex: 0 0 clamp(23.3125rem, calc(22.281vw + 4.509rem), 31.25rem);
+    height: clamp(31.8125rem, calc(30.526vw + 11.93rem), 42.6875rem);
+    width: clamp(23.3125rem, calc(22.281vw + 4.509rem), 31.25rem);
+  }
+
+  .profile-detail__copy {
+    gap: clamp(4.375rem, calc(9.474vw - 3.619rem), 7.75rem);
+  }
+
+  .profile-detail__identity {
+    gap: clamp(1.625rem, calc(2.281vw - 0.319rem), 2.4375rem);
+  }
+
+  .profile-detail__names {
+    gap: clamp(0.3125rem, calc(6.14vw - 4.87rem), 2.5rem);
+    width: clamp(13.375rem, calc(9.825vw + 5.085rem), 16.875rem);
+  }
+
+  .profile-detail__name-ko {
+    font-size: clamp(3.75rem, calc(3.509vw + 0.789rem), 5rem);
+  }
+
+  .profile-detail__name-en {
+    font-size: clamp(2.375rem, calc(1.754vw + 0.894rem), 3rem);
+  }
+
+  .profile-detail__introduction,
+  .profile-detail__meta {
+    font-size: clamp(1.375rem, calc(0.351vw + 1.204rem), 1.5rem);
+  }
+
+  .profile-detail__meta {
+    gap: clamp(1.5rem, calc(7.895vw - 5.163rem), 4.3125rem);
+    width: auto;
+  }
+
+  .profile-detail__tags {
+    font-size: clamp(1.25rem, calc(-0.351vw + 1.671rem), 1.375rem);
+    gap: 0 clamp(3.25rem, calc(8.772vw - 4.145rem), 3.75rem);
+  }
+
+  .profile-detail__contact {
+    gap: clamp(4.25rem, calc(-1.404vw + 5.935rem), 4.75rem);
+  }
+
+  .profile-detail__section {
+    gap: clamp(3.75rem, calc(1.754vw + 2.27rem), 4.375rem);
+  }
+
+  .profile-detail__section-title {
+    gap: clamp(3.75rem, calc(-2.807vw + 7.12rem), 4.75rem);
+  }
+
+  .profile-detail__section-heading {
+    font-size: clamp(2.5rem, calc(1.404vw + 1.315rem), 3rem);
+  }
+
+  .profile-detail__interview-list {
+    gap: clamp(2.5rem, calc(3.509vw + 0.52rem), 3.75rem);
+  }
+
+  .profile-detail__interview-item {
+    column-gap: clamp(0rem, calc(13.333vw - 11.25rem), 4.75rem);
+    font-size: clamp(1.375rem, calc(0.351vw + 1.204rem), 1.5rem);
+    row-gap: clamp(1.875rem, calc(8.07vw - 4.938rem), 4.75rem);
+  }
+
+  .profile-detail-work__overlay {
+    font-size: clamp(2.25rem, calc(0.702vw + 1.658rem), 2.5rem);
   }
 }
 
@@ -1510,7 +1635,7 @@
 
 @media (max-width: 1350.1px) {
   .header-nav-link--active::after {
-    width: var(--header-nav-width);
+    width: var(--header-nav-item-width);
   }
 }
 
@@ -1522,8 +1647,8 @@
 .mobile-menu-trigger__icon {
   position: relative;
   display: block;
-  width: clamp(1.2890625rem, 4.9vw, 2.0625rem);
-  height: clamp(1rem, 3.56vw, 1.5rem);
+  width: clamp(1.2890625rem, calc(6.1875vw - 0.2578125rem), 2.0625rem);
+  height: clamp(1rem, 4vw, 1.5rem);
 }
 
 .mobile-menu-trigger__line {
@@ -1632,6 +1757,30 @@
   transition-delay: 260ms;
 }
 
+[data-about-reveal] {
+  opacity: 0;
+  transform: translateY(7.5rem);
+  transition:
+    opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 820ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-about-reveal="scale"] {
+  transform: scale(0.92);
+}
+
+[data-about-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-about-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .mobile-menu-panel__item:hover {
     background: var(--color-knud-navigation-active);
@@ -1651,6 +1800,10 @@
 }
 
 @media (max-width: 400px) {
+  .mobile-menu-trigger {
+    padding-inline: 0;
+  }
+
   .mobile-menu-trigger__line {
     height: 0.09375rem;
   }
