@@ -4,6 +4,7 @@ import test from "node:test";
 
 const siteCursorPath = new URL("../layout/site-cursor.tsx", import.meta.url);
 const sprayCanvasPath = new URL("./spray-canvas.tsx", import.meta.url);
+const stylesPath = new URL("../../styles/globals.css", import.meta.url);
 
 test("일반 사이트 커서는 34px × 40.33px 규격을 사용한다", () => {
   const cursor = readFileSync(siteCursorPath, "utf8");
@@ -21,4 +22,11 @@ test("메인 스프레이는 불규칙한 외곽선과 각진 잉크 드립을 �
   assert.doesNotMatch(spray, /context\.ellipse\(0, 0, stamp\.bodyWidth/);
   assert.match(spray, /tipRadius/);
   assert.match(spray, /context\.lineJoin = "miter"/);
+});
+
+test("1020px 이상 메인 프레임의 하단 배경이 이미지 색과 이어진다", () => {
+  const styles = readFileSync(stylesPath, "utf8");
+
+  assert.match(styles, /@media \(min-width: 63\.8125rem\) and \(max-width: 84\.375rem\) \{[\s\S]*?\.main-hero \{[\s\S]*?background: #011a26;/);
+  assert.match(styles, /@media \(min-width: 84\.4375rem\) \{[\s\S]*?\.main-hero \{[\s\S]*?background: #011b27;/);
 });

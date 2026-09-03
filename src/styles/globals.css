@@ -227,6 +227,21 @@
   background: #005176;
 }
 
+/* 1350 프레임은 하단이 남청색으로 마감되어 여분의 hero 높이와
+   이미지 사이에 밝은 띠가 생기지 않도록 배경도 같은 색으로 이어준다. */
+@media (min-width: 63.8125rem) and (max-width: 84.375rem) {
+  .main-hero {
+    background: #011a26;
+  }
+}
+
+/* 1920 프레임의 하단 픽셀 색도 별도로 맞춰 큰 화면의 경계를 제거한다. */
+@media (min-width: 84.4375rem) {
+  .main-hero {
+    background: #011b27;
+  }
+}
+
 /* Site footer: Figma frames 1157:22557 (Tab > Mobile), 1157:22590 (Mobile) */
 @media (max-width: 37.5rem) {
   .site-footer {
@@ -409,6 +424,7 @@
 
   .work-grid {
     column-gap: 1.1875rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     padding-inline: 3.125rem;
     row-gap: 1.875rem;
   }
@@ -428,8 +444,8 @@
   }
 
   .work-card__artists {
-    font-size: 1.125rem;
-    gap: 1.25rem;
+    font-size: clamp(1rem, calc(1.754vw - 0.118rem), 1.125rem);
+    gap: 0 clamp(0.5rem, calc(6.579vw - 4.28rem), 1.25rem);
     letter-spacing: -0.036px;
   }
 }
@@ -451,8 +467,8 @@
   }
 }
 
-/* 600px 기준 2열 구성을 740px까지 보간해 이름 행의 가로 폭을 보장한다. */
-@media (max-width: 46.25rem) {
+/* 600px 기준 2열 구성을 830px까지 앞당겨 이름 행의 가로 폭을 보장한다. */
+@media (max-width: 51.875rem) {
   .work-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
