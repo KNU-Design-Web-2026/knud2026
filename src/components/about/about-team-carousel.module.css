@@ -13,6 +13,16 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   touch-action: pan-x;
+  cursor: grab;
+}
+
+.track[data-dragging="true"] {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.track[data-mouse-scroll="true"] {
+  scroll-snap-type: none;
 }
 
 .track::-webkit-scrollbar {
