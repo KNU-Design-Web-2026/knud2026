@@ -1,0 +1,95 @@
+.page { background: #fff; color: #000; }
+@media (min-width: 1350px) {
+  .page :global(.site-footer__brand-copy),
+  .page :global(.site-footer__information) { font-size: var(--footer-font-size); }
+}
+
+.content {
+  width: min(1620px, calc(100% - 2 * var(--page-gutter)));
+  margin-inline: auto;
+  padding-block: clamp(60px, 10.416667vw, 200px);
+  container-type: inline-size;
+}
+
+.heading { text-align: center; }
+.heading h1, .heading h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5.165539cqw;
+  font-size: 3.703704cqw;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+  transform: rotate(-0.57deg);
+}
+.heading p {
+  margin-top: 1.234568cqw;
+  font-size: 1.975309cqw;
+  font-weight: 600;
+  line-height: 1.3125;
+  letter-spacing: -0.002em;
+}
+.map {
+  position: relative;
+  width: 78.747528%;
+  aspect-ratio: 1275.71 / 718.31;
+  margin: 7.037037cqw auto 0;
+  container-type: inline-size;
+}
+.outline, .island, .entry { position: absolute; pointer-events: none; }
+.outline { left: 0.078388%; top: 0.139216%; width: 99.843224%; height: 99.721569%; }
+.island { left: 13.48896%; top: 39.303368%; width: 25.040172%; height: 39.9716%; }
+.entry { left: 83.01%; top: 85.2%; width: 3.37%; height: 11.833%; }
+.name {
+  position: absolute;
+  color: #848484;
+  font-size: 2.351632cqw;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+  white-space: nowrap;
+}
+.vertical { display: flex; flex-direction: column; line-height: 1.1; }
+.diagonal { display: flex; align-items: center; justify-content: center; width: 6.485134%; aspect-ratio: 1; }
+.artist {
+  left: 59.484957%; top: 77.03057%;
+  border: 0; padding: 0; background: transparent;
+  color: #000; font-weight: 700; cursor: pointer;
+}
+.artist:focus-visible { outline: 2px solid #111; outline-offset: 5px; }
+.artist::before { content: ""; position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; min-width: 44px; min-height: 44px; transform: translate(-50%, -50%); }
+.preview {
+  position: absolute; z-index: 2;
+  left: 62.934%; top: 76.474%;
+  width: 48.914%; aspect-ratio: 624 / 382.879;
+  color: #fff;
+}
+.previewImage { object-fit: fill; }
+.previewShade { position: absolute; inset: 0; background: rgb(42 42 42 / 56%); }
+.previewCopy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.940653cqw; }
+.previewCopy p { display: flex; gap: 1.023cqw; font-size: 1.410979cqw; line-height: 1.3; letter-spacing: -0.002em; }
+.previewCopy strong { font-weight: 700; }
+.previewCopy h3 { font-size: 3.135509cqw; font-weight: 700; line-height: 1.3; letter-spacing: -0.002em; }
+.archive { margin-top: 20.37037cqw; }
+.archiveHeading h2 { height: 5.147746cqw; }
+.archiveGrid { display: grid; grid-template-columns: 515fr 514fr 515fr; gap: 2.345679cqw; margin-top: 7.037037cqw; }
+.archiveColumn { display: flex; flex-direction: column; gap: 1.234568cqw; }
+.archivePanel { background: #d9d9d9; }
+.archiveColumn:last-child .archivePanel:last-child { box-shadow: 0 4px 4px rgb(0 0 0 / 25%); }
+
+/* Adaptive layouts, not separately supplied Figma frames. Preserve map geometry. */
+@media (max-width: 821px) {
+  .heading h1, .heading h2 { height: auto; font-size: clamp(24px, 5vw, 40px); }
+  .heading p { margin-top: 12px; font-size: clamp(12px, 2.5vw, 20px); }
+  .map { width: 100%; margin-top: 40px; }
+  .preview { left: auto; right: 0; top: 100%; width: 65%; }
+  .previewCopy p { font-size: 2.3cqw; }
+  .previewCopy h3 { font-size: 4.5cqw; }
+  .archive { margin-top: 50cqw; }
+  .archiveGrid { gap: 12px; margin-top: 40px; }
+  .archiveColumn { gap: 10px; }
+  .page :global(.site-footer__schedule),
+  .page :global(.site-footer__copyright) { white-space: normal; overflow-wrap: anywhere; }
+  .page :global(.site-footer__information) { overflow-wrap: anywhere; }
+}
