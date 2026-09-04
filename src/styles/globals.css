@@ -1580,9 +1580,9 @@
 
 .header-nav-link__label {
   transition:
-    color 260ms cubic-bezier(0.4, 0, 0.2, 1),
-    font-size 440ms cubic-bezier(0.4, 0, 0.2, 1),
-    font-weight 260ms cubic-bezier(0.4, 0, 0.2, 1);
+    color 520ms cubic-bezier(0.4, 0, 0.2, 1),
+    font-size 760ms cubic-bezier(0.4, 0, 0.2, 1),
+    font-weight 520ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-nav-link__bar {
@@ -1590,8 +1590,8 @@
   transform-origin: center;
   opacity: 0;
   transition:
-    opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 440ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 560ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 820ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-nav-link__decoration {
@@ -1599,16 +1599,16 @@
   transform-origin: center bottom;
   opacity: 0;
   transition:
-    opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 480ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 620ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-nav-link:hover .header-nav-link__label,
 .header-nav-link:focus-visible .header-nav-link__label {
   transition:
-    color 260ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    font-size 420ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    font-weight 260ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    color 620ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    font-size 820ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    font-weight 620ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .header-nav-link:hover .header-nav-link__bar,
@@ -1616,8 +1616,8 @@
   transform: translateX(-50%) scaleX(1);
   opacity: 1;
   transition:
-    opacity 240ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 420ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity 620ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 860ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .header-nav-link:hover .header-nav-link__decoration,
@@ -1625,8 +1625,8 @@
   transform: translateX(-50%) translateY(0) rotate(2.89deg) scale(1);
   opacity: 1;
   transition:
-    opacity 260ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 460ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity 700ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 960ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .header-nav-link--active::after {
