@@ -59,3 +59,17 @@ test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경�
   assert.match(activeStyles, /color: var\(--color-knud-ink\);/);
   assert.doesNotMatch(activeStyles, /font-size|line-height|letter-spacing/);
 });
+
+test("1350–1920px 헤더는 메뉴 폭과 장식까지 같은 구간에서 연속 보간한다", async () => {
+  const tokens = await readFile(new URL("../../styles/tokens.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
+  const desktop = tokens.match(/@media \(min-width: 1350px\) \{([\s\S]*?)\n\}/)?.[1];
+  assert.ok(desktop);
+  for (const token of ["gutter", "height", "logo-width", "logo-height", "brand-gap", "nav-item-width", "nav-size", "nav-decoration-width", "nav-decoration-height"]) {
+    assert.match(desktop, new RegExp(`--header-${token}: clamp\\([^;]+100vw - 1350px[^;]+/ 570`));
+  }
+  assert.match(styles, /\.header-nav-link--active::after \{[^}]*width: var\(--header-nav-item-width\)/);
+  assert.match(styles, /\.site-header__container \{[^}]*padding-inline: var\(--header-gutter\)/);
+  assert.doesNotMatch(header, /1349\.9|1350\.1/);
+});
