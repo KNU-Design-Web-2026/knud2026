@@ -2495,6 +2495,7 @@
   cursor: pointer;
   font: inherit;
   font-size: 20px;
+  font-weight: 400;
   text-align: left;
 }
 
@@ -2555,6 +2556,7 @@
   cursor: pointer;
   font: inherit;
   font-size: 20px;
+  font-weight: 400;
   text-align: center;
 }
 
