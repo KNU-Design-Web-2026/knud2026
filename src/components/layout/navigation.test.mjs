@@ -41,13 +41,6 @@ test("공통 헤더는 변경된 Figma 기준 폭의 브랜드와 메뉴 타이�
   assert.match(header, /w-\[var\(--header-nav-item-width\)\]/);
 });
 
-test("600px 헤더의 햄버거 아이콘은 Figma 기준 33px 폭을 확보한다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
-
-  assert.match(styles, /width: clamp\(1\.2890625rem, calc\(6\.1875vw - 0\.2578125rem\), 2\.0625rem\)/);
-  assert.match(styles, /height: clamp\(1rem, 4vw, 1\.5rem\)/);
-});
-
 test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경으로 표시한다", async () => {
   const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
   const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
@@ -72,4 +65,18 @@ test("1350–1920px 헤더는 메뉴 폭과 장식까지 같은 구간에서 연
   assert.match(styles, /\.header-nav-link--active::after \{[^}]*width: var\(--header-nav-item-width\)/);
   assert.match(styles, /\.site-header__container \{[^}]*padding-inline: var\(--header-gutter\)/);
   assert.doesNotMatch(header, /1349\.9|1350\.1/);
+});
+
+test("600px 헤더의 햄버거 아이콘은 Figma 기준 33px 폭을 확보한다", async () => {
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /width: clamp\(1\.2890625rem, calc\(6\.1875vw - 0\.2578125rem\), 2\.0625rem\)/);
+  assert.match(styles, /height: clamp\(1rem, 4vw, 1\.5rem\)/);
+});
+
+test("데스크톱 메뉴의 hover 배경 이미지는 느린 전환으로 표시한다", async () => {
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.header-nav-link__decoration \{[\s\S]*?opacity 620ms/);
+  assert.match(styles, /\.header-nav-link:hover \.header-nav-link__decoration[\s\S]*?opacity 700ms/);
 });
