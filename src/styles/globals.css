@@ -1066,7 +1066,7 @@
   }
 
   .profile-detail__names {
-    gap: clamp(0.3125rem, calc(6.14vw - 4.87rem), 2.5rem);
+    gap: clamp(0.3125rem, calc(0.5263vw - 0.13156rem), 0.5rem);
     width: clamp(13.375rem, calc(9.825vw + 5.085rem), 16.875rem);
   }
 
