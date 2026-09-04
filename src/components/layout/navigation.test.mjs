@@ -47,3 +47,15 @@ test("600px 헤더의 햄버거 아이콘은 Figma 기준 33px 폭을 확보한�
   assert.match(styles, /width: clamp\(1\.2890625rem, calc\(6\.1875vw - 0\.2578125rem\), 2\.0625rem\)/);
   assert.match(styles, /height: clamp\(1rem, 4vw, 1\.5rem\)/);
 });
+
+test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경으로 표시한다", async () => {
+  const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+
+  assert.match(header, /isActive && "bg-knud-navigation-active font-normal text-knud-ink"/);
+  assert.doesNotMatch(header, /isActive && "font-bold text-knud-navigation-active after:/);
+  const activeStyles = styles.match(/\.mobile-menu-panel__item\[aria-current="page"\] \{([^}]+)\}/)?.[1];
+  assert.ok(activeStyles);
+  assert.match(activeStyles, /color: var\(--color-knud-ink\);/);
+  assert.doesNotMatch(activeStyles, /font-size|line-height|letter-spacing/);
+});
