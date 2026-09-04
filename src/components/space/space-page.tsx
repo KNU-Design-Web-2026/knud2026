@@ -1,6 +1,7 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { archiveColumns } from "./space-data";
 import { SpaceMap } from "./space-map";
+import { CompactSpaceMap } from "./compact-space-map";
 import styles from "./space-page.module.css";
 
 export function SpacePage() {
@@ -10,9 +11,10 @@ export function SpacePage() {
         <section className={styles.mapSection} aria-labelledby="space-map-title">
           <div className={styles.heading}>
             <h1 id="space-map-title">SPACE 9 MAP</h1>
-            <p>이름에 커서를 올려 작품 정보를 확인해보세요!</p>
+            <p><span className={styles.desktopInstruction}>이름에 커서를 올려 작품 정보를 확인해보세요!</span><span className={styles.compactInstruction}>이름을 터치하여 작품 정보를 확인해보세요!</span></p>
           </div>
           <SpaceMap />
+          <CompactSpaceMap />
         </section>
         <section className={styles.archive} aria-labelledby="space-archive-title">
           <div className={`${styles.heading} ${styles.archiveHeading}`}>

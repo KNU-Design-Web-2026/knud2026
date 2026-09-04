@@ -65,6 +65,9 @@
   width: 48.914%; aspect-ratio: 624 / 382.879;
   color: #fff;
 }
+.workLink { text-decoration: none; }
+.workLink::before { content: ""; position: absolute; inset: -5px; }
+.workLink:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 .previewImage { object-fit: fill; }
 .previewShade { position: absolute; inset: 0; background: rgb(42 42 42 / 56%); }
 .previewCopy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.940653cqw; }
@@ -78,18 +81,41 @@
 .archivePanel { background: #d9d9d9; }
 .archiveColumn:last-child .archivePanel:last-child { box-shadow: 0 4px 4px rgb(0 0 0 / 25%); }
 
-/* Adaptive layouts, not separately supplied Figma frames. Preserve map geometry. */
+.compactMap, .compactInstruction { display: none; }
+/* 600px Figma frame; interpolate spacing between the supplied 400/600 frames. */
 @media (max-width: 821px) {
-  .heading h1, .heading h2 { height: auto; font-size: clamp(24px, 5vw, 40px); }
-  .heading p { margin-top: 12px; font-size: clamp(12px, 2.5vw, 20px); }
-  .map { width: 100%; margin-top: 40px; }
-  .preview { left: auto; right: 0; top: 100%; width: 65%; }
-  .previewCopy p { font-size: 2.3cqw; }
-  .previewCopy h3 { font-size: 4.5cqw; }
-  .archive { margin-top: 50cqw; }
-  .archiveGrid { gap: 12px; margin-top: 40px; }
-  .archiveColumn { gap: 10px; }
+  .content { width: calc(100% - clamp(20px, 10vw - 20px, 40px)); padding-block: clamp(60px, 10vw + 20px, 80px); }
+  .heading h1, .heading h2 { height: 31.334px; font-size: clamp(20px, 1vw + 16px, 22px); }
+  .heading p { margin-top: 8px; font-size: 14px; line-height: 18px; }
+  .map, .desktopInstruction { display: none; }
+  .compactInstruction { display: inline; }
+  .compactMap { display: block; position: relative; width: 98.65848%; aspect-ratio: 552.48749 / 311.2796; margin: 40px auto 0; container-type: inline-size; }
+  .mapDrawing, .tabletNames, .mobileNames { position: absolute; inset: 0; }
+  .mobileNames { display: none; }
+  .compactName { position: absolute; font-size: 2.53445cqw; font-weight: 500; line-height: 1.285714; color: #0f0e0f; white-space: nowrap; }
+  .compactVertical { display: flex; flex-direction: column; line-height: 1; }
+  .compactDiagonal { display: flex; align-items: center; justify-content: center; width: 7.03924%; aspect-ratio: 1; }
+  .archive { margin-top: clamp(60px, 10vw + 20px, 80px); }
+  .archiveGrid { grid-template-columns: 515fr 514fr; gap: 3.561525cqw; margin-top: 40px; }
+  .archiveColumn { gap: 1.87441cqw; }
+  .archiveColumn:last-child { display: none; }
   .page :global(.site-footer__schedule),
   .page :global(.site-footer__copyright) { white-space: normal; overflow-wrap: anywhere; }
   .page :global(.site-footer__information) { overflow-wrap: anywhere; }
+}
+
+/* The portrait map needs its own upright labels, not rotated desktop text.
+   480px is an implementation breakpoint between the 400px and 600px frames. */
+@media (max-width: 480px) {
+  .heading h1, .heading h2 { height: 28.334px; }
+  .heading p { margin-top: 6px; }
+  .compactMap { width: 78.435%; aspect-ratio: 298 / 529.1523; }
+  .mapDrawing { width: 177.56789%; height: 56.31649%; inset: 0 auto auto 0; transform-origin: top left; transform: translateX(56.31649%) rotate(90deg); }
+  .tabletNames { display: none; }
+  .mobileNames { display: block; }
+  .mobileNameBox { position: absolute; display: flex; align-items: center; justify-content: center; font-size: 4.697986cqw; font-weight: 500; line-height: 1.285714; color: #0f0e0f; white-space: nowrap; }
+  .page :global(.site-footer__content) { column-gap: 38px; grid-template-columns: 109px minmax(0, 1fr); }
+  .page :global(.site-footer__brand-copy), .page :global(.site-footer__schedule) { line-height: 16px; }
+  .page :global(.site-footer__information) { gap: 16px; }
+  .page :global(.site-footer__information a), .page :global(.site-footer__copyright) { font-size: 11px; line-height: 14px; }
 }
