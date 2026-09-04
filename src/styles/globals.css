@@ -2755,6 +2755,12 @@
   .message-page {
     --message-form-width: min(80.58325rem, 73.68vw);
     --message-outer-frame-width: min(84.27781rem, 77.06vw);
+    --message-frame-top: clamp(8.5625rem, calc(10.88vw + 2.88rem), 15.95875rem);
+    /* Keep both frames on one vertical origin as their widths scale. */
+    --message-frame-inset-y: calc(
+      (var(--message-outer-frame-width) * 696.164 / 1348.445 -
+        var(--message-form-width) * 647.43 / 1289.332) / 2
+    );
     --message-card-gap: clamp(2rem, 3.4375vw, 4.125rem);
     --message-field-gap: clamp(0.5rem, 0.85vw, 1rem);
   }
@@ -2764,7 +2770,7 @@
   }
 
   .message-page__frame--outer {
-    top: clamp(8.5625rem, calc(10.88vw + 2.88rem), 15.95875rem);
+    top: var(--message-frame-top);
     width: var(--message-outer-frame-width);
     height: auto;
     aspect-ratio: 1348.445 / 696.164;
@@ -2772,7 +2778,7 @@
 
   .message-page__frame--inner,
   .message-form {
-    top: clamp(9.60125rem, calc(11.25vw + 3.97rem), 17.46875rem);
+    top: calc(var(--message-frame-top) + var(--message-frame-inset-y));
     width: var(--message-form-width);
     height: auto;
     aspect-ratio: 1289.332 / 647.43;
