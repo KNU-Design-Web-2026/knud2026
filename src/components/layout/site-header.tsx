@@ -99,7 +99,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
         <Link className="site-header__brand flex min-w-0 items-center gap-[var(--header-brand-gap)]" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">
           <KnudLogo />
           <span className="site-header__title min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)]">
-            <span className="block whitespace-nowrap">2026 제<span className="max-[1350.1px]:hidden"> </span>42회 경북대학교 디자인학과 졸업전시회</span>
+            <span className="block whitespace-nowrap">2026 제42회 경북대학교 디자인학과 졸업전시회</span>
             <span className="block whitespace-nowrap">42th KNUD Graduation Exhibition Archive</span>
           </span>
         </Link>
