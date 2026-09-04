@@ -27,6 +27,8 @@
   --header-nav-size: 1.75rem;
   --header-nav-tracking: -0.002em;
   --header-nav-hover-size: 1.75rem;
+  --header-nav-decoration-width: 4.558rem;
+  --header-nav-decoration-height: 2.993rem;
   --header-menu-size: 3rem;
   --main-hero-height: 75rem;
   --footer-height: 17.5rem;
@@ -86,13 +88,24 @@
 @media (min-width: 84.4375rem) and (max-width: 119.9375rem) {
   :root {
     --page-gutter: clamp(3.125rem, calc(17.5439vw - 11.6776rem), 9.375rem);
-    --header-height: clamp(7.5rem, calc(3.5088vw + 4.5394rem), 8.75rem);
-    --header-logo-width: clamp(6.25rem, calc(5.2632vw + 1.8092rem), 8.125rem);
-    --header-logo-height: clamp(3.625rem, calc(3.1579vw + 0.9605rem), 4.75rem);
-    --header-brand-gap: clamp(1.25rem, calc(2.4561vw - 0.8224rem), 2.125rem);
-    --header-nav-size: clamp(1.5rem, calc(0.7018vw + 0.9079rem), 1.75rem);
-    --header-nav-hover-size: var(--header-nav-size);
     --main-hero-height: clamp(48.75rem, calc(73.6842vw - 13.4211rem), 75rem);
+  }
+}
+
+/* Header only: interpolate the complete desktop composition from 1350 to
+ * 1920, including the menu width. Keep fractional viewport widths covered. */
+@media (min-width: 1350px) {
+  :root {
+    --header-gutter: clamp(50px, calc(50px + (100vw - 1350px) * 100 / 570), 150px);
+    --header-height: clamp(120px, calc(120px + (100vw - 1350px) * 20 / 570), 140px);
+    --header-logo-width: clamp(100px, calc(100px + (100vw - 1350px) * 30 / 570), 130px);
+    --header-logo-height: clamp(58px, calc(58px + (100vw - 1350px) * 18 / 570), 76px);
+    --header-brand-gap: clamp(20px, calc(20px + (100vw - 1350px) * 14 / 570), 34px);
+    --header-nav-item-width: clamp(118px, calc(118px + (100vw - 1350px) * 20 / 570), 138px);
+    --header-nav-size: clamp(24px, calc(24px + (100vw - 1350px) * 4 / 570), 28px);
+    --header-nav-hover-size: var(--header-nav-size);
+    --header-nav-decoration-width: clamp(3.893rem, calc(3.893rem + (100vw - 1350px) * 10.64 / 570), 4.558rem);
+    --header-nav-decoration-height: clamp(2.56rem, calc(2.56rem + (100vw - 1350px) * 6.928 / 570), 2.993rem);
   }
 }
 

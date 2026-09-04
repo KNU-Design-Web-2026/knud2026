@@ -10,11 +10,6 @@ const fullIntroduction = [
   "이러한 흐름을 사자의 행동에 비유하여, 축적은 도약을 위해 힘을 모으는 순간, 점화는 목표를 향해 도약하는 순간, 폭발은 사자의 포효와 함께 에너지와 존재감이 주변으로 확산되는 모습으로 표현하였다.",
 ];
 
-const compactIntroduction = [
-  "Ignite는 4년 동안 축적된 디자인적 고민과 가능성에 처음 불을 붙이는 순간을 의미한다. 잠재되어 있던 에너지가 졸업 전시를 통해 하나의 불꽃으로 피어나고, 더 큰 가능성을 향해 번져 나가는 시작을 담아낸다.",
-  "Ignite는 학생들이 4년 동안 축적해 온 경험과 가능성을 하나의 시작으로 연결하는 졸업전시이다. 단순히 결과물을 전시하는 공간을 넘어, 각자의 개성과 도전 정신을 공유하고 새로운 출발을 응원하는 상징적인 공간을 지향한다. 또한 서로 다른 시선과 다양한 디자인 언어가 하나의 전시 안에서 조화를 이루며, 학생 개개인의 가능성이 하나의 에너지로 모여 새로운 가치를 만들어내는 경험을 제공하고자 한다.",
-];
-
 const professors = ["이경용", "조철희", "안지선", "이재민"];
 
 const committee = [
@@ -33,15 +28,14 @@ const teams = [
   { name: "편집팀", members: "현연이 김연수 임경민 조장원", image: "/assets/figma/about/planning-team.jpg", width: 4096 },
 ];
 
-function IntroductionCopy({ compact = false }: { compact?: boolean }) {
-  const paragraphs = compact ? compactIntroduction : fullIntroduction;
+function IntroductionCopy() {
 
   return (
     <div className={styles.introductionCopy}>
       <div className={styles.introductionBody}>
         <h1>잠자는 사자가 깨어난 순간</h1>
         <div className={styles.introductionParagraphs}>
-          {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {fullIntroduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </div>
       <a href="https://www.instagram.com/knu_design_exhibition" rel="noreferrer" target="_blank">Instagram @knu_design_exhibition</a>
@@ -71,7 +65,7 @@ export function AboutPage() {
   return (
     <div className={styles.page} data-about-page>
       <section className={styles.introSection}>
-        <div className={styles.introWide} data-about-reveal="scale">
+        <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
             <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
             <IntroductionCopy />
@@ -79,9 +73,9 @@ export function AboutPage() {
         </div>
 
         <div className={styles.introNarrow} data-about-reveal="scale">
-          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
-          <div className={styles.introNarrowFrame}>
-            <div className={styles.introNarrowInner}><IntroductionCopy compact /></div>
+          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
+          <div className={styles.introNarrowFrame} data-about-depth>
+            <div className={styles.introNarrowInner}><IntroductionCopy /></div>
           </div>
         </div>
       </section>

@@ -65,10 +65,17 @@ test("Work 그리드는 Figma의 네 기준 폭에 맞춰 열 수·여백·간�
   assert.match(styles, /@media \(max-width: 25rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?column-gap: 0\.625rem;[\s\S]*?padding-inline: 0\.625rem;[\s\S]*?row-gap: 0\.875rem/);
 });
 
-test("Work 600~740px 구간은 작가명 넘침을 막기 위해 두 열을 유지한다", () => {
+test("Work 1020~1350px 구간은 카드 폭 확보를 위해 세 열로 조정한다", () => {
   const styles = readFileSync(globalStylesPath, "utf8");
 
-  assert.match(styles, /@media \(max-width: 46\.25rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-card__artists \{[\s\S]*?font-size: clamp/);
+});
+
+test("Work 600~830px 구간은 작가명 넘침을 막기 위해 두 열로 조정한다", () => {
+  const styles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(styles, /@media \(max-width: 51\.875rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
 });
 
 test("Work 카드 정보 패널은 기준 폭별 Figma 타이포그래피와 여백을 사용한다", () => {
@@ -144,7 +151,7 @@ test("Work Web 상세는 Figma의 1920px 컨테이너·150px 여백·2열 본문
   const styles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(styles, /\.work-detail \{[\s\S]*?min-width: 0;[\s\S]*?overflow-x: clip/);
-  assert.match(styles, /\.work-detail__content \{[\s\S]*?padding-inline: 9\.375rem/);
+  assert.match(styles, /\.work-detail__content \{[\s\S]*?padding: 6\.25rem 9\.375rem/);
   assert.match(styles, /\.work-detail__story \{[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);[\s\S]*?gap: 2\.5rem/);
 });
 
