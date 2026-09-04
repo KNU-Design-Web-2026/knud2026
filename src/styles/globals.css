@@ -1633,7 +1633,7 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 8.625rem;
+  width: var(--header-nav-item-width);
   height: 0.5rem;
   content: "";
   background: var(--color-knud-navigation-active);
@@ -1649,9 +1649,9 @@
   max-width: 24.5rem;
 }
 
-@media (max-width: 1350.1px) {
-  .header-nav-link--active::after {
-    width: var(--header-nav-item-width);
+@media (min-width: 1350px) {
+  .site-header__container {
+    padding-inline: var(--header-gutter);
   }
 }
 
