@@ -2971,7 +2971,11 @@
 }
 
 @media (max-width: 600px) {
-  .message-page { --message-field-gap: clamp(0.5rem, 1.6vw, 0.875rem); }
+  .message-page {
+    --message-field-gap: clamp(0.5rem, 1.6vw, 0.875rem);
+    --message-compact-width: min(94vw, calc(54.3905vw + 9.902375rem));
+    --message-compact-top: calc(14.5vw + 0.25rem);
+  }
 
   .message-page__intro {
     height: clamp(29.547rem, calc(88.12vw + 7.52rem), 40.5625rem);
@@ -2982,44 +2986,48 @@
     height: calc(90vw + 9.5625rem);
   }
   .message-page__frame--compact {
-    top: calc(14.5vw + 0.25rem);
-    width: calc(54.4vw + 9.9rem);
+    top: var(--message-compact-top);
+    width: var(--message-compact-width);
     height: auto;
     aspect-ratio: 484.781 / 277;
   }
   .message-form {
-    width: 100%;
-    height: calc(55.5vw + 7.1875rem);
+    top: var(--message-compact-top);
+    left: 50%;
+    width: var(--message-compact-width);
+    height: auto;
+    aspect-ratio: 484.781 / 277;
+    transform: translateX(-50%);
   }
   .message-form__field--to span {
-    top: 28.54%;
-    left: 15.8%;
+    top: 12.5673%;
+    left: 7.7128%;
   }
   .message-form__field--from span {
-    top: 28.54%;
-    left: 45.36%;
+    top: 12.5673%;
+    left: 44.1489%;
   }
   .message-form__field input,
   .message-form__recipient-trigger {
-    top: calc(28.13% - clamp(0.125rem, 0.75vw, 0.25rem));
-    height: 6.47%;
-    min-height: 1.4375rem;
+    top: 12.5673%;
+    height: 10.7055%;
+    min-height: 0;
     font-size: 0.75rem;
   }
   .message-form__field--to input,
   .message-form__recipient-trigger {
-    left: max(21.84%, calc(15.8% + clamp(0.9375rem, 4.2vw, 1.35rem) + var(--message-field-gap)));
-    width: 14.67%;
+    left: 16.4894%;
+    width: 20.7447%;
   }
   .message-form__field--from input {
-    left: max(53.5%, calc(43.5% + clamp(1.75rem, 7.64vw, 2.55rem) + var(--message-field-gap)));
-    width: 14.67%;
+    left: 59.0426%;
+    width: 20.7447%;
   }
   .message-form__body {
-    top: 39.51%;
-    left: 15.84%;
-    width: 68.17%;
-    height: 33.93%;
+    top: 31.0459%;
+    left: 7.641%;
+    width: 84.3678%;
+    height: 54.8736%;
   }
   .message-form__body textarea {
     padding: clamp(0.5rem, 1.83vw, 0.6875rem);
@@ -3027,16 +3035,16 @@
   }
   .message-form__body button {
     top: 72.37%;
-    right: 4.49%;
+    right: 3.704%;
     width: 17.5%;
     height: 18.7%;
-    min-height: 1.37775rem;
+    min-height: 0;
     font-size: 0.75rem;
   }
   .message-form__recipient-menu {
-    top: 35.8%;
-    left: 21.84%;
-    width: 14.67%;
+    top: 25%;
+    left: 16.4894%;
+    width: 20.7447%;
   }
   .message-form__recipient-menu li {
     height: 1.875rem;
@@ -3070,14 +3078,13 @@
 /* Keep the compact cards readable without forcing their copy beyond the edge. */
 @media (max-width: 600px) {
   .message-form__field {
-    /* Mobile coordinates are also measured from the complete form canvas. */
+    /* Mobile coordinates are also measured from the complete form canvas.
+       The canvas now shares the compact SVG frame's origin and dimensions. */
     inset: 0;
     width: 100%;
     height: 100%;
     font-size: clamp(0.6875rem, 2.7vw, 0.875rem);
   }
-
-  .message-form__field--from span { left: 43.5%; }
 
   .message-form__field input,
   .message-form__recipient-trigger {
