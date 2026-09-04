@@ -171,7 +171,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                   aria-current={isActive ? "page" : undefined}
                   className={[
                     "mobile-menu-panel__item relative flex h-[86px] items-center justify-center border-b border-white/70 px-5 text-center text-[32px] leading-[1.3] tracking-[-0.2px] text-white last:border-b-0 max-[600.1px]:h-[68px] max-[600.1px]:text-2xl max-[400.1px]:h-[54px] max-[400.1px]:text-xl",
-                    isActive && "font-bold text-knud-navigation-active after:absolute after:inset-x-0 after:bottom-0 after:h-2 after:bg-knud-navigation-active",
+                    isActive && "bg-knud-navigation-active font-normal text-knud-ink",
                   ]
                     .filter(Boolean)
                     .join(" ")}

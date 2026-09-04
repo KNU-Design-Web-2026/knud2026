@@ -1739,6 +1739,7 @@
 }
 
 .mobile-menu-panel__item {
+  font-weight: 400;
   opacity: 0;
   transform: translateY(-0.75rem);
   transition:
@@ -1805,6 +1806,12 @@
 }
 
 .mobile-menu-panel__item:focus-visible {
+  background: var(--color-knud-navigation-active);
+  color: var(--color-knud-ink);
+}
+
+/* 활성 상태는 색상만 변경한다. 크기·행간·자간은 각 링크의 반응형 규칙을 유지한다. */
+.mobile-menu-panel__item[aria-current="page"] {
   background: var(--color-knud-navigation-active);
   color: var(--color-knud-ink);
 }
