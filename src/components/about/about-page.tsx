@@ -71,7 +71,7 @@ export function AboutPage() {
   return (
     <div className={styles.page} data-about-page>
       <section className={styles.introSection}>
-        <div className={styles.introWide} data-about-reveal="scale">
+        <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
             <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
             <IntroductionCopy />
@@ -79,8 +79,8 @@ export function AboutPage() {
         </div>
 
         <div className={styles.introNarrow} data-about-reveal="scale">
-          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
-          <div className={styles.introNarrowFrame}>
+          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
+          <div className={styles.introNarrowFrame} data-about-depth>
             <div className={styles.introNarrowInner}><IntroductionCopy compact /></div>
           </div>
         </div>

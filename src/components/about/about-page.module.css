@@ -49,7 +49,8 @@
   width: 1568px;
   height: 746px;
   padding: 26px;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(var(--about-depth-scale, 1));
+  filter: blur(var(--about-depth-blur, 0px));
   border: 10px solid #838383;
   background: #fcd519;
 }
@@ -679,7 +680,8 @@
     display: block;
     width: clamp(356px, calc(188px + 42vw), 440px);
     height: auto;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(var(--about-depth-scale, 1));
+    filter: blur(var(--about-depth-blur, 0px));
     aspect-ratio: 2893 / 4096;
     object-fit: cover;
   }
@@ -689,11 +691,14 @@
     top: clamp(628px, calc(404px + 56vw), 740px);
     left: 50%;
     box-sizing: border-box;
-    width: clamp(357px, calc(-11px + 92vw), 541px);
-    height: clamp(392px, calc(569px - 29.5vw), 451px);
-    padding: clamp(10px, 2.5vw, 15px);
-    transform: translateX(-50%);
-    border: clamp(4px, 1vw, 6px) solid #838383;
+    /* Figma uses an outside 4px stroke: include 8px in the CSS border box. */
+    width: min(calc(100% - 24px), clamp(365px, calc(37px + 82vw), 529px));
+    min-height: clamp(380px, calc(746px - 61vw), 502px);
+    height: auto;
+    padding: 14.5px clamp(13.5px, calc(8.5px + 1.25vw), 16px);
+    transform: translateX(-50%) scale(var(--about-depth-scale, 1));
+    filter: blur(var(--about-depth-blur, 0px));
+    border: 4px solid #838383;
     background: #fcd519;
   }
 
