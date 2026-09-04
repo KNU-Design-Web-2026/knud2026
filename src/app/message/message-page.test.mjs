@@ -46,6 +46,8 @@ assert.match(styles, /Mobile coordinates are also measured from the complete for
 assert.match(styles, /\.message-card__body\s*\{[\s\S]*white-space:\s*normal/);
 assert.match(styles, /\.message-form__validation/);
 assert.match(styles, /\.message-form__recipient-arrow\.is-open\s*\{\s*transform:\s*rotate\(0deg\)/);
+assert.match(styles, /\.message-form__recipient-trigger\s*\{[\s\S]*?font-size: 20px;[\s\S]*?font-weight: 400;/);
+assert.match(styles, /\.message-form__recipient-menu button\s*\{[\s\S]*?font-size: 20px;[\s\S]*?font-weight: 400;/);
 assert.match(styles, /max-width: 1350px/);
 assert.match(styles, /max-width: 1020px/);
 assert.match(styles, /max-width: 600px/);
