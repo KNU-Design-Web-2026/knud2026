@@ -235,12 +235,11 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: 7.08%;
-  left: 61.5%;
-  width: 38.5%;
+  bottom: calc(7.08% - 2vw);
+  left: 70%;
+  width: 37%;
   max-width: none;
   height: auto;
-  max-height: 100%;
   object-fit: contain;
 }
 
@@ -419,7 +418,7 @@
   }
 
   .professorsLionWide {
-    bottom: calc(2.32px + 2.922vw);
+    bottom: calc(2.32px + 0.922vw);
   }
 
   .committeeSection {
@@ -590,9 +589,8 @@
   }
 
   .professorsLionWide {
-    /* Expand toward the text while keeping the artwork's right edge on the panel. */
-    bottom: 2.874%;
-    left: 61.5%;
+    bottom: calc(2.874% - 2vw);
+    left: 70%;
   }
 
   .committeeSection {
@@ -902,9 +900,9 @@
 
   .professorsLionNarrow {
     display: block;
-    /* Keep the artwork below the professor rows and overlapping the paper edge. */
-    right: clamp(-12px, -2vw, -8px);
-    bottom: calc(-80px - 7vw);
+    /* Match the 600px Figma frame: overlap the lower-right paper edge by 60px. */
+    right: clamp(0px, calc(33px - 5.5vw), 11px);
+    bottom: -10vw;
     left: auto;
     width: clamp(144px, 37.5vw, 225px);
     max-height: 80%;
@@ -1016,7 +1014,7 @@
   }
 
   .professorsLionNarrow {
-    bottom: calc(-80px - 7vw);
+    bottom: -10vw;
   }
 
   .committeeSection {
