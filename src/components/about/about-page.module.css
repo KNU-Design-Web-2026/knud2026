@@ -236,14 +236,12 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: calc(
-    100% - var(--professors-paper-top) - var(--professors-paper-height) + 8%
-  );
+  bottom: 3.51%;
   left: 63.544%;
-  width: auto;
-  max-width: 36.456%;
-  height: calc(var(--professors-paper-height) - 18%);
-  max-height: none;
+  width: 36.456%;
+  max-width: none;
+  height: auto;
+  max-height: 96.49%;
   object-fit: contain;
 }
 

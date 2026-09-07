@@ -43,13 +43,13 @@ test("웹 교수진 패널과 사자는 Figma 비율을 유지한다", async () 
 
   assert.match(styles, /\.professorsGrid \{[\s\S]*?margin-left: 353px;/);
   assert.match(styles, /margin-left: calc\(-206\.16px \+ 29\.123vw\)/);
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\([\s\S]*?var\(--professors-paper-top\)[\s\S]*?var\(--professors-paper-height\)[\s\S]*?left: 63\.544%;[\s\S]*?width: auto;[\s\S]*?max-width: 36\.456%;[\s\S]*?height: calc\(var\(--professors-paper-height\) - 18%\);/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: 3\.51%;[\s\S]*?left: 63\.544%;[\s\S]*?width: 36\.456%;[\s\S]*?height: auto;[\s\S]*?max-height: 96\.49%;/);
 });
 
 test("822px 이상 교수진 사자는 패널 기준 비율로 함께 이동한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\([\s\S]*?var\(--professors-paper-top\)[\s\S]*?var\(--professors-paper-height\)[\s\S]*?left: 63\.544%;[\s\S]*?width: auto;[\s\S]*?max-width: 36\.456%;[\s\S]*?height: calc\(var\(--professors-paper-height\) - 18%\);/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: 3\.51%;[\s\S]*?left: 63\.544%;[\s\S]*?width: 36\.456%;[\s\S]*?height: auto;[\s\S]*?max-height: 96\.49%;/);
   assert.doesNotMatch(styles, /bottom: calc\(49\.211px - 1\.053vw\)/);
   assert.doesNotMatch(styles, /left: calc\(141\.684px \+ 44\.912vw\)/);
   assert.doesNotMatch(styles, /right: clamp\(-20px, calc\(-51px \+ 3\.03vw\), -10px\)/);
