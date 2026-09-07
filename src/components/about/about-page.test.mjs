@@ -77,6 +77,16 @@ test("지도와 전시 정보 이미지는 1020px 이하에서도 대칭 여백�
   assert.doesNotMatch(styles, /width: clamp\(920px, calc\(-94\.545px \+ 99\.455vw\), 1248px\)/);
 });
 
+test("821px 이하 관람 시간 텍스트는 정보 영역의 시각 중심에 배치한다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(
+    styles,
+    /@media \(max-width: 821px\)[\s\S]*?\.exhibitionInformation dl \{[\s\S]*?width: fit-content;[\s\S]*?margin-inline: auto;/,
+  );
+  assert.match(styles, /\.exhibitionInformation dl > div \{[\s\S]*?grid-template-columns: 52px auto;/);
+});
+
 test("모바일 위원회 텍스트는 Figma 좌측 여백과 글자 크기를 유지한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
