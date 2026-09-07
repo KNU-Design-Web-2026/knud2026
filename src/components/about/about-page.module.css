@@ -596,11 +596,15 @@
   .committeeInformation {
     --committee-info-left: calc(-58.366px + 24.62vw);
 
+    box-sizing: border-box;
     width: calc(64.547px + 64.404vw);
+    height: 100%;
     margin-left: var(--committee-info-left);
-    padding-top: 11.482vw;
+    padding-block: 11.482vw;
+    padding-inline: 0;
     grid-template-columns: calc(35.726px + 13.205vw) minmax(0, 1fr);
     column-gap: calc(-0.002px + 7.259vw);
+    align-content: center;
     font-size: calc(5.636px + 1.212vw);
   }
 

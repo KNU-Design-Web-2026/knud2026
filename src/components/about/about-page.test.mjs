@@ -61,7 +61,7 @@ test("중간 웹 위원회 텍스트는 Figma 좌표와 크기로 보간된다",
 
   assert.match(styles, /--committee-info-left: calc\(-58\.366px \+ 24\.62vw\)/);
   assert.match(styles, /width: calc\(64\.547px \+ 64\.404vw\)/);
-  assert.match(styles, /padding-top: 11\.482vw/);
+  assert.match(styles, /padding-block: 11\.482vw/);
   assert.match(styles, /grid-template-columns: calc\(35\.726px \+ 13\.205vw\) minmax\(0, 1fr\)/);
   assert.match(styles, /column-gap: calc\(-0\.002px \+ 7\.259vw\)/);
   assert.match(styles, /font-size: calc\(5\.636px \+ 1\.212vw\)/);
@@ -85,6 +85,15 @@ test("모바일 위원회 텍스트는 Figma 좌측 여백과 글자 크기를 �
   assert.match(styles, /grid-template-columns: clamp\(158px, calc\(26px \+ 33vw\), 224px\) minmax\(0, 1fr\)/);
   assert.match(styles, /font-size: clamp\(10px, calc\(2px \+ 2vw\), 14px\)/);
   assert.match(styles, /font-size: clamp\(14px, calc\(2px \+ 3vw\), 20px\)/);
+});
+
+test("822px부터 1350px까지 위원회 텍스트는 패널 안에서 위아래 여백을 동일하게 유지한다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(
+    styles,
+    /@media \(min-width: 822px\) and \(max-width: 1350px\)[\s\S]*?\.committeeInformation \{[\s\S]*?box-sizing: border-box;[\s\S]*?height: 100%;[\s\S]*?padding-block: 11\.482vw;[\s\S]*?align-content: center;/,
+  );
 });
 
 test("위원회 일러스트와 위원장 이름 간격을 조정한다", async () => {
