@@ -171,7 +171,6 @@
   width: 1580px;
   height: 826px;
   margin-top: -80px;
-  overflow: hidden;
 }
 
 .panelPaper,
@@ -236,7 +235,7 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: 0;
+  bottom: 7.08%;
   left: 61.5%;
   width: 38.5%;
   max-width: none;
@@ -419,6 +418,10 @@
     font-size: calc(18.53px + 0.702vw);
   }
 
+  .professorsLionWide {
+    bottom: calc(2.32px + 2.922vw);
+  }
+
   .committeeSection {
     height: calc(189.95px + 38.596vw);
     margin-top: calc(52.1px + 9.474vw);
@@ -588,6 +591,7 @@
 
   .professorsLionWide {
     /* Expand toward the text while keeping the artwork's right edge on the panel. */
+    bottom: 2.874%;
     left: 61.5%;
   }
 
@@ -898,9 +902,9 @@
 
   .professorsLionNarrow {
     display: block;
-    /* Keep the lion inside the responsive panel instead of drifting past its edge. */
-    right: clamp(8px, 2vw, 16px);
-    bottom: 3%;
+    /* Keep the artwork below the professor rows and overlapping the paper edge. */
+    right: clamp(-12px, -2vw, -8px);
+    bottom: calc(-80px - 7vw);
     left: auto;
     width: clamp(144px, 37.5vw, 225px);
     max-height: 80%;
@@ -1012,7 +1016,7 @@
   }
 
   .professorsLionNarrow {
-    bottom: 3%;
+    bottom: calc(-80px - 7vw);
   }
 
   .committeeSection {

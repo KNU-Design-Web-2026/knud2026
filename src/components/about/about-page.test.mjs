@@ -43,17 +43,18 @@ test("웹 교수진 패널의 사자는 우측 경계를 유지하며 Figma보�
 
   assert.match(styles, /\.professorsGrid \{[\s\S]*?margin-left: 353px;/);
   assert.match(styles, /margin-left: calc\(-206\.16px \+ 29\.123vw\)/);
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: 0;[\s\S]*?left: 61\.5%;[\s\S]*?width: 38\.5%;[\s\S]*?height: auto;[\s\S]*?max-height: 100%;/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: 7\.08%;[\s\S]*?left: 61\.5%;[\s\S]*?width: 38\.5%;[\s\S]*?height: auto;[\s\S]*?max-height: 100%;/);
 });
 
 test("822px 이상 교수진 사자는 패널 기준 비율로 함께 이동한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: 0;[\s\S]*?left: 61\.5%;[\s\S]*?width: 38\.5%;[\s\S]*?height: auto;[\s\S]*?max-height: 100%;/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: 7\.08%;[\s\S]*?left: 61\.5%;[\s\S]*?width: 38\.5%;[\s\S]*?height: auto;[\s\S]*?max-height: 100%;/);
   assert.doesNotMatch(styles, /bottom: calc\(49\.211px - 1\.053vw\)/);
   assert.doesNotMatch(styles, /left: calc\(141\.684px \+ 44\.912vw\)/);
   assert.doesNotMatch(styles, /right: clamp\(-20px, calc\(-51px \+ 3\.03vw\), -10px\)/);
-  assert.match(styles, /\.professorsLionWide \{[\s\S]*?left: 61\.5%;/);
+  assert.match(styles, /bottom: calc\(2\.32px \+ 2\.922vw\)/);
+  assert.match(styles, /\.professorsLionWide \{[\s\S]*?bottom: 2\.874%;[\s\S]*?left: 61\.5%;/);
 });
 
 test("중간 웹 위원회 텍스트는 Figma 좌표와 크기로 보간된다", async () => {
@@ -142,8 +143,8 @@ test("모바일과 태블릿의 교수진 사자는 Figma 전용 에셋과 규�
   assert.match(page, /professorsLionNarrow/);
   assert.doesNotMatch(styles, /transform: scaleY\(0\.7\)/);
   assert.match(styles, /width: clamp\(144px, 37\.5vw, 225px\)/);
-  assert.match(styles, /right: clamp\(8px, 2vw, 16px\)/);
-  assert.match(styles, /bottom: 3%;/);
+  assert.match(styles, /right: clamp\(-12px, -2vw, -8px\)/);
+  assert.match(styles, /bottom: calc\(-80px - 7vw\)/);
   assert.match(styles, /max-height: 80%;/);
   assert.match(styles, /\.committeeIllustration \{[\s\S]*?bottom: clamp\(-40px, calc\(-8px - 9vw\), -44px\)/);
 });
@@ -165,7 +166,7 @@ test("821px 이하 교수진과 위원회는 clamp 기반의 모바일 구성을
 
   assert.match(styles, /@media \(max-width: 821px\)/);
   assert.match(styles, /\.professorsSection \{[\s\S]*?width: max\(398px, calc\(66px \+ 83vw\)\)/);
-  assert.match(styles, /\.professorsLionNarrow \{[\s\S]*?right: clamp\(8px, 2vw, 16px\);[\s\S]*?bottom: 3%;[\s\S]*?width: clamp\(144px, 37\.5vw, 225px\)/);
+  assert.match(styles, /\.professorsLionNarrow \{[\s\S]*?right: clamp\(-12px, -2vw, -8px\);[\s\S]*?bottom: calc\(-80px - 7vw\);[\s\S]*?width: clamp\(144px, 37\.5vw, 225px\)/);
   assert.match(styles, /\.committeeSection \{[\s\S]*?height: max\(497px, calc\(81px \+ 104vw\)\)/);
   assert.match(styles, /\.committeeIllustration \{[\s\S]*?bottom: clamp\(-40px, calc\(-8px - 9vw\), -44px\)[\s\S]*?width: clamp\(170px, calc\(28px \+ 35\.5vw\), 241px\)/);
   assert.doesNotMatch(styles, /@media \(min-width: 600px\)/);
@@ -201,5 +202,5 @@ test("650px부터 800px까지 Professors 파란 패널은 사자와 텍스트를
 
   assert.match(styles, /\.professorsSection \{[\s\S]*?height: calc\(434\.013px - 1\.78vw\)/);
   assert.match(styles, /\.professorsPanel \{[\s\S]*?height: calc\(323\.023px \+ 6\.385vw\)/);
-  assert.match(styles, /\.professorsLionNarrow \{[\s\S]*?bottom: 3%;/);
+  assert.match(styles, /\.professorsLionNarrow \{[\s\S]*?bottom: calc\(-80px - 7vw\);/);
 });
