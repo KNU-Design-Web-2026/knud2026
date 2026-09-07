@@ -235,7 +235,7 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: calc(7.08% - 5vw);
+  bottom: calc(15.08% - 5vw);
   left: 64%;
   width: 36%;
   max-width: none;
@@ -1042,5 +1042,4 @@
   .professorsGrid > :nth-child(4) {
     order: 2;
   }
-
 }
