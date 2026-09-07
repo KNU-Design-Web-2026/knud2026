@@ -236,12 +236,12 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: 3.51%;
-  left: 63.544%;
-  width: 36.456%;
+  bottom: 0;
+  left: 61.5%;
+  width: 38.5%;
   max-width: none;
   height: auto;
-  max-height: 96.49%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -587,8 +587,8 @@
   }
 
   .professorsLionWide {
-    /* Preserve the artwork ratio while keeping its right edge inside the panel. */
-    left: 63.544%;
+    /* Expand toward the text while keeping the artwork's right edge on the panel. */
+    left: 61.5%;
   }
 
   .committeeSection {
