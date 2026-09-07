@@ -50,7 +50,7 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
     const matchedArtistEn = matchArtistEnglishName(artistKo);
 
     return {
-      artistEn: index === 8 ? "규리 박 & 다혜 이" : matchedArtistEn,
+      artistEn: index === 8 ? "PKR & LDH" : matchedArtistEn,
       artistEnMobile: index === 8 ? "KR & DH" : matchedArtistEn,
       artistEnTab: index === 8 ? "PKR & LDH" : matchedArtistEn,
       artistKo,

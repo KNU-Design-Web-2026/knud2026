@@ -163,6 +163,9 @@
 }
 
 .professorsPanel {
+  --professors-paper-top: 158px;
+  --professors-paper-height: 668px;
+
   position: relative;
   isolation: isolate;
   width: 1580px;
@@ -188,19 +191,23 @@
 }
 
 .professorsPanel .panelPaper {
-  top: 158px;
+  top: var(--professors-paper-top);
   width: 1572px;
-  height: 668px;
+  height: var(--professors-paper-height);
 }
 
 .professorsGrid {
   position: relative;
   z-index: 2;
   display: grid;
+  box-sizing: border-box;
+  top: var(--professors-paper-top);
   width: 607px;
+  height: var(--professors-paper-height);
   margin-left: 353px;
-  padding-top: 350px;
+  padding-top: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
   column-gap: 85px;
   row-gap: 51px;
   font-size: 24px;
@@ -228,9 +235,10 @@
 .professorsLion {
   position: absolute;
   z-index: 1;
-  bottom: 3.51%;
-  left: 63.544%;
-  width: 36.456%;
+  bottom: calc(15.08% - 5vw);
+  left: 64%;
+  width: 36%;
+  max-width: none;
   height: auto;
   object-fit: contain;
 }
@@ -266,10 +274,13 @@
   position: relative;
   z-index: 2;
   display: grid;
+  box-sizing: border-box;
   width: 992px;
+  height: 100%;
   margin-left: 292px;
-  padding-top: 191px;
+  padding-top: 0;
   grid-template-columns: 274px minmax(0, 1fr);
+  align-content: center;
   column-gap: 91px;
   font-size: 24px;
   line-height: 1.3;
@@ -377,21 +388,26 @@
   }
 
   .professorsPanel {
+    --professors-paper-top: calc(-374.2px + 27.72vw);
+    --professors-paper-height: calc(24.63px + 33.509vw);
+
     width: calc(40.64px + 80.175vw);
     height: calc(-349.58px + 61.228vw);
     margin-top: calc(304px - 20vw);
   }
 
   .professorsPanel .panelPaper {
-    top: calc(-374.2px + 27.72vw);
+    top: var(--professors-paper-top);
     width: calc(100% - calc(-18.95px + 1.404vw));
-    height: calc(24.63px + 33.509vw);
+    height: var(--professors-paper-height);
   }
 
   .professorsGrid {
+    top: var(--professors-paper-top);
     width: calc(361.1px + 12.807vw);
+    height: var(--professors-paper-height);
     margin-left: calc(-206.16px + 29.123vw);
-    padding-top: calc(-370.84px + 37.544vw);
+    padding-top: 0;
     column-gap: calc(10.9px + 3.86vw);
     row-gap: calc(57.74px - 0.351vw);
     font-size: calc(3.79px + 1.053vw);
@@ -399,6 +415,10 @@
 
   .professorsGrid strong {
     font-size: calc(18.53px + 0.702vw);
+  }
+
+  .professorsLionWide {
+    bottom: calc(2.32px + 1.422vw);
   }
 
   .committeeSection {
@@ -422,10 +442,12 @@
   }
 
   .committeeInformation {
+    height: 100%;
     width: calc(796.632px + 10.175vw);
     margin-left: calc(231.368px + 3.158vw);
-    padding-top: calc(69.74px + 6.316vw);
+    padding-top: 0;
     grid-template-columns: calc(71.895px + 10.526vw) minmax(0, 1fr);
+    align-content: center;
     column-gap: calc(114.579px - 1.228vw);
     font-size: calc(17.263px + 0.351vw);
   }
@@ -534,6 +556,8 @@
   }
 
   .professorsPanel {
+    --professors-paper-top: 0px;
+    --professors-paper-height: 100%;
     --professors-grid-width: clamp(430px, calc(108.182px + 31.515vw), 534px);
     --professors-grid-left: clamp(80px, calc(-250.909px + 32.424vw), 187px);
 
@@ -549,9 +573,11 @@
   }
 
   .professorsGrid {
+    top: var(--professors-paper-top);
     width: var(--professors-grid-width);
+    height: var(--professors-paper-height);
     margin-left: var(--professors-grid-left);
-    padding-top: clamp(88px, calc(-60.364px + 14.545vw), 136px);
+    padding-top: 0;
     column-gap: clamp(35px, calc(-51.364px + 8.485vw), 63px);
     row-gap: clamp(30px, calc(-8.182px + 4.545vw), 53px);
     font-size: clamp(14px, calc(1.636px + 1.212vw), 18px);
@@ -563,14 +589,8 @@
   }
 
   .professorsLionWide {
-    /* Keep the artwork clear of the second professor column as the panel scales. */
-    left: max(
-      63.544%,
-      calc(
-        var(--professors-grid-left) + var(--professors-grid-width) +
-          clamp(18px, calc(6.364px + 1.176vw), 24px)
-      )
-    );
+    bottom: calc(8.874% - 2vw);
+    left: 64%;
   }
 
   .committeeSection {
@@ -596,11 +616,14 @@
   .committeeInformation {
     --committee-info-left: calc(-58.366px + 24.62vw);
 
+    box-sizing: border-box;
     width: calc(64.547px + 64.404vw);
+    height: 100%;
     margin-left: var(--committee-info-left);
-    padding-top: 11.482vw;
+    padding: 0;
     grid-template-columns: calc(35.726px + 13.205vw) minmax(0, 1fr);
     column-gap: calc(-0.002px + 7.259vw);
+    align-content: center;
     font-size: calc(5.636px + 1.212vw);
   }
 
@@ -813,9 +836,14 @@
     line-height: 1.3;
   }
 
+  .exhibitionInformation dl {
+    width: fit-content;
+    margin-inline: auto;
+  }
+
   .exhibitionInformation dl > div {
     display: grid;
-    grid-template-columns: 52px 1fr;
+    grid-template-columns: 52px auto;
     text-align: left;
   }
 
@@ -831,6 +859,9 @@
   }
 
   .professorsPanel {
+    --professors-paper-top: 0px;
+    --professors-paper-height: 100%;
+
     width: 100%;
     height: max(246px, calc(42px + 51vw));
     margin-top: 20px;
@@ -844,11 +875,14 @@
 
   .professorsGrid {
     box-sizing: border-box;
+    top: var(--professors-paper-top);
     width: 62.943%;
+    height: var(--professors-paper-height);
     margin-left: 10.993%;
     margin-right: 0;
-    padding: clamp(51px, calc(9px + 10.5vw), 72px) 10px 0;
+    padding: 0 10px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
     justify-content: space-between;
     column-gap: clamp(22px, calc(4px + 4.5vw), 31px);
     row-gap: clamp(34px, calc(6px + 7vw), 48px);
@@ -866,11 +900,12 @@
 
   .professorsLionNarrow {
     display: block;
-    /* Keep the lion on the lower-right paper edge, with its feet outside the panel. */
-    right: clamp(-9px, calc(15px - 4vw), -1px);
-    bottom: clamp(-52px, calc(1px - 8.833vw), -34px);
+    /* Match the 600px Figma frame: overlap the lower-right paper edge by 60px. */
+    right: clamp(0px, calc(33px - 5.5vw), 11px);
+    bottom: -10vw;
     left: auto;
     width: clamp(144px, 37.5vw, 225px);
+    max-height: 80%;
     height: auto;
   }
 
@@ -897,12 +932,15 @@
   }
 
   .committeeInformation {
+    box-sizing: border-box;
     display: flex;
     width: clamp(276px, calc(46px + 57.5vw), 391px);
+    height: 100%;
     margin-left: clamp(66px, calc(10px + 14vw), 94px);
     margin-right: 0;
-    padding-top: clamp(66px, calc(12px + 13.5vw), 93px);
+    padding: 0;
     flex-direction: column;
+    justify-content: center;
     gap: clamp(25px, calc(5px + 5vw), 35px);
     font-size: clamp(10px, calc(2px + 2vw), 14px);
   }
@@ -976,8 +1014,7 @@
   }
 
   .professorsLionNarrow {
-    /* Keep the artwork clear of the lower-right professor name as the panel closes up. */
-    bottom: calc(121.333px - 26.667vw);
+    bottom: -10vw;
   }
 
   .committeeSection {
@@ -1005,5 +1042,4 @@
   .professorsGrid > :nth-child(4) {
     order: 2;
   }
-
 }

@@ -410,8 +410,9 @@
   display: none;
 }
 
-/* Figma 1157:29969 — Web > Tab (1350px). */
-@media (max-width: 84.375rem) {
+/* Work 작가명 약자 표기: Web 구간에서도 1500px 이하에서는
+   PKR & LDH 표기를 사용해 노트북·소형 데스크톱에서 이름이 넘치지 않게 한다. */
+@media (max-width: 93.75rem) {
   .work-card__artist-en--web,
   .work-detail__artist-en--web {
     display: none;
@@ -421,7 +422,10 @@
   .work-detail__artist-en--tab {
     display: inline;
   }
+}
 
+/* Figma 1157:29969 — Web > Tab (1350px). */
+@media (max-width: 84.4375rem) {
   .work-grid {
     column-gap: 1.1875rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));

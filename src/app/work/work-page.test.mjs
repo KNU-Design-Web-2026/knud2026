@@ -59,7 +59,7 @@ test("Work 그리드는 Figma의 네 기준 폭에 맞춰 열 수·여백·간�
 
   assert.match(page, /work-grid/);
   assert.match(styles, /\.work-grid \{[\s\S]*?column-gap: 1\.75rem;[\s\S]*?grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);[\s\S]*?padding-inline: 9\.375rem;[\s\S]*?row-gap: 2\.25rem/);
-  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?column-gap: 1\.1875rem;[\s\S]*?padding-inline: 3\.125rem;[\s\S]*?row-gap: 1\.875rem/);
+  assert.match(styles, /@media \(max-width: 84\.4375rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?column-gap: 1\.1875rem;[\s\S]*?padding-inline: 3\.125rem;[\s\S]*?row-gap: 1\.875rem/);
   assert.match(styles, /@media \(max-width: 63\.75rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);[\s\S]*?row-gap: 1\.75rem/);
   assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?column-gap: 1rem;[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);[\s\S]*?padding-inline: 1\.25rem;[\s\S]*?row-gap: 1\.375rem/);
   assert.match(styles, /@media \(max-width: 25rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?column-gap: 0\.625rem;[\s\S]*?padding-inline: 0\.625rem;[\s\S]*?row-gap: 0\.875rem/);
@@ -68,8 +68,8 @@ test("Work 그리드는 Figma의 네 기준 폭에 맞춰 열 수·여백·간�
 test("Work 1020~1350px 구간은 카드 폭 확보를 위해 세 열로 조정한다", () => {
   const styles = readFileSync(globalStylesPath, "utf8");
 
-  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
-  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-card__artists \{[\s\S]*?font-size: clamp/);
+  assert.match(styles, /@media \(max-width: 84\.4375rem\) \{[\s\S]*?\.work-grid \{[\s\S]*?grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /@media \(max-width: 84\.4375rem\) \{[\s\S]*?\.work-card__artists \{[\s\S]*?font-size: clamp/);
 });
 
 test("Work 600~830px 구간은 작가명 넘침을 막기 위해 두 열로 조정한다", () => {
@@ -81,7 +81,7 @@ test("Work 600~830px 구간은 작가명 넘침을 막기 위해 두 열로 조�
 test("Work 카드 정보 패널은 기준 폭별 Figma 타이포그래피와 여백을 사용한다", () => {
   const styles = readFileSync(globalStylesPath, "utf8");
 
-  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-card__detail \{[\s\S]*?padding: 0\.75rem 0 0\.875rem 1rem;[\s\S]*?\.work-card__title \{[\s\S]*?font-size: 1\.375rem/);
+  assert.match(styles, /@media \(max-width: 84\.4375rem\) \{[\s\S]*?\.work-card__detail \{[\s\S]*?padding: 0\.75rem 0 0\.875rem 1rem;[\s\S]*?\.work-card__title \{[\s\S]*?font-size: 1\.375rem/);
   assert.match(styles, /@media \(max-width: 63\.75rem\) \{[\s\S]*?\.work-card__detail \{[\s\S]*?padding-left: 0\.875rem/);
   assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-card__detail \{[\s\S]*?gap: 0\.25rem;[\s\S]*?padding: 0\.625rem 0 0\.75rem 0\.875rem;[\s\S]*?\.work-card__title \{[\s\S]*?font-size: 1\.25rem/);
   assert.match(styles, /@media \(max-width: 25rem\) \{[\s\S]*?\.work-card__detail \{[\s\S]*?gap: 0\.125rem;[\s\S]*?padding: 0\.375rem 0 0\.5rem 0\.625rem;[\s\S]*?\.work-card__title \{[\s\S]*?font-size: 0\.875rem/);
@@ -110,13 +110,13 @@ test("박규리·이다혜 작품 작가명은 화면 폭별 표기 규칙을 �
   const card = readFileSync(workCardPath, "utf8");
   const styles = readFileSync(globalStylesPath, "utf8");
 
-  assert.match(items, /규리 박 & 다혜 이/);
+  assert.match(items, /artistEn: index === 8 \? "PKR & LDH"/);
   assert.match(items, /artistEnTab: index === 8 \? "PKR & LDH"/);
   assert.match(items, /artistEnMobile: index === 8 \? "KR & DH"/);
   assert.match(card, /work-card__artist-en--web/);
   assert.match(card, /work-card__artist-en--tab/);
   assert.match(card, /work-card__artist-en--mobile/);
-  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-card__artist-en--web,[\s\S]*?\.work-card__artist-en--tab/);
+  assert.match(styles, /@media \(max-width: 93\.75rem\) \{[\s\S]*?\.work-card__artist-en--web,[\s\S]*?\.work-card__artist-en--tab/);
   assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-card__artist-en--tab,[\s\S]*?\.work-card__artist-en--mobile/);
 });
 

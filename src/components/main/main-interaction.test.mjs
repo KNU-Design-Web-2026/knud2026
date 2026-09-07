@@ -24,6 +24,14 @@ test("메인 스프레이는 불규칙한 외곽선과 각진 잉크 드립을 �
   assert.match(spray, /context\.lineJoin = "miter"/);
 });
 
+test("스프레이 색상은 KNUD 팔레트의 주황·파랑을 사용하고 연두를 제외한다", () => {
+  const spray = readFileSync(sprayCanvasPath, "utf8");
+
+  assert.match(spray, /#FD9519/);
+  assert.match(spray, /#41C9F9/);
+  assert.doesNotMatch(spray, /#B6EE57/);
+});
+
 test("1020px 이상 메인 프레임의 하단 배경이 이미지 색과 이어진다", () => {
   const styles = readFileSync(stylesPath, "utf8");
 
