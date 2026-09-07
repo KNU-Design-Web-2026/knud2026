@@ -53,8 +53,8 @@ test("Profile 그리드는 Figma 네 기준 폭에서 열 수와 카드 여백�
   assert.match(tokens, /@media \(max-width: 63\.75rem\)[\s\S]*?--profile-grid-columns: 3/);
   assert.match(tokens, /@media \(max-width: 37\.5rem\)[\s\S]*?--profile-grid-columns: 2/);
   assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--profile-grid-gutter: 0\.625rem/);
-  assert.match(tokens, /--header-height: clamp\(3\.125rem, calc\(12\.5vw \+ 0\.3125rem\), 5rem\)/);
-  assert.match(tokens, /--header-title-size: clamp\(0\.5rem, calc\(5vw - 0\.625rem\), 0\.625rem\)/);
+  assert.match(tokens, /--header-height: clamp\(3\.6875rem, calc\(10\.5vw \+ 1\.0625rem\), 5rem\)/);
+  assert.match(tokens, /--header-title-size: clamp\(0\.625rem, calc\(2vw \+ 0\.125rem\), 0\.875rem\)/);
 });
 
 test("Profile 카드는 기준 폭별 Figma 카드 비율을 유지한다", () => {
@@ -158,9 +158,9 @@ test("공통 헤더는 중간 폭에서 제목과 메뉴 아이콘을 연속적�
 
   assert.match(header, /site-header__brand/);
   assert.match(header, /site-header__title/);
-  assert.match(tokens, /--header-height: clamp\(5rem, calc\(5\.3333vw \+ 3rem\), 7\.5rem\)/);
-  assert.match(tokens, /--header-menu-size: clamp\(1\.875rem, 7\.5vw, 3rem\)/);
-  assert.match(globalStyles, /width: clamp\(1\.2890625rem, 4\.9vw, 2\.0625rem\)/);
+  assert.match(tokens, /--header-height: clamp\(5rem, calc\(9\.5238vw \+ 1\.4286rem\), 7\.5rem\)/);
+  assert.match(tokens, /--header-menu-size: 3rem/);
+  assert.match(globalStyles, /width: clamp\(1\.2890625rem, calc\(6\.1875vw - 0\.2578125rem\), 2\.0625rem\)/);
 });
 
 test("Profile 터치 구간은 확대 없이 해당 폭의 Figma 외곽 프레임을 사용한다", () => {
