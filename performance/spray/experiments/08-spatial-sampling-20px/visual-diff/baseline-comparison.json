@@ -1,0 +1,34 @@
+{
+  "baseline": {
+    "gitSha": "cbc8a733e43ba43878bbae81aafa7f6b2f8bc0e9",
+    "spacingPx": 12,
+    "image": "legacy-canvas.png"
+  },
+  "optimized": {
+    "gitSha": "c5c0f6a",
+    "spacingPx": 20,
+    "image": "optimized-canvas.png"
+  },
+  "conditions": {
+    "seed": 20260908,
+    "viewport": {
+      "width": 1512,
+      "height": 982,
+      "devicePixelRatio": 2
+    },
+    "input": "동일한 Playwright CDP fast-drag 경로"
+  },
+  "fullCanvas": {
+    "ssim": 0.976297,
+    "psnrDb": 27.78139
+  },
+  "sprayRegion": {
+    "baselineAverageBrightness": 159.289,
+    "optimizedAverageBrightness": 158.166,
+    "averageBrightnessChangePercent": -0.7,
+    "baselineAverageSaturation": 45.5399,
+    "optimizedAverageSaturation": 43.9618,
+    "averageSaturationChangePercent": -3.5
+  },
+  "note": "comparison.json은 같은 checkout의 legacy/optimized query 결과여서 회귀 테스트 자체의 동작 확인용이다. 최종 판정은 서로 다른 Git 상태에서 캡처한 이 파일의 비교값을 사용한다."
+}
