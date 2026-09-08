@@ -1,0 +1,87 @@
+{
+  "generatedAt": "2026-09-08T18:17:47.235Z",
+  "targetUrl": "http://127.0.0.1:3000/?spraySeed=20260908",
+  "branch": "perf/canvas-spray-optimization",
+  "baselineGitSha": "cbc8a733e43ba43878bbae81aafa7f6b2f8bc0e9",
+  "optimizedGitSha": "c5c0f6a",
+  "chrome": "151.0.7922.175 arm64",
+  "viewport": {
+    "width": 1512,
+    "height": 982,
+    "devicePixelRatio": 2
+  },
+  "power": {
+    "source": "AC Power",
+    "charging": true
+  },
+  "methodology": {
+    "executionMode": "headed Chrome",
+    "runsPerCondition": 5,
+    "warmupExcluded": 1,
+    "representativeStatistic": "Run 02~05 median",
+    "input": "Playwright CDP mouse input with fixed path and timing",
+    "visualSeed": 20260908
+  },
+  "files": [
+    {
+      "path": "optimized/artifacts/all-results.json",
+      "bytes": 4884923,
+      "sha256": "c153d419811e56ef0900c42255d7ea9ae6adf59ac9e042f7f4dd01be814c92c9"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-native-run-01.metrics.json",
+      "bytes": 6264,
+      "sha256": "11ba3fc4d6b33dfb5a6e1d0457f5db47156cf763f90d6fbdaf199ac60be36e14"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-native-run-01.trace.json.gz",
+      "bytes": 10359525,
+      "sha256": "bf4a8dc2214656363a2f00c88ee4debd9455329654825f315ea1de02480e2032"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-4x-run-01.metrics.json",
+      "bytes": 6260,
+      "sha256": "0f17beaf9a69267a762ba584bc66ed58baf59523c444276219618256468400e3"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-4x-run-01.trace.json.gz",
+      "bytes": 7141261,
+      "sha256": "28038a7def22ab94f3006bbd4aec958dfd08358b92e125e4863bae75f466978c"
+    },
+    {
+      "path": "optimized/report/runs.csv",
+      "bytes": 3867,
+      "sha256": "1cbf94c60dd49a363d4df4a1ded2ad692dd214eb8da8d418182b792f8014dfde"
+    },
+    {
+      "path": "optimized/report/summary.json",
+      "bytes": 13954,
+      "sha256": "9e6d883c9a79eb1c237ac1a1558df60b71f02ea23fd3cd791049c1be2b83dd17"
+    },
+    {
+      "path": "optimized/comparison/render-p95-before-after.svg",
+      "bytes": 6537,
+      "sha256": "d30183c2e9a9945a38ffbdcdd672a895a6ab34abc9a3668c44bbfd729aaf36ef"
+    },
+    {
+      "path": "optimized/comparison/frame-interval-before-after.svg",
+      "bytes": 6170,
+      "sha256": "8fa32405c9191f27b22f5670d5ff9a8f6627564f3cb3473b7296d19d39c45d63"
+    },
+    {
+      "path": "optimized/comparison/spray-before-after.mp4",
+      "bytes": 549883,
+      "sha256": "9bfc2ad700a5126246e322555bc49c6301130d9f4dd3756580334c060a1a2691"
+    },
+    {
+      "path": "optimized/evidence/devtools/screenshots/native-fast-drag-cpu-gpu-timeline.jpg",
+      "bytes": 215448,
+      "sha256": "13f368a8db816df7838b23a8d068952d70e9c5868671c13cb0d0e82c6ca16c22"
+    },
+    {
+      "path": "optimized/evidence/devtools/screenshots/4x-fast-drag-cpu-gpu-timeline.jpg",
+      "bytes": 233779,
+      "sha256": "0e5417134d46771b5bb95c54a505553ce852c808d449fc86d05f2a44072e2483"
+    }
+  ]
+}

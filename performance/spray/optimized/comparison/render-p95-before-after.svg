@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<rect width="100%" height="100%" fill="#F7F7F2"/>
+<text x="120" y="58" font-family="Pretendard,Arial,sans-serif" font-size="38" font-weight="700" fill="#111">Canvas 렌더 p95 · 최적화 전후</text>
+<text x="120" y="96" font-family="Pretendard,Arial,sans-serif" font-size="20" fill="#555">동일한 headed Chrome · Run 02~05 중앙값 · 낮을수록 좋음</text>
+<line x1="120" x2="1330" y1="650" y2="650" stroke="#D7D7D1"/>
+<text x="102" y="656" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#666">0ms</text>
+<line x1="120" x2="1330" y1="550" y2="550" stroke="#D7D7D1"/>
+<text x="102" y="556" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#666">7ms</text>
+<line x1="120" x2="1330" y1="450" y2="450" stroke="#D7D7D1"/>
+<text x="102" y="456" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#666">14ms</text>
+<line x1="120" x2="1330" y1="350" y2="350" stroke="#D7D7D1"/>
+<text x="102" y="356" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#666">21ms</text>
+<line x1="120" x2="1330" y1="250" y2="250" stroke="#D7D7D1"/>
+<text x="102" y="256" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#666">28ms</text>
+<line x1="120" x2="1330" y1="150" y2="150" stroke="#D7D7D1"/>
+<text x="102" y="156" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#666">35ms</text>
+<rect x="155.83333333333331" y="621.4285714285714" width="60" height="28.57142857142857" rx="7" fill="#909090"/>
+<rect x="225.83333333333331" y="631.4285714285714" width="60" height="18.571428571428573" rx="7" fill="#15A9ED"/>
+<text x="185.83333333333331" y="611.4285714285714" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">2</text>
+<text x="255.83333333333331" y="621.4285714285714" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">1.3</text>
+<text x="220.83333333333331" y="686" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#111">Native</text>
+<text x="220.83333333333331" y="710" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#555">Slow drag</text>
+<rect x="357.49999999999994" y="542.1428571428571" width="60" height="107.85714285714286" rx="7" fill="#909090"/>
+<rect x="427.49999999999994" y="584.2857142857143" width="60" height="65.71428571428571" rx="7" fill="#15A9ED"/>
+<text x="387.49999999999994" y="532.1428571428571" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">7.55</text>
+<text x="457.49999999999994" y="574.2857142857143" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">4.6</text>
+<text x="422.49999999999994" y="686" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#111">Native</text>
+<text x="422.49999999999994" y="710" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#555">Fast drag</text>
+<rect x="559.1666666666666" y="540" width="60" height="110" rx="7" fill="#909090"/>
+<rect x="629.1666666666666" y="582.1428571428571" width="60" height="67.85714285714285" rx="7" fill="#15A9ED"/>
+<text x="589.1666666666666" y="530" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">7.7</text>
+<text x="659.1666666666666" y="572.1428571428571" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">4.75</text>
+<text x="624.1666666666666" y="686" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#111">Native</text>
+<text x="624.1666666666666" y="710" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#555">Decay</text>
+<rect x="760.8333333333334" y="530.7142857142857" width="60" height="119.28571428571429" rx="7" fill="#909090"/>
+<rect x="830.8333333333334" y="579.2857142857142" width="60" height="70.71428571428572" rx="7" fill="#15A9ED"/>
+<text x="790.8333333333334" y="520.7142857142857" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">8.35</text>
+<text x="860.8333333333334" y="569.2857142857142" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">4.95</text>
+<text x="825.8333333333334" y="686" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#111">4×</text>
+<text x="825.8333333333334" y="710" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#555">Slow drag</text>
+<rect x="962.5" y="263.57142857142856" width="60" height="386.42857142857144" rx="7" fill="#909090"/>
+<rect x="1032.5" y="372.8571428571429" width="60" height="277.1428571428571" rx="7" fill="#15A9ED"/>
+<text x="992.5" y="253.57142857142856" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">27.05</text>
+<text x="1062.5" y="362.8571428571429" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">19.4</text>
+<text x="1027.5" y="686" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#111">4×</text>
+<text x="1027.5" y="710" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#555">Fast drag</text>
+<rect x="1164.1666666666665" y="257.8571428571429" width="60" height="392.1428571428571" rx="7" fill="#909090"/>
+<rect x="1234.1666666666665" y="376.42857142857144" width="60" height="273.57142857142856" rx="7" fill="#15A9ED"/>
+<text x="1194.1666666666665" y="247.8571428571429" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">27.45</text>
+<text x="1264.1666666666665" y="366.42857142857144" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">19.15</text>
+<text x="1229.1666666666665" y="686" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#111">4×</text>
+<text x="1229.1666666666665" y="710" text-anchor="middle" font-family="Pretendard,Arial,sans-serif" font-size="16" fill="#555">Decay</text>
+<rect x="1040" y="45" width="20" height="20" rx="4" fill="#909090"/><text x="1070" y="62" font-family="Pretendard,Arial,sans-serif" font-size="18">Before · 12px</text>
+<rect x="1215" y="45" width="20" height="20" rx="4" fill="#15A9ED"/><text x="1245" y="62" font-family="Pretendard,Arial,sans-serif" font-size="18">After · 20px</text>
+</svg>

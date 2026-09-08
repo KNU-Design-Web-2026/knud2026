@@ -1,0 +1,648 @@
+{
+  "grouped": [
+    {
+      "mode": "native",
+      "scenario": "idle",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "canvasFrames": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "renderDurationP95Ms": {
+        "median": null,
+        "min": null,
+        "max": null
+      },
+      "frameIntervalP95Ms": {
+        "median": null,
+        "min": null,
+        "max": null
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1046748,
+        "min": 1046748,
+        "max": 1196860
+      }
+    },
+    {
+      "mode": "native",
+      "scenario": "click",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "canvasFrames": {
+        "median": 1443,
+        "min": 1436,
+        "max": 1445
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 5,
+        "min": 5,
+        "max": 5
+      },
+      "renderDurationP95Ms": {
+        "median": 0.3,
+        "min": 0.2,
+        "max": 0.4
+      },
+      "frameIntervalP95Ms": {
+        "median": 10.2,
+        "min": 10.2,
+        "max": 10.2
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1410292,
+        "min": 1405536,
+        "max": 1573600
+      }
+    },
+    {
+      "mode": "native",
+      "scenario": "slow-drag",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 300,
+        "min": 300,
+        "max": 300
+      },
+      "canvasFrames": {
+        "median": 1490,
+        "min": 1489,
+        "max": 1490
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 110,
+        "min": 110,
+        "max": 110
+      },
+      "renderDurationP95Ms": {
+        "median": 1.3,
+        "min": 1.3,
+        "max": 1.4
+      },
+      "frameIntervalP95Ms": {
+        "median": 10.25,
+        "min": 10.2,
+        "max": 10.3
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1250734,
+        "min": 1248344,
+        "max": 1412300
+      }
+    },
+    {
+      "mode": "native",
+      "scenario": "fast-drag",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 320,
+        "min": 320,
+        "max": 320
+      },
+      "canvasFrames": {
+        "median": 1242.5,
+        "min": 1238,
+        "max": 1245
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 440,
+        "min": 440,
+        "max": 440
+      },
+      "renderDurationP95Ms": {
+        "median": 4.6,
+        "min": 4.6,
+        "max": 4.8
+      },
+      "frameIntervalP95Ms": {
+        "median": 12.1,
+        "min": 12.1,
+        "max": 12.2
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 1
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1234512,
+        "min": 1233728,
+        "max": 1392268
+      }
+    },
+    {
+      "mode": "native",
+      "scenario": "decay",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 160,
+        "min": 160,
+        "max": 160
+      },
+      "canvasFrames": {
+        "median": 785,
+        "min": 777,
+        "max": 790
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 440,
+        "min": 440,
+        "max": 440
+      },
+      "renderDurationP95Ms": {
+        "median": 4.75,
+        "min": 4.6,
+        "max": 5
+      },
+      "frameIntervalP95Ms": {
+        "median": 11.9,
+        "min": 11.7,
+        "max": 11.9
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1220610,
+        "min": 1218228,
+        "max": 1381960
+      }
+    },
+    {
+      "mode": "4x",
+      "scenario": "idle",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "canvasFrames": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "renderDurationP95Ms": {
+        "median": null,
+        "min": null,
+        "max": null
+      },
+      "frameIntervalP95Ms": {
+        "median": null,
+        "min": null,
+        "max": null
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1087340,
+        "min": 1045512,
+        "max": 1194692
+      }
+    },
+    {
+      "mode": "4x",
+      "scenario": "click",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "canvasFrames": {
+        "median": 1441.5,
+        "min": 1441,
+        "max": 1444
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 5,
+        "min": 5,
+        "max": 5
+      },
+      "renderDurationP95Ms": {
+        "median": 0.4,
+        "min": 0.3,
+        "max": 0.6
+      },
+      "frameIntervalP95Ms": {
+        "median": 10.05,
+        "min": 9.7,
+        "max": 10.1
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1412480,
+        "min": 1412468,
+        "max": 1581368
+      }
+    },
+    {
+      "mode": "4x",
+      "scenario": "slow-drag",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 300,
+        "min": 300,
+        "max": 300
+      },
+      "canvasFrames": {
+        "median": 1490,
+        "min": 1488,
+        "max": 1490
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 110,
+        "min": 110,
+        "max": 110
+      },
+      "renderDurationP95Ms": {
+        "median": 4.95,
+        "min": 4.8,
+        "max": 5.8
+      },
+      "frameIntervalP95Ms": {
+        "median": 10.35,
+        "min": 10.3,
+        "max": 10.6
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1263152,
+        "min": 1263152,
+        "max": 1419440
+      }
+    },
+    {
+      "mode": "4x",
+      "scenario": "fast-drag",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 320,
+        "min": 320,
+        "max": 320
+      },
+      "canvasFrames": {
+        "median": 689,
+        "min": 648,
+        "max": 690
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 440,
+        "min": 440,
+        "max": 440
+      },
+      "renderDurationP95Ms": {
+        "median": 19.4,
+        "min": 19.4,
+        "max": 20.7
+      },
+      "frameIntervalP95Ms": {
+        "median": 27.05,
+        "min": 26.9,
+        "max": 29
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 336.5,
+        "min": 326,
+        "max": 337
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1235258,
+        "min": 1234272,
+        "max": 1391008
+      }
+    },
+    {
+      "mode": "4x",
+      "scenario": "decay",
+      "runCount": 4,
+      "pointerMoves": {
+        "median": 160,
+        "min": 160,
+        "max": 160
+      },
+      "canvasFrames": {
+        "median": 498,
+        "min": 470,
+        "max": 498
+      },
+      "peakEstimatedActiveStamps": {
+        "median": 440,
+        "min": 439,
+        "max": 440
+      },
+      "renderDurationP95Ms": {
+        "median": 19.15,
+        "min": 19,
+        "max": 20.8
+      },
+      "frameIntervalP95Ms": {
+        "median": 26.65,
+        "min": 26.4,
+        "max": 28.8
+      },
+      "frameIntervalsOver20Ms": {
+        "median": 143,
+        "min": 141,
+        "max": 145
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapDeltaAfterGc": {
+        "median": 1225028,
+        "min": 1225016,
+        "max": 1381628
+      }
+    }
+  ],
+  "clean": {
+    "metrics": [
+      {
+        "mode": "native",
+        "elapsedMs": 14066.287,
+        "heapDeltaAfterGc": 1499212,
+        "deltas": {
+          "TaskDuration": 5.885825,
+          "ScriptDuration": 4.115668,
+          "RecalcStyleDuration": 0.014167,
+          "LayoutDuration": 0.000128,
+          "JSHeapUsedSize": 1499212
+        }
+      },
+      {
+        "mode": "4x",
+        "elapsedMs": 14192.855,
+        "heapDeltaAfterGc": 1491120,
+        "deltas": {
+          "TaskDuration": 11.916906,
+          "ScriptDuration": 8.362902,
+          "RecalcStyleDuration": 0.05321,
+          "LayoutDuration": 0.000803,
+          "JSHeapUsedSize": 1491120
+        }
+      }
+    ],
+    "traces": [
+      {
+        "file": "performance/spray/optimized/artifacts/clean/spray-fast-drag-native-run-01.trace.json.gz",
+        "selectedRendererThread": "91983:63842239",
+        "excludedProfilerStartupRunTasks": 1,
+        "traceEventCount": 503865,
+        "rendererMainEventCount": 119769,
+        "longRunTasksOver50Ms": 0,
+        "longestRunTaskMs": 48.39,
+        "gcEventCount": 3113,
+        "threadActivity": {
+          "gpuProcess": {
+            "threads": [
+              {
+                "key": "91970:63842130",
+                "name": "VizCompositorThread"
+              },
+              {
+                "key": "91970:63842062",
+                "name": "CrGpuMain"
+              }
+            ],
+            "count": 18246,
+            "totalMs": 10981.92,
+            "p95Ms": 5.98,
+            "maxMs": 24.01
+          },
+          "rendererCompositor": {
+            "threads": [
+              {
+                "key": "91983:63842305",
+                "name": "Compositor"
+              }
+            ],
+            "count": 14962,
+            "totalMs": 384.28,
+            "p95Ms": 0.14,
+            "maxMs": 0.46
+          }
+        },
+        "events": {
+          "RunTask": {
+            "count": 10812,
+            "totalMs": 5858.07,
+            "maxMs": 48.39
+          },
+          "FunctionCall": {
+            "count": 4133,
+            "totalMs": 4130.99,
+            "maxMs": 7.02
+          },
+          "EventDispatch": {
+            "count": 655,
+            "totalMs": 93.18,
+            "maxMs": 4.73
+          },
+          "FireAnimationFrame": {
+            "count": 1211,
+            "totalMs": 4087.25,
+            "maxMs": 7.07
+          },
+          "UpdateLayoutTree": {
+            "count": 321,
+            "totalMs": 14.21,
+            "maxMs": 0.1
+          },
+          "Layout": {
+            "count": 2,
+            "totalMs": 0.12,
+            "maxMs": 0.07
+          },
+          "PrePaint": {
+            "count": 1542,
+            "totalMs": 59.79,
+            "maxMs": 0.14
+          },
+          "Paint": {
+            "count": 8,
+            "totalMs": 1.05,
+            "maxMs": 0.32
+          }
+        }
+      },
+      {
+        "file": "performance/spray/optimized/artifacts/clean/spray-fast-drag-4x-run-01.trace.json.gz",
+        "selectedRendererThread": "92035:63843023",
+        "excludedProfilerStartupRunTasks": 1,
+        "traceEventCount": 338586,
+        "rendererMainEventCount": 70298,
+        "longRunTasksOver50Ms": 0,
+        "longestRunTaskMs": 36.18,
+        "gcEventCount": 1915,
+        "threadActivity": {
+          "gpuProcess": {
+            "threads": [
+              {
+                "key": "91970:63842130",
+                "name": "VizCompositorThread"
+              },
+              {
+                "key": "91970:63842062",
+                "name": "CrGpuMain"
+              }
+            ],
+            "count": 14056,
+            "totalMs": 5249.35,
+            "p95Ms": 0.46,
+            "maxMs": 25.7
+          },
+          "rendererCompositor": {
+            "threads": [
+              {
+                "key": "92035:63843077",
+                "name": "Compositor"
+              }
+            ],
+            "count": 12100,
+            "totalMs": 236.81,
+            "p95Ms": 0.11,
+            "maxMs": 0.67
+          }
+        },
+        "events": {
+          "RunTask": {
+            "count": 4761,
+            "totalMs": 11796.89,
+            "maxMs": 36.18
+          },
+          "FunctionCall": {
+            "count": 3621,
+            "totalMs": 8411.36,
+            "maxMs": 24.02
+          },
+          "EventDispatch": {
+            "count": 657,
+            "totalMs": 348.01,
+            "maxMs": 6.81
+          },
+          "FireAnimationFrame": {
+            "count": 690,
+            "totalMs": 8181.35,
+            "maxMs": 24.04
+          },
+          "UpdateLayoutTree": {
+            "count": 322,
+            "totalMs": 52.87,
+            "maxMs": 0.94
+          },
+          "Layout": {
+            "count": 2,
+            "totalMs": 0.79,
+            "maxMs": 0.74
+          },
+          "PrePaint": {
+            "count": 1022,
+            "totalMs": 137.86,
+            "maxMs": 0.87
+          },
+          "Paint": {
+            "count": 8,
+            "totalMs": 0.54,
+            "maxMs": 0.24
+          }
+        }
+      }
+    ]
+  }
+}
