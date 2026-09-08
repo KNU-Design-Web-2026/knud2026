@@ -38,6 +38,25 @@ export type SprayStamp = Point & {
 
 export type RandomSource = () => number;
 
+export function calculateStampStepCount(
+  distance: number,
+  spacing: number,
+  maximum: number,
+): number {
+  return Math.min(Math.floor(distance / spacing), maximum);
+}
+
+export function translatePointerPoint(
+  clientX: number,
+  clientY: number,
+  bounds: Pick<DOMRect, "left" | "top">,
+): Point {
+  return {
+    x: clientX - bounds.left,
+    y: clientY - bounds.top,
+  };
+}
+
 export function createSeededRandom(seed: number): RandomSource {
   let state = seed >>> 0;
 
@@ -91,6 +110,8 @@ export function createSprayStamp(
   const particles: SprayParticle[] = [];
   const bodyWidth = (32 + random() * 18) * SPRAY_SCALE;
   const bodyHeight = (7 + random() * 5) * SPRAY_SCALE;
+  const cosine = Math.cos(direction);
+  const sine = Math.sin(direction);
   const edgePoints: SprayEdgePoint[] = Array.from({ length: 20 }, (_, index) => {
     const angle = (index / 20) * Math.PI * 2;
     const edgeJitter = 0.72 + random() * 0.48;
@@ -106,13 +127,14 @@ export function createSprayStamp(
     const isOverspray = index >= 52;
     const localX = (random() - 0.5) * (isOverspray ? 118 : 72) * SPRAY_SCALE;
     const localY = (random() - 0.5) * (isOverspray ? 56 : 30) * SPRAY_SCALE;
-    const cosine = Math.cos(direction);
-    const sine = Math.sin(direction);
 
+    const radius = (
+      isOverspray ? 0.35 + random() * 1.35 : 0.7 + random() * 2.8
+    ) * SPRAY_SCALE;
     particles.push({
       x: localX * cosine - localY * sine,
       y: localX * sine + localY * cosine,
-      radius: (isOverspray ? 0.35 + random() * 1.35 : 0.7 + random() * 2.8) * SPRAY_SCALE,
+      radius,
       alpha: isOverspray ? 0.08 + random() * 0.3 : 0.28 + random() * 0.58,
     });
   }

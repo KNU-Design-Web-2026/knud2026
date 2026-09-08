@@ -3,16 +3,18 @@
 import { useEffect, useRef } from "react";
 
 import {
+  calculateStampStepCount,
   compactActiveStamps,
   createSeededRandom,
   createSprayStamp,
   parseSpraySeed,
+  translatePointerPoint,
   type Point,
   type RandomSource,
   type SprayStamp,
 } from "./spray-model";
 
-const STAMP_SPACING = 12;
+const STAMP_SPACING = 20;
 const STAMP_DURATION = 2_400;
 const STAMP_VISIBLE_DURATION = 1_800;
 const MAX_DEVICE_PIXEL_RATIO = 2;
@@ -27,7 +29,7 @@ export function SprayCanvas() {
   const animationFrameRef = useRef<number | null>(null);
   const colorIndexRef = useRef(-1);
   const activeColorRef = useRef(SPRAY_COLORS[0]);
-  const canvasSizeRef = useRef({ height: 0, width: 0 });
+  const canvasBoundsRef = useRef({ height: 0, left: 0, top: 0, width: 0 });
   const randomSourceRef = useRef<RandomSource>(Math.random);
 
   useEffect(() => {
@@ -58,17 +60,24 @@ export function SprayCanvas() {
     }
 
     const resizeCanvas = () => {
-      const { height, width } = hero.getBoundingClientRect();
+      const { height, left, top, width } = hero.getBoundingClientRect();
       const devicePixelRatio = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
 
-      canvasSizeRef.current = { height, width };
+      canvasBoundsRef.current = { height, left, top, width };
       canvas.width = Math.round(width * devicePixelRatio);
       canvas.height = Math.round(height * devicePixelRatio);
       context.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
     };
 
+    const updateCanvasPosition = () => {
+      const { left, top } = hero.getBoundingClientRect();
+
+      canvasBoundsRef.current.left = left;
+      canvasBoundsRef.current.top = top;
+    };
+
     const render = (now: number) => {
-      const { height, width } = canvasSizeRef.current;
+      const { height, width } = canvasBoundsRef.current;
 
       compactActiveStamps(stampsRef.current, now, STAMP_DURATION);
       const instrumentedCanvas = canvas as HTMLCanvasElement & {
@@ -83,7 +92,6 @@ export function SprayCanvas() {
           ? 1
           : (STAMP_DURATION - age) / (STAMP_DURATION - STAMP_VISIBLE_DURATION);
 
-        context.strokeStyle = stamp.color;
         context.fillStyle = stamp.color;
         context.save();
         context.translate(stamp.x, stamp.y);
@@ -170,12 +178,11 @@ export function SprayCanvas() {
     };
 
     const pointFromEvent = (event: PointerEvent): Point => {
-      const bounds = hero.getBoundingClientRect();
-
-      return {
-        x: event.clientX - bounds.left,
-        y: event.clientY - bounds.top,
-      };
+      return translatePointerPoint(
+        event.clientX,
+        event.clientY,
+        canvasBoundsRef.current,
+      );
     };
 
     const sprayAlongPath = (nextPoint: Point) => {
@@ -190,7 +197,7 @@ export function SprayCanvas() {
       const deltaX = nextPoint.x - previousPoint.x;
       const deltaY = nextPoint.y - previousPoint.y;
       const distance = Math.hypot(deltaX, deltaY);
-      const steps = Math.min(Math.floor(distance / STAMP_SPACING), 10);
+      const steps = calculateStampStepCount(distance, STAMP_SPACING, 10);
       const direction = Math.atan2(deltaY, deltaX);
 
       if (steps === 0) {
@@ -256,6 +263,7 @@ export function SprayCanvas() {
 
     const resizeObserver = new ResizeObserver(resizeCanvas);
     resizeObserver.observe(hero);
+    window.addEventListener("scroll", updateCanvasPosition, { passive: true });
     sprayZone.addEventListener("pointerdown", handlePointerDown);
     sprayZone.addEventListener("pointermove", handlePointerMove);
     sprayZone.addEventListener("pointerup", stopSpraying);
@@ -263,6 +271,7 @@ export function SprayCanvas() {
 
     return () => {
       resizeObserver.disconnect();
+      window.removeEventListener("scroll", updateCanvasPosition);
       sprayZone.removeEventListener("pointerdown", handlePointerDown);
       sprayZone.removeEventListener("pointermove", handlePointerMove);
       sprayZone.removeEventListener("pointerup", stopSpraying);

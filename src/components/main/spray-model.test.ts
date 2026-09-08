@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  calculateStampStepCount,
   compactActiveStamps,
   createSeededRandom,
   createSprayStamp,
   parseSpraySeed,
+  translatePointerPoint,
   type SprayStamp,
 } from "./spray-model.ts";
 
@@ -95,4 +97,17 @@ test("측정용 seed는 부호 없는 정수만 허용한다", () => {
   assert.equal(parseSpraySeed("-1"), null);
   assert.equal(parseSpraySeed("1.5"), null);
   assert.equal(parseSpraySeed("invalid"), null);
+});
+
+test("스프레이 폭에 맞춘 공간 간격으로 경로 스탬프 수를 제한한다", () => {
+  assert.equal(calculateStampStepCount(19.9, 20, 10), 0);
+  assert.equal(calculateStampStepCount(40, 20, 10), 2);
+  assert.equal(calculateStampStepCount(1_000, 20, 10), 10);
+});
+
+test("캐시한 캔버스 위치를 포인터의 로컬 좌표로 변환한다", () => {
+  assert.deepEqual(translatePointerPoint(240, 360, { left: 40, top: 60 }), {
+    x: 200,
+    y: 300,
+  });
 });
