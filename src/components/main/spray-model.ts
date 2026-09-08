@@ -38,6 +38,28 @@ export type SprayStamp = Point & {
 
 export type RandomSource = () => number;
 
+export function compactActiveStamps(
+  stamps: SprayStamp[],
+  now: number,
+  duration: number,
+): number {
+  let writeIndex = 0;
+
+  for (let readIndex = 0; readIndex < stamps.length; readIndex += 1) {
+    const stamp = stamps[readIndex];
+
+    if (now - stamp.createdAt >= duration) {
+      continue;
+    }
+
+    stamps[writeIndex] = stamp;
+    writeIndex += 1;
+  }
+
+  stamps.length = writeIndex;
+  return writeIndex;
+}
+
 export function createSprayStamp(
   point: Point,
   createdAt: number,

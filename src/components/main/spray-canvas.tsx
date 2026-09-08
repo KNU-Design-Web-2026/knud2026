@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import {
+  compactActiveStamps,
   createSprayStamp,
   type Point,
   type SprayStamp,
@@ -23,6 +24,7 @@ export function SprayCanvas() {
   const animationFrameRef = useRef<number | null>(null);
   const colorIndexRef = useRef(-1);
   const activeColorRef = useRef(SPRAY_COLORS[0]);
+  const canvasSizeRef = useRef({ height: 0, width: 0 });
 
   useEffect(() => {
     const hero = document.getElementById("main-hero");
@@ -49,18 +51,17 @@ export function SprayCanvas() {
       const { height, width } = hero.getBoundingClientRect();
       const devicePixelRatio = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
 
+      canvasSizeRef.current = { height, width };
       canvas.width = Math.round(width * devicePixelRatio);
       canvas.height = Math.round(height * devicePixelRatio);
       context.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
     };
 
     const render = (now: number) => {
-      const { height, width } = hero.getBoundingClientRect();
+      const { height, width } = canvasSizeRef.current;
 
       context.clearRect(0, 0, width, height);
-      stampsRef.current = stampsRef.current.filter(
-        (stamp) => now - stamp.createdAt < STAMP_DURATION,
-      );
+      compactActiveStamps(stampsRef.current, now, STAMP_DURATION);
 
       for (const stamp of stampsRef.current) {
         const age = now - stamp.createdAt;

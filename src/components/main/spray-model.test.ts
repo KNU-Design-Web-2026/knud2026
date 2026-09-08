@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { createSprayStamp } from "./spray-model.ts";
+import {
+  compactActiveStamps,
+  createSprayStamp,
+  type SprayStamp,
+} from "./spray-model.ts";
 
 function assertClose(actual: number, expected: number) {
   assert.ok(
@@ -51,4 +55,23 @@ test("방향을 적용해도 입자 밀도와 개수는 유지된다", () => {
   assert.equal(stamp.particles.length, 82);
   assert.equal(stamp.edgePoints.length, 20);
   assert.equal(stamp.color, "#41C9F9");
+});
+
+test("만료 스탬프를 새 배열 없이 제거하고 생존 순서를 유지한다", () => {
+  const makeStamp = (createdAt: number) => ({
+    createdAt,
+  }) as SprayStamp;
+  const stamps = [
+    makeStamp(7_000),
+    makeStamp(8_500),
+    makeStamp(6_000),
+    makeStamp(9_999),
+  ];
+  const original = stamps;
+
+  const activeCount = compactActiveStamps(stamps, 10_000, 2_400);
+
+  assert.equal(stamps, original);
+  assert.equal(activeCount, 2);
+  assert.deepEqual(stamps.map((stamp) => stamp.createdAt), [8_500, 9_999]);
 });
