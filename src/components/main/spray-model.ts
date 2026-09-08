@@ -38,6 +38,27 @@ export type SprayStamp = Point & {
 
 export type RandomSource = () => number;
 
+export function createSeededRandom(seed: number): RandomSource {
+  let state = seed >>> 0;
+
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4_294_967_296;
+  };
+}
+
+export function parseSpraySeed(value: string | null): number | null {
+  if (value === null || !/^\d+$/.test(value)) {
+    return null;
+  }
+
+  const seed = Number(value);
+  return Number.isSafeInteger(seed) && seed <= 0xffff_ffff ? seed : null;
+}
+
 export function compactActiveStamps(
   stamps: SprayStamp[],
   now: number,

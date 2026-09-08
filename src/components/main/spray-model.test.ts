@@ -3,7 +3,9 @@ import test from "node:test";
 
 import {
   compactActiveStamps,
+  createSeededRandom,
   createSprayStamp,
+  parseSpraySeed,
   type SprayStamp,
 } from "./spray-model.ts";
 
@@ -74,4 +76,23 @@ test("만료 스탬프를 새 배열 없이 제거하고 생존 순서를 유지
   assert.equal(stamps, original);
   assert.equal(activeCount, 2);
   assert.deepEqual(stamps.map((stamp) => stamp.createdAt), [8_500, 9_999]);
+});
+
+test("같은 seed는 같은 난수열을 만들고 다른 seed는 다른 난수열을 만든다", () => {
+  const first = createSeededRandom(2026);
+  const second = createSeededRandom(2026);
+  const different = createSeededRandom(2027);
+  const firstValues = Array.from({ length: 5 }, () => first());
+
+  assert.deepEqual(firstValues, Array.from({ length: 5 }, () => second()));
+  assert.notDeepEqual(firstValues, Array.from({ length: 5 }, () => different()));
+});
+
+test("측정용 seed는 부호 없는 정수만 허용한다", () => {
+  assert.equal(parseSpraySeed("2026"), 2026);
+  assert.equal(parseSpraySeed("0"), 0);
+  assert.equal(parseSpraySeed(null), null);
+  assert.equal(parseSpraySeed("-1"), null);
+  assert.equal(parseSpraySeed("1.5"), null);
+  assert.equal(parseSpraySeed("invalid"), null);
 });

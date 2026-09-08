@@ -4,14 +4,13 @@ import { useEffect, useRef } from "react";
 
 import {
   compactActiveStamps,
+  createSeededRandom,
   createSprayStamp,
+  parseSpraySeed,
   type Point,
+  type RandomSource,
   type SprayStamp,
 } from "./spray-model";
-import {
-  createParticlePathCache,
-  type SprayParticlePath,
-} from "./spray-path-cache";
 
 const STAMP_SPACING = 12;
 const STAMP_DURATION = 2_400;
@@ -29,9 +28,7 @@ export function SprayCanvas() {
   const colorIndexRef = useRef(-1);
   const activeColorRef = useRef(SPRAY_COLORS[0]);
   const canvasSizeRef = useRef({ height: 0, width: 0 });
-  const particlePathCacheRef = useRef(
-    new WeakMap<SprayStamp, SprayParticlePath[]>(),
-  );
+  const randomSourceRef = useRef<RandomSource>(Math.random);
 
   useEffect(() => {
     const hero = document.getElementById("main-hero");
@@ -43,6 +40,12 @@ export function SprayCanvas() {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
+    const searchParams = new URLSearchParams(window.location.search);
+    const spraySeed = parseSpraySeed(searchParams.get("spraySeed"));
+
+    randomSourceRef.current = spraySeed === null
+      ? Math.random
+      : createSeededRandom(spraySeed);
 
     if (!hero || !sprayZone || !canvas || !supportsFinePointer.matches || prefersReducedMotion.matches) {
       return;
@@ -67,8 +70,12 @@ export function SprayCanvas() {
     const render = (now: number) => {
       const { height, width } = canvasSizeRef.current;
 
-      context.clearRect(0, 0, width, height);
       compactActiveStamps(stampsRef.current, now, STAMP_DURATION);
+      const instrumentedCanvas = canvas as HTMLCanvasElement & {
+        __knudSprayActiveStamps?: number;
+      };
+      instrumentedCanvas.__knudSprayActiveStamps = stampsRef.current.length;
+      context.clearRect(0, 0, width, height);
 
       for (const stamp of stampsRef.current) {
         const age = now - stamp.createdAt;
@@ -95,18 +102,17 @@ export function SprayCanvas() {
         context.fill();
         context.restore();
 
-        const particlePaths = particlePathCacheRef.current.get(stamp);
-
-        if (particlePaths) {
-          context.save();
-          context.translate(stamp.x, stamp.y);
-
-          for (const particlePath of particlePaths) {
-            context.globalAlpha = particlePath.alpha * fade;
-            context.fill(particlePath.path);
-          }
-
-          context.restore();
+        for (const particle of stamp.particles) {
+          context.globalAlpha = particle.alpha * fade;
+          context.beginPath();
+          context.arc(
+            stamp.x + particle.x,
+            stamp.y + particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2,
+          );
+          context.fill();
         }
 
         if (stamp.drip) {
@@ -155,12 +161,9 @@ export function SprayCanvas() {
         performance.now(),
         direction,
         activeColorRef.current,
+        randomSourceRef.current,
       );
 
-      particlePathCacheRef.current.set(
-        stamp,
-        createParticlePathCache(stamp.particles),
-      );
       stampsRef.current.push(stamp);
 
       startRendering();
