@@ -8,6 +8,10 @@ import {
   type Point,
   type SprayStamp,
 } from "./spray-model";
+import {
+  createParticlePathCache,
+  type SprayParticlePath,
+} from "./spray-path-cache";
 
 const STAMP_SPACING = 12;
 const STAMP_DURATION = 2_400;
@@ -25,6 +29,9 @@ export function SprayCanvas() {
   const colorIndexRef = useRef(-1);
   const activeColorRef = useRef(SPRAY_COLORS[0]);
   const canvasSizeRef = useRef({ height: 0, width: 0 });
+  const particlePathCacheRef = useRef(
+    new WeakMap<SprayStamp, SprayParticlePath[]>(),
+  );
 
   useEffect(() => {
     const hero = document.getElementById("main-hero");
@@ -88,17 +95,18 @@ export function SprayCanvas() {
         context.fill();
         context.restore();
 
-        for (const particle of stamp.particles) {
-          context.globalAlpha = particle.alpha * fade;
-          context.beginPath();
-          context.arc(
-            stamp.x + particle.x,
-            stamp.y + particle.y,
-            particle.radius,
-            0,
-            Math.PI * 2,
-          );
-          context.fill();
+        const particlePaths = particlePathCacheRef.current.get(stamp);
+
+        if (particlePaths) {
+          context.save();
+          context.translate(stamp.x, stamp.y);
+
+          for (const particlePath of particlePaths) {
+            context.globalAlpha = particlePath.alpha * fade;
+            context.fill(particlePath.path);
+          }
+
+          context.restore();
         }
 
         if (stamp.drip) {
@@ -142,9 +150,18 @@ export function SprayCanvas() {
     };
 
     const addStamp = (point: Point, direction: number) => {
-      stampsRef.current.push(
-        createSprayStamp(point, performance.now(), direction, activeColorRef.current),
+      const stamp = createSprayStamp(
+        point,
+        performance.now(),
+        direction,
+        activeColorRef.current,
       );
+
+      particlePathCacheRef.current.set(
+        stamp,
+        createParticlePathCache(stamp.particles),
+      );
+      stampsRef.current.push(stamp);
 
       startRendering();
     };
