@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test:spray": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test src/components/main/spray-model.test.ts",
+    "evidence:spray-visual": "node performance/spray/visual-regression/capture-spray-visuals.cjs",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -21,6 +23,7 @@
     "@types/react-dom": "^19.2.4",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.0",
+    "playwright": "^1.63.0",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
