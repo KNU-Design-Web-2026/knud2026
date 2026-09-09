@@ -122,6 +122,18 @@
     "seed": 20260908,
     "ssim": 0.976297,
     "psnrDb": 27.78139,
+    "activeStampCount": {
+      "legacy": {
+        "activeStampCount": 131
+      },
+      "optimized": {
+        "activeStampCount": 79
+      }
+    },
+    "imageSha256": {
+      "legacyCanvas": "53618b45e7c5888e96d7645bd816ed2df86e42d89cbd138ae94db445f744b9b1",
+      "optimizedCanvas": "27add937e0aca0492fccf71105cdf8ac4374bee91a6282b7878276a297346c0c"
+    },
     "sprayRegionAverageBrightnessChangePercent": -0.7,
     "sprayRegionAverageSaturationChangePercent": -3.5,
     "note": "파티클 수·반지름·알파·가장자리·드립 공식은 유지하고 공간 샘플 간격만 12px에서 20px로 변경"
