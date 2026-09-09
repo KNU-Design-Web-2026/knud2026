@@ -30,5 +30,5 @@
     "optimizedAverageSaturation": 43.9618,
     "averageSaturationChangePercent": -3.5
   },
-  "note": "comparison.json은 같은 checkout의 legacy/optimized query 결과여서 회귀 테스트 자체의 동작 확인용이다. 최종 판정은 서로 다른 Git 상태에서 캡처한 이 파일의 비교값을 사용한다."
+  "note": "동일 checkout에서 고정 seed와 입력을 사용하고 sprayRenderer=legacy(12px), optimized(20px)만 전환한 통제 비교다. comparison.json의 SHA-256과 활성 스탬프 수로 두 경로가 실제로 분리됐는지 함께 검증한다."
 }
