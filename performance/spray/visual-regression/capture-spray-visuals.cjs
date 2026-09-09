@@ -1,4 +1,5 @@
 const { execFileSync, spawnSync } = require("node:child_process");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 const { chromium } = require("playwright");
@@ -102,6 +103,16 @@ async function captureRenderer(browser, renderer) {
   await dispatchFixedDrag(page, client);
 
   const canvas = page.locator("#main-hero canvas");
+  const activeStampCount = await canvas.evaluate(
+    (element) => element.__knudSprayActiveStamps ?? null,
+  );
+
+  if (activeStampCount === null) {
+    throw new Error(
+      `${renderer} Canvas 계측값이 없습니다. 최신 클라이언트 번들과 fine pointer 조건을 확인하세요.`,
+    );
+  }
+
   await canvas.screenshot({
     path: path.join(OUTPUT_DIR, `${renderer}-canvas.png`),
   });
@@ -134,6 +145,8 @@ async function captureRenderer(browser, renderer) {
       { stdio: "ignore" },
     );
   }
+
+  return { activeStampCount };
 }
 
 function runMetric(filter, legacyPath, optimizedPath) {
@@ -167,14 +180,15 @@ function extractMetric(log, pattern) {
 
 async function main() {
   await fs.promises.mkdir(OUTPUT_DIR, { recursive: true });
+  const rendererStats = {};
   const browser = await chromium.launch({
     executablePath: CHROME_PATH,
     headless: true,
   });
 
   try {
-    await captureRenderer(browser, "legacy");
-    await captureRenderer(browser, "optimized");
+    rendererStats.legacy = await captureRenderer(browser, "legacy");
+    rendererStats.optimized = await captureRenderer(browser, "optimized");
   } finally {
     await browser.close();
   }
@@ -182,6 +196,20 @@ async function main() {
   const legacyCanvas = path.join(OUTPUT_DIR, "legacy-canvas.png");
   const optimizedCanvas = path.join(OUTPUT_DIR, "optimized-canvas.png");
   const diffPath = path.join(OUTPUT_DIR, "canvas-diff.png");
+  const legacyHash = crypto
+    .createHash("sha256")
+    .update(await fs.promises.readFile(legacyCanvas))
+    .digest("hex");
+  const optimizedHash = crypto
+    .createHash("sha256")
+    .update(await fs.promises.readFile(optimizedCanvas))
+    .digest("hex");
+
+  if (legacyHash === optimizedHash) {
+    throw new Error(
+      "legacy와 optimized Canvas가 완전히 같습니다. 실행 서버가 최신 번들인지 확인하세요.",
+    );
+  }
 
   execFileSync(
     "ffmpeg",
@@ -210,6 +238,11 @@ async function main() {
     deviceScaleFactor: DEVICE_SCALE_FACTOR,
     ssim: extractMetric(ssimLog, /All:([0-9.]+)/),
     psnrAverageDb: extractMetric(psnrLog, /average:([0-9.]+)/),
+    rendererStats,
+    sha256: {
+      legacyCanvas: legacyHash,
+      optimizedCanvas: optimizedHash,
+    },
     files: {
       legacyCanvas: path.basename(legacyCanvas),
       optimizedCanvas: path.basename(optimizedCanvas),
