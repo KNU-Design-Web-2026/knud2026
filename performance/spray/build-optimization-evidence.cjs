@@ -9,6 +9,30 @@ const BASELINE = JSON.parse(
 const OPTIMIZED = JSON.parse(
   fs.readFileSync(path.join(ROOT, "optimized", "report", "summary.json"), "utf8"),
 );
+const VISUAL_COMPARISON = JSON.parse(
+  fs.readFileSync(
+    path.join(
+      ROOT,
+      "experiments",
+      "08-spatial-sampling-20px",
+      "visual-diff",
+      "comparison.json",
+    ),
+    "utf8",
+  ),
+);
+const VISUAL_REGION_AUDIT = JSON.parse(
+  fs.readFileSync(
+    path.join(
+      ROOT,
+      "experiments",
+      "08-spatial-sampling-20px",
+      "visual-diff",
+      "baseline-comparison.json",
+    ),
+    "utf8",
+  ),
+);
 const OUTPUT_DIR = path.join(ROOT, "optimized", "comparison");
 
 const SCENARIOS = ["slow-drag", "fast-drag", "decay"];
@@ -112,11 +136,15 @@ const clean = {
   },
 };
 const visual = {
-  seed: 20260908,
-  ssim: 0.976297,
-  psnrDb: 27.78139,
-  sprayRegionAverageBrightnessChangePercent: -0.7,
-  sprayRegionAverageSaturationChangePercent: -3.5,
+  seed: VISUAL_COMPARISON.seed,
+  ssim: VISUAL_COMPARISON.ssim,
+  psnrDb: VISUAL_COMPARISON.psnrAverageDb,
+  activeStampCount: VISUAL_COMPARISON.rendererStats,
+  imageSha256: VISUAL_COMPARISON.sha256,
+  sprayRegionAverageBrightnessChangePercent:
+    VISUAL_REGION_AUDIT.sprayRegion.averageBrightnessChangePercent,
+  sprayRegionAverageSaturationChangePercent:
+    VISUAL_REGION_AUDIT.sprayRegion.averageSaturationChangePercent,
   note: "파티클 수·반지름·알파·가장자리·드립 공식은 유지하고 공간 샘플 간격만 12px에서 20px로 변경",
 };
 const summary = {
@@ -204,10 +232,19 @@ const manifestPaths = [
   "optimized/comparison/spray-before-after.mp4",
   "optimized/evidence/devtools/screenshots/native-fast-drag-cpu-gpu-timeline.jpg",
   "optimized/evidence/devtools/screenshots/4x-fast-drag-cpu-gpu-timeline.jpg",
+  "experiments/08-spatial-sampling-20px/visual-diff/comparison.json",
+  "experiments/08-spatial-sampling-20px/visual-diff/legacy-canvas.png",
+  "experiments/08-spatial-sampling-20px/visual-diff/optimized-canvas.png",
+  "experiments/08-spatial-sampling-20px/visual-diff/legacy-hero.png",
+  "experiments/08-spatial-sampling-20px/visual-diff/optimized-hero.png",
+  "experiments/08-spatial-sampling-20px/visual-diff/canvas-diff.png",
+  "experiments/08-spatial-sampling-20px/visual-diff/legacy-capture.mp4",
+  "experiments/08-spatial-sampling-20px/visual-diff/optimized-capture.mp4",
 ].filter((relativePath) => fs.existsSync(path.join(ROOT, relativePath)));
 const manifest = {
   generatedAt: new Date().toISOString(),
   targetUrl: "http://127.0.0.1:3000/?spraySeed=20260908",
+  visualTargetUrl: VISUAL_COMPARISON.targetUrl,
   branch: "perf/canvas-spray-optimization",
   baselineGitSha: summary.baselineGitSha,
   optimizedGitSha: summary.optimizedGitSha,
@@ -221,6 +258,8 @@ const manifest = {
     representativeStatistic: "Run 02~05 median",
     input: "Playwright CDP mouse input with fixed path and timing",
     visualSeed: 20260908,
+    visualComparison:
+      "same checkout, deterministic seed/input, sprayRenderer=legacy(12px)|optimized(20px)",
   },
   files: manifestPaths.map((relativePath) => {
     const absolutePath = path.join(ROOT, relativePath);
