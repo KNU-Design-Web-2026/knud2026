@@ -7,6 +7,7 @@ import {
   createSeededRandom,
   createSprayStamp,
   parseSpraySeed,
+  resolveSpraySpacing,
   translatePointerPoint,
   type SprayStamp,
 } from "./spray-model.ts";
@@ -103,6 +104,13 @@ test("스프레이 폭에 맞춘 공간 간격으로 경로 스탬프 수를 제
   assert.equal(calculateStampStepCount(19.9, 20, 10), 0);
   assert.equal(calculateStampStepCount(40, 20, 10), 2);
   assert.equal(calculateStampStepCount(1_000, 20, 10), 10);
+});
+
+test("시각 회귀 측정에서만 기존 12px 간격을 재현한다", () => {
+  assert.equal(resolveSpraySpacing("legacy"), 12);
+  assert.equal(resolveSpraySpacing("optimized"), 20);
+  assert.equal(resolveSpraySpacing(null), 20);
+  assert.equal(resolveSpraySpacing("unknown"), 20);
 });
 
 test("캐시한 캔버스 위치를 포인터의 로컬 좌표로 변환한다", () => {

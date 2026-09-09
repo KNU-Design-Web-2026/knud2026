@@ -78,6 +78,10 @@ export function parseSpraySeed(value: string | null): number | null {
   return Number.isSafeInteger(seed) && seed <= 0xffff_ffff ? seed : null;
 }
 
+export function resolveSpraySpacing(renderer: string | null): number {
+  return renderer === "legacy" ? 12 : 20;
+}
+
 export function compactActiveStamps(
   stamps: SprayStamp[],
   now: number,

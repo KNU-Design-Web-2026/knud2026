@@ -8,13 +8,13 @@ import {
   createSeededRandom,
   createSprayStamp,
   parseSpraySeed,
+  resolveSpraySpacing,
   translatePointerPoint,
   type Point,
   type RandomSource,
   type SprayStamp,
 } from "./spray-model";
 
-const STAMP_SPACING = 20;
 const STAMP_DURATION = 2_400;
 const STAMP_VISIBLE_DURATION = 1_800;
 const MAX_DEVICE_PIXEL_RATIO = 2;
@@ -44,6 +44,7 @@ export function SprayCanvas() {
     );
     const searchParams = new URLSearchParams(window.location.search);
     const spraySeed = parseSpraySeed(searchParams.get("spraySeed"));
+    const stampSpacing = resolveSpraySpacing(searchParams.get("sprayRenderer"));
 
     randomSourceRef.current = spraySeed === null
       ? Math.random
@@ -197,7 +198,7 @@ export function SprayCanvas() {
       const deltaX = nextPoint.x - previousPoint.x;
       const deltaY = nextPoint.y - previousPoint.y;
       const distance = Math.hypot(deltaX, deltaY);
-      const steps = calculateStampStepCount(distance, STAMP_SPACING, 10);
+      const steps = calculateStampStepCount(distance, stampSpacing, 10);
       const direction = Math.atan2(deltaY, deltaX);
 
       if (steps === 0) {
@@ -205,7 +206,7 @@ export function SprayCanvas() {
       }
 
       for (let step = 1; step <= steps; step += 1) {
-        const progress = (step * STAMP_SPACING) / distance;
+        const progress = (step * stampSpacing) / distance;
         addStamp(
           {
             x: previousPoint.x + deltaX * progress,
@@ -215,7 +216,7 @@ export function SprayCanvas() {
         );
       }
 
-      const coveredDistance = steps * STAMP_SPACING;
+      const coveredDistance = steps * stampSpacing;
       lastPointRef.current = {
         x: previousPoint.x + (deltaX * coveredDistance) / distance,
         y: previousPoint.y + (deltaY * coveredDistance) / distance,
