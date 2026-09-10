@@ -38,6 +38,19 @@ test("822px부터 1020px까지 소개 텍스트와 문단 간격을 함께 축�
   assert.match(styles, /font-size: calc\(-0\.227px \+ 1\.395vw\)/);
 });
 
+test("소개 문단은 모든 화면에서 한글 단어 중간 줄바꿈을 피한다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(
+    styles,
+    /\.introductionParagraphs \{[\s\S]*?word-break: keep-all;[\s\S]*?overflow-wrap: break-word;/,
+  );
+  assert.doesNotMatch(
+    styles,
+    /\.introductionParagraphs \{[\s\S]*?overflow-wrap: anywhere;/,
+  );
+});
+
 test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 유지한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
