@@ -148,7 +148,7 @@ export function MessagePage() {
           </div>
           <div className="message-form__body">
             <span className="sr-only">메시지</span>
-            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error" : undefined} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 ○○회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
+            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error" : undefined} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
               setBody(event.target.value);
               setFormError("");
             }} />

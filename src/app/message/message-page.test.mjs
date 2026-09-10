@@ -31,6 +31,8 @@ assert.match(component, /message-form__validation/);
 assert.match(component, /missingFields/);
 assert.match(component, /message-frame-tab-mobile/);
 assert.match(component, /message-frame-mobile/);
+assert.match(component, /여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다/);
+assert.doesNotMatch(component, /○○회/);
 assert.doesNotMatch(component, /message-page__frame-backdrop/);
 assert.match(data, /철수야 졸업 축하해/);
 assert.match(styles, /\.message-page/);
