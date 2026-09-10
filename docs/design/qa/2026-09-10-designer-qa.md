@@ -256,3 +256,15 @@
   - 400·600·1020·1350·1920px에서 새 이미지의 natural size가 `1808 × 2560`으로 로드되는지 확인했다.
   - 활성 포스터의 비율이 모든 구간에서 유지되고, 문서 가로 넘침과 Next.js 오류 오버레이가 없음을 확인했다.
 - 상태: 수정 완료, 디자이너 검토 요청 대기
+
+## QA-019 — About Instagram 링크 밑줄 제거 재반영
+
+- 대상: `/about`, 소개 영역 Instagram 링크(Web·Web > Tab·Tab·Tab > Mobile·Mobile)
+- 문제: 공통 링크 초기화가 적용되어도 About 전용 스타일에서 `text-decoration: underline`이 다시 선언되어 Instagram 링크 아래 밑줄이 남아 있었다.
+- 결정:
+  - About 소개 링크의 전용 스타일을 `text-decoration: none`으로 명시해 전 반응형 구간에서 동일하게 밑줄을 제거한다.
+  - 다른 링크의 hover·focus 동작은 변경하지 않고 About Instagram 링크에만 범위를 제한한다.
+- 검증:
+  - About 스타일 회귀 테스트에서 링크 선언이 `text-decoration: none`인지 확인했다.
+  - 400·600·1020·1350·1920px 반응형 구간에서 동일한 About 링크 스타일이 적용되는 구조를 확인했다.
+- 상태: 수정 완료, 디자이너 검토 요청 대기
