@@ -2041,8 +2041,9 @@
   display: grid;
   width: min(1620px, 100%);
   margin: 0 auto;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 66px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 47px;
+  row-gap: 50px;
 }
 
 .message-card {
@@ -2050,12 +2051,12 @@
   aspect-ratio: 1;
   min-width: 0;
   background: #f3f3f3;
-  padding: 41px 54px;
+  padding: 30.573px 40.267px;
 }
 
-/* Figma staggers the center column by one vertical grid gap. */
+/* The 1350px three-column frame staggers its center column; Web stays aligned. */
 .message-card:nth-child(3n + 2) {
-  transform: translateY(66px);
+  transform: none;
 }
 
 .message-card__content {
@@ -2069,7 +2070,7 @@
 .message-card__copy {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 }
 
 .message-card__to,
@@ -2079,9 +2080,10 @@
 }
 
 .message-card__body {
-  font-size: 28px;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1.3;
-  letter-spacing: -0.056px;
+  letter-spacing: -0.04px;
   word-break: break-word;
 }
 
@@ -2859,6 +2861,33 @@
   }
   .message-card__body {
     font-size: clamp(1.25rem, 1.4583vw, 1.75rem);
+  }
+}
+
+/* Figma frame 1742:84657 — 1920px four-column message wall. */
+@media (min-width: 1350.0625px) {
+  .message-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 47px;
+    row-gap: 50px;
+  }
+
+  .message-card {
+    padding: 30.573px 40.267px;
+  }
+
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .message-card__copy {
+    gap: 15px;
+  }
+
+  .message-card__body {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
   }
 }
 
