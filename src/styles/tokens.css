@@ -97,13 +97,14 @@
  * 1920, including the menu width. Keep fractional viewport widths covered. */
 @media (min-width: 1350px) {
   :root {
-    --header-gutter: clamp(50px, calc(50px + (100vw - 1350px) * 100 / 570), 150px);
+    --header-gutter: clamp(75px, calc(75px + (100vw - 1350px) * 75 / 570), 150px);
     --header-height: clamp(120px, calc(120px + (100vw - 1350px) * 20 / 570), 140px);
     --header-logo-width: clamp(100px, calc(100px + (100vw - 1350px) * 30 / 570), 130px);
     --header-logo-height: clamp(58px, calc(58px + (100vw - 1350px) * 18 / 570), 76px);
     --header-brand-gap: clamp(20px, calc(20px + (100vw - 1350px) * 14 / 570), 34px);
-    --header-nav-item-width: clamp(118px, calc(118px + (100vw - 1350px) * 20 / 570), 138px);
-    --header-nav-size: clamp(24px, calc(24px + (100vw - 1350px) * 4 / 570), 28px);
+    --header-title-size: clamp(18px, calc(18px + (100vw - 1350px) * 2 / 570), 20px);
+    --header-nav-item-width: clamp(110px, calc(110px + (100vw - 1350px) * 20 / 570), 130px);
+    --header-nav-size: clamp(22px, calc(22px + (100vw - 1350px) * 4 / 570), 26px);
     --header-nav-hover-size: var(--header-nav-size);
     --header-nav-decoration-width: clamp(3.893rem, calc(3.893rem + (100vw - 1350px) * 10.64 / 570), 4.558rem);
     --header-nav-decoration-height: clamp(2.56rem, calc(2.56rem + (100vw - 1350px) * 6.928 / 570), 2.993rem);
