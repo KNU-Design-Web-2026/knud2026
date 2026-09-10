@@ -20,7 +20,29 @@
 }
 
 /* Shared 5.6s clock: 0.34s ignition → 1.57s burn → impact → breathing recovery. */
-.hero-motion { --hero-cycle: 5.6s; }
+.hero-motion {
+  --hero-cycle: 5.6s;
+  --impact-scale: 1.4;
+  --impact-turn: 7deg;
+  --lion-jump: -16px;
+  --lion-impact-x: 1.065;
+  --lion-impact-y: 1.09;
+  --lion-squash: 0.92;
+  --logo-impact: 1.06;
+  --fleck-spread: 1.65;
+}
+@media (max-width: 600px) {
+  .hero-motion {
+    --impact-scale: 1.23;
+    --impact-turn: 4deg;
+    --lion-jump: -5px;
+    --lion-impact-x: 1.025;
+    --lion-impact-y: 1.045;
+    --lion-squash: 0.96;
+    --logo-impact: 1.025;
+    --fleck-spread: 1.1;
+  }
+}
 .hero-fuse-erase { stroke-dasharray: 0 100; animation: hero-burn var(--hero-cycle) linear infinite; }
 .hero-fuse-tip-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
 .hero-fuse { animation: hero-fuse-return var(--hero-cycle) linear infinite; }
@@ -80,29 +102,32 @@
   0%, 46%, 100% { transform: scale(1) rotate(0); }
   12%, 75% { transform: scale(1.004, 1.012) rotate(0.25deg); }
   25% { transform: scale(1.008, 0.993) rotate(-0.4deg); }
-  33% { transform: scale(1.012, 0.963) rotate(-1.2deg); }
-  36% { transform: scale(1.035, 1.05) rotate(1.8deg); }
-  40% { transform: scale(0.995, 1.007) rotate(-0.6deg); }
+  33% { transform: scale(1.025, var(--lion-squash)) rotate(-2deg); }
+  36% { transform: translateY(var(--lion-jump)) scale(var(--lion-impact-x), var(--lion-impact-y)) rotate(2.5deg); }
+  40% { transform: scale(1.015, 0.975) rotate(-1deg); }
+  43% { transform: scale(0.997, 1.012) rotate(0.4deg); }
 }
 @keyframes hero-logo-impact {
   0%, 46%, 100% { transform: scale(1) rotate(0); }
   18%, 76% { transform: scale(1.006) rotate(0.15deg); }
-  33% { transform: scale(0.991) rotate(-0.25deg); }
-  36% { transform: scale(1.032) rotate(-0.65deg); }
-  40% { transform: scale(0.997) rotate(0.2deg); }
+  33% { transform: scale(0.98) rotate(-0.5deg); }
+  36% { transform: scale(var(--logo-impact)) rotate(-1.2deg); }
+  39% { transform: scale(0.99) rotate(0.7deg); }
+  42% { transform: scale(1.008) rotate(-0.25deg); }
 }
 @keyframes hero-paint-impact {
   0%, 46%, 100% { transform: scale(1) rotate(0); }
   12%, 78% { transform: scale(1.025) rotate(0.8deg); }
   25% { transform: scale(0.985) rotate(-0.8deg); }
-  33% { transform: scale(0.88) rotate(-3deg); }
-  36% { transform: scale(1.2) rotate(3deg); }
-  40% { transform: scale(0.98) rotate(-1deg); }
+  33% { transform: scale(0.8) rotate(-5deg); }
+  36% { transform: scale(var(--impact-scale)) rotate(var(--impact-turn)); }
+  40% { transform: scale(0.94) rotate(-2deg); }
+  43% { transform: scale(1.035) rotate(0.8deg); }
 }
 @keyframes hero-fleck {
   0%, 33.9% { opacity: 0; transform: translate(0, 0) scale(0.4); }
-  34% { opacity: 1; transform: translate(0, 0) scale(1); }
-  43%, 100% { opacity: 0; transform: translate(var(--fleck-x), var(--fleck-y)) rotate(var(--fleck-r)) scale(0.3); }
+  34% { opacity: 1; transform: translate(0, 0) scale(1.6); }
+  43%, 100% { opacity: 0; transform: translate(calc(var(--fleck-x) * var(--fleck-spread)), calc(var(--fleck-y) * var(--fleck-spread))) rotate(var(--fleck-r)) scale(0.3); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-motion .hero-scene * { animation: none; }
