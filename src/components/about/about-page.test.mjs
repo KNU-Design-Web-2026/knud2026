@@ -62,6 +62,14 @@ test("소개 문단은 모든 화면에서 한글 단어 중간 줄바꿈을 피
   );
 });
 
+test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크기를 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+
+  assert.equal(page.match(/src="\/assets\/figma\/about\/poster\.png"/g)?.length, 2);
+  assert.equal(page.match(/height=\{2560\}/g)?.length, 2);
+  assert.equal(page.match(/width=\{1808\}/g)?.length, 2);
+});
+
 test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 유지한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
