@@ -1,6 +1,7 @@
 """Rebuild motion-ready SVGs from the checked-in Figma vectors (no raster editing)."""
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -47,16 +48,47 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     defs = next(e for e in svg if e.tag.endswith('defs'))
     mask = element('mask', id='fuse-mask', maskUnits='userSpaceOnUse', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale)
     mask.append(element('rect', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale, fill='white'))
-    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':76*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
+    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
     mask.append(erase)
     # Remove the original tip flame as the moving flame takes over.
-    mask.append(element('circle', cx=p[0][0], cy=p[0][1], r=40*scale, fill='black', **{'class':'hero-fuse-tip-erase'}))
+    tip_outline = deepcopy(by_id['Vector_18'])
+    tip_outline.attrib.pop('id', None)
+    tip_outline.set('fill', 'black')
+    # Cover the source's separately stroked contour as well as its fill, so
+    # antialiasing cannot leave a ghost outline at the old flame position.
+    tip_outline.set('stroke', 'black')
+    tip_outline.set('stroke-width', str(4 * scale))
+    tip_outline.set('stroke-linejoin', 'round')
+    tip_outline.set('class', 'hero-fuse-tip-erase')
+    mask.append(tip_outline)
     defs.append(mask)
     tail.set('mask', 'url(#fuse-mask)')
     spark = element('g', **{'class':'hero-fuse-spark','style':f'offset-path:path("{d}");offset-rotate:0deg;offset-anchor:0px 0px'})
-    star = '0,-19 5,-7 17,-13 10,-2 23,3 8,7 10,20 0,11 -12,20 -8,5 -23,1 -9,-5 -15,-16 -3,-10'
-    spark.append(element('polygon', points=star, fill='#FD9519', transform=f'scale({scale})'))
-    spark.append(element('polygon', points=star, fill='#FCD519', transform=f'scale({scale*.62})'))
+    # Retain the actual red/yellow/blue Figma flame, not a generic replacement.
+    # Clip the shared rope/body paths to the red tip silhouette before moving it.
+    flame_clip = element('clipPath', id='flame-clip', clipPathUnits='userSpaceOnUse')
+    silhouette = deepcopy(by_id['Vector_18'])
+    silhouette.attrib.pop('id', None)
+    flame_clip.append(silhouette)
+    defs.append(flame_clip)
+    shrink = element('g', **{'class':'hero-flame-size'})
+    flicker = element('g', **{'class':'hero-flame-flicker'})
+    local = element('g', transform=f'translate({-p[0][0]} {-p[0][1]})')
+    original_flame = element('g', **{'clip-path':'url(#flame-clip)'})
+    for name in ['Vector_18', 'Vector_19', 'Vector_20', 'Vector_21']:
+        part = deepcopy(by_id[name])
+        part.attrib.pop('id', None)
+        original_flame.append(part)
+    local.append(original_flame)
+    flicker.append(local)
+    shrink.append(flicker)
+    spark.append(shrink)
+    # Small hot fragments stay local to the burning front, not across the page.
+    for i, (dx, dy) in enumerate([(-22,-31),(16,-36),(-30,5)]):
+        ember = element('g', transform=f'scale({scale})')
+        ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i],
+            **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.09}s'}))
+        spark.append(ember)
     by_id['Group_11'].append(spark)
     # Local, short-lived flecks follow the final ignition; no canvas particles/timers.
     debris = element('g', transform=f'translate({p[-1][0]} {p[-1][1]}) scale({scale})')
