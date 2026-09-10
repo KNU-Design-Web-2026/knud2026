@@ -4,6 +4,7 @@ export const PAINT_HOLD = 2_800;
 export const DRIP_SETTLE_TIME = 240;
 export const DRIP_COOLDOWN = 420;
 export const MAX_ACTIVE_DRIPS = 8;
+export const DRIP_MIN_SEPARATION = 56;
 
 export type Point = { x: number; y: number };
 export type PaintDrip = {
@@ -22,6 +23,7 @@ export type PaintStamp = Point & {
   bodyHeight: number;
   edgePoints: Point[];
   particles: (Point & { radius: number; alpha: number })[];
+  dripAt: number | null;
   drip: PaintDrip | null;
 };
 
@@ -57,7 +59,19 @@ export function createPaintStamp(point: Point, createdAt: number, direction: num
       alpha: isBackscatter ? 0.35 + random() * 0.4 : isOverspray ? 0.2 + random() * 0.25 : 0.45 + random() * 0.4,
     };
   });
-  return { ...point, color, createdAt, direction: orientation, bodyWidth, bodyHeight, edgePoints, particles, drip: null };
+  return { ...point, color, createdAt, direction: orientation, bodyWidth, bodyHeight, edgePoints, particles, dripAt: null, drip: null };
+}
+
+export function canStartPaintDrip(stamps: PaintStamp[], candidate: PaintStamp, now: number, lastDripAt: number): boolean {
+  if (candidate.drip || now - candidate.createdAt >= 900 || now - lastDripAt < DRIP_COOLDOWN) return false;
+  const active = stamps.filter((stamp) => stamp.drip !== null && now - stamp.createdAt < PAINT_LIFETIME);
+  return active.length < MAX_ACTIVE_DRIPS && active.every((stamp) =>
+    Math.hypot(stamp.x - candidate.x, stamp.y - candidate.y) >= DRIP_MIN_SEPARATION);
+}
+
+export function findScheduledDrip(stamps: PaintStamp[], now: number, lastDripAt: number): PaintStamp | undefined {
+  return stamps.find((stamp) => stamp.dripAt !== null && now >= stamp.dripAt &&
+    canStartPaintDrip(stamps, stamp, now, lastDripAt));
 }
 
 export function createPaintDrip(stamp: PaintStamp, now: number, random = Math.random): PaintDrip {

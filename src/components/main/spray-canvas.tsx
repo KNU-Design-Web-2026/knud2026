@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 import {
-  createPaintDrip, createPaintStamp, DRIP_COOLDOWN, DRIP_SETTLE_TIME,
-  getDripProgress, getPaintOpacity, MAX_ACTIVE_DRIPS, PAINT_LIFETIME,
+  canStartPaintDrip, createPaintDrip, createPaintStamp, DRIP_SETTLE_TIME,
+  findScheduledDrip, getDripProgress, getPaintOpacity, PAINT_LIFETIME,
 } from "./spray-paint";
 import type { PaintStamp, Point } from "./spray-paint";
 
@@ -12,6 +12,7 @@ const STAMP_SPACING = 12;
 const MAX_DEVICE_PIXEL_RATIO = 2;
 const SPRAY_COLORS = ["#F8D622", "#FF3030", "#F7F7F2", "#FD9519", "#41C9F9"];
 const SLOW_SPEED = 0.22; // CSS px/ms; mouse pressure is not a force measurement.
+const nextDripDistance = () => 90 + Math.random() * 90;
 
 export function SprayCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -35,6 +36,7 @@ export function SprayCanvas() {
     let activeColor = SPRAY_COLORS[0];
     let settledSince = 0;
     let lastDripAt = -Infinity;
+    let distanceUntilDrip = nextDripDistance();
     let width = 0;
     let height = 0;
     const enabled = () => finePointer.matches && !reducedMotion.matches;
@@ -56,12 +58,17 @@ export function SprayCanvas() {
       stamps = stamps.filter((stamp) => now - stamp.createdAt < PAINT_LIFETIME);
 
       const wetStamp = stamps.at(-1);
-      if (pointerId !== null && latestInput && wetStamp && !wetStamp.drip &&
-          now - settledSince >= DRIP_SETTLE_TIME && now - lastDripAt >= DRIP_COOLDOWN &&
-          now - wetStamp.createdAt < 900 &&
+      // Already deposited paint can begin flowing after the pointer has moved
+      // away or been released; randomness is sampled at deposition, not per frame.
+      let dripCandidate = findScheduledDrip(stamps, now, lastDripAt);
+      if (!dripCandidate && pointerId !== null && latestInput && wetStamp &&
+          now - settledSince >= DRIP_SETTLE_TIME &&
           Math.hypot(latestInput.x - wetStamp.x, latestInput.y - wetStamp.y) < wetStamp.bodyHeight &&
-          stamps.filter((stamp) => stamp.drip !== null).length < MAX_ACTIVE_DRIPS) {
-        wetStamp.drip = createPaintDrip(wetStamp, now);
+          canStartPaintDrip(stamps, wetStamp, now, lastDripAt)) {
+        dripCandidate = wetStamp;
+      }
+      if (dripCandidate) {
+        dripCandidate.drip = createPaintDrip(dripCandidate, now);
         lastDripAt = now;
       }
 
@@ -112,7 +119,15 @@ export function SprayCanvas() {
     };
 
     const addStamp = (point: Point, direction: number | null) => {
-      stamps.push(createPaintStamp(point, performance.now(), direction, activeColor));
+      const stamp = createPaintStamp(point, performance.now(), direction, activeColor);
+      if (direction !== null) {
+        distanceUntilDrip -= STAMP_SPACING;
+        if (distanceUntilDrip <= 0) {
+          stamp.dripAt = stamp.createdAt + 180 + Math.random() * 240;
+          distanceUntilDrip = nextDripDistance();
+        }
+      }
+      stamps.push(stamp);
       if (frame === null) frame = window.requestAnimationFrame(render);
     };
 
@@ -154,6 +169,7 @@ export function SprayCanvas() {
       settledSince = performance.now();
       latestInput = { ...point, at: settledSince };
       lastPoint = point;
+      distanceUntilDrip = nextDripDistance();
       addStamp(point, null);
     };
     const handlePointerMove = (event: PointerEvent) => {
