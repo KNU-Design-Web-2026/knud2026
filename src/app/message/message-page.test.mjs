@@ -66,6 +66,9 @@ assert.match(styles, /@media \(min-width: 63\.8125rem\) and \(max-width: 84\.375
 assert.match(styles, /@media \(max-width: 63\.75rem\)[\s\S]*\.message-card:nth-child\(2n\)\s*\{[\s\S]*transform:\s*translateY\(var\(--message-card-stagger\)\)/);
 assert.match(styles, /\.message-list\s*\{[\s\S]*padding-bottom:\s*var\(--message-card-stagger\)/);
 assert.match(styles, /\.message-page__intro\s*\{[\s\S]*overflow:\s*visible/);
+assert.match(styles, /\.message-list-container\s*\{[\s\S]*--message-list-lift:\s*clamp\(12rem, 18vw, 15rem\);[\s\S]*margin-top:\s*calc\(-1 \* var\(--message-list-lift\)\)/);
+assert.match(styles, /@media \(min-width: 37\.5625rem\) and \(max-width: 63\.75rem\)[\s\S]*\.message-list-container\s*\{[\s\S]*--message-list-lift:\s*clamp\(3rem, 10vw, 6rem\)/);
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-list-container\s*\{[\s\S]*--message-list-lift:\s*clamp\(2rem, 8vw, 3rem\)/);
 assert.match(styles, /--message-form-width/);
 assert.match(styles, /clamp\(2rem, 3\.4375vw, 4\.125rem\)/);
 assert.match(styles, /\.message-form__field\s*\{[\s\S]*inset:\s*0/);

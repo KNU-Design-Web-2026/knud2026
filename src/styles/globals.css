@@ -3263,3 +3263,22 @@
     --message-card-stagger: clamp(3.5rem, 13vw, 4.875rem);
   }
 }
+
+/* Pull the message wall into the lower edge of the decorative scene. */
+.message-list-container {
+  --message-list-lift: clamp(12rem, 18vw, 15rem);
+
+  margin-top: calc(-1 * var(--message-list-lift));
+}
+
+@media (min-width: 37.5625rem) and (max-width: 63.75rem) {
+  .message-list-container {
+    --message-list-lift: clamp(3rem, 10vw, 6rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .message-list-container {
+    --message-list-lift: clamp(2rem, 8vw, 3rem);
+  }
+}
