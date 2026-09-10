@@ -1917,7 +1917,7 @@
   pointer-events: none;
 }
 
-.message-form__field span,
+.message-form__field > span,
 .message-form__field input,
 .message-form__recipient-trigger,
 .message-form__recipient-menu {
@@ -1929,7 +1929,7 @@
   z-index: 5;
 }
 
-.message-form__field--to span {
+.message-form__field--to > span {
   top: 61.03px;
   left: 77.216px;
 }
@@ -1939,7 +1939,7 @@
   left: 139.716px;
 }
 
-.message-form__field--from span {
+.message-form__field--from > span {
   top: 61.03px;
   left: 386.956px;
 }
@@ -2128,7 +2128,7 @@
   .message-form__field {
     font-size: 24px;
   }
-  .message-form__field--to span {
+  .message-form__field--to > span {
     top: 47.63px;
     left: 59.838px;
   }
@@ -2136,7 +2136,7 @@
     top: 45.28px;
     left: 108.058px;
   }
-  .message-form__field--from span {
+  .message-form__field--from > span {
     top: 47.63px;
     left: 298.948px;
   }
@@ -2227,7 +2227,7 @@
   .message-form__field {
     font-size: 18px;
   }
-  .message-form__field--to span {
+  .message-form__field--to > span {
     top: 35.29px;
     left: 43.886px;
   }
@@ -2235,7 +2235,7 @@
     top: 33.6px;
     left: 79.676px;
   }
-  .message-form__field--from span {
+  .message-form__field--from > span {
     top: 35.29px;
     left: 177.37px;
   }
@@ -2317,7 +2317,7 @@
   .message-form__field {
     font-size: 18px;
   }
-  .message-form__field--to span {
+  .message-form__field--to > span {
     top: 127.88px;
     left: 94.78px;
   }
@@ -2325,7 +2325,7 @@
     top: 126px;
     left: 131.05px;
   }
-  .message-form__field--from span {
+  .message-form__field--from > span {
     top: 127.88px;
     left: 272.15px;
   }
@@ -2416,7 +2416,7 @@
     height: 337px;
   }
 
-  .message-form__field--to span {
+  .message-form__field--to > span {
     top: 89px;
     left: 41px;
   }
@@ -2424,7 +2424,7 @@
     top: 89px;
     left: 74px;
   }
-  .message-form__field--from span {
+  .message-form__field--from > span {
     top: 89px;
     left: 178px;
   }
@@ -2506,6 +2506,8 @@
 }
 
 .message-form__recipient-name {
+  position: static;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2517,6 +2519,7 @@
 }
 
 .message-form__recipient-arrow {
+  position: static;
   display: block;
   flex: 0 0 auto;
   width: 14.316px;
@@ -2809,11 +2812,11 @@
     font-size: clamp(1.125rem, 1.667vw, 2rem);
   }
 
-  .message-form__field--to span {
+  .message-form__field--to > span {
     top: 9.43%;
     left: 5.99%;
   }
-  .message-form__field--from span {
+  .message-form__field--from > span {
     top: 9.43%;
     left: 30.01%;
   }
@@ -2966,7 +2969,7 @@
     left: calc(5.99% + 3.25rem);
   }
 
-  .message-form__field--from span {
+  .message-form__field--from > span {
     left: calc(5.99% + 3.25rem + 15.54% + 1rem);
   }
 
@@ -3043,11 +3046,11 @@
     aspect-ratio: 484.781 / 277;
     transform: translateX(-50%);
   }
-  .message-form__field--to span {
+  .message-form__field--to > span {
     top: 12.5673%;
     left: 7.7128%;
   }
-  .message-form__field--from span {
+  .message-form__field--from > span {
     top: 12.5673%;
     left: 44.1489%;
   }
