@@ -25,7 +25,7 @@ const recipientOptions = [
   "이다혜", "이서윤", "이초원", "이하늘", "임경민", "조장원", "현연이",
 ];
 
-const MESSAGE_MAX_LENGTH = 100;
+const MESSAGE_MAX_LENGTH = 130;
 
 export function MessagePage() {
   const [messageList, setMessageList] = useState(initialMessages);
