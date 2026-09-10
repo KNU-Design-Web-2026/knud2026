@@ -1,11 +1,22 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import * as paint from "./spray-paint.ts";
 import { canStartPaintDrip, createPaintDrip, createPaintStamp, findScheduledDrip, getDripProgress, getPaintOpacity, GRAIN_COUNT, TEXTURE_RADIUS_X, TEXTURE_RADIUS_Y } from "./spray-paint.ts";
 
 function seededRandom() {
   let seed = 42;
   return () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 4294967296; };
 }
+
+test("획 농도는 불규칙한 진하고 옅은 구간을 급격한 점프 없이 만든다", () => {
+  assert.equal(typeof paint.createPaintDensity, "function");
+  const next = paint.createPaintDensity(seededRandom());
+  const values = Array.from({ length: 200 }, () => next());
+  assert.ok(Math.min(...values) < 0.7 && Math.max(...values) > 0.95);
+  assert.ok(values.every((v, i) => v >= 0.58 && v <= 1 && (i === 0 || Math.abs(v - values[i - 1]) < 0.11)));
+  const replay = paint.createPaintDensity(seededRandom());
+  assert.deepEqual(values, Array.from({ length: 200 }, () => replay()));
+});
 
 test("예약한 중간 획은 포인터 위치와 무관하게 지연 후 흐르고 한 번만 생성된다", () => {
   const stamp = createPaintStamp({ x: 100, y: 100 }, 0, 0, "#fff", seededRandom());
