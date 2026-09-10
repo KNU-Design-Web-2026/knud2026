@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { messages as initialMessages, type Message } from "@/data/messages";
@@ -12,7 +12,7 @@ import {
 
 function MessageCard({ message }: { message: Message }) {
   return (
-    <article className="message-card" data-node-id="1742:88482">
+    <article className="message-card" data-message-reveal data-message-visible="false" data-node-id="1742:88482">
       <div className="message-card__content">
         <div className="message-card__copy">
           <p className="message-card__to">
@@ -35,6 +35,7 @@ const recipientOptions = [
 const DEFAULT_RECIPIENT = "전체(모두)";
 
 export function MessagePage() {
+  const pageRef = useRef<HTMLElement>(null);
   const [messageList, setMessageList] = useState(initialMessages);
   const [to, setTo] = useState("전체(모두)");
   const [from, setFrom] = useState("");
@@ -53,6 +54,38 @@ export function MessagePage() {
       document.removeEventListener("keydown", closeOnEscape);
     };
   }, []);
+
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const revealTargets = page.querySelectorAll<HTMLElement>("[data-message-reveal]");
+    if (!("IntersectionObserver" in window)) {
+      revealTargets.forEach((target) => {
+        target.dataset.messageVisible = "true";
+      });
+      return;
+    }
+
+    page.dataset.messageMotionReady = "true";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.setAttribute("data-message-visible", String(entry.isIntersecting));
+        });
+      },
+      { rootMargin: "0px 0px -8%", threshold: 0.12 },
+    );
+
+    revealTargets.forEach((target) => observer.observe(target));
+
+    return () => {
+      observer.disconnect();
+      delete page.dataset.messageMotionReady;
+    };
+  }, [messageList.length]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -84,7 +117,7 @@ export function MessagePage() {
   };
 
   return (
-    <section className="message-page" aria-labelledby="message-page-title">
+    <section className="message-page" aria-labelledby="message-page-title" ref={pageRef}>
       <h1 className="sr-only" id="message-page-title">MESSAGE</h1>
       <div className="message-page__intro">
         <picture className="message-page__decor">
@@ -108,7 +141,7 @@ export function MessagePage() {
           <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-frame-mobile.svg" />
           <img alt="" src="/assets/figma/message/message-frame-tab-mobile.svg" />
         </picture>
-        <form className="message-form" onSubmit={handleSubmit}>
+        <form className="message-form" data-message-reveal data-message-visible="false" onSubmit={handleSubmit}>
           <div className="message-form__fields">
             <div className={`message-form__field message-form__field--to${isRecipientOpen ? " is-open" : ""}`}>
               <span>To.</span>
