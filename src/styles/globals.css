@@ -3282,3 +3282,75 @@
     --message-list-lift: clamp(2rem, 8vw, 3rem);
   }
 }
+
+/* Size post-it typography from the card itself so in-between viewports do not overflow. */
+.message-card {
+  container-type: inline-size;
+  padding: clamp(15px, 8%, 32px) clamp(20px, 10%, 40px);
+}
+
+.message-card__content,
+.message-card__copy {
+  min-height: 0;
+}
+
+.message-card__copy {
+  gap: clamp(8px, 5cqi, 15px);
+}
+
+.message-card__to,
+.message-card__from,
+.message-card__body {
+  font-size: clamp(10px, 5.4cqi, 16px);
+}
+
+.message-card__body {
+  -webkit-line-clamp: 10;
+  line-clamp: 10;
+}
+
+@container (max-width: 18rem) {
+  .message-card__body {
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+  }
+}
+
+@container (max-width: 13rem) {
+  .message-card__body {
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+  }
+}
+
+/* Change columns only after each card has enough room for 130-character copy. */
+@media (min-width: 1150px) and (max-width: 1599px) {
+  .message-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .message-card:nth-child(4n + 2),
+  .message-card:nth-child(4n + 4) {
+    transform: none;
+  }
+
+  .message-card:nth-child(3n + 2) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
+
+@media (max-width: 1149px) {
+  .message-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .message-card:nth-child(4n + 2),
+  .message-card:nth-child(4n + 4),
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .message-card:nth-child(2n) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
