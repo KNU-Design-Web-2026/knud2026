@@ -1,11 +1,46 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createPaintDrip, createPaintStamp, getDripProgress, getPaintOpacity } from "./spray-paint.ts";
+import { canStartPaintDrip, createPaintDrip, createPaintStamp, findScheduledDrip, getDripProgress, getPaintOpacity } from "./spray-paint.ts";
 
 function seededRandom() {
   let seed = 42;
   return () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 4294967296; };
 }
+
+test("예약한 중간 획은 포인터 위치와 무관하게 지연 후 흐르고 한 번만 생성된다", () => {
+  const stamp = createPaintStamp({ x: 100, y: 100 }, 0, 0, "#fff", seededRandom());
+  const tip = createPaintStamp({ x: 500, y: 100 }, 200, 0, "#fff", seededRandom());
+  stamp.dripAt = 250;
+  assert.equal(findScheduledDrip([stamp, tip], 249, -Infinity), undefined);
+  assert.equal(findScheduledDrip([stamp, tip], 250, -Infinity), stamp);
+  stamp.drip = createPaintDrip(stamp, 250, seededRandom());
+  assert.equal(findScheduledDrip([stamp, tip], 700, 250), undefined);
+});
+
+test("예약 드립도 쿨다운과 위치 간격 및 젖은 도포 수명을 지킨다", () => {
+  const active = createPaintStamp({ x: 100, y: 100 }, 0, 0, "#fff", seededRandom());
+  active.drip = createPaintDrip(active, 100, seededRandom());
+  const candidate = createPaintStamp({ x: 200, y: 100 }, 200, 0, "#fff", seededRandom());
+  candidate.dripAt = 380;
+  const stamps = [active, candidate];
+  assert.equal(findScheduledDrip(stamps, 519, 100), undefined);
+  assert.equal(findScheduledDrip(stamps, 520, 100), candidate);
+  candidate.x = 130;
+  assert.equal(canStartPaintDrip(stamps, candidate, 600, 100), false);
+  candidate.x = 200;
+  assert.equal(findScheduledDrip(stamps, 1100, 100), undefined);
+});
+
+test("기존 드립과 예약 드립이 같은 8개 상한을 공유한다", () => {
+  const active = Array.from({ length: 8 }, (_, index) => {
+    const stamp = createPaintStamp({ x: index * 100, y: 100 }, 0, 0, "#fff", seededRandom());
+    stamp.drip = createPaintDrip(stamp, 200, seededRandom());
+    return stamp;
+  });
+  const candidate = createPaintStamp({ x: 900, y: 100 }, 3000, 0, "#fff", seededRandom());
+  assert.equal(canStartPaintDrip([...active, candidate], candidate, 3500, 200), false);
+  assert.equal(canStartPaintDrip([...active, candidate], candidate, 3600, 200), true);
+});
 
 test("미세 입자의 반지름은 1.15 CSS px 이하이고 생성 후 형태가 변하지 않는다", () => {
   const first = createPaintStamp({ x: 100, y: 100 }, 0, 0, "#F8D622", seededRandom());

@@ -66,6 +66,35 @@ try {
     results.push({ width, early, flowing, expiry: "pass" });
     await page.waitForTimeout(PAINT_LIFETIME + 100);
   }
+  // Observe real canvas drip draws during uninterrupted fast input. The old
+  // stop-only implementation cannot produce multiple origins along this path.
+  await page.setViewportSize({ width: 1350, height: 900 });
+  await page.waitForTimeout(200);
+  await page.locator("#main-hero canvas").evaluate((canvas) => {
+    const context = canvas.getContext("2d");
+    const original = context.quadraticCurveTo;
+    const origins = new Set();
+    canvas.dataset.qaDripOrigins = "[]";
+    context.quadraticCurveTo = function (x, y, endX, endY) {
+      origins.add(Math.round(x));
+      canvas.dataset.qaDripOrigins = JSON.stringify([...origins]);
+      return original.call(this, x, y, endX, endY);
+    };
+  });
+  const movingZone = await page.locator("#main-spray-zone").boundingBox();
+  await page.mouse.move(250, movingZone.y + 240);
+  await page.mouse.down();
+  for (let step = 1; step <= 60; step++) {
+    await page.mouse.move(250 + step * 12, movingZone.y + 240);
+    await page.waitForTimeout(16);
+  }
+  const movingOrigins = JSON.parse(await page.locator("#main-hero canvas").getAttribute("data-qa-drip-origins"));
+  assert.ok(movingOrigins.filter((x) => x > 300 && x < 900).length >= 2, "multiple interior locations must flow before pointer release");
+  await page.screenshot({ path: `${output}/moving-drips.png` });
+  await page.mouse.up();
+  await page.waitForTimeout(700);
+  await page.screenshot({ path: `${output}/released-drips.png` });
+  await page.waitForTimeout(PAINT_LIFETIME + 100);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.mouse.move(400, 300);
   await page.mouse.down();
@@ -94,7 +123,7 @@ try {
   assert.equal(await mobilePage.locator("#main-hero canvas").evaluate((canvas) => canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data.some((value, index) => index % 4 === 3 && value > 0)), false);
   await mobile.close();
   assert.deepEqual(errors, []);
-  await writeFile(`${output}/results.json`, JSON.stringify({ url, results, reducedMotion: "pass", touch: "pass", errors, note: "Functional/visual QA only; not a performance baseline." }, null, 2));
+  await writeFile(`${output}/results.json`, JSON.stringify({ url, results, movingOrigins, reducedMotion: "pass", touch: "pass", errors, note: "Functional/visual QA only; not a performance baseline." }, null, 2));
   console.log(JSON.stringify({ output, results, reducedMotion: "pass", touch: "pass" }, null, 2));
 } finally {
   await context.close();
