@@ -3,6 +3,7 @@
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { PAINT_LIFETIME } from "../src/components/main/spray-paint.ts";
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
 const output = resolve(process.env.SPRAY_QA_OUTPUT || "artifacts/spray-paint");
 await mkdir(output, { recursive: true });
@@ -45,7 +46,9 @@ try {
     assert.ok(flowing.bottom > early.bottom + 15, `${width}: drip must extend downwards`);
     await page.screenshot({ path: `${output}/${width}-02-drip.png` });
     await page.mouse.up();
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(1600);
+    assert.ok((await inkBounds()).pixels > 0, "paint remains visible beyond the previous 2.4s lifetime");
+    await page.waitForTimeout(PAINT_LIFETIME - 1600 + 100);
     assert.equal((await inkBounds()).pixels, 0, "released paint must expire");
 
     await page.mouse.move(x, y);
@@ -61,7 +64,7 @@ try {
     await page.screenshot({ path: `${output}/${width}-04-stroke-drips.png` });
     await page.screenshot({ path: `${output}/${width}-detail.png`, clip: { x: x - 70, y: y - 100, width: 390, height: 260 } });
     results.push({ width, early, flowing, expiry: "pass" });
-    await page.waitForTimeout(2600);
+    await page.waitForTimeout(PAINT_LIFETIME + 100);
   }
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.mouse.move(400, 300);
