@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { canStartPaintDrip, createPaintDrip, createPaintStamp, findScheduledDrip, getDripProgress, getPaintOpacity } from "./spray-paint.ts";
+import { canStartPaintDrip, createPaintDrip, createPaintStamp, findScheduledDrip, getDripProgress, getPaintOpacity, GRAIN_COUNT, TEXTURE_RADIUS_X, TEXTURE_RADIUS_Y } from "./spray-paint.ts";
 
 function seededRandom() {
   let seed = 42;
@@ -46,7 +46,7 @@ test("미세 입자의 반지름은 1.15 CSS px 이하이고 생성 후 형태�
   const first = createPaintStamp({ x: 100, y: 100 }, 0, 0, "#F8D622", seededRandom());
   const second = createPaintStamp({ x: 100, y: 100 }, 0, 0, "#F8D622", seededRandom());
   assert.deepEqual(first, second);
-  assert.ok(first.particles.every(({ radius, alpha }) => radius >= 0.25 && radius <= 1.15 && alpha > 0 && alpha <= 1));
+  assert.ok(first.particles.every(({ radius, alpha }) => radius >= 0.2 && radius * Math.max(first.bodyWidth / TEXTURE_RADIUS_X, first.bodyHeight / TEXTURE_RADIUS_Y) <= 1.15 && alpha > 0 && alpha <= 1));
   assert.equal(first.drip, null);
 });
 
@@ -81,27 +81,40 @@ test("칠과 드립은 2.8초 유지 후 함께 사라지고 3.6초에 투명해
   assert.equal(getPaintOpacity(0, 5000), 0);
 });
 
-test("비산 입자는 개수를 늘리지 않고 진행 반대쪽으로 드문드문 분포한다", () => {
+test("일부 텍스처의 외곽 입자는 진행 반대쪽으로 더 멀리 비산한다", () => {
   const random = seededRandom();
   let backwards = 0, forwards = 0, bursts = 0;
   for (let index = 0; index < 100; index++) {
     const stamp = createPaintStamp({ x: 0, y: 0 }, 0, 0, "#fff", random);
-    assert.equal(stamp.particles.length, 96);
-    backwards += stamp.particles.filter(({ x }) => x < -stamp.bodyWidth * 1.3).length;
-    forwards += stamp.particles.filter(({ x }) => x > stamp.bodyWidth * 1.3).length;
-    if (stamp.particles.some(({ x }) => x < -stamp.bodyWidth * 1.92)) bursts++;
+    assert.equal(stamp.particles.length, GRAIN_COUNT);
+    backwards += stamp.particles.filter(({ x }) => x < -TEXTURE_RADIUS_X * 1.5).length;
+    forwards += stamp.particles.filter(({ x }) => x > TEXTURE_RADIUS_X * 1.5).length;
+    if (stamp.particles.some(({ x }) => x < -TEXTURE_RADIUS_X * 2.25)) bursts++;
   }
-  assert.ok(backwards > forwards * 1.5);
+  assert.ok(backwards > forwards * 1.15);
   assert.ok(bursts > 0 && bursts < 100, "튀는 점이 매 스탬프마다 반복되지 않아야 한다");
 });
 
 test("드래그 방향 반전 시 비산 방향도 반전되며 단순 클릭은 편향이 없다", () => {
   const right = createPaintStamp({ x: 0, y: 0 }, 0, 0, "#fff", seededRandom());
   const left = createPaintStamp({ x: 0, y: 0 }, 0, Math.PI, "#fff", seededRandom());
-  right.particles.forEach((particle, index) => {
-    assert.ok(Math.abs(particle.x + left.particles[index].x) < 1e-10);
-    assert.ok(Math.abs(particle.y + left.particles[index].y) < 1e-10);
-  });
+  assert.equal(right.particles, left.particles, "같은 질감을 회전하여 재사용한다");
+  assert.equal(left.direction - right.direction, Math.PI);
   const click = createPaintStamp({ x: 0, y: 0 }, 0, null, "#fff", seededRandom());
-  assert.ok(click.particles.every(({ x, y }) => Math.hypot(x / click.bodyWidth, y / click.bodyHeight) <= 1.92));
+  assert.ok(click.particles.every(({ x, y }) => Math.hypot(x / TEXTURE_RADIUS_X, y / TEXTURE_RADIUS_Y) <= 2.25));
+});
+
+test("입자층은 중심이 조밀하고 외곽이 성기며 템플릿 수가 제한된다", () => {
+  const templates = new Set();
+  const random = seededRandom();
+  for (let index = 0; index < 300; index++) {
+    const stamp = createPaintStamp({ x: index, y: 0 }, index, 0, "#fff", random);
+    templates.add(stamp.particles);
+    const distances = stamp.particles.map(({ x, y }) => Math.hypot(x / TEXTURE_RADIUS_X, y / TEXTURE_RADIUS_Y));
+    const center = distances.filter((r) => r < 0.5).length / 0.25;
+    const middle = distances.filter((r) => r >= 0.5 && r < 1).length / 0.75;
+    const outer = distances.filter((r) => r >= 1 && r < 2).length / 3;
+    assert.ok(center > middle && middle > outer * 2);
+  }
+  assert.ok(templates.size <= 24);
 });
