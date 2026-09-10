@@ -62,6 +62,13 @@ test("소개 문단은 모든 화면에서 한글 단어 중간 줄바꿈을 피
   );
 });
 
+test("About Instagram 링크는 모든 화면에서 밑줄을 표시하지 않는다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: none;/);
+  assert.doesNotMatch(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: underline;/);
+});
+
 test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크기를 사용한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
 
