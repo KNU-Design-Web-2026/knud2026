@@ -7,7 +7,7 @@
 .content {
   width: min(1620px, calc(100% - 2 * var(--page-gutter)));
   margin-inline: auto;
-  padding-block: clamp(60px, 10.416667vw, 200px);
+  padding-block: var(--profile-page-top-gap);
   container-type: inline-size;
 }
 
@@ -103,7 +103,7 @@
 
 /* 600px Figma frame; interpolate spacing between the supplied 400/600 frames. */
 @media (max-width: 821px) {
-  .content { width: calc(100% - clamp(20px, 10vw - 20px, 40px)); padding-block: clamp(60px, 10vw + 20px, 80px); }
+  .content { width: calc(100% - clamp(20px, 10vw - 20px, 40px)); }
   .heading h1, .heading h2 { height: 31.334px; font-size: clamp(20px, 1vw + 16px, 22px); }
   .heading p { margin-top: 8px; font-size: 14px; line-height: 18px; }
   .map, .desktopInstruction { display: none; }
