@@ -2192,7 +2192,7 @@
     font-size: 16px;
   }
   .message-card__body {
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: -0.04px;
     -webkit-line-clamp: 10;
     line-clamp: 10;
@@ -2279,7 +2279,7 @@
     transform: none;
   }
   .message-card__body {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.3;
     -webkit-line-clamp: 11;
     line-clamp: 11;
@@ -2926,7 +2926,7 @@
   }
 
   .message-card__body {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.3;
     letter-spacing: -0.04px;
@@ -3155,7 +3155,7 @@
   }
 
   .message-card__body {
-    font-size: clamp(0.6875rem, 2.167vw, 0.8125rem);
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
     line-height: 1.3;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
@@ -3178,7 +3178,7 @@
 
 @media (max-width: 400px) {
   .message-card__body {
-    font-size: 11px;
+    font-size: 10px;
     -webkit-line-clamp: 7;
     line-clamp: 7;
   }
