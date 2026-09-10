@@ -5,11 +5,13 @@ import { fileURLToPath } from "node:url";
 const routePath = fileURLToPath(new URL("./page.tsx", import.meta.url));
 const componentPath = fileURLToPath(new URL("../../components/message/message-page.tsx", import.meta.url));
 const dataPath = fileURLToPath(new URL("../../data/messages.ts", import.meta.url));
+const inputRulesPath = fileURLToPath(new URL("../../lib/message-input.ts", import.meta.url));
 const stylesPath = fileURLToPath(new URL("../../styles/globals.css", import.meta.url));
 
 assert.equal(existsSync(routePath), true, "message route should exist");
 assert.equal(existsSync(componentPath), true, "message page component should exist");
 assert.equal(existsSync(dataPath), true, "message data should exist");
+assert.equal(existsSync(inputRulesPath), true, "message input rules should exist");
 assert.equal(existsSync(stylesPath), true, "global styles should exist");
 
 const route = readFileSync(routePath, "utf8");
@@ -17,6 +19,15 @@ const component = readFileSync(componentPath, "utf8");
 const data = readFileSync(dataPath, "utf8");
 const styles = readFileSync(stylesPath, "utf8");
 const { messages } = await import(dataPath);
+const { countMessageLineBreaks, MESSAGE_MAX_LENGTH, MESSAGE_MAX_LINE_BREAKS, normalizeMessageBody } = await import(inputRulesPath);
+
+assert.equal(MESSAGE_MAX_LENGTH, 130);
+assert.equal(MESSAGE_MAX_LINE_BREAKS, 4);
+assert.equal(normalizeMessageBody("첫 줄\r\n둘째 줄"), "첫 줄\n둘째 줄");
+assert.equal(normalizeMessageBody("첫 줄\n\n\n둘째 줄"), "첫 줄\n\n둘째 줄");
+assert.equal(normalizeMessageBody("1\n2\n3\n4\n5\n6"), "1\n2\n3\n4\n5 6");
+assert.equal(countMessageLineBreaks(normalizeMessageBody("1\n2\n3\n4\n5\n6")), MESSAGE_MAX_LINE_BREAKS);
+assert.ok(normalizeMessageBody("가".repeat(140)).length <= MESSAGE_MAX_LENGTH);
 
 assert.match(route, /MessagePage/);
 assert.match(component, /message-page/);
@@ -34,10 +45,13 @@ assert.match(component, /message-frame-tab-mobile/);
 assert.match(component, /message-frame-mobile/);
 assert.match(component, /여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다/);
 assert.doesNotMatch(component, /○○회/);
-assert.match(component, /const MESSAGE_MAX_LENGTH = 130/);
+assert.match(component, /MESSAGE_MAX_LENGTH,[\s\S]*MESSAGE_MAX_LINE_BREAKS,[\s\S]*normalizeMessageBody/);
+assert.match(component, /normalizeMessageBody\(event\.target\.value\)/);
+assert.match(component, /countMessageLineBreaks\(body\)/);
+assert.match(component, /줄바꿈 \{countMessageLineBreaks\(body\)\} \/ \{MESSAGE_MAX_LINE_BREAKS\}/);
 assert.match(component, /maxLength=\{MESSAGE_MAX_LENGTH\}/);
-assert.match(component, /event\.target\.value\.slice\(0, MESSAGE_MAX_LENGTH\)/);
-assert.match(component, /메시지는 최대 \{MESSAGE_MAX_LENGTH\}자까지 입력할 수 있습니다/);
+assert.doesNotMatch(component, /event\.target\.value\.slice\(0, MESSAGE_MAX_LENGTH\)/);
+assert.match(component, /메시지는 최대 \{MESSAGE_MAX_LENGTH\}자, 줄바꿈은 최대 \{MESSAGE_MAX_LINE_BREAKS\}회까지 입력할 수 있습니다/);
 assert.match(component, /message-form__counter/);
 assert.match(component, /\{body\.length\}\s*\/\s*\{MESSAGE_MAX_LENGTH\}/);
 assert.match(component, /message-character-count/);
