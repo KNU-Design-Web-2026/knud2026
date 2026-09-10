@@ -30,8 +30,11 @@
 }
 
 .introSection {
+  --about-intro-original-top: 235px;
+  --about-intro-edge-shift: calc(var(--about-intro-original-top) - var(--profile-page-top-gap));
+
   position: relative;
-  height: 1216px;
+  height: calc(1216px - var(--about-intro-edge-shift));
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -43,7 +46,7 @@
 
 .introWide {
   position: absolute;
-  top: 235px;
+  top: var(--profile-page-top-gap);
   left: 50%;
   box-sizing: border-box;
   width: 1568px;
@@ -328,16 +331,18 @@
 }
 
 .teamsSection {
-  padding: 154px 0 130px;
+  padding: 154px 0 var(--profile-page-top-gap);
 }
 
 @media (min-width: 1351px) and (max-width: 1919px) {
   .introSection {
-    height: calc(903px + 16.2963vw);
+    --about-intro-original-top: calc(-68.158px + 15.7895vw);
+
+    height: calc((903px + 16.2963vw) - var(--about-intro-edge-shift));
   }
 
   .introWide {
-    top: calc(-68.158px + 15.7895vw);
+    top: var(--profile-page-top-gap);
     width: calc(348.632px + 63.1579vw);
     height: calc(800.105px - 2.807vw);
   }
@@ -474,17 +479,19 @@
 
   .teamsSection {
     padding-top: calc(59.68px + 4.912vw);
-    padding-bottom: calc(28.95px + 5.263vw);
+    padding-bottom: var(--profile-page-top-gap);
   }
 }
 
 @media (min-width: 822px) and (max-width: 1350px) {
   .introSection {
-    height: calc(-296.909px + 105.294vw);
+    --about-intro-original-top: calc(-18.636px + 12.121vw);
+
+    height: calc((-296.909px + 105.294vw) - var(--about-intro-edge-shift));
   }
 
   .introWide {
-    top: calc(-18.636px + 12.121vw);
+    top: var(--profile-page-top-gap);
     width: calc(-37.636px + 92.121vw);
     height: calc(-39.818px + 59.394vw);
     padding: calc(-0.793px + 1.984vw);
@@ -656,7 +663,7 @@
 
   .teamsSection {
     padding-top: clamp(78px, calc(-70.364px + 14.545vw), 126px);
-    padding-bottom: 100px;
+    padding-bottom: var(--profile-page-top-gap);
   }
 }
 
@@ -683,8 +690,10 @@
 /* Keep the mobile composition through the 770px transition range. */
 @media (max-width: 821px) {
   .introSection {
+    --about-intro-original-top: clamp(81px, calc(93px - 2vw), 85px);
+
     height: auto;
-    min-height: clamp(1167px, calc(1027px + 35vw), 1237px);
+    min-height: calc(clamp(1167px, calc(1027px + 35vw), 1237px) - var(--about-intro-edge-shift));
   }
 
   .introWide {
@@ -697,13 +706,13 @@
     width: 100%;
     height: auto;
     min-height: inherit;
-    padding-top: clamp(628px, calc(404px + 56vw), 740px);
+    padding-top: calc(clamp(628px, calc(404px + 56vw), 740px) - var(--about-intro-edge-shift));
     padding-bottom: 60px;
   }
 
   .posterNarrow {
     position: absolute;
-    top: clamp(81px, calc(93px - 2vw), 85px);
+    top: var(--profile-page-top-gap);
     left: 50%;
     display: block;
     width: clamp(356px, calc(188px + 42vw), 440px);
@@ -982,7 +991,7 @@
   }
 
   .teamsSection {
-    padding: clamp(62px, calc(-14px + 19vw), 100px) 0 clamp(80px, 20vw, 120px);
+    padding: clamp(62px, calc(-14px + 19vw), 100px) 0 var(--profile-page-top-gap);
   }
 }
 

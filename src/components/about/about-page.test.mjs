@@ -25,8 +25,19 @@ test("822px부터 1020px까지 소개 프레임이 뷰포트와 함께 축소된
 test("중간 화면의 소개 영역 높이와 제목 크기가 고정 하한 없이 보간된다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
-  assert.match(styles, /height: calc\(-296\.909px \+ 105\.294vw\)/);
+  assert.match(styles, /height: calc\(\(-296\.909px \+ 105\.294vw\) - var\(--about-intro-edge-shift\)\)/);
   assert.match(styles, /font-size: clamp\(18px, calc\(-0\.727px \+ 2\.424vw\), 32px\)/);
+});
+
+test("About 첫·마지막 콘텐츠는 모든 화면에서 Profile 상하 여백 토큰을 공유한다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(styles, /--about-intro-edge-shift: calc\(var\(--about-intro-original-top\) - var\(--profile-page-top-gap\)\)/);
+  assert.match(styles, /\.introWide \{[\s\S]*?top: var\(--profile-page-top-gap\)/);
+  assert.match(styles, /@media \(max-width: 821px\)[\s\S]*?\.posterNarrow \{[\s\S]*?top: var\(--profile-page-top-gap\)/);
+  assert.equal(styles.match(/padding-bottom: var\(--profile-page-top-gap\)/g)?.length, 2);
+  assert.match(styles, /\.teamsSection \{[\s\S]*?var\(--profile-page-top-gap\)/);
+  assert.match(styles, /@media \(max-width: 821px\)[\s\S]*?\.teamsSection \{[\s\S]*?0 var\(--profile-page-top-gap\)/);
 });
 
 test("822px부터 1020px까지 소개 텍스트와 문단 간격을 함께 축소한다", async () => {
