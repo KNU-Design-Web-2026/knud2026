@@ -3394,16 +3394,6 @@
     translate 760ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.message-page[data-message-motion-ready="true"] .message-form {
-  opacity: 0;
-  translate: 0 1.25rem;
-}
-
-.message-page[data-message-motion-ready="true"] .message-form[data-message-visible="true"] {
-  opacity: 1;
-  translate: 0 0;
-}
-
 .message-page[data-message-motion-ready="true"] .message-list .message-card {
   opacity: 0;
   translate: 0 1.5rem;

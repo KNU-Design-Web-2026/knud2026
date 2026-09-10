@@ -141,7 +141,7 @@ export function MessagePage() {
           <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-frame-mobile.svg" />
           <img alt="" src="/assets/figma/message/message-frame-tab-mobile.svg" />
         </picture>
-        <form className="message-form" data-message-reveal data-message-visible="false" onSubmit={handleSubmit}>
+        <form className="message-form" onSubmit={handleSubmit}>
           <div className="message-form__fields">
             <div className={`message-form__field message-form__field--to${isRecipientOpen ? " is-open" : ""}`}>
               <span>To.</span>

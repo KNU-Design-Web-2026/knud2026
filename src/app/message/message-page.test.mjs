@@ -59,6 +59,7 @@ assert.match(component, /message-card__recipient-name/);
 assert.match(component, /useRef<HTMLElement>\(null\)/);
 assert.match(component, /data-message-reveal/);
 assert.match(component, /data-message-visible="false"/);
+assert.doesNotMatch(component, /<form className="message-form" data-message-reveal/);
 assert.match(component, /new IntersectionObserver/);
 assert.match(component, /rootMargin: "0px 0px -8%"/);
 assert.match(component, /prefers-reduced-motion: reduce/);
@@ -116,7 +117,6 @@ assert.match(styles, /@media \(max-width: 1020px\)[\s\S]*\.message-card__body\s*
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__body\s*\{[\s\S]*font-size:\s*clamp\(0\.625rem, 2vw, 0\.75rem\);[\s\S]*-webkit-line-clamp:\s*9;/);
 assert.match(styles, /@media \(max-width: 400px\)[\s\S]*\.message-card__body\s*\{[\s\S]*font-size:\s*10px;[\s\S]*-webkit-line-clamp:\s*7;/);
 assert.match(styles, /\.message-page\[data-message-motion-ready="true"\] \[data-message-reveal\]\s*\{[\s\S]*opacity 620ms[\s\S]*translate 760ms/);
-assert.match(styles, /\.message-page\[data-message-motion-ready="true"\] \.message-form\s*\{[\s\S]*translate: 0 1\.25rem;/);
 assert.match(styles, /\.message-list \.message-card\[data-message-visible="true"\]\s*\{[\s\S]*opacity: 1;[\s\S]*translate: 0 0;/);
 assert.doesNotMatch(styles, /--message-card-layout-y|--message-card-motion-y/);
 assert.match(styles, /\.message-card__recipient-name/);
