@@ -32,6 +32,7 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-09-10 메인 도화선 모션](./interaction-specs/2026-09-10-hero-fuse.md)
 - [2026-09-10 디자이너 QA](./qa/2026-09-10-designer-qa.md)
 - [2026-07-16 디자이너 QA](./qa/2026-07-16-designer-qa.md)
 - [2026-08-06 메인 페이지 구현 기준](./2026-08-06-main-page.md)
