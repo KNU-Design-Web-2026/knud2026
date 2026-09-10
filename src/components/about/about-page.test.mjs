@@ -103,6 +103,16 @@ test("지도와 전시 정보 이미지는 1020px 이하에서도 대칭 여백�
   assert.doesNotMatch(styles, /width: clamp\(920px, calc\(-94\.545px \+ 99\.455vw\), 1248px\)/);
 });
 
+test("오프라인 전시 정보는 모든 반응형 화면에서 최신 장소와 종료일을 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+
+  assert.match(page, /2026\.10\.20\(화\) — 10\.30\(금\)/);
+  assert.match(page, /경북대학교 SPACE 9/);
+  assert.match(page, /대구 북구 대학로 80 경북대학교 SPACE 9/);
+  assert.doesNotMatch(page, /10\.31\(토\)/);
+  assert.doesNotMatch(page, /경북대학교 스페이스 9/);
+});
+
 test("821px 이하 관람 시간 텍스트는 정보 영역의 시각 중심에 배치한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 

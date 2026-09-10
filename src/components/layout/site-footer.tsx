@@ -21,7 +21,7 @@ export function SiteFooter() {
           </div>
           <div className="site-footer__information flex w-151.25 shrink-0 flex-col gap-[var(--footer-content-gap)] text-[var(--footer-font-size)] leading-[1.3] font-bold tracking-[-0.02em] max-[1350px]:w-auto">
             <div className="site-footer__schedule">
-              <p>2026.10.20 TUE — 2026.10.31 SAT</p>
+              <p>2026.10.20 TUE — 2026.10.30 FRI</p>
               <p>9AM — 6PM</p>
               <p>경북대학교 SPACE 9</p>
             </div>

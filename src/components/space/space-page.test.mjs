@@ -69,3 +69,10 @@ test("Space 콘텐츠 상하 여백은 모든 화면에서 Profile 기준에 시
   assert.match(css, /\.content \{[\s\S]*?padding-block: var\(--content-page-edge-gap\)/);
   assert.equal(css.match(/padding-block:/g)?.length, 1);
 });
+
+test("Space 아카이브 소개 문구는 올바른 띄어쓰기를 사용한다", async () => {
+  const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
+
+  assert.match(page, /Ignite의 모든 순간을 담은 아카이브입니다\./);
+  assert.doesNotMatch(page, /아카이브 입니다\./);
+});
