@@ -11,9 +11,7 @@ function MessageCard({ message }: { message: Message }) {
       <div className="message-card__content">
         <div className="message-card__copy">
           <p className="message-card__to">To. {message.to}</p>
-          <div className="message-card__body">
-            {message.body.split("\n").map((line) => <p key={line}>{line}</p>)}
-          </div>
+          <p className="message-card__body">{message.body}</p>
         </div>
         <p className="message-card__from">From. {message.from}</p>
       </div>
@@ -26,6 +24,8 @@ const recipientOptions = [
   "김은별", "김지언", "박규리", "박수정", "양혜연", "윤이지", "이나경",
   "이다혜", "이서윤", "이초원", "이하늘", "임경민", "조장원", "현연이",
 ];
+
+const MESSAGE_MAX_LENGTH = 100;
 
 export function MessagePage() {
   const [messageList, setMessageList] = useState(initialMessages);
@@ -148,10 +148,11 @@ export function MessagePage() {
           </div>
           <div className="message-form__body">
             <span className="sr-only">메시지</span>
-            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error" : undefined} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
-              setBody(event.target.value);
+            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error message-length-limit" : "message-length-limit"} maxLength={MESSAGE_MAX_LENGTH} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
+              setBody(event.target.value.slice(0, MESSAGE_MAX_LENGTH));
               setFormError("");
             }} />
+            <p className="sr-only" id="message-length-limit">메시지는 최대 {MESSAGE_MAX_LENGTH}자까지 입력할 수 있습니다.</p>
             <button type="submit">IGNITE</button>
             {formError && <p className="message-form__validation" id="message-form-error" role="alert">{formError}</p>}
           </div>

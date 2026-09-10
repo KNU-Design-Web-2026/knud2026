@@ -65,9 +65,10 @@ export function ScreenshotMessagePage() {
         <div className="screenshot-message-baseline__textarea-wrap">
           <textarea
             aria-label="메시지 내용"
+            maxLength={100}
             placeholder="전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다"
             value={body}
-            onChange={(event) => setBody(event.target.value)}
+            onChange={(event) => setBody(event.target.value.slice(0, 100))}
           />
           <button type="submit">IGNITE</button>
         </div>
