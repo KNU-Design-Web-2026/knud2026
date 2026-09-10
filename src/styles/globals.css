@@ -2848,7 +2848,7 @@
 
   .message-form__body textarea {
     padding: clamp(1.05rem, 1.554vw, 1.865rem) clamp(1.45rem, 2.154vw, 2.585rem);
-    font-size: clamp(1.125rem, 1.458vw, 1.75rem);
+    font-size: clamp(1rem, 1.042vw, 1.25rem);
   }
 
   .message-form__body button {
@@ -2924,9 +2924,12 @@
   }
 
   .message-card__body {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
+    line-height: 1.25;
     letter-spacing: -0.04px;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
   }
 }
 
@@ -2955,7 +2958,7 @@
   }
 
   .message-form__body textarea {
-    font-size: clamp(1rem, 1.7647vw, 1.125rem);
+    font-size: clamp(0.75rem, 1.3vw, 0.875rem);
   }
 }
 
@@ -3150,15 +3153,17 @@
   }
 
   .message-card__body {
-    font-size: clamp(0.75rem, 2.333vw, 0.875rem);
-    line-height: 1.32;
+    font-size: clamp(0.8125rem, 2.5vw, 0.9375rem);
+    line-height: 1.25;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     word-break: keep-all;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
   }
 
   .message-form__body textarea {
-    font-size: clamp(0.875rem, 2.6667vw, 1rem);
+    font-size: clamp(0.5625rem, 2.1vw, 0.75rem);
     line-height: 1.35;
   }
 
@@ -3169,7 +3174,14 @@
   }
 }
 
-/* Keep controls clear while the larger writing text fills more of the fixed canvas. */
+@media (max-width: 400px) {
+  .message-card__body {
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+  }
+}
+
+/* Keep controls clear while the writing text stays within the fixed canvas. */
 .message-form__body textarea {
   padding-bottom: clamp(3.5rem, 5vw, 6rem);
 }
