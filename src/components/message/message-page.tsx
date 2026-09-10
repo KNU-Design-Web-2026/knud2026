@@ -10,7 +10,9 @@ function MessageCard({ message }: { message: Message }) {
     <article className="message-card" data-node-id="1742:88482">
       <div className="message-card__content">
         <div className="message-card__copy">
-          <p className="message-card__to">To. {message.to}</p>
+          <p className="message-card__to">
+            To. <strong className="message-card__recipient-name">{message.to}</strong>
+          </p>
           <p className="message-card__body">{message.body}</p>
         </div>
         <p className="message-card__from">From. {message.from}</p>
@@ -25,6 +27,7 @@ const recipientOptions = [
   "이다혜", "이서윤", "이초원", "이하늘", "임경민", "조장원", "현연이",
 ];
 
+const DEFAULT_RECIPIENT = "전체(모두)";
 const MESSAGE_MAX_LENGTH = 130;
 
 export function MessagePage() {
@@ -109,11 +112,11 @@ export function MessagePage() {
                 aria-expanded={isRecipientOpen}
                 aria-haspopup="listbox"
                 aria-label="받는 사람"
-                className="message-form__recipient-trigger"
+                className={`message-form__recipient-trigger${to !== DEFAULT_RECIPIENT ? " is-selected" : ""}`}
                 onClick={() => setIsRecipientOpen((isOpen) => !isOpen)}
                 type="button"
               >
-                {to}
+                <span className="message-form__recipient-name">{to}</span>
                 <picture className={`message-form__recipient-arrow${isRecipientOpen ? " is-open" : ""}`}>
                   <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-select-arrow-mobile.svg" />
                   <img alt="" src="/assets/figma/message/message-select-arrow-tab-mobile.svg" />

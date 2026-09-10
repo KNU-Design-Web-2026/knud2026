@@ -2080,6 +2080,14 @@
   line-height: 1.3;
 }
 
+.message-card__to {
+  font-weight: 400;
+}
+
+.message-card__recipient-name {
+  font-weight: 700;
+}
+
 .message-card__body {
   display: -webkit-box;
   overflow: hidden;
@@ -2495,6 +2503,17 @@
   font-size: 20px;
   font-weight: 400;
   text-align: left;
+}
+
+.message-form__recipient-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message-form__recipient-trigger.is-selected .message-form__recipient-name {
+  color: #111;
+  font-weight: 700;
 }
 
 .message-form__recipient-arrow {

@@ -41,6 +41,9 @@ assert.match(component, /메시지는 최대 \{MESSAGE_MAX_LENGTH\}자까지 입
 assert.match(component, /message-form__counter/);
 assert.match(component, /\{body\.length\}\s*\/\s*\{MESSAGE_MAX_LENGTH\}/);
 assert.match(component, /message-character-count/);
+assert.match(component, /message-card__recipient-name/);
+assert.match(component, /message-form__recipient-name/);
+assert.match(component, /message-form__recipient-trigger\$\{to !== DEFAULT_RECIPIENT \? " is-selected" : ""\}/);
 assert.doesNotMatch(component, /message-page__frame-backdrop/);
 assert.match(data, /철수야 졸업 축하해/);
 assert.ok(messages.every(({ body }) => body.length <= 130), "mock messages must stay within the 130 character limit");
@@ -70,6 +73,8 @@ assert.match(styles, /\.message-card__body\s*\{[\s\S]*white-space:\s*pre-wrap/);
 assert.match(styles, /\.message-form__validation/);
 assert.match(styles, /\.message-form__counter/);
 assert.match(styles, /\.message-form__body:focus-within/);
+assert.match(styles, /\.message-card__recipient-name/);
+assert.match(styles, /\.message-form__recipient-trigger\.is-selected[\s\S]*\.message-form__recipient-name/);
 assert.match(styles, /\.message-form__recipient-arrow\.is-open\s*\{\s*transform:\s*rotate\(0deg\)/);
 assert.match(styles, /\.message-form__recipient-trigger\s*\{[\s\S]*?font-size: 20px;[\s\S]*?font-weight: 400;/);
 assert.match(styles, /\.message-form__recipient-menu button\s*\{[\s\S]*?font-size: 20px;[\s\S]*?font-weight: 400;/);
