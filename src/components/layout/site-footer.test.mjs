@@ -8,6 +8,7 @@ test("공통 푸터는 최신 전시 종료일과 SPACE 9 장소명을 모든 �
   assert.match(footer, /2026\.10\.20 TUE — 2026\.10\.30 FRI/);
   assert.match(footer, /경북대학교 SPACE 9/);
   assert.doesNotMatch(footer, /2026\.10\.31 SAT/);
+  assert.doesNotMatch(footer, /underline(?:-offset-2)?/);
 });
 
 test("400px 모바일 푸터는 Figma의 두 열 배치와 고정 줄바꿈을 유지한다", async () => {
@@ -23,7 +24,6 @@ test("400px 모바일 푸터는 Figma의 두 열 배치와 고정 줄바꿈을 �
   assert.match(styles, /\.site-footer__copyright-line \{[\s\S]*?display: block;/);
   assert.match(styles, /\.site-footer__brand-line \{[\s\S]*?display: block;/);
   assert.match(styles, /\.site-footer__brand-copy \{[\s\S]*?line-height: 1rem;/);
-  assert.match(styles, /\.site-footer__instagram \{[\s\S]*?text-decoration: none;/);
 });
 
 test("400px 미만 푸터는 열 간격과 정보 글자를 함께 축소해 가로 넘침을 막는다", async () => {

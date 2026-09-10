@@ -32,7 +32,7 @@ export function SiteFooter() {
               <p>9AM — 6PM</p>
               <p>경북대학교 SPACE 9</p>
             </div>
-            <a className="site-footer__instagram text-knud-footer-muted underline underline-offset-2" href="https://www.instagram.com/knu_design_exhibition" target="_blank" rel="noreferrer">
+            <a className="site-footer__instagram text-knud-footer-muted" href="https://www.instagram.com/knu_design_exhibition" target="_blank" rel="noreferrer">
               Instagram @knu_design_exhibition
             </a>
             <p className="site-footer__copyright text-knud-footer-muted">
