@@ -3211,3 +3211,52 @@
   }
 
 }
+
+/* Alternate post-it columns vertically, matching the message-wall composition. */
+.message-list {
+  --message-card-stagger: clamp(7rem, 7.1vw, 8.5rem);
+
+  padding-bottom: var(--message-card-stagger);
+}
+
+.message-card:nth-child(4n + 2),
+.message-card:nth-child(4n + 4) {
+  transform: translateY(var(--message-card-stagger));
+}
+
+@media (min-width: 63.8125rem) and (max-width: 84.375rem) {
+  .message-list {
+    --message-card-stagger: clamp(7.5rem, 12vw, 10rem);
+  }
+
+  .message-card:nth-child(4n + 2),
+  .message-card:nth-child(4n + 4) {
+    transform: none;
+  }
+
+  .message-card:nth-child(3n + 2) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
+
+@media (max-width: 63.75rem) {
+  .message-list {
+    --message-card-stagger: clamp(4.5rem, 12vw, 7.5rem);
+  }
+
+  .message-card:nth-child(4n + 2),
+  .message-card:nth-child(4n + 4),
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .message-card:nth-child(2n) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
+
+@media (max-width: 600px) {
+  .message-list {
+    --message-card-stagger: clamp(3.5rem, 13vw, 4.875rem);
+  }
+}
