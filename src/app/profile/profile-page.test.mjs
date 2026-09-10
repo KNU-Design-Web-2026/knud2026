@@ -50,7 +50,7 @@ test("Profile 그리드는 Figma 네 기준 폭에서 열 수와 카드 여백�
 
   assert.match(profilePage, /profile-grid/);
   assert.match(tokens, /--profile-grid-columns: 4/);
-  assert.match(tokens, /@media \(max-width: 63\.75rem\)[\s\S]*?--profile-grid-columns: 3/);
+  assert.match(tokens, /@media \(max-width: 68\.75rem\)[\s\S]*?--profile-grid-columns: 3/);
   assert.match(tokens, /@media \(max-width: 37\.5rem\)[\s\S]*?--profile-grid-columns: 2/);
   assert.match(tokens, /@media \(max-width: 25rem\)[\s\S]*?--profile-grid-gutter: 0\.625rem/);
   assert.match(tokens, /--header-height: clamp\(3\.6875rem, calc\(10\.5vw \+ 1\.0625rem\), 5rem\)/);
@@ -147,8 +147,20 @@ test("Profile 중간 폭 이름 패널은 카드 폭을 기준으로 연속 축�
   const globalStyles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(globalStyles, /container-type: inline-size/);
+  assert.match(globalStyles, /@media \(min-width: 600\.0625px\) and \(max-width: 1100px\)/);
   assert.match(globalStyles, /--profile-detail-name-size: clamp\(1rem, 7\.62cqw, 1\.5rem\)/);
   assert.match(globalStyles, /--profile-detail-name-en-size: clamp\(0\.75rem, 5\.72cqw, 1\.125rem\)/);
+});
+
+test("Profile은 1100px부터 태블릿 3열 레이아웃과 프레임으로 전환한다", () => {
+  const profileCard = readFileSync(profileCardPath, "utf8");
+  const globalStyles = readFileSync(globalStylesPath, "utf8");
+  const tokens = readFileSync(tokensPath, "utf8");
+
+  assert.match(tokens, /@media \(max-width: 68\.75rem\)[\s\S]*?--profile-grid-columns: 3/);
+  assert.match(globalStyles, /@media \(max-width: 1100px\)[\s\S]*?\.profile-card__border--web-tab/);
+  assert.match(profileCard, /\(min-width: 1101px\) 23\.5vw/);
+  assert.doesNotMatch(tokens, /@media \(max-width: 63\.75rem\)[\s\S]*?--profile-grid-columns: 3/);
 });
 
 test("공통 헤더는 중간 폭에서 제목과 메뉴 아이콘을 연속적으로 축소한다", () => {

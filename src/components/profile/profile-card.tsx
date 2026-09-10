@@ -14,7 +14,7 @@ export function ProfileCard({ member }: ProfileCardProps) {
           alt={`${member.nameKo} 프로필 이미지`}
           className="h-full w-full object-cover"
           height={499}
-          sizes="(min-width: 1351px) 19.6vw, (min-width: 1021px) 28vw, (min-width: 601px) 44.2vw, 45.25vw"
+          sizes="(min-width: 1351px) 19.6vw, (min-width: 1101px) 23.5vw, (min-width: 601px) 30vw, 45.25vw"
           src={member.imageSrc}
           width={375}
         />
