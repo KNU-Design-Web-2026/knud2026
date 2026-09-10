@@ -56,14 +56,14 @@ test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 
 
   assert.match(styles, /\.professorsGrid \{[\s\S]*?margin-left: 353px;/);
   assert.match(styles, /margin-left: calc\(-206\.16px \+ 29\.123vw\)/);
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(7\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(15\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
   assert.doesNotMatch(styles, /\.professorsLion \{[\s\S]*?max-height: 100%;/);
 });
 
 test("822px 이상 교수진 사자는 패널 기준 비율로 함께 이동한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(7\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(15\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
   assert.doesNotMatch(styles, /bottom: calc\(49\.211px - 1\.053vw\)/);
   assert.doesNotMatch(styles, /left: calc\(141\.684px \+ 44\.912vw\)/);
   assert.doesNotMatch(styles, /right: clamp\(-20px, calc\(-51px \+ 3\.03vw\), -10px\)/);
