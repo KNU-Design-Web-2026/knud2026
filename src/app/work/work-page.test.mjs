@@ -9,6 +9,7 @@ const workDetailDataPath = new URL("../../data/work-details.ts", import.meta.url
 const workDetailRoutePath = new URL("./[id]/page.tsx", import.meta.url);
 const workDetailPagePath = new URL("../../components/work/work-detail-page.tsx", import.meta.url);
 const globalStylesPath = new URL("../../styles/globals.css", import.meta.url);
+const tokensPath = new URL("../../styles/tokens.css", import.meta.url);
 
 test("Work 경로는 Figma Web 기준의 19개 작품 카드를 렌더한다", () => {
   assert.equal(existsSync(workPagePath), true);
@@ -49,17 +50,19 @@ test("Work Web 그리드는 4열·28px 간격·150px 좌우 여백을 유지한�
 
   assert.match(page, /work-page/);
   assert.match(page, /work-grid/);
-  assert.match(styles, /\.work-page \{[\s\S]*?padding-top: var\(--profile-page-top-gap\)/);
+  assert.match(styles, /\.work-page \{[\s\S]*?padding-top: var\(--content-page-edge-gap\)/);
   assert.match(styles, /\.work-grid \{[\s\S]*?column-gap: 1\.75rem;[\s\S]*?grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);[\s\S]*?padding-inline: 9\.375rem;[\s\S]*?row-gap: 2\.25rem/);
 });
 
-test("Work 상하 여백은 모든 화면에서 Profile 반응형 토큰을 공유한다", () => {
+test("Work 상하 여백은 모든 화면에서 Profile 기준에 시각 보정값을 더한다", () => {
   const styles = readFileSync(globalStylesPath, "utf8");
+  const tokens = readFileSync(tokensPath, "utf8");
 
-  assert.match(styles, /\.work-page \{[\s\S]*?padding-top: var\(--profile-page-top-gap\)/);
-  assert.match(styles, /\.work-grid \{[\s\S]*?padding-bottom: var\(--profile-page-top-gap\)/);
+  assert.match(tokens, /--content-page-edge-gap: calc\(var\(--profile-page-top-gap\) \+ 1\.25rem\)/);
+  assert.match(styles, /\.work-page \{[\s\S]*?padding-top: var\(--content-page-edge-gap\)/);
+  assert.match(styles, /\.work-grid \{[\s\S]*?padding-bottom: var\(--content-page-edge-gap\)/);
   assert.equal(styles.match(/\.work-page \{/g)?.length, 1);
-  assert.equal(styles.match(/padding-bottom: var\(--profile-page-top-gap\)/g)?.length, 1);
+  assert.equal(styles.match(/padding-bottom: var\(--content-page-edge-gap\)/g)?.length, 1);
 });
 
 test("Work 그리드는 Figma의 네 기준 폭에 맞춰 열 수·여백·간격을 전환한다", () => {

@@ -39,6 +39,7 @@
   --footer-content-gap: 1.5625rem;
   --footer-font-size: 1.25rem;
   --profile-page-top-gap: 5rem;
+  --content-page-edge-gap: calc(var(--profile-page-top-gap) + 1.25rem);
   --profile-grid-gutter: 8.1875rem;
   --profile-grid-column-gap: 0.125rem;
   --profile-grid-row-gap: 1.875rem;

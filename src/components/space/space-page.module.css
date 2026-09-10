@@ -7,7 +7,7 @@
 .content {
   width: min(1620px, calc(100% - 2 * var(--page-gutter)));
   margin-inline: auto;
-  padding-block: var(--profile-page-top-gap);
+  padding-block: var(--content-page-edge-gap);
   container-type: inline-size;
 }
 

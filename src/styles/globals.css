@@ -345,14 +345,14 @@
 }
 
 .work-page {
-  padding-top: var(--profile-page-top-gap);
+  padding-top: var(--content-page-edge-gap);
 }
 
 .work-grid {
   column-gap: 1.75rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  padding-bottom: var(--profile-page-top-gap);
+  padding-bottom: var(--content-page-edge-gap);
   padding-inline: 9.375rem;
   row-gap: 2.25rem;
 }

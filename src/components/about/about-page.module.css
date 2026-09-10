@@ -31,7 +31,7 @@
 
 .introSection {
   --about-intro-original-top: 235px;
-  --about-intro-edge-shift: calc(var(--about-intro-original-top) - var(--profile-page-top-gap));
+  --about-intro-edge-shift: calc(var(--about-intro-original-top) - var(--content-page-edge-gap));
 
   position: relative;
   height: calc(1216px - var(--about-intro-edge-shift));
@@ -46,7 +46,7 @@
 
 .introWide {
   position: absolute;
-  top: var(--profile-page-top-gap);
+  top: var(--content-page-edge-gap);
   left: 50%;
   box-sizing: border-box;
   width: 1568px;
@@ -331,7 +331,7 @@
 }
 
 .teamsSection {
-  padding: 154px 0 var(--profile-page-top-gap);
+  padding: 154px 0 var(--content-page-edge-gap);
 }
 
 @media (min-width: 1351px) and (max-width: 1919px) {
@@ -342,7 +342,7 @@
   }
 
   .introWide {
-    top: var(--profile-page-top-gap);
+    top: var(--content-page-edge-gap);
     width: calc(348.632px + 63.1579vw);
     height: calc(800.105px - 2.807vw);
   }
@@ -479,7 +479,7 @@
 
   .teamsSection {
     padding-top: calc(59.68px + 4.912vw);
-    padding-bottom: var(--profile-page-top-gap);
+    padding-bottom: var(--content-page-edge-gap);
   }
 }
 
@@ -491,7 +491,7 @@
   }
 
   .introWide {
-    top: var(--profile-page-top-gap);
+    top: var(--content-page-edge-gap);
     width: calc(-37.636px + 92.121vw);
     height: calc(-39.818px + 59.394vw);
     padding: calc(-0.793px + 1.984vw);
@@ -663,7 +663,7 @@
 
   .teamsSection {
     padding-top: clamp(78px, calc(-70.364px + 14.545vw), 126px);
-    padding-bottom: var(--profile-page-top-gap);
+    padding-bottom: var(--content-page-edge-gap);
   }
 }
 
@@ -712,7 +712,7 @@
 
   .posterNarrow {
     position: absolute;
-    top: var(--profile-page-top-gap);
+    top: var(--content-page-edge-gap);
     left: 50%;
     display: block;
     width: clamp(356px, calc(188px + 42vw), 440px);
@@ -991,7 +991,7 @@
   }
 
   .teamsSection {
-    padding: clamp(62px, calc(-14px + 19vw), 100px) 0 var(--profile-page-top-gap);
+    padding: clamp(62px, calc(-14px + 19vw), 100px) 0 var(--content-page-edge-gap);
   }
 }
 

@@ -63,9 +63,9 @@ test("작은 화면은 별도의 지도 방향과 두 열 아카이브를 사용
   assert.match(css, /opacity 240ms/);
 });
 
-test("Space 콘텐츠 상하 여백은 모든 화면에서 Profile 반응형 토큰을 공유한다", async () => {
+test("Space 콘텐츠 상하 여백은 모든 화면에서 Profile 기준에 시각 보정값을 더한다", async () => {
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
 
-  assert.match(css, /\.content \{[\s\S]*?padding-block: var\(--profile-page-top-gap\)/);
+  assert.match(css, /\.content \{[\s\S]*?padding-block: var\(--content-page-edge-gap\)/);
   assert.equal(css.match(/padding-block:/g)?.length, 1);
 });
