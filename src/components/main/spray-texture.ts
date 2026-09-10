@@ -1,4 +1,4 @@
-import { TEXTURE_HALF_SIZE } from "./spray-paint";
+import { TEXTURE_HALF_SIZE, TEXTURE_RADIUS_X, TEXTURE_RADIUS_Y } from "./spray-paint";
 import type { PaintStamp } from "./spray-paint";
 
 // Per-effect cache: at most 12 variants × 2 scatter modes × 5 palette colors.
@@ -23,6 +23,12 @@ export function createSprayTextureCache() {
         context.beginPath();
         context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         context.fill();
+        // Bake stronger core coverage once; keep the sparse outer dust intact.
+        if (Math.hypot(particle.x / TEXTURE_RADIUS_X, particle.y / TEXTURE_RADIUS_Y) < 1) {
+          context.beginPath();
+          context.arc(particle.x + 0.45, particle.y - 0.35, particle.radius, 0, Math.PI * 2);
+          context.fill();
+        }
       }
     }
     colors.set(stamp.color, texture);

@@ -21,6 +21,7 @@ export type PaintDrip = {
 };
 export type PaintStamp = Point & {
   color: string;
+  density: number;
   createdAt: number;
   direction: number;
   bodyWidth: number;
@@ -32,6 +33,27 @@ export type PaintStamp = Point & {
 };
 
 const grainTemplates = new Map<number, PaintStamp["particles"]>();
+
+// Sample at deposition, not per frame: existing paint never flickers.
+export function createPaintDensity(random = Math.random): () => number {
+  let start = 0.9;
+  let target = 0.58 + random() * 0.12;
+  let length = 6 + Math.floor(random() * 9);
+  let step = 0;
+  let dense = false;
+  return () => {
+    const t = ++step / length;
+    const value = start + (target - start) * t * t * (3 - 2 * t);
+    if (step === length) {
+      start = target;
+      dense = !dense;
+      target = dense ? 0.95 + random() * 0.05 : 0.58 + random() * 0.12;
+      length = 6 + Math.floor(random() * 9);
+      step = 0;
+    }
+    return value;
+  };
+}
 
 function getGrainTemplate(variant: number, hasBackscatter: boolean): PaintStamp["particles"] {
   const key = variant * 2 + Number(hasBackscatter);
@@ -67,7 +89,7 @@ export function createPaintStamp(point: Point, createdAt: number, direction: num
   const bodyHeight = 19 + random() * 4;
   const hasBackscatter = direction !== null && random() < 0.38;
   const particles = getGrainTemplate(Math.floor(random() * 12), hasBackscatter);
-  return { ...point, color, createdAt, direction: direction ?? 0, bodyWidth, bodyHeight, particles, dripAt: null, drip: null };
+  return { ...point, color, density: 1, createdAt, direction: direction ?? 0, bodyWidth, bodyHeight, particles, dripAt: null, drip: null };
 }
 
 export function canStartPaintDrip(stamps: PaintStamp[], candidate: PaintStamp, now: number, lastDripAt: number): boolean {

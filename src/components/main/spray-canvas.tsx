@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import {
-  canStartPaintDrip, createPaintDrip, createPaintStamp, DRIP_SETTLE_TIME,
+  canStartPaintDrip, createPaintDensity, createPaintDrip, createPaintStamp, DRIP_SETTLE_TIME,
   findScheduledDrip, getDripProgress, getPaintOpacity, PAINT_LIFETIME,
   TEXTURE_HALF_SIZE, TEXTURE_RADIUS_X, TEXTURE_RADIUS_Y,
 } from "./spray-paint";
@@ -40,6 +40,7 @@ export function SprayCanvas() {
     let settledSince = 0;
     let lastDripAt = -Infinity;
     let distanceUntilDrip = nextDripDistance();
+    let nextDensity = createPaintDensity();
     let width = 0;
     let height = 0;
     const enabled = () => finePointer.matches && !reducedMotion.matches;
@@ -82,7 +83,7 @@ export function SprayCanvas() {
         context.translate(stamp.x, stamp.y);
         context.rotate(stamp.direction);
         context.scale(stamp.bodyWidth / TEXTURE_RADIUS_X, stamp.bodyHeight / TEXTURE_RADIUS_Y);
-        context.globalAlpha = fade;
+        context.globalAlpha = fade * stamp.density;
         context.drawImage(getTexture(stamp), -TEXTURE_HALF_SIZE, -TEXTURE_HALF_SIZE,
           TEXTURE_HALF_SIZE * 2, TEXTURE_HALF_SIZE * 2);
         context.restore();
@@ -93,7 +94,7 @@ export function SprayCanvas() {
           if (progress <= 0) continue;
           const endX = drip.origin.x + drip.bend * progress;
           const endY = drip.origin.y + drip.length * progress;
-          context.globalAlpha = 0.9 * fade;
+          context.globalAlpha = 0.9 * fade * stamp.density;
           context.strokeStyle = stamp.color;
           context.lineWidth = drip.width;
           context.lineCap = "round";
@@ -112,6 +113,7 @@ export function SprayCanvas() {
 
     const addStamp = (point: Point, direction: number | null) => {
       const stamp = createPaintStamp(point, performance.now(), direction, activeColor);
+      stamp.density = nextDensity();
       if (direction !== null) {
         distanceUntilDrip -= STAMP_SPACING;
         if (distanceUntilDrip <= 0) {
@@ -162,6 +164,7 @@ export function SprayCanvas() {
       latestInput = { ...point, at: settledSince };
       lastPoint = point;
       distanceUntilDrip = nextDripDistance();
+      nextDensity = createPaintDensity();
       addStamp(point, null);
     };
     const handlePointerMove = (event: PointerEvent) => {
