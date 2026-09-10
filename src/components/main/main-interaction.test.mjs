@@ -4,6 +4,8 @@ import test from "node:test";
 
 const siteCursorPath = new URL("../layout/site-cursor.tsx", import.meta.url);
 const sprayCanvasPath = new URL("./spray-canvas.tsx", import.meta.url);
+const heroMotionPath = new URL("./hero-motion.tsx", import.meta.url);
+const heroMotionStylesPath = new URL("./hero-motion.css", import.meta.url);
 const stylesPath = new URL("../../styles/globals.css", import.meta.url);
 
 test("일반 사이트 커서는 34px × 40.33px 규격을 사용한다", () => {
@@ -22,6 +24,15 @@ test("메인 스프레이는 불규칙한 외곽선과 각진 잉크 드립을 �
   assert.doesNotMatch(spray, /context\.ellipse\(0, 0, stamp\.bodyWidth/);
   assert.match(spray, /tipRadius/);
   assert.match(spray, /context\.lineJoin = "miter"/);
+});
+
+test("히어로 모션은 일시정지 UI 없이 화면 노출 상태에 따라 재생된다", () => {
+  const component = readFileSync(heroMotionPath, "utf8");
+  const styles = readFileSync(heroMotionStylesPath, "utf8");
+
+  assert.doesNotMatch(component, /hero-motion-toggle|모션 멈춤|모션 재생|data-paused/);
+  assert.doesNotMatch(styles, /hero-motion-toggle|data-paused/);
+  assert.match(styles, /\.hero-motion\[data-running="true"\] \.hero-scene \* \{ animation-play-state: running; \}/);
 });
 
 test("스프레이 색상은 KNUD 팔레트의 주황·파랑을 사용하고 연두를 제외한다", () => {

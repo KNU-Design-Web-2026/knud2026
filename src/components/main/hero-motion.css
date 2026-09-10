@@ -32,7 +32,7 @@
 .hero-burst-2 { animation-delay: 0.04s; }
 .hero-paint-fleck { opacity: 0; animation: hero-fleck 12s ease-out infinite; }
 .hero-motion .hero-scene * { animation-play-state: paused; }
-.hero-motion[data-running="true"][data-paused="false"] .hero-scene * { animation-play-state: running; }
+.hero-motion[data-running="true"] .hero-scene * { animation-play-state: running; }
 
 @keyframes hero-burn {
   0%, 15% { stroke-dasharray: 0 100; }
@@ -76,14 +76,6 @@
   40% { opacity: 1; transform: translate(0, 0) scale(1); }
   47%, 100% { opacity: 0; transform: translate(var(--fleck-x), var(--fleck-y)) rotate(var(--fleck-r)) scale(0.3); }
 }
-.hero-motion-toggle {
-  position: absolute; bottom: 20px; right: 20px; z-index: 30;
-  pointer-events: auto; padding: 10px 14px; min-height: 44px;
-  color: white; background: rgb(0 0 0 / 0.45); border: 1px solid rgb(255 255 255 / 0.4);
-  border-radius: 4px; font: inherit; font-size: 12px; cursor: pointer;
-}
-.hero-motion-toggle:focus-visible { outline: 2px solid #fcd519; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   .hero-motion .hero-scene * { animation: none; }
-  .hero-motion-toggle { display: none; }
 }
