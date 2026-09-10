@@ -871,7 +871,8 @@
 }
 
 .profile-detail-work {
-  height: 56.25rem;
+  aspect-ratio: 1.8;
+  height: auto;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -1003,11 +1004,6 @@
     column-gap: 0;
     font-size: 1.375rem;
     row-gap: 1.875rem;
-  }
-
-  .profile-detail-work {
-    aspect-ratio: 1.8;
-    height: auto;
   }
 
   .profile-detail-work__overlay {
