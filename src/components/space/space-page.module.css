@@ -94,13 +94,20 @@
 .archivePanel { background: #d9d9d9; }
 .archiveColumn:last-child .archivePanel:last-child { box-shadow: 0 4px 4px rgb(0 0 0 / 25%); }
 
-.compactMap, .compactInstruction { display: none; }
+.compactMap, .tabletInstruction, .compactInstruction { display: none; }
+
+@media (max-width: 1350px) {
+  .desktopInstruction { display: none; }
+  .tabletInstruction { display: inline; }
+}
+
 /* 600px Figma frame; interpolate spacing between the supplied 400/600 frames. */
 @media (max-width: 821px) {
   .content { width: calc(100% - clamp(20px, 10vw - 20px, 40px)); padding-block: clamp(60px, 10vw + 20px, 80px); }
   .heading h1, .heading h2 { height: 31.334px; font-size: clamp(20px, 1vw + 16px, 22px); }
   .heading p { margin-top: 8px; font-size: 14px; line-height: 18px; }
   .map, .desktopInstruction { display: none; }
+  .tabletInstruction { display: none; }
   .compactInstruction { display: inline; }
   .compactMap { display: block; position: relative; width: 98.65848%; aspect-ratio: 552.48749 / 311.2796; margin: 40px auto 0; container-type: inline-size; }
   .mapDrawing, .tabletNames, .mobileNames { position: absolute; inset: 0; }
