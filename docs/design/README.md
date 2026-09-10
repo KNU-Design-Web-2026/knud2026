@@ -32,6 +32,7 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-09-11 미세 스프레이와 페인트 흐름](./interaction-specs/2026-09-11-spray-paint.md)
 - [2026-09-10 메인 도화선 모션](./interaction-specs/2026-09-10-hero-fuse.md)
 - [2026-09-10 디자이너 QA](./qa/2026-09-10-designer-qa.md)
 - [2026-07-16 디자이너 QA](./qa/2026-07-16-designer-qa.md)
