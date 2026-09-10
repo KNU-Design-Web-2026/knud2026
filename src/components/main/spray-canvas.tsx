@@ -5,8 +5,10 @@ import { useEffect, useRef } from "react";
 import {
   canStartPaintDrip, createPaintDrip, createPaintStamp, DRIP_SETTLE_TIME,
   findScheduledDrip, getDripProgress, getPaintOpacity, PAINT_LIFETIME,
+  TEXTURE_HALF_SIZE, TEXTURE_RADIUS_X, TEXTURE_RADIUS_Y,
 } from "./spray-paint";
 import type { PaintStamp, Point } from "./spray-paint";
+import { createSprayTextureCache } from "./spray-texture";
 
 const STAMP_SPACING = 12;
 const MAX_DEVICE_PIXEL_RATIO = 2;
@@ -26,6 +28,7 @@ export function SprayCanvas() {
     if (!hero || !sprayZone || !canvas) return;
     const context = canvas.getContext("2d");
     if (!context) return;
+    const getTexture = createSprayTextureCache();
 
     let stamps: PaintStamp[] = [];
     let lastPoint: Point | null = null;
@@ -78,22 +81,11 @@ export function SprayCanvas() {
         context.save();
         context.translate(stamp.x, stamp.y);
         context.rotate(stamp.direction);
-        context.globalAlpha = 0.86 * fade;
-        context.beginPath();
-        stamp.edgePoints.forEach((point, index) => {
-          if (index === 0) context.moveTo(point.x, point.y);
-          else context.lineTo(point.x, point.y);
-        });
-        context.closePath();
-        context.fill();
+        context.scale(stamp.bodyWidth / TEXTURE_RADIUS_X, stamp.bodyHeight / TEXTURE_RADIUS_Y);
+        context.globalAlpha = fade;
+        context.drawImage(getTexture(stamp), -TEXTURE_HALF_SIZE, -TEXTURE_HALF_SIZE,
+          TEXTURE_HALF_SIZE * 2, TEXTURE_HALF_SIZE * 2);
         context.restore();
-
-        for (const particle of stamp.particles) {
-          context.globalAlpha = particle.alpha * fade;
-          context.beginPath();
-          context.arc(stamp.x + particle.x, stamp.y + particle.y, particle.radius, 0, Math.PI * 2);
-          context.fill();
-        }
 
         if (stamp.drip) {
           const drip = stamp.drip;

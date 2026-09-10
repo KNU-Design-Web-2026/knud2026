@@ -5,6 +5,10 @@ export const DRIP_SETTLE_TIME = 240;
 export const DRIP_COOLDOWN = 420;
 export const MAX_ACTIVE_DRIPS = 8;
 export const DRIP_MIN_SEPARATION = 56;
+export const TEXTURE_RADIUS_X = 27;
+export const TEXTURE_RADIUS_Y = 21;
+export const TEXTURE_HALF_SIZE = 84;
+export const GRAIN_COUNT = 2200;
 
 export type Point = { x: number; y: number };
 export type PaintDrip = {
@@ -21,45 +25,49 @@ export type PaintStamp = Point & {
   direction: number;
   bodyWidth: number;
   bodyHeight: number;
-  edgePoints: Point[];
-  particles: (Point & { radius: number; alpha: number })[];
+  // Shared immutable local-space grain template; rotation happens when drawing.
+  particles: readonly (Point & { radius: number; alpha: number })[];
   dripAt: number | null;
   drip: PaintDrip | null;
 };
 
-export function createPaintStamp(point: Point, createdAt: number, direction: number | null, color: string, random = Math.random): PaintStamp {
-  const bodyWidth = 25 + random() * 4;
-  const bodyHeight = 19 + random() * 4;
-  const orientation = direction ?? 0;
-  const cosine = Math.cos(orientation);
-  const sine = Math.sin(orientation);
-  // Sparse bursts, not an even halo or a continuous tail. A click has no
-  // travel direction, so it keeps the original all-around overspray.
-  const hasBackscatter = direction !== null && random() < 0.38;
-  const edgePoints = Array.from({ length: 48 }, (_, index) => {
-    const angle = (index / 48) * Math.PI * 2;
-    const edgeJitter = 0.94 + random() * 0.12;
-    return { x: Math.cos(angle) * bodyWidth * edgeJitter, y: Math.sin(angle) * bodyHeight * edgeJitter };
-  });
-  const particles = Array.from({ length: 96 }, (_, index) => {
-    const isBackscatter = hasBackscatter && index >= 90;
+const grainTemplates = new Map<number, PaintStamp["particles"]>();
+
+function getGrainTemplate(variant: number, hasBackscatter: boolean): PaintStamp["particles"] {
+  const key = variant * 2 + Number(hasBackscatter);
+  const existing = grainTemplates.get(key);
+  if (existing) return existing;
+  let seed = 173 + variant * 7919;
+  const random = () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 4294967296; };
+  const particles = Array.from({ length: GRAIN_COUNT }, (_, index) => {
+    const isBackscatter = hasBackscatter && index >= GRAIN_COUNT - 24;
     const angle = isBackscatter
       ? Math.PI + (random() - 0.5) * 1.7
       : random() * Math.PI * 2;
-    const isOverspray = index >= 76;
+    const isOverspray = index >= 1800;
+    // Truncated Gaussian deposition: a dense, porous center, not a solid disc.
+    // The sparse outer layer breaks the silhouette without blur or large blobs.
     const distance = isBackscatter
       ? 1.5 + random() ** 2 * 1.35
-      : isOverspray ? 1.12 + random() * 0.8 : 0.88 + random() * 0.35;
-    const localX = Math.cos(angle) * bodyWidth * distance;
-    const localY = Math.sin(angle) * bodyHeight * distance;
+      : isOverspray ? 0.85 + random() ** 1.6 * 1.4
+      : Math.sqrt(-2 * Math.log(1 - random() * 0.995)) * 0.48;
     return {
-      x: localX * cosine - localY * sine,
-      y: localX * sine + localY * cosine,
-      radius: isBackscatter ? 0.35 + random() * 0.8 : isOverspray ? 0.25 + random() * 0.65 : 0.3 + random() * 0.85,
-      alpha: isBackscatter ? 0.35 + random() * 0.4 : isOverspray ? 0.2 + random() * 0.25 : 0.45 + random() * 0.4,
+      x: Math.cos(angle) * TEXTURE_RADIUS_X * distance,
+      y: Math.sin(angle) * TEXTURE_RADIUS_Y * distance,
+      radius: isBackscatter ? 0.35 + random() * 0.65 : isOverspray ? 0.2 + random() * 0.4 : 0.25 + random() * 0.45,
+      alpha: isOverspray ? 0.3 + random() * 0.55 : 0.55 + random() * 0.4,
     };
   });
-  return { ...point, color, createdAt, direction: orientation, bodyWidth, bodyHeight, edgePoints, particles, dripAt: null, drip: null };
+  grainTemplates.set(key, particles);
+  return particles;
+}
+
+export function createPaintStamp(point: Point, createdAt: number, direction: number | null, color: string, random = Math.random): PaintStamp {
+  const bodyWidth = 25 + random() * 4;
+  const bodyHeight = 19 + random() * 4;
+  const hasBackscatter = direction !== null && random() < 0.38;
+  const particles = getGrainTemplate(Math.floor(random() * 12), hasBackscatter);
+  return { ...point, color, createdAt, direction: direction ?? 0, bodyWidth, bodyHeight, particles, dripAt: null, drip: null };
 }
 
 export function canStartPaintDrip(stamps: PaintStamp[], candidate: PaintStamp, now: number, lastDripAt: number): boolean {
