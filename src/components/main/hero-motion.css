@@ -44,6 +44,12 @@
   }
 }
 .hero-fuse-erase { stroke-dasharray: 0 100; animation: hero-burn var(--hero-cycle) linear infinite; }
+.hero-eyelid { transform-box: fill-box; transform-origin: center top; transform: scaleY(0); animation: hero-eye-blink var(--hero-cycle) ease-in-out infinite; }
+/* Brief anticipation closure, then a double blink during the quiet recovery. */
+@keyframes hero-eye-blink {
+  0%, 29%, 36%, 86%, 90%, 91%, 95%, 100% { transform: scaleY(0); }
+  32%, 33%, 88%, 93% { transform: scaleY(1); }
+}
 .hero-fuse-tip-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
 .hero-fuse { animation: hero-fuse-return var(--hero-cycle) linear infinite; }
 .hero-fuse-spark { opacity: 0; animation: hero-spark-travel var(--hero-cycle) linear infinite; }

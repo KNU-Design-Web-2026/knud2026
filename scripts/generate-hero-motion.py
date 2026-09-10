@@ -46,6 +46,22 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     p = [(tx+x*scale, ty+y*scale) for x,y in points]
     d = f'M {p[0][0]} {p[0][1]} C {p[1][0]} {p[1][1]} {p[2][0]} {p[2][1]} {p[3][0]} {p[3][1]} S {p[4][0]} {p[4][1]} {p[5][0]} {p[5][1]} Q {p[6][0]} {p[6][1]} {p[7][0]} {p[7][1]}'
     defs = next(e for e in svg if e.tag.endswith('defs'))
+    # Cover only the ordinary eye; preserve the opposite firework-shaped eye.
+    eye_clip = element('clipPath', id='eye-clip', clipPathUnits='userSpaceOnUse')
+    eye_shape = deepcopy(by_id['Vector_55'])
+    eye_shape.attrib.pop('id', None)
+    eye_clip.append(deepcopy(eye_shape))
+    defs.append(eye_clip)
+    eye_cover = element('g', **{'clip-path':'url(#eye-clip)'})
+    eyelid = element('g', **{'class':'hero-eyelid'})
+    eye_shape.set('fill', '#41C9F9')
+    eyelid.append(eye_shape)
+    ex, ey = map(float, re.match(r'M([\d.]+) ([\d.]+)', eye_shape.get('d')).groups())
+    # Source frames share this eye geometry, scaled with the lion artwork.
+    eyelid.append(element('path', d=f'M {ex} {ey-14*scale} Q {ex+21*scale} {ey+2*scale} {ex+42*scale} {ey-12*scale}',
+        fill='none', stroke='#0F0E0F', **{'stroke-width':4*scale,'stroke-linecap':'round'}))
+    eye_cover.append(eyelid)
+    by_id['Group_24'].append(eye_cover)
     mask = element('mask', id='fuse-mask', maskUnits='userSpaceOnUse', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale)
     mask.append(element('rect', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale, fill='white'))
     erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
