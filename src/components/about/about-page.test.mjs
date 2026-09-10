@@ -113,6 +113,17 @@ test("오프라인 전시 정보는 모든 반응형 화면에서 최신 장소�
   assert.doesNotMatch(page, /경북대학교 스페이스 9/);
 });
 
+test("지도 위치 라벨은 다섯 반응형 화면에서 SPACE 9 표기를 덮어쓴다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.equal(page.match(/className=\{styles\.mapVenueLabel\}/g)?.length, 2);
+  assert.equal(page.match(/경북대학교 대강당<br \/>SPACE 9/g)?.length, 2);
+  assert.match(styles, /\.mapVenueLabel \{[\s\S]*?background: #fcd519;/);
+  assert.match(styles, /left: 27\.963%;[\s\S]*?top: 22\.491%;/);
+  assert.match(styles, /\.mapArtwork \{[\s\S]*?container-type: inline-size;/);
+});
+
 test("821px 이하 관람 시간 텍스트는 정보 영역의 시각 중심에 배치한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
