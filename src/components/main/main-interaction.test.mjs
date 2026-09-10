@@ -49,3 +49,9 @@ test("1020px 이상 메인 프레임의 하단 배경이 이미지 색과 이어
   assert.match(styles, /@media \(min-width: 63\.8125rem\) and \(max-width: 84\.375rem\) \{[\s\S]*?\.main-hero \{[\s\S]*?background: #011a26;/);
   assert.match(styles, /@media \(min-width: 84\.4375rem\) \{[\s\S]*?\.main-hero \{[\s\S]*?background: #011b27;/);
 });
+
+test("600px 이하 메인 프레임의 하단 배경은 모바일 SVG 끝 색과 이어진다", () => {
+  const styles = readFileSync(stylesPath, "utf8");
+
+  assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.main-hero \{[\s\S]*?background: #001a27;/);
+});

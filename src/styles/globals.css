@@ -227,6 +227,14 @@
   background: #005176;
 }
 
+/* 600px 이하 SVG 프레임은 #001A27로 끝난다. 최소 화면 높이로 SVG 아래
+   여백이 생겨도 같은 색을 이어 경계선처럼 보이지 않게 한다. */
+@media (max-width: 37.5rem) {
+  .main-hero {
+    background: #001a27;
+  }
+}
+
 /* 1350 프레임은 하단이 남청색으로 마감되어 여분의 hero 높이와
    이미지 사이에 밝은 띠가 생기지 않도록 배경도 같은 색으로 이어준다. */
 @media (min-width: 63.8125rem) and (max-width: 84.375rem) {
