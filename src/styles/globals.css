@@ -288,14 +288,17 @@
   }
 
   .site-footer__content {
-    column-gap: 0;
-    display: flex;
-    justify-content: space-between;
+    column-gap: clamp(0.5rem, calc(37.5vw - 7rem), 2.375rem);
+    display: grid;
+    grid-template-columns: 6.8125rem minmax(0, 1fr);
   }
 
   .site-footer__brand {
-    flex: 0 0 6.8125rem;
     gap: 0.4375rem;
+  }
+
+  .site-footer__brand-copy {
+    line-height: 1rem;
   }
 
   .site-footer__logo {
@@ -304,18 +307,29 @@
   }
 
   .site-footer__information {
-    flex: 0 1 auto;
-    font-size: 0.6875rem;
+    font-size: clamp(0.5625rem, calc(2.5vw + 0.0625rem), 0.6875rem);
     gap: 1rem;
   }
 
   .site-footer__schedule {
-    font-size: 0.75rem;
+    font-size: clamp(0.625rem, calc(2.5vw + 0.125rem), 0.75rem);
     white-space: nowrap;
   }
 
   .site-footer__copyright {
     white-space: nowrap;
+  }
+
+  .site-footer__copyright-line {
+    display: block;
+  }
+
+  .site-footer__brand-line {
+    display: block;
+  }
+
+  .site-footer__instagram {
+    text-decoration: none;
   }
 }
 
