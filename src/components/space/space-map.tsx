@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { spaceMapSize, spacePositions } from "./space-data";
 import { getSpaceWork } from "./space-works";
 import styles from "./space-page.module.css";
 
 const positions = [...spacePositions, { x: 758.855, y: 553.318, vertical: true, rotation: undefined }];
+const desktopPreviewQuery = "(min-width: 1350.0625px)";
 
 export function SpaceMap() {
   const [active, setActive] = useState<number | null>(null);
@@ -22,6 +24,12 @@ export function SpaceMap() {
     setActive(index);
   }
 
+  function showDesktopPreview(index: number) {
+    if (window.matchMedia(desktopPreviewQuery).matches) {
+      show(index);
+    }
+  }
+
   return (
     <div className={styles.map} aria-label="SPACE 9 전시 배치도"
       onKeyDown={(event) => { if (event.key === "Escape") setActive(null); }}
@@ -31,16 +39,22 @@ export function SpaceMap() {
       <Image alt="" className={styles.entry} src="/assets/figma/space/map-entry.svg" width={43} height={85} priority />
       {positions.map((item, index) => {
         const assigned = getSpaceWork(index);
-        return <button type="button" key={index}
+        return <Link href={`/work/${assigned.id}`} prefetch={false} key={index}
           className={`${styles.name} ${styles.artist} ${item.vertical ? styles.vertical : ""} ${item.rotation ? styles.diagonal : ""}`}
           style={{ left: `${item.x / spaceMapSize.width * 100}%`, top: `${item.y / spaceMapSize.height * 100}%` }}
-          aria-label={`${assigned.artistKo} ${assigned.title} 미리보기 (임시 배치)`}
+          aria-label={`${assigned.artistKo} ${assigned.title} 작품 정보 보기 (임시 배치)`}
           aria-expanded={active === index} aria-controls="space-project-preview"
-          onPointerEnter={(event) => { if (event.pointerType === "mouse") show(index); }}
+          onPointerEnter={(event) => { if (event.pointerType === "mouse") showDesktopPreview(index); }}
           onPointerLeave={() => setActive(null)}
-          onFocus={() => show(index)} onBlur={() => setActive(null)} onClick={() => show(index)}>
+          onFocus={() => showDesktopPreview(index)} onBlur={() => setActive(null)}
+          onClick={(event) => {
+            if (window.matchMedia(desktopPreviewQuery).matches) {
+              event.preventDefault();
+              show(index);
+            }
+          }}>
           {item.vertical ? [..."홍길동"].map((letter, i) => <span key={i}>{letter}</span>) : <span style={item.rotation ? { transform: `rotate(${item.rotation}deg)` } : undefined}>홍길동</span>}
-        </button>;
+        </Link>;
       })}
       <div id="space-project-preview" className={styles.preview} data-open={active !== null}
         aria-hidden={active === null} role="region" aria-label={`${work.artistKo} 작품 정보`}

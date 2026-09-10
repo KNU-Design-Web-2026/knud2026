@@ -47,15 +47,15 @@ function ExhibitionInformation() {
   return (
     <div className={styles.exhibitionInformation}>
       <div>
-        <strong>2026.10.20(화) — 10.31(토)</strong>
+        <strong>2026.10.20(화) — 10.30(금)</strong>
         <dl>
           <div><dt>오프닝</dt><dd>10.20(화) 15:00</dd></div>
           <div><dt>시간</dt><dd>09:00 - 18:00</dd></div>
         </dl>
       </div>
       <div>
-        <strong>경북대학교 스페이스 9</strong>
-        <p>대구 북구 대학로 80 경북대학교 스페이스 9<br />80 Daehak-ro, Buk-gu<br />Kyungpook National University SPACE 9</p>
+        <strong>경북대학교 SPACE 9</strong>
+        <p>대구 북구 대학로 80 경북대학교 SPACE 9<br />80 Daehak-ro, Buk-gu<br />Kyungpook National University SPACE 9</p>
       </div>
     </div>
   );
@@ -67,13 +67,13 @@ export function AboutPage() {
       <section className={styles.introSection}>
         <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
-            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
+            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} height={2560} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={1808} />
             <IntroductionCopy />
           </div>
         </div>
 
         <div className={styles.introNarrow} data-about-reveal="scale">
-          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth height={4096} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={2893} />
+          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth height={2560} loading="eager" priority src="/assets/figma/about/poster.png" unoptimized width={1808} />
           <div className={styles.introNarrowFrame} data-about-depth>
             <div className={styles.introNarrowInner}><IntroductionCopy /></div>
           </div>
@@ -83,10 +83,16 @@ export function AboutPage() {
       <main className={styles.mainContent}>
         <section className={styles.offlineSection}>
           <h2 data-about-reveal="rise">Offline Exhibition</h2>
-          <Image alt="2026 KNUD 오프라인 전시 위치와 관람 안내" className={styles.offlineWide} data-about-reveal="rise" height={1076} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={3240} />
+          <div className={styles.offlineWide} data-about-reveal="rise">
+            <Image alt="2026 KNUD 오프라인 전시 위치와 관람 안내" className={styles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
+            <span aria-hidden className={styles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
+          </div>
           <div className={styles.offlineNarrow} data-about-reveal="rise">
             <div className={styles.mapCrop}>
-              <Image alt="경북대학교 스페이스 9 전시 위치 지도" height={1076} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={3240} />
+              <div className={styles.mapArtwork}>
+                <Image alt="경북대학교 SPACE 9 전시 위치 지도" className={styles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
+                <span aria-hidden className={styles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
+              </div>
             </div>
             <ExhibitionInformation />
           </div>

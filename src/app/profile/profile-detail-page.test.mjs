@@ -36,6 +36,8 @@ test("상세 초안은 Figma 원본 자산과 Web 섹션 구조를 사용한다"
 test("Work 이미지는 영상 기준의 오버레이와 제목 전환을 제공한다", async () => {
   const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
 
+  assert.match(styles, /\.profile-detail-work \{[\s\S]*?aspect-ratio: 1\.8;[\s\S]*?height: auto;[\s\S]*?width: 100%;/);
+  assert.doesNotMatch(styles, /\.profile-detail-work \{[\s\S]*?height: 56\.25rem;/);
   assert.match(styles, /\.profile-detail-work__overlay \{[\s\S]*?background: rgb\(0 0 0 \/ 0\.6\)/);
   assert.match(styles, /\.profile-detail-work__overlay \{[\s\S]*?font-size: 2\.5rem/);
   assert.match(styles, /\.profile-detail-work__overlay \{[\s\S]*?transition: opacity 650ms/);

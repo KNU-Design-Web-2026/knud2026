@@ -1,19 +1,24 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { messages as initialMessages, type Message } from "@/data/messages";
+import {
+  getMessageUsage,
+  MESSAGE_MAX_LENGTH,
+  normalizeMessageBody,
+} from "@/lib/message-input";
 
 function MessageCard({ message }: { message: Message }) {
   return (
-    <article className="message-card" data-node-id="1742:88482">
+    <article className="message-card" data-message-reveal data-message-visible="false" data-node-id="1742:88482">
       <div className="message-card__content">
         <div className="message-card__copy">
-          <p className="message-card__to">To. {message.to}</p>
-          <div className="message-card__body">
-            {message.body.split("\n").map((line) => <p key={line}>{line}</p>)}
-          </div>
+          <p className="message-card__to">
+            To. <strong className="message-card__recipient-name">{message.to}</strong>
+          </p>
+          <p className="message-card__body">{message.body}</p>
         </div>
         <p className="message-card__from">From. {message.from}</p>
       </div>
@@ -27,7 +32,10 @@ const recipientOptions = [
   "이다혜", "이서윤", "이초원", "이하늘", "임경민", "조장원", "현연이",
 ];
 
+const DEFAULT_RECIPIENT = "전체(모두)";
+
 export function MessagePage() {
+  const pageRef = useRef<HTMLElement>(null);
   const [messageList, setMessageList] = useState(initialMessages);
   const [to, setTo] = useState("전체(모두)");
   const [from, setFrom] = useState("");
@@ -46,6 +54,38 @@ export function MessagePage() {
       document.removeEventListener("keydown", closeOnEscape);
     };
   }, []);
+
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const revealTargets = page.querySelectorAll<HTMLElement>("[data-message-reveal]");
+    if (!("IntersectionObserver" in window)) {
+      revealTargets.forEach((target) => {
+        target.dataset.messageVisible = "true";
+      });
+      return;
+    }
+
+    page.dataset.messageMotionReady = "true";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.setAttribute("data-message-visible", String(entry.isIntersecting));
+        });
+      },
+      { rootMargin: "0px 0px -8%", threshold: 0.12 },
+    );
+
+    revealTargets.forEach((target) => observer.observe(target));
+
+    return () => {
+      observer.disconnect();
+      delete page.dataset.messageMotionReady;
+    };
+  }, [messageList.length]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -77,7 +117,7 @@ export function MessagePage() {
   };
 
   return (
-    <section className="message-page" aria-labelledby="message-page-title">
+    <section className="message-page" aria-labelledby="message-page-title" ref={pageRef}>
       <h1 className="sr-only" id="message-page-title">MESSAGE</h1>
       <div className="message-page__intro">
         <picture className="message-page__decor">
@@ -109,11 +149,11 @@ export function MessagePage() {
                 aria-expanded={isRecipientOpen}
                 aria-haspopup="listbox"
                 aria-label="받는 사람"
-                className="message-form__recipient-trigger"
+                className={`message-form__recipient-trigger${to !== DEFAULT_RECIPIENT ? " is-selected" : ""}`}
                 onClick={() => setIsRecipientOpen((isOpen) => !isOpen)}
                 type="button"
               >
-                {to}
+                <span className="message-form__recipient-name">{to}</span>
                 <picture className={`message-form__recipient-arrow${isRecipientOpen ? " is-open" : ""}`}>
                   <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-select-arrow-mobile.svg" />
                   <img alt="" src="/assets/figma/message/message-select-arrow-tab-mobile.svg" />
@@ -148,10 +188,14 @@ export function MessagePage() {
           </div>
           <div className="message-form__body">
             <span className="sr-only">메시지</span>
-            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error" : undefined} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 ○○회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
-              setBody(event.target.value);
+            <textarea aria-label="메시지" aria-describedby={formError ? "message-form-error message-length-limit message-character-count" : "message-length-limit message-character-count"} maxLength={MESSAGE_MAX_LENGTH} placeholder={"전시를 보며 떠오른 생각, 느낀 감정, 전하고 싶은 한마디로 이곳에 불을 붙여 주세요.\n여러분의 한마디가 42회 졸업전시를 더 뜨겁게 완성합니다"} value={body} onChange={(event) => {
+              setBody(normalizeMessageBody(event.target.value));
               setFormError("");
             }} />
+            <p className="sr-only" id="message-length-limit">메시지는 화면 사용량 기준 최대 {MESSAGE_MAX_LENGTH}자까지 입력할 수 있습니다.</p>
+            <output aria-live="polite" className="message-form__counter" id="message-character-count">
+              {getMessageUsage(body)} / {MESSAGE_MAX_LENGTH}
+            </output>
             <button type="submit">IGNITE</button>
             {formError && <p className="message-form__validation" id="message-form-error" role="alert">{formError}</p>}
           </div>

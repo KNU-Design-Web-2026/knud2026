@@ -39,6 +39,7 @@
   --footer-content-gap: 1.5625rem;
   --footer-font-size: 1.25rem;
   --profile-page-top-gap: 5rem;
+  --content-page-edge-gap: calc(var(--profile-page-top-gap) + 1.25rem);
   --profile-grid-gutter: 8.1875rem;
   --profile-grid-column-gap: 0.125rem;
   --profile-grid-row-gap: 1.875rem;
@@ -96,16 +97,37 @@
  * 1920, including the menu width. Keep fractional viewport widths covered. */
 @media (min-width: 1350px) {
   :root {
-    --header-gutter: clamp(50px, calc(50px + (100vw - 1350px) * 100 / 570), 150px);
+    --header-gutter: clamp(75px, calc(75px + (100vw - 1350px) * 75 / 570), 150px);
     --header-height: clamp(120px, calc(120px + (100vw - 1350px) * 20 / 570), 140px);
     --header-logo-width: clamp(100px, calc(100px + (100vw - 1350px) * 30 / 570), 130px);
     --header-logo-height: clamp(58px, calc(58px + (100vw - 1350px) * 18 / 570), 76px);
     --header-brand-gap: clamp(20px, calc(20px + (100vw - 1350px) * 14 / 570), 34px);
-    --header-nav-item-width: clamp(118px, calc(118px + (100vw - 1350px) * 20 / 570), 138px);
-    --header-nav-size: clamp(24px, calc(24px + (100vw - 1350px) * 4 / 570), 28px);
+    --header-title-size: clamp(18px, calc(18px + (100vw - 1350px) * 2 / 570), 20px);
+    --header-nav-item-width: clamp(110px, calc(110px + (100vw - 1350px) * 20 / 570), 130px);
+    --header-nav-size: clamp(22px, calc(22px + (100vw - 1350px) * 4 / 570), 26px);
     --header-nav-hover-size: var(--header-nav-size);
     --header-nav-decoration-width: clamp(3.893rem, calc(3.893rem + (100vw - 1350px) * 10.64 / 570), 4.558rem);
     --header-nav-decoration-height: clamp(2.56rem, calc(2.56rem + (100vw - 1350px) * 6.928 / 570), 2.993rem);
+  }
+}
+
+/* Profile only: switch to the three-column tablet composition before the
+ * hover copy becomes wider than its card between 1020px and 1100px. */
+@media (max-width: 68.75rem) {
+  :root {
+    --profile-page-top-gap: 3.75rem;
+    --profile-grid-gutter: 2.25rem;
+    --profile-grid-column-gap: 0.125rem;
+    --profile-grid-row-gap: 1.5rem;
+    --profile-grid-columns: 3;
+    --profile-card-padding-x: 0.9375rem;
+    --profile-card-padding-y: 1.1875rem;
+    --profile-card-aspect-ratio: 315 / 418;
+    --profile-detail-height: 16.51%;
+    --profile-detail-padding-x: 1.375rem;
+    --profile-detail-gap: 1.125rem;
+    --profile-detail-name-size: 1.5rem;
+    --profile-detail-name-en-size: 1.125rem;
   }
 }
 
@@ -124,19 +146,6 @@
     --footer-logo-width: 3.524rem;
     --footer-logo-height: 3.668rem;
     --footer-brand-gap: 1.5625rem;
-    --profile-page-top-gap: 3.75rem;
-    --profile-grid-gutter: 2.25rem;
-    --profile-grid-column-gap: 0.125rem;
-    --profile-grid-row-gap: 1.5rem;
-    --profile-grid-columns: 3;
-    --profile-card-padding-x: 0.9375rem;
-    --profile-card-padding-y: 1.1875rem;
-    --profile-card-aspect-ratio: 315 / 418;
-    --profile-detail-height: 16.51%;
-    --profile-detail-padding-x: 1.375rem;
-    --profile-detail-gap: 1.125rem;
-    --profile-detail-name-size: 1.5rem;
-    --profile-detail-name-en-size: 1.125rem;
   }
 }
 

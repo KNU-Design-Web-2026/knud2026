@@ -25,8 +25,19 @@ test("822px부터 1020px까지 소개 프레임이 뷰포트와 함께 축소된
 test("중간 화면의 소개 영역 높이와 제목 크기가 고정 하한 없이 보간된다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
-  assert.match(styles, /height: calc\(-296\.909px \+ 105\.294vw\)/);
+  assert.match(styles, /height: calc\(\(-296\.909px \+ 105\.294vw\) - var\(--about-intro-edge-shift\)\)/);
   assert.match(styles, /font-size: clamp\(18px, calc\(-0\.727px \+ 2\.424vw\), 32px\)/);
+});
+
+test("About 첫·마지막 콘텐츠는 모든 화면에서 Profile 기준에 시각 보정값을 더한다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(styles, /--about-intro-edge-shift: calc\(var\(--about-intro-original-top\) - var\(--content-page-edge-gap\)\)/);
+  assert.match(styles, /\.introWide \{[\s\S]*?top: var\(--content-page-edge-gap\)/);
+  assert.match(styles, /@media \(max-width: 821px\)[\s\S]*?\.posterNarrow \{[\s\S]*?top: var\(--content-page-edge-gap\)/);
+  assert.equal(styles.match(/padding-bottom: var\(--content-page-edge-gap\)/g)?.length, 2);
+  assert.match(styles, /\.teamsSection \{[\s\S]*?var\(--content-page-edge-gap\)/);
+  assert.match(styles, /@media \(max-width: 821px\)[\s\S]*?\.teamsSection \{[\s\S]*?0 var\(--content-page-edge-gap\)/);
 });
 
 test("822px부터 1020px까지 소개 텍스트와 문단 간격을 함께 축소한다", async () => {
@@ -38,19 +49,47 @@ test("822px부터 1020px까지 소개 텍스트와 문단 간격을 함께 축�
   assert.match(styles, /font-size: calc\(-0\.227px \+ 1\.395vw\)/);
 });
 
+test("소개 문단은 모든 화면에서 한글 단어 중간 줄바꿈을 피한다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(
+    styles,
+    /\.introductionParagraphs \{[\s\S]*?word-break: keep-all;[\s\S]*?overflow-wrap: break-word;/,
+  );
+  assert.doesNotMatch(
+    styles,
+    /\.introductionParagraphs \{[\s\S]*?overflow-wrap: anywhere;/,
+  );
+});
+
+test("About Instagram 링크는 모든 화면에서 밑줄을 표시하지 않는다", async () => {
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: none;/);
+  assert.doesNotMatch(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: underline;/);
+});
+
+test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크기를 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+
+  assert.equal(page.match(/src="\/assets\/figma\/about\/poster\.png"/g)?.length, 2);
+  assert.equal(page.match(/height=\{2560\}/g)?.length, 2);
+  assert.equal(page.match(/width=\{1808\}/g)?.length, 2);
+});
+
 test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 유지한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
   assert.match(styles, /\.professorsGrid \{[\s\S]*?margin-left: 353px;/);
   assert.match(styles, /margin-left: calc\(-206\.16px \+ 29\.123vw\)/);
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(7\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(15\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
   assert.doesNotMatch(styles, /\.professorsLion \{[\s\S]*?max-height: 100%;/);
 });
 
 test("822px 이상 교수진 사자는 패널 기준 비율로 함께 이동한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
-  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(7\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
+  assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(15\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
   assert.doesNotMatch(styles, /bottom: calc\(49\.211px - 1\.053vw\)/);
   assert.doesNotMatch(styles, /left: calc\(141\.684px \+ 44\.912vw\)/);
   assert.doesNotMatch(styles, /right: clamp\(-20px, calc\(-51px \+ 3\.03vw\), -10px\)/);
@@ -77,6 +116,27 @@ test("지도와 전시 정보 이미지는 1020px 이하에서도 대칭 여백�
   assert.match(styles, /left: var\(--offline-side\)/);
   assert.match(styles, /width: calc\(100vw - var\(--offline-side\) - var\(--offline-side\)\)/);
   assert.doesNotMatch(styles, /width: clamp\(920px, calc\(-94\.545px \+ 99\.455vw\), 1248px\)/);
+});
+
+test("오프라인 전시 정보는 모든 반응형 화면에서 최신 장소와 종료일을 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+
+  assert.match(page, /2026\.10\.20\(화\) — 10\.30\(금\)/);
+  assert.match(page, /경북대학교 SPACE 9/);
+  assert.match(page, /대구 북구 대학로 80 경북대학교 SPACE 9/);
+  assert.doesNotMatch(page, /10\.31\(토\)/);
+  assert.doesNotMatch(page, /경북대학교 스페이스 9/);
+});
+
+test("지도 위치 라벨은 다섯 반응형 화면에서 SPACE 9 표기를 덮어쓴다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+
+  assert.equal(page.match(/className=\{styles\.mapVenueLabel\}/g)?.length, 2);
+  assert.equal(page.match(/경북대학교 대강당<br \/>SPACE 9/g)?.length, 2);
+  assert.match(styles, /\.mapVenueLabel \{[\s\S]*?background: #fcd519;/);
+  assert.match(styles, /left: 27\.963%;[\s\S]*?top: 22\.491%;/);
+  assert.match(styles, /\.mapArtwork \{[\s\S]*?container-type: inline-size;/);
 });
 
 test("821px 이하 관람 시간 텍스트는 정보 영역의 시각 중심에 배치한다", async () => {

@@ -11,7 +11,11 @@ export function SpacePage() {
         <section className={styles.mapSection} aria-labelledby="space-map-title">
           <div className={styles.heading}>
             <h1 id="space-map-title">SPACE 9 MAP</h1>
-            <p><span className={styles.desktopInstruction}>이름에 커서를 올려 작품 정보를 확인해보세요!</span><span className={styles.compactInstruction}>이름을 터치하여 작품 정보를 확인해보세요!</span></p>
+            <p>
+              <span className={styles.desktopInstruction}>이름에 커서를 올려 작품 정보를 확인해보세요!</span>
+              <span className={styles.tabletInstruction}>이름을 클릭하여 작품 정보를 확인해보세요!</span>
+              <span className={styles.compactInstruction}>이름을 터치하여 작품 정보를 확인해보세요!</span>
+            </p>
           </div>
           <SpaceMap />
           <CompactSpaceMap />
@@ -19,7 +23,7 @@ export function SpacePage() {
         <section className={styles.archive} aria-labelledby="space-archive-title">
           <div className={`${styles.heading} ${styles.archiveHeading}`}>
             <h2 id="space-archive-title">Archive</h2>
-            <p>Ignite의 모든 순간을 담은 아카이브 입니다.</p>
+            <p>Ignite의 모든 순간을 담은 아카이브입니다.</p>
           </div>
           <div className={styles.archiveGrid} aria-label="전시 아카이브 사진 준비 중">
             {archiveColumns.map((heights, column) => (

@@ -53,15 +53,19 @@ test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경�
   assert.doesNotMatch(activeStyles, /font-size|line-height|letter-spacing/);
 });
 
-test("1350–1920px 헤더는 메뉴 폭과 장식까지 같은 구간에서 연속 보간한다", async () => {
+test("1350–1920px 헤더는 노트북 폭에서 텍스트를 축소하고 좌우 여백을 보간한다", async () => {
   const tokens = await readFile(new URL("../../styles/tokens.css", import.meta.url), "utf8");
   const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
   const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
   const desktop = tokens.match(/@media \(min-width: 1350px\) \{([\s\S]*?)\n\}/)?.[1];
   assert.ok(desktop);
-  for (const token of ["gutter", "height", "logo-width", "logo-height", "brand-gap", "nav-item-width", "nav-size", "nav-decoration-width", "nav-decoration-height"]) {
+  for (const token of ["gutter", "height", "logo-width", "logo-height", "brand-gap", "title-size", "nav-item-width", "nav-size", "nav-decoration-width", "nav-decoration-height"]) {
     assert.match(desktop, new RegExp(`--header-${token}: clamp\\([^;]+100vw - 1350px[^;]+/ 570`));
   }
+  assert.match(desktop, /--header-gutter: clamp\(75px,[^;]+, 150px\)/);
+  assert.match(desktop, /--header-title-size: clamp\(18px,[^;]+, 20px\)/);
+  assert.match(desktop, /--header-nav-size: clamp\(22px,[^;]+, 26px\)/);
+  assert.match(desktop, /--header-nav-item-width: clamp\(110px,[^;]+, 130px\)/);
   assert.match(styles, /\.header-nav-link--active::after \{[^}]*width: var\(--header-nav-item-width\)/);
   assert.match(styles, /\.site-header__container \{[^}]*padding-inline: var\(--header-gutter\)/);
   assert.doesNotMatch(header, /1349\.9|1350\.1/);
