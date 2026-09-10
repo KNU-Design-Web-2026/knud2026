@@ -36,6 +36,7 @@ try {
           opacity: style(".hero-fuse-spark").opacity,
           shrink: style(".hero-flame-size").transform,
           lion: style(".hero-lion").transform,
+          burst: style(".hero-burst-2").transform,
         };
       }, time);
       assert.equal(state.duration, "5.6s");
@@ -48,7 +49,13 @@ try {
         const scale = Number(state.shrink.match(/matrix\(([^,]+)/)[1]);
         assert.ok(scale > 0.6 && scale < 0.85, "original flame shrinks during consumption");
       }
-      if (time === 2050) assert.equal(state.opacity, "0");
+      if (time === 2050) {
+        assert.equal(state.opacity, "0");
+        const matrix = state.burst.match(/matrix\(([^)]+)\)/)[1].split(",").map(Number);
+        const scale = Math.hypot(matrix[0], matrix[1]);
+        assert.ok(width > 600 ? scale > 1.32 : scale > 1.15 && scale < 1.28,
+          `impact must be bold on desktop and restrained on mobile: ${width}, ${scale}`);
+      }
       results.push({ width, time, ...state });
       if ([1350, 400].includes(width) || time === 1400) {
         await page.screenshot({ path: `${output}/${width}-${time}.png` });
