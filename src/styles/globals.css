@@ -2848,7 +2848,7 @@
 
   .message-form__body textarea {
     padding: clamp(1.05rem, 1.554vw, 1.865rem) clamp(1.45rem, 2.154vw, 2.585rem);
-    font-size: clamp(1rem, 1.042vw, 1.25rem);
+    font-size: clamp(1.125rem, 1.458vw, 1.75rem);
   }
 
   .message-form__body button {
@@ -2955,7 +2955,7 @@
   }
 
   .message-form__body textarea {
-    font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+    font-size: clamp(1rem, 1.7647vw, 1.125rem);
   }
 }
 
@@ -3158,7 +3158,7 @@
   }
 
   .message-form__body textarea {
-    font-size: clamp(0.5625rem, 2.1vw, 0.75rem);
+    font-size: clamp(0.875rem, 2.6667vw, 1rem);
     line-height: 1.35;
   }
 
@@ -3169,16 +3169,7 @@
   }
 }
 
-/* Keep long messages easy to review without changing the surrounding artwork layout. */
-.message-form__body {
-  transition:
-    top 240ms ease,
-    left 240ms ease,
-    width 240ms ease,
-    height 240ms ease,
-    box-shadow 240ms ease;
-}
-
+/* Keep controls clear while the larger writing text fills more of the fixed canvas. */
 .message-form__body textarea {
   padding-bottom: clamp(3.5rem, 5vw, 6rem);
 }
@@ -3196,17 +3187,6 @@
   pointer-events: none;
 }
 
-@media (min-width: 601px) {
-  .message-form__body:focus-within {
-    z-index: 20;
-    top: 19.5%;
-    left: 4%;
-    width: 92%;
-    height: 72%;
-    box-shadow: 0 12px 32px rgb(15 14 15 / 14%);
-  }
-}
-
 @media (max-width: 600px) {
   .message-form__body textarea {
     padding-bottom: clamp(2.25rem, 8vw, 3rem);
@@ -3218,18 +3198,4 @@
     font-size: clamp(0.5625rem, 2vw, 0.6875rem);
   }
 
-  .message-form__body:focus-within {
-    z-index: 20;
-    top: 26%;
-    left: 4%;
-    width: 92%;
-    height: 65%;
-    box-shadow: 0 8px 24px rgb(15 14 15 / 14%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .message-form__body {
-    transition: none;
-  }
 }

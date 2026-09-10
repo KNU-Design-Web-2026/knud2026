@@ -72,7 +72,10 @@ assert.match(styles, /Mobile coordinates are also measured from the complete for
 assert.match(styles, /\.message-card__body\s*\{[\s\S]*white-space:\s*pre-wrap/);
 assert.match(styles, /\.message-form__validation/);
 assert.match(styles, /\.message-form__counter/);
-assert.match(styles, /\.message-form__body:focus-within/);
+assert.doesNotMatch(styles, /\.message-form__body:focus-within/);
+assert.match(styles, /font-size:\s*clamp\(1\.125rem, 1\.458vw, 1\.75rem\)/);
+assert.match(styles, /font-size:\s*clamp\(1rem, 1\.7647vw, 1\.125rem\)/);
+assert.match(styles, /font-size:\s*clamp\(0\.875rem, 2\.6667vw, 1rem\)/);
 assert.match(styles, /\.message-card__recipient-name/);
 assert.match(styles, /\.message-form__recipient-trigger\.is-selected[\s\S]*\.message-form__recipient-name/);
 assert.match(styles, /\.message-form__recipient-arrow\.is-open\s*\{\s*transform:\s*rotate\(0deg\)/);
