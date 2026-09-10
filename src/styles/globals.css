@@ -3354,3 +3354,19 @@
     transform: translateY(var(--message-card-stagger));
   }
 }
+
+/* Mobile cards keep the same hierarchy at a denser, card-width-based type scale. */
+@media (max-width: 600px) {
+  .message-card__copy {
+    gap: clamp(6px, 4cqi, 8px);
+  }
+
+  .message-card__to,
+  .message-card__from {
+    font-size: clamp(9px, 5cqi, 10.5px);
+  }
+
+  .message-card__body {
+    font-size: clamp(8.5px, 4.8cqi, 10px);
+  }
+}

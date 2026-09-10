@@ -75,6 +75,8 @@ assert.match(styles, /\.message-card__body\s*\{[\s\S]*font-size:\s*clamp\(10px, 
 assert.match(styles, /@container \(max-width: 18rem\)[\s\S]*\.message-card__body\s*\{[\s\S]*-webkit-line-clamp:\s*9/);
 assert.match(styles, /@media \(min-width: 1150px\) and \(max-width: 1599px\)[\s\S]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
 assert.match(styles, /@media \(max-width: 1149px\)[\s\S]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__to,[\s\S]*\.message-card__from\s*\{[\s\S]*font-size:\s*clamp\(9px, 5cqi, 10\.5px\)/);
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__body\s*\{[\s\S]*font-size:\s*clamp\(8\.5px, 4\.8cqi, 10px\)/);
 assert.match(styles, /--message-form-width/);
 assert.match(styles, /clamp\(2rem, 3\.4375vw, 4\.125rem\)/);
 assert.match(styles, /\.message-form__field\s*\{[\s\S]*inset:\s*0/);
