@@ -5,9 +5,8 @@ import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { messages as initialMessages, type Message } from "@/data/messages";
 import {
-  countMessageLineBreaks,
+  getMessageUsage,
   MESSAGE_MAX_LENGTH,
-  MESSAGE_MAX_LINE_BREAKS,
   normalizeMessageBody,
 } from "@/lib/message-input";
 
@@ -160,9 +159,9 @@ export function MessagePage() {
               setBody(normalizeMessageBody(event.target.value));
               setFormError("");
             }} />
-            <p className="sr-only" id="message-length-limit">메시지는 최대 {MESSAGE_MAX_LENGTH}자, 줄바꿈은 최대 {MESSAGE_MAX_LINE_BREAKS}회까지 입력할 수 있습니다.</p>
+            <p className="sr-only" id="message-length-limit">메시지는 화면 사용량 기준 최대 {MESSAGE_MAX_LENGTH}자까지 입력할 수 있습니다.</p>
             <output aria-live="polite" className="message-form__counter" id="message-character-count">
-              {body.length} / {MESSAGE_MAX_LENGTH} · 줄바꿈 {countMessageLineBreaks(body)} / {MESSAGE_MAX_LINE_BREAKS}
+              {getMessageUsage(body)} / {MESSAGE_MAX_LENGTH}
             </output>
             <button type="submit">IGNITE</button>
             {formError && <p className="message-form__validation" id="message-form-error" role="alert">{formError}</p>}
