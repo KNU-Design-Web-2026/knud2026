@@ -1,6 +1,6 @@
 // CSS-pixel dimensions: DPR changes resolution, never the grain or brush size.
-export const PAINT_LIFETIME = 2_400;
-export const PAINT_HOLD = 1_800;
+export const PAINT_LIFETIME = 3_600;
+export const PAINT_HOLD = 2_800;
 export const DRIP_SETTLE_TIME = 240;
 export const DRIP_COOLDOWN = 420;
 export const MAX_ACTIVE_DRIPS = 8;
@@ -25,30 +25,39 @@ export type PaintStamp = Point & {
   drip: PaintDrip | null;
 };
 
-export function createPaintStamp(point: Point, createdAt: number, direction: number, color: string, random = Math.random): PaintStamp {
+export function createPaintStamp(point: Point, createdAt: number, direction: number | null, color: string, random = Math.random): PaintStamp {
   const bodyWidth = 25 + random() * 4;
   const bodyHeight = 19 + random() * 4;
-  const cosine = Math.cos(direction);
-  const sine = Math.sin(direction);
+  const orientation = direction ?? 0;
+  const cosine = Math.cos(orientation);
+  const sine = Math.sin(orientation);
+  // Sparse bursts, not an even halo or a continuous tail. A click has no
+  // travel direction, so it keeps the original all-around overspray.
+  const hasBackscatter = direction !== null && random() < 0.38;
   const edgePoints = Array.from({ length: 48 }, (_, index) => {
     const angle = (index / 48) * Math.PI * 2;
     const edgeJitter = 0.94 + random() * 0.12;
     return { x: Math.cos(angle) * bodyWidth * edgeJitter, y: Math.sin(angle) * bodyHeight * edgeJitter };
   });
   const particles = Array.from({ length: 96 }, (_, index) => {
-    const angle = random() * Math.PI * 2;
+    const isBackscatter = hasBackscatter && index >= 90;
+    const angle = isBackscatter
+      ? Math.PI + (random() - 0.5) * 1.7
+      : random() * Math.PI * 2;
     const isOverspray = index >= 76;
-    const distance = isOverspray ? 1.12 + random() * 0.8 : 0.88 + random() * 0.35;
+    const distance = isBackscatter
+      ? 1.5 + random() ** 2 * 1.35
+      : isOverspray ? 1.12 + random() * 0.8 : 0.88 + random() * 0.35;
     const localX = Math.cos(angle) * bodyWidth * distance;
     const localY = Math.sin(angle) * bodyHeight * distance;
     return {
       x: localX * cosine - localY * sine,
       y: localX * sine + localY * cosine,
-      radius: isOverspray ? 0.25 + random() * 0.65 : 0.3 + random() * 0.85,
-      alpha: isOverspray ? 0.2 + random() * 0.25 : 0.45 + random() * 0.4,
+      radius: isBackscatter ? 0.35 + random() * 0.8 : isOverspray ? 0.25 + random() * 0.65 : 0.3 + random() * 0.85,
+      alpha: isBackscatter ? 0.35 + random() * 0.4 : isOverspray ? 0.2 + random() * 0.25 : 0.45 + random() * 0.4,
     };
   });
-  return { ...point, color, createdAt, direction, bodyWidth, bodyHeight, edgePoints, particles, drip: null };
+  return { ...point, color, createdAt, direction: orientation, bodyWidth, bodyHeight, edgePoints, particles, drip: null };
 }
 
 export function createPaintDrip(stamp: PaintStamp, now: number, random = Math.random): PaintDrip {

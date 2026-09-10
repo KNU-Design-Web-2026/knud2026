@@ -111,7 +111,7 @@ export function SprayCanvas() {
       frame = pointerId !== null || stamps.length > 0 ? window.requestAnimationFrame(render) : null;
     };
 
-    const addStamp = (point: Point, direction: number) => {
+    const addStamp = (point: Point, direction: number | null) => {
       stamps.push(createPaintStamp(point, performance.now(), direction, activeColor));
       if (frame === null) frame = window.requestAnimationFrame(render);
     };
@@ -122,7 +122,7 @@ export function SprayCanvas() {
     };
 
     const sprayAlongPath = (next: Point) => {
-      if (!lastPoint) { addStamp(next, 0); lastPoint = next; return; }
+      if (!lastPoint) { addStamp(next, null); lastPoint = next; return; }
       const dx = next.x - lastPoint.x;
       const dy = next.y - lastPoint.y;
       const distance = Math.hypot(dx, dy);
@@ -154,7 +154,7 @@ export function SprayCanvas() {
       settledSince = performance.now();
       latestInput = { ...point, at: settledSince };
       lastPoint = point;
-      addStamp(point, 0);
+      addStamp(point, null);
     };
     const handlePointerMove = (event: PointerEvent) => {
       if (event.pointerId !== pointerId) return;
