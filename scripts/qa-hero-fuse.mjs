@@ -18,7 +18,7 @@ try {
   for (const width of [1920, 1350, 1020, 600, 400]) {
     await page.setViewportSize({ width, height: width <= 600 ? 980 : 900 });
     await page.waitForTimeout(100);
-    for (const time of [0, 750, 1400, 1880, 2050, 3600]) {
+    for (const time of [0, 750, 1100, 1250, 1400, 1880, 2050, 3600]) {
       const state = await page.evaluate((time) => {
         const root = document.querySelector(".hero-motion");
         for (const animation of root.getAnimations({ subtree: true })) {
@@ -32,10 +32,19 @@ try {
         const core = scene.querySelector('.hero-hot-core');
         const progress = parseFloat(style('.hero-fuse-spark').offsetDistance) / 100;
         const point = erase.getPointAtLength(erase.getTotalLength() * progress);
+        const at = erase.getTotalLength() * progress;
+        const before = erase.getPointAtLength(Math.max(0, at - .5));
+        const after = erase.getPointAtLength(Math.min(erase.getTotalLength(), at + .5));
+        const angle = Math.atan2(after.y-before.y, after.x-before.x);
+        const rope = scene.querySelector('[id$="-Vector_19"]');
+        const inside = (distance) => rope.isPointInFill(new DOMPoint(point.x - Math.sin(angle)*distance, point.y + Math.cos(angle)*distance));
+        const edge = (sign) => { let distance = 0; while(distance < 80 && inside(sign*distance)) distance += .5; return distance; };
         const boundary = new DOMPoint(point.x, point.y).matrixTransform(spark.parentNode.getScreenCTM());
         const flameRoot = core ? new DOMPoint(0, 0).matrixTransform(core.getScreenCTM()) : null;
         return {
           contactGap: flameRoot ? Math.hypot(boundary.x-flameRoot.x, boundary.y-flameRoot.y) : Infinity,
+          ropeCenterError: Math.abs(edge(1)-edge(-1)),
+          insideRope: inside(0),
           width: document.documentElement.scrollWidth,
           flamePaths: scene.querySelectorAll(".hero-flame-flicker path").length,
           duration: style(".hero-fuse-erase").animationDuration,
@@ -50,6 +59,7 @@ try {
           emberRotation: scene.querySelector('.hero-ember-trail') ? style('.hero-ember-trail').offsetRotate : null,
           upwardEmbers: [...scene.querySelectorAll('.hero-ember')].every(el => parseFloat(getComputedStyle(el).getPropertyValue('--ember-y')) < 0),
           contact: scene.querySelectorAll('.hero-burn-contact').length,
+          fittedFlames: scene.querySelectorAll('.hero-flame-fit').length,
           lion: style(".hero-lion").transform,
           burst: style(".hero-burst-2").transform,
         };
@@ -59,6 +69,7 @@ try {
       assert.equal(state.emberRotation, '0deg', 'embers rise independently of fuse rotation');
       assert.ok(state.upwardEmbers, 'all embers travel upward');
       assert.equal(state.contact, 1, 'burn front has a local glowing contact');
+      assert.equal(state.fittedFlames, 1, 'flame width must be fitted separately from its pulse');
       assert.ok(state.contactGap < 1, `flame root stays attached to burn boundary: ${state.contactGap}px`);
       assert.match(state.rotation, /^auto /, 'flame follows the curve tangent');
       assert.ok(Math.abs(parseFloat(state.rotation.replace('auto ', '')) - 64.98) < .1, 'preserve the original ignition orientation');
@@ -71,7 +82,9 @@ try {
         const scale = Number(state.shrink.match(/matrix\(([^,]+)/)[1]);
         assert.ok(scale >= 1.03 && scale <= 1.16, "flame stays near the original size throughout consumption");
       }
-      if ([750, 1400, 1880].includes(time)) {
+      if ([750, 1100, 1250, 1400, 1880].includes(time)) {
+        assert.ok(state.insideRope, 'burn centre must be inside original rope');
+        assert.ok(state.ropeCenterError < 10, `burn centre must not run along a rope edge: ${state.ropeCenterError}`);
         for (const transform of [state.shrink, state.flicker]) {
           const values = transform.match(/matrix\(([^)]+)\)/)[1].split(',').map(Number);
           assert.equal(values[1], 0, 'no sideways rotation on top of path rotation');
