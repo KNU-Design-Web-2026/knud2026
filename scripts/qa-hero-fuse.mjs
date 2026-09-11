@@ -35,6 +35,7 @@ try {
           travel: style(".hero-fuse-spark").offsetDistance,
           opacity: style(".hero-fuse-spark").opacity,
           shrink: style(".hero-flame-size").transform,
+          flicker: style(".hero-flame-flicker").transform,
           rotation: style(".hero-fuse-spark").offsetRotate,
           embers: scene.querySelectorAll('.hero-ember').length,
           heat: style('.hero-flame-size').filter,
@@ -53,7 +54,16 @@ try {
         assert.equal(state.opacity, "1");
         assert.ok(Math.abs(parseFloat(state.dash) - parseFloat(state.travel)) < 1, "burn front follows the moving flame");
         const scale = Number(state.shrink.match(/matrix\(([^,]+)/)[1]);
-        assert.ok(scale > 0.6 && scale < 0.85, "original flame shrinks during consumption");
+        assert.ok(scale >= 1.1 && scale <= 1.3, "flame must cover the fuse throughout consumption");
+      }
+      if ([750, 1400, 1880].includes(time)) {
+        for (const transform of [state.shrink, state.flicker]) {
+          const values = transform.match(/matrix\(([^)]+)\)/)[1].split(',').map(Number);
+          assert.equal(values[1], 0, 'no sideways rotation on top of path rotation');
+          assert.equal(values[2], 0, 'no sideways rotation on top of path rotation');
+        }
+        const scale = Number(state.shrink.match(/matrix\(([^,]+)/)[1]);
+        assert.ok(scale >= 1.1 && scale <= 1.3);
       }
       if (time === 2050) {
         assert.equal(state.opacity, "0");
