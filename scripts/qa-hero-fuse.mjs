@@ -54,7 +54,7 @@ try {
         assert.equal(state.opacity, "1");
         assert.ok(Math.abs(parseFloat(state.dash) - parseFloat(state.travel)) < 1, "burn front follows the moving flame");
         const scale = Number(state.shrink.match(/matrix\(([^,]+)/)[1]);
-        assert.ok(scale >= 1.1 && scale <= 1.3, "flame must cover the fuse throughout consumption");
+        assert.ok(scale >= 1.03 && scale <= 1.16, "flame stays near the original size throughout consumption");
       }
       if ([750, 1400, 1880].includes(time)) {
         for (const transform of [state.shrink, state.flicker]) {
@@ -63,7 +63,7 @@ try {
           assert.equal(values[2], 0, 'no sideways rotation on top of path rotation');
         }
         const scale = Number(state.shrink.match(/matrix\(([^,]+)/)[1]);
-        assert.ok(scale >= 1.1 && scale <= 1.3);
+        assert.ok(scale >= 1.03 && scale <= 1.16);
       }
       if (time === 2050) {
         assert.equal(state.opacity, "0");
