@@ -18,7 +18,7 @@ try {
   for (const width of [1920, 1350, 1020, 600, 400]) {
     await page.setViewportSize({ width, height: width <= 600 ? 980 : 900 });
     await page.waitForTimeout(100);
-    for (const time of [0, 750, 1100, 1250, 1400, 1880, 2050, 3600]) {
+    for (const time of [0, 335, 337, 750, 1100, 1250, 1400, 1880, 2050, 2800, 3600]) {
       const state = await page.evaluate((time) => {
         const root = document.querySelector(".hero-motion");
         for (const animation of root.getAnimations({ subtree: true })) {
@@ -66,6 +66,8 @@ try {
       }, time);
       assert.equal(state.duration, "5.6s");
       assert.equal(state.flamePaths, 4);
+      if ([0, 335, 337].includes(time)) assert.equal(state.opacity, '1', 'same fitted flame remains visible across ignition');
+      if (time === 2800) assert.equal(state.opacity, '0', 'no flame remains after combustion');
       assert.equal(state.emberRotation, '0deg', 'embers rise independently of fuse rotation');
       assert.ok(state.upwardEmbers, 'all embers travel upward');
       assert.equal(state.contact, 1, 'burn front has a local glowing contact');
