@@ -52,9 +52,10 @@
 }
 .hero-fuse-tip-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
 .hero-fuse { animation: hero-fuse-return var(--hero-cycle) linear infinite; }
-.hero-fuse-spark { opacity: 0; animation: hero-spark-travel var(--hero-cycle) linear infinite; }
+.hero-fuse-spark, .hero-ember-trail { opacity: 0; animation: hero-spark-travel var(--hero-cycle) linear infinite; }
 .hero-flame-size { animation: hero-flame-consume var(--hero-cycle) linear infinite; }
-.hero-flame-flicker { animation: hero-flame-flicker 0.14s steps(2, end) infinite; }
+.hero-flame-flicker { animation: hero-flame-flicker 0.43s ease-in-out infinite; }
+.hero-hot-core { animation: hero-contact-heat var(--hero-cycle) linear infinite; }
 .hero-flame-size, .hero-flame-flicker { transform-origin: 0 0; }
 .hero-ember { opacity: 0; animation: hero-ember 0.32s ease-out infinite; }
 .hero-lion { transform-box: fill-box; transform-origin: 50% 90%; animation: hero-recoil var(--hero-cycle) ease-in-out infinite; }
@@ -99,8 +100,18 @@
   34%, 51% { transform: scale(0); filter: brightness(1); }
 }
 @keyframes hero-flame-flicker {
-  0%, 100% { transform: scale(1, 0.98); }
-  50% { transform: scale(1, 1.03); }
+  0%, 100% { transform: scale(1, 0.99); }
+  18% { transform: scale(0.99, 1.04); }
+  31% { transform: scale(1.01, 0.98); }
+  47% { transform: scale(1, 1.06); }
+  73% { transform: scale(0.99, 1.01); }
+  86% { transform: scale(1, 0.97); }
+}
+@keyframes hero-contact-heat {
+  0%, 6%, 100% { opacity: 0.55; }
+  20% { opacity: 0.8; }
+  30% { opacity: 0.65; }
+  33%, 34% { opacity: 1; }
 }
 @keyframes hero-ember {
   0% { opacity: 0; transform: translate(0, 0); }

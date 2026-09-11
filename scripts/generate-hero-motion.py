@@ -43,7 +43,8 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     tail.set('class', 'hero-fuse')
     scale = tw / 190.48
     # Centre line follows the original curled fuse from its lit tip into the body.
-    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(137,154)]
+    # Start at the flame's root, not its visual centre: scaling cannot detach it.
+    points = [(51,71),(65,41),(88,20),(127,24),(166,43),(169,76),(153,115),(137,154)]
     p = [(tx+x*scale, ty+y*scale) for x,y in points]
     d = f'M {p[0][0]} {p[0][1]} C {p[1][0]} {p[1][1]} {p[2][0]} {p[2][1]} {p[3][0]} {p[3][1]} S {p[4][0]} {p[4][1]} {p[5][0]} {p[5][1]} Q {p[6][0]} {p[6][1]} {p[7][0]} {p[7][1]}'
     defs = next(e for e in svg if e.tag.endswith('defs'))
@@ -78,6 +79,9 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     tip_outline.set('stroke-linejoin', 'round')
     tip_outline.set('class', 'hero-fuse-tip-erase')
     mask.append(tip_outline)
+    # The old tip centre precedes the new root. Erase that short stub too.
+    mask.append(element('path', d=f'M {tx+10*scale} {ty+72*scale} L {p[0][0]} {p[0][1]}',
+        fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-fuse-tip-erase'}))
     defs.append(mask)
     tail.set('mask', 'url(#fuse-mask)')
     # Auto follows the tangent; cancel its initial angle to retain the Figma pose.
@@ -102,13 +106,20 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     flicker.append(local)
     shrink.append(flicker)
     spark.append(shrink)
-    # Small hot fragments stay local to the burning front, not across the page.
-    for i, (dx, dy) in enumerate([(-36,24),(-12,42),(-42,48),(-24,62),(8,34),(-52,18)]):
+    # A small scorched edge and hot core connect the flame to the erased boundary.
+    contact = element('g', transform=f'scale({scale})', **{'class':'hero-burn-contact'})
+    contact.append(element('path', d='M -13 -6 L 13 6', fill='none', stroke='#38251C', **{'stroke-width':4,'stroke-linecap':'round'}))
+    contact.append(element('ellipse', cx=0, cy=0, rx=6, ry=3, fill='#FFF3AD', transform='rotate(25)', **{'class':'hero-hot-core'}))
+    spark.append(contact)
+    # Separate world-up trail: the fuse turns, but heat still rises.
+    trail = element('g', **{'class':'hero-ember-trail','style':f'offset-path:path("{d}");offset-rotate:0deg;offset-anchor:0px 0px'})
+    for i, (dx, dy) in enumerate([(-18,-28),(12,-38),(-28,-46),(24,-54),(3,-32),(-9,-60)]):
         ember = element('g', transform=f'scale({scale})')
         ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i%3],
-            **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.09}s'}))
-        spark.append(ember)
+            **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.073}s;animation-duration:{.27+i*.037}s'}))
+        trail.append(ember)
     by_id['Group_11'].append(spark)
+    by_id['Group_11'].append(trail)
     # Local, short-lived flecks follow the final ignition; no canvas particles/timers.
     debris = element('g', transform=f'translate({p[-1][0]} {p[-1][1]}) scale({scale})')
     for i, (dx,dy) in enumerate([(-85,-60),(-35,-110),(45,-95),(100,-30),(70,65),(-70,60)]):
