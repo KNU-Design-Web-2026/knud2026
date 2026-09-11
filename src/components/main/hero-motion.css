@@ -89,13 +89,13 @@
   100% { opacity: 0; offset-distance: 100%; }
 }
 @keyframes hero-flame-consume {
-  0%, 6%, 100% { transform: scale(1.25); filter: brightness(1); }
-  20% { transform: scale(1.22); filter: brightness(1.04); }
-  28% { transform: scale(1.18); filter: brightness(1.08); }
-  30% { transform: scale(1.16); filter: brightness(1.12); }
-  31% { transform: scale(1.15); filter: brightness(1.16); }
-  32% { transform: scale(1.2); filter: brightness(1.2); }
-  33.9% { transform: scale(1.28); filter: brightness(1.28); }
+  0%, 6%, 100% { transform: scale(1.125); filter: brightness(1); }
+  20% { transform: scale(1.098); filter: brightness(1.04); }
+  28% { transform: scale(1.062); filter: brightness(1.08); }
+  30% { transform: scale(1.044); filter: brightness(1.12); }
+  31% { transform: scale(1.035); filter: brightness(1.16); }
+  32% { transform: scale(1.08); filter: brightness(1.2); }
+  33.9% { transform: scale(1.152); filter: brightness(1.28); }
   34%, 51% { transform: scale(0); filter: brightness(1); }
 }
 @keyframes hero-flame-flicker {
