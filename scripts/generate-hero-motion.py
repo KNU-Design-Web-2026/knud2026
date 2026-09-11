@@ -1,5 +1,6 @@
 """Rebuild motion-ready SVGs from the checked-in Figma vectors (no raster editing)."""
 import json
+import math
 import re
 from copy import deepcopy
 from pathlib import Path
@@ -79,7 +80,9 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     mask.append(tip_outline)
     defs.append(mask)
     tail.set('mask', 'url(#fuse-mask)')
-    spark = element('g', **{'class':'hero-fuse-spark','style':f'offset-path:path("{d}");offset-rotate:0deg;offset-anchor:0px 0px'})
+    # Auto follows the tangent; cancel its initial angle to retain the Figma pose.
+    initial_angle = math.degrees(math.atan2(p[1][1]-p[0][1], p[1][0]-p[0][0]))
+    spark = element('g', **{'class':'hero-fuse-spark','style':f'offset-path:path("{d}");offset-rotate:auto {-initial_angle}deg;offset-anchor:0px 0px'})
     # Retain the actual red/yellow/blue Figma flame, not a generic replacement.
     # Clip the shared rope/body paths to the red tip silhouette before moving it.
     flame_clip = element('clipPath', id='flame-clip', clipPathUnits='userSpaceOnUse')
@@ -100,9 +103,9 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     shrink.append(flicker)
     spark.append(shrink)
     # Small hot fragments stay local to the burning front, not across the page.
-    for i, (dx, dy) in enumerate([(-22,-31),(16,-36),(-30,5)]):
+    for i, (dx, dy) in enumerate([(-36,24),(-12,42),(-42,48),(-24,62),(8,34),(-52,18)]):
         ember = element('g', transform=f'scale({scale})')
-        ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i],
+        ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i%3],
             **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.09}s'}))
         spark.append(ember)
     by_id['Group_11'].append(spark)

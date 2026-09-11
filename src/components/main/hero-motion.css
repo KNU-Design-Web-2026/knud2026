@@ -89,15 +89,18 @@
   100% { opacity: 0; offset-distance: 100%; }
 }
 @keyframes hero-flame-consume {
-  0%, 6%, 100% { transform: scale(1); }
-  20% { transform: scale(0.83); }
-  31% { transform: scale(0.58); }
-  33.9% { transform: scale(1.15); }
-  34%, 51% { transform: scale(0); }
+  0%, 6%, 100% { transform: scale(1) rotate(0); filter: brightness(1); }
+  20% { transform: scale(0.83) rotate(0); filter: brightness(1.04); }
+  28% { transform: scale(0.68) rotate(-4deg); filter: brightness(1.08); }
+  30% { transform: scale(0.62) rotate(5deg); filter: brightness(1.12); }
+  31% { transform: scale(0.58) rotate(-6deg); filter: brightness(1.16); }
+  32% { transform: scale(0.75) rotate(7deg); filter: brightness(1.2); }
+  33.9% { transform: scale(1.15) rotate(0); filter: brightness(1.28); }
+  34%, 51% { transform: scale(0); filter: brightness(1); }
 }
 @keyframes hero-flame-flicker {
-  0%, 100% { transform: scale(1, 0.92) rotate(-4deg); }
-  50% { transform: scale(0.92, 1.08) rotate(4deg); }
+  0%, 100% { transform: scale(1, 0.88) rotate(-6deg); }
+  50% { transform: scale(0.9, 1.14) rotate(6deg); }
 }
 @keyframes hero-ember {
   0% { opacity: 0; transform: translate(0, 0); }
