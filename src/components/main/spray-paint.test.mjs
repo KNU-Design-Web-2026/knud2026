@@ -48,9 +48,9 @@ test("기존 드립과 예약 드립이 같은 8개 상한을 공유한다", () 
     stamp.drip = createPaintDrip(stamp, 200, seededRandom());
     return stamp;
   });
-  const candidate = createPaintStamp({ x: 900, y: 100 }, 3000, 0, "#fff", seededRandom());
-  assert.equal(canStartPaintDrip([...active, candidate], candidate, 3500, 200), false);
-  assert.equal(canStartPaintDrip([...active, candidate], candidate, 3600, 200), true);
+  const candidate = createPaintStamp({ x: 900, y: 100 }, 6200, 0, "#fff", seededRandom());
+  assert.equal(canStartPaintDrip([...active, candidate], candidate, 6599, 200), false);
+  assert.equal(canStartPaintDrip([...active, candidate], candidate, 6600, 200), true);
 });
 
 test("미세 입자의 반지름은 1.15 CSS px 이하이고 생성 후 형태가 변하지 않는다", () => {
@@ -84,12 +84,12 @@ test("드립은 시간에 따라 증가하고 최종 길이를 넘지 않는다"
   assert.ok(timeline.every((value, index) => value >= (timeline[index - 1] ?? 0) && value <= 1));
 });
 
-test("칠과 드립은 2.8초 유지 후 함께 사라지고 3.6초에 투명해진다", () => {
+test("칠과 드립은 5.4초 유지 후 함께 사라지고 6.6초에 투명해진다", () => {
   assert.equal(getPaintOpacity(0, 0), 1);
-  assert.equal(getPaintOpacity(0, 2800), 1);
-  assert.equal(getPaintOpacity(0, 3200), 0.5);
-  assert.equal(getPaintOpacity(0, 3600), 0);
-  assert.equal(getPaintOpacity(0, 5000), 0);
+  assert.equal(getPaintOpacity(0, 5400), 1);
+  assert.equal(getPaintOpacity(0, 6000), 0.5);
+  assert.equal(getPaintOpacity(0, 6600), 0);
+  assert.equal(getPaintOpacity(0, 7000), 0);
 });
 
 test("일부 텍스처의 외곽 입자는 진행 반대쪽으로 더 멀리 비산한다", () => {
