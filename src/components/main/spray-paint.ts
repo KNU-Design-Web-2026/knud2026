@@ -1,6 +1,6 @@
 // CSS-pixel dimensions: DPR changes resolution, never the grain or brush size.
-export const PAINT_LIFETIME = 3_600;
-export const PAINT_HOLD = 2_800;
+export const PAINT_LIFETIME = 6_600;
+export const PAINT_HOLD = 5_400;
 export const DRIP_SETTLE_TIME = 240;
 export const DRIP_COOLDOWN = 420;
 export const MAX_ACTIVE_DRIPS = 8;
