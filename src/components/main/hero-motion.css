@@ -19,6 +19,12 @@
   .hero-scene-400 { display: block; top: -15vw; height: 215vw; }
 }
 
+/* iPad Pro portrait is wider than 1020px but still needs the tall composition. */
+@media (min-width: 1020.01px) and (max-width: 1350px) and (orientation: portrait) {
+  .hero-scene-1350 { display: none; }
+  .hero-scene-1020 { display: block; top: -11.7647vw; height: 134.3137vw; }
+}
+
 /* Shared 5.6s clock: 0.34s ignition → 1.57s burn → impact → breathing recovery. */
 .hero-motion {
   --hero-cycle: 5.6s;

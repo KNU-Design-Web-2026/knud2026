@@ -223,13 +223,23 @@
 }
 
 .main-hero {
+  /* Cover the header spacer too: hidden navigation must not leave an inert strip.
+     The fixed z-50 header still paints and receives input above this layer. */
+  margin-top: calc(-1 * var(--header-height));
+  height: calc(var(--main-hero-height) + var(--header-height));
+  min-height: 100dvh;
   /* Figma Frame PNG의 하단 색과 일치시켜 이미지 종료 후에도 경계가 생기지 않게 한다. */
   background: #005176;
 }
 
-/* 600px 이하 SVG 프레임은 #001A27로 끝난다. 최소 화면 높이로 SVG 아래
+/* Keep artwork at its existing document position while Canvas/input extend up. */
+.main-hero > .hero-motion {
+  top: var(--header-height);
+}
+
+/* 1020px 이하 모바일·태블릿 SVG 프레임은 #001A27로 끝난다. 최소 화면 높이로 SVG 아래
    여백이 생겨도 같은 색을 이어 경계선처럼 보이지 않게 한다. */
-@media (max-width: 37.5rem) {
+@media (max-width: 1020px) {
   .main-hero {
     background: #001a27;
   }
@@ -247,6 +257,14 @@
 @media (min-width: 84.4375rem) {
   .main-hero {
     background: #011b27;
+  }
+}
+
+/* Wider portrait tablets use the tall hero scene rather than a laptop layout. */
+@media (min-width: 1020.01px) and (max-width: 1350px) and (orientation: portrait) {
+  .main-hero {
+    --main-hero-height: 122.549vw;
+    background: #001a27;
   }
 }
 
