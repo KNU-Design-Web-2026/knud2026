@@ -42,9 +42,9 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     tail = by_id['Group_12']
     tail.set('class', 'hero-fuse')
     scale = tw / 190.48
-    # Centre line follows the original curled fuse from its lit tip into the body.
+    # Stop above the body joint rather than carrying the flame into the torso.
     # Start at the flame's root, not its visual centre: scaling cannot detach it.
-    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(137,154)]
+    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(145,134)]
     p = [(tx+x*scale, ty+y*scale) for x,y in points]
     d = f'M {p[0][0]} {p[0][1]} C {p[1][0]} {p[1][1]} {p[2][0]} {p[2][1]} {p[3][0]} {p[3][1]} S {p[4][0]} {p[4][1]} {p[5][0]} {p[5][1]} Q {p[6][0]} {p[6][1]} {p[7][0]} {p[7][1]}'
     defs = next(e for e in svg if e.tag.endswith('defs'))
@@ -79,16 +79,9 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     tip_outline.set('stroke-linejoin', 'round')
     tip_outline.set('class', 'hero-fuse-tip-erase')
     mask.append(tip_outline)
-    # These tip stripes extend beyond the rope silhouette; erase their full
-    # contours instead of leaving disconnected black fragments behind.
-    for name in ['Vector_34', 'Vector_35', 'Vector_36']:
-        tip_stripe = deepcopy(by_id[name])
-        tip_stripe.attrib.pop('id', None)
-        tip_stripe.set('fill', 'black')
-        tip_stripe.set('stroke', 'black')
-        tip_stripe.set('stroke-width', str(2*scale))
-        tip_stripe.set('class', 'hero-tip-details-erase')
-        mask.append(tip_stripe)
+    # The swept 80-unit mask removes stripes only after the flame reaches them.
+    # Erasing whole stripes at ignition punches blue-background slits into
+    # the still-unburned yellow rope ahead of the flame.
     # The old tip centre precedes the new root. Erase that short stub too.
     mask.append(element('path', d=f'M {tx+10*scale} {ty+72*scale} L {p[0][0]} {p[0][1]}',
         fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-tip-details-erase'}))
@@ -132,14 +125,17 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
         ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i%3],
             **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.073}s;animation-duration:{.27+i*.037}s'}))
         trail.append(ember)
-    by_id['Group_11'].append(spark)
-    by_id['Group_11'].append(trail)
+    # Paint effects over the fuse, but behind the body and its black outline.
+    fuse_effects = element('g', **{'class':'hero-fuse-effects'})
+    fuse_effects.append(spark)
+    fuse_effects.append(trail)
+    by_id['Group_11'].insert(1, fuse_effects)
     # Local, short-lived flecks follow the final ignition; no canvas particles/timers.
     debris = element('g', transform=f'translate({p[-1][0]} {p[-1][1]}) scale({scale})')
     for i, (dx,dy) in enumerate([(-85,-60),(-35,-110),(45,-95),(100,-30),(70,65),(-70,60)]):
         piece=element('path', d='M -5 -4 L 7 -2 L 2 7 L -7 3 Z', fill=['#FCD519','#FD9519','#41C9F9'][i%3], **{'class':'hero-paint-fleck','style':f'--fleck-x:{dx}px;--fleck-y:{dy}px;--fleck-r:{i*53}deg'})
         debris.append(piece)
-    by_id['Group 366'].append(debris)
+    fuse_effects.append(debris)
     # Namespace every ID because all responsive scenes share one document.
     markup = ET.tostring(svg, encoding='unicode')
     ids=re.findall(r'id="([^"]+)"',markup)
