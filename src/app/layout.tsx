@@ -15,8 +15,28 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.2026-knud-graduation.com"),
   title: "KNUD 2026 Graduation Exhibition",
   description: "경북대학교 디자인학과 2026 졸업전시회",
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: "KNUD 2026 Graduation Exhibition",
+    title: "IGNITE | 경북대학교 디자인학과 2026 졸업전시회",
+    description: "잠자는 사자가 깨어난 순간 — 제42회 경북대학교 디자인학과 졸업전시회",
+    images: [{
+      url: "/assets/og/knud-ignite-blue.png",
+      width: 1200,
+      height: 630,
+      alt: "IGNITE — KNUD 2026 졸업전시회",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IGNITE | 경북대학교 디자인학과 2026 졸업전시회",
+    description: "잠자는 사자가 깨어난 순간 — 제42회 경북대학교 디자인학과 졸업전시회",
+    images: ["/assets/og/knud-ignite-blue.png"],
+  },
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
