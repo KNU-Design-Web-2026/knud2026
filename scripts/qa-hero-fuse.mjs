@@ -18,7 +18,7 @@ try {
   for (const width of [1920, 1350, 1020, 600, 400]) {
     await page.setViewportSize({ width, height: width <= 600 ? 980 : 900 });
     await page.waitForTimeout(100);
-    for (const time of [0, 335, 337, 750, 1100, 1250, 1400, 1880, 2050, 2800, 3600]) {
+    for (const time of [0, 335, 337, 500, 750, 1100, 1250, 1400, 1880, 2050, 2800, 3600]) {
       const state = await page.evaluate((time) => {
         const root = document.querySelector(".hero-motion");
         for (const animation of root.getAnimations({ subtree: true })) {
@@ -61,12 +61,20 @@ try {
           contact: scene.querySelectorAll('.hero-burn-contact').length,
           fittedFlames: scene.querySelectorAll('.hero-flame-fit').length,
           initialErase: style('.hero-fuse-tip-erase').opacity,
+          prematureStripeMasks: scene.querySelectorAll('.hero-tip-details-erase[fill="black"]').length,
+          effectsBehindBody: (() => {
+            const effects = scene.querySelector('.hero-fuse-effects');
+            const siblings = [...effects.parentNode.children];
+            return siblings.indexOf(effects) === 1 && siblings[0].classList.contains('hero-fuse') && effects.querySelectorAll('.hero-paint-fleck').length === 6;
+          })(),
           lion: style(".hero-lion").transform,
           burst: style(".hero-burst-2").transform,
         };
       }, time);
       assert.equal(state.duration, "5.6s");
       assert.equal(state.flamePaths, 4);
+      assert.equal(state.prematureStripeMasks, 0, 'do not erase intact stripes ahead of the moving burn front');
+      assert.equal(state.effectsBehindBody, true, 'flame, embers and final flecks render behind the torso');
       if ([0, 335].includes(time)) {
         assert.equal(state.initialErase, '0', 'original fuse must remain intact before ignition');
         assert.equal(state.opacity, '0', 'moving flame must not overlap the original before ignition');
