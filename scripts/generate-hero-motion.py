@@ -75,10 +75,20 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     # Cover the source's separately stroked contour as well as its fill, so
     # antialiasing cannot leave a ghost outline at the old flame position.
     tip_outline.set('stroke', 'black')
-    tip_outline.set('stroke-width', str(4 * scale))
+    tip_outline.set('stroke-width', str(24 * scale))
     tip_outline.set('stroke-linejoin', 'round')
     tip_outline.set('class', 'hero-fuse-tip-erase')
     mask.append(tip_outline)
+    # These tip stripes extend beyond the rope silhouette; erase their full
+    # contours instead of leaving disconnected black fragments behind.
+    for name in ['Vector_34', 'Vector_35', 'Vector_36']:
+        tip_stripe = deepcopy(by_id[name])
+        tip_stripe.attrib.pop('id', None)
+        tip_stripe.set('fill', 'black')
+        tip_stripe.set('stroke', 'black')
+        tip_stripe.set('stroke-width', str(2*scale))
+        tip_stripe.set('class', 'hero-fuse-tip-erase')
+        mask.append(tip_stripe)
     # The old tip centre precedes the new root. Erase that short stub too.
     mask.append(element('path', d=f'M {tx+10*scale} {ty+72*scale} L {p[0][0]} {p[0][1]}',
         fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-fuse-tip-erase'}))
@@ -96,14 +106,18 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     defs.append(flame_clip)
     shrink = element('g', **{'class':'hero-flame-size'})
     flicker = element('g', **{'class':'hero-flame-flicker'})
-    local = element('g', transform=f'translate({-p[0][0]} {-p[0][1]})')
+    # Centre the original flame across the rope, independently of the burn root.
+    # Fit only its transverse width; retain the jagged silhouette length.
+    fit = element('g', transform=f'rotate({initial_angle}) scale(1 0.72) rotate({-initial_angle})', **{'class':'hero-flame-fit'})
+    local = element('g', transform=f'translate({-(tx+32*scale)} {-(ty+72*scale)})')
     original_flame = element('g', **{'clip-path':'url(#flame-clip)'})
     for name in ['Vector_18', 'Vector_19', 'Vector_20', 'Vector_21']:
         part = deepcopy(by_id[name])
         part.attrib.pop('id', None)
         original_flame.append(part)
     local.append(original_flame)
-    flicker.append(local)
+    fit.append(local)
+    flicker.append(fit)
     shrink.append(flicker)
     spark.append(shrink)
     # A small scorched edge and hot core connect the flame to the erased boundary.
