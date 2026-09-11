@@ -27,7 +27,15 @@ try {
         }
         const scene = [...root.querySelectorAll(".hero-scene")].find((node) => getComputedStyle(node).display !== "none");
         const style = (selector) => getComputedStyle(scene.querySelector(selector));
+        const spark = scene.querySelector('.hero-fuse-spark');
+        const erase = scene.querySelector('.hero-fuse-erase');
+        const core = scene.querySelector('.hero-hot-core');
+        const progress = parseFloat(style('.hero-fuse-spark').offsetDistance) / 100;
+        const point = erase.getPointAtLength(erase.getTotalLength() * progress);
+        const boundary = new DOMPoint(point.x, point.y).matrixTransform(spark.parentNode.getScreenCTM());
+        const flameRoot = core ? new DOMPoint(0, 0).matrixTransform(core.getScreenCTM()) : null;
         return {
+          contactGap: flameRoot ? Math.hypot(boundary.x-flameRoot.x, boundary.y-flameRoot.y) : Infinity,
           width: document.documentElement.scrollWidth,
           flamePaths: scene.querySelectorAll(".hero-flame-flicker path").length,
           duration: style(".hero-fuse-erase").animationDuration,
@@ -39,12 +47,19 @@ try {
           rotation: style(".hero-fuse-spark").offsetRotate,
           embers: scene.querySelectorAll('.hero-ember').length,
           heat: style('.hero-flame-size').filter,
+          emberRotation: scene.querySelector('.hero-ember-trail') ? style('.hero-ember-trail').offsetRotate : null,
+          upwardEmbers: [...scene.querySelectorAll('.hero-ember')].every(el => parseFloat(getComputedStyle(el).getPropertyValue('--ember-y')) < 0),
+          contact: scene.querySelectorAll('.hero-burn-contact').length,
           lion: style(".hero-lion").transform,
           burst: style(".hero-burst-2").transform,
         };
       }, time);
       assert.equal(state.duration, "5.6s");
       assert.equal(state.flamePaths, 4);
+      assert.equal(state.emberRotation, '0deg', 'embers rise independently of fuse rotation');
+      assert.ok(state.upwardEmbers, 'all embers travel upward');
+      assert.equal(state.contact, 1, 'burn front has a local glowing contact');
+      assert.ok(state.contactGap < 1, `flame root stays attached to burn boundary: ${state.contactGap}px`);
       assert.match(state.rotation, /^auto /, 'flame follows the curve tangent');
       assert.ok(Math.abs(parseFloat(state.rotation.replace('auto ', '')) - 64.98) < .1, 'preserve the original ignition orientation');
       assert.equal(state.embers, 6);
