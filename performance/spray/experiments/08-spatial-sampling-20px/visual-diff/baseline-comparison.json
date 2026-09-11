@@ -1,0 +1,34 @@
+{
+  "baseline": {
+    "gitSha": "cbc8a733e43ba43878bbae81aafa7f6b2f8bc0e9",
+    "spacingPx": 12,
+    "image": "legacy-canvas.png"
+  },
+  "optimized": {
+    "gitSha": "c5c0f6a",
+    "spacingPx": 20,
+    "image": "optimized-canvas.png"
+  },
+  "conditions": {
+    "seed": 20260908,
+    "viewport": {
+      "width": 1512,
+      "height": 982,
+      "devicePixelRatio": 2
+    },
+    "input": "동일한 Playwright CDP fast-drag 경로"
+  },
+  "fullCanvas": {
+    "ssim": 0.976297,
+    "psnrDb": 27.78139
+  },
+  "sprayRegion": {
+    "baselineAverageBrightness": 159.289,
+    "optimizedAverageBrightness": 158.166,
+    "averageBrightnessChangePercent": -0.7,
+    "baselineAverageSaturation": 45.5399,
+    "optimizedAverageSaturation": 43.9618,
+    "averageSaturationChangePercent": -3.5
+  },
+  "note": "동일 checkout에서 고정 seed와 입력을 사용하고 sprayRenderer=legacy(12px), optimized(20px)만 전환한 통제 비교다. comparison.json의 SHA-256과 활성 스탬프 수로 두 경로가 실제로 분리됐는지 함께 검증한다."
+}

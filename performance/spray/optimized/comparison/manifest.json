@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-09-08T18:39:03.719Z",
+  "targetUrl": "http://127.0.0.1:3000/?spraySeed=20260908",
+  "visualTargetUrl": "http://localhost:3001/",
+  "branch": "perf/canvas-spray-optimization",
+  "baselineGitSha": "cbc8a733e43ba43878bbae81aafa7f6b2f8bc0e9",
+  "optimizedGitSha": "c5c0f6a",
+  "chrome": "151.0.7922.175 arm64",
+  "viewport": {
+    "width": 1512,
+    "height": 982,
+    "devicePixelRatio": 2
+  },
+  "power": {
+    "source": "AC Power",
+    "charging": true
+  },
+  "methodology": {
+    "executionMode": "headed Chrome",
+    "runsPerCondition": 5,
+    "warmupExcluded": 1,
+    "representativeStatistic": "Run 02~05 median",
+    "input": "Playwright CDP mouse input with fixed path and timing",
+    "visualSeed": 20260908,
+    "visualComparison": "same checkout, deterministic seed/input, sprayRenderer=legacy(12px)|optimized(20px)"
+  },
+  "files": [
+    {
+      "path": "optimized/artifacts/all-results.json",
+      "bytes": 4884923,
+      "sha256": "c153d419811e56ef0900c42255d7ea9ae6adf59ac9e042f7f4dd01be814c92c9"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-native-run-01.metrics.json",
+      "bytes": 6264,
+      "sha256": "11ba3fc4d6b33dfb5a6e1d0457f5db47156cf763f90d6fbdaf199ac60be36e14"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-native-run-01.trace.json.gz",
+      "bytes": 10359525,
+      "sha256": "bf4a8dc2214656363a2f00c88ee4debd9455329654825f315ea1de02480e2032"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-4x-run-01.metrics.json",
+      "bytes": 6260,
+      "sha256": "0f17beaf9a69267a762ba584bc66ed58baf59523c444276219618256468400e3"
+    },
+    {
+      "path": "optimized/artifacts/clean/spray-fast-drag-4x-run-01.trace.json.gz",
+      "bytes": 7141261,
+      "sha256": "28038a7def22ab94f3006bbd4aec958dfd08358b92e125e4863bae75f466978c"
+    },
+    {
+      "path": "optimized/report/runs.csv",
+      "bytes": 3867,
+      "sha256": "1cbf94c60dd49a363d4df4a1ded2ad692dd214eb8da8d418182b792f8014dfde"
+    },
+    {
+      "path": "optimized/report/summary.json",
+      "bytes": 13954,
+      "sha256": "9e6d883c9a79eb1c237ac1a1558df60b71f02ea23fd3cd791049c1be2b83dd17"
+    },
+    {
+      "path": "optimized/comparison/render-p95-before-after.svg",
+      "bytes": 6537,
+      "sha256": "d30183c2e9a9945a38ffbdcdd672a895a6ab34abc9a3668c44bbfd729aaf36ef"
+    },
+    {
+      "path": "optimized/comparison/frame-interval-before-after.svg",
+      "bytes": 6170,
+      "sha256": "8fa32405c9191f27b22f5670d5ff9a8f6627564f3cb3473b7296d19d39c45d63"
+    },
+    {
+      "path": "optimized/comparison/spray-before-after.mp4",
+      "bytes": 441276,
+      "sha256": "5b52715b6b9d15656695f90f849e4fa4e9f30ef7aceacbe0ae1a98683e83adae"
+    },
+    {
+      "path": "optimized/evidence/devtools/screenshots/native-fast-drag-cpu-gpu-timeline.jpg",
+      "bytes": 215448,
+      "sha256": "13f368a8db816df7838b23a8d068952d70e9c5868671c13cb0d0e82c6ca16c22"
+    },
+    {
+      "path": "optimized/evidence/devtools/screenshots/4x-fast-drag-cpu-gpu-timeline.jpg",
+      "bytes": 233779,
+      "sha256": "0e5417134d46771b5bb95c54a505553ce852c808d449fc86d05f2a44072e2483"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/comparison.json",
+      "bytes": 795,
+      "sha256": "96b80f393ee55c74dfd6f28494351ea714afb85217a7fb7462d606d61943ccd5"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/legacy-canvas.png",
+      "bytes": 1948950,
+      "sha256": "53618b45e7c5888e96d7645bd816ed2df86e42d89cbd138ae94db445f744b9b1"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/optimized-canvas.png",
+      "bytes": 1963218,
+      "sha256": "27add937e0aca0492fccf71105cdf8ac4374bee91a6282b7878276a297346c0c"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/legacy-hero.png",
+      "bytes": 2013747,
+      "sha256": "c9207f4a9e0836539557957a634574a064d946497b9cb0a8aa1ac421b6d15e85"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/optimized-hero.png",
+      "bytes": 2027386,
+      "sha256": "05f0b4352d6731153bb125f9ad703539137e662feab51689d7b87c8db3138664"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/canvas-diff.png",
+      "bytes": 455806,
+      "sha256": "f417f88f63349d768279f7b6b8efbcbd3364a65f3e2633cd18fe5b833de9f896"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/legacy-capture.mp4",
+      "bytes": 992449,
+      "sha256": "a9dc03000ed800822ff130057f9600b2fe881e1cd5ba1c03e63ed3bdcd54eb8a"
+    },
+    {
+      "path": "experiments/08-spatial-sampling-20px/visual-diff/optimized-capture.mp4",
+      "bytes": 959873,
+      "sha256": "176b96d611721fe75c104b8de88755f69468400aec4f2940f0946897fa68e7d8"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-09-08T18:34:07.564Z",
+  "targetUrl": "http://localhost:3001/",
+  "seed": 20260908,
+  "viewport": {
+    "width": 1512,
+    "height": 982
+  },
+  "deviceScaleFactor": 2,
+  "ssim": 0.976297,
+  "psnrAverageDb": 27.78139,
+  "rendererStats": {
+    "legacy": {
+      "activeStampCount": 131
+    },
+    "optimized": {
+      "activeStampCount": 79
+    }
+  },
+  "sha256": {
+    "legacyCanvas": "53618b45e7c5888e96d7645bd816ed2df86e42d89cbd138ae94db445f744b9b1",
+    "optimizedCanvas": "27add937e0aca0492fccf71105cdf8ac4374bee91a6282b7878276a297346c0c"
+  },
+  "files": {
+    "legacyCanvas": "legacy-canvas.png",
+    "optimizedCanvas": "optimized-canvas.png",
+    "diff": "canvas-diff.png",
+    "legacyVideo": "legacy-capture.mp4",
+    "optimizedVideo": "optimized-capture.mp4"
+  }
+}

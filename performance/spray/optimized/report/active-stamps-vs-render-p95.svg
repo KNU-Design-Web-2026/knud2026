@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<rect width="1200" height="720" fill="#F7F7F2"/>
+<text x="120" y="54" font-family="Pretendard, Arial, sans-serif" font-size="34" font-weight="700" fill="#111">활성 스탬프와 렌더 비용의 관계</text>
+<text x="120" y="88" font-family="Pretendard, Arial, sans-serif" font-size="18" fill="#555">Run 02~05 중앙값 · 자동화된 동일 경로</text>
+<line x1="120" x2="120" y1="125" y2="610" stroke="#E0E0DA"/>
+<text x="120" y="644" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">0</text>
+<line x1="120" x2="1100" y1="610" y2="610" stroke="#E0E0DA"/>
+<text x="102" y="616" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#666">0ms</text>
+<line x1="316" x2="316" y1="125" y2="610" stroke="#E0E0DA"/>
+<text x="316" y="644" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">100</text>
+<line x1="120" x2="1100" y1="513" y2="513" stroke="#E0E0DA"/>
+<text x="102" y="519" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#666">5ms</text>
+<line x1="512" x2="512" y1="125" y2="610" stroke="#E0E0DA"/>
+<text x="512" y="644" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">200</text>
+<line x1="120" x2="1100" y1="416" y2="416" stroke="#E0E0DA"/>
+<text x="102" y="422" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#666">10ms</text>
+<line x1="708" x2="708" y1="125" y2="610" stroke="#E0E0DA"/>
+<text x="708" y="644" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">300</text>
+<line x1="120" x2="1100" y1="319" y2="319" stroke="#E0E0DA"/>
+<text x="102" y="325" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#666">15ms</text>
+<line x1="904" x2="904" y1="125" y2="610" stroke="#E0E0DA"/>
+<text x="904" y="644" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">400</text>
+<line x1="120" x2="1100" y1="222" y2="222" stroke="#E0E0DA"/>
+<text x="102" y="228" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#666">20ms</text>
+<line x1="1100" x2="1100" y1="125" y2="610" stroke="#E0E0DA"/>
+<text x="1100" y="644" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">500</text>
+<line x1="120" x2="1100" y1="125" y2="125" stroke="#E0E0DA"/>
+<text x="102" y="131" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#666">25ms</text>
+<circle cx="129.8" cy="604.18" r="13" fill="#15A9ED" stroke="#111" stroke-width="2"/>
+<text x="146.8" y="592.18" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Click · native</text>
+<circle cx="335.6" cy="584.78" r="13" fill="#15A9ED" stroke="#111" stroke-width="2"/>
+<text x="352.6" y="572.78" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Slow drag · native</text>
+<circle cx="982.4" cy="520.76" r="13" fill="#15A9ED" stroke="#111" stroke-width="2"/>
+<text x="965.4" y="508.76" text-anchor="end" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Fast drag · native</text>
+<circle cx="982.4" cy="517.85" r="13" fill="#15A9ED" stroke="#111" stroke-width="2"/>
+<text x="965.4" y="544.85" text-anchor="end" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Decay · native</text>
+<circle cx="129.8" cy="602.24" r="13" fill="#FF5A36" stroke="#111" stroke-width="2"/>
+<text x="146.8" y="629.24" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Click · 4x</text>
+<circle cx="335.6" cy="513.97" r="13" fill="#FF5A36" stroke="#111" stroke-width="2"/>
+<text x="352.6" y="501.97" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Slow drag · 4x</text>
+<circle cx="982.4" cy="233.64000000000004" r="13" fill="#FF5A36" stroke="#111" stroke-width="2"/>
+<text x="965.4" y="221.64000000000004" text-anchor="end" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Fast drag · 4x</text>
+<circle cx="982.4" cy="238.49000000000007" r="13" fill="#FF5A36" stroke="#111" stroke-width="2"/>
+<text x="965.4" y="265.49000000000007" text-anchor="end" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111">Decay · 4x</text>
+<text x="610" y="692" text-anchor="middle" font-family="Pretendard, Arial, sans-serif" font-size="18" fill="#111">Peak estimated active stamps</text>
+<text x="30" y="367.5" transform="rotate(-90 30 367.5)" text-anchor="middle" font-family="Pretendard, Arial, sans-serif" font-size="18" fill="#111">Render duration p95</text>
+</svg>
