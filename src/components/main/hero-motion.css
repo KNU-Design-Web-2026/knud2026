@@ -50,13 +50,23 @@
   0%, 29%, 36%, 86%, 90%, 91%, 95%, 100% { transform: scaleY(0); }
   32%, 33%, 88%, 93% { transform: scaleY(1); }
 }
-.hero-fuse-tip-erase { opacity: 1; }
+.hero-fuse-tip-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
 .hero-tip-details-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
 .hero-fuse { animation: hero-fuse-return var(--hero-cycle) linear infinite; }
 .hero-fuse-spark, .hero-ember-trail { opacity: 0; animation: hero-spark-travel var(--hero-cycle) linear infinite; }
 .hero-flame-size { animation: hero-flame-consume var(--hero-cycle) linear infinite; }
 .hero-flame-flicker { animation: hero-flame-flicker 0.43s ease-in-out infinite; }
 .hero-hot-core { animation: hero-contact-heat var(--hero-cycle) linear infinite; }
+.hero-flame-fit { animation: hero-fit-in var(--hero-cycle) linear infinite; }
+.hero-burn-contact { opacity: 0; animation: hero-contact-in var(--hero-cycle) linear infinite; }
+@keyframes hero-fit-in {
+  0%, 6%, 100% { transform: rotate(-64.983deg) scale(1, 1) rotate(64.983deg); }
+  12%, 51% { transform: rotate(-64.983deg) scale(1, 0.72) rotate(64.983deg); }
+}
+@keyframes hero-contact-in {
+  0%, 6%, 34%, 100% { opacity: 0; }
+  10%, 33.9% { opacity: 1; }
+}
 .hero-flame-size, .hero-flame-flicker { transform-origin: 0 0; }
 .hero-ember { opacity: 0; animation: hero-ember 0.32s ease-out infinite; }
 .hero-lion { transform-box: fill-box; transform-origin: 50% 90%; animation: hero-recoil var(--hero-cycle) ease-in-out infinite; }
@@ -75,7 +85,7 @@
   51.01%, 100% { stroke-dasharray: 0 100; }
 }
 @keyframes hero-tip-burn {
-  0%, 5.9%, 51.01%, 100% { opacity: 0; }
+  0%, 5.99%, 51.01%, 100% { opacity: 0; }
   6%, 51% { opacity: 1; }
 }
 @keyframes hero-fuse-return {
@@ -84,16 +94,17 @@
   62%, 100% { opacity: 1; }
 }
 @keyframes hero-spark-travel {
-  0%, 5.9% { opacity: 1; offset-distance: 0%; }
+  0%, 5.99% { opacity: 0; offset-distance: 0%; }
   6% { opacity: 1; offset-distance: 0%; }
   33.9% { opacity: 1; offset-distance: 99.6%; }
   34% { opacity: 0; offset-distance: 100%; }
   51% { opacity: 0; offset-distance: 100%; }
   51.01% { opacity: 0; offset-distance: 0%; }
-  62%, 100% { opacity: 1; offset-distance: 0%; }
+  62%, 100% { opacity: 0; offset-distance: 0%; }
 }
 @keyframes hero-flame-consume {
-  0%, 6%, 100% { transform: scale(1.125); filter: brightness(1); }
+  0%, 6%, 100% { transform: scale(1); filter: brightness(1); }
+  12% { transform: scale(1.125); filter: brightness(1); }
   20% { transform: scale(1.098); filter: brightness(1.04); }
   28% { transform: scale(1.062); filter: brightness(1.08); }
   30% { transform: scale(1.044); filter: brightness(1.12); }
