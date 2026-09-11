@@ -50,7 +50,8 @@
   0%, 29%, 36%, 86%, 90%, 91%, 95%, 100% { transform: scaleY(0); }
   32%, 33%, 88%, 93% { transform: scaleY(1); }
 }
-.hero-fuse-tip-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
+.hero-fuse-tip-erase { opacity: 1; }
+.hero-tip-details-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
 .hero-fuse { animation: hero-fuse-return var(--hero-cycle) linear infinite; }
 .hero-fuse-spark, .hero-ember-trail { opacity: 0; animation: hero-spark-travel var(--hero-cycle) linear infinite; }
 .hero-flame-size { animation: hero-flame-consume var(--hero-cycle) linear infinite; }
@@ -83,11 +84,13 @@
   62%, 100% { opacity: 1; }
 }
 @keyframes hero-spark-travel {
-  0%, 5.9% { opacity: 0; offset-distance: 0%; }
+  0%, 5.9% { opacity: 1; offset-distance: 0%; }
   6% { opacity: 1; offset-distance: 0%; }
   33.9% { opacity: 1; offset-distance: 99.6%; }
   34% { opacity: 0; offset-distance: 100%; }
-  100% { opacity: 0; offset-distance: 100%; }
+  51% { opacity: 0; offset-distance: 100%; }
+  51.01% { opacity: 0; offset-distance: 0%; }
+  62%, 100% { opacity: 1; offset-distance: 0%; }
 }
 @keyframes hero-flame-consume {
   0%, 6%, 100% { transform: scale(1.125); filter: brightness(1); }
@@ -151,4 +154,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-motion .hero-scene * { animation: none; }
+  .hero-fuse-tip-erase { opacity: 0; }
 }

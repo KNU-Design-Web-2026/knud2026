@@ -44,7 +44,7 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     scale = tw / 190.48
     # Centre line follows the original curled fuse from its lit tip into the body.
     # Start at the flame's root, not its visual centre: scaling cannot detach it.
-    points = [(51,71),(65,41),(88,20),(127,24),(166,43),(169,76),(153,115),(137,154)]
+    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(137,154)]
     p = [(tx+x*scale, ty+y*scale) for x,y in points]
     d = f'M {p[0][0]} {p[0][1]} C {p[1][0]} {p[1][1]} {p[2][0]} {p[2][1]} {p[3][0]} {p[3][1]} S {p[4][0]} {p[4][1]} {p[5][0]} {p[5][1]} Q {p[6][0]} {p[6][1]} {p[7][0]} {p[7][1]}'
     defs = next(e for e in svg if e.tag.endswith('defs'))
@@ -66,7 +66,7 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     by_id['Group_24'].append(eye_cover)
     mask = element('mask', id='fuse-mask', maskUnits='userSpaceOnUse', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale)
     mask.append(element('rect', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale, fill='white'))
-    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
+    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':80*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
     mask.append(erase)
     # Remove the original tip flame as the moving flame takes over.
     tip_outline = deepcopy(by_id['Vector_18'])
@@ -75,7 +75,7 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     # Cover the source's separately stroked contour as well as its fill, so
     # antialiasing cannot leave a ghost outline at the old flame position.
     tip_outline.set('stroke', 'black')
-    tip_outline.set('stroke-width', str(24 * scale))
+    tip_outline.set('stroke-width', str(2 * scale))
     tip_outline.set('stroke-linejoin', 'round')
     tip_outline.set('class', 'hero-fuse-tip-erase')
     mask.append(tip_outline)
@@ -87,11 +87,11 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
         tip_stripe.set('fill', 'black')
         tip_stripe.set('stroke', 'black')
         tip_stripe.set('stroke-width', str(2*scale))
-        tip_stripe.set('class', 'hero-fuse-tip-erase')
+        tip_stripe.set('class', 'hero-tip-details-erase')
         mask.append(tip_stripe)
     # The old tip centre precedes the new root. Erase that short stub too.
     mask.append(element('path', d=f'M {tx+10*scale} {ty+72*scale} L {p[0][0]} {p[0][1]}',
-        fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-fuse-tip-erase'}))
+        fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-tip-details-erase'}))
     defs.append(mask)
     tail.set('mask', 'url(#fuse-mask)')
     # Auto follows the tangent; cancel its initial angle to retain the Figma pose.
