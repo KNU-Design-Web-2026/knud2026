@@ -35,12 +35,18 @@ try {
           travel: style(".hero-fuse-spark").offsetDistance,
           opacity: style(".hero-fuse-spark").opacity,
           shrink: style(".hero-flame-size").transform,
+          rotation: style(".hero-fuse-spark").offsetRotate,
+          embers: scene.querySelectorAll('.hero-ember').length,
+          heat: style('.hero-flame-size').filter,
           lion: style(".hero-lion").transform,
           burst: style(".hero-burst-2").transform,
         };
       }, time);
       assert.equal(state.duration, "5.6s");
       assert.equal(state.flamePaths, 4);
+      assert.match(state.rotation, /^auto /, 'flame follows the curve tangent');
+      assert.ok(Math.abs(parseFloat(state.rotation.replace('auto ', '')) - 64.98) < .1, 'preserve the original ignition orientation');
+      assert.equal(state.embers, 6);
       assert.ok(state.width <= width, "no horizontal overflow");
       if (time === 1400) {
         assert.ok(parseFloat(state.travel) > 60 && parseFloat(state.travel) < 75);
@@ -56,6 +62,7 @@ try {
         assert.ok(width > 600 ? scale > 1.32 : scale > 1.15 && scale < 1.28,
           `impact must be bold on desktop and restrained on mobile: ${width}, ${scale}`);
       }
+      if (time === 1880) assert.ok(Number(state.heat.match(/brightness\(([^)]+)\)/)[1]) > 1.1, 'heat increases before impact');
       results.push({ width, time, ...state });
       if ([1350, 400].includes(width) || time === 1400) {
         await page.screenshot({ path: `${output}/${width}-${time}.png` });
