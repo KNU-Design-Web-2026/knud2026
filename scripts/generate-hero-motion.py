@@ -1,6 +1,8 @@
 """Rebuild motion-ready SVGs from the checked-in Figma vectors (no raster editing)."""
 import json
+import math
 import re
+from copy import deepcopy
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -40,30 +42,100 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
     tail = by_id['Group_12']
     tail.set('class', 'hero-fuse')
     scale = tw / 190.48
-    # Centre line follows the original curled fuse from its lit tip into the body.
-    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(137,154)]
+    # Stop above the body joint rather than carrying the flame into the torso.
+    # Start at the flame's root, not its visual centre: scaling cannot detach it.
+    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(145,134)]
     p = [(tx+x*scale, ty+y*scale) for x,y in points]
     d = f'M {p[0][0]} {p[0][1]} C {p[1][0]} {p[1][1]} {p[2][0]} {p[2][1]} {p[3][0]} {p[3][1]} S {p[4][0]} {p[4][1]} {p[5][0]} {p[5][1]} Q {p[6][0]} {p[6][1]} {p[7][0]} {p[7][1]}'
     defs = next(e for e in svg if e.tag.endswith('defs'))
+    # Cover only the ordinary eye; preserve the opposite firework-shaped eye.
+    eye_clip = element('clipPath', id='eye-clip', clipPathUnits='userSpaceOnUse')
+    eye_shape = deepcopy(by_id['Vector_55'])
+    eye_shape.attrib.pop('id', None)
+    eye_clip.append(deepcopy(eye_shape))
+    defs.append(eye_clip)
+    eye_cover = element('g', **{'clip-path':'url(#eye-clip)'})
+    eyelid = element('g', **{'class':'hero-eyelid'})
+    eye_shape.set('fill', '#41C9F9')
+    eyelid.append(eye_shape)
+    ex, ey = map(float, re.match(r'M([\d.]+) ([\d.]+)', eye_shape.get('d')).groups())
+    # Source frames share this eye geometry, scaled with the lion artwork.
+    eyelid.append(element('path', d=f'M {ex} {ey-14*scale} Q {ex+21*scale} {ey+2*scale} {ex+42*scale} {ey-12*scale}',
+        fill='none', stroke='#0F0E0F', **{'stroke-width':4*scale,'stroke-linecap':'round'}))
+    eye_cover.append(eyelid)
+    by_id['Group_24'].append(eye_cover)
     mask = element('mask', id='fuse-mask', maskUnits='userSpaceOnUse', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale)
     mask.append(element('rect', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale, fill='white'))
-    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':76*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
+    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':80*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
     mask.append(erase)
     # Remove the original tip flame as the moving flame takes over.
-    mask.append(element('circle', cx=p[0][0], cy=p[0][1], r=40*scale, fill='black', **{'class':'hero-fuse-tip-erase'}))
+    tip_outline = deepcopy(by_id['Vector_18'])
+    tip_outline.attrib.pop('id', None)
+    tip_outline.set('fill', 'black')
+    # Cover the source's separately stroked contour as well as its fill, so
+    # antialiasing cannot leave a ghost outline at the old flame position.
+    tip_outline.set('stroke', 'black')
+    tip_outline.set('stroke-width', str(2 * scale))
+    tip_outline.set('stroke-linejoin', 'round')
+    tip_outline.set('class', 'hero-fuse-tip-erase')
+    mask.append(tip_outline)
+    # The swept 80-unit mask removes stripes only after the flame reaches them.
+    # Erasing whole stripes at ignition punches blue-background slits into
+    # the still-unburned yellow rope ahead of the flame.
+    # The old tip centre precedes the new root. Erase that short stub too.
+    mask.append(element('path', d=f'M {tx+10*scale} {ty+72*scale} L {p[0][0]} {p[0][1]}',
+        fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-tip-details-erase'}))
     defs.append(mask)
     tail.set('mask', 'url(#fuse-mask)')
-    spark = element('g', **{'class':'hero-fuse-spark','style':f'offset-path:path("{d}");offset-rotate:0deg;offset-anchor:0px 0px'})
-    star = '0,-19 5,-7 17,-13 10,-2 23,3 8,7 10,20 0,11 -12,20 -8,5 -23,1 -9,-5 -15,-16 -3,-10'
-    spark.append(element('polygon', points=star, fill='#FD9519', transform=f'scale({scale})'))
-    spark.append(element('polygon', points=star, fill='#FCD519', transform=f'scale({scale*.62})'))
-    by_id['Group_11'].append(spark)
+    # Auto follows the tangent; cancel its initial angle to retain the Figma pose.
+    initial_angle = math.degrees(math.atan2(p[1][1]-p[0][1], p[1][0]-p[0][0]))
+    spark = element('g', **{'class':'hero-fuse-spark','style':f'offset-path:path("{d}");offset-rotate:auto {-initial_angle}deg;offset-anchor:0px 0px'})
+    # Retain the actual red/yellow/blue Figma flame, not a generic replacement.
+    # Clip the shared rope/body paths to the red tip silhouette before moving it.
+    flame_clip = element('clipPath', id='flame-clip', clipPathUnits='userSpaceOnUse')
+    silhouette = deepcopy(by_id['Vector_18'])
+    silhouette.attrib.pop('id', None)
+    flame_clip.append(silhouette)
+    defs.append(flame_clip)
+    shrink = element('g', **{'class':'hero-flame-size'})
+    flicker = element('g', **{'class':'hero-flame-flicker'})
+    # Centre the original flame across the rope, independently of the burn root.
+    # Fit only its transverse width; retain the jagged silhouette length.
+    fit = element('g', transform=f'rotate({initial_angle}) scale(1 0.72) rotate({-initial_angle})', **{'class':'hero-flame-fit'})
+    local = element('g', transform=f'translate({-(tx+32*scale)} {-(ty+72*scale)})')
+    original_flame = element('g', **{'clip-path':'url(#flame-clip)'})
+    for name in ['Vector_18', 'Vector_19', 'Vector_20', 'Vector_21']:
+        part = deepcopy(by_id[name])
+        part.attrib.pop('id', None)
+        original_flame.append(part)
+    local.append(original_flame)
+    fit.append(local)
+    flicker.append(fit)
+    shrink.append(flicker)
+    spark.append(shrink)
+    # A small scorched edge and hot core connect the flame to the erased boundary.
+    contact = element('g', transform=f'scale({scale})', **{'class':'hero-burn-contact'})
+    contact.append(element('path', d='M -13 -6 L 13 6', fill='none', stroke='#38251C', **{'stroke-width':4,'stroke-linecap':'round'}))
+    contact.append(element('ellipse', cx=0, cy=0, rx=6, ry=3, fill='#FFF3AD', transform='rotate(25)', **{'class':'hero-hot-core'}))
+    spark.append(contact)
+    # Separate world-up trail: the fuse turns, but heat still rises.
+    trail = element('g', **{'class':'hero-ember-trail','style':f'offset-path:path("{d}");offset-rotate:0deg;offset-anchor:0px 0px'})
+    for i, (dx, dy) in enumerate([(-18,-28),(12,-38),(-28,-46),(24,-54),(3,-32),(-9,-60)]):
+        ember = element('g', transform=f'scale({scale})')
+        ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i%3],
+            **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.073}s;animation-duration:{.27+i*.037}s'}))
+        trail.append(ember)
+    # Paint effects over the fuse, but behind the body and its black outline.
+    fuse_effects = element('g', **{'class':'hero-fuse-effects'})
+    fuse_effects.append(spark)
+    fuse_effects.append(trail)
+    by_id['Group_11'].insert(1, fuse_effects)
     # Local, short-lived flecks follow the final ignition; no canvas particles/timers.
     debris = element('g', transform=f'translate({p[-1][0]} {p[-1][1]}) scale({scale})')
     for i, (dx,dy) in enumerate([(-85,-60),(-35,-110),(45,-95),(100,-30),(70,65),(-70,60)]):
         piece=element('path', d='M -5 -4 L 7 -2 L 2 7 L -7 3 Z', fill=['#FCD519','#FD9519','#41C9F9'][i%3], **{'class':'hero-paint-fleck','style':f'--fleck-x:{dx}px;--fleck-y:{dy}px;--fleck-r:{i*53}deg'})
         debris.append(piece)
-    by_id['Group 366'].append(debris)
+    fuse_effects.append(debris)
     # Namespace every ID because all responsive scenes share one document.
     markup = ET.tostring(svg, encoding='unicode')
     ids=re.findall(r'id="([^"]+)"',markup)
