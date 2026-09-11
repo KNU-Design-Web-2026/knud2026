@@ -60,13 +60,18 @@ try {
           upwardEmbers: [...scene.querySelectorAll('.hero-ember')].every(el => parseFloat(getComputedStyle(el).getPropertyValue('--ember-y')) < 0),
           contact: scene.querySelectorAll('.hero-burn-contact').length,
           fittedFlames: scene.querySelectorAll('.hero-flame-fit').length,
+          initialErase: style('.hero-fuse-tip-erase').opacity,
           lion: style(".hero-lion").transform,
           burst: style(".hero-burst-2").transform,
         };
       }, time);
       assert.equal(state.duration, "5.6s");
       assert.equal(state.flamePaths, 4);
-      if ([0, 335, 337].includes(time)) assert.equal(state.opacity, '1', 'same fitted flame remains visible across ignition');
+      if ([0, 335].includes(time)) {
+        assert.equal(state.initialErase, '0', 'original fuse must remain intact before ignition');
+        assert.equal(state.opacity, '0', 'moving flame must not overlap the original before ignition');
+      }
+      if (time === 337) assert.equal(state.opacity, '1');
       if (time === 2800) assert.equal(state.opacity, '0', 'no flame remains after combustion');
       assert.equal(state.emberRotation, '0deg', 'embers rise independently of fuse rotation');
       assert.ok(state.upwardEmbers, 'all embers travel upward');
