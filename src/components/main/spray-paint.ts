@@ -3,6 +3,7 @@ export const PAINT_LIFETIME = 6_600;
 export const PAINT_HOLD = 5_400;
 export const DRIP_SETTLE_TIME = 240;
 export const DRIP_COOLDOWN = 420;
+export const DRIP_ELIGIBILITY_TIME = 900;
 export const MAX_ACTIVE_DRIPS = 8;
 export const DRIP_MIN_SEPARATION = 56;
 export const TEXTURE_RADIUS_X = 27;
@@ -93,7 +94,7 @@ export function createPaintStamp(point: Point, createdAt: number, direction: num
 }
 
 export function canStartPaintDrip(stamps: PaintStamp[], candidate: PaintStamp, now: number, lastDripAt: number): boolean {
-  if (candidate.drip || now - candidate.createdAt >= 900 || now - lastDripAt < DRIP_COOLDOWN) return false;
+  if (candidate.drip || now - candidate.createdAt >= DRIP_ELIGIBILITY_TIME || now - lastDripAt < DRIP_COOLDOWN) return false;
   const active = stamps.filter((stamp) => stamp.drip !== null && now - stamp.createdAt < PAINT_LIFETIME);
   return active.length < MAX_ACTIVE_DRIPS && active.every((stamp) =>
     Math.hypot(stamp.x - candidate.x, stamp.y - candidate.y) >= DRIP_MIN_SEPARATION);
