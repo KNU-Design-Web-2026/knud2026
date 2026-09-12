@@ -1,0 +1,651 @@
+{
+  "browser": "151.0.7922.34",
+  "results": [
+    {
+      "dpr": 1,
+      "preferImageBitmap": false,
+      "checks": [
+        {
+          "now": 1000,
+          "max": 4.588235294117652,
+          "mean": 0.13459491591778572,
+          "visible": 98284,
+          "cachedGroups": 6,
+          "bakedStamps": 192,
+          "individualStamps": 0,
+          "cacheBytes": 3686400
+        },
+        {
+          "now": 1100,
+          "max": 4.588235294117652,
+          "mean": 0.13459491591778572,
+          "visible": 98284,
+          "cachedGroups": 6,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 3686400
+        },
+        {
+          "now": 1500,
+          "max": 4.588235294117652,
+          "mean": 0.1296831639774236,
+          "visible": 98284,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 3072000
+        },
+        {
+          "now": 2200,
+          "max": 4.588235294117652,
+          "mean": 0.12974260450710787,
+          "visible": 98284,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 3072000
+        },
+        {
+          "now": 5401,
+          "max": 4.588235294117652,
+          "mean": 0.1297857349537309,
+          "visible": 98284,
+          "cachedGroups": 4,
+          "bakedStamps": 0,
+          "individualStamps": 64,
+          "cacheBytes": 2457600
+        },
+        {
+          "now": 5600,
+          "max": 3.8470588235294088,
+          "mean": 0.09665575639979504,
+          "visible": 98284,
+          "cachedGroups": 2,
+          "bakedStamps": 0,
+          "individualStamps": 128,
+          "cacheBytes": 1228800
+        },
+        {
+          "now": 6000,
+          "max": 0,
+          "mean": 0,
+          "visible": 98043,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 192,
+          "cacheBytes": 0
+        },
+        {
+          "now": 6600,
+          "max": 0,
+          "mean": 0,
+          "visible": 93837,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 191,
+          "cacheBytes": 0
+        },
+        {
+          "now": 7100,
+          "max": 0,
+          "mean": 0,
+          "visible": 0,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 0
+        },
+        {
+          "now": 1000,
+          "max": 4.105882352941165,
+          "mean": 0.08464623331972433,
+          "visible": 98284,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 31,
+          "cacheBytes": 3072000
+        }
+      ]
+    },
+    {
+      "dpr": 1.5,
+      "preferImageBitmap": false,
+      "checks": [
+        {
+          "now": 1000,
+          "max": 4.364705882352936,
+          "mean": 0.13520133404452003,
+          "visible": 221011,
+          "cachedGroups": 6,
+          "bakedStamps": 192,
+          "individualStamps": 0,
+          "cacheBytes": 8294400
+        },
+        {
+          "now": 1100,
+          "max": 4.364705882352936,
+          "mean": 0.13520133404452003,
+          "visible": 221011,
+          "cachedGroups": 6,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 8294400
+        },
+        {
+          "now": 1500,
+          "max": 4.364705882352936,
+          "mean": 0.13021851549270586,
+          "visible": 221011,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 6912000
+        },
+        {
+          "now": 2200,
+          "max": 4.364705882352936,
+          "mean": 0.13024483894647026,
+          "visible": 221011,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 6912000
+        },
+        {
+          "now": 5401,
+          "max": 4.364705882352936,
+          "mean": 0.13022939739176181,
+          "visible": 221011,
+          "cachedGroups": 4,
+          "bakedStamps": 0,
+          "individualStamps": 64,
+          "cacheBytes": 5529600
+        },
+        {
+          "now": 5600,
+          "max": 4.28235294117647,
+          "mean": 0.09666286159530649,
+          "visible": 221011,
+          "cachedGroups": 2,
+          "bakedStamps": 0,
+          "individualStamps": 128,
+          "cacheBytes": 2764800
+        },
+        {
+          "now": 6000,
+          "max": 0,
+          "mean": 0,
+          "visible": 220467,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 192,
+          "cacheBytes": 0
+        },
+        {
+          "now": 6600,
+          "max": 0,
+          "mean": 0,
+          "visible": 211337,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 191,
+          "cacheBytes": 0
+        },
+        {
+          "now": 7100,
+          "max": 0,
+          "mean": 0,
+          "visible": 0,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 0
+        },
+        {
+          "now": 1000,
+          "max": 4.39607843137253,
+          "mean": 0.08519789208125127,
+          "visible": 221011,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 31,
+          "cacheBytes": 6912000
+        }
+      ]
+    },
+    {
+      "dpr": 2,
+      "preferImageBitmap": false,
+      "checks": [
+        {
+          "now": 1000,
+          "max": 4.415686274509795,
+          "mean": 0.13538285505192918,
+          "visible": 393006,
+          "cachedGroups": 6,
+          "bakedStamps": 192,
+          "individualStamps": 0,
+          "cacheBytes": 14745600
+        },
+        {
+          "now": 1100,
+          "max": 4.415686274509795,
+          "mean": 0.13538285505192918,
+          "visible": 393006,
+          "cachedGroups": 6,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 14745600
+        },
+        {
+          "now": 1500,
+          "max": 4.313725490196077,
+          "mean": 0.13046943082806442,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 12288000
+        },
+        {
+          "now": 2200,
+          "max": 4.313725490196077,
+          "mean": 0.13047410513702387,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 12288000
+        },
+        {
+          "now": 5401,
+          "max": 4.313725490196077,
+          "mean": 0.13047104779429503,
+          "visible": 393006,
+          "cachedGroups": 4,
+          "bakedStamps": 0,
+          "individualStamps": 64,
+          "cacheBytes": 9830400
+        },
+        {
+          "now": 5600,
+          "max": 3.9254901960784423,
+          "mean": 0.09663038705076682,
+          "visible": 393006,
+          "cachedGroups": 2,
+          "bakedStamps": 0,
+          "individualStamps": 128,
+          "cacheBytes": 4915200
+        },
+        {
+          "now": 6000,
+          "max": 0,
+          "mean": 0,
+          "visible": 392032,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 192,
+          "cacheBytes": 0
+        },
+        {
+          "now": 6600,
+          "max": 0,
+          "mean": 0,
+          "visible": 375632,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 191,
+          "cacheBytes": 0
+        },
+        {
+          "now": 7100,
+          "max": 0,
+          "mean": 0,
+          "visible": 0,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 0
+        },
+        {
+          "now": 1000,
+          "max": 4.537254901960779,
+          "mean": 0.08525619447004855,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 31,
+          "cacheBytes": 12288000
+        }
+      ]
+    },
+    {
+      "dpr": 1,
+      "preferImageBitmap": true,
+      "checks": [
+        {
+          "now": 1000,
+          "max": 4.588235294117652,
+          "mean": 0.13459491591778572,
+          "visible": 98284,
+          "cachedGroups": 6,
+          "bakedStamps": 192,
+          "individualStamps": 0,
+          "cacheBytes": 3686400
+        },
+        {
+          "now": 1100,
+          "max": 4.588235294117652,
+          "mean": 0.13459491591778572,
+          "visible": 98284,
+          "cachedGroups": 6,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 3686400
+        },
+        {
+          "now": 1500,
+          "max": 4.588235294117652,
+          "mean": 0.1296831639774236,
+          "visible": 98284,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 3072000
+        },
+        {
+          "now": 2200,
+          "max": 4.588235294117652,
+          "mean": 0.12974260450710787,
+          "visible": 98284,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 3072000
+        },
+        {
+          "now": 5401,
+          "max": 4.588235294117652,
+          "mean": 0.1297857349537309,
+          "visible": 98284,
+          "cachedGroups": 4,
+          "bakedStamps": 0,
+          "individualStamps": 64,
+          "cacheBytes": 2457600
+        },
+        {
+          "now": 5600,
+          "max": 3.8470588235294088,
+          "mean": 0.09665575639979504,
+          "visible": 98284,
+          "cachedGroups": 2,
+          "bakedStamps": 0,
+          "individualStamps": 128,
+          "cacheBytes": 1228800
+        },
+        {
+          "now": 6000,
+          "max": 0,
+          "mean": 0,
+          "visible": 98043,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 192,
+          "cacheBytes": 0
+        },
+        {
+          "now": 6600,
+          "max": 0,
+          "mean": 0,
+          "visible": 93837,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 191,
+          "cacheBytes": 0
+        },
+        {
+          "now": 7100,
+          "max": 0,
+          "mean": 0,
+          "visible": 0,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 0
+        },
+        {
+          "now": 1000,
+          "max": 4.105882352941165,
+          "mean": 0.08464623331972433,
+          "visible": 98284,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 31,
+          "cacheBytes": 3072000
+        }
+      ]
+    },
+    {
+      "dpr": 1.5,
+      "preferImageBitmap": true,
+      "checks": [
+        {
+          "now": 1000,
+          "max": 4.364705882352936,
+          "mean": 0.13520133404452003,
+          "visible": 221011,
+          "cachedGroups": 6,
+          "bakedStamps": 192,
+          "individualStamps": 0,
+          "cacheBytes": 8294400
+        },
+        {
+          "now": 1100,
+          "max": 4.364705882352936,
+          "mean": 0.13520133404452003,
+          "visible": 221011,
+          "cachedGroups": 6,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 8294400
+        },
+        {
+          "now": 1500,
+          "max": 4.364705882352936,
+          "mean": 0.13021851549270586,
+          "visible": 221011,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 6912000
+        },
+        {
+          "now": 2200,
+          "max": 4.364705882352936,
+          "mean": 0.13024483894647026,
+          "visible": 221011,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 6912000
+        },
+        {
+          "now": 5401,
+          "max": 4.364705882352936,
+          "mean": 0.13022939739176181,
+          "visible": 221011,
+          "cachedGroups": 4,
+          "bakedStamps": 0,
+          "individualStamps": 64,
+          "cacheBytes": 5529600
+        },
+        {
+          "now": 5600,
+          "max": 4.28235294117647,
+          "mean": 0.09666286159530649,
+          "visible": 221011,
+          "cachedGroups": 2,
+          "bakedStamps": 0,
+          "individualStamps": 128,
+          "cacheBytes": 2764800
+        },
+        {
+          "now": 6000,
+          "max": 0,
+          "mean": 0,
+          "visible": 220467,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 192,
+          "cacheBytes": 0
+        },
+        {
+          "now": 6600,
+          "max": 0,
+          "mean": 0,
+          "visible": 211337,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 191,
+          "cacheBytes": 0
+        },
+        {
+          "now": 7100,
+          "max": 0,
+          "mean": 0,
+          "visible": 0,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 0
+        },
+        {
+          "now": 1000,
+          "max": 4.39607843137253,
+          "mean": 0.08519789208125127,
+          "visible": 221011,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 31,
+          "cacheBytes": 6912000
+        }
+      ]
+    },
+    {
+      "dpr": 2,
+      "preferImageBitmap": true,
+      "checks": [
+        {
+          "now": 1000,
+          "max": 4.415686274509795,
+          "mean": 0.13538285505192918,
+          "visible": 393006,
+          "cachedGroups": 6,
+          "bakedStamps": 192,
+          "individualStamps": 0,
+          "cacheBytes": 14745600
+        },
+        {
+          "now": 1100,
+          "max": 4.415686274509795,
+          "mean": 0.13538285505192918,
+          "visible": 393006,
+          "cachedGroups": 6,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 14745600
+        },
+        {
+          "now": 1500,
+          "max": 4.313725490196077,
+          "mean": 0.13046943082806442,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 12288000
+        },
+        {
+          "now": 2200,
+          "max": 4.313725490196077,
+          "mean": 0.13047410513702387,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 0,
+          "individualStamps": 32,
+          "cacheBytes": 12288000
+        },
+        {
+          "now": 5401,
+          "max": 4.313725490196077,
+          "mean": 0.13047104779429503,
+          "visible": 393006,
+          "cachedGroups": 4,
+          "bakedStamps": 0,
+          "individualStamps": 64,
+          "cacheBytes": 9830400
+        },
+        {
+          "now": 5600,
+          "max": 3.9254901960784423,
+          "mean": 0.09663038705076682,
+          "visible": 393006,
+          "cachedGroups": 2,
+          "bakedStamps": 0,
+          "individualStamps": 128,
+          "cacheBytes": 4915200
+        },
+        {
+          "now": 6000,
+          "max": 0,
+          "mean": 0,
+          "visible": 392032,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 192,
+          "cacheBytes": 0
+        },
+        {
+          "now": 6600,
+          "max": 0,
+          "mean": 0,
+          "visible": 375632,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 191,
+          "cacheBytes": 0
+        },
+        {
+          "now": 7100,
+          "max": 0,
+          "mean": 0,
+          "visible": 0,
+          "cachedGroups": 0,
+          "bakedStamps": 0,
+          "individualStamps": 0,
+          "cacheBytes": 0
+        },
+        {
+          "now": 1000,
+          "max": 4.537254901960779,
+          "mean": 0.08525619447004855,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 31,
+          "cacheBytes": 12288000
+        },
+        {
+          "now": 1100,
+          "max": 4.313725490196077,
+          "mean": 0.13045751634004707,
+          "visible": 393006,
+          "cachedGroups": 5,
+          "bakedStamps": 160,
+          "individualStamps": 32,
+          "cacheBytes": 12288000
+        }
+      ]
+    }
+  ]
+}
