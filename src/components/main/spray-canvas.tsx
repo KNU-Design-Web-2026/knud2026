@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react";
 
 import {
   canStartPaintDrip, createPaintDensity, createPaintDrip, createPaintStamp, DRIP_SETTLE_TIME,
-  findScheduledDrip, getDripProgress, getPaintOpacity, PAINT_LIFETIME,
-  TEXTURE_HALF_SIZE, TEXTURE_RADIUS_X, TEXTURE_RADIUS_Y,
+  findScheduledDrip, PAINT_LIFETIME,
 } from "./spray-paint";
 import type { PaintStamp, Point } from "./spray-paint";
 import { createSprayTextureCache } from "./spray-texture";
+import { createSprayRenderer } from "./spray-renderer";
 
 const STAMP_SPACING = 12;
 const MAX_DEVICE_PIXEL_RATIO = 2;
@@ -29,6 +29,7 @@ export function SprayCanvas() {
     const context = canvas.getContext("2d");
     if (!context) return;
     const textureCache = createSprayTextureCache();
+    const renderer = createSprayRenderer(context, textureCache);
 
     let stamps: PaintStamp[] = [];
     let lastPoint: Point | null = null;
@@ -43,14 +44,16 @@ export function SprayCanvas() {
     let nextDensity = createPaintDensity();
     let width = 0;
     let height = 0;
+    let dpr = 1;
     const enabled = () => finePointer.matches && !reducedMotion.matches;
 
     const resizeCanvas = () => {
       ({ height, width } = hero.getBoundingClientRect());
-      const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
+      dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      renderer.clear();
       // Existing marks use coordinates from the old artwork dimensions.
       stamps = [];
       lastPoint = null;
@@ -58,7 +61,6 @@ export function SprayCanvas() {
     };
 
     const render = (now: number) => {
-      context.clearRect(0, 0, width, height);
       stamps = stamps.filter((stamp) => now - stamp.createdAt < PAINT_LIFETIME);
 
       const wetStamp = stamps.at(-1);
@@ -76,38 +78,7 @@ export function SprayCanvas() {
         lastDripAt = now;
       }
 
-      for (const stamp of stamps) {
-        const fade = getPaintOpacity(stamp.createdAt, now);
-        context.fillStyle = stamp.color;
-        context.save();
-        context.translate(stamp.x, stamp.y);
-        context.rotate(stamp.direction);
-        context.scale(stamp.bodyWidth / TEXTURE_RADIUS_X, stamp.bodyHeight / TEXTURE_RADIUS_Y);
-        context.globalAlpha = fade * stamp.density;
-        context.drawImage(textureCache.get(stamp), -TEXTURE_HALF_SIZE, -TEXTURE_HALF_SIZE,
-          TEXTURE_HALF_SIZE * 2, TEXTURE_HALF_SIZE * 2);
-        context.restore();
-
-        if (stamp.drip) {
-          const drip = stamp.drip;
-          const progress = getDripProgress(drip, now);
-          if (progress <= 0) continue;
-          const endX = drip.origin.x + drip.bend * progress;
-          const endY = drip.origin.y + drip.length * progress;
-          context.globalAlpha = 0.9 * fade * stamp.density;
-          context.strokeStyle = stamp.color;
-          context.lineWidth = drip.width;
-          context.lineCap = "round";
-          context.beginPath();
-          context.moveTo(drip.origin.x, drip.origin.y);
-          context.quadraticCurveTo(drip.origin.x, drip.origin.y + drip.length * progress * 0.5, endX, endY);
-          context.stroke();
-          context.beginPath();
-          context.ellipse(endX, endY, drip.width * 0.7, drip.width * 0.95, 0, 0, Math.PI * 2);
-          context.fill();
-        }
-      }
-      context.globalAlpha = 1;
+      renderer.render(stamps, now, width, height, dpr);
       frame = pointerId !== null || stamps.length > 0 ? window.requestAnimationFrame(render) : null;
     };
 
@@ -183,6 +154,7 @@ export function SprayCanvas() {
     const reset = () => {
       stop();
       stamps = [];
+      renderer.clear();
       if (frame !== null) window.cancelAnimationFrame(frame);
       frame = null;
       context.clearRect(0, 0, width, height);
