@@ -71,13 +71,21 @@ try {
         assert(max <= 6 && mean <= 0.25, `Visual regression DPR${dpr} time${now}: max=${max} mean=${mean}`);
         return stats;
       };
-      compare(1000);
+      const initial = compare(1000);
+      assert(initial.dirtyTiles > 0 && initial.incrementalStamps === 0,
+        "First render must clear unknown destination pixels before drawing");
       const reused = compare(1100);
       assert(reused.cachedGroups === 6 && reused.bakedStamps === 0 && reused.individualStamps === 0, "Unchanged frame must reuse six groups without rebaking 192 stamps");
+      assert(reused.dirtyTiles === 0 && reused.clearedPixels === 0 && reused.drawnGroups === 0,
+        "Unchanged pixels must not be cleared or composited again");
       assert(reused.cacheBytes <= 16 * 1024 * 1024, "Cache exceeds pixel budget");
       stamps[40].drip = createPaintDrip(stamps[40], 1100, random);
       const dynamic = compare(1500);
       assert(dynamic.cachedGroups === 5 && dynamic.individualStamps === 32, "New drip must invalidate only its group");
+      assert(dynamic.dirtyTiles > 0 && dynamic.clearedPixels < a.width * a.height,
+        "A changing drip must invalidate only intersecting tiles, not the full canvas");
+      assert(dynamic.redrawnStamps <= dynamic.individualStamps,
+        "Individual fallback must not redraw stamps outside dirty tiles");
       compare(2200);
       compare(5401); compare(5600); compare(6000); compare(6600, stamps.filter(s => 6600 - s.createdAt < 6600));
       const expired = compare(7100, []);
@@ -122,6 +130,21 @@ try {
       const reDpr = renderer.render(stamps, 1000, 240, 320, dpr / 2);
       assert(reDpr.bakedStamps > 0, "DPR-only change must invalidate old surfaces");
       renderer.clear();
+      // Appending a new topmost stamp must not clear and replay already-correct pixels.
+      const incrementalCanvas = make(), incrementalContext = incrementalCanvas.getContext("2d");
+      const incremental = createSprayRenderer(incrementalContext, textures, { maxCacheBytes: 0 });
+      incremental.render([stamps[0]], 1000, 480, 320, dpr);
+      const appended = incremental.render([stamps[0], stamps[1]], 1100, 480, 320, dpr);
+      assert(appended.dirtyTiles === 0 && appended.clearedPixels === 0 && appended.incrementalStamps === 1 && appended.redrawnStamps === 1,
+        "A new topmost stamp must draw once without clearing or replaying the first stamp");
+      const incrementalReference = make(), incrementalReferenceContext = incrementalReference.getContext("2d");
+      incrementalReferenceContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+      drawReference(incrementalReferenceContext, [stamps[0], stamps[1]], 1100, textures);
+      const incrementalPixels = incrementalContext.getImageData(0, 0, incrementalCanvas.width, incrementalCanvas.height).data;
+      const referencePixels = incrementalReferenceContext.getImageData(0, 0, incrementalReference.width, incrementalReference.height).data;
+      assert(incrementalPixels.every((value, index) => value === referencePixels[index]),
+        "Incremental append must exactly match the original draw order");
+      incremental.clear();
       results.push({ dpr, preferImageBitmap, checks });
       if (dpr === 2 && preferImageBitmap) { a.width = b.width = 480 * dpr; compare(1100, stamps); document.body.append(a, b); }
       renderer.clear(); textures.dispose();
