@@ -28,7 +28,7 @@ export function SprayCanvas() {
     if (!hero || !sprayZone || !canvas) return;
     const context = canvas.getContext("2d");
     if (!context) return;
-    const getTexture = createSprayTextureCache();
+    const textureCache = createSprayTextureCache();
 
     let stamps: PaintStamp[] = [];
     let lastPoint: Point | null = null;
@@ -84,7 +84,7 @@ export function SprayCanvas() {
         context.rotate(stamp.direction);
         context.scale(stamp.bodyWidth / TEXTURE_RADIUS_X, stamp.bodyHeight / TEXTURE_RADIUS_Y);
         context.globalAlpha = fade * stamp.density;
-        context.drawImage(getTexture(stamp), -TEXTURE_HALF_SIZE, -TEXTURE_HALF_SIZE,
+        context.drawImage(textureCache.get(stamp), -TEXTURE_HALF_SIZE, -TEXTURE_HALF_SIZE,
           TEXTURE_HALF_SIZE * 2, TEXTURE_HALF_SIZE * 2);
         context.restore();
 
@@ -203,6 +203,7 @@ export function SprayCanvas() {
     document.addEventListener("visibilitychange", handleVisibility);
     return () => {
       reset();
+      textureCache.dispose();
       resizeObserver.disconnect();
       sprayZone.removeEventListener("pointerdown", handlePointerDown);
       sprayZone.removeEventListener("pointermove", handlePointerMove);
