@@ -3,10 +3,19 @@
 import { useEffect, useRef } from "react";
 
 import {
-  canStartPaintDrip, createPaintDensity, createPaintDrip, createPaintStamp, DRIP_SETTLE_TIME,
-  findScheduledDrip, PAINT_LIFETIME,
+  canStartPaintDrip,
+  createPaintDensity,
+  createPaintDrip,
+  createPaintStamp,
+  DRIP_COOLDOWN,
+  DRIP_ELIGIBILITY_TIME,
+  DRIP_SETTLE_TIME,
+  findScheduledDrip,
+  PAINT_HOLD,
+  PAINT_LIFETIME,
 } from "./spray-paint";
 import type { PaintStamp, Point } from "./spray-paint";
+import { getSprayRenderPlan } from "./spray-render-schedule";
 import { createSprayTextureCache } from "./spray-texture";
 import { createSprayRenderer } from "./spray-renderer";
 
@@ -36,6 +45,7 @@ export function SprayCanvas() {
     let latestInput: (Point & { at: number }) | null = null;
     let pointerId: number | null = null;
     let frame: number | null = null;
+    let wakeTimer: number | null = null;
     let colorIndex = -1;
     let activeColor = SPRAY_COLORS[0];
     let settledSince = 0;
@@ -47,7 +57,25 @@ export function SprayCanvas() {
     let dpr = 1;
     const enabled = () => finePointer.matches && !reducedMotion.matches;
 
+    const cancelWake = () => {
+      if (wakeTimer === null) return;
+      window.clearTimeout(wakeTimer);
+      wakeTimer = null;
+    };
+    const requestRender = () => {
+      cancelWake();
+      if (frame === null) frame = window.requestAnimationFrame(render);
+    };
+    const scheduleWake = (at: number) => {
+      cancelWake();
+      wakeTimer = window.setTimeout(() => {
+        wakeTimer = null;
+        requestRender();
+      }, Math.max(1, Math.ceil(at - performance.now())));
+    };
+
     const resizeCanvas = () => {
+      cancelWake();
       ({ height, width } = hero.getBoundingClientRect());
       dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
       canvas.width = Math.round(width * dpr);
@@ -60,7 +88,8 @@ export function SprayCanvas() {
       latestInput = null;
     };
 
-    const render = (now: number) => {
+    function render(now: number) {
+      frame = null;
       stamps = stamps.filter((stamp) => now - stamp.createdAt < PAINT_LIFETIME);
 
       const wetStamp = stamps.at(-1);
@@ -79,8 +108,28 @@ export function SprayCanvas() {
       }
 
       renderer.render(stamps, now, width, height, dpr);
-      frame = pointerId !== null || stamps.length > 0 ? window.requestAnimationFrame(render) : null;
-    };
+      const wakeTimes: number[] = [];
+      const wetStampIsNearPointer = pointerId !== null && latestInput && wetStamp &&
+        now - wetStamp.createdAt < DRIP_ELIGIBILITY_TIME &&
+        Math.hypot(latestInput.x - wetStamp.x, latestInput.y - wetStamp.y) < wetStamp.bodyHeight;
+      if (wetStampIsNearPointer) {
+        const settleAt = settledSince + DRIP_SETTLE_TIME;
+        if (settleAt > now && settleAt < wetStamp.createdAt + DRIP_ELIGIBILITY_TIME) wakeTimes.push(settleAt);
+        else if (!wetStamp.drip && lastDripAt + DRIP_COOLDOWN > now) wakeTimes.push(lastDripAt + DRIP_COOLDOWN);
+      }
+      const scheduledDripWaitingForCooldown = stamps.some((stamp) => !stamp.drip && stamp.dripAt !== null &&
+        stamp.dripAt <= now && now - stamp.createdAt < DRIP_ELIGIBILITY_TIME);
+      if (scheduledDripWaitingForCooldown && lastDripAt + DRIP_COOLDOWN > now) {
+        wakeTimes.push(lastDripAt + DRIP_COOLDOWN);
+      }
+      const plan = getSprayRenderPlan(stamps, now, {
+        dripEligibilityTime: DRIP_ELIGIBILITY_TIME,
+        paintHold: PAINT_HOLD,
+        paintLifetime: PAINT_LIFETIME,
+      }, wakeTimes);
+      if (plan.animate) frame = window.requestAnimationFrame(render);
+      else if (plan.wakeAt !== null) scheduleWake(plan.wakeAt);
+    }
 
     const addStamp = (point: Point, direction: number | null) => {
       const stamp = createPaintStamp(point, performance.now(), direction, activeColor);
@@ -93,7 +142,7 @@ export function SprayCanvas() {
         }
       }
       stamps.push(stamp);
-      if (frame === null) frame = window.requestAnimationFrame(render);
+      requestRender();
     };
 
     const pointFromEvent = (event: PointerEvent): Point => {
@@ -123,6 +172,7 @@ export function SprayCanvas() {
       lastPoint = null;
       latestInput = null;
       if (capturedId !== null && sprayZone.hasPointerCapture(capturedId)) sprayZone.releasePointerCapture(capturedId);
+      requestRender();
     };
     const handlePointerDown = (event: PointerEvent) => {
       if (!enabled() || event.button !== 0 || pointerId !== null) return;
@@ -157,6 +207,7 @@ export function SprayCanvas() {
       renderer.clear();
       if (frame !== null) window.cancelAnimationFrame(frame);
       frame = null;
+      cancelWake();
       context.clearRect(0, 0, width, height);
     };
     const handleVisibility = () => { if (document.hidden) reset(); };

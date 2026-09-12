@@ -32,6 +32,7 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-09-12 변화 기반 렌더 스케줄러 후보](./interaction-specs/2026-09-12-dirty-render-scheduler-candidate.md)
 - [2026-09-12 정적인 자국 묶음 캐시 후보](./interaction-specs/2026-09-12-stamp-cache-candidate.md)
 - [2026-09-11 미세 스프레이와 페인트 흐름](./interaction-specs/2026-09-11-spray-paint.md)
 - [2026-09-10 메인 도화선 모션](./interaction-specs/2026-09-10-hero-fuse.md)
