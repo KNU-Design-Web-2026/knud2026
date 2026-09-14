@@ -7,7 +7,9 @@
 [실제 서비스](https://www.2026-knud-graduation.com/) · [디자인·QA 기록](docs/design/README.md) · [아키텍처 결정](docs/architecture/adr/) · [구현 PR](https://github.com/KNU-Design-Web-2026/knud2026/pulls?q=is%3Apr+is%3Amerged)
 
 <p align="center">
-  <img src="docs/design/qa/assets/hero-spray/desktop-ignition.png" width="900" alt="KNUD 메인 화면의 사자와 도화선 인터랙션 QA 캡처" />
+  <img width="800" height="521" alt="화면 기록 2026-09-14 오후 4 18 29" src="https://github.com/user-attachments/assets/5e60c734-3ef1-4f93-b43f-14615b9d7961" />
+
+
 </p>
 
 > 이미지들은 저장소에 남긴 실제 구현·QA 기록입니다. 촬영 이후 변경된 디자인은 현재 서비스와 다를 수 있습니다.
