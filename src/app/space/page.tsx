@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SpacePage } from "@/components/space/space-page";
 
 export const metadata: Metadata = {
-  title: "SPACE | KNUD 2026 Graduation Exhibition",
+  title: "전시 공간",
   description: "경북대학교 SPACE 9 전시 배치도와 IGNITE 아카이브",
 };
 

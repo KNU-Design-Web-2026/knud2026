@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ProfileCard } from "@/components/profile/profile-card";
 import { PROFILE_MEMBERS } from "@/data/profile-members";
+
+export const metadata: Metadata = {
+  title: "참여 작가",
+  description: "2026 경북대학교 디자인학과 졸업 전시회 참여 작가를 소개합니다.",
+};
 
 export default function ProfilePage() {
   return (
