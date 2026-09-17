@@ -39,7 +39,7 @@
 | Work | 작품 목록 탐색과 개별 작품 상세 확인 | `/work`, `/work/[id]` |
 | Profile | 작가 목록과 개별 작가 정보 확인 | `/profile`, `/profile/[id]` |
 | Space | 전시 지도와 작품 배치 확인 | `/space` |
-| Message | 응원 메시지 목록 확인과 작성 UI 사용 | `/message` |
+| Message | 저장된 응원 메시지 조회·작성 | `/message`, `/api/letters` |
 
 ### 메인 인터랙션
 
@@ -82,7 +82,8 @@ src/
 │   ├── main/             메인 모션과 스프레이 렌더링
 │   ├── layout/           헤더·푸터·커서·QA 경로 브리지
 │   └── about|work|profile|space|message/  화면별 UI
-├── data/                 작품·작가·메시지 초기 데이터
+├── data/                 작품·작가 정적 데이터와 화면용 fixture
+├── features/             롤링페이퍼 검증·서비스·DB 접근
 ├── lib/                  입력 검증과 QA 메시지 계약
 └── styles/               공통 스타일과 토큰
 docs/                     설계 결정, 인터랙션 명세, QA 기록
@@ -156,6 +157,20 @@ NEXT_PUBLIC_QA_HUB_ORIGIN=https://your-qa-hub.example.com
 
 값은 허용할 Hub의 정확한 origin입니다. `NEXT_PUBLIC_` 값은 브라우저에 노출되므로 비밀값을 넣지 않습니다.
 
+### MESSAGE 저장소 연결
+
+`/message`는 브라우저의 임시 상태가 아니라 Supabase PostgreSQL의 공개 편지를 조회합니다. 먼저 Supabase SQL Editor에서 [`20260915000100_create_public_letters.sql`](supabase/migrations/20260915000100_create_public_letters.sql)을 적용한 뒤 다음 서버 전용 값을 `.env.local`과 배포 환경에 설정하세요.
+
+```dotenv
+KNUD_MESSAGES_SUPABASE_URL=https://your-project.supabase.co
+KNUD_MESSAGES_SUPABASE_SERVICE_ROLE_KEY=server-only-service-role-key
+KNUD_MESSAGES_RATE_LIMIT_SECRET=long-random-server-secret
+```
+
+Service Role Key와 요청 제한용 비밀값에는 `NEXT_PUBLIC_` 접두사를 붙이지 않습니다. 브라우저는 Supabase를 직접 호출하지 않고 `/api/letters`만 사용합니다. 작성 데이터는 서버에서 다시 검증하며 같은 요청 식별자의 성공 전송은 10분 동안 5건으로 제한합니다.
+
+DB가 연결되지 않았거나 저장에 실패하면 작성 성공처럼 카드를 추가하지 않습니다. 저장 성공 응답을 받은 메시지만 목록 맨 앞에 즉시 표시됩니다. 저장 구조와 보안 경계는 [ADR-0005](docs/architecture/adr/0005-use-supabase-for-public-letters.md)에 기록했습니다.
+
 ### 검사와 프로덕션 빌드
 
 ```bash
@@ -171,7 +186,13 @@ pnpm start
 node --test src/components/main/spray-render-schedule.test.mjs
 ```
 
-현재 `pnpm test` 스크립트는 없습니다. 각 테스트의 실행 환경과 별도 브라우저 QA 의존성을 확인한 뒤 실행하세요.
+롤링페이퍼 API 계약과 입력 검증은 다음 명령으로 확인합니다.
+
+```bash
+pnpm test:rolling-paper
+```
+
+그 밖의 `*.test.mjs`와 브라우저 QA 스크립트는 각 실행 환경과 별도 의존성을 확인한 뒤 실행하세요.
 
 ## 문서와 참여
 

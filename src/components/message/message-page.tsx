@@ -3,16 +3,27 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { messages as initialMessages, type Message } from "@/data/messages";
+import {
+  DEFAULT_RECIPIENT,
+  LETTER_SENDER_MAX_LENGTH,
+  RECIPIENT_OPTIONS,
+  type Letter,
+  type Recipient,
+} from "@/features/rolling-paper/model";
 import {
   getMessageUsage,
   MESSAGE_MAX_LENGTH,
   normalizeMessageBody,
 } from "@/lib/message-input";
 
-function MessageCard({ message }: { message: Message }) {
+function MessageCard({ message }: { message: Letter }) {
   return (
-    <article className="message-card" data-message-reveal data-message-visible="false" data-node-id="1742:88482">
+    <article
+      className="message-card"
+      data-message-reveal
+      data-message-visible="false"
+      data-node-id="1742:88482"
+    >
       <div className="message-card__content">
         <div className="message-card__copy">
           <p className="message-card__to">
@@ -26,34 +37,71 @@ function MessageCard({ message }: { message: Message }) {
   );
 }
 
-const recipientOptions = [
-  "전체(모두)", "공예원", "김가연", "김민주", "김서은", "김세직", "김연수",
-  "김은별", "김지언", "박규리", "박수정", "양혜연", "윤이지", "이나경",
-  "이다혜", "이서윤", "이초원", "이하늘", "임경민", "조장원", "현연이",
-];
-
-const DEFAULT_RECIPIENT = "전체(모두)";
-
 export function MessagePage() {
   const pageRef = useRef<HTMLElement>(null);
-  const [messageList, setMessageList] = useState(initialMessages);
-  const [to, setTo] = useState("전체(모두)");
+  const [messageList, setMessageList] = useState<Letter[]>([]);
+  const [to, setTo] = useState<Recipient>(DEFAULT_RECIPIENT);
   const [from, setFrom] = useState("");
   const [body, setBody] = useState("");
   const [isRecipientOpen, setIsRecipientOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [listError, setListError] = useState("");
   const [formError, setFormError] = useState("");
+  const [submissionError, setSubmissionError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadMessages() {
+      try {
+        const response = await fetch("/api/letters", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        const payload = (await response.json()) as { letters?: Letter[]; error?: string };
+        if (!response.ok || !payload.letters) {
+          throw new Error(payload.error || "메시지를 불러오지 못했습니다.");
+        }
+
+        setMessageList((current) => {
+          const lettersById = new Map(
+            [...current, ...payload.letters!].map((letter) => [letter.id, letter]),
+          );
+          return Array.from(lettersById.values()).sort(
+            (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
+          );
+        });
+        setListError("");
+      } catch (error) {
+        if (!controller.signal.aborted) {
+          setListError(error instanceof Error ? error.message : "메시지를 불러오지 못했습니다.");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    void loadMessages();
+    return () => controller.abort();
+  }, []);
+
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsConfirmOpen(false);
+        if (!isSubmitting) {
+          setIsConfirmOpen(false);
+        }
       }
     };
     document.addEventListener("keydown", closeOnEscape);
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, []);
+  }, [isSubmitting]);
 
   useEffect(() => {
     const page = pageRef.current;
@@ -102,18 +150,38 @@ export function MessagePage() {
     }
 
     setFormError("");
+    setSubmissionError("");
     setIsConfirmOpen(true);
   };
 
-  const handleConfirm = () => {
-    setMessageList((current) => [
-      { id: Date.now(), to: to.trim(), from: from.trim(), body: body.trim() },
-      ...current,
-    ]);
-    setTo("전체(모두)");
-    setFrom("");
-    setBody("");
-    setIsConfirmOpen(false);
+  const handleConfirm = async () => {
+    setIsSubmitting(true);
+    setSubmissionError("");
+
+    try {
+      const response = await fetch("/api/letters", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ to, from: from.trim(), body: body.trim() }),
+      });
+      const payload = (await response.json()) as { letter?: Letter; error?: string };
+      if (!response.ok || !payload.letter) {
+        throw new Error(payload.error || "메시지를 전하지 못했습니다.");
+      }
+
+      setMessageList((current) => [
+        ...current.filter((message) => message.id !== payload.letter!.id),
+        payload.letter!,
+      ]);
+      setTo(DEFAULT_RECIPIENT);
+      setFrom("");
+      setBody("");
+      setIsConfirmOpen(false);
+    } catch (error) {
+      setSubmissionError(error instanceof Error ? error.message : "메시지를 전하지 못했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -161,7 +229,7 @@ export function MessagePage() {
               </button>
               {isRecipientOpen && (
                 <ul aria-label="받는 사람 선택" className="message-form__recipient-menu" role="listbox">
-                  {recipientOptions.map((recipient) => (
+                  {RECIPIENT_OPTIONS.map((recipient) => (
                     <li key={recipient} aria-selected={to === recipient} role="option">
                       <button
                         type="button"
@@ -180,7 +248,7 @@ export function MessagePage() {
             </div>
             <label className="message-form__field message-form__field--from">
               <span>From.</span>
-              <input aria-label="보내는 사람" aria-describedby={formError ? "message-form-error" : undefined} placeholder="보낸이" value={from} onChange={(event) => {
+              <input aria-label="보내는 사람" aria-describedby={formError ? "message-form-error" : undefined} maxLength={LETTER_SENDER_MAX_LENGTH} placeholder="보낸이" value={from} onChange={(event) => {
                 setFrom(event.target.value);
                 setFormError("");
               }} />
@@ -202,7 +270,12 @@ export function MessagePage() {
         </form>
       </div>
       <PageContainer className="message-list-container">
-        <div className="message-list" aria-label="방명록 메시지 목록">
+        <div className="message-list-status" aria-live="polite">
+          {isLoading && "메시지를 불러오는 중입니다."}
+          {!isLoading && listError && listError}
+          {!isLoading && !listError && messageList.length === 0 && "아직 도착한 메시지가 없습니다. 첫 마음을 남겨주세요."}
+        </div>
+        <div className="message-list" aria-busy={isLoading} aria-label="방명록 메시지 목록">
           {messageList.map((message) => <MessageCard key={message.id} message={message} />)}
         </div>
       </PageContainer>
@@ -213,10 +286,11 @@ export function MessagePage() {
             <div className="message-confirm-modal__copy">
               <h2 id="message-confirm-title">따뜻한 마음, 이대로 전할까요?</h2>
               <p>받는 사람을 다시 한 번 확인해주세요.</p>
+              {submissionError && <p className="message-confirm-modal__error" role="alert">{submissionError}</p>}
             </div>
             <div className="message-confirm-modal__actions">
-              <button className="message-confirm-modal__edit" type="button" onClick={() => setIsConfirmOpen(false)}>수정하기</button>
-              <button className="message-confirm-modal__submit" type="button" onClick={handleConfirm}>메세지 전하기</button>
+              <button className="message-confirm-modal__edit" disabled={isSubmitting} type="button" onClick={() => setIsConfirmOpen(false)}>수정하기</button>
+              <button className="message-confirm-modal__submit" disabled={isSubmitting} type="button" onClick={handleConfirm}>{isSubmitting ? "전하는 중" : "메시지 전하기"}</button>
             </div>
           </div>
         </div>

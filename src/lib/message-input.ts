@@ -1,4 +1,4 @@
-export const MESSAGE_MAX_LENGTH = 130;
+export const MESSAGE_MAX_LENGTH = 150;
 export const MESSAGE_LINE_BREAK_WEIGHT = 20;
 
 export function getMessageUsage(value: string) {

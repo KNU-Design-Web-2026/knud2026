@@ -2064,6 +2064,21 @@
   padding-inline: 150px !important;
 }
 
+.message-list-status {
+  width: min(1620px, 100%);
+  min-height: 1.5em;
+  margin: 0 auto 24px;
+  color: #4f4f4f;
+  font-size: clamp(0.875rem, 1.042vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.message-list-status:empty {
+  display: none;
+}
+
 /* Translated post-its may extend past their grid track; the opaque footer must stay above them. */
 .message-page .site-footer {
   position: relative;
@@ -2086,11 +2101,6 @@
   overflow: hidden;
   background: #f3f3f3;
   padding: 30.573px 40.267px;
-}
-
-/* The 1350px three-column frame staggers its center column; Web stays aligned. */
-.message-card:nth-child(3n + 2) {
-  transform: none;
 }
 
 .message-card__content {
@@ -2230,9 +2240,6 @@
     -webkit-line-clamp: 10;
     line-clamp: 10;
   }
-  .message-card:nth-child(3n + 2) {
-    transform: translateY(50.916px);
-  }
 }
 
 /* Figma frame 1742:92591 — 1020px */
@@ -2307,9 +2314,6 @@
     width: min(816.194px, 100%);
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 50.916px;
-  }
-  .message-card:nth-child(3n + 2) {
-    transform: none;
   }
   .message-card__body {
     font-size: 14px;
@@ -2659,6 +2663,11 @@
   line-height: 1.3;
 }
 
+.message-confirm-modal__copy .message-confirm-modal__error {
+  color: #d82121;
+  font-weight: 700;
+}
+
 .message-confirm-modal__actions {
   display: flex;
   justify-content: center;
@@ -2673,6 +2682,11 @@
   cursor: pointer;
   font-size: 20px;
   line-height: 1.3;
+}
+
+.message-confirm-modal__actions button:disabled {
+  cursor: wait;
+  opacity: 0.58;
 }
 
 .message-confirm-modal__edit {
@@ -2921,11 +2935,6 @@
     padding: clamp(2rem, 2.135vw, 2.5625rem) clamp(2.5rem, 2.8125vw, 3.375rem);
   }
 
-  .message-card:nth-child(3n + 2) {
-    /* Keep the center post-it visibly lower than the left and right columns. */
-    transform: translateY(calc(var(--message-card-gap) * 3.3));
-  }
-
   .message-card__copy {
     gap: clamp(1rem, 1.302vw, 1.5625rem);
   }
@@ -2948,10 +2957,6 @@
 
   .message-card {
     padding: 30.573px 40.267px;
-  }
-
-  .message-card:nth-child(3n + 2) {
-    transform: none;
   }
 
   .message-card__copy {
@@ -2978,10 +2983,6 @@
   .message-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .message-card:nth-child(3n + 2) {
-    transform: none;
-  }
-
   .message-form__field {
     font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   }
@@ -3248,60 +3249,13 @@
 
 }
 
-/* Alternate post-it columns vertically, matching the message-wall composition. */
-.message-list {
-  --message-card-stagger: clamp(7rem, 7.1vw, 8.5rem);
-
-  padding-bottom: var(--message-card-stagger);
-}
-
-.message-card:nth-child(4n + 2),
-.message-card:nth-child(4n + 4) {
-  transform: translateY(var(--message-card-stagger));
-}
-
-@media (min-width: 63.8125rem) and (max-width: 84.375rem) {
-  .message-list {
-    --message-card-stagger: clamp(7.5rem, 12vw, 10rem);
-  }
-
-  .message-card:nth-child(4n + 2),
-  .message-card:nth-child(4n + 4) {
-    transform: none;
-  }
-
-  .message-card:nth-child(3n + 2) {
-    transform: translateY(var(--message-card-stagger));
-  }
-}
-
-@media (max-width: 63.75rem) {
-  .message-list {
-    --message-card-stagger: clamp(4.5rem, 12vw, 7.5rem);
-  }
-
-  .message-card:nth-child(4n + 2),
-  .message-card:nth-child(4n + 4),
-  .message-card:nth-child(3n + 2) {
-    transform: none;
-  }
-
-  .message-card:nth-child(2n) {
-    transform: translateY(var(--message-card-stagger));
-  }
-}
-
-@media (max-width: 600px) {
-  .message-list {
-    --message-card-stagger: clamp(3.5rem, 13vw, 4.875rem);
-  }
-}
-
 /* Pull the message wall into the lower edge of the decorative scene. */
 .message-list-container {
   --message-list-lift: clamp(12rem, 18vw, 15rem);
+  --message-list-footer-gap: clamp(6.25rem, 8vw, 10rem);
 
   margin-top: calc(-1 * var(--message-list-lift));
+  padding-bottom: var(--message-list-footer-gap);
 }
 
 @media (min-width: 37.5625rem) and (max-width: 63.75rem) {
@@ -3313,6 +3267,7 @@
 @media (max-width: 600px) {
   .message-list-container {
     --message-list-lift: clamp(2rem, 8vw, 3rem);
+    --message-list-footer-gap: 4rem;
   }
 }
 
@@ -3332,33 +3287,33 @@
 }
 
 .message-card__to,
-.message-card__from,
-.message-card__body {
-  font-size: clamp(10px, 5.4cqi, 16px);
+.message-card__from {
+  font-size: clamp(14px, 5.4cqi, 20px);
 }
 
 .message-card__body {
-  -webkit-line-clamp: 10;
-  line-clamp: 10;
+  font-size: 17px;
+  -webkit-line-clamp: 11;
+  line-clamp: 11;
 }
 
-@container (max-width: 18rem) {
-  .message-card__body {
-    -webkit-line-clamp: 9;
-    line-clamp: 9;
-  }
+/* Alternate columns vertically without changing the chronological DOM order. */
+.message-list {
+  --message-card-stagger: clamp(7rem, 7.1vw, 8.5rem);
+
+  padding-bottom: var(--message-card-stagger);
 }
 
-@container (max-width: 13rem) {
-  .message-card__body {
-    -webkit-line-clamp: 7;
-    line-clamp: 7;
-  }
+.message-card:nth-child(4n + 2),
+.message-card:nth-child(4n + 4) {
+  transform: translateY(var(--message-card-stagger));
 }
 
-/* Change columns only after each card has enough room for 130-character copy. */
+/* Change columns only after each card has enough room for 150-character copy. */
 @media (min-width: 1150px) and (max-width: 1599px) {
   .message-list {
+    --message-card-stagger: clamp(6rem, 8vw, 8rem);
+
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
@@ -3374,6 +3329,8 @@
 
 @media (max-width: 1149px) {
   .message-list {
+    --message-card-stagger: clamp(4.5rem, 10vw, 7rem);
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -3390,6 +3347,10 @@
 
 /* Mobile cards keep the same hierarchy at a denser, card-width-based type scale. */
 @media (max-width: 600px) {
+  .message-list {
+    --message-card-stagger: clamp(3.5rem, 13vw, 4.875rem);
+  }
+
   .message-card__copy {
     gap: clamp(6px, 4cqi, 8px);
   }
@@ -3401,6 +3362,55 @@
 
   .message-card__body {
     font-size: clamp(8.5px, 4.8cqi, 10px);
+  }
+}
+
+/* Keep one type size per viewport range. Message length never changes type size. */
+@media (min-width: 768px) and (max-width: 1020px) {
+  .message-card__body {
+    font-size: 15px;
+    -webkit-line-clamp: 11;
+    line-clamp: 11;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 767px) {
+  .message-card__body {
+    font-size: 14px;
+    -webkit-line-clamp: 11;
+    line-clamp: 11;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 699px) {
+  .message-card__body {
+    font-size: 12px;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 600px) {
+  .message-card__body {
+    font-size: 10px;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 500px) {
+  .message-card__body {
+    font-size: 8px;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+  }
+}
+
+@media (max-width: 400px) {
+  .message-card__body {
+    font-size: 7px;
+    -webkit-line-clamp: 11;
+    line-clamp: 11;
   }
 }
 
