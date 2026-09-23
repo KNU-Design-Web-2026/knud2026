@@ -756,7 +756,8 @@
     height: auto;
     padding: 14.5px clamp(13.5px, calc(8.5px + 1.25vw), 16px);
     transform: translateX(-50%) scale(var(--about-depth-scale, 1));
-    filter: blur(var(--about-depth-blur, 0px));
+    /* iOS Safari repeats filtered border pixels while this frame scales. */
+    filter: none;
     border: 4px solid #838383;
     background: #fcd519;
   }

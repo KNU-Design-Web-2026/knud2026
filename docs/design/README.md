@@ -32,6 +32,8 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-09-22 메인 색면 폭발 파티클](./interaction-specs/2026-09-22-hero-burst-particles.md)
+
 - [2026-09-12 타일 기반 변경 영역 합성 후보](./interaction-specs/2026-09-12-tiled-dirty-spray-candidate.md)
 - [2026-09-12 변화 기반 렌더 스케줄러 후보](./interaction-specs/2026-09-12-dirty-render-scheduler-candidate.md)
 - [2026-09-12 정적인 자국 묶음 캐시 후보](./interaction-specs/2026-09-12-stamp-cache-candidate.md)

@@ -77,6 +77,21 @@ test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크�
   assert.equal(page.match(/width=\{1808\}/g)?.length, 2);
 });
 
+test("졸업준비팀 사진은 기획·브랜딩·영상·웹·편집 순서에 맞는 개별 자산을 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+  const expected = [
+    "/assets/figma/about/team-planning-2026.jpg",
+    "/assets/figma/about/team-branding-2026.jpg",
+    "/assets/figma/about/team-video-2026.jpg",
+    "/assets/figma/about/team-web-2026.jpg",
+    "/assets/figma/about/team-editorial-2026.jpg",
+  ];
+
+  const positions = expected.map((asset) => page.indexOf(asset));
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
+});
+
 test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 유지한다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 

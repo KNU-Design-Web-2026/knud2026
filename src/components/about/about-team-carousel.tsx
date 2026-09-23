@@ -5,6 +5,7 @@ import { useRef, type PointerEvent } from "react";
 import styles from "./about-team-carousel.module.css";
 
 type Team = {
+  height: number;
   image: string;
   members: string;
   name: string;
@@ -65,7 +66,7 @@ export function AboutTeamCarousel({ teams }: AboutTeamCarouselProps) {
       >
         {teams.map((team, index) => (
           <article className={styles.card} key={`${team.name}-${index}`}>
-            <Image alt={`${team.name} 단체 사진`} className={styles.image} draggable={false} height={2731} src={team.image} unoptimized width={team.width} />
+            <Image alt={`${team.name} 단체 사진`} className={styles.image} draggable={false} height={team.height} src={team.image} unoptimized width={team.width} />
             <div className={styles.caption}>
               <p className="font-bold">{team.name}</p>
               <p>{team.members}</p>

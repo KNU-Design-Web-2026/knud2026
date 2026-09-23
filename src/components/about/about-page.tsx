@@ -21,11 +21,11 @@ const committee = [
 ];
 
 const teams = [
-  { name: "기획팀", members: "윤이지 김가연 김지언 박규리 이다혜 현연이", image: "/assets/figma/about/planning-team.jpg", width: 4096 },
-  { name: "비주얼 브랜딩팀", members: "박규리 공예원 김민주 김은별 박수정 양혜연", image: "/assets/figma/about/branding-team.jpg", width: 4096 },
-  { name: "영상팀", members: "이다혜 이나경 이초원 이하늘", image: "/assets/figma/about/planning-team.jpg", width: 4096 },
-  { name: "웹팀", members: "김지언 김서은 김세직 이서윤", image: "/assets/figma/about/branding-team.jpg", width: 4096 },
-  { name: "편집팀", members: "현연이 김연수 임경민 조장원", image: "/assets/figma/about/planning-team.jpg", width: 4096 },
+  { name: "기획팀", members: "윤이지 김가연 김지언 박규리 이다혜 현연이", image: "/assets/figma/about/team-planning-2026.jpg", width: 1600, height: 1200 },
+  { name: "비주얼 브랜딩팀", members: "박규리 공예원 김민주 김은별 박수정 양혜연", image: "/assets/figma/about/team-branding-2026.jpg", width: 1600, height: 1200 },
+  { name: "영상팀", members: "이다혜 이나경 이초원 이하늘", image: "/assets/figma/about/team-video-2026.jpg", width: 1600, height: 1200 },
+  { name: "웹팀", members: "김지언 김서은 김세직 이서윤", image: "/assets/figma/about/team-web-2026.jpg", width: 1600, height: 1200 },
+  { name: "편집팀", members: "현연이 김연수 임경민 조장원", image: "/assets/figma/about/team-editorial-2026.jpg", width: 1600, height: 1200 },
 ];
 
 function IntroductionCopy() {

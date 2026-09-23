@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const routePath = fileURLToPath(new URL("./page.tsx", import.meta.url));
+const loadingRoutePath = fileURLToPath(new URL("./loading.tsx", import.meta.url));
 const componentPath = fileURLToPath(new URL("../../components/message/message-page.tsx", import.meta.url));
 const dataPath = fileURLToPath(new URL("../../data/messages.ts", import.meta.url));
 const inputRulesPath = fileURLToPath(new URL("../../lib/message-input.ts", import.meta.url));
@@ -14,6 +15,7 @@ const bodyLimitMigrationPath = fileURLToPath(
 );
 
 assert.equal(existsSync(routePath), true, "message route should exist");
+assert.equal(existsSync(loadingRoutePath), true, "message loading route should exist");
 assert.equal(existsSync(componentPath), true, "message page component should exist");
 assert.equal(existsSync(dataPath), true, "message data should exist");
 assert.equal(existsSync(inputRulesPath), true, "message input rules should exist");
@@ -23,6 +25,7 @@ assert.equal(existsSync(stylesPath), true, "global styles should exist");
 assert.equal(existsSync(bodyLimitMigrationPath), true, "150-character database migration should exist");
 
 const route = readFileSync(routePath, "utf8");
+const loadingRoute = readFileSync(loadingRoutePath, "utf8");
 const component = readFileSync(componentPath, "utf8");
 const data = readFileSync(dataPath, "utf8");
 const styles = readFileSync(stylesPath, "utf8");
@@ -45,7 +48,13 @@ assert.ok(getMessageUsage(normalizeMessageBody("가".repeat(140))) <= MESSAGE_MA
 assert.ok(getMessageUsage(normalizeMessageBody("\n".repeat(20))) <= MESSAGE_MAX_LENGTH);
 
 assert.match(route, /MessagePage/);
+assert.match(route, /getPublicLetters/);
+assert.match(route, /export const dynamic = "force-dynamic"/);
+assert.match(route, /initialMessages=\{initialMessages\}/);
+assert.match(route, /initialError=\{initialError\}/);
 assert.match(component, /message-page/);
+assert.match(component, /initialMessages: Letter\[\]/);
+assert.match(component, /useState<Letter\[\]>\(\(\) =>[\s\S]*initialMessages[\s\S]*\.sort/);
 assert.match(component, /messageList\.map/);
 assert.match(component, /Date\.parse\(a\.createdAt\) - Date\.parse\(b\.createdAt\)/);
 assert.match(component, /setMessageList\(\(current\) => \[[\s\S]*\.\.\.current\.filter[\s\S]*payload\.letter!/);
@@ -60,6 +69,12 @@ assert.match(component, /fetch\("\/api\/letters"/);
 assert.match(component, /method: "POST"/);
 assert.match(component, /isSubmitting \? "전하는 중" : "메시지 전하기"/);
 assert.match(component, /message-list-status/);
+assert.doesNotMatch(component, /메시지를 불러오는 중입니다/);
+assert.doesNotMatch(component, /cache: "no-store"/);
+assert.match(loadingRoute, /isInitialLoading/);
+assert.match(component, /message-card--skeleton/);
+assert.match(component, /aria-busy=\{isInitialLoading\}/);
+assert.match(component, /<form className="message-form" inert=\{isInitialLoading\}/);
 assert.doesNotMatch(component, /id: Date\.now\(\)/);
 assert.match(component, /message-form__validation/);
 assert.match(component, /missingFields/);
@@ -134,6 +149,8 @@ assert.match(styles, /Mobile coordinates are also measured from the complete for
 assert.match(styles, /\.message-card__body\s*\{[\s\S]*white-space:\s*pre-wrap/);
 assert.match(styles, /\.message-form__validation/);
 assert.match(styles, /\.message-list-status/);
+assert.match(styles, /\.message-card--skeleton/);
+assert.match(styles, /@keyframes message-skeleton-pulse/);
 assert.match(styles, /\.message-confirm-modal__error/);
 assert.match(styles, /\.message-form__counter/);
 assert.doesNotMatch(styles, /\.message-form__body:focus-within/);

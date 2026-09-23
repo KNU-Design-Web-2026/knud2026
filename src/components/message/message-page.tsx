@@ -37,57 +37,48 @@ function MessageCard({ message }: { message: Letter }) {
   );
 }
 
-export function MessagePage() {
+const MESSAGE_SKELETON_COUNT = 8;
+
+function MessageListSkeleton() {
+  return Array.from({ length: MESSAGE_SKELETON_COUNT }, (_, index) => (
+    <article aria-hidden="true" className="message-card message-card--skeleton" key={index}>
+      <div className="message-card__skeleton-line message-card__skeleton-line--to" />
+      <div className="message-card__skeleton-copy">
+        <div className="message-card__skeleton-line" />
+        <div className="message-card__skeleton-line" />
+        <div className="message-card__skeleton-line message-card__skeleton-line--short" />
+      </div>
+      <div className="message-card__skeleton-line message-card__skeleton-line--from" />
+    </article>
+  ));
+}
+
+type MessagePageProps = {
+  initialMessages: Letter[];
+  initialError?: string;
+  isInitialLoading?: boolean;
+};
+
+export function MessagePage({
+  initialMessages,
+  initialError = "",
+  isInitialLoading = false,
+}: MessagePageProps) {
   const pageRef = useRef<HTMLElement>(null);
-  const [messageList, setMessageList] = useState<Letter[]>([]);
+  const [messageList, setMessageList] = useState<Letter[]>(() =>
+    [...initialMessages].sort(
+      (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
+    ),
+  );
   const [to, setTo] = useState<Recipient>(DEFAULT_RECIPIENT);
   const [from, setFrom] = useState("");
   const [body, setBody] = useState("");
   const [isRecipientOpen, setIsRecipientOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [listError, setListError] = useState("");
+  const [listError] = useState(initialError);
   const [formError, setFormError] = useState("");
   const [submissionError, setSubmissionError] = useState("");
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function loadMessages() {
-      try {
-        const response = await fetch("/api/letters", {
-          cache: "no-store",
-          signal: controller.signal,
-        });
-        const payload = (await response.json()) as { letters?: Letter[]; error?: string };
-        if (!response.ok || !payload.letters) {
-          throw new Error(payload.error || "메시지를 불러오지 못했습니다.");
-        }
-
-        setMessageList((current) => {
-          const lettersById = new Map(
-            [...current, ...payload.letters!].map((letter) => [letter.id, letter]),
-          );
-          return Array.from(lettersById.values()).sort(
-            (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
-          );
-        });
-        setListError("");
-      } catch (error) {
-        if (!controller.signal.aborted) {
-          setListError(error instanceof Error ? error.message : "메시지를 불러오지 못했습니다.");
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setIsLoading(false);
-        }
-      }
-    }
-
-    void loadMessages();
-    return () => controller.abort();
-  }, []);
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -209,7 +200,7 @@ export function MessagePage() {
           <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-frame-mobile.svg" />
           <img alt="" src="/assets/figma/message/message-frame-tab-mobile.svg" />
         </picture>
-        <form className="message-form" onSubmit={handleSubmit}>
+        <form className="message-form" inert={isInitialLoading} onSubmit={handleSubmit}>
           <div className="message-form__fields">
             <div className={`message-form__field message-form__field--to${isRecipientOpen ? " is-open" : ""}`}>
               <span>To.</span>
@@ -271,12 +262,13 @@ export function MessagePage() {
       </div>
       <PageContainer className="message-list-container">
         <div className="message-list-status" aria-live="polite">
-          {isLoading && "메시지를 불러오는 중입니다."}
-          {!isLoading && listError && listError}
-          {!isLoading && !listError && messageList.length === 0 && "아직 도착한 메시지가 없습니다. 첫 마음을 남겨주세요."}
+          {!isInitialLoading && listError && listError}
+          {!isInitialLoading && !listError && messageList.length === 0 && "아직 도착한 메시지가 없습니다. 첫 마음을 남겨주세요."}
         </div>
-        <div className="message-list" aria-busy={isLoading} aria-label="방명록 메시지 목록">
-          {messageList.map((message) => <MessageCard key={message.id} message={message} />)}
+        <div className="message-list" aria-busy={isInitialLoading} aria-label="방명록 메시지 목록">
+          {isInitialLoading
+            ? <MessageListSkeleton />
+            : messageList.map((message) => <MessageCard key={message.id} message={message} />)}
         </div>
       </PageContainer>
       <SiteFooter />
