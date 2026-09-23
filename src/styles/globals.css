@@ -2146,6 +2146,54 @@
   word-break: keep-all;
 }
 
+.message-card--skeleton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ededed;
+}
+
+.message-card__skeleton-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.875rem);
+}
+
+.message-card__skeleton-line {
+  width: 100%;
+  height: clamp(0.75rem, 1.15vw, 1.125rem);
+  border-radius: 999px;
+  background: #d9d9d9;
+  animation: message-skeleton-pulse 1.4s ease-in-out infinite alternate;
+}
+
+.message-card__skeleton-line--to {
+  width: 42%;
+}
+
+.message-card__skeleton-line--short {
+  width: 68%;
+}
+
+.message-card__skeleton-line--from {
+  width: 36%;
+}
+
+@keyframes message-skeleton-pulse {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-card__skeleton-line {
+    animation: none;
+  }
+}
+
 /* Figma frame 1742:88621 — 1350px */
 @media (max-width: 1350px) {
   .message-page__intro {
