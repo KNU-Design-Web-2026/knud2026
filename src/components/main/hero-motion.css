@@ -25,151 +25,117 @@
   .hero-scene-1020 { display: block; top: -11.7647vw; height: 134.3137vw; }
 }
 
-/* Shared 5.6s clock: 0.34s ignition → 1.57s burn → impact → breathing recovery. */
+/* 3.8s: brief anticipation, outward burst, then one-way settling. */
 .hero-motion {
-  --hero-cycle: 5.6s;
-  --impact-scale: 1.4;
-  --impact-turn: 7deg;
-  --lion-jump: -16px;
-  --lion-impact-x: 1.065;
-  --lion-impact-y: 1.09;
-  --lion-squash: 0.92;
-  --logo-impact: 1.06;
-  --fleck-spread: 1.65;
+  --hero-cycle: 3.8s;
+  --impact-scale: 1.32;
+  --impact-turn: 4deg;
+  --lion-recoil: 4px;
+  --lion-turn: 0.45deg;
+  --spray-recoil: 5px;
+  --spray-turn: 2.2deg;
+  overflow: hidden;
+}
+.hero-lion, .hero-ignite, .hero-spray { opacity: 1; }
+.hero-lion {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: hero-lion-response var(--hero-cycle) linear infinite;
+}
+.hero-spray {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: hero-spray-response var(--hero-cycle) linear infinite;
+}
+.hero-fuse {
+  opacity: 1;
+  transform: none;
+}
+.hero-ignite {
+  --ignite-impact: 1.05;
+  --ignite-anticipation: 0.985;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-ignite-impact var(--hero-cycle) linear infinite;
+}
+.hero-burst-drift { --drift-distance: 3px; animation: hero-idle-drift 5.8s ease-in-out infinite; }
+.hero-burst-drift-1 { animation-duration: 6.7s; animation-delay: -1.4s; }
+.hero-burst-drift-2 { animation-duration: 5.1s; animation-delay: -2.2s; }
+@keyframes hero-ignite-impact {
+  0%, 27.63%, 49.47%, 100% { transform: scale(1); }
+  31.05% { transform: scale(var(--ignite-anticipation)); animation-timing-function: cubic-bezier(0.12,0.7,0.2,1); }
+  35% { transform: scale(var(--ignite-impact)); animation-timing-function: cubic-bezier(0.2,0.6,0.3,1); }
+}
+@keyframes hero-idle-drift {
+  0%, 100% { transform: translate(0, 0); }
+  35% { transform: translate(var(--drift-distance), calc(-1 * var(--drift-distance))); }
+  70% { transform: translate(calc(-1 * var(--drift-distance)), 0); }
+}
+.hero-eyelid { transform-box: fill-box; transform-origin: center top; transform: scaleY(0); animation: hero-eye-blink 5.6s linear infinite; }
+.hero-burst { transform-box: fill-box; transform-origin: center; animation: hero-paint-impact var(--hero-cycle) linear infinite; }
+.hero-burst-0, .hero-burst-particles-0 { --burst-delay: 0s; }
+.hero-burst-1, .hero-burst-particles-1 { --burst-delay: 0.13s; --impact-scale: 1.25; }
+.hero-burst-2, .hero-burst-particles-2 { --burst-delay: 0.26s; --impact-scale: 1.22; }
+.hero-burst { animation-delay: var(--burst-delay); }
+.hero-burst-particle {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-burst-particle var(--hero-cycle) linear infinite;
+  animation-delay: var(--burst-delay);
+}
+.hero-burst-particle-follow { animation-delay: calc(var(--burst-delay) + 0.15s); }
+@keyframes hero-paint-impact {
+  0%, 27.63%, 49.47%, 100% { transform: scale(1) rotate(0); }
+  31.05% { transform: scale(0.93) rotate(-1.5deg); animation-timing-function: cubic-bezier(0.12,0.7,0.2,1); }
+  35% { transform: scale(var(--impact-scale)) rotate(var(--impact-turn)); animation-timing-function: cubic-bezier(0.2,0.6,0.3,1); }
+  44% { transform: scale(1.02) rotate(0.3deg); }
+}
+@keyframes hero-burst-particle {
+  0%, 31.04% { opacity: 0; transform: translate(0, 0) scale(0); }
+  31.05% { opacity: 0; transform: translate(var(--start-x), var(--start-y)) scale(calc(var(--piece-size) * 0.65)); }
+  33% { opacity: 1; }
+  35% { opacity: 1; transform: translate(var(--start-x), var(--start-y)) rotate(12deg) scale(var(--piece-size)); }
+  39% { opacity: 0.9; }
+  43%, 100% { opacity: 0; transform: translate(var(--end-x), var(--end-y)) rotate(var(--piece-turn)) scale(calc(var(--piece-size) * 0.25)); }
+}
+@keyframes hero-eye-blink {
+  0%, 60%, 64%, 65.8%, 69.8%, 100% { transform: scaleY(0); }
+  61.2%, 62.6% { transform: scaleY(1); }
+  67%, 68.2% { transform: scaleY(1); }
+}
+@keyframes hero-lion-response {
+  0%, 12%, 27.63%, 49.47%, 100% { transform: translate(0, 0) rotate(0); }
+  18% { transform: translateY(-1px) rotate(0.12deg); }
+  31.05% { transform: translateX(1px) rotate(0.12deg); animation-timing-function: cubic-bezier(0.12,0.7,0.2,1); }
+  35% { transform: translateX(calc(-1 * var(--lion-recoil))) rotate(calc(-1 * var(--lion-turn))); animation-timing-function: cubic-bezier(0.2,0.6,0.3,1); }
+  42% { transform: translateX(1px) rotate(0.1deg); }
+  72% { transform: translateY(-1px) rotate(-0.08deg); }
+}
+@keyframes hero-spray-response {
+  0%, 12%, 27.63%, 49.47%, 100% { transform: translate(0, 0) rotate(0); }
+  18% { transform: rotate(0.4deg); }
+  31.05% { transform: translateX(1px) rotate(1deg); animation-timing-function: cubic-bezier(0.12,0.7,0.2,1); }
+  35% { transform: translate(calc(-1 * var(--spray-recoil)), -1px) rotate(calc(-1 * var(--spray-turn))); animation-timing-function: cubic-bezier(0.2,0.6,0.3,1); }
+  42% { transform: translateX(1px) rotate(0.6deg); }
+  74% { transform: rotate(-0.35deg); }
 }
 @media (max-width: 600px) {
-  .hero-motion {
-    --impact-scale: 1.23;
-    --impact-turn: 4deg;
-    --lion-jump: -5px;
-    --lion-impact-x: 1.025;
-    --lion-impact-y: 1.045;
-    --lion-squash: 0.96;
-    --logo-impact: 1.025;
-    --fleck-spread: 1.1;
-  }
+  .hero-ignite { --ignite-impact: 1.025; --ignite-anticipation: 0.99; }
+  .hero-burst-drift { --drift-distance: 1.5px; }
+  .hero-motion { --impact-scale: 1.18; --impact-turn: 2deg; --lion-recoil: 2px; --spray-recoil: 2.5px; --lion-turn: 0.25deg; --spray-turn: 1.2deg; }
+  .hero-burst-1 { --impact-scale: 1.15; }
+  .hero-burst-2 { --impact-scale: 1.12; }
+  .hero-burst-particle-extra { display: none; }
 }
-.hero-fuse-erase { stroke-dasharray: 0 100; animation: hero-burn var(--hero-cycle) linear infinite; }
-.hero-eyelid { transform-box: fill-box; transform-origin: center top; transform: scaleY(0); animation: hero-eye-blink var(--hero-cycle) ease-in-out infinite; }
-/* Brief anticipation closure, then a double blink during the quiet recovery. */
-@keyframes hero-eye-blink {
-  0%, 29%, 36%, 86%, 90%, 91%, 95%, 100% { transform: scaleY(0); }
-  32%, 33%, 88%, 93% { transform: scaleY(1); }
+@media (min-width: 601px) and (max-width: 1350px) and (orientation: portrait) {
+  .hero-motion { --impact-scale: 1.22; --impact-turn: 2deg; }
+  .hero-burst-1, .hero-burst-2 { --impact-scale: 1.18; }
+  .hero-burst-particle-extra { display: none; }
 }
-.hero-fuse-tip-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
-.hero-tip-details-erase { opacity: 0; animation: hero-tip-burn var(--hero-cycle) linear infinite; }
-.hero-fuse { animation: hero-fuse-return var(--hero-cycle) linear infinite; }
-.hero-fuse-spark, .hero-ember-trail { opacity: 0; animation: hero-spark-travel var(--hero-cycle) linear infinite; }
-.hero-flame-size { animation: hero-flame-consume var(--hero-cycle) linear infinite; }
-.hero-flame-flicker { animation: hero-flame-flicker 0.43s ease-in-out infinite; }
-.hero-hot-core { animation: hero-contact-heat var(--hero-cycle) linear infinite; }
-.hero-flame-fit { animation: hero-fit-in var(--hero-cycle) linear infinite; }
-.hero-burn-contact { opacity: 0; animation: hero-contact-in var(--hero-cycle) linear infinite; }
-@keyframes hero-fit-in {
-  0%, 6%, 100% { transform: rotate(-64.983deg) scale(1, 1) rotate(64.983deg); }
-  12%, 51% { transform: rotate(-64.983deg) scale(1, 0.72) rotate(64.983deg); }
-}
-@keyframes hero-contact-in {
-  0%, 6%, 34%, 100% { opacity: 0; }
-  10%, 33.9% { opacity: 1; }
-}
-.hero-flame-size, .hero-flame-flicker { transform-origin: 0 0; }
-.hero-ember { opacity: 0; animation: hero-ember 0.32s ease-out infinite; }
-.hero-lion { transform-box: fill-box; transform-origin: 50% 90%; animation: hero-recoil var(--hero-cycle) ease-in-out infinite; }
-.hero-ignite { transform-box: fill-box; transform-origin: center; animation: hero-logo-impact var(--hero-cycle) ease-out infinite; }
-.hero-burst { transform-box: fill-box; transform-origin: center; animation: hero-paint-impact var(--hero-cycle) ease-out infinite; }
-.hero-burst-0 { animation-delay: 0.12s; }
-.hero-burst-1 { animation-delay: 0.30s; }
-.hero-burst-2 { animation-delay: 0.04s; }
-.hero-paint-fleck { opacity: 0; animation: hero-fleck var(--hero-cycle) ease-out infinite; }
 .hero-motion .hero-scene * { animation-play-state: paused; }
 .hero-motion[data-running="true"] .hero-scene * { animation-play-state: running; }
-
-@keyframes hero-burn {
-  0%, 6% { stroke-dasharray: 0 100; }
-  34%, 51% { stroke-dasharray: 100 100; }
-  51.01%, 100% { stroke-dasharray: 0 100; }
-}
-@keyframes hero-tip-burn {
-  0%, 5.99%, 51.01%, 100% { opacity: 0; }
-  6%, 51% { opacity: 1; }
-}
-@keyframes hero-fuse-return {
-  0%, 33% { opacity: 1; }
-  34%, 52% { opacity: 0; }
-  62%, 100% { opacity: 1; }
-}
-@keyframes hero-spark-travel {
-  0%, 5.99% { opacity: 0; offset-distance: 0%; }
-  6% { opacity: 1; offset-distance: 0%; }
-  33.9% { opacity: 1; offset-distance: 99.6%; }
-  34% { opacity: 0; offset-distance: 100%; }
-  51% { opacity: 0; offset-distance: 100%; }
-  51.01% { opacity: 0; offset-distance: 0%; }
-  62%, 100% { opacity: 0; offset-distance: 0%; }
-}
-@keyframes hero-flame-consume {
-  0%, 6%, 100% { transform: scale(1); filter: brightness(1); }
-  12% { transform: scale(1.125); filter: brightness(1); }
-  20% { transform: scale(1.098); filter: brightness(1.04); }
-  28% { transform: scale(1.062); filter: brightness(1.08); }
-  30% { transform: scale(1.044); filter: brightness(1.12); }
-  31% { transform: scale(1.035); filter: brightness(1.16); }
-  32% { transform: scale(1.08); filter: brightness(1.2); }
-  33.9% { transform: scale(1.152); filter: brightness(1.28); }
-  34%, 51% { transform: scale(0); filter: brightness(1); }
-}
-@keyframes hero-flame-flicker {
-  0%, 100% { transform: scale(1, 0.99); }
-  18% { transform: scale(0.99, 1.04); }
-  31% { transform: scale(1.01, 0.98); }
-  47% { transform: scale(1, 1.06); }
-  73% { transform: scale(0.99, 1.01); }
-  86% { transform: scale(1, 0.97); }
-}
-@keyframes hero-contact-heat {
-  0%, 6%, 100% { opacity: 0.55; }
-  20% { opacity: 0.8; }
-  30% { opacity: 0.65; }
-  33%, 34% { opacity: 1; }
-}
-@keyframes hero-ember {
-  0% { opacity: 0; transform: translate(0, 0); }
-  15% { opacity: 0.9; }
-  100% { opacity: 0; transform: translate(var(--ember-x), var(--ember-y)); }
-}
-@keyframes hero-recoil {
-  0%, 46%, 100% { transform: scale(1) rotate(0); }
-  12%, 75% { transform: scale(1.004, 1.012) rotate(0.25deg); }
-  25% { transform: scale(1.008, 0.993) rotate(-0.4deg); }
-  33% { transform: scale(1.025, var(--lion-squash)) rotate(-2deg); }
-  36% { transform: translateY(var(--lion-jump)) scale(var(--lion-impact-x), var(--lion-impact-y)) rotate(2.5deg); }
-  40% { transform: scale(1.015, 0.975) rotate(-1deg); }
-  43% { transform: scale(0.997, 1.012) rotate(0.4deg); }
-}
-@keyframes hero-logo-impact {
-  0%, 46%, 100% { transform: scale(1) rotate(0); }
-  18%, 76% { transform: scale(1.006) rotate(0.15deg); }
-  33% { transform: scale(0.98) rotate(-0.5deg); }
-  36% { transform: scale(var(--logo-impact)) rotate(-1.2deg); }
-  39% { transform: scale(0.99) rotate(0.7deg); }
-  42% { transform: scale(1.008) rotate(-0.25deg); }
-}
-@keyframes hero-paint-impact {
-  0%, 46%, 100% { transform: scale(1) rotate(0); }
-  12%, 78% { transform: scale(1.025) rotate(0.8deg); }
-  25% { transform: scale(0.985) rotate(-0.8deg); }
-  33% { transform: scale(0.8) rotate(-5deg); }
-  36% { transform: scale(var(--impact-scale)) rotate(var(--impact-turn)); }
-  40% { transform: scale(0.94) rotate(-2deg); }
-  43% { transform: scale(1.035) rotate(0.8deg); }
-}
-@keyframes hero-fleck {
-  0%, 33.9% { opacity: 0; transform: translate(0, 0) scale(0.4); }
-  34% { opacity: 1; transform: translate(0, 0) scale(1.6); }
-  43%, 100% { opacity: 0; transform: translate(calc(var(--fleck-x) * var(--fleck-spread)), calc(var(--fleck-y) * var(--fleck-spread))) rotate(var(--fleck-r)) scale(0.3); }
-}
 @media (prefers-reduced-motion: reduce) {
   .hero-motion .hero-scene * { animation: none; }
-  .hero-fuse-tip-erase { opacity: 0; }
+  .hero-burst-particle { opacity: 0; }
 }

@@ -9,7 +9,7 @@ try {
   await page.goto('http://localhost:3000');
   for (const width of [1920, 1350, 1020, 600, 400]) {
     await page.setViewportSize({ width, height: 980 });
-    for (const [time, closed] of [[0, false], [1792, true], [2016, false], [4928, true], [5208, true], [5400, false]]) {
+    for (const [time, closed] of [[0, false], [3427, true], [3505, true], [3584, false], [3752, true], [3819, true], [3910, false]]) {
       const state = await page.evaluate((time) => {
         const scene = [...document.querySelectorAll('.hero-scene')].find(el => getComputedStyle(el).display !== 'none');
         const eye = scene.querySelector('.hero-eyelid');
@@ -20,7 +20,7 @@ try {
       assert.ok(state, 'responsive scene must have an eyelid');
       const scaleY = Number(state.match(/matrix\(([^)]+)\)/)[1].split(',')[3]);
       assert.ok(closed ? scaleY > .95 : scaleY < .05, `${width} ${time}: ${state}`);
-      if ([1350, 400].includes(width) && [0,1792].includes(time)) await page.screenshot({path:`${output}/${width}-${time}.png`});
+      if ([1350, 400].includes(width) && [0,3427,3752].includes(time)) await page.screenshot({path:`${output}/${width}-${time}.png`});
     }
   }
   await page.emulateMedia({reducedMotion:'reduce'});

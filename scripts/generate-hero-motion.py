@@ -37,16 +37,21 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
         main.remove(child)
     by_id['Group_4'].set('class', 'hero-ignite')
     by_id['Group 366'].set('class', 'hero-lion')
+    by_id['Group_27'].set('class', 'hero-spray')
     for index, name in enumerate(['Group', 'Group_2', 'Group_3']):
         by_id[name].set('class', f'hero-burst hero-burst-{index}')
     tail = by_id['Group_12']
     tail.set('class', 'hero-fuse')
     scale = tw / 190.48
-    # Stop above the body joint rather than carrying the flame into the torso.
-    # Start at the flame's root, not its visual centre: scaling cannot detach it.
-    points = [(32,72),(46,42),(88,20),(127,24),(166,43),(169,76),(153,115),(145,134)]
-    p = [(tx+x*scale, ty+y*scale) for x,y in points]
-    d = f'M {p[0][0]} {p[0][1]} C {p[1][0]} {p[1][1]} {p[2][0]} {p[2][1]} {p[3][0]} {p[3][1]} S {p[4][0]} {p[4][1]} {p[5][0]} {p[5][1]} Q {p[6][0]} {p[6][1]} {p[7][0]} {p[7][1]}'
+    # Pivot at the covered body joint, in the SVG viewBox coordinate system.
+    pivot_x, pivot_y = tx + 145*scale, ty + 134*scale
+    tail.set('style', f'transform-origin:{pivot_x}px {pivot_y}px')
+    tail.set('data-pivot-x', str(pivot_x))
+    tail.set('data-pivot-y', str(pivot_y))
+    for path in tail.iter():
+        if path.tag.endswith('path'):
+            path.set('class', 'hero-tail-shape')
+    # Keep the source tail paths unchanged; motion is now carried by IGNITE.
     defs = next(e for e in svg if e.tag.endswith('defs'))
     # Cover only the ordinary eye; preserve the opposite firework-shaped eye.
     eye_clip = element('clipPath', id='eye-clip', clipPathUnits='userSpaceOnUse')
@@ -64,78 +69,55 @@ for width, height, ox, oy, tx, ty, tw in SCENES:
         fill='none', stroke='#0F0E0F', **{'stroke-width':4*scale,'stroke-linecap':'round'}))
     eye_cover.append(eyelid)
     by_id['Group_24'].append(eye_cover)
-    mask = element('mask', id='fuse-mask', maskUnits='userSpaceOnUse', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale)
-    mask.append(element('rect', x=tx-100*scale, y=ty-100*scale, width=400*scale, height=400*scale, fill='white'))
-    erase = element('path', d=d, pathLength=100, fill='none', stroke='black', **{'stroke-width':80*scale,'stroke-linecap':'butt','class':'hero-fuse-erase'})
-    mask.append(erase)
-    # Remove the original tip flame as the moving flame takes over.
-    tip_outline = deepcopy(by_id['Vector_18'])
-    tip_outline.attrib.pop('id', None)
-    tip_outline.set('fill', 'black')
-    # Cover the source's separately stroked contour as well as its fill, so
-    # antialiasing cannot leave a ghost outline at the old flame position.
-    tip_outline.set('stroke', 'black')
-    tip_outline.set('stroke-width', str(2 * scale))
-    tip_outline.set('stroke-linejoin', 'round')
-    tip_outline.set('class', 'hero-fuse-tip-erase')
-    mask.append(tip_outline)
-    # The swept 80-unit mask removes stripes only after the flame reaches them.
-    # Erasing whole stripes at ignition punches blue-background slits into
-    # the still-unburned yellow rope ahead of the flame.
-    # The old tip centre precedes the new root. Erase that short stub too.
-    mask.append(element('path', d=f'M {tx+10*scale} {ty+72*scale} L {p[0][0]} {p[0][1]}',
-        fill='none', stroke='black', **{'stroke-width':58*scale,'stroke-linecap':'butt','class':'hero-tip-details-erase'}))
-    defs.append(mask)
-    tail.set('mask', 'url(#fuse-mask)')
-    # Auto follows the tangent; cancel its initial angle to retain the Figma pose.
-    initial_angle = math.degrees(math.atan2(p[1][1]-p[0][1], p[1][0]-p[0][0]))
-    spark = element('g', **{'class':'hero-fuse-spark','style':f'offset-path:path("{d}");offset-rotate:auto {-initial_angle}deg;offset-anchor:0px 0px'})
-    # Retain the actual red/yellow/blue Figma flame, not a generic replacement.
-    # Clip the shared rope/body paths to the red tip silhouette before moving it.
-    flame_clip = element('clipPath', id='flame-clip', clipPathUnits='userSpaceOnUse')
-    silhouette = deepcopy(by_id['Vector_18'])
-    silhouette.attrib.pop('id', None)
-    flame_clip.append(silhouette)
-    defs.append(flame_clip)
-    shrink = element('g', **{'class':'hero-flame-size'})
-    flicker = element('g', **{'class':'hero-flame-flicker'})
-    # Centre the original flame across the rope, independently of the burn root.
-    # Fit only its transverse width; retain the jagged silhouette length.
-    fit = element('g', transform=f'rotate({initial_angle}) scale(1 0.72) rotate({-initial_angle})', **{'class':'hero-flame-fit'})
-    local = element('g', transform=f'translate({-(tx+32*scale)} {-(ty+72*scale)})')
-    original_flame = element('g', **{'clip-path':'url(#flame-clip)'})
-    for name in ['Vector_18', 'Vector_19', 'Vector_20', 'Vector_21']:
-        part = deepcopy(by_id[name])
-        part.attrib.pop('id', None)
-        original_flame.append(part)
-    local.append(original_flame)
-    fit.append(local)
-    flicker.append(fit)
-    shrink.append(flicker)
-    spark.append(shrink)
-    # A small scorched edge and hot core connect the flame to the erased boundary.
-    contact = element('g', transform=f'scale({scale})', **{'class':'hero-burn-contact'})
-    contact.append(element('path', d='M -13 -6 L 13 6', fill='none', stroke='#38251C', **{'stroke-width':4,'stroke-linecap':'round'}))
-    contact.append(element('ellipse', cx=0, cy=0, rx=6, ry=3, fill='#FFF3AD', transform='rotate(25)', **{'class':'hero-hot-core'}))
-    spark.append(contact)
-    # Separate world-up trail: the fuse turns, but heat still rises.
-    trail = element('g', **{'class':'hero-ember-trail','style':f'offset-path:path("{d}");offset-rotate:0deg;offset-anchor:0px 0px'})
-    for i, (dx, dy) in enumerate([(-18,-28),(12,-38),(-28,-46),(24,-54),(3,-32),(-9,-60)]):
-        ember = element('g', transform=f'scale({scale})')
-        ember.append(element('path', d='M 0 0 L 3 -6 L 5 1 Z', fill=['#FCD519','#FD9519','#F21C1C'][i%3],
-            **{'class':'hero-ember','style':f'--ember-x:{dx}px;--ember-y:{dy}px;animation-delay:{-i*.073}s;animation-duration:{.27+i*.037}s'}))
-        trail.append(ember)
-    # Paint effects over the fuse, but behind the body and its black outline.
-    fuse_effects = element('g', **{'class':'hero-fuse-effects'})
-    fuse_effects.append(spark)
-    fuse_effects.append(trail)
-    by_id['Group_11'].insert(1, fuse_effects)
-    # Local, short-lived flecks follow the final ignition; no canvas particles/timers.
-    debris = element('g', transform=f'translate({p[-1][0]} {p[-1][1]}) scale({scale})')
-    for i, (dx,dy) in enumerate([(-85,-60),(-35,-110),(45,-95),(100,-30),(70,65),(-70,60)]):
-        piece=element('path', d='M -5 -4 L 7 -2 L 2 7 L -7 3 Z', fill=['#FCD519','#FD9519','#41C9F9'][i%3], **{'class':'hero-paint-fleck','style':f'--fleck-x:{dx}px;--fleck-y:{dy}px;--fleck-r:{i*53}deg'})
-        debris.append(piece)
-    fuse_effects.append(debris)
+    # Bounds measured with SVG getBBox from the original artwork, in local coordinates.
+    bounds = {
+        1920: [(255,295.545,510,591.09),(564.068,836.796,218.135,211.592),(1074.59,695.127,277.18,316.254)],
+        1350: [(167.092,193.66,334.185,387.32),(369.614,548.323,142.936,138.648),(704.142,455.492,181.628,207.231)],
+        1020: [(142.261,164.881,284.522,329.761),(308.847,445.021,121.694,118.044),(836.191,379.88,245.754,280.395)],
+        600: [(89.453,103.675,178.905,207.35),(197.869,293.545,76.521,74.225),(525.787,238.862,154.528,176.31)],
+        400: [(52.751,77.364,133.501,154.727),(133.649,219.041,57.1,55.388),(378.346,178.232,115.31,131.565)],
+    }
+    palettes = [('#F21C1C','#41C9F9'), ('#FCD519','#FD9519'), ('#FD9519','#F21C1C','#FCD519')]
+    for index, name in enumerate(['Group', 'Group_2', 'Group_3']):
+        burst = by_id[name]
+        parent = next(e for e in svg.iter() if burst in list(e))
+        cx, cy, bw, bh = bounds[width][index]
+        particles = element('g', **{'class':f'hero-burst-particles hero-burst-particles-{index}'})
+        # Share the artwork's parent coordinates, but never inherit its animated scale.
+        for i, degrees in enumerate([205, 268, 330, 75, 155, 25, 112]):
+            angle = math.radians(degrees + index * 9)
+            radius = max(bw, bh) * (0.34 if index == 0 else 0.38)
+            travel = (48 + (i * 17) % 39) * scale * (0.55 if width <= 600 else 1)
+            sx, sy = math.cos(angle)*radius, math.sin(angle)*radius
+            ex, ey = math.cos(angle)*(radius+travel), math.sin(angle)*(radius+travel)
+            anchor = element('g', transform=f'translate({cx} {cy})')
+            piece = element('path', d='M -12 -7 L 13 -3 L 5 10 L -7 5 Z',
+                fill=palettes[index][i % len(palettes[index])],
+                **{'class':'hero-burst-particle' + (' hero-burst-particle-extra' if i >= 4 else ''),
+                   'style':f'--start-x:{sx:.3f}px;--start-y:{sy:.3f}px;--end-x:{ex:.3f}px;--end-y:{ey:.3f}px;--piece-size:{max(scale, 0.65):.4f};--piece-turn:{i*47+25}deg'})
+            anchor.append(piece)
+            particles.append(anchor)
+            # A smaller second wave follows 150ms later with offset directions.
+            if i < 4:
+                follow_angle = angle + math.radians(18)
+                follow = deepcopy(piece)
+                follow.set('class', 'hero-burst-particle hero-burst-particle-follow' +
+                    (' hero-burst-particle-extra' if i >= 2 else ''))
+                fx, fy = math.cos(follow_angle), math.sin(follow_angle)
+                follow.set('style',
+                    f'--start-x:{fx*radius:.3f}px;--start-y:{fy*radius:.3f}px;'
+                    f'--end-x:{fx*(radius+travel*1.45):.3f}px;--end-y:{fy*(radius+travel*1.45):.3f}px;'
+                    f'--piece-size:{max(scale, 0.65)*0.58:.4f};--piece-turn:{-i*61-35}deg')
+                follow_anchor = element('g', transform=f'translate({cx} {cy})')
+                follow_anchor.append(follow)
+                particles.append(follow_anchor)
+        # Both the artwork and its particles share a subtle idle drift.
+        position = list(parent).index(burst)
+        parent.remove(burst)
+        drift = element('g', **{'class':f'hero-burst-drift hero-burst-drift-{index}'})
+        drift.append(burst)
+        drift.append(particles)
+        parent.insert(position, drift)
     # Namespace every ID because all responsive scenes share one document.
     markup = ET.tostring(svg, encoding='unicode')
     ids=re.findall(r'id="([^"]+)"',markup)
