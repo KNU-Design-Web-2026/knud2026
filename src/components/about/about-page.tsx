@@ -50,7 +50,7 @@ function ExhibitionInformation() {
         <strong>2026.10.20(화) — 10.30(금)</strong>
         <dl>
           <div><dt>오프닝</dt><dd>10.20(화) 15:00</dd></div>
-          <div><dt>시간</dt><dd>09:00 - 18:00</dd></div>
+          <div><dt>시간</dt><dd>09:00 — 18:00</dd></div>
         </dl>
       </div>
       <div>
@@ -99,7 +99,7 @@ export function AboutPage() {
         </section>
 
         <section className={styles.professorsSection}>
-          <h2 data-about-reveal="rise">Professors</h2>
+          <h2 data-about-reveal="rise">Faculty</h2>
           <div className={styles.professorsPanel} data-about-reveal="rise">
             <picture className={styles.panelPaper}>
               <source media="(max-width: 400px)" srcSet="/assets/figma/about/professors-wave-mobile.svg" />

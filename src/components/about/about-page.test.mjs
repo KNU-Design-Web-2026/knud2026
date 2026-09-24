@@ -69,6 +69,13 @@ test("About Instagram 링크는 모든 화면에서 밑줄을 표시하지 않�
   assert.doesNotMatch(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: underline;/);
 });
 
+test("교수진 섹션 제목은 Faculty로 표시한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+
+  assert.match(page, /<h2 data-about-reveal="rise">Faculty<\/h2>/);
+  assert.doesNotMatch(page, />Professors<\/h2>/);
+});
+
 test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크기를 사용한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
 
@@ -137,9 +144,11 @@ test("오프라인 전시 정보는 모든 반응형 화면에서 최신 장소�
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
 
   assert.match(page, /2026\.10\.20\(화\) — 10\.30\(금\)/);
+  assert.match(page, /09:00 — 18:00/);
   assert.match(page, /경북대학교 SPACE 9/);
   assert.match(page, /대구 북구 대학로 80 경북대학교 SPACE 9/);
   assert.doesNotMatch(page, /10\.31\(토\)/);
+  assert.doesNotMatch(page, /09:00 - 18:00/);
   assert.doesNotMatch(page, /경북대학교 스페이스 9/);
 });
 
@@ -273,7 +282,7 @@ test("650px부터 800px까지 Graduation 파란 패널은 asset 여백만큼 높
   assert.doesNotMatch(styles, /bottom: calc\(-624\.667px \+ 89\.333vw\)/);
 });
 
-test("650px부터 800px까지 Professors 파란 패널은 사자와 텍스트를 유지하며 높이를 줄인다", async () => {
+test("650px부터 800px까지 Faculty 파란 패널은 사자와 텍스트를 유지하며 높이를 줄인다", async () => {
   const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
 
   assert.match(styles, /\.professorsSection \{[\s\S]*?height: calc\(434\.013px - 1\.78vw\)/);

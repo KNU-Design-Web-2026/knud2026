@@ -39,6 +39,22 @@ test("공통 헤더는 변경된 Figma 기준 폭의 브랜드와 메뉴 타이�
   assert.match(tokens, /calc\(1\.4286vw \+ 0\.339rem\)/);
   assert.match(tokens, /calc\(2vw \+ 0\.125rem\)/);
   assert.match(header, /w-\[var\(--header-nav-item-width\)\]/);
+  assert.match(header, /42nd KNUD Graduation Exhibition Archive/);
+  assert.doesNotMatch(header, /42th KNUD/);
+});
+
+test("데스크톱과 모바일 헤더는 메시지 메뉴를 GUESTBOOK으로 표시한다", async () => {
+  const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
+
+  assert.equal(header.match(/label: "GUESTBOOK"/g)?.length, 2);
+  assert.doesNotMatch(header, /label: "MESSAGE"/);
+});
+
+test("데스크톱과 모바일 헤더는 작품 메뉴를 WORKS로 표시한다", async () => {
+  const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
+
+  assert.equal(header.match(/label: "WORKS"/g)?.length, 2);
+  assert.doesNotMatch(header, /label: "WORK"[, }]/);
 });
 
 test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경으로 표시한다", async () => {

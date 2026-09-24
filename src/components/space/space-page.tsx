@@ -23,7 +23,7 @@ export function SpacePage() {
         <section className={styles.archive} aria-labelledby="space-archive-title">
           <div className={`${styles.heading} ${styles.archiveHeading}`}>
             <h2 id="space-archive-title">Archive</h2>
-            <p>Ignite의 모든 순간을 담은 아카이브입니다.</p>
+            <p>IGNITE의 모든 순간을 담은 아카이브입니다.</p>
           </div>
           <div className={styles.archiveGrid} aria-label="전시 아카이브 사진 준비 중">
             {archiveColumns.map((heights, column) => (

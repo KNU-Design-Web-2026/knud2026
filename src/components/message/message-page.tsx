@@ -177,7 +177,7 @@ export function MessagePage({
 
   return (
     <section className="message-page" aria-labelledby="message-page-title" ref={pageRef}>
-      <h1 className="sr-only" id="message-page-title">MESSAGE</h1>
+      <h1 className="sr-only" id="message-page-title">GUESTBOOK</h1>
       <div className="message-page__intro">
         <picture className="message-page__decor">
           <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-decor-mobile.png" />

@@ -10,18 +10,18 @@ import { getHeaderSpacerBackgroundClass, isNavigationPathActive } from "@/compon
 
 const navigation = [
   { href: "/about", label: "ABOUT", hoverAsset: "/assets/figma/nav-about-hover-2026.svg" },
-  { href: "/work", label: "WORK", hoverAsset: "/assets/figma/nav-work-hover-2026.svg" },
+  { href: "/work", label: "WORKS", hoverAsset: "/assets/figma/nav-work-hover-2026.svg" },
   { href: "/profile", label: "PROFILE", hoverAsset: "/assets/figma/nav-profile-hover-2026.svg" },
   { href: "/space", label: "SPACE", hoverAsset: "/assets/figma/nav-space-hover-2026.svg" },
-  { href: "/message", label: "MESSAGE", hoverAsset: "/assets/figma/nav-message-hover-2026.svg" },
+  { href: "/message", label: "GUESTBOOK", hoverAsset: "/assets/figma/nav-message-hover-2026.svg" },
 ];
 
 const mobileNavigation = [
   { href: "/about", label: "ABOUT" },
-  { href: "/work", label: "WORK" },
+  { href: "/work", label: "WORKS" },
   { href: "/profile", label: "PROFILE" },
   { href: "/space", label: "SPACE" },
-  { href: "/message", label: "MESSAGE" },
+  { href: "/message", label: "GUESTBOOK" },
 ];
 
 type SiteHeaderProps = {
@@ -100,7 +100,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
           <KnudLogo />
           <span className="site-header__title min-w-0 text-[length:var(--header-title-size)] leading-[1.3] font-bold tracking-[var(--header-title-tracking)]">
             <span className="block whitespace-nowrap">2026 제42회 경북대학교 디자인학과 졸업전시회</span>
-            <span className="block whitespace-nowrap">42th KNUD Graduation Exhibition Archive</span>
+            <span className="block whitespace-nowrap">42nd KNUD Graduation Exhibition Archive</span>
           </span>
         </Link>
         <nav className="flex h-full w-[var(--header-nav-container-width)] shrink-0 items-center justify-between gap-[var(--header-nav-gap)] max-[1350px]:hidden" aria-label="주요 메뉴">
