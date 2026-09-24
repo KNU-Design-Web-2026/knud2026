@@ -50,7 +50,7 @@ function ExhibitionInformation() {
         <strong>2026.10.20(화) — 10.30(금)</strong>
         <dl>
           <div><dt>오프닝</dt><dd>10.20(화) 15:00</dd></div>
-          <div><dt>시간</dt><dd>09:00 - 18:00</dd></div>
+          <div><dt>시간</dt><dd>09:00 — 18:00</dd></div>
         </dl>
       </div>
       <div>
