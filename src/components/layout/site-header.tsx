@@ -13,7 +13,7 @@ const navigation = [
   { href: "/work", label: "WORK", hoverAsset: "/assets/figma/nav-work-hover-2026.svg" },
   { href: "/profile", label: "PROFILE", hoverAsset: "/assets/figma/nav-profile-hover-2026.svg" },
   { href: "/space", label: "SPACE", hoverAsset: "/assets/figma/nav-space-hover-2026.svg" },
-  { href: "/message", label: "MESSAGE", hoverAsset: "/assets/figma/nav-message-hover-2026.svg" },
+  { href: "/message", label: "GUESTBOOK", hoverAsset: "/assets/figma/nav-message-hover-2026.svg" },
 ];
 
 const mobileNavigation = [
@@ -21,7 +21,7 @@ const mobileNavigation = [
   { href: "/work", label: "WORK" },
   { href: "/profile", label: "PROFILE" },
   { href: "/space", label: "SPACE" },
-  { href: "/message", label: "MESSAGE" },
+  { href: "/message", label: "GUESTBOOK" },
 ];
 
 type SiteHeaderProps = {

@@ -53,6 +53,8 @@ assert.match(route, /export const dynamic = "force-dynamic"/);
 assert.match(route, /initialMessages=\{initialMessages\}/);
 assert.match(route, /initialError=\{initialError\}/);
 assert.match(component, /message-page/);
+assert.match(component, /<h1 className="sr-only" id="message-page-title">GUESTBOOK<\/h1>/);
+assert.doesNotMatch(component, />MESSAGE<\/h1>/);
 assert.match(component, /initialMessages: Letter\[\]/);
 assert.match(component, /useState<Letter\[\]>\(\(\) =>[\s\S]*initialMessages[\s\S]*\.sort/);
 assert.match(component, /messageList\.map/);

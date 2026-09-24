@@ -43,6 +43,13 @@ test("공통 헤더는 변경된 Figma 기준 폭의 브랜드와 메뉴 타이�
   assert.doesNotMatch(header, /42th KNUD/);
 });
 
+test("데스크톱과 모바일 헤더는 메시지 메뉴를 GUESTBOOK으로 표시한다", async () => {
+  const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
+
+  assert.equal(header.match(/label: "GUESTBOOK"/g)?.length, 2);
+  assert.doesNotMatch(header, /label: "MESSAGE"/);
+});
+
 test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경으로 표시한다", async () => {
   const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
   const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
