@@ -99,7 +99,7 @@ export function AboutPage() {
         </section>
 
         <section className={styles.professorsSection}>
-          <h2 data-about-reveal="rise">Professors</h2>
+          <h2 data-about-reveal="rise">Faculty</h2>
           <div className={styles.professorsPanel} data-about-reveal="rise">
             <picture className={styles.panelPaper}>
               <source media="(max-width: 400px)" srcSet="/assets/figma/about/professors-wave-mobile.svg" />
