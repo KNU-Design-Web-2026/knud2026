@@ -10,7 +10,7 @@ import { getHeaderSpacerBackgroundClass, isNavigationPathActive } from "@/compon
 
 const navigation = [
   { href: "/about", label: "ABOUT", hoverAsset: "/assets/figma/nav-about-hover-2026.svg" },
-  { href: "/work", label: "WORK", hoverAsset: "/assets/figma/nav-work-hover-2026.svg" },
+  { href: "/work", label: "WORKS", hoverAsset: "/assets/figma/nav-work-hover-2026.svg" },
   { href: "/profile", label: "PROFILE", hoverAsset: "/assets/figma/nav-profile-hover-2026.svg" },
   { href: "/space", label: "SPACE", hoverAsset: "/assets/figma/nav-space-hover-2026.svg" },
   { href: "/message", label: "GUESTBOOK", hoverAsset: "/assets/figma/nav-message-hover-2026.svg" },
@@ -18,7 +18,7 @@ const navigation = [
 
 const mobileNavigation = [
   { href: "/about", label: "ABOUT" },
-  { href: "/work", label: "WORK" },
+  { href: "/work", label: "WORKS" },
   { href: "/profile", label: "PROFILE" },
   { href: "/space", label: "SPACE" },
   { href: "/message", label: "GUESTBOOK" },
