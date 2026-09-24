@@ -2685,8 +2685,8 @@
 
 .message-confirm-modal__panel {
   box-sizing: border-box;
-  width: min(620px, 100%);
-  padding: 50px;
+  width: min(500px, 100%);
+  padding: 42px 36px;
   background: #fff;
   color: #0f0e0f;
 }
@@ -2771,6 +2771,11 @@
 }
 
 @media (max-width: 1020px) {
+  .message-confirm-modal__panel {
+    width: min(460px, 100%);
+    padding: 36px 28px;
+  }
+
   .message-form__recipient-trigger {
     top: 33.6px;
     left: 79.676px;
@@ -2841,6 +2846,7 @@
 
 @media (max-width: 600px) {
   .message-confirm-modal__panel {
+    width: min(440px, 100%);
     padding: 32px 20px;
   }
   .message-confirm-modal__copy h2 {
@@ -2856,6 +2862,25 @@
   .message-confirm-modal__actions button {
     padding: 10px 12px;
     font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .message-confirm-modal__panel {
+    width: min(320px, 100%);
+    padding: 26px 16px;
+  }
+  .message-confirm-modal__copy h2 {
+    font-size: 18px;
+  }
+  .message-confirm-modal__copy p {
+    font-size: 12px;
+  }
+  .message-confirm-modal__actions {
+    margin-top: 30px;
+  }
+  .message-confirm-modal__actions button {
+    font-size: 14px;
   }
 }
 
