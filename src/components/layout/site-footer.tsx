@@ -20,7 +20,7 @@ export function SiteFooter() {
                 <span className="site-footer__brand-line">디자인학과 졸업전시회</span>
               </p>
               <p>
-                <span className="site-footer__brand-line">42th KNUD</span>{" "}
+                <span className="site-footer__brand-line">42nd KNUD</span>{" "}
                 <span className="site-footer__brand-line">Graduation</span>{" "}
                 <span className="site-footer__brand-line">Exhibition Archive</span>
               </p>
