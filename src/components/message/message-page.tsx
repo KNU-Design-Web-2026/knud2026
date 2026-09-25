@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { CSSProperties, FormEvent, useEffect, useRef, useState } from "react";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import {
@@ -16,13 +16,32 @@ import {
   normalizeMessageBody,
 } from "@/lib/message-input";
 
-function MessageCard({ message }: { message: Letter }) {
+const INITIAL_REVEAL_STEP_MS = 70;
+const INITIAL_REVEAL_MAX_INDEX = 7;
+const INITIAL_REVEAL_CLEANUP_MS = 1_300;
+
+function MessageCard({
+  index,
+  isInitialRevealActive,
+  message,
+}: {
+  index: number;
+  isInitialRevealActive: boolean;
+  message: Letter;
+}) {
+  const initialRevealStyle = isInitialRevealActive
+    ? ({
+        "--message-initial-reveal-delay": `${Math.min(index, INITIAL_REVEAL_MAX_INDEX) * INITIAL_REVEAL_STEP_MS}ms`,
+      } as CSSProperties)
+    : undefined;
+
   return (
     <article
-      className="message-card"
+      className={`message-card${isInitialRevealActive ? " message-card--initial-reveal" : ""}`}
       data-message-reveal
       data-message-visible="false"
       data-node-id="1742:88482"
+      style={initialRevealStyle}
     >
       <div className="message-card__content">
         <div className="message-card__copy">
@@ -79,6 +98,23 @@ export function MessagePage({
   const [listError] = useState(initialError);
   const [formError, setFormError] = useState("");
   const [submissionError, setSubmissionError] = useState("");
+  const [isInitialRevealActive, setIsInitialRevealActive] = useState(
+    () => initialMessages.length > 0,
+  );
+
+  useEffect(() => {
+    if (!isInitialRevealActive) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setIsInitialRevealActive(false);
+    }, INITIAL_REVEAL_CLEANUP_MS);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [isInitialRevealActive]);
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -268,7 +304,14 @@ export function MessagePage({
         <div className="message-list" aria-busy={isInitialLoading} aria-label="방명록 메시지 목록">
           {isInitialLoading
             ? <MessageListSkeleton />
-            : messageList.map((message) => <MessageCard key={message.id} message={message} />)}
+            : messageList.map((message, index) => (
+              <MessageCard
+                index={index}
+                isInitialRevealActive={isInitialRevealActive}
+                key={message.id}
+                message={message}
+              />
+            ))}
         </div>
       </PageContainer>
       <SiteFooter />
