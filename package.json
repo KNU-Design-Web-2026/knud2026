@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
+    "perf:archive:before": "node scripts/performance/generate-archive-before.mjs",
     "test:rolling-paper": "tsx --test src/features/rolling-paper/*.test.mjs && node src/app/message/message-page.test.mjs"
   },
   "dependencies": {
