@@ -402,6 +402,7 @@
 
 .work-card__image {
   aspect-ratio: 384 / 280;
+  background: #f2f2f2;
   overflow: hidden;
   position: relative;
 }
@@ -1458,6 +1459,7 @@
 }
 
 .profile-card__image {
+  background: #f2f2f2;
   z-index: 1;
 }
 

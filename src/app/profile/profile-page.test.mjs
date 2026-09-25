@@ -15,6 +15,7 @@ test("Profile 경로는 Figma의 20개 프로필 카드를 렌더한다", () => 
 
   assert.match(profilePage, /PROFILE_MEMBERS\.map/);
   assert.match(profilePage, /ProfileCard/);
+  assert.match(profilePage, /eager=\{index < 4\}/);
 });
 
 test("Profile 카드는 고정 셀 안에서 hover 정보와 확대 상태를 제공한다", () => {
@@ -23,6 +24,7 @@ test("Profile 카드는 고정 셀 안에서 hover 정보와 확대 상태를 �
 
   assert.match(profileCard, /group\/profile-card/);
   assert.match(profileCard, /profile-card__image/);
+  assert.match(profileCard, /loading=\{eager \? "eager" : "lazy"\}/);
   assert.match(profileCard, /member\.nameKo/);
   assert.match(profileCard, /member\.nameEn/);
   assert.match(profileMembers, /nameKo:/);

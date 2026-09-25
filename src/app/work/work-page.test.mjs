@@ -19,6 +19,7 @@ test("Work 경로는 Figma Web 기준의 19개 작품 카드를 렌더한다", (
 
   assert.match(page, /WORK_ITEMS\.map/);
   assert.match(page, /WorkCard/);
+  assert.match(page, /eager=\{index === 0\}/);
   assert.match(items, /\{ length: 19 \}/);
 });
 
@@ -27,6 +28,7 @@ test("Work 카드는 원본 Figma 이미지와 작품 정보 패널을 사용한
   const items = readFileSync(workItemsPath, "utf8");
 
   assert.match(card, /work-card__image/);
+  assert.match(card, /loading=\{eager \? "eager" : "lazy"\}/);
   assert.match(card, /work-card__detail/);
   assert.match(card, /item\.title/);
   assert.match(card, /item\.artistKo/);

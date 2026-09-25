@@ -3,10 +3,11 @@ import Link from "next/link";
 import type { WorkItem } from "@/data/work-items";
 
 type WorkCardProps = {
+  eager?: boolean;
   item: WorkItem;
 };
 
-export function WorkCard({ item }: WorkCardProps) {
+export function WorkCard({ eager = false, item }: WorkCardProps) {
   return (
     <Link aria-label={`${item.title} 상세 보기`} className="work-card" href={`/work/${item.id}`}>
       <div className="work-card__image">
@@ -14,6 +15,7 @@ export function WorkCard({ item }: WorkCardProps) {
           alt={`${item.title} - ${item.artistKo}`}
           className="absolute top-0 left-[-14.99%] h-full w-[129.98%] max-w-none object-cover"
           fill
+          loading={eager ? "eager" : "lazy"}
           sizes="(min-width: 1350.0625px) 20vw, (min-width: 1020.0625px) 25vw, (min-width: 600.0625px) 33vw, 50vw"
           src={item.imageSrc}
         />

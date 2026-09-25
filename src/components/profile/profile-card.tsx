@@ -3,10 +3,11 @@ import Link from "next/link";
 import type { ProfileMember } from "@/data/profile-members";
 
 type ProfileCardProps = {
+  eager?: boolean;
   member: ProfileMember;
 };
 
-export function ProfileCard({ member }: ProfileCardProps) {
+export function ProfileCard({ eager = false, member }: ProfileCardProps) {
   const cardSurface = (
     <div className="profile-card__surface">
       <div className="profile-card__image relative h-full w-full">
@@ -14,6 +15,7 @@ export function ProfileCard({ member }: ProfileCardProps) {
           alt={`${member.nameKo} 프로필 이미지`}
           className="h-full w-full object-cover"
           height={499}
+          loading={eager ? "eager" : "lazy"}
           sizes="(min-width: 1351px) 19.6vw, (min-width: 1101px) 23.5vw, (min-width: 601px) 30vw, 45.25vw"
           src={member.imageSrc}
           width={375}
