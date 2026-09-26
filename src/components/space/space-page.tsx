@@ -1,10 +1,29 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ArchiveGallery, type ArchiveFixture } from "./archive-gallery";
 import { archiveColumns } from "./space-data";
 import { SpaceMap } from "./space-map";
 import { CompactSpaceMap } from "./compact-space-map";
 import styles from "./space-page.module.css";
 
+type ArchiveFixtureManifest = {
+  images: ArchiveFixture[];
+};
+
+function readArchiveFixtures() {
+  try {
+    const manifestPath = join(process.cwd(), "public/performance-fixtures/archive-after/manifest.json");
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as ArchiveFixtureManifest;
+    return manifest.images;
+  } catch {
+    return [];
+  }
+}
+
 export function SpacePage() {
+  const archiveFixtures = readArchiveFixtures();
+
   return (
     <div className={styles.page}>
       <div className={styles.content}>
@@ -25,15 +44,19 @@ export function SpacePage() {
             <h2 id="space-archive-title">Archive</h2>
             <p>IGNITE의 모든 순간을 담은 아카이브입니다.</p>
           </div>
-          <div className={styles.archiveGrid} aria-label="전시 아카이브 사진 준비 중">
-            {archiveColumns.map((heights, column) => (
-              <div className={styles.archiveColumn} key={column} aria-hidden="true">
-                {heights.map((height, index) => (
-                  <div className={styles.archivePanel} style={{ aspectRatio: `${column === 1 ? 514 : 515} / ${height}` }} key={index} />
-                ))}
-              </div>
-            ))}
-          </div>
+          {archiveFixtures.length > 0 ? (
+            <ArchiveGallery images={archiveFixtures} />
+          ) : (
+            <div className={styles.archiveGrid} aria-label="전시 아카이브 사진 준비 중">
+              {archiveColumns.map((heights, column) => (
+                <div className={styles.archiveColumn} key={column} aria-hidden="true">
+                  {heights.map((height, index) => (
+                    <div className={styles.archivePanel} style={{ aspectRatio: `${column === 1 ? 514 : 515} / ${height}` }} key={index} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       </div>
       <SiteFooter />

@@ -10,3 +10,6 @@ coverage/
 !.env.example
 .vercel
 .env*.local
+
+# Local-only performance fixtures. Regenerate with package scripts.
+/public/performance-fixtures/

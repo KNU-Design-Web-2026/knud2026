@@ -111,7 +111,10 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
               <Link
                 aria-current={isActive ? "page" : undefined}
                 className={[
-                  "header-nav-link group relative flex h-full w-[var(--header-nav-item-width)] items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)]",
+                  "header-nav-link group relative flex h-full items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)]",
+                  item.href === "/message"
+                    ? "w-[var(--header-nav-guestbook-width)]"
+                    : "w-[var(--header-nav-item-width)]",
                   isActive && "header-nav-link--active font-bold text-knud-navigation-active",
                 ]
                   .filter(Boolean)

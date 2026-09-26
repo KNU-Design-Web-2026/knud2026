@@ -15,8 +15,8 @@ export default function ProfilePage() {
         2026 경북대학교 디자인학과 졸업전시회 참여자 프로필
       </h1>
       <div className="profile-grid pb-[var(--profile-page-top-gap)]">
-        {PROFILE_MEMBERS.map((member) => (
-          <ProfileCard key={member.id} member={member} />
+        {PROFILE_MEMBERS.map((member, index) => (
+          <ProfileCard eager={index < 4} key={member.id} member={member} />
         ))}
       </div>
       <SiteFooter />

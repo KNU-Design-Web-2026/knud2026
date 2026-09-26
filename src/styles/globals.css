@@ -402,6 +402,7 @@
 
 .work-card__image {
   aspect-ratio: 384 / 280;
+  background: #f2f2f2;
   overflow: hidden;
   position: relative;
 }
@@ -1458,6 +1459,7 @@
 }
 
 .profile-card__image {
+  background: #f2f2f2;
   z-index: 1;
 }
 
@@ -2185,6 +2187,24 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* The streamed skeleton keeps the wall geometry visible while the server waits
+   for letters. Real cards then enter once, before scroll-based reveals take over. */
+.message-card--initial-reveal {
+  animation: message-card-initial-reveal 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--message-initial-reveal-delay, 0ms);
+}
+
+@keyframes message-card-initial-reveal {
+  from {
+    opacity: 0;
+    translate: 0 1.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
 
@@ -3495,7 +3515,7 @@
     translate 760ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.message-page[data-message-motion-ready="true"] .message-list .message-card {
+.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-reveal] {
   opacity: 0;
   translate: 0 1.5rem;
 }

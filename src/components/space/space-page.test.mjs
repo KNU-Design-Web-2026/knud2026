@@ -16,6 +16,30 @@ test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다",
   for (const height of archiveColumns.flat()) assert.ok(height > 0);
 });
 
+test("로컬 After fixture는 실제 Space Archive에서 6장씩 점진적으로 요청한다", async () => {
+  const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
+  const gallery = await readFile(new URL("./archive-gallery.tsx", import.meta.url), "utf8");
+  const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
+
+  assert.match(page, /public\/performance-fixtures\/archive-after\/manifest\.json/);
+  assert.match(page, /<ArchiveGallery images=\{archiveFixtures\}/);
+  assert.match(gallery, /const batchSize = 6/);
+  assert.match(gallery, /loading="eager"/);
+  assert.match(gallery, /decoding="async"/);
+  assert.match(gallery, /type="image\/avif"/);
+  assert.match(gallery, /type="image\/webp"/);
+  assert.match(gallery, /\(max-width: 821px\) 46vw/);
+  assert.match(gallery, /backgroundImage: isVisible \? `url\(\$\{image\.blurDataURL\}\)` : undefined/);
+  assert.match(gallery, /rootMargin: "600px 0px"/);
+  assert.match(gallery, /rootMargin: "800px 0px"/);
+  assert.match(gallery, /Math\.min\(current \+ batchSize, images\.length\)/);
+  assert.match(page, /archiveFixtures\.length > 0/);
+  assert.match(gallery, /전시 아카이브 성능 테스트 이미지/);
+  assert.match(css, /\.archivePhotoGrid \{ display: grid; grid-auto-flow: row; align-items: start; \}/);
+  assert.match(css, /\.archivePhotoPicture \{[^}]*animation: archive-photo-in 280ms ease-out both;/);
+  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ grid-template-columns: 515fr 514fr; \}/);
+});
+
 test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
   const map = await readFile(new URL("./space-map.tsx", import.meta.url), "utf8");
   for (const asset of ["map-outline.svg", "map-island.svg", "map-entry.svg"]) {
@@ -33,6 +57,7 @@ test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 �
   assert.match(map, /onPointerLeave=\{\(\) => setActive\(null\)\}/);
   assert.match(map, /src=\{work.imageSrc\}/);
   assert.match(map, /aria-hidden=\{active === null\}/);
+  assert.match(map, /map-island\.svg[^>]*fetchPriority="high"/);
 });
 
 test("1020px 태블릿은 클릭 안내를 표시하고 이름 링크로 상세 페이지를 연다", async () => {
@@ -59,6 +84,8 @@ test("작은 화면은 별도의 지도 방향과 두 열 아카이브를 사용
   assert.match(compact, /const tabletNames =/);
   assert.match(compact, /const mobileNames =/);
   assert.match(compact, /href=\{`\/work\/\$\{work.id\}`\}/);
+  assert.equal(compact.match(/priority/g)?.length, 3);
+  assert.match(compact, /map-island\.svg[^>]*fetchPriority="high"/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /opacity 240ms/);
 });

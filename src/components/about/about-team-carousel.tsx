@@ -66,7 +66,15 @@ export function AboutTeamCarousel({ teams }: AboutTeamCarouselProps) {
       >
         {teams.map((team, index) => (
           <article className={styles.card} key={`${team.name}-${index}`}>
-            <Image alt={`${team.name} 단체 사진`} className={styles.image} draggable={false} height={team.height} src={team.image} unoptimized width={team.width} />
+            <Image
+              alt={`${team.name} 단체 사진`}
+              className={styles.image}
+              draggable={false}
+              height={team.height}
+              sizes="(max-width: 1020px) 414px, (max-width: 1919px) 44vw, 690px"
+              src={team.image}
+              width={team.width}
+            />
             <div className={styles.caption}>
               <p className="font-bold">{team.name}</p>
               <p>{team.members}</p>

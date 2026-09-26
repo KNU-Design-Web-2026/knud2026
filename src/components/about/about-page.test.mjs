@@ -82,6 +82,8 @@ test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크�
   assert.equal(page.match(/src="\/assets\/figma\/about\/poster\.png"/g)?.length, 2);
   assert.equal(page.match(/height=\{2560\}/g)?.length, 2);
   assert.equal(page.match(/width=\{1808\}/g)?.length, 2);
+  assert.equal(page.match(/sizes="\(max-width: 821px\) 440px, 434px"/g)?.length, 2);
+  assert.doesNotMatch(page, /poster\.png" unoptimized/);
 });
 
 test("졸업준비팀 사진은 기획·브랜딩·영상·웹·편집 순서에 맞는 개별 자산을 사용한다", async () => {
@@ -97,6 +99,15 @@ test("졸업준비팀 사진은 기획·브랜딩·영상·웹·편집 순서에
   const positions = expected.map((asset) => page.indexOf(asset));
   assert.ok(positions.every((position) => position >= 0));
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
+});
+
+test("포스터와 졸업준비팀 사진은 반응형 이미지 최적화를 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+  const carousel = await readFile(new URL("./about-team-carousel.tsx", import.meta.url), "utf8");
+
+  assert.match(carousel, /sizes="\(max-width: 1020px\) 414px, \(max-width: 1919px\) 44vw, 690px"/);
+  assert.doesNotMatch(carousel, /unoptimized/);
+  assert.equal(page.match(/poster\.png/g)?.length, 2);
 });
 
 test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 유지한다", async () => {

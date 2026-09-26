@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
+    "perf:archive:before": "node scripts/performance/generate-archive-before.mjs",
+    "perf:archive:after": "node scripts/performance/generate-archive-after.mjs",
+    "test:archive-performance": "node --test src/app/experiments/archive-performance/**/*.test.mjs",
     "test:rolling-paper": "tsx --test src/features/rolling-paper/*.test.mjs && node src/app/message/message-page.test.mjs"
   },
   "dependencies": {
@@ -23,6 +26,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.0",
     "postcss": "^8.5.26",
+    "sharp": "0.35.3",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.13",
     "typescript": "^6.0.3"
