@@ -35,7 +35,7 @@ export function SpaceMap() {
       onKeyDown={(event) => { if (event.key === "Escape") setActive(null); }}
       onPointerLeave={() => setActive(null)}>
       <Image alt="" className={styles.outline} src="/assets/figma/space/map-outline.svg" width={1273.71} height={716.31} priority />
-      <Image alt="" className={styles.island} src="/assets/figma/space/map-island.svg" width={319.44} height={287.12} priority />
+      <Image alt="" className={styles.island} src="/assets/figma/space/map-island.svg" width={319.44} height={287.12} priority fetchPriority="high" />
       <Image alt="" className={styles.entry} src="/assets/figma/space/map-entry.svg" width={43} height={85} priority />
       {positions.map((item, index) => {
         const assigned = getSpaceWork(index);

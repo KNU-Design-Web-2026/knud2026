@@ -57,6 +57,7 @@ test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 �
   assert.match(map, /onPointerLeave=\{\(\) => setActive\(null\)\}/);
   assert.match(map, /src=\{work.imageSrc\}/);
   assert.match(map, /aria-hidden=\{active === null\}/);
+  assert.match(map, /map-island\.svg[^>]*fetchPriority="high"/);
 });
 
 test("1020px 태블릿은 클릭 안내를 표시하고 이름 링크로 상세 페이지를 연다", async () => {
@@ -83,6 +84,8 @@ test("작은 화면은 별도의 지도 방향과 두 열 아카이브를 사용
   assert.match(compact, /const tabletNames =/);
   assert.match(compact, /const mobileNames =/);
   assert.match(compact, /href=\{`\/work\/\$\{work.id\}`\}/);
+  assert.equal(compact.match(/priority/g)?.length, 3);
+  assert.match(compact, /map-island\.svg[^>]*fetchPriority="high"/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /opacity 240ms/);
 });
