@@ -93,6 +93,9 @@
 .archiveColumn { display: flex; flex-direction: column; gap: 1.234568cqw; }
 .archivePanel { background: #d9d9d9; }
 .archiveColumn:last-child .archivePanel:last-child { box-shadow: 0 4px 4px rgb(0 0 0 / 25%); }
+.archivePhotoGrid { display: block; columns: 3; column-gap: 2.345679cqw; }
+.archivePhoto { break-inside: avoid; margin: 0 0 1.234568cqw; overflow: hidden; background: #d9d9d9; }
+.archivePhoto img { display: block; width: 100%; height: auto; }
 
 .compactMap, .tabletInstruction, .compactInstruction { display: none; }
 
@@ -119,6 +122,8 @@
   .archiveGrid { grid-template-columns: 515fr 514fr; gap: 3.561525cqw; margin-top: 40px; }
   .archiveColumn { gap: 1.87441cqw; }
   .archiveColumn:last-child { display: none; }
+  .archivePhotoGrid { columns: 2; column-gap: 3.561525cqw; }
+  .archivePhoto { margin-bottom: 1.87441cqw; }
   .page :global(.site-footer__schedule),
   .page :global(.site-footer__copyright) { white-space: normal; overflow-wrap: anywhere; }
   .page :global(.site-footer__information) { overflow-wrap: anywhere; }

@@ -16,6 +16,19 @@ test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다",
   for (const height of archiveColumns.flat()) assert.ok(height > 0);
 });
 
+test("로컬 Before fixture가 있으면 실제 Space Archive에서 40장 원본을 즉시 요청한다", async () => {
+  const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
+  const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
+
+  assert.match(page, /public\/performance-fixtures\/archive-before\/manifest\.json/);
+  assert.match(page, /loading="eager"/);
+  assert.match(page, /decoding="sync"/);
+  assert.match(page, /archiveFixtures\.length > 0/);
+  assert.match(page, /전시 아카이브 성능 테스트 이미지/);
+  assert.match(css, /\.archivePhotoGrid \{ display: block; columns: 3;/);
+  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ columns: 2;/);
+});
+
 test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
   const map = await readFile(new URL("./space-map.tsx", import.meta.url), "utf8");
   for (const asset of ["map-outline.svg", "map-island.svg", "map-entry.svg"]) {
