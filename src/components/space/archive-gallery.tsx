@@ -8,16 +8,28 @@ export type ArchiveCandidate = {
   src: string;
 };
 
-export type ArchiveFixture = {
+type ArchiveImageBase = {
   id: string;
   width: number;
   height: number;
+};
+
+type OptimizedArchiveFixture = ArchiveImageBase & {
   blurDataURL: string;
   sources: {
     avif: ArchiveCandidate[];
     webp: ArchiveCandidate[];
   };
+  src?: never;
 };
+
+type DirectArchiveImage = ArchiveImageBase & {
+  src: string;
+  blurDataURL?: never;
+  sources?: never;
+};
+
+export type ArchiveFixture = OptimizedArchiveFixture | DirectArchiveImage;
 
 const batchSize = 6;
 const archiveSizes = "(max-width: 821px) 46vw, (max-width: 1700px) 31vw, 515px";
@@ -27,6 +39,21 @@ function createSrcSet(candidates: ArchiveCandidate[]) {
 }
 
 function ArchivePicture({ image, index }: { image: ArchiveFixture; index: number }) {
+  if (!image.sources) {
+    return (
+      // The S3 test intentionally requests the original object without Next.js optimization.
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        alt={`전시 아카이브 이미지 ${index + 1}`}
+        decoding="async"
+        height={image.height}
+        loading="eager"
+        src={image.src}
+        width={image.width}
+      />
+    );
+  }
+
   return (
     <picture className={styles.archivePhotoPicture}>
       <source sizes={archiveSizes} srcSet={createSrcSet(image.sources.avif)} type="image/avif" />
@@ -115,7 +142,7 @@ export function ArchiveGallery({ images }: { images: ArchiveFixture[] }) {
             ref={isBoundary ? boundaryRef : undefined}
             style={{
               aspectRatio: `${image.width} / ${image.height}`,
-              backgroundImage: isVisible ? `url(${image.blurDataURL})` : undefined,
+              backgroundImage: isVisible && image.blurDataURL ? `url(${image.blurDataURL})` : undefined,
             }}
           >
             {isVisible ? <ArchivePicture image={image} index={index} /> : <span className={styles.archivePlaceholder} aria-hidden="true" />}
