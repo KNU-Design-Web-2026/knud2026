@@ -1,7 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
-import { archiveColumns, spaceMapSize, spacePositions } from "./space-data.ts";
+import * as spaceData from "./space-data.ts";
+
+const { archiveColumns, spaceMapSize, spacePositions } = spaceData;
+
+test("S3 Archive 테스트 데이터는 서로 다른 원본 이미지 40장을 제공한다", () => {
+  const images = spaceData.s3ArchiveImages;
+
+  assert.equal(images?.length, 40);
+  assert.equal(new Set(images?.map(image => image.src)).size, 40);
+  assert.equal(images?.[0]?.src, "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/1.webp");
+  assert.equal(images?.[39]?.src, "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/40.webp");
+  assert.ok(images?.every(image => image.width > 0 && image.height > 0));
+});
 
 test("지도 좌표는 원본 배치도 범위 안에 있다", () => {
   assert.equal(spacePositions.length, 20);
@@ -16,28 +28,27 @@ test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다",
   for (const height of archiveColumns.flat()) assert.ok(height > 0);
 });
 
-test("로컬 After fixture는 실제 Space Archive에서 6장씩 점진적으로 요청한다", async () => {
+test("실제 Space Archive는 S3 원본 40장을 6장씩 점진적으로 요청한다", async () => {
   const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
   const gallery = await readFile(new URL("./archive-gallery.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
 
-  assert.match(page, /public\/performance-fixtures\/archive-after\/manifest\.json/);
-  assert.match(page, /<ArchiveGallery images=\{archiveFixtures\}/);
+  assert.match(page, /<ArchiveGallery images=\{s3ArchiveImages\}/);
   assert.match(gallery, /const batchSize = 6/);
   assert.match(gallery, /loading="eager"/);
   assert.match(gallery, /decoding="async"/);
   assert.match(gallery, /type="image\/avif"/);
   assert.match(gallery, /type="image\/webp"/);
   assert.match(gallery, /\(max-width: 821px\) 46vw/);
-  assert.match(gallery, /backgroundImage: isVisible \? `url\(\$\{image\.blurDataURL\}\)` : undefined/);
+  assert.match(gallery, /backgroundImage: isVisible && image\.blurDataURL \? `url\(\$\{image\.blurDataURL\}\)` : undefined/);
   assert.match(gallery, /rootMargin: "600px 0px"/);
   assert.match(gallery, /rootMargin: "800px 0px"/);
   assert.match(gallery, /Math\.min\(current \+ batchSize, images\.length\)/);
-  assert.match(page, /archiveFixtures\.length > 0/);
   assert.match(gallery, /전시 아카이브 성능 테스트 이미지/);
-  assert.match(css, /\.archivePhotoGrid \{ display: grid; grid-auto-flow: row; align-items: start; \}/);
+  assert.match(css, /\.archivePhotoGrid \{ --archive-column-count: 3; display: grid; grid-auto-flow: row; align-items: start; \}/);
+  assert.match(css, /\.archivePhotoGrid\[data-masonry-ready="true"\] \{ position: relative; display: block; \}/);
   assert.match(css, /\.archivePhotoPicture \{[^}]*animation: archive-photo-in 280ms ease-out both;/);
-  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ grid-template-columns: 515fr 514fr; \}/);
+  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ --archive-column-count: 2; grid-template-columns: 515fr 514fr; \}/);
 });
 
 test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
