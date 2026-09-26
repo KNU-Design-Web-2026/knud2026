@@ -45,9 +45,10 @@ test("실제 Space Archive는 S3 원본 40장을 6장씩 점진적으로 요청�
   assert.match(gallery, /rootMargin: "800px 0px"/);
   assert.match(gallery, /Math\.min\(current \+ batchSize, images\.length\)/);
   assert.match(gallery, /전시 아카이브 성능 테스트 이미지/);
-  assert.match(css, /\.archivePhotoGrid \{ display: grid; grid-auto-flow: row; align-items: start; \}/);
+  assert.match(css, /\.archivePhotoGrid \{ --archive-column-count: 3; display: grid; grid-auto-flow: row; align-items: start; \}/);
+  assert.match(css, /\.archivePhotoGrid\[data-masonry-ready="true"\] \{ position: relative; display: block; \}/);
   assert.match(css, /\.archivePhotoPicture \{[^}]*animation: archive-photo-in 280ms ease-out both;/);
-  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ grid-template-columns: 515fr 514fr; \}/);
+  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ --archive-column-count: 2; grid-template-columns: 515fr 514fr; \}/);
 });
 
 test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
