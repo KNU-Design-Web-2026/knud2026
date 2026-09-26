@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- 4K 원본을 그대로 요청하는 Before 성능 기준 화면입니다. */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -9,9 +8,18 @@ import styles from "./space-page.module.css";
 
 type ArchiveFixture = {
   id: string;
-  src: string;
   width: number;
   height: number;
+  blurDataURL: string;
+  sources: {
+    avif: ArchiveCandidate[];
+    webp: ArchiveCandidate[];
+  };
+};
+
+type ArchiveCandidate = {
+  width: number;
+  src: string;
 };
 
 type ArchiveFixtureManifest = {
@@ -20,13 +28,19 @@ type ArchiveFixtureManifest = {
 
 function readArchiveFixtures() {
   try {
-    const manifestPath = join(process.cwd(), "public/performance-fixtures/archive-before/manifest.json");
+    const manifestPath = join(process.cwd(), "public/performance-fixtures/archive-after/manifest.json");
     const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as ArchiveFixtureManifest;
     return manifest.images;
   } catch {
     return [];
   }
 }
+
+function createSrcSet(candidates: ArchiveCandidate[]) {
+  return candidates.map(candidate => `${candidate.src} ${candidate.width}w`).join(", ");
+}
+
+const archiveSizes = "(max-width: 821px) 46vw, (max-width: 1700px) 31vw, 515px";
 
 export function SpacePage() {
   const archiveFixtures = readArchiveFixtures();
@@ -54,15 +68,25 @@ export function SpacePage() {
           {archiveFixtures.length > 0 ? (
             <div className={`${styles.archiveGrid} ${styles.archivePhotoGrid}`} aria-label="전시 아카이브 성능 테스트 이미지">
               {archiveFixtures.map((image, index) => (
-                <figure className={styles.archivePhoto} key={image.id}>
-                  <img
-                    alt={`Archive 성능 테스트 이미지 ${index + 1}`}
-                    decoding="sync"
-                    height={image.height}
-                    loading="eager"
-                    src={image.src}
-                    width={image.width}
-                  />
+                <figure
+                  className={styles.archivePhoto}
+                  key={image.id}
+                  style={{ backgroundImage: `url(${image.blurDataURL})`, aspectRatio: `${image.width} / ${image.height}` }}
+                >
+                  <picture>
+                    <source sizes={archiveSizes} srcSet={createSrcSet(image.sources.avif)} type="image/avif" />
+                    <source sizes={archiveSizes} srcSet={createSrcSet(image.sources.webp)} type="image/webp" />
+                    <img
+                      alt={`Archive 성능 테스트 이미지 ${index + 1}`}
+                      decoding="async"
+                      height={image.height}
+                      loading="eager"
+                      sizes={archiveSizes}
+                      src={image.sources.webp.at(-1)?.src}
+                      srcSet={createSrcSet(image.sources.webp)}
+                      width={image.width}
+                    />
+                  </picture>
                 </figure>
               ))}
             </div>

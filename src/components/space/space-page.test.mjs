@@ -16,13 +16,17 @@ test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다",
   for (const height of archiveColumns.flat()) assert.ok(height > 0);
 });
 
-test("로컬 Before fixture가 있으면 실제 Space Archive에서 40장 원본을 즉시 요청한다", async () => {
+test("로컬 After fixture가 있으면 실제 Space Archive에서 반응형 파생본을 즉시 요청한다", async () => {
   const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
 
-  assert.match(page, /public\/performance-fixtures\/archive-before\/manifest\.json/);
+  assert.match(page, /public\/performance-fixtures\/archive-after\/manifest\.json/);
   assert.match(page, /loading="eager"/);
-  assert.match(page, /decoding="sync"/);
+  assert.match(page, /decoding="async"/);
+  assert.match(page, /type="image\/avif"/);
+  assert.match(page, /type="image\/webp"/);
+  assert.match(page, /\(max-width: 821px\) 46vw/);
+  assert.match(page, /backgroundImage: `url\(\$\{image\.blurDataURL\}\)`/);
   assert.match(page, /archiveFixtures\.length > 0/);
   assert.match(page, /전시 아카이브 성능 테스트 이미지/);
   assert.match(css, /\.archivePhotoGrid \{ display: block; columns: 3;/);

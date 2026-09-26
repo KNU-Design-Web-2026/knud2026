@@ -94,8 +94,9 @@
 .archivePanel { background: #d9d9d9; }
 .archiveColumn:last-child .archivePanel:last-child { box-shadow: 0 4px 4px rgb(0 0 0 / 25%); }
 .archivePhotoGrid { display: block; columns: 3; column-gap: 2.345679cqw; }
-.archivePhoto { break-inside: avoid; margin: 0 0 1.234568cqw; overflow: hidden; background: #d9d9d9; }
-.archivePhoto img { display: block; width: 100%; height: auto; }
+.archivePhoto { break-inside: avoid; margin: 0 0 1.234568cqw; overflow: hidden; background: #d9d9d9 center / cover no-repeat; }
+.archivePhoto picture { display: block; width: 100%; height: 100%; }
+.archivePhoto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .compactMap, .tabletInstruction, .compactInstruction { display: none; }
 
