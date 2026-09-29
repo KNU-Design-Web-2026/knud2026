@@ -32,15 +32,12 @@
 }
 .map {
   position: relative;
-  width: 78.747528%;
-  aspect-ratio: 1275.71 / 718.31;
+  width: 80.37037%;
+  aspect-ratio: 1302 / 762;
   margin: 7.037037cqw auto 0;
-  container-type: inline-size;
 }
-.outline, .island, .entry { position: absolute; pointer-events: none; }
-.outline { left: 0.078388%; top: 0.139216%; width: 99.843224%; height: 99.721569%; }
-.island { left: 13.48896%; top: 39.303368%; width: 25.040172%; height: 39.9716%; }
-.entry { left: 83.01%; top: 85.2%; width: 3.37%; height: 11.833%; }
+.mapArtwork { position: absolute; inset: 0; width: 100%; height: auto; pointer-events: none; }
+.mapLabels { position: absolute; left: 1.42089%; top: 3.41864%; width: 97.9808%; height: 94.2664%; container-type: inline-size; }
 .name {
   position: absolute;
   color: #848484;
@@ -122,8 +119,11 @@
   .map, .desktopInstruction { display: none; }
   .tabletInstruction { display: none; }
   .compactInstruction { display: inline; }
-  .compactMap { display: block; position: relative; width: 98.65848%; aspect-ratio: 552.48749 / 311.2796; margin: 40px auto 0; container-type: inline-size; }
+  .compactMap { display: block; position: relative; width: 98.65848%; aspect-ratio: 1302 / 762; margin: 40px auto 0; }
   .mapDrawing, .tabletNames, .mobileNames { position: absolute; inset: 0; }
+  .tabletArtwork { display: block; width: 100%; height: auto; pointer-events: none; }
+  .mobileArtwork { display: none; }
+  .tabletNames { left: 1.42089%; top: 3.41864%; width: 97.9808%; height: 94.2664%; container-type: inline-size; }
   .mobileNames { display: none; }
   .compactName { position: absolute; font-size: 2.53445cqw; font-weight: 500; line-height: 1.285714; color: #0f0e0f; white-space: nowrap; }
   .compactVertical { display: flex; flex-direction: column; line-height: 1; }
@@ -143,10 +143,12 @@
 @media (max-width: 480px) {
   .heading h1, .heading h2 { height: 28.334px; }
   .heading p { margin-top: 6px; }
-  .compactMap { width: 78.435%; aspect-ratio: 298 / 529.1523; }
-  .mapDrawing { width: 177.56789%; height: 56.31649%; inset: 0 auto auto 0; transform-origin: top left; transform: translateX(56.31649%) rotate(90deg); }
+  .compactMap { width: 82.89474%; aspect-ratio: 315 / 541.918; }
+  .mapDrawing { width: 172.03746%; height: 58.127%; inset: 0 auto auto 0; transform-origin: top left; transform: translateX(58.127%) rotate(90deg); }
+  .tabletArtwork { display: none; }
+  .mobileArtwork { display: block; width: 100%; height: auto; pointer-events: none; }
   .tabletNames { display: none; }
-  .mobileNames { display: block; }
+  .mobileNames { display: block; left: 2.00952%; top: 1.66077%; width: 94.60317%; height: 97.643%; container-type: inline-size; }
   .mobileNameBox { position: absolute; display: flex; align-items: center; justify-content: center; font-size: 4.697986cqw; font-weight: 500; line-height: 1.285714; color: #0f0e0f; white-space: nowrap; }
   .page :global(.site-footer__content) { column-gap: 38px; grid-template-columns: 109px minmax(0, 1fr); }
   .page :global(.site-footer__brand-copy), .page :global(.site-footer__schedule) { line-height: 16px; }
