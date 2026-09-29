@@ -46,12 +46,12 @@ test("공통 헤더는 변경된 Figma 기준 폭의 브랜드와 메뉴 타이�
   assert.doesNotMatch(header, /42th KNUD/);
 });
 
-test("데스크톱과 모바일 헤더는 메시지 메뉴를 GUESTBOOK으로 표시한다", async () => {
+test("데스크톱과 모바일 헤더는 메시지 메뉴를 MESSAGE로 표시한다", async () => {
   const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
   const tokens = await readFile(new URL("../../styles/tokens.css", import.meta.url), "utf8");
 
-  assert.equal(header.match(/label: "GUESTBOOK"/g)?.length, 2);
-  assert.doesNotMatch(header, /label: "MESSAGE"/);
+  assert.equal(header.match(/label: "MESSAGE"/g)?.length, 2);
+  assert.doesNotMatch(header, /label: "GUESTBOOK"/);
   assert.match(tokens, /--header-nav-container-width: calc\([\s\S]*?var\(--header-nav-item-width\) \* 4[\s\S]*?var\(--header-nav-guestbook-width\)[\s\S]*?var\(--header-nav-gap\) \* 4/);
 });
 

@@ -76,6 +76,13 @@ test("교수진 섹션 제목은 Faculty로 표시한다", async () => {
   assert.doesNotMatch(page, />Professors<\/h2>/);
 });
 
+test("위원회와 팀 소개는 기획 및 전시팀 명칭을 동일하게 사용한다", async () => {
+  const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
+
+  assert.equal(page.match(/"기획 및 전시팀"/g)?.length, 2);
+  assert.doesNotMatch(page, /"기획팀"/);
+});
+
 test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크기를 사용한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
 
