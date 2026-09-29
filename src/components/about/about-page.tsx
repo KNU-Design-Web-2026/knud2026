@@ -2,6 +2,7 @@ import Image from "next/image";
 import { AboutMotion } from "@/components/about/about-motion";
 import { AboutTeamCarousel } from "@/components/about/about-team-carousel";
 import { SiteFooter } from "@/components/layout/site-footer";
+import posterImage from "../../../public/assets/figma/about/poster.png";
 import styles from "./about-page.module.css";
 
 const fullIntroduction = [
@@ -67,13 +68,13 @@ export function AboutPage() {
       <section className={styles.introSection}>
         <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
-            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} height={2560} loading="eager" sizes="(max-width: 821px) 440px, 434px" src="/assets/figma/about/poster.png" width={1808} />
+            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
             <IntroductionCopy />
           </div>
         </div>
 
         <div className={styles.introNarrow} data-about-reveal="scale">
-          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth height={2560} loading="eager" sizes="(max-width: 821px) 440px, 434px" src="/assets/figma/about/poster.png" width={1808} />
+          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
           <div className={styles.introNarrowFrame} data-about-depth>
             <div className={styles.introNarrowInner}><IntroductionCopy /></div>
           </div>
