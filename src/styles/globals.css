@@ -3040,8 +3040,8 @@
   }
 }
 
-/* Figma frame 1742:84657 — 1920px four-column message wall. */
-@media (min-width: 1350.0625px) {
+/* Keep laptop-width screens, including the 14-inch MacBook Pro, on four columns. */
+@media (min-width: 1440px) {
   .message-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 47px;
@@ -3403,7 +3403,13 @@
 }
 
 /* Change columns only after each card has enough room for 150-character copy. */
-@media (min-width: 1150px) and (max-width: 1599px) {
+@media (min-width: 1150px) and (max-width: 1439px) {
+  .message-list-container {
+    /* Preserve the three-column rhythm while keeping the whole first row
+       below the spray illustration. */
+    --message-list-lift: clamp(9rem, 11vw, 11rem);
+  }
+
   .message-list {
     --message-card-stagger: clamp(6rem, 8vw, 8rem);
 
