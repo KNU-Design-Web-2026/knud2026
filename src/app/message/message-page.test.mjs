@@ -118,7 +118,7 @@ assert.match(styles, /\.message-list\s*\{[\s\S]*grid-template-columns:\s*repeat\
 assert.match(styles, /\.message-list\s*\{[\s\S]*column-gap:\s*47px;[\s\S]*row-gap:\s*50px;/);
 assert.match(styles, /\.message-card\s*\{[\s\S]*padding:\s*30\.573px 40\.267px;/);
 assert.match(styles, /\.message-card__copy\s*\{[\s\S]*gap:\s*15px;/);
-assert.match(styles, /\.message-card__body\s*\{[\s\S]*font-size:\s*20px;[\s\S]*font-weight:\s*500;/);
+assert.match(styles, /\.message-card__body\s*\{[\s\S]*font-size:\s*20px;[\s\S]*font-weight:\s*400;/);
 assert.match(styles, /\.message-list\s*\{[\s\S]*--message-card-stagger:\s*clamp\(7rem, 7\.1vw, 8\.5rem\);[\s\S]*padding-bottom:\s*var\(--message-card-stagger\)/);
 assert.match(styles, /\.message-card:nth-child\(4n \+ 2\),\s*\.message-card:nth-child\(4n \+ 4\)\s*\{[\s\S]*transform:\s*translateY\(var\(--message-card-stagger\)\)/);
 assert.match(styles, /@media \(min-width: 1150px\) and \(max-width: 1439px\)[\s\S]*\.message-card:nth-child\(3n \+ 2\)\s*\{[\s\S]*transform:\s*translateY\(var\(--message-card-stagger\)\)/);
@@ -144,6 +144,7 @@ assert.match(styles, /@media \(max-width: 400px\)[\s\S]*font-size:\s*7px;[\s\S]*
 assert.match(bodyLimitMigration, /char_length\(body\) between 1 and 150/);
 assert.match(styles, /@media \(min-width: 1150px\) and \(max-width: 1439px\)[\s\S]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
 assert.match(styles, /@media \(min-width: 1440px\)[\s\S]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
+assert.match(styles, /@media \(min-width: 1440px\)[\s\S]*\.message-card__to,[\s\S]*\.message-card__from\s*\{[\s\S]*font-size:\s*14px;[\s\S]*\.message-card__body\s*\{[\s\S]*font-size:\s*15px;[\s\S]*-webkit-line-clamp:\s*11/);
 assert.doesNotMatch(styles, /--message-card-spray-clearance/);
 assert.match(styles, /@media \(max-width: 1149px\)[\s\S]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__to,[\s\S]*\.message-card__from\s*\{[\s\S]*font-size:\s*clamp\(9px, 5cqi, 10\.5px\)/);
