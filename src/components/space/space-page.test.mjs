@@ -53,8 +53,9 @@ test("실제 Space Archive는 S3 원본 40장을 6장씩 점진적으로 요청�
 
 test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
   const map = await readFile(new URL("./space-map.tsx", import.meta.url), "utf8");
-  for (const asset of ["map-outline.svg", "map-island.svg", "map-entry.svg"]) {
-    assert.ok(map.includes(asset));
+  const compact = await readFile(new URL("./compact-space-map.tsx", import.meta.url), "utf8");
+  for (const [source, asset] of [[map, "map-web-2026.svg"], [compact, "map-mobile-2026.svg"]]) {
+    assert.ok(source.includes(asset));
     const bytes = await readFile(new URL(`../../../public/assets/figma/space/${asset}`, import.meta.url));
     assert.ok(bytes.length > 0);
   }
@@ -68,7 +69,7 @@ test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 �
   assert.match(map, /onPointerLeave=\{\(\) => setActive\(null\)\}/);
   assert.match(map, /src=\{work.imageSrc\}/);
   assert.match(map, /aria-hidden=\{active === null\}/);
-  assert.match(map, /map-island\.svg[^>]*fetchPriority="high"/);
+  assert.match(map, /map-web-2026\.svg[^>]*fetchPriority="high"/);
 });
 
 test("1020px 태블릿은 클릭 안내를 표시하고 이름 링크로 상세 페이지를 연다", async () => {
@@ -90,13 +91,15 @@ test("작은 화면은 별도의 지도 방향과 두 열 아카이브를 사용
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
   const compact = await readFile(new URL("./compact-space-map.tsx", import.meta.url), "utf8");
   assert.match(css, /grid-template-columns: 515fr 514fr;/);
-  assert.match(css, /aspect-ratio: 298 \/ 529\.1523/);
+  assert.match(css, /aspect-ratio: 315 \/ 541\.918/);
+  assert.match(css, /\.mapLabels \{[^}]*left: 1\.42089%;[^}]*top: 3\.41864%;/);
+  assert.match(css, /\.mobileNames \{ display: block; left: 2\.00952%; top: 1\.66077%;/);
   assert.match(css, /\.archiveColumn:last-child \{ display: none; \}/);
   assert.match(compact, /const tabletNames =/);
   assert.match(compact, /const mobileNames =/);
   assert.match(compact, /href=\{`\/work\/\$\{work.id\}`\}/);
-  assert.equal(compact.match(/priority/g)?.length, 3);
-  assert.match(compact, /map-island\.svg[^>]*fetchPriority="high"/);
+  assert.match(compact, /map-web-2026\.svg[^>]*fetchPriority="high"/);
+  assert.match(compact, /map-mobile-2026\.svg[^>]*fetchPriority="high"/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /opacity 240ms/);
 });
