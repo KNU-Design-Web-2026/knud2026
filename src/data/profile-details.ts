@@ -38,7 +38,7 @@ export const PROFILE_DETAILS: Readonly<Record<string, ProfileDetail>> = {
   "1": {
     id: "1",
     nameKo: "김서은",
-    nameEn: "Seoeun Kim",
+    nameEn: "Kim Seoeun",
     introduction: INTRODUCTION_DRAFT,
     tags: ["BRANDING", "EDITORIAL", "UI/UX"],
     email: "pupu@naver.com",

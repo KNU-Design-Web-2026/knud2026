@@ -31,9 +31,9 @@ export const WORK_DETAILS: Readonly<Record<string, WorkDetail>> = Object.fromEnt
     String(item.id),
     {
       ...FIGMA_WORK_DETAIL,
-      artistEn: item.id === 1 ? "Seoyun Lee" : item.artistEn,
-      artistEnMobile: item.id === 1 ? "Seoyun Lee" : item.artistEnMobile,
-      artistEnTab: item.id === 1 ? "Seoyun Lee" : item.artistEnTab,
+      artistEn: item.id === 1 ? "Lee Seoyun" : item.artistEn,
+      artistEnMobile: item.id === 1 ? "Lee Seoyun" : item.artistEnMobile,
+      artistEnTab: item.id === 1 ? "Lee Seoyun" : item.artistEnTab,
       artistKo: item.id === 1 ? "이서윤" : item.artistKo,
     },
   ]),
