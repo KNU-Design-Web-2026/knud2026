@@ -1610,6 +1610,7 @@
 }
 
 .header-nav-link__bar {
+  width: calc(var(--header-nav-item-width) + var(--header-nav-gap) + 1px);
   transform: translateX(-50%) scaleX(0.88);
   transform-origin: center;
   opacity: 0;
@@ -1657,7 +1658,7 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: var(--header-nav-item-width);
+  width: calc(var(--header-nav-item-width) + var(--header-nav-gap) + 1px);
   height: 0.5rem;
   content: "";
   background: var(--color-knud-navigation-active);
@@ -2140,7 +2141,7 @@
   -webkit-line-clamp: 9;
   line-clamp: 9;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.3;
   letter-spacing: -0.04px;
   white-space: pre-wrap;
@@ -3040,8 +3041,8 @@
   }
 }
 
-/* Figma frame 1742:84657 — 1920px four-column message wall. */
-@media (min-width: 1350.0625px) {
+/* Keep laptop-width screens, including the 14-inch MacBook Pro, on four columns. */
+@media (min-width: 1440px) {
   .message-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 47px;
@@ -3056,14 +3057,6 @@
     gap: 15px;
   }
 
-  .message-card__body {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: -0.04px;
-    -webkit-line-clamp: 10;
-    line-clamp: 10;
-  }
 }
 
 @media (min-width: 601px) and (max-width: 63.75rem) {
@@ -3390,6 +3383,23 @@
   line-clamp: 11;
 }
 
+/* Four-column cards are narrower, so keep 150-character messages inside the paper. */
+@media (min-width: 1440px) {
+  .message-card__to,
+  .message-card__from {
+    font-size: 14px;
+  }
+
+  .message-card__body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.04px;
+    -webkit-line-clamp: 11;
+    line-clamp: 11;
+  }
+}
+
 /* Alternate columns vertically without changing the chronological DOM order. */
 .message-list {
   --message-card-stagger: clamp(7rem, 7.1vw, 8.5rem);
@@ -3403,7 +3413,13 @@
 }
 
 /* Change columns only after each card has enough room for 150-character copy. */
-@media (min-width: 1150px) and (max-width: 1599px) {
+@media (min-width: 1150px) and (max-width: 1439px) {
+  .message-list-container {
+    /* Preserve the three-column rhythm while keeping the whole first row
+       below the spray illustration. */
+    --message-list-lift: clamp(9rem, 11vw, 11rem);
+  }
+
   .message-list {
     --message-card-stagger: clamp(6rem, 8vw, 8rem);
 

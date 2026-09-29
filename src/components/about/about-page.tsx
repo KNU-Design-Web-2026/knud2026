@@ -2,6 +2,7 @@ import Image from "next/image";
 import { AboutMotion } from "@/components/about/about-motion";
 import { AboutTeamCarousel } from "@/components/about/about-team-carousel";
 import { SiteFooter } from "@/components/layout/site-footer";
+import posterImage from "../../../public/assets/figma/about/poster.png";
 import styles from "./about-page.module.css";
 
 const fullIntroduction = [
@@ -13,7 +14,7 @@ const fullIntroduction = [
 const professors = ["이경용", "조철희", "안지선", "이재민"];
 
 const committee = [
-  ["기획팀", "윤이지 김가연 김지언 박규리 이다혜 현연이"],
+  ["기획 및 전시팀", "윤이지 김가연 김지언 박규리 이다혜 현연이"],
   ["비주얼 브랜딩팀", "박규리 공예원 김민주 김은별 박수정 양혜연"],
   ["영상팀", "이다혜 이나경 이초원 이하늘"],
   ["웹팀", "김지언 김서은 김세직 이서윤"],
@@ -21,7 +22,7 @@ const committee = [
 ];
 
 const teams = [
-  { name: "기획팀", members: "윤이지 김가연 김지언 박규리 이다혜 현연이", image: "/assets/figma/about/team-planning-2026.jpg", width: 1600, height: 1200 },
+  { name: "기획 및 전시팀", members: "윤이지 김가연 김지언 박규리 이다혜 현연이", image: "/assets/figma/about/team-planning-2026.jpg", width: 1600, height: 1200 },
   { name: "비주얼 브랜딩팀", members: "박규리 공예원 김민주 김은별 박수정 양혜연", image: "/assets/figma/about/team-branding-2026.jpg", width: 1600, height: 1200 },
   { name: "영상팀", members: "이다혜 이나경 이초원 이하늘", image: "/assets/figma/about/team-video-2026.jpg", width: 1600, height: 1200 },
   { name: "웹팀", members: "김지언 김서은 김세직 이서윤", image: "/assets/figma/about/team-web-2026.jpg", width: 1600, height: 1200 },
@@ -67,13 +68,13 @@ export function AboutPage() {
       <section className={styles.introSection}>
         <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
-            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} height={2560} loading="eager" sizes="(max-width: 821px) 440px, 434px" src="/assets/figma/about/poster.png" width={1808} />
+            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
             <IntroductionCopy />
           </div>
         </div>
 
         <div className={styles.introNarrow} data-about-reveal="scale">
-          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth height={2560} loading="eager" sizes="(max-width: 821px) 440px, 434px" src="/assets/figma/about/poster.png" width={1808} />
+          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
           <div className={styles.introNarrowFrame} data-about-depth>
             <div className={styles.introNarrowInner}><IntroductionCopy /></div>
           </div>
