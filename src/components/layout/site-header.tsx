@@ -112,9 +112,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                 aria-current={isActive ? "page" : undefined}
                 className={[
                   "header-nav-link group relative flex h-full items-center justify-center text-[length:var(--header-nav-size)] leading-[1.3] tracking-[var(--header-nav-tracking)]",
-                  item.href === "/message"
-                    ? "w-[var(--header-nav-guestbook-width)]"
-                    : "w-[var(--header-nav-item-width)]",
+                  "w-[var(--header-nav-item-width)]",
                   isActive && "header-nav-link--active font-bold text-knud-navigation-active",
                 ]
                   .filter(Boolean)
@@ -125,7 +123,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                 <span className="header-nav-link__label relative z-10 group-hover:text-[length:var(--header-nav-hover-size)] group-hover:font-bold group-hover:text-knud-navigation-active">
                   {item.label}
                 </span>
-                {!isActive && <span className="header-nav-link__bar pointer-events-none absolute bottom-0 left-1/2 h-2 w-[var(--header-nav-item-width)] bg-knud-navigation-active" />}
+                {!isActive && <span className="header-nav-link__bar pointer-events-none absolute bottom-0 left-1/2 h-2 bg-knud-navigation-active" />}
                 {!isActive && (
                   <Image
                     alt=""

@@ -1610,6 +1610,7 @@
 }
 
 .header-nav-link__bar {
+  width: calc(var(--header-nav-item-width) + var(--header-nav-gap) + 1px);
   transform: translateX(-50%) scaleX(0.88);
   transform-origin: center;
   opacity: 0;
@@ -1657,7 +1658,7 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: var(--header-nav-item-width);
+  width: calc(var(--header-nav-item-width) + var(--header-nav-gap) + 1px);
   height: 0.5rem;
   content: "";
   background: var(--color-knud-navigation-active);
