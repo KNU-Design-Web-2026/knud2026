@@ -34,9 +34,8 @@ export function SpaceMap() {
     <div className={styles.map} aria-label="SPACE 9 전시 배치도"
       onKeyDown={(event) => { if (event.key === "Escape") setActive(null); }}
       onPointerLeave={() => setActive(null)}>
-      <Image alt="" className={styles.outline} src="/assets/figma/space/map-outline.svg" width={1273.71} height={716.31} priority />
-      <Image alt="" className={styles.island} src="/assets/figma/space/map-island.svg" width={319.44} height={287.12} priority fetchPriority="high" />
-      <Image alt="" className={styles.entry} src="/assets/figma/space/map-entry.svg" width={43} height={85} priority />
+      <Image alt="" className={styles.mapArtwork} src="/assets/figma/space/map-web-2026.svg" width={1302} height={762} priority fetchPriority="high" />
+      <div className={styles.mapLabels}>
       {positions.map((item, index) => {
         const assigned = getSpaceWork(index);
         return <Link href={`/work/${assigned.id}`} prefetch={false} key={index}
@@ -65,6 +64,7 @@ export function SpaceMap() {
           <p><strong>{work.artistKo}</strong><span>{work.artistEn}</span></p>
           <h3>{work.title}</h3>
         </div>
+      </div>
       </div>
     </div>
   );

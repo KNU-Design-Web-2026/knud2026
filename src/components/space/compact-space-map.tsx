@@ -29,9 +29,8 @@ const mobileNames = [
 export function CompactSpaceMap() {
   return <div className={styles.compactMap} aria-label="SPACE 9 전시 배치도">
     <div className={styles.mapDrawing}>
-      <Image alt="" className={styles.outline} src="/assets/figma/space/map-outline.svg" width={1273.71} height={716.31} priority />
-      <Image alt="" className={styles.island} src="/assets/figma/space/map-island.svg" width={319.44} height={287.12} priority fetchPriority="high" />
-      <Image alt="" className={styles.entry} src="/assets/figma/space/map-entry.svg" width={43} height={85} priority />
+      <Image alt="" className={styles.tabletArtwork} src="/assets/figma/space/map-web-2026.svg" width={1302} height={762} priority fetchPriority="high" />
+      <Image alt="" className={styles.mobileArtwork} src="/assets/figma/space/map-mobile-2026.svg" width={542} height={315} priority fetchPriority="high" />
     </div>
     <div className={styles.tabletNames}>
       {tabletNames.map(([x,y,rotation], index) => {
