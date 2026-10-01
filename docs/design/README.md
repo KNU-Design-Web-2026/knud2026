@@ -32,6 +32,7 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-10-01 임시 준비 중 화면](./2026-10-01-site-maintenance.md)
 - [2026-09-22 메인 색면 폭발 파티클](./interaction-specs/2026-09-22-hero-burst-particles.md)
 
 - [2026-09-12 타일 기반 변경 영역 합성 후보](./interaction-specs/2026-09-12-tiled-dirty-spray-candidate.md)

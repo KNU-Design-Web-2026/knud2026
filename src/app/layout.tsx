@@ -4,6 +4,7 @@ import type { PropsWithChildren } from "react";
 import { SiteCursor } from "@/components/layout/site-cursor";
 import { QaRouteBridge } from "@/components/layout/qa-route-bridge";
 import { SiteHeader } from "@/components/layout/site-header";
+import { isMaintenanceMode } from "@/lib/maintenance-mode";
 import "@/styles/globals.css";
 
 const pretendard = localFont({
@@ -41,16 +42,19 @@ export const metadata: Metadata = {
     description: "잠자는 사자가 깨어난 순간 — 제42회 경북대학교 디자인학과 졸업전시회",
     images: ["/assets/og/knud-ignite-blue.png"],
   },
+  robots: isMaintenanceMode() ? { index: false, follow: false } : undefined,
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
+  const maintenanceMode = isMaintenanceMode();
+
   return (
-    <html className={pretendard.variable} lang="ko">
-      <body>
-        <QaRouteBridge />
-        <SiteHeader />
+    <html className={pretendard.variable} lang="ko" style={maintenanceMode ? { backgroundColor: "#fff" } : undefined}>
+      <body style={maintenanceMode ? { backgroundColor: "#fff" } : undefined}>
+        {!maintenanceMode && <QaRouteBridge />}
+        {!maintenanceMode && <SiteHeader />}
         <main>{children}</main>
-        <SiteCursor />
+        {!maintenanceMode && <SiteCursor />}
       </body>
     </html>
   );

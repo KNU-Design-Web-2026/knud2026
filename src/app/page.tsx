@@ -1,8 +1,14 @@
 import { MainArtwork } from "@/components/main/main-artwork";
 import { MainCursor } from "@/components/main/main-cursor";
 import { SprayCanvas } from "@/components/main/spray-canvas";
+import { ComingSoon } from "@/components/maintenance/coming-soon";
+import { isMaintenanceMode } from "@/lib/maintenance-mode";
 
 export default function HomePage() {
+  if (isMaintenanceMode()) {
+    return <ComingSoon />;
+  }
+
   return (
     <section className="main-hero relative isolate overflow-hidden" id="main-hero" aria-labelledby="main-title">
       <h1 className="sr-only" id="main-title">
