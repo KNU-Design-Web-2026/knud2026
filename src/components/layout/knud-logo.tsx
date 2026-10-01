@@ -9,12 +9,12 @@ const logoParts = [
   { src: "/assets/figma/header-logo-2026-6.svg", className: "inset-[8.33%_75.53%_5.33%_0]" },
 ];
 
-export function KnudLogo() {
+export function KnudLogo({ eager = false }: { eager?: boolean }) {
   return (
     <span className="relative block h-[var(--header-logo-height)] w-[var(--header-logo-width)] shrink-0" aria-hidden="true">
       {logoParts.map((part) => (
         <span className={["absolute", part.className].join(" ")} key={part.src}>
-          <Image alt="" className="object-fill" fill src={part.src} />
+          <Image alt="" className="object-fill" fill loading={eager ? "eager" : undefined} src={part.src} />
         </span>
       ))}
     </span>
