@@ -3435,17 +3435,43 @@
     --message-card-stagger: clamp(3.5rem, 13vw, 4.875rem);
   }
 
+  .message-card {
+    /* Keep a square minimum, but let long messages grow without clipping From. */
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .message-card::before {
+    aspect-ratio: 0.9;
+    content: "";
+    grid-area: 1 / 1;
+  }
+
+  .message-card__content {
+    grid-area: 1 / 1;
+    height: auto;
+    min-width: 0;
+  }
+
   .message-card__copy {
     gap: clamp(6px, 4cqi, 8px);
   }
 
   .message-card__to,
   .message-card__from {
-    font-size: clamp(9px, 5cqi, 10.5px);
+    font-size: clamp(11px, 2.8vw, 13px);
+  }
+
+  .message-card__from {
+    flex-shrink: 0;
+    overflow-wrap: anywhere;
   }
 
   .message-card__body {
-    font-size: clamp(8.5px, 4.8cqi, 10px);
+    font-size: clamp(10px, 2.75vw, 11px);
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
   }
 }
 
@@ -3471,30 +3497,6 @@
     font-size: 12px;
     -webkit-line-clamp: 10;
     line-clamp: 10;
-  }
-}
-
-@media (min-width: 501px) and (max-width: 600px) {
-  .message-card__body {
-    font-size: 10px;
-    -webkit-line-clamp: 9;
-    line-clamp: 9;
-  }
-}
-
-@media (min-width: 401px) and (max-width: 500px) {
-  .message-card__body {
-    font-size: 8px;
-    -webkit-line-clamp: 9;
-    line-clamp: 9;
-  }
-}
-
-@media (max-width: 400px) {
-  .message-card__body {
-    font-size: 7px;
-    -webkit-line-clamp: 11;
-    line-clamp: 11;
   }
 }
 
