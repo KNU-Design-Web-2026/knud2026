@@ -134,6 +134,14 @@ test("박규리·이다혜 작품 작가명은 화면 폭별 표기 규칙을 �
   assert.match(styles, /@media \(max-width: 37\.5rem\) \{[\s\S]*?\.work-card__artist-en--tab,[\s\S]*?\.work-card__artist-en--mobile/);
 });
 
+test("모바일 공동 작업 카드는 두 작가명을 카드 안에서 줄바꿈한다", () => {
+  const card = readFileSync(workCardPath, "utf8");
+  const styles = readFileSync(globalStylesPath, "utf8");
+
+  assert.match(card, /work-card__artists--joint/);
+  assert.match(styles, /@media \(max-width: 37\.5rem\)[\s\S]*?\.work-card__artists--joint \{[\s\S]*?flex-wrap: wrap/);
+});
+
 test("Work 작가명은 프로필의 한국어·영문 매칭 데이터를 재사용한다", () => {
   const items = readFileSync(workItemsPath, "utf8");
 

@@ -545,6 +545,17 @@
     gap: 0.9375rem;
     letter-spacing: -0.032px;
   }
+
+  .work-card__artists--joint {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    padding-right: 0.875rem;
+  }
+
+  .work-card__artists--joint > p {
+    white-space: nowrap;
+  }
 }
 
 /* Figma 1157:29859 — Mobile (400px). */
