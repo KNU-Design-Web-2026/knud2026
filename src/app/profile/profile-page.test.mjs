@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
+import { PROFILE_MEMBERS } from "../../data/profile-members.ts";
 
 const profilePagePath = new URL("./page.tsx", import.meta.url);
 const profileCardPath = new URL("../../components/profile/profile-card.tsx", import.meta.url);
@@ -33,36 +34,14 @@ test("Profile 카드는 고정 셀 안에서 hover 정보와 확대 상태를 �
   assert.match(profileMembers, /현연이/);
 });
 
-test("Profile 영문 이름은 성 다음에 이름을 표시한다", () => {
-  const profileMembers = readFileSync(profileMembersPath, "utf8");
+test("Profile 영문 이름은 시트에 제출된 표기를 사용한다", () => {
+  const names = new Map(PROFILE_MEMBERS.map(({ nameKo, nameEn }) => [nameKo, nameEn]));
 
-  const expectedNames = [
-    ["공예원", "Gong Yewon"],
-    ["김가연", "Kim Gayeon"],
-    ["김민주", "Kim Minju"],
-    ["김서은", "Kim Seoeun"],
-    ["김세직", "Kim Sejik"],
-    ["김연수", "Kim Yeonsu"],
-    ["김은별", "Kim Eunbyeol"],
-    ["김지언", "Kim Jieon"],
-    ["박규리", "Park Gyuri"],
-    ["박수정", "Park Sujeong"],
-    ["양혜연", "Yang Hyeyeon"],
-    ["윤이지", "Yoon Iji"],
-    ["이나경", "Lee Nagyeong"],
-    ["이다혜", "Lee Dahye"],
-    ["이서윤", "Lee Seoyun"],
-    ["이초원", "Lee Chowon"],
-    ["이하늘", "Lee Haneul"],
-    ["임경민", "Lim Gyeongmin"],
-    ["조장원", "Cho Jangwon"],
-    ["현연이", "Hyeon Yeoni"],
-  ];
-
-  for (const [nameKo, nameEn] of expectedNames) {
-    assert.match(profileMembers, new RegExp(`\\["${nameKo}", "${nameEn}"\\]`));
-  }
-  assert.doesNotMatch(profileMembers, /\["이서윤", "Seoyun Lee"\]/);
+  assert.equal(names.get("김가연"), "Kim Kayun");
+  assert.equal(names.get("김연수"), "KIM Yeonsu");
+  assert.equal(names.get("임경민"), "Kyungmin Lim");
+  assert.equal(names.get("조장원"), "Jo Jangwon");
+  assert.equal(names.get("현연이"), "Hyun Yeoni");
 });
 
 test("Profile Web hover 이미지는 프레임의 안쪽 경계까지 확대된다", () => {

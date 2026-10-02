@@ -70,25 +70,13 @@ export function ProfileCard({ eager = false, member }: ProfileCardProps) {
     </div>
   );
 
-  if (member.id === 1) {
-    return (
-      <Link
-        aria-label={`${member.nameKo} ${member.nameEn} 프로필 상세 보기`}
-        className="profile-card group/profile-card block"
-        href={`/profile/${member.id}`}
-      >
-        {cardSurface}
-      </Link>
-    );
-  }
-
   return (
-    <article
-      aria-label={`${member.nameKo} ${member.nameEn} 프로필`}
-      className="profile-card group/profile-card"
-      tabIndex={0}
+    <Link
+      aria-label={`${member.nameKo} ${member.nameEn} 프로필 상세 보기`}
+      className="profile-card group/profile-card block"
+      href={`/profile/${member.id}`}
     >
       {cardSurface}
-    </article>
+    </Link>
   );
 }

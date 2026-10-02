@@ -908,41 +908,6 @@
   }
 }
 
-.profile-detail-work {
-  aspect-ratio: 1.8;
-  height: auto;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-
-.profile-detail-work__overlay {
-  align-items: center;
-  background: rgb(0 0 0 / 0.6);
-  color: white;
-  display: flex;
-  /* Figma의 Work hover 제목은 기존 구현보다 한 단계 큰 크기로 유지한다. */
-  font-size: 2.5rem;
-  font-weight: 700;
-  inset: 0;
-  justify-content: center;
-  line-height: 1.3;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .profile-detail-work:hover .profile-detail-work__overlay {
-    opacity: 1;
-  }
-}
-
-.profile-detail-work:focus-visible .profile-detail-work__overlay {
-  opacity: 1;
-}
-
 /* Profile detail: Figma frames 1157:28722, 28645, 28413, 28568, 28491 */
 .profile-detail {
   /* 좁은 화면에서 내부 Flex 항목이 넓어져도 페이지 배경이 우측에 드러나지 않게 한다. */
@@ -991,7 +956,7 @@
 
   .profile-detail__names {
     gap: 0.3125rem;
-    width: 13.375rem;
+    width: auto;
   }
 
   .profile-detail__name-ko {
@@ -1010,7 +975,7 @@
 
   .profile-detail__meta {
     gap: 1.5rem;
-    width: 23.625rem;
+    width: 100%;
   }
 
   .profile-detail__tags {
@@ -1019,7 +984,7 @@
   }
 
   .profile-detail__contact {
-    gap: 4.75rem;
+    column-gap: 4.75rem;
   }
 
   .profile-detail__section {
@@ -1044,9 +1009,6 @@
     row-gap: 1.875rem;
   }
 
-  .profile-detail-work__overlay {
-    font-size: 2.25rem;
-  }
 }
 
 /*
@@ -1090,7 +1052,7 @@
 
   .profile-detail__names {
     gap: clamp(0.3125rem, calc(0.5263vw - 0.13156rem), 0.5rem);
-    width: clamp(13.375rem, calc(9.825vw + 5.085rem), 16.875rem);
+    width: auto;
   }
 
   .profile-detail__name-ko {
@@ -1117,7 +1079,7 @@
   }
 
   .profile-detail__contact {
-    gap: clamp(4.25rem, calc(-1.404vw + 5.935rem), 4.75rem);
+    column-gap: clamp(4.25rem, calc(-1.404vw + 5.935rem), 4.75rem);
   }
 
   .profile-detail__section {
@@ -1142,9 +1104,6 @@
     row-gap: clamp(1.875rem, calc(8.07vw - 4.938rem), 4.75rem);
   }
 
-  .profile-detail-work__overlay {
-    font-size: clamp(2.25rem, calc(0.702vw + 1.658rem), 2.5rem);
-  }
 }
 
 @media (max-width: 1020px) {
@@ -1209,7 +1168,7 @@
   }
 
   .profile-detail__contact {
-    gap: 1.5rem;
+    column-gap: 1.5rem;
   }
 
   .profile-detail__introduction,
@@ -1241,9 +1200,6 @@
     gap: 1.625rem;
   }
 
-  .profile-detail-work__overlay {
-    font-size: 1.875rem;
-  }
 }
 
 @media (max-width: 600px) {
@@ -1261,6 +1217,7 @@
   }
 
   .profile-detail__intro {
+    align-items: flex-start;
     flex-wrap: nowrap;
     gap: 1.75rem;
     min-width: 0;
@@ -1320,7 +1277,7 @@
   }
 
   .profile-detail__contact {
-    gap: 1.375rem;
+    column-gap: 1.375rem;
   }
 
   .profile-detail__section {
@@ -1343,9 +1300,6 @@
     gap: 1.25rem;
   }
 
-  .profile-detail-work__overlay {
-    font-size: 1.5rem;
-  }
 }
 
 /* Tab과 Tab>mobile 사이의 좁은 폭에서는 정보 블록이 사진 상단을 넘지 않게 고정한다. */
@@ -1378,21 +1332,23 @@
   }
 
   .profile-detail__intro {
-    flex-wrap: nowrap;
+    align-items: start;
+    display: grid;
     gap: 0.8125rem;
-    padding-bottom: 5.5rem;
-    position: relative;
+    grid-template-columns: 7.9375rem minmax(0, 1fr);
+    padding-bottom: 0;
   }
 
   .profile-detail__portrait {
     flex-basis: 7.9375rem;
+    grid-column: 1;
+    grid-row: 1 / 3;
     height: 10.875rem;
     width: 7.9375rem;
   }
 
   .profile-detail__copy {
-    flex: 1 1 13.375rem;
-    gap: 1.125rem;
+    display: contents;
   }
 
   .profile-detail__identity {
@@ -1403,7 +1359,10 @@
     align-items: start;
     flex-direction: column;
     gap: 0.125rem;
-    width: 7.0625rem;
+    grid-column: 2;
+    grid-row: 1;
+    white-space: normal;
+    width: auto;
   }
 
   .profile-detail__name-ko {
@@ -1415,26 +1374,34 @@
   }
 
   .profile-detail__introduction {
-    bottom: 0;
-    left: 0;
+    grid-column: 1 / -1;
+    grid-row: 3;
     max-width: none;
-    position: absolute;
+    position: static;
     width: 100%;
   }
 
   .profile-detail__meta {
+    grid-column: 2;
+    grid-row: 2;
     width: 100%;
   }
 
   .profile-detail__tags {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 0 0.625rem;
     font-size: 0.875rem;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .profile-detail__contact {
-    gap: 0.875rem;
+    grid-template-columns: minmax(0, 1fr);
+    font-size: 0.875rem;
+    row-gap: 0;
+  }
+
+  .profile-detail__contact dt:not(:first-child) {
+    margin-top: 0.375rem;
   }
 
   .profile-detail__section {
@@ -1453,9 +1420,6 @@
     gap: 2.5rem;
   }
 
-  .profile-detail-work__overlay {
-    font-size: 1.25rem;
-  }
 }
 
 .profile-card__image {
