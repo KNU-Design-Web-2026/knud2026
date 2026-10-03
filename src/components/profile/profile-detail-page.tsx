@@ -18,7 +18,7 @@ function SectionTitle({ children, id }: { children: string; id: string }) {
 
 export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
   return (
-    <section aria-labelledby="profile-detail-title" className="profile-detail bg-white pt-[5rem]">
+    <section aria-labelledby="profile-detail-title" className="profile-detail bg-white pt-[5rem]" data-contact-layout={detail.behance || detail.instagram ? "social" : "mail-only"}>
       <PageContainer className="profile-detail__container">
         <div className="profile-detail__content flex flex-col gap-[5rem] pb-[5rem]">
           <article className="profile-detail__intro flex items-end gap-[3.6875rem]">
@@ -38,13 +38,13 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
                 <dl className="profile-detail__contact grid grid-cols-[max-content_minmax(0,1fr)] gap-x-[4.75rem] gap-y-2">
                   <dt className="font-bold">Mail</dt>
                   <dd className="min-w-0 [overflow-wrap:anywhere]"><a href={`mailto:${detail.email}`}>{detail.email}</a></dd>
-                  {detail.instagram && <>
-                    <dt className="font-bold">Instagram</dt>
-                    <dd className="min-w-0 [overflow-wrap:anywhere]"><a href={`https://www.instagram.com/${detail.instagram}/`} rel="noopener noreferrer" target="_blank">@{detail.instagram}</a></dd>
-                  </>}
                   {detail.behance && <>
                     <dt className="font-bold">Behance</dt>
                     <dd className="min-w-0 [overflow-wrap:anywhere]"><a href={`https://${detail.behance}`} rel="noopener noreferrer" target="_blank">{detail.behance}</a></dd>
+                  </>}
+                  {detail.instagram && <>
+                    <dt className="font-bold">Instagram</dt>
+                    <dd className="min-w-0 [overflow-wrap:anywhere]"><a href={`https://www.instagram.com/${detail.instagram}/`} rel="noopener noreferrer" target="_blank">@{detail.instagram}</a></dd>
                   </>}
                 </dl>
               </div>

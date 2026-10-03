@@ -3605,6 +3605,238 @@
   }
 }
 
+/* Profile intro variants from Figma 3202:10030–11148.
+   Reference widths: 400 / 600 / 1020 / 1350 / 1920; interpolate only between them.
+   Contact rows stay in document flow so real addresses may wrap without overlap. */
+.profile-detail {
+  --profile-copy-gap: 32.5px;
+  --profile-meta-gap: 32.5px;
+}
+
+.profile-detail[data-contact-layout="mail-only"] {
+  --profile-copy-gap: 61.5px;
+  --profile-meta-gap: 61.5px;
+}
+
+.profile-detail__intro {
+  align-items: end;
+}
+
+.profile-detail__copy {
+  flex: 1 1 0;
+  gap: var(--profile-copy-gap);
+}
+
+.profile-detail__identity {
+  gap: 26px;
+}
+
+.profile-detail__names {
+  width: auto;
+}
+
+.profile-detail__meta {
+  gap: var(--profile-meta-gap);
+  height: auto;
+  width: 100%;
+  justify-content: start;
+}
+
+.profile-detail__contact {
+  grid-template-columns: max-content minmax(0, 1fr);
+  row-gap: 0;
+}
+
+.profile-detail__contact dt:not(:first-child) {
+  margin-top: 0;
+}
+
+@media (min-width: 1350.1px) {
+  .profile-detail {
+    --profile-copy-gap: clamp(32.5px, calc(16.052632vw - 184.210526px), 124px);
+    --profile-meta-gap: clamp(32.5px, calc(0.964912vw + 19.473684px), 38px);
+  }
+
+  .profile-detail[data-contact-layout="mail-only"] {
+    --profile-copy-gap: clamp(61.5px, calc(8.859649vw - 58.105263px), 112px);
+    --profile-meta-gap: var(--profile-copy-gap);
+  }
+
+  .profile-detail__portrait {
+    flex-basis: clamp(373px, calc(32.807018vw - 69.894737px), 560px);
+    width: clamp(373px, calc(32.807018vw - 69.894737px), 560px);
+    height: clamp(509px, calc(44.912281vw - 97.315789px), 765px);
+  }
+
+  .profile-detail__identity {
+    gap: clamp(26px, calc(2.807018vw - 11.894737px), 42px);
+  }
+
+  .profile-detail__names {
+    gap: clamp(5px, calc(0.877193vw - 6.842105px), 10px);
+  }
+}
+
+@media (min-width: 1020.1px) and (max-width: 1350px) {
+  .profile-detail {
+    --profile-copy-gap: clamp(26px, calc(1.969697vw + 5.909091px), 32.5px);
+    --profile-meta-gap: var(--profile-copy-gap);
+  }
+
+  .profile-detail[data-contact-layout="mail-only"] {
+    --profile-copy-gap: clamp(49px, calc(3.787879vw + 10.363636px), 61.5px);
+    --profile-meta-gap: var(--profile-copy-gap);
+  }
+}
+
+@media (min-width: 600.1px) and (max-width: 1020px) {
+  .profile-detail {
+    --profile-copy-gap: clamp(7.5px, calc(4.404762vw - 18.928571px), 26px);
+    --profile-meta-gap: var(--profile-copy-gap);
+  }
+
+  .profile-detail[data-contact-layout="mail-only"] {
+    --profile-copy-gap: clamp(28.5px, calc(4.880952vw - 0.785714px), 49px);
+    --profile-meta-gap: var(--profile-copy-gap);
+  }
+
+  .profile-detail__identity {
+    gap: 20px;
+  }
+
+  .profile-detail__introduction {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 460.1px) and (max-width: 600px) {
+  .profile-detail {
+    --profile-copy-gap: 7.5px;
+    --profile-meta-gap: 7.5px;
+  }
+
+  .profile-detail[data-contact-layout="mail-only"] {
+    --profile-copy-gap: 28.5px;
+    --profile-meta-gap: 28.5px;
+  }
+
+  .profile-detail__identity {
+    gap: 12px;
+  }
+
+  .profile-detail__meta {
+    width: 100%;
+  }
+
+  .profile-detail__names {
+    flex-wrap: wrap;
+    row-gap: 2px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 460px) {
+  .profile-detail {
+    --profile-copy-gap: 9.5px;
+    --profile-meta-gap: 9.5px;
+  }
+
+  .profile-detail[data-contact-layout="mail-only"] {
+    --profile-copy-gap: 27.5px;
+    --profile-meta-gap: 27.5px;
+  }
+
+  .profile-detail__intro {
+    column-gap: 13px;
+    row-gap: var(--profile-copy-gap);
+  }
+
+  .profile-detail__names,
+  .profile-detail__meta {
+    align-self: end;
+  }
+
+  .profile-detail__names {
+    gap: 2px;
+  }
+
+  .profile-detail__introduction {
+    margin-top: calc(32px - var(--profile-copy-gap));
+    font-size: 14px;
+    letter-spacing: -0.028px;
+  }
+
+  .profile-detail__contact {
+    column-gap: 14px;
+    grid-template-columns: max-content minmax(0, 1fr);
+  }
+
+  .profile-detail__tags {
+    row-gap: 4px;
+  }
+}
+
+@media (max-width: 359px) {
+  .profile-detail__intro {
+    grid-template-columns: 105px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .profile-detail__portrait {
+    width: 105px;
+    height: auto;
+    aspect-ratio: 127 / 174;
+  }
+
+  .profile-detail__contact {
+    column-gap: 8px;
+  }
+}
+
+/* Keep the entire mobile metadata block at one consistent type scale.
+   Long contact URLs remain complete, without wrapping or ellipsis. */
+@media (max-width: 600px) {
+  .profile-detail__meta,
+  .profile-detail__tags,
+  .profile-detail__contact {
+    font-size: clamp(11px, calc(1vw + 7px), 13px);
+    letter-spacing: -0.02em;
+  }
+
+  .profile-detail__tags {
+    column-gap: 10px;
+  }
+
+  .profile-detail__contact {
+    column-gap: 6px;
+  }
+
+  .profile-detail__contact dt,
+  .profile-detail__contact dd,
+  .profile-detail__contact a {
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+@media (max-width: 399px) {
+  .profile-detail__meta,
+  .profile-detail__tags,
+  .profile-detail__contact {
+    font-size: clamp(9px, calc(2.5vw + 1px), 11px);
+  }
+}
+
+/* The photo returns to 189px above 460px, leaving less room for metadata. */
+@media (min-width: 460.1px) and (max-width: 600px) {
+  .profile-detail__meta,
+  .profile-detail__tags,
+  .profile-detail__contact {
+    font-size: clamp(10px, calc(2.142857vw + 0.142857px), 13px);
+  }
+}
+
 /* Message scroll reveal: keep the existing staggered composition, then add
    only a small vertical settle and opacity change as cards enter or leave. */
 .message-page[data-message-motion-ready="true"] [data-message-reveal] {
