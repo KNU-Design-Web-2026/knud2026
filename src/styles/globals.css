@@ -547,10 +547,8 @@
   }
 
   .work-card__artists--joint {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 0.25rem 0.5rem;
-    padding-right: 0.875rem;
+    flex-wrap: nowrap;
+    gap: 4px;
   }
 
   .work-card__artists--joint > p {
@@ -3834,6 +3832,37 @@
   .profile-detail__tags,
   .profile-detail__contact {
     font-size: clamp(10px, calc(2.142857vw + 0.142857px), 13px);
+  }
+}
+
+/* Compact English names on mobile; preserve Korean names and a single artist row. */
+@media (max-width: 600px) {
+  .work-card__artists {
+    gap: 6px;
+    padding-right: 10px;
+  }
+
+  .work-card__artists--joint {
+    gap: 4px;
+  }
+
+  .work-card__artist-en--mobile {
+    font-size: clamp(10px, calc(2.5vw + 2px), 12px);
+    white-space: nowrap;
+  }
+
+  .work-card__artists--joint .work-card__artist-en--mobile {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 400.1px) and (max-width: 600px) {
+  .work-card__artist-en--mobile {
+    font-size: clamp(12px, calc(1vw + 8px), 14px);
+  }
+
+  .work-card__artists--joint .work-card__artist-en--mobile {
+    font-size: clamp(10px, calc(3vw - 2px), 16px);
   }
 }
 
