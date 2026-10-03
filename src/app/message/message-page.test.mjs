@@ -13,6 +13,9 @@ const stylesPath = fileURLToPath(new URL("../../styles/globals.css", import.meta
 const bodyLimitMigrationPath = fileURLToPath(
   new URL("../../../supabase/migrations/20260916000100_expand_public_letter_body_limit.sql", import.meta.url),
 );
+const figmaBodyLimitMigrationPath = fileURLToPath(
+  new URL("../../../supabase/migrations/20261002000100_limit_public_letter_body_to_90.sql", import.meta.url),
+);
 
 assert.equal(existsSync(routePath), true, "message route should exist");
 assert.equal(existsSync(loadingRoutePath), true, "message loading route should exist");
@@ -23,6 +26,7 @@ assert.equal(existsSync(modelPath), true, "rolling-paper model should exist");
 assert.equal(existsSync(apiRoutePath), true, "letters API route should exist");
 assert.equal(existsSync(stylesPath), true, "global styles should exist");
 assert.equal(existsSync(bodyLimitMigrationPath), true, "150-character database migration should exist");
+assert.equal(existsSync(figmaBodyLimitMigrationPath), true, "90-character database migration should exist");
 
 const route = readFileSync(routePath, "utf8");
 const loadingRoute = readFileSync(loadingRoutePath, "utf8");
@@ -31,6 +35,7 @@ const data = readFileSync(dataPath, "utf8");
 const styles = readFileSync(stylesPath, "utf8");
 const apiRoute = readFileSync(apiRoutePath, "utf8");
 const bodyLimitMigration = readFileSync(bodyLimitMigrationPath, "utf8");
+const figmaBodyLimitMigration = readFileSync(figmaBodyLimitMigrationPath, "utf8");
 const { messages } = await import(dataPath);
 const {
   getMessageUsage,
@@ -39,11 +44,12 @@ const {
   normalizeMessageBody,
 } = await import(inputRulesPath);
 
-assert.equal(MESSAGE_MAX_LENGTH, 150);
+assert.equal(MESSAGE_MAX_LENGTH, 90);
 assert.equal(MESSAGE_LINE_BREAK_WEIGHT, 20);
 assert.equal(normalizeMessageBody("첫 줄\r\n둘째 줄"), "첫 줄\n둘째 줄");
 assert.equal(getMessageUsage("가\n나"), 22);
-assert.equal(normalizeMessageBody("1\n2\n3\n4\n5\n6\n7\n8"), "1\n2\n3\n4\n5\n6\n7\n8");
+assert.equal(normalizeMessageBody("1\n2\n3\n4\n5\n6\n7\n8").split("\n").length, 5);
+assert.equal(normalizeMessageBody("가".repeat(140)), "가".repeat(90));
 assert.ok(getMessageUsage(normalizeMessageBody("가".repeat(140))) <= MESSAGE_MAX_LENGTH);
 assert.ok(getMessageUsage(normalizeMessageBody("\n".repeat(20))) <= MESSAGE_MAX_LENGTH);
 
@@ -109,7 +115,7 @@ assert.match(component, /message-form__recipient-name/);
 assert.match(component, /message-form__recipient-trigger\$\{to !== DEFAULT_RECIPIENT \? " is-selected" : ""\}/);
 assert.doesNotMatch(component, /message-page__frame-backdrop/);
 assert.match(data, /철수야 졸업 축하해/);
-assert.ok(messages.every(({ body }) => body.length <= 150), "mock messages must stay within the 150 character limit");
+assert.ok(messages.every(({ body }) => getMessageUsage(body) <= 90), "mock messages must fit the 90-unit card limit");
 assert.ok(new Set(messages.map(({ body }) => body)).size >= 6, "mock messages should show varied copy");
 assert.ok(messages.filter(({ body }) => body.includes("\n")).length >= 6, "mock messages should include varied line breaks");
 assert.match(styles, /\.message-page/);
@@ -131,25 +137,14 @@ assert.match(styles, /\.message-list-container\s*\{[\s\S]*--message-list-footer-
 assert.match(styles, /@media \(min-width: 37\.5625rem\) and \(max-width: 63\.75rem\)[\s\S]*\.message-list-container\s*\{[\s\S]*--message-list-lift:\s*clamp\(3rem, 10vw, 6rem\)/);
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-list-container\s*\{[\s\S]*--message-list-lift:\s*clamp\(2rem, 8vw, 3rem\)/);
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-list-container\s*\{[\s\S]*--message-list-footer-gap:\s*4rem/);
-assert.match(styles, /\.message-card\s*\{[\s\S]*container-type:\s*inline-size/);
-assert.match(styles, /\.message-card\s*\{[\s\S]*padding:\s*clamp\(15px, 8%, 32px\) clamp\(20px, 10%, 40px\)/);
 assert.doesNotMatch(styles, /data-message-density/);
-assert.match(styles, /\.message-card__body\s*\{[\s\S]*font-size:\s*17px;[\s\S]*-webkit-line-clamp:\s*11/);
-assert.match(styles, /@media \(min-width: 768px\) and \(max-width: 1020px\)[\s\S]*font-size:\s*15px;[\s\S]*-webkit-line-clamp:\s*11/);
-assert.match(styles, /@media \(min-width: 700px\) and \(max-width: 767px\)[\s\S]*font-size:\s*14px;[\s\S]*-webkit-line-clamp:\s*11/);
-assert.match(styles, /@media \(min-width: 601px\) and \(max-width: 699px\)[\s\S]*font-size:\s*12px;[\s\S]*-webkit-line-clamp:\s*10/);
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card\s*\{[\s\S]*?aspect-ratio:\s*auto;[\s\S]*?display:\s*grid/);
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\)/);
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card::before\s*\{[\s\S]*?aspect-ratio:\s*0\.9/);
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__from\s*\{[\s\S]*?flex-shrink:\s*0;[\s\S]*?overflow-wrap:\s*anywhere/);
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__body\s*\{[\s\S]*?font-size:\s*clamp\(10px, 2\.75vw, 11px\);[\s\S]*?-webkit-line-clamp:\s*unset/);
 assert.match(bodyLimitMigration, /char_length\(body\) between 1 and 150/);
+assert.match(figmaBodyLimitMigration, /char_length\(body\) between 1 and 90/);
+assert.match(figmaBodyLimitMigration, /not valid/i);
 assert.match(styles, /@media \(min-width: 1150px\) and \(max-width: 1439px\)[\s\S]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
 assert.match(styles, /@media \(min-width: 1440px\)[\s\S]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
-assert.match(styles, /@media \(min-width: 1440px\)[\s\S]*\.message-card__to,[\s\S]*\.message-card__from\s*\{[\s\S]*font-size:\s*14px;[\s\S]*\.message-card__body\s*\{[\s\S]*font-size:\s*15px;[\s\S]*-webkit-line-clamp:\s*11/);
 assert.doesNotMatch(styles, /--message-card-spray-clearance/);
 assert.match(styles, /@media \(max-width: 1149px\)[\s\S]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.message-card__to,[\s\S]*\.message-card__from\s*\{[\s\S]*font-size:\s*clamp\(11px, 2\.8vw, 13px\)/);
 assert.match(styles, /--message-form-width/);
 assert.match(styles, /clamp\(2rem, 3\.4375vw, 4\.125rem\)/);
 assert.match(styles, /\.message-form__field\s*\{[\s\S]*inset:\s*0/);
@@ -189,6 +184,15 @@ assert.match(styles, /\.message-form__recipient-name\s*\{[\s\S]*position:\s*stat
 assert.match(styles, /\.message-form__recipient-arrow\s*\{[\s\S]*position:\s*static/);
 assert.match(styles, /\.message-form__recipient-trigger\s*\{[\s\S]*?font-size: 20px;[\s\S]*?font-weight: 400;/);
 assert.match(styles, /\.message-form__recipient-menu button\s*\{[\s\S]*?font-size: 20px;[\s\S]*?font-weight: 400;/);
+const figmaPostItStyles = styles.split("/* Figma message post-its: fixed paper and type scale across the five reference widths. */")[1];
+assert.ok(figmaPostItStyles, "Figma post-it sizing rules should exist");
+assert.match(figmaPostItStyles, /\.message-card\s*\{[\s\S]*?aspect-ratio:\s*1/);
+assert.match(figmaPostItStyles, /@media \(min-width:\s*1020px\) and \(max-width:\s*1149px\)[\s\S]*?grid-template-columns:\s*repeat\(3/);
+assert.match(figmaPostItStyles, /@media \(max-width:\s*600px\)[\s\S]*?\.message-card\s*\{[\s\S]*?aspect-ratio:\s*1\.02/);
+assert.match(figmaPostItStyles, /@media \(max-width:\s*600px\)[\s\S]*?font-size:\s*clamp\(12px, calc\(1vw \+ 8px\), 14px\)/);
+assert.match(figmaPostItStyles, /\.message-card__body\s*\{[\s\S]*?font-weight:\s*500/);
+assert.match(figmaPostItStyles, /@media \(min-width:\s*320px\) and \(max-width:\s*399px\)[\s\S]*?grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
+assert.match(figmaPostItStyles, /@media \(max-width:\s*319px\)[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\)/);
 assert.match(styles, /max-width: 1350px/);
 assert.match(styles, /max-width: 1020px/);
 assert.match(styles, /max-width: 600px/);
