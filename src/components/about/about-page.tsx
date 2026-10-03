@@ -87,6 +87,7 @@ export function AboutPage() {
           <div className={styles.offlineWide} data-about-reveal="rise">
             <Image alt="2026 KNUD 오프라인 전시 위치와 관람 안내" className={styles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
             <span aria-hidden className={styles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
+            <span className={styles.exhibitionHours}>09:00 — 18:00</span>
           </div>
           <div className={styles.offlineNarrow} data-about-reveal="rise">
             <div className={styles.mapCrop}>
