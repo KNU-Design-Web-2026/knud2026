@@ -1,0 +1,402 @@
+[
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/1.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 8571616,
+    "src": "/assets/archive/01.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 246926
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/2.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9253632,
+    "src": "/assets/archive/02.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 226136
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/3.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 10318114,
+    "src": "/assets/archive/03.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 436464
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/4.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 9393456,
+    "src": "/assets/archive/04.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 351930
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/5.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 11619134,
+    "src": "/assets/archive/05.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 603728
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/6.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9053190,
+    "src": "/assets/archive/06.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 230302
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/7.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 10253760,
+    "src": "/assets/archive/07.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 517720
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/8.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 9954394,
+    "src": "/assets/archive/08.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 312754
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/9.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9515800,
+    "src": "/assets/archive/09.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 171320
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/10.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 10434220,
+    "src": "/assets/archive/10.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 353932
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/11.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9281166,
+    "src": "/assets/archive/11.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 131658
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/12.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 8739608,
+    "src": "/assets/archive/12.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 163406
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/13.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 10579436,
+    "src": "/assets/archive/13.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 506164
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/14.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9361928,
+    "src": "/assets/archive/14.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 169696
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/15.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9455878,
+    "src": "/assets/archive/15.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 103268
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/16.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 8602404,
+    "src": "/assets/archive/16.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 287778
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/17.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9022980,
+    "src": "/assets/archive/17.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 171882
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/18.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 10033892,
+    "src": "/assets/archive/18.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 380540
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/19.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 8406744,
+    "src": "/assets/archive/19.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 113862
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/20.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 10116146,
+    "src": "/assets/archive/20.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 288624
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/21.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 8584860,
+    "src": "/assets/archive/21.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 135610
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/22.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 10047256,
+    "src": "/assets/archive/22.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 191406
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/23.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 8321528,
+    "src": "/assets/archive/23.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 327406
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/24.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9017750,
+    "src": "/assets/archive/24.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 241378
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/25.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 9379738,
+    "src": "/assets/archive/25.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 402888
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/26.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 8211078,
+    "src": "/assets/archive/26.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 180694
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/27.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 9133602,
+    "src": "/assets/archive/27.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 278470
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/28.webp",
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "originalBytes": 8179740,
+    "src": "/assets/archive/28.webp",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 245858
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/29.webp",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "originalBytes": 7002596,
+    "src": "/assets/archive/29.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 124994
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/30.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1081,
+    "originalBytes": 960188,
+    "src": "/assets/archive/30.webp",
+    "width": 1440,
+    "height": 1081,
+    "bytes": 88194
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/31.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1080,
+    "originalBytes": 1155288,
+    "src": "/assets/archive/31.webp",
+    "width": 1440,
+    "height": 1080,
+    "bytes": 133438
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/32.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1080,
+    "originalBytes": 1155288,
+    "src": "/assets/archive/32.webp",
+    "width": 1440,
+    "height": 1080,
+    "bytes": 133438
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/33.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1080,
+    "originalBytes": 1179562,
+    "src": "/assets/archive/33.webp",
+    "width": 1440,
+    "height": 1080,
+    "bytes": 136988
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/34.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1081,
+    "originalBytes": 1259058,
+    "src": "/assets/archive/34.webp",
+    "width": 1440,
+    "height": 1081,
+    "bytes": 152718
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/35.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1081,
+    "originalBytes": 1237076,
+    "src": "/assets/archive/35.webp",
+    "width": 1440,
+    "height": 1081,
+    "bytes": 169522
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/36.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1080,
+    "originalBytes": 1532490,
+    "src": "/assets/archive/36.webp",
+    "width": 1440,
+    "height": 1080,
+    "bytes": 256392
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/37.webp",
+    "originalWidth": 1669,
+    "originalHeight": 1252,
+    "originalBytes": 1777180,
+    "src": "/assets/archive/37.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 169300
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/38.webp",
+    "originalWidth": 1733,
+    "originalHeight": 1300,
+    "originalBytes": 1924850,
+    "src": "/assets/archive/38.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 176894
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/39.webp",
+    "originalWidth": 1733,
+    "originalHeight": 1300,
+    "originalBytes": 2063416,
+    "src": "/assets/archive/39.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 102178
+  },
+  {
+    "originalSrc": "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/40.webp",
+    "originalWidth": 1440,
+    "originalHeight": 1080,
+    "originalBytes": 1300922,
+    "src": "/assets/archive/40.webp",
+    "width": 1440,
+    "height": 1080,
+    "bytes": 148116
+  }
+]
