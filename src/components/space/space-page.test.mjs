@@ -67,7 +67,7 @@ test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 �
   assert.match(map, /event\.preventDefault\(\)/);
   assert.match(map, /event.key === "Escape"/);
   assert.match(map, /onPointerLeave=\{\(\) => setActive\(null\)\}/);
-  assert.match(map, /src=\{work.imageSrc\}/);
+  assert.match(map, /src=\{work.spaceImageSrc\}/);
   assert.match(map, /aria-hidden=\{active === null\}/);
   assert.match(map, /map-web-2026\.svg[^>]*fetchPriority="high"/);
 });

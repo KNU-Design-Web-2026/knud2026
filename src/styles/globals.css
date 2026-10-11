@@ -425,6 +425,25 @@
   font-weight: 700;
   letter-spacing: inherit;
   width: 100%;
+  height: 1.3em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.work-card__fit-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.work-card__artist-en {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-align: left;
+}
+
+.work-card__artist-ko {
+  flex-shrink: 0;
 }
 
 .work-card__artists {
@@ -691,6 +710,7 @@
   letter-spacing: -0.2px;
   line-height: 1.3;
   text-align: justify;
+  white-space: pre-line;
 }
 
 .work-detail__additional-artwork {
@@ -915,6 +935,25 @@
   .work-detail__additional-artwork {
     aspect-ratio: 400 / 2414;
   }
+}
+
+/* Allow real artwork and introduction content to determine the section height. */
+.work-detail[data-submitted="true"] .work-detail__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.work-detail[data-introduction="true"] .work-detail__content {
+  min-height: 0;
+}
+
+.work-detail[data-submitted="true"] .work-detail__identity {
+  width: 100%;
+}
+
+.work-detail__portfolio {
+  width: 100%;
 }
 
 /* Profile detail: Figma frames 1157:28722, 28645, 28413, 28568, 28491 */

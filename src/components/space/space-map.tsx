@@ -58,7 +58,7 @@ export function SpaceMap() {
       <div id="space-project-preview" className={styles.preview} data-open={active !== null}
         aria-hidden={active === null} role="region" aria-label={`${work.artistKo} 작품 정보`}
         style={{ left: `${x > 48 ? x - 50.5 : x + 8}%`, top: `${Math.min(y, 65)}%` }}>
-        <Image alt="" src={work.imageSrc} fill unoptimized className={styles.previewImage} />
+        <Image alt="" src={work.spaceImageSrc} fill sizes="624px" className={styles.previewImage} />
         <div className={styles.previewShade} />
         <div className={styles.previewCopy}>
           <p><strong>{work.artistKo}</strong><span>{work.artistEn}</span></p>

@@ -1,0 +1,95 @@
+{
+  "artist": "조장원",
+  "thumbnail": {
+    "src": "/assets/works/jo-jangwon/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "조장원_웹work/조장원_썸네일/조장원_Work.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 2713358,
+    "bytes": 139286
+  },
+  "space": {
+    "src": "/assets/works/jo-jangwon/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "조장원_웹work/조장원_썸네일/조장원_SPACE.png",
+    "originalWidth": 2600,
+    "originalHeight": 1592,
+    "originalBytes": 3575523,
+    "bytes": 283264
+  },
+  "hero": {
+    "src": "/assets/works/jo-jangwon/hero.webp",
+    "width": 1920,
+    "height": 1049,
+    "sourceFile": "조장원_웹work/조장원_썸네일/조장원_상세.png",
+    "originalWidth": 8005,
+    "originalHeight": 4375,
+    "originalBytes": 5108699,
+    "bytes": 488080
+  },
+  "images": [
+    {
+      "src": "/assets/works/jo-jangwon/portfolio-001.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_001.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 6462491,
+      "bytes": 759882
+    },
+    {
+      "src": "/assets/works/jo-jangwon/portfolio-002.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_002.png",
+      "originalWidth": 8000,
+      "originalHeight": 10418,
+      "originalBytes": 2695282,
+      "bytes": 103468
+    },
+    {
+      "src": "/assets/works/jo-jangwon/portfolio-003.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_003.png",
+      "originalWidth": 8000,
+      "originalHeight": 10418,
+      "originalBytes": 973598,
+      "bytes": 145798
+    },
+    {
+      "src": "/assets/works/jo-jangwon/portfolio-004.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_004.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 4070428,
+      "bytes": 366948
+    },
+    {
+      "src": "/assets/works/jo-jangwon/portfolio-005.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_005.png",
+      "originalWidth": 8001,
+      "originalHeight": 10417,
+      "originalBytes": 4548872,
+      "bytes": 556074
+    },
+    {
+      "src": "/assets/works/jo-jangwon/portfolio-006.webp",
+      "width": 1920,
+      "height": 1052,
+      "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_006.png",
+      "originalWidth": 8001,
+      "originalHeight": 4384,
+      "originalBytes": 349215,
+      "bytes": 32802
+    }
+  ]
+}

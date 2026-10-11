@@ -1,4 +1,7 @@
 import { PROFILE_MEMBERS } from "@/data/profile-members";
+import { PROFILE_SHEET_CONTENT } from "@/data/profile-sheet-content";
+import { SUBMITTED_WORKS } from "@/data/submitted-works";
+import { WORK_INTRODUCTIONS } from "@/data/work-introductions";
 
 export type WorkItem = {
   artistEn: string;
@@ -7,6 +10,7 @@ export type WorkItem = {
   artistKo: string;
   id: number;
   imageSrc: string;
+  spaceImageSrc: string;
   title: string;
 };
 
@@ -48,6 +52,7 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
   (_, index) => {
     const artistKo = ARTIST_NAMES[index];
     const matchedArtistEn = matchArtistEnglishName(artistKo);
+    const submitted = SUBMITTED_WORKS[artistKo];
 
     return {
       artistEn: index === 8 ? "PKR & LDH" : matchedArtistEn,
@@ -55,8 +60,11 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
       artistEnTab: index === 8 ? "PKR & LDH" : matchedArtistEn,
       artistKo,
       id: index + 1,
-      imageSrc: "/assets/figma/work/work-placeholder.png",
-      title: "작품이름",
+      imageSrc: submitted?.thumbnail.src ?? "/assets/figma/work/work-placeholder.png",
+      spaceImageSrc: submitted?.space.src ?? "/assets/figma/work/work-placeholder.png",
+      title: submitted || WORK_INTRODUCTIONS[artistKo]
+        ? PROFILE_SHEET_CONTENT[artistKo.split(" & ")[0]].projectName.replace(/\s*\/\s*\(한글 표기 필요할 시[^)]*\)/, "")
+        : "작품이름",
     };
   },
 );

@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import type { ProfileDetail } from "@/data/profile-details";
+import { WORK_ITEMS } from "@/data/work-items";
+import { SUBMITTED_WORKS } from "@/data/submitted-works";
 
 type ProfileDetailPageProps = {
   detail: ProfileDetail;
@@ -17,6 +20,8 @@ function SectionTitle({ children, id }: { children: string; id: string }) {
 }
 
 export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
+  const work = WORK_ITEMS.find((item) => item.artistKo === detail.nameKo);
+  const submitted = SUBMITTED_WORKS[detail.nameKo];
   return (
     <section aria-labelledby="profile-detail-title" className="profile-detail bg-white pt-[5rem]" data-contact-layout={detail.behance || detail.instagram ? "social" : "mail-only"}>
       <PageContainer className="profile-detail__container">
@@ -68,7 +73,11 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
             <SectionTitle id="work-title">Work</SectionTitle>
             <div className="profile-detail__work-copy flex flex-col gap-3 text-[#050505]">
               <h3 className="text-[clamp(1.5rem,2.5vw,2.5rem)] font-bold">{detail.projectName}</h3>
-              <p className="text-[1.375rem]">작품 이미지는 준비 중입니다.</p>
+              {work && submitted ? <Link href={`/work/${work.id}`} aria-label={`${detail.nameKo} ${detail.projectName} 작품 보기`}>
+                <Image alt={`${detail.projectName} 작품 대표 이미지`} src={submitted.hero.src}
+                  width={submitted.hero.width} height={submitted.hero.height}
+                  sizes="(max-width: 600px) 100vw, 80vw" className="block h-auto w-full" />
+              </Link> : <p className="text-[1.375rem]">작품 이미지는 준비 중입니다.</p>}
             </div>
           </section>
         </div>
