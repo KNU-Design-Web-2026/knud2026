@@ -46,7 +46,7 @@ export const WORK_DETAILS: Readonly<Record<string, WorkDetail>> = Object.fromEnt
       artistEnTab: item.artistEnTab,
       artistKo: item.artistKo,
       ...((submitted || introduction) && {
-        title: profile.projectName,
+        title: item.title,
         category: profile.tags.join(" / "),
         email: profile.email,
         instagram: profile.instagram,

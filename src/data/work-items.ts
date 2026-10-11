@@ -63,7 +63,7 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
       imageSrc: submitted?.thumbnail.src ?? "/assets/figma/work/work-placeholder.png",
       spaceImageSrc: submitted?.space.src ?? "/assets/figma/work/work-placeholder.png",
       title: submitted || WORK_INTRODUCTIONS[artistKo]
-        ? PROFILE_SHEET_CONTENT[artistKo.split(" & ")[0]].projectName
+        ? PROFILE_SHEET_CONTENT[artistKo.split(" & ")[0]].projectName.replace(/\s*\/\s*\(한글 표기 필요할 시[^)]*\)/, "")
         : "작품이름",
     };
   },

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { WorkItem } from "@/data/work-items";
+import { WorkCardText } from "@/components/work/work-card-text";
 
 type WorkCardProps = {
   eager?: boolean;
@@ -21,12 +22,12 @@ export function WorkCard({ eager = false, item }: WorkCardProps) {
         />
       </div>
       <div className="work-card__detail">
-        <h2 className="work-card__title">{item.title}</h2>
+        <h2 className="work-card__title"><WorkCardText>{item.title}</WorkCardText></h2>
         <div className={`work-card__artists${item.artistKo.includes(" & ") ? " work-card__artists--joint" : ""}`}>
           <p className="work-card__artist-ko">{item.artistKo}</p>
-          <p className="work-card__artist-en work-card__artist-en--web">{item.artistEn}</p>
-          <p className="work-card__artist-en work-card__artist-en--tab">{item.artistEnTab}</p>
-          <p className="work-card__artist-en work-card__artist-en--mobile">{item.artistEnMobile}</p>
+          <p className="work-card__artist-en work-card__artist-en--web"><WorkCardText>{item.artistEn}</WorkCardText></p>
+          <p className="work-card__artist-en work-card__artist-en--tab"><WorkCardText>{item.artistEnTab}</WorkCardText></p>
+          <p className="work-card__artist-en work-card__artist-en--mobile"><WorkCardText>{item.artistEnMobile}</WorkCardText></p>
         </div>
       </div>
     </Link>
