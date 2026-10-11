@@ -40,3 +40,8 @@ test("공동 작가 소개는 공동 작품 하나에 연결하고 미제출 소
   assert.equal(WORK_INTRODUCTIONS["김가연"], undefined);
   assert.match(WORK_DETAILS["2"].storyKo, /잊힌 이들의 기억/);
 });
+
+test("작품명에 들어 있던 제출용 표기 메모는 카드와 상세 제목에서 제외한다", () => {
+  assert.equal(WORK_ITEMS.find((item) => item.artistKo === "양혜연").title, "MOOEE");
+  assert.equal(WORK_DETAILS["11"].title, "MOOEE");
+});
