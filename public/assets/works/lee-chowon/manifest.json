@@ -1,0 +1,105 @@
+{
+  "artist": "이초원",
+  "thumbnail": {
+    "src": "/assets/works/lee-chowon/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "이초원_웹Work/이초원_썸네일/이초원_Work.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 482793,
+    "bytes": 28686
+  },
+  "space": {
+    "src": "/assets/works/lee-chowon/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "이초원_웹Work/이초원_썸네일/이초원_SPACE.png",
+    "originalWidth": 2600,
+    "originalHeight": 1592,
+    "originalBytes": 889550,
+    "bytes": 46916
+  },
+  "hero": {
+    "src": "/assets/works/lee-chowon/hero.webp",
+    "width": 1920,
+    "height": 1080,
+    "sourceFile": "이초원_웹Work/이초원_썸네일/이초원_상세.png",
+    "originalWidth": 8000,
+    "originalHeight": 4500,
+    "originalBytes": 6510305,
+    "bytes": 78710
+  },
+  "images": [
+    {
+      "src": "/assets/works/lee-chowon/portfolio-001.webp",
+      "width": 1920,
+      "height": 1080,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_001.png",
+      "originalWidth": 8000,
+      "originalHeight": 4500,
+      "originalBytes": 256324,
+      "bytes": 42040
+    },
+    {
+      "src": "/assets/works/lee-chowon/portfolio-002.webp",
+      "width": 1920,
+      "height": 1800,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_002.png",
+      "originalWidth": 8000,
+      "originalHeight": 7500,
+      "originalBytes": 451189,
+      "bytes": 48406
+    },
+    {
+      "src": "/assets/works/lee-chowon/portfolio-003.webp",
+      "width": 1920,
+      "height": 1400,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_003.png",
+      "originalWidth": 8000,
+      "originalHeight": 5834,
+      "originalBytes": 487606,
+      "bytes": 70234
+    },
+    {
+      "src": "/assets/works/lee-chowon/portfolio-004.webp",
+      "width": 1920,
+      "height": 1500,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_004.png",
+      "originalWidth": 8000,
+      "originalHeight": 6250,
+      "originalBytes": 962988,
+      "bytes": 85678
+    },
+    {
+      "src": "/assets/works/lee-chowon/portfolio-005.webp",
+      "width": 1920,
+      "height": 1500,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_005.png",
+      "originalWidth": 8000,
+      "originalHeight": 6250,
+      "originalBytes": 3413562,
+      "bytes": 83294
+    },
+    {
+      "src": "/assets/works/lee-chowon/portfolio-006.webp",
+      "width": 1920,
+      "height": 1500,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_006.png",
+      "originalWidth": 8000,
+      "originalHeight": 6250,
+      "originalBytes": 8056261,
+      "bytes": 165706
+    },
+    {
+      "src": "/assets/works/lee-chowon/portfolio-007.webp",
+      "width": 1920,
+      "height": 1500,
+      "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_007.png",
+      "originalWidth": 8000,
+      "originalHeight": 6250,
+      "originalBytes": 3701965,
+      "bytes": 77154
+    }
+  ]
+}
