@@ -1,0 +1,75 @@
+{
+  "artist": "김은별",
+  "thumbnail": {
+    "src": "/assets/works/kim-eunbyeol/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "김은별_웹work/김은별_썸네일/김은별_WORK.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 580027,
+    "bytes": 84466
+  },
+  "space": {
+    "src": "/assets/works/kim-eunbyeol/space.webp",
+    "width": 1248,
+    "height": 767,
+    "sourceFile": "김은별_웹work/김은별_썸네일/김은별_SPACE.png",
+    "originalWidth": 2600,
+    "originalHeight": 1597,
+    "originalBytes": 998651,
+    "bytes": 142994
+  },
+  "hero": {
+    "src": "/assets/works/kim-eunbyeol/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "김은별_웹work/김은별_썸네일/김은별_상세.png",
+    "originalWidth": 8000,
+    "originalHeight": 4376,
+    "originalBytes": 3675108,
+    "bytes": 213386
+  },
+  "images": [
+    {
+      "src": "/assets/works/kim-eunbyeol/portfolio-001.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_001.png",
+      "originalWidth": 1921,
+      "originalHeight": 2001,
+      "originalBytes": 550908,
+      "bytes": 208568
+    },
+    {
+      "src": "/assets/works/kim-eunbyeol/portfolio-002.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_002.png",
+      "originalWidth": 1921,
+      "originalHeight": 2001,
+      "originalBytes": 852274,
+      "bytes": 252366
+    },
+    {
+      "src": "/assets/works/kim-eunbyeol/portfolio-003.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_003.png",
+      "originalWidth": 1921,
+      "originalHeight": 2001,
+      "originalBytes": 518270,
+      "bytes": 208102
+    },
+    {
+      "src": "/assets/works/kim-eunbyeol/portfolio-004.webp",
+      "width": 1920,
+      "height": 2196,
+      "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_004.png",
+      "originalWidth": 1921,
+      "originalHeight": 2197,
+      "originalBytes": 732234,
+      "bytes": 271272
+    }
+  ]
+}
