@@ -1,11 +1,25 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { WORK_INTRODUCTIONS } from "../../data/work-introductions.ts";
 import { WORK_DETAILS } from "../../data/work-details.ts";
 import { WORK_ITEMS } from "../../data/work-items.ts";
 import { WorkDetailPage } from "../../components/work/work-detail-page.tsx";
+
+test("수정완료 5명의 국문·영문 소개는 승인된 복사본의 문장과 줄바꿈을 그대로 유지한다", async () => {
+  const approved = JSON.parse(await readFile(new URL("./fixtures/approved-introduction-paragraphs.json", import.meta.url), "utf8"));
+  assert.equal(Object.keys(approved).length, 5);
+  for (const [artist, copy] of Object.entries(approved)) {
+    assert.equal(WORK_INTRODUCTIONS[artist].storyKo, copy.storyKo, `${artist} 국문`);
+    assert.equal(WORK_INTRODUCTIONS[artist].storyEn, copy.storyEn, `${artist} 영문`);
+  }
+  assert.equal(WORK_INTRODUCTIONS["김은별"].storyKo.split("\n\n").length, 2);
+  assert.equal(WORK_INTRODUCTIONS["이초원"].storyKo.split("\n\n").length, 3);
+  assert.equal(WORK_INTRODUCTIONS["이나경"].storyEn.split("\n").length, 1);
+  assert.equal(WORK_INTRODUCTIONS["김민주"].storyEn.split("\n\n\n").length, 3);
+});
 
 test("제출된 15개 프로젝트의 국문·영문 소개가 정확한 작가 상세에 연결된다", () => {
   assert.equal(Object.keys(WORK_INTRODUCTIONS).length, 15);
