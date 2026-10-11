@@ -11,6 +11,15 @@ const workDetailPagePath = new URL("../../components/work/work-detail-page.tsx",
 const globalStylesPath = new URL("../../styles/globals.css", import.meta.url);
 const tokensPath = new URL("../../styles/tokens.css", import.meta.url);
 
+test("작품 소개는 국문·영문 모두 양쪽 정렬 없이 자연스러운 간격을 유지한다", () => {
+  const styles = readFileSync(globalStylesPath, "utf8");
+  const story = styles.match(/\.work-detail__story p \{([^}]+)\}/)?.[1];
+  assert.ok(story);
+  assert.match(story, /text-align: start;/);
+  assert.match(story, /white-space: pre-line;/);
+  assert.doesNotMatch(story, /text-align: justify;/);
+});
+
 test("Work 경로는 Figma Web 기준의 19개 작품 카드를 렌더한다", () => {
   assert.equal(existsSync(workPagePath), true);
 
