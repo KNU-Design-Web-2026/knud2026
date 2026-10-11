@@ -22,7 +22,7 @@ export function WorkCard({ eager = false, item }: WorkCardProps) {
         />
       </div>
       <div className="work-card__detail">
-        <h2 className="work-card__title"><WorkCardText>{item.title}</WorkCardText></h2>
+        <h2 className="work-card__title"><span className="work-card__fit-text">{item.title}</span></h2>
         <div className={`work-card__artists${item.artistKo.includes(" & ") ? " work-card__artists--joint" : ""}`}>
           <p className="work-card__artist-ko">{item.artistKo}</p>
           <p className="work-card__artist-en work-card__artist-en--web"><WorkCardText>{item.artistEn}</WorkCardText></p>
