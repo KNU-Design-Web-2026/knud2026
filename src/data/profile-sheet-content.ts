@@ -218,10 +218,13 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
       "PACKAGE"
     ],
     "email": "tjdms0214@daum.net",
-    "instagram": "seoeun_214",
+    "instagram": "seo_eun_214",
     "behance": null,
-    "introduction": null,
-    "answers": null
+    "introduction": "차근차근 앞으로 나아가는 김서은입니다. 완벽하지 않더라도 다양한 시선과 경험을 쌓으며 저만의 방향을 찾아가고, 지금보다 조금 더 나은 사람이 되기 위해 꾸준히 노력하고 있습니다.",
+    "answers": [
+      "저를 움직이게 만드는 불씨는 더 나아가고 싶은 마음입니다. 지금의 모습에 머무르기보다 작은 것이라도 하나씩 배우고 채워가는 과정에서 힘을 얻습니다. 남들처럼 빠르지 않더라도 어제보다 조금 더 나아가고싶다는 마음이 계속해서 앞으로 나아가게 합니다.",
+      "프로젝트를 진행하는 과정이 생각처럼 흘러가지 않아 많은 고민을 했지만, 제 속도와 방향을 찾아가며 하나씩 해결할 수 있었습니다. 이번 졸업전시를 준비하며 여러 시행착오 속에서도 제 방향을 잃지 않고 끝까지 해낼 수 있는 사람이라는 것을 발견했습니다."
+    ]
   },
   "이서윤": {
     "projectName": "SHELO",
