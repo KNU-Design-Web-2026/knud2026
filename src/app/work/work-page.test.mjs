@@ -141,7 +141,15 @@ test("공동 작업 카드와 긴 작품명은 줄바꿈 없이 기존 정보 �
   assert.match(card, /work-card__artists--joint/);
   assert.match(styles, /@media \(max-width: 37\.5rem\)[\s\S]*?\.work-card__artists--joint \{[\s\S]*?flex-wrap: nowrap/);
   assert.match(styles, /\.work-card__title \{[\s\S]*?height: 1\.3em;[\s\S]*?white-space: nowrap/);
-  assert.match(card, /<WorkCardText>\{item.title\}<\/WorkCardText>/);
+  assert.match(card, /<span className="work-card__fit-text">\{item.title\}<\/span>/);
+});
+
+test("작품 제목은 가장 좁은 제목의 가용 폭에 맞춰 모두 동일한 크기를 사용한다", () => {
+  const grid = readFileSync(new URL("../../components/work/work-grid.tsx", import.meta.url), "utf8");
+  assert.match(grid, /const commonSize = Math.min/);
+  assert.match(grid, /title.style.fontSize = `\$\{commonSize\}px`/);
+  assert.match(grid, /removeProperty\("font-size"\)/);
+  assert.match(grid, /ResizeObserver/);
 });
 
 test("카드 텍스트는 컨테이너·폰트 변경 시 넘치는 경우에만 크기를 줄인다", () => {
