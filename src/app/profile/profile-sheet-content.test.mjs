@@ -37,16 +37,23 @@ test("시트의 실제 소개와 인터뷰가 ID에 맞게 상세 페이지에 �
   assert.doesNotMatch(html, /PROJECT NAME/);
 });
 
-test("내용이 비어 있는 김서은 상세 페이지에는 허구의 소개·인터뷰 대신 준비 중 안내가 보인다", () => {
+test("김서은 상세 페이지에 제출된 소개·인터뷰와 최신 연락처가 표시된다", () => {
   const detail = PROFILE_DETAILS["4"];
   assert.equal(detail.nameKo, "김서은");
   assert.equal(detail.projectName, "REBLOOM");
-  assert.equal(detail.introduction, null);
-  assert.deepEqual(detail.interview, []);
+  assert.match(detail.introduction, /^차근차근 앞으로 나아가는 김서은입니다\./);
+  assert.equal(detail.instagram, "seo_eun_214");
+  assert.equal(detail.email, "tjdms0214@daum.net");
+  assert.deepEqual(detail.tags, ["BRANDING", "EDITORIAL", "PACKAGE"]);
+  assert.equal(detail.interview.length, 2);
+  assert.match(detail.interview[0].answer, /^저를 움직이게 만드는 불씨는 더 나아가고 싶은 마음입니다\./);
+  assert.match(detail.interview[1].answer, /끝까지 해낼 수 있는 사람이라는 것을 발견했습니다\.$/);
 
   const html = renderToStaticMarkup(React.createElement(ProfileDetailPage, { detail }));
-  assert.match(html, /소개 준비 중/);
-  assert.match(html, /인터뷰 준비 중/);
+  assert.doesNotMatch(html, /소개 준비 중/);
+  assert.doesNotMatch(html, /인터뷰 준비 중/);
+  assert.match(html, /차근차근 앞으로 나아가는 김서은입니다/);
+  assert.match(html, /instagram\.com\/seo_eun_214\//);
   assert.doesNotMatch(html, /브랜딩과 편집 디자인을 바탕으로/);
 });
 
