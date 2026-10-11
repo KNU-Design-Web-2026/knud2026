@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { calculateMasonryLayout, type MasonryLayout } from "./archive-masonry";
 import styles from "./space-page.module.css";
 
@@ -26,6 +27,7 @@ type OptimizedArchiveFixture = ArchiveImageBase & {
 
 type DirectArchiveImage = ArchiveImageBase & {
   src: string;
+  deliverySrc?: string;
   blurDataURL?: never;
   sources?: never;
 };
@@ -42,14 +44,14 @@ function createSrcSet(candidates: ArchiveCandidate[]) {
 function ArchivePicture({ image, index }: { image: ArchiveFixture; index: number }) {
   if (!image.sources) {
     return (
-      // The S3 test intentionally requests the original object without Next.js optimization.
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <Image
         alt={`전시 아카이브 이미지 ${index + 1}`}
+        className={styles.archivePhotoPicture}
         decoding="async"
         height={image.height}
         loading="eager"
-        src={image.src}
+        sizes={archiveSizes}
+        src={image.deliverySrc ?? image.src}
         width={image.width}
       />
     );
@@ -129,7 +131,9 @@ export function ArchiveGallery({ images }: { images: ArchiveFixture[] }) {
           observer.disconnect();
         }
       },
-      { rootMargin: "600px 0px" },
+      // Start the first batch before the gallery enters the viewport, without
+      // competing with the map by requesting all forty originals on entry.
+      { rootMargin: "1200px 0px" },
     );
 
     observer.observe(gallery);

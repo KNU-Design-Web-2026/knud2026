@@ -28,7 +28,7 @@ test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다",
   for (const height of archiveColumns.flat()) assert.ok(height > 0);
 });
 
-test("실제 Space Archive는 S3 원본 40장을 6장씩 점진적으로 요청한다", async () => {
+test("실제 Space Archive는 화면 크기로 최적화한 S3 이미지 40장을 6장씩 요청한다", async () => {
   const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
   const gallery = await readFile(new URL("./archive-gallery.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
@@ -41,7 +41,7 @@ test("실제 Space Archive는 S3 원본 40장을 6장씩 점진적으로 요청�
   assert.match(gallery, /type="image\/webp"/);
   assert.match(gallery, /\(max-width: 821px\) 46vw/);
   assert.match(gallery, /backgroundImage: isVisible && image\.blurDataURL \? `url\(\$\{image\.blurDataURL\}\)` : undefined/);
-  assert.match(gallery, /rootMargin: "600px 0px"/);
+  assert.match(gallery, /rootMargin: "1200px 0px"/);
   assert.match(gallery, /rootMargin: "800px 0px"/);
   assert.match(gallery, /Math\.min\(current \+ batchSize, images\.length\)/);
   assert.match(gallery, /전시 아카이브 성능 테스트 이미지/);
@@ -49,6 +49,24 @@ test("실제 Space Archive는 S3 원본 40장을 6장씩 점진적으로 요청�
   assert.match(css, /\.archivePhotoGrid\[data-masonry-ready="true"\] \{ position: relative; display: block; \}/);
   assert.match(css, /\.archivePhotoPicture \{[^}]*animation: archive-photo-in 280ms ease-out both;/);
   assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archivePhotoGrid \{ --archive-column-count: 2; grid-template-columns: 515fr 514fr; \}/);
+});
+
+test("S3 원본 경로는 유지하되 Next Image의 반응형 전송과 제한된 원격 허용 목록을 사용한다", async () => {
+  const gallery = await readFile(new URL("./archive-gallery.tsx", import.meta.url), "utf8");
+  const { default: config } = await import("../../../next.config.ts");
+  assert.match(gallery, /import Image from "next\/image"/);
+  const directBranch = gallery.split("if (!image.sources) {")[1].split("return (")[1].split("  return (")[0];
+  assert.match(directBranch, /<Image/);
+  assert.match(directBranch, /sizes=\{archiveSizes\}/);
+  assert.match(directBranch, /src=\{image\.deliverySrc \?\? image\.src\}/);
+  assert.doesNotMatch(directBranch, /unoptimized|<img/);
+  assert.deepEqual(config.images.remotePatterns, [{
+    protocol: "https",
+    hostname: "design-graduation-image.s3.ap-northeast-2.amazonaws.com",
+    port: "",
+    pathname: "/archive/*.webp",
+    search: "",
+  }]);
 });
 
 test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {

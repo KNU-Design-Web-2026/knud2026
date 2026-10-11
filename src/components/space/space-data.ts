@@ -1,3 +1,5 @@
+import archiveWebImages from "@/data/archive-web-images.json";
+
 // Figma 2567:9878. Unassigned positions intentionally retain the design's copy.
 export const spaceMapSize = { width: 1275.71, height: 718.31 };
 
@@ -49,6 +51,7 @@ const s3ArchiveImageSizes = [
 export const s3ArchiveImages = s3ArchiveImageSizes.map(([width, height], index) => ({
   id: `s3-archive-${index + 1}`,
   src: `${s3ArchiveBaseUrl}/${index + 1}.webp`,
+  deliverySrc: archiveWebImages[index].src,
   width,
   height,
 }));
