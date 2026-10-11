@@ -1,6 +1,7 @@
 import { PROFILE_MEMBERS } from "@/data/profile-members";
 import { PROFILE_SHEET_CONTENT } from "@/data/profile-sheet-content";
 import { SUBMITTED_WORKS } from "@/data/submitted-works";
+import { WORK_INTRODUCTIONS } from "@/data/work-introductions";
 
 export type WorkItem = {
   artistEn: string;
@@ -61,7 +62,9 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
       id: index + 1,
       imageSrc: submitted?.thumbnail.src ?? "/assets/figma/work/work-placeholder.png",
       spaceImageSrc: submitted?.space.src ?? "/assets/figma/work/work-placeholder.png",
-      title: submitted ? PROFILE_SHEET_CONTENT[artistKo].projectName : "작품이름",
+      title: submitted || WORK_INTRODUCTIONS[artistKo]
+        ? PROFILE_SHEET_CONTENT[artistKo.split(" & ")[0]].projectName
+        : "작품이름",
     };
   },
 );
