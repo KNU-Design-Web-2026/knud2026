@@ -17,7 +17,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "유일 油 日",
     "tags": [
       "BRANDING",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "lnaggyeong2@gmail.com",
     "instagram": "nannggy",
@@ -32,7 +32,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "단탈리온",
     "tags": [
       "GAME",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "jangwon5538@naver.com",
     "instagram": null,
@@ -77,7 +77,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "HITOMA",
     "tags": [
       "BRANDING",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "zzangsun412@naver.com",
     "instagram": null,
@@ -137,7 +137,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "MOOEE / (한글 표기 필요할 시 : 무이)",
     "tags": [
       "BRANDING",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "re00yang1220@naver.com",
     "instagram": "YYEON_220",
@@ -152,7 +152,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "별난참외",
     "tags": [
       "BRANDING",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "555ii55@naver.com",
     "instagram": "hyunyeoni",
@@ -215,7 +215,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "tags": [
       "BRANDING",
       "EDITORIAL",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "tjdms0214@daum.net",
     "instagram": "seoeun_214",
@@ -257,7 +257,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "TAKK!",
     "tags": [
       "BRANDING",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "angela5139@naver.com",
     "instagram": "kzieon",
@@ -302,7 +302,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     "projectName": "대구 떡볶이 페스티벌 리브랜딩",
     "tags": [
       "BRANDING",
-      "PACKAGING"
+      "PACKAGE"
     ],
     "email": "angel020914@naver.com",
     "instagram": null,
