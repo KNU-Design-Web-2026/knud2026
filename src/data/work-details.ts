@@ -1,4 +1,6 @@
 import { WORK_ITEMS } from "@/data/work-items";
+import { PROFILE_SHEET_CONTENT } from "@/data/profile-sheet-content";
+import { SUBMITTED_WORKS, type WorkImage } from "@/data/submitted-works";
 
 export type WorkDetail = {
   artistEn: string;
@@ -8,10 +10,12 @@ export type WorkDetail = {
   category: string;
   email: string;
   heroSrc: string;
-  instagram: string;
+  instagram: string | null;
   storyEn: string;
   storyKo: string;
   title: string;
+  images?: readonly WorkImage[];
+  heroSize?: { width: number; height: number };
 };
 
 const FIGMA_WORK_DETAIL: Omit<WorkDetail, "artistEn" | "artistEnMobile" | "artistEnTab" | "artistKo"> = {
@@ -27,14 +31,30 @@ const FIGMA_WORK_DETAIL: Omit<WorkDetail, "artistEn" | "artistEnMobile" | "artis
 };
 
 export const WORK_DETAILS: Readonly<Record<string, WorkDetail>> = Object.fromEntries(
-  WORK_ITEMS.map((item) => [
+  WORK_ITEMS.map((item) => {
+    const submitted = SUBMITTED_WORKS[item.artistKo];
+    const profile = PROFILE_SHEET_CONTENT[item.artistKo];
+    return [
     String(item.id),
     {
       ...FIGMA_WORK_DETAIL,
-      artistEn: item.id === 1 ? "Lee Seoyun" : item.artistEn,
-      artistEnMobile: item.id === 1 ? "Lee Seoyun" : item.artistEnMobile,
-      artistEnTab: item.id === 1 ? "Lee Seoyun" : item.artistEnTab,
-      artistKo: item.id === 1 ? "이서윤" : item.artistKo,
+      artistEn: item.artistEn,
+      artistEnMobile: item.artistEnMobile,
+      artistEnTab: item.artistEnTab,
+      artistKo: item.artistKo,
+      ...(submitted && {
+        title: profile.projectName,
+        category: profile.tags.join(" / "),
+        email: profile.email,
+        instagram: profile.instagram,
+        heroSrc: submitted.hero.src,
+        heroSize: { width: submitted.hero.width, height: submitted.hero.height },
+        images: submitted.images,
+        // Descriptions were supplied inside the artwork, not as separate copy.
+        storyKo: "",
+        storyEn: "",
+      }),
     },
-  ]),
+  ];
+  }),
 );

@@ -8,8 +8,8 @@ type WorkDetailPageProps = {
 
 export function WorkDetailPage({ detail }: WorkDetailPageProps) {
   return (
-    <article className="work-detail bg-white">
-      <section aria-labelledby="work-detail-title" className="work-detail__hero">
+    <article className="work-detail bg-white" data-submitted={Boolean(detail.images)}>
+      <section aria-labelledby="work-detail-title" className="work-detail__hero" style={detail.heroSize ? { aspectRatio: `${detail.heroSize.width} / ${detail.heroSize.height}` } : undefined}>
         <Image
           alt={`${detail.title} 대표 이미지`}
           className="object-cover"
@@ -40,20 +40,28 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
               <Image alt="이메일" height={32} src="/assets/figma/work/work-detail-mail.svg" width={32} />
               <span>{detail.email}</span>
             </a>
-            <a href={`https://www.instagram.com/${detail.instagram}`} rel="noreferrer" target="_blank">
+            {detail.instagram && <a href={`https://www.instagram.com/${detail.instagram}`} rel="noreferrer" target="_blank">
               <Image alt="Instagram" height={32} src="/assets/figma/work/work-detail-instagram.svg" width={32} />
               <span>{detail.instagram}</span>
-            </a>
+            </a>}
           </address>
         </div>
 
-        <section aria-label="프로젝트 소개" className="work-detail__story">
+        {(detail.storyKo || detail.storyEn) && <section aria-label="프로젝트 소개" className="work-detail__story">
           <p lang="ko">{detail.storyKo}</p>
           <p lang="en">{detail.storyEn}</p>
-        </section>
+        </section>}
       </div>
 
-      <div aria-label="추가 프로젝트 이미지 영역" className="work-detail__additional-artwork" />
+      {detail.images ? <section aria-label={`${detail.title} 상세 작품 이미지`} className="work-detail__portfolio">
+        {detail.images.map((image, index) => <Image
+          key={image.src}
+          alt={`${detail.title} — ${detail.artistKo} 작품 상세 ${index + 1}`}
+          src={image.src} width={image.width} height={image.height}
+          sizes="100vw" loading="lazy" decoding="async"
+          className="block h-auto w-full"
+        />)}
+      </section> : <div aria-label="추가 프로젝트 이미지 영역" className="work-detail__additional-artwork" />}
       <SiteFooter />
     </article>
   );

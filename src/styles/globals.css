@@ -917,6 +917,21 @@
   }
 }
 
+/* Submitted works carry descriptions inside the portfolio, not mock story columns. */
+.work-detail[data-submitted="true"] .work-detail__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.work-detail[data-submitted="true"] .work-detail__identity {
+  width: 100%;
+}
+
+.work-detail__portfolio {
+  width: 100%;
+}
+
 /* Profile detail: Figma frames 1157:28722, 28645, 28413, 28568, 28491 */
 .profile-detail {
   /* 좁은 화면에서 내부 Flex 항목이 넓어져도 페이지 배경이 우측에 드러나지 않게 한다. */
