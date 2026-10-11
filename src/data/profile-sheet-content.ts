@@ -302,7 +302,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     ]
   },
   "임경민": {
-    "projectName": "대구 떡볶이 페스티벌 리브랜딩",
+    "projectName": "대구 떡볶이 페스티벌",
     "tags": [
       "BRANDING",
       "PACKAGE"
