@@ -1,0 +1,115 @@
+{
+  "artist": "공예원",
+  "thumbnail": {
+    "src": "/assets/works/gong-yewon/thumbnail.webp",
+    "width": 384,
+    "height": 280,
+    "sourceFile": "공예원_웹work/공예원_썸네일/공예원_Work.png",
+    "originalWidth": 384,
+    "originalHeight": 280,
+    "originalBytes": 139322,
+    "bytes": 21948
+  },
+  "space": {
+    "src": "/assets/works/gong-yewon/space.webp",
+    "width": 624,
+    "height": 382,
+    "sourceFile": "공예원_웹work/공예원_썸네일/공예원_SPACE.png",
+    "originalWidth": 624,
+    "originalHeight": 382,
+    "originalBytes": 259872,
+    "bytes": 35488
+  },
+  "hero": {
+    "src": "/assets/works/gong-yewon/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "공예원_웹work/공예원_썸네일/공예원_상세.png",
+    "originalWidth": 1920,
+    "originalHeight": 1050,
+    "originalBytes": 1639434,
+    "bytes": 158020
+  },
+  "images": [
+    {
+      "src": "/assets/works/gong-yewon/portfolio-001.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_001.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 2420865,
+      "bytes": 188324
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-002.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_002.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 3332875,
+      "bytes": 298390
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-003.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_003.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 2639255,
+      "bytes": 268392
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-004.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_004.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 4381688,
+      "bytes": 491868
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-005.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_005.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 3099231,
+      "bytes": 256660
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-006.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_006.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 3150589,
+      "bytes": 248028
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-007.webp",
+      "width": 1920,
+      "height": 2499,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_007.png",
+      "originalWidth": 1921,
+      "originalHeight": 2500,
+      "originalBytes": 2733635,
+      "bytes": 326442
+    },
+    {
+      "src": "/assets/works/gong-yewon/portfolio-008.webp",
+      "width": 1920,
+      "height": 681,
+      "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_008.png",
+      "originalWidth": 1921,
+      "originalHeight": 681,
+      "originalBytes": 6776,
+      "bytes": 2600
+    }
+  ]
+}
