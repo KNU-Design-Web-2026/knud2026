@@ -691,6 +691,7 @@
   letter-spacing: -0.2px;
   line-height: 1.3;
   text-align: justify;
+  white-space: pre-line;
 }
 
 .work-detail__additional-artwork {
@@ -917,10 +918,14 @@
   }
 }
 
-/* Submitted works carry descriptions inside the portfolio, not mock story columns. */
+/* Allow real artwork and introduction content to determine the section height. */
 .work-detail[data-submitted="true"] .work-detail__content {
   display: flex;
   flex-direction: column;
+  min-height: 0;
+}
+
+.work-detail[data-introduction="true"] .work-detail__content {
   min-height: 0;
 }
 

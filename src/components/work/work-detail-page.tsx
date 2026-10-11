@@ -8,7 +8,7 @@ type WorkDetailPageProps = {
 
 export function WorkDetailPage({ detail }: WorkDetailPageProps) {
   return (
-    <article className="work-detail bg-white" data-submitted={Boolean(detail.images)}>
+    <article className="work-detail bg-white" data-submitted={Boolean(detail.images)} data-introduction={Boolean(detail.hasSubmittedIntroduction)}>
       <section aria-labelledby="work-detail-title" className="work-detail__hero" style={detail.heroSize ? { aspectRatio: `${detail.heroSize.width} / ${detail.heroSize.height}` } : undefined}>
         <Image
           alt={`${detail.title} 대표 이미지`}
