@@ -9,6 +9,7 @@ import { WORK_DETAILS } from "../../data/work-details.ts";
 import { SUBMITTED_WORKS } from "../../data/submitted-works.ts";
 import { PROFILE_SHEET_CONTENT } from "../../data/profile-sheet-content.ts";
 import { WorkDetailPage } from "../../components/work/work-detail-page.tsx";
+import { WORK_INTRODUCTIONS } from "../../data/work-introductions.ts";
 
 const expected = { "공예원": [1, 8], "김연수": [6, 4], "김은별": [7, 4], "이초원": [15, 7], "조장원": [18, 6] };
 
@@ -28,8 +29,8 @@ test("제출된 다섯 작가만 썸네일·작품명·연락처·번호순 상�
     assert.equal(detail.instagram, profile.instagram);
     assert.equal(detail.category, profile.tags.join(" / "));
     assert.equal(detail.images.length, count);
-    assert.equal(detail.storyKo, "");
-    assert.equal(detail.storyEn, "");
+    assert.equal(detail.storyKo, WORK_INTRODUCTIONS[artist].storyKo);
+    assert.equal(detail.storyEn, WORK_INTRODUCTIONS[artist].storyEn);
     assert.deepEqual(detail.images.map((image) => image.src), [...detail.images.map((image) => image.src)].sort());
     const html = renderToStaticMarkup(React.createElement(WorkDetailPage, { detail }));
     assert.doesNotMatch(html, /PROJECT NAME|잊힌 이들의 기억|instagram\.com\/null/);
