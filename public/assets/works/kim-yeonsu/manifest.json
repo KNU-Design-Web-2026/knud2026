@@ -1,0 +1,75 @@
+{
+  "artist": "김연수",
+  "thumbnail": {
+    "src": "/assets/works/kim-yeonsu/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "김연수_웹work/김연수_썸네일/김연수_Work.png",
+    "originalWidth": 1601,
+    "originalHeight": 1167,
+    "originalBytes": 4058859,
+    "bytes": 140168
+  },
+  "space": {
+    "src": "/assets/works/kim-yeonsu/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "김연수_웹work/김연수_썸네일/김연수_SPACE.png",
+    "originalWidth": 2601,
+    "originalHeight": 1592,
+    "originalBytes": 4899103,
+    "bytes": 345654
+  },
+  "hero": {
+    "src": "/assets/works/kim-yeonsu/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "김연수_웹work/김연수_썸네일/김연수_상세.png",
+    "originalWidth": 8001,
+    "originalHeight": 4376,
+    "originalBytes": 6814026,
+    "bytes": 772294
+  },
+  "images": [
+    {
+      "src": "/assets/works/kim-yeonsu/portfolio-001.webp",
+      "width": 1920,
+      "height": 2501,
+      "sourceFile": "김연수_웹work/김연수_포토폴리오/김연수_001.png",
+      "originalWidth": 1920,
+      "originalHeight": 2501,
+      "originalBytes": 11081481,
+      "bytes": 1758730
+    },
+    {
+      "src": "/assets/works/kim-yeonsu/portfolio-002.webp",
+      "width": 1920,
+      "height": 2501,
+      "sourceFile": "김연수_웹work/김연수_포토폴리오/김연수_002.png",
+      "originalWidth": 1920,
+      "originalHeight": 2501,
+      "originalBytes": 2483583,
+      "bytes": 363698
+    },
+    {
+      "src": "/assets/works/kim-yeonsu/portfolio-003.webp",
+      "width": 1920,
+      "height": 2501,
+      "sourceFile": "김연수_웹work/김연수_포토폴리오/김연수_003.png",
+      "originalWidth": 1920,
+      "originalHeight": 2501,
+      "originalBytes": 4350119,
+      "bytes": 543842
+    },
+    {
+      "src": "/assets/works/kim-yeonsu/portfolio-004.webp",
+      "width": 1920,
+      "height": 2369,
+      "sourceFile": "김연수_웹work/김연수_포토폴리오/김연수_004.png",
+      "originalWidth": 1920,
+      "originalHeight": 2369,
+      "originalBytes": 6824819,
+      "bytes": 1196660
+    }
+  ]
+}
