@@ -43,7 +43,8 @@
 .assignedBooth:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 @media (min-width: 1350px) {
   .map {
-    width: min(100%, calc(83.57% + (100vw - 1350px) * 0.47));
+    /* Keep the 1350px map scale, but cap large desktop maps at the previous 1302px width. */
+    width: min(100%, clamp(1032.818px, calc(1032.818px + (100vw - 1350px) * 0.47225), 1302px));
     margin-top: clamp(88px, calc(88px + (100vw - 1350px) * 0.23158), 220px);
   }
 }

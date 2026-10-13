@@ -50,7 +50,7 @@ export function SpaceMap({ compact = false }: { compact?: boolean }) {
       <div id={compact ? "space-project-preview-compact" : "space-project-preview"} className={styles.preview} data-open={active !== null}
         aria-hidden={active === null} role="region" aria-label={`${work.artistKo} 작품 정보`}
         style={{ left: `${position.x > 48 ? position.x - 39 : position.x + 7}%`, top: `${Math.min(position.y + 3, 60)}%` }}>
-        <Image alt="" className={styles.previewImage} src={work.spaceImageSrc} fill sizes="(max-width: 821px) 0px, (max-width: 1350px) 48vw, 785px" />
+        <Image alt="" className={styles.previewImage} src={work.spaceImageSrc} fill sizes="(max-width: 821px) 0px, (max-width: 1350px) 48vw, 637px" />
         <div className={styles.previewShade} />
         <div className={styles.previewCopy}><p><strong>{work.artistKo}</strong>{work.artistEn}</p><h3>{work.title}</h3></div>
       </div>
