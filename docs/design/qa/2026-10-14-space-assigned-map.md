@@ -38,3 +38,15 @@
 ![1020](assets/space-assigned-map/1020.jpg)
 ![600](assets/space-assigned-map/600.jpg)
 ![400](assets/space-assigned-map/400.jpg)
+
+## 후속 검수: hover와 클릭 이동 복원
+
+- 사용자 확인 후, 1350px에서 미리보기가 안 뜨는 것과 PC 클릭이 상세로 이동하지 않는 것을 실제 브라우저에서 재현했다. 기존 `min-width: 1350.0625px` 조건과 클릭의 `preventDefault()`가 원인이었다.
+- 지도 hover는 822px 이상에서 마우스 hover가 가능한 fine pointer에 제공한다. 1350px 및 마우스가 있는 1020px 화면에서도 작품 미리보기가 열린다. 터치·작은 모바일은 클릭으로 바로 이동한다.
+- 링크 클릭을 가로채던 핸들러를 제거해 모든 화면에서 작가의 `/work/:id`로 이동한다. Ctrl/Cmd 클릭 등 기본 링크 기능도 유지한다.
+- 미리보기 이미지 `sizes`의 작은 화면 0px 조건도 821px 이하로 조정해 중간 폭에서 미리보기 화질이 과도하게 축소되지 않게 했다.
+- 회귀 확인은 실제 브라우저 UI에서 실패 → 수정 → 성공 순서로 진행했다. 1350px hover의 `data-open` 값은 수정 전 false, 수정 후 true였다. PC 클릭 URL은 수정 전 `/space`, 수정 후 `/work/4`였다.
+- 추가 확인: 1920px 공동 작품 클릭 `/work/9`, 1020px 마우스 hover, 400px 김서은 클릭 `/work/4`.
+- 전체 테스트 154개, lint, 타입 검사, 프로덕션 빌드 및 diff 검사 통과. 클릭을 막도록 요구하던 구형 소스 검사 2개는 제거했다.
+
+![1350px에서 복원된 작품 미리보기](assets/space-assigned-map/1350-hover-restored.jpg)
