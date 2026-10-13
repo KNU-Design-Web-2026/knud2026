@@ -1937,11 +1937,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
-  /* Beat one-class CSS Module cursor rules regardless of stylesheet order.
-     The map's expanded ::before hit target inherits its link's cursor. */
+  /* Custom cursor mode owns the cursor exclusively. This must also beat
+     descendant/state rules on form buttons, not just one-class map links.
+     It is scoped to the JS-enabled fine-pointer mode; touch keeps native rules. */
   html.has-custom-cursor,
   html.has-custom-cursor * {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
