@@ -1937,8 +1937,10 @@
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
-  .has-custom-cursor,
-  .has-custom-cursor * {
+  /* Beat one-class CSS Module cursor rules regardless of stylesheet order.
+     The map's expanded ::before hit target inherits its link's cursor. */
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
     cursor: none;
   }
 }
