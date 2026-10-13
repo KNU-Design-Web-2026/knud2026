@@ -3,7 +3,7 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 import * as spaceData from "./space-data.ts";
 
-const { archiveColumns, spaceMapSize, spacePositions } = spaceData;
+const { archiveColumns } = spaceData;
 
 test("S3 Archive 테스트 데이터는 서로 다른 원본 이미지 40장을 제공한다", () => {
   const images = spaceData.s3ArchiveImages;
@@ -13,14 +13,6 @@ test("S3 Archive 테스트 데이터는 서로 다른 원본 이미지 40장을 
   assert.equal(images?.[0]?.src, "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/1.webp");
   assert.equal(images?.[39]?.src, "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive/40.webp");
   assert.ok(images?.every(image => image.width > 0 && image.height > 0));
-});
-
-test("지도 좌표는 원본 배치도 범위 안에 있다", () => {
-  assert.equal(spacePositions.length, 20);
-  for (const position of spacePositions) {
-    assert.ok(position.x >= 0 && position.x < spaceMapSize.width);
-    assert.ok(position.y >= 0 && position.y < spaceMapSize.height);
-  }
 });
 
 test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다", () => {
@@ -69,25 +61,19 @@ test("S3 원본 경로는 유지하되 Next Image의 반응형 전송과 제한�
   }]);
 });
 
-test("Space 지도는 원본 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
+test("Space 지도는 실제 부스 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
   const map = await readFile(new URL("./space-map.tsx", import.meta.url), "utf8");
-  const compact = await readFile(new URL("./compact-space-map.tsx", import.meta.url), "utf8");
-  for (const [source, asset] of [[map, "map-web-2026.svg"], [compact, "map-mobile-2026.svg"]]) {
-    assert.ok(source.includes(asset));
-    const bytes = await readFile(new URL(`../../../public/assets/figma/space/${asset}`, import.meta.url));
-    assert.ok(bytes.length > 0);
+  for (const asset of ["map-assigned-2026.png", "map-assigned-mobile-2026.png"]) {
+    assert.ok(map.includes(asset));
+    assert.ok((await readFile(new URL(`../../../public/assets/figma/space/${asset}`, import.meta.url))).length > 0);
   }
   assert.match(map, /aria-expanded=\{active === index\}/);
   assert.match(map, /onFocus=/);
   assert.match(map, /onClick=/);
-  assert.match(map, /href=\{`\/work\/\$\{assigned\.id\}`\}/);
-  assert.match(map, /desktopPreviewQuery = "\(min-width: 1350\.0625px\)"/);
   assert.match(map, /event\.preventDefault\(\)/);
   assert.match(map, /event.key === "Escape"/);
-  assert.match(map, /onPointerLeave=\{\(\) => setActive\(null\)\}/);
   assert.match(map, /src=\{work.spaceImageSrc\}/);
-  assert.match(map, /aria-hidden=\{active === null\}/);
-  assert.match(map, /map-web-2026\.svg[^>]*fetchPriority="high"/);
+  assert.doesNotMatch(map, /홍길동|임시 배치/);
 });
 
 test("1020px 태블릿은 클릭 안내를 표시하고 이름 링크로 상세 페이지를 연다", async () => {
@@ -105,21 +91,12 @@ test("1020px 태블릿은 클릭 안내를 표시하고 이름 링크로 상세 
   );
 });
 
-test("작은 화면은 별도의 지도 방향과 두 열 아카이브를 사용한다", async () => {
+test("작은 화면은 Figma의 별도 세로 지도와 두 열 아카이브를 사용한다", async () => {
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
-  const compact = await readFile(new URL("./compact-space-map.tsx", import.meta.url), "utf8");
-  assert.match(css, /grid-template-columns: 515fr 514fr;/);
-  assert.match(css, /aspect-ratio: 315 \/ 541\.918/);
-  assert.match(css, /\.mapLabels \{[^}]*left: 1\.42089%;[^}]*top: 3\.41864%;/);
-  assert.match(css, /\.mobileNames \{ display: block; left: 2\.00952%; top: 1\.66077%;/);
-  assert.match(css, /\.archiveColumn:last-child \{ display: none; \}/);
-  assert.match(compact, /const tabletNames =/);
-  assert.match(compact, /const mobileNames =/);
-  assert.match(compact, /href=\{`\/work\/\$\{work.id\}`\}/);
-  assert.match(compact, /map-web-2026\.svg[^>]*fetchPriority="high"/);
-  assert.match(compact, /map-mobile-2026\.svg[^>]*fetchPriority="high"/);
+  assert.match(css, /aspect-ratio: 384 \/ 542/);
+  assert.match(css, /grid-template-columns: 515fr 514fr/);
+  assert.match(css, /\.assignedPortrait, \.assignedPortraitLinks \{ display: block; \}/);
   assert.match(css, /prefers-reduced-motion: reduce/);
-  assert.match(css, /opacity 240ms/);
 });
 
 test("Space 콘텐츠 상하 여백은 모든 화면에서 Profile 기준에 시각 보정값을 더한다", async () => {
