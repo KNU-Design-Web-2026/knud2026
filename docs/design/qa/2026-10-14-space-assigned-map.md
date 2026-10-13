@@ -62,3 +62,14 @@
 - 전체 테스트 154개, lint, 타입 검사, 프로덕션 빌드 및 diff 검사 통과.
 
 ![1920px에서 폭을 줄인 지도](assets/space-assigned-map/1920-map-reduced.jpg)
+
+## 후속 검수: 이름 hover 색상 효과
+
+- 사용자 승인: 확대·노란 하이라이트 없이 검정 이름이 약 180ms 동안 부드러운 회색으로 옅어지는 효과.
+- Figma 이름은 PNG에 포함되어 있어 CSS `color`를 직접 바꿀 수 없다. 이름 좌표의 흰 바탕 위에만 43% 흰 레이어를 합성해 원본 `#111`을 약 `#777`로 옅게 표현한다. 글자 모양·회전·배치·크기는 바꾸지 않는다.
+- 이름 링크의 `::after`에 opacity 전환만 추가했다. 레이어는 `pointer-events: none`이므로 클릭을 가로채지 않는다. 마우스 hover와 키보드 focus-visible에 적용하며 touch hover에는 적용하지 않는다. reduced-motion에서는 전환 시간을 제거한다.
+- 브라우저 회귀 검사: 수정 전 효과 레이어 없음 → 수정 후 opacity 0.43, 180ms 전환, 클릭 차단 없음 및 기존 작품 미리보기 열림 확인. 클릭 `/work/4` 이동도 확인했다.
+- reduced-motion은 프로젝트 전역 규칙에 따라 실측 0.00001초로 즉시 전환하며, 확인 후 브라우저의 모션 설정을 복원했다.
+- 전체 테스트 154개, lint·타입 검사·프로덕션 빌드·diff 검사 통과.
+
+![작가 이름이 회색으로 옅어지는 hover](assets/space-assigned-map/1350-name-hover-gray.jpg)
