@@ -7,7 +7,8 @@ import { spaceBooths, mobileSpaceBooths } from "./space-booths";
 import { getSpaceWork } from "./space-works";
 import styles from "./space-page.module.css";
 
-const desktopPreviewQuery = "(min-width: 1350.0625px)";
+// Compact touch layouts navigate directly; mouse-driven PC/tablet layouts also preview.
+const desktopPreviewQuery = "(min-width: 822px) and (hover: hover) and (pointer: fine)";
 
 export function SpaceMap({ compact = false }: { compact?: boolean }) {
   const [active, setActive] = useState<number | null>(null);
@@ -40,8 +41,7 @@ export function SpaceMap({ compact = false }: { compact?: boolean }) {
               aria-expanded={active === index} aria-controls={compact ? "space-project-preview-compact" : "space-project-preview"}
               onPointerEnter={event => { if (event.pointerType === "mouse") showDesktopPreview(index); }}
               onPointerLeave={() => setActive(null)}
-              onFocus={() => showDesktopPreview(index)} onBlur={() => setActive(null)}
-              onClick={event => { if (window.matchMedia(desktopPreviewQuery).matches) { event.preventDefault(); show(index); } }}>
+              onFocus={() => showDesktopPreview(index)} onBlur={() => setActive(null)}>
               <span className="sr-only">{booth.artistKo}</span>
             </Link>;
           })}
@@ -50,7 +50,7 @@ export function SpaceMap({ compact = false }: { compact?: boolean }) {
       <div id={compact ? "space-project-preview-compact" : "space-project-preview"} className={styles.preview} data-open={active !== null}
         aria-hidden={active === null} role="region" aria-label={`${work.artistKo} 작품 정보`}
         style={{ left: `${position.x > 48 ? position.x - 39 : position.x + 7}%`, top: `${Math.min(position.y + 3, 60)}%` }}>
-        <Image alt="" className={styles.previewImage} src={work.spaceImageSrc} fill sizes="(max-width: 1350px) 0px, 624px" />
+        <Image alt="" className={styles.previewImage} src={work.spaceImageSrc} fill sizes="(max-width: 821px) 0px, (max-width: 1350px) 48vw, 785px" />
         <div className={styles.previewShade} />
         <div className={styles.previewCopy}><p><strong>{work.artistKo}</strong>{work.artistEn}</p><h3>{work.title}</h3></div>
       </div>

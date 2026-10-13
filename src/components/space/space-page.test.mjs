@@ -69,8 +69,6 @@ test("Space 지도는 실제 부스 자산과 접근 가능한 미리보기 제�
   }
   assert.match(map, /aria-expanded=\{active === index\}/);
   assert.match(map, /onFocus=/);
-  assert.match(map, /onClick=/);
-  assert.match(map, /event\.preventDefault\(\)/);
   assert.match(map, /event.key === "Escape"/);
   assert.match(map, /src=\{work.spaceImageSrc\}/);
   assert.doesNotMatch(map, /홍길동|임시 배치/);
