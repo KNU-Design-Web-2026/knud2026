@@ -40,6 +40,22 @@
 .assignedPortrait, .assignedPortraitLinks { display: none; }
 .assignedLandscapeLinks, .assignedPortraitLinks { position: absolute; inset: 0; }
 .assignedBooth { position: absolute; cursor: pointer; }
+/* Figma names are baked into the map PNG. Fade only their white-backed
+   hit area so the original letter placement/rotation remains unchanged.
+   #111 with a 43% white veil is approximately #777. */
+.assignedBooth::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .assignedBooth:hover::after { opacity: 0.43; }
+}
+.assignedBooth:focus-visible::after { opacity: 0.43; }
 .assignedBooth:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 @media (min-width: 1350px) {
   .map {
@@ -62,6 +78,7 @@
 .preview[data-open="true"] { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) {
   .preview { transition: none; transform: none; }
+  .assignedBooth::after { transition: none; }
 }
 .previewImage { object-fit: fill; }
 .previewShade { position: absolute; inset: 0; background: rgb(42 42 42 / 56%); }
