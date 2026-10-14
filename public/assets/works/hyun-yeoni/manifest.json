@@ -1,0 +1,115 @@
+{
+  "artist": "현연이",
+  "thumbnail": {
+    "src": "/assets/works/hyun-yeoni/thumbnail.webp",
+    "width": 384,
+    "height": 280,
+    "sourceFile": "현연이_웹work/현연이_썸네일/현연이_WORK.png",
+    "originalWidth": 384,
+    "originalHeight": 280,
+    "originalBytes": 22199,
+    "bytes": 10278
+  },
+  "space": {
+    "src": "/assets/works/hyun-yeoni/space.webp",
+    "width": 624,
+    "height": 382,
+    "sourceFile": "현연이_웹work/현연이_썸네일/현연이_SPACE.png",
+    "originalWidth": 624,
+    "originalHeight": 382,
+    "originalBytes": 31838,
+    "bytes": 13988
+  },
+  "hero": {
+    "src": "/assets/works/hyun-yeoni/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "현연이_웹work/현연이_썸네일/현연이_상세.png",
+    "originalWidth": 1920,
+    "originalHeight": 1050,
+    "originalBytes": 100271,
+    "bytes": 37784
+  },
+  "images": [
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-001.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_001.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 749814,
+      "bytes": 178942
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-002.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_002.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 708857,
+      "bytes": 177278
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-003.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_003.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 461072,
+      "bytes": 140200
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-004.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_004.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 153540,
+      "bytes": 58922
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-005.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_005.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 5628878,
+      "bytes": 1126974
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-006.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_006.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 1332658,
+      "bytes": 257512
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-007.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_007.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 6097943,
+      "bytes": 623742
+    },
+    {
+      "src": "/assets/works/hyun-yeoni/portfolio-008.webp",
+      "width": 1920,
+      "height": 1946,
+      "sourceFile": "현연이_웹work/현연이_포트폴리오/현연이_008.png",
+      "originalWidth": 1920,
+      "originalHeight": 1946,
+      "originalBytes": 6710078,
+      "bytes": 1135708
+    }
+  ]
+}
