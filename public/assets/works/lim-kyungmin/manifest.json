@@ -1,0 +1,105 @@
+{
+  "artist": "임경민",
+  "thumbnail": {
+    "src": "/assets/works/lim-kyungmin/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "임경민_웹work/임경민_썸네일/임경민_work.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 36548,
+    "bytes": 13850
+  },
+  "space": {
+    "src": "/assets/works/lim-kyungmin/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "임경민_웹work/임경민_썸네일/임경민_space.png",
+    "originalWidth": 2600,
+    "originalHeight": 1592,
+    "originalBytes": 63415,
+    "bytes": 22944
+  },
+  "hero": {
+    "src": "/assets/works/lim-kyungmin/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "임경민_웹work/임경민_썸네일/임경민_상세.png",
+    "originalWidth": 8000,
+    "originalHeight": 4375,
+    "originalBytes": 289178,
+    "bytes": 35240
+  },
+  "images": [
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-001.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_001.png",
+      "originalWidth": 8000,
+      "originalHeight": 8334,
+      "originalBytes": 2813463,
+      "bytes": 92366
+    },
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-002.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_002.png",
+      "originalWidth": 8000,
+      "originalHeight": 8334,
+      "originalBytes": 2000467,
+      "bytes": 145326
+    },
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-003.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_003.png",
+      "originalWidth": 8000,
+      "originalHeight": 8334,
+      "originalBytes": 839238,
+      "bytes": 76480
+    },
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-004.webp",
+      "width": 1920,
+      "height": 2000,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_004.png",
+      "originalWidth": 8000,
+      "originalHeight": 8334,
+      "originalBytes": 969022,
+      "bytes": 91846
+    },
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-005.webp",
+      "width": 1920,
+      "height": 2286,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_005.png",
+      "originalWidth": 8000,
+      "originalHeight": 9526,
+      "originalBytes": 972517,
+      "bytes": 90658
+    },
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-006.webp",
+      "width": 1920,
+      "height": 2286,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_006.png",
+      "originalWidth": 8000,
+      "originalHeight": 9526,
+      "originalBytes": 1248022,
+      "bytes": 113538
+    },
+    {
+      "src": "/assets/works/lim-kyungmin/portfolio-007.webp",
+      "width": 1920,
+      "height": 667,
+      "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_007.png",
+      "originalWidth": 8000,
+      "originalHeight": 2780,
+      "originalBytes": 118105,
+      "bytes": 9240
+    }
+  ]
+}
