@@ -8,7 +8,6 @@ import kimMinju from "../../public/assets/works/kim-minju/manifest.json";
 import parkSujeong from "../../public/assets/works/park-sujeong/manifest.json";
 import yangHyeyeon from "../../public/assets/works/yang-hyeyeon/manifest.json";
 import yoonIji from "../../public/assets/works/yoon-iji/manifest.json";
-import leeNagyeong from "../../public/assets/works/lee-nagyeong/manifest.json";
 import leeSeoyun from "../../public/assets/works/lee-seoyun/manifest.json";
 import leeHaneul from "../../public/assets/works/lee-haneul/manifest.json";
 import limKyungmin from "../../public/assets/works/lim-kyungmin/manifest.json";
@@ -34,7 +33,6 @@ export const SUBMITTED_WORKS: Readonly<Record<string, SubmittedWork>> = {
   [parkSujeong.artist]: parkSujeong,
   [yangHyeyeon.artist]: yangHyeyeon,
   [yoonIji.artist]: yoonIji,
-  [leeNagyeong.artist]: leeNagyeong,
   [leeSeoyun.artist]: leeSeoyun,
   [leeHaneul.artist]: leeHaneul,
   [limKyungmin.artist]: limKyungmin,
