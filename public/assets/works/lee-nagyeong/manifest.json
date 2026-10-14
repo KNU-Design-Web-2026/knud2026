@@ -1,0 +1,145 @@
+{
+  "artist": "이나경",
+  "thumbnail": {
+    "src": "/assets/works/lee-nagyeong/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "이나경_웹work/이나경 _썸네일/이나경 (work,space,상세페이지)-03.png",
+    "originalWidth": 1601,
+    "originalHeight": 1168,
+    "originalBytes": 3267264,
+    "bytes": 146020
+  },
+  "space": {
+    "src": "/assets/works/lee-nagyeong/space.webp",
+    "width": 1248,
+    "height": 656,
+    "sourceFile": "이나경_웹work/이나경 _썸네일/이나경 (work,space,상세페이지)-02.png",
+    "originalWidth": 2601,
+    "originalHeight": 1368,
+    "originalBytes": 5857986,
+    "bytes": 284716
+  },
+  "hero": {
+    "src": "/assets/works/lee-nagyeong/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "이나경_웹work/이나경 _썸네일/이나경 (work,space,상세페이지)-01.png",
+    "originalWidth": 8001,
+    "originalHeight": 4376,
+    "originalBytes": 20348818,
+    "bytes": 679052
+  },
+  "images": [
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-001.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-01.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 22767741,
+      "bytes": 880764
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-002.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-02.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 6614073,
+      "bytes": 608334
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-003.webp",
+      "width": 1920,
+      "height": 2366,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-03.png",
+      "originalWidth": 8001,
+      "originalHeight": 9859,
+      "originalBytes": 760086,
+      "bytes": 116704
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-004.webp",
+      "width": 1920,
+      "height": 2174,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-04.png",
+      "originalWidth": 8001,
+      "originalHeight": 9060,
+      "originalBytes": 809194,
+      "bytes": 118232
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-005.webp",
+      "width": 1920,
+      "height": 1602,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-05.png",
+      "originalWidth": 8001,
+      "originalHeight": 6674,
+      "originalBytes": 8153523,
+      "bytes": 231958
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-006.webp",
+      "width": 1920,
+      "height": 1609,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-06.png",
+      "originalWidth": 8001,
+      "originalHeight": 6707,
+      "originalBytes": 1012121,
+      "bytes": 113742
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-007.webp",
+      "width": 1920,
+      "height": 1742,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-07.png",
+      "originalWidth": 8001,
+      "originalHeight": 7258,
+      "originalBytes": 6717642,
+      "bytes": 195452
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-008.webp",
+      "width": 1920,
+      "height": 2148,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-08.png",
+      "originalWidth": 8001,
+      "originalHeight": 8953,
+      "originalBytes": 3204366,
+      "bytes": 156194
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-009.webp",
+      "width": 1920,
+      "height": 1790,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-09.png",
+      "originalWidth": 8001,
+      "originalHeight": 7461,
+      "originalBytes": 9720888,
+      "bytes": 211320
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-010.webp",
+      "width": 1920,
+      "height": 1799,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-10.png",
+      "originalWidth": 8001,
+      "originalHeight": 7496,
+      "originalBytes": 8368571,
+      "bytes": 88182
+    },
+    {
+      "src": "/assets/works/lee-nagyeong/portfolio-011.webp",
+      "width": 1920,
+      "height": 2871,
+      "sourceFile": "이나경_웹work/이나경_포트폴리오/이나경 본문-11.png",
+      "originalWidth": 8001,
+      "originalHeight": 11964,
+      "originalBytes": 5699224,
+      "bytes": 194202
+    }
+  ]
+}
