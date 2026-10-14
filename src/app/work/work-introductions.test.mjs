@@ -67,7 +67,10 @@ test("공동 작가 소개는 공동 작품 하나에 연결하고 미제출 소
   assert.match(WORK_DETAILS["9"].storyKo, /Project Green/);
   assert.equal(WORK_DETAILS["9"].artistKo, "박규리 & 이다혜");
   assert.equal(WORK_INTRODUCTIONS["김가연"], undefined);
-  assert.match(WORK_DETAILS["2"].storyKo, /잊힌 이들의 기억/);
+  // 김가연's images have now been submitted, but no introduction was supplied.
+  // Never expose the old placeholder story as if it were her project text.
+  assert.equal(WORK_DETAILS["2"].storyKo, "");
+  assert.equal(WORK_DETAILS["2"].storyEn, "");
 });
 
 test("작품명에 들어 있던 제출용 표기 메모는 카드와 상세 제목에서 제외한다", () => {

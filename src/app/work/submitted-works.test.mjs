@@ -11,9 +11,13 @@ import { PROFILE_SHEET_CONTENT } from "../../data/profile-sheet-content.ts";
 import { WorkDetailPage } from "../../components/work/work-detail-page.tsx";
 import { WORK_INTRODUCTIONS } from "../../data/work-introductions.ts";
 
-const expected = { "공예원": [1, 8], "김연수": [6, 4], "김은별": [7, 4], "이초원": [15, 7], "조장원": [18, 6] };
+const expected = {
+  "공예원": [1, 8], "김연수": [6, 4], "김은별": [7, 4], "이초원": [15, 7], "조장원": [18, 6],
+  "김가연": [2, 37], "김민주": [3, 13], "박수정": [10, 11], "양혜연": [11, 7], "윤이지": [12, 12],
+  "이나경": [13, 11], "이서윤": [14, 16], "이하늘": [16, 5], "임경민": [17, 7], "현연이": [19, 8],
+};
 
-test("제출된 다섯 작가만 썸네일·작품명·연락처·번호순 상세 이미지를 연결한다", () => {
+test("1·2차에 제출된 15명의 썸네일·작품명·연락처·번호순 상세 이미지를 연결한다", () => {
   assert.deepEqual(Object.keys(SUBMITTED_WORKS).sort(), Object.keys(expected).sort());
   for (const [artist, [id, count]] of Object.entries(expected)) {
     const source = SUBMITTED_WORKS[artist];
@@ -23,14 +27,15 @@ test("제출된 다섯 작가만 썸네일·작품명·연락처·번호순 상�
     assert.equal(item.artistKo, artist);
     assert.equal(item.imageSrc, source.thumbnail.src);
     assert.equal(item.spaceImageSrc, source.space.src);
-    assert.equal(item.title, profile.projectName);
+    const titleOverrides = { "임경민": "대구 떡볶이 페스티벌", "양혜연": "MOOEE" };
+    assert.equal(item.title, titleOverrides[artist] ?? profile.projectName);
     assert.equal(detail.artistKo, artist);
     assert.equal(detail.email, profile.email);
     assert.equal(detail.instagram, profile.instagram);
     assert.equal(detail.category, profile.tags.join(" / "));
     assert.equal(detail.images.length, count);
-    assert.equal(detail.storyKo, WORK_INTRODUCTIONS[artist].storyKo);
-    assert.equal(detail.storyEn, WORK_INTRODUCTIONS[artist].storyEn);
+    assert.equal(detail.storyKo, WORK_INTRODUCTIONS[artist]?.storyKo ?? "");
+    assert.equal(detail.storyEn, WORK_INTRODUCTIONS[artist]?.storyEn ?? "");
     assert.deepEqual(detail.images.map((image) => image.src), [...detail.images.map((image) => image.src)].sort());
     const html = renderToStaticMarkup(React.createElement(WorkDetailPage, { detail }));
     assert.doesNotMatch(html, /PROJECT NAME|잊힌 이들의 기억|instagram\.com\/null/);
@@ -38,7 +43,7 @@ test("제출된 다섯 작가만 썸네일·작품명·연락처·번호순 상�
     assert.equal(portfolioImages.length, count);
     for (const image of portfolioImages) assert.match(image, /loading="lazy"/);
   }
-  assert.equal(WORK_ITEMS.filter((item) => item.imageSrc.includes("work-placeholder")).length, 14);
+  assert.equal(WORK_ITEMS.filter((item) => item.imageSrc.includes("work-placeholder")).length, 4);
 });
 
 test("웹 이미지의 실제 규격이 매니페스트와 같고 원본 비율을 유지한다", async () => {
