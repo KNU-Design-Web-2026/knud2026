@@ -40,14 +40,19 @@
 .assignedPortrait, .assignedPortraitLinks { display: none; }
 .assignedLandscapeLinks, .assignedPortraitLinks { position: absolute; inset: 0; }
 .assignedBooth { position: absolute; cursor: pointer; }
-/* Figma names are baked into the map PNG. Fade only their white-backed
-   hit area so the original letter placement/rotation remains unchanged.
-   #111 with a 43% white veil is approximately #777. */
+/* Letter-shaped masks preserve raster placement without fading blue map lines. */
+.assignedLandscapeLinks { --name-mask: url("/assets/figma/space/map-assigned-2026-name-mask.png"); }
+.assignedPortraitLinks { --name-mask: url("/assets/figma/space/map-assigned-mobile-2026-name-mask.png"); }
 .assignedBooth::after {
   content: "";
   position: absolute;
   inset: 0;
   background: #fff;
+  mask-image: var(--name-mask);
+  mask-mode: luminance;
+  mask-size: var(--name-mask-size);
+  mask-position: var(--name-mask-position);
+  mask-repeat: no-repeat;
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease-out;

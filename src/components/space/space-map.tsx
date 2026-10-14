@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { spaceBooths, mobileSpaceBooths } from "./space-booths";
 import { getSpaceWork } from "./space-works";
 import styles from "./space-page.module.css";
@@ -36,7 +36,11 @@ export function SpaceMap({ compact = false }: { compact?: boolean }) {
             const assigned = getSpaceWork(booth.artistKo);
             return <Link href={`/work/${assigned.id}`} prefetch={false} key={booth.artistKo}
               className={styles.assignedBooth}
-              style={{ left: `${booth.x}%`, top: `${booth.y}%`, width: `${booth.width}%`, height: `${booth.height}%` }}
+              style={{
+                left: `${booth.x}%`, top: `${booth.y}%`, width: `${booth.width}%`, height: `${booth.height}%`,
+                "--name-mask-size": `${10000 / booth.width}% ${10000 / booth.height}%`,
+                "--name-mask-position": `${100 * booth.x / (100 - booth.width)}% ${100 * booth.y / (100 - booth.height)}%`,
+              } as CSSProperties}
               aria-label={`${assigned.artistKo} ${assigned.title} 작품 정보 보기`}
               aria-expanded={active === index} aria-controls={compact ? "space-project-preview-compact" : "space-project-preview"}
               onPointerEnter={event => { if (event.pointerType === "mouse") showDesktopPreview(index); }}
