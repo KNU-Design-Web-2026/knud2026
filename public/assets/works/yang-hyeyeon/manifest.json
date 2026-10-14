@@ -1,0 +1,105 @@
+{
+  "artist": "양혜연",
+  "thumbnail": {
+    "src": "/assets/works/yang-hyeyeon/thumbnail.webp",
+    "width": 384,
+    "height": 280,
+    "sourceFile": "양혜연_웹work/양혜연_썸네일/양혜연_Work.png",
+    "originalWidth": 384,
+    "originalHeight": 280,
+    "originalBytes": 45483,
+    "bytes": 17324
+  },
+  "space": {
+    "src": "/assets/works/yang-hyeyeon/space.webp",
+    "width": 624,
+    "height": 382,
+    "sourceFile": "양혜연_웹work/양혜연_썸네일/양혜연_SPACE.png",
+    "originalWidth": 624,
+    "originalHeight": 382,
+    "originalBytes": 73230,
+    "bytes": 27078
+  },
+  "hero": {
+    "src": "/assets/works/yang-hyeyeon/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "양혜연_웹work/양혜연_썸네일/양혜연_상세.png",
+    "originalWidth": 1920,
+    "originalHeight": 1050,
+    "originalBytes": 246202,
+    "bytes": 90842
+  },
+  "images": [
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-001.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_001.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 3601561,
+      "bytes": 371626
+    },
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-002.webp",
+      "width": 1920,
+      "height": 1417,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_002.png",
+      "originalWidth": 1920,
+      "originalHeight": 1417,
+      "originalBytes": 347932,
+      "bytes": 135604
+    },
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-003.webp",
+      "width": 1920,
+      "height": 1699,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_003.png",
+      "originalWidth": 1920,
+      "originalHeight": 1699,
+      "originalBytes": 1515916,
+      "bytes": 159878
+    },
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-004.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_004.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 1729774,
+      "bytes": 349910
+    },
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-005.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_005.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 647118,
+      "bytes": 244916
+    },
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-006.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_006.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 931349,
+      "bytes": 305840
+    },
+    {
+      "src": "/assets/works/yang-hyeyeon/portfolio-007.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "양혜연_웹work/양혜연_포트폴리오/양혜연_007.png",
+      "originalWidth": 1920,
+      "originalHeight": 2500,
+      "originalBytes": 1008364,
+      "bytes": 335648
+    }
+  ]
+}
