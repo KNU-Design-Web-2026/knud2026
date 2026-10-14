@@ -1,0 +1,85 @@
+{
+  "artist": "이하늘",
+  "thumbnail": {
+    "src": "/assets/works/lee-haneul/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "이하늘_웹work/이하늘_썸네일/이하늘_Work.png",
+    "originalWidth": 1601,
+    "originalHeight": 1168,
+    "originalBytes": 2124648,
+    "bytes": 69992
+  },
+  "space": {
+    "src": "/assets/works/lee-haneul/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "이하늘_웹work/이하늘_썸네일/이하늘_SPACE.png",
+    "originalWidth": 2601,
+    "originalHeight": 1592,
+    "originalBytes": 4241223,
+    "bytes": 125722
+  },
+  "hero": {
+    "src": "/assets/works/lee-haneul/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "이하늘_웹work/이하늘_썸네일/이하늘_상세.png",
+    "originalWidth": 8000,
+    "originalHeight": 4375,
+    "originalBytes": 22333640,
+    "bytes": 191270
+  },
+  "images": [
+    {
+      "src": "/assets/works/lee-haneul/portfolio-001.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_001.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 775578,
+      "bytes": 117662
+    },
+    {
+      "src": "/assets/works/lee-haneul/portfolio-002.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_002.png",
+      "originalWidth": 8000,
+      "originalHeight": 10418,
+      "originalBytes": 797446,
+      "bytes": 108912
+    },
+    {
+      "src": "/assets/works/lee-haneul/portfolio-003.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_003.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 17509880,
+      "bytes": 190330
+    },
+    {
+      "src": "/assets/works/lee-haneul/portfolio-004.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_004.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 12539655,
+      "bytes": 173682
+    },
+    {
+      "src": "/assets/works/lee-haneul/portfolio-005.webp",
+      "width": 1920,
+      "height": 1625,
+      "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_005.png",
+      "originalWidth": 8000,
+      "originalHeight": 6771,
+      "originalBytes": 659628,
+      "bytes": 36678
+    }
+  ]
+}
