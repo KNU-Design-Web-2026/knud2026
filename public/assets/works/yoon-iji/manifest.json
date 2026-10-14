@@ -1,0 +1,155 @@
+{
+  "artist": "윤이지",
+  "thumbnail": {
+    "src": "/assets/works/yoon-iji/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "윤이지_웹work/윤이지_썸네일/윤이지_Work.png",
+    "originalWidth": 1601,
+    "originalHeight": 1167,
+    "originalBytes": 2387001,
+    "bytes": 68552
+  },
+  "space": {
+    "src": "/assets/works/yoon-iji/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "윤이지_웹work/윤이지_썸네일/윤이지_SPACE.png",
+    "originalWidth": 2601,
+    "originalHeight": 1592,
+    "originalBytes": 3232915,
+    "bytes": 105932
+  },
+  "hero": {
+    "src": "/assets/works/yoon-iji/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "윤이지_웹work/윤이지_썸네일/윤이지_상세.png",
+    "originalWidth": 8001,
+    "originalHeight": 4376,
+    "originalBytes": 6794731,
+    "bytes": 245326
+  },
+  "images": [
+    {
+      "src": "/assets/works/yoon-iji/portfolio-001.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_001.png",
+      "originalWidth": 8001,
+      "originalHeight": 10417,
+      "originalBytes": 3586277,
+      "bytes": 159854
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-002.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_002.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 5952700,
+      "bytes": 194538
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-003.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_003.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 1986801,
+      "bytes": 134346
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-004.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_004.png",
+      "originalWidth": 8001,
+      "originalHeight": 10417,
+      "originalBytes": 2503483,
+      "bytes": 285786
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-005.webp",
+      "width": 1920,
+      "height": 2210,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_005.png",
+      "originalWidth": 8001,
+      "originalHeight": 9209,
+      "originalBytes": 7110110,
+      "bytes": 497722
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-006.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_006.png",
+      "originalWidth": 8001,
+      "originalHeight": 10417,
+      "originalBytes": 24095794,
+      "bytes": 254288
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-007.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_007.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 19054002,
+      "bytes": 648622
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-008.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_008.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 38976659,
+      "bytes": 439186
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-009.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_009.png",
+      "originalWidth": 8001,
+      "originalHeight": 10417,
+      "originalBytes": 20243444,
+      "bytes": 576998
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-010.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_010.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 33308172,
+      "bytes": 392308
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-011.webp",
+      "width": 1920,
+      "height": 2500,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_011.png",
+      "originalWidth": 8001,
+      "originalHeight": 10418,
+      "originalBytes": 24524967,
+      "bytes": 459660
+    },
+    {
+      "src": "/assets/works/yoon-iji/portfolio-012.webp",
+      "width": 1920,
+      "height": 1280,
+      "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_012.png",
+      "originalWidth": 8001,
+      "originalHeight": 5333,
+      "originalBytes": 2724026,
+      "bytes": 55744
+    }
+  ]
+}

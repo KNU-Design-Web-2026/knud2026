@@ -5,6 +5,23 @@ import { readFile } from "node:fs/promises";
 const detailComponentPath = new URL("../../components/profile/profile-detail-page.tsx", import.meta.url);
 const detailRoutePath = new URL("./[id]/page.tsx", import.meta.url);
 
+test("Work 이미지는 중앙 작품명·작가명과 hover/focus 및 터치 대체 상태를 제공한다", async () => {
+  const [component, styles] = await Promise.all([
+    readFile(detailComponentPath, "utf8"),
+    readFile(new URL("../../styles/globals.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(component, /className="profile-work-preview"/);
+  assert.match(component, /className="profile-work-preview__title">\{detail\.projectName\}/);
+  assert.match(component, /className="profile-work-preview__artist">\{detail\.nameKo\}/);
+  assert.match(component, /href=\{`\/work\/\$\{work\.id\}`\}/);
+  assert.match(styles, /inset: 0/);
+  assert.match(styles, /background: rgb\(0 0 0 \/ 50%\)/);
+  assert.match(styles, /\.profile-work-preview:hover \.profile-work-preview__overlay/);
+  assert.match(styles, /\.profile-work-preview:focus-visible \.profile-work-preview__overlay/);
+  assert.match(styles, /@media \(hover: none\), \(pointer: coarse\)/);
+  assert.match(styles, /prefers-reduced-motion: reduce/);
+});
+
 test("상세 페이지는 기존 프로필과 인터뷰 레이아웃을 유지한다", async () => {
   const component = await readFile(detailComponentPath, "utf8");
 

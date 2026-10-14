@@ -1,0 +1,145 @@
+{
+  "artist": "박수정",
+  "thumbnail": {
+    "src": "/assets/works/park-sujeong/thumbnail.webp",
+    "width": 768,
+    "height": 420,
+    "sourceFile": "박수정_웹Work/박수정_썸네일/박수정_Work.png",
+    "originalWidth": 4320,
+    "originalHeight": 2363,
+    "originalBytes": 5481206,
+    "bytes": 61438
+  },
+  "space": {
+    "src": "/assets/works/park-sujeong/space.webp",
+    "width": 1248,
+    "height": 683,
+    "sourceFile": "박수정_웹Work/박수정_썸네일/박수정_SPACE.png",
+    "originalWidth": 4320,
+    "originalHeight": 2363,
+    "originalBytes": 5481206,
+    "bytes": 117348
+  },
+  "hero": {
+    "src": "/assets/works/park-sujeong/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "박수정_웹Work/박수정_썸네일/박수정_상세.png",
+    "originalWidth": 4320,
+    "originalHeight": 2363,
+    "originalBytes": 5481206,
+    "bytes": 188444
+  },
+  "images": [
+    {
+      "src": "/assets/works/park-sujeong/portfolio-001.webp",
+      "width": 1920,
+      "height": 2242,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_001.png",
+      "originalWidth": 4320,
+      "originalHeight": 5044,
+      "originalBytes": 6728506,
+      "bytes": 274604
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-002.webp",
+      "width": 1920,
+      "height": 2400,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_002.png",
+      "originalWidth": 4320,
+      "originalHeight": 5400,
+      "originalBytes": 407993,
+      "bytes": 109382
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-003.webp",
+      "width": 1920,
+      "height": 2400,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_003.png",
+      "originalWidth": 4320,
+      "originalHeight": 5400,
+      "originalBytes": 5583914,
+      "bytes": 172496
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-004.webp",
+      "width": 1920,
+      "height": 2400,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_004.png",
+      "originalWidth": 4320,
+      "originalHeight": 5400,
+      "originalBytes": 2295843,
+      "bytes": 123814
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-005.webp",
+      "width": 1920,
+      "height": 2852,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_005.png",
+      "originalWidth": 4320,
+      "originalHeight": 6416,
+      "originalBytes": 4727774,
+      "bytes": 102466
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-006.webp",
+      "width": 1920,
+      "height": 2747,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_006.png",
+      "originalWidth": 4320,
+      "originalHeight": 6180,
+      "originalBytes": 3800233,
+      "bytes": 153208
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-007.webp",
+      "width": 1920,
+      "height": 2261,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_007.png",
+      "originalWidth": 4320,
+      "originalHeight": 5088,
+      "originalBytes": 2393775,
+      "bytes": 109084
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-008.webp",
+      "width": 1920,
+      "height": 3717,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_008.png",
+      "originalWidth": 4320,
+      "originalHeight": 8364,
+      "originalBytes": 7336732,
+      "bytes": 247780
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-009.webp",
+      "width": 1920,
+      "height": 2261,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_009.png",
+      "originalWidth": 4320,
+      "originalHeight": 5088,
+      "originalBytes": 2671672,
+      "bytes": 138358
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-010.webp",
+      "width": 1920,
+      "height": 1239,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_010.png",
+      "originalWidth": 4320,
+      "originalHeight": 2788,
+      "originalBytes": 4302158,
+      "bytes": 139334
+    },
+    {
+      "src": "/assets/works/park-sujeong/portfolio-011.webp",
+      "width": 1920,
+      "height": 1600,
+      "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_011.png",
+      "originalWidth": 4320,
+      "originalHeight": 3600,
+      "originalBytes": 4870145,
+      "bytes": 89384
+    }
+  ]
+}

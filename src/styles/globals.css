@@ -1,5 +1,70 @@
 @import "tailwindcss";
 
+/* Profile Work — supplied prototype recording, 2026-10-12. */
+.profile-work-preview {
+  display: block;
+  position: relative;
+  isolation: isolate;
+}
+
+.profile-work-preview__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: clamp(1rem, 3vw, 3rem);
+  background: rgb(0 0 0 / 50%);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease-out;
+}
+
+.profile-work-preview__title {
+  max-width: 100%;
+  font-size: clamp(1.5rem, 3.125vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.profile-work-preview__artist {
+  font-size: clamp(1rem, 1.25vw, 1.5rem);
+  line-height: 1.3;
+}
+
+.profile-work-preview:focus-visible {
+  outline: 3px solid var(--color-knud-ink, #050505);
+  outline-offset: 4px;
+}
+
+.profile-work-preview:focus-visible .profile-work-preview__overlay {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .profile-work-preview:hover .profile-work-preview__overlay {
+    opacity: 1;
+  }
+}
+
+/* Touch users have no hover state; keep the work information discoverable. */
+@media (hover: none), (pointer: coarse) {
+  .profile-work-preview__overlay {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-work-preview__overlay {
+    transition: none;
+  }
+}
+
 /* Screenshot-only experiment: no Figma node/context is used by this route. */
 .screenshot-message-baseline {
   position: relative;
@@ -709,7 +774,7 @@
   font-weight: 400;
   letter-spacing: -0.2px;
   line-height: 1.3;
-  text-align: justify;
+  text-align: start;
   white-space: pre-line;
 }
 
@@ -1872,9 +1937,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 600.0625px) {
-  .has-custom-cursor,
-  .has-custom-cursor * {
-    cursor: none;
+  /* Custom cursor mode owns the cursor exclusively. This must also beat
+     descendant/state rules on form buttons, not just one-class map links.
+     It is scoped to the JS-enabled fine-pointer mode; touch keeps native rules. */
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 }
 

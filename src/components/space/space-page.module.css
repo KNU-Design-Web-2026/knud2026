@@ -32,34 +32,38 @@
 }
 .map {
   position: relative;
-  width: 80.37037%;
-  aspect-ratio: 1302 / 762;
-  margin: 7.037037cqw auto 0;
+  width: min(100%, calc(80.37037% + (100vw - 1020px) * 0.12));
+  aspect-ratio: 1626 / 1150;
+  margin: clamp(88px, calc(120px - (100vw - 1020px) * 0.09697), 120px) auto 0;
 }
-.mapArtwork { position: absolute; inset: 0; width: 100%; height: auto; pointer-events: none; }
-.mapLabels { position: absolute; left: 1.42089%; top: 3.41864%; width: 97.9808%; height: 94.2664%; container-type: inline-size; }
-.name {
+.assignedLandscape, .assignedPortrait { position: absolute; inset: 0; width: 100%; height: auto; pointer-events: none; }
+.assignedPortrait, .assignedPortraitLinks { display: none; }
+.assignedLandscapeLinks, .assignedPortraitLinks { position: absolute; inset: 0; }
+.assignedBooth { position: absolute; cursor: pointer; }
+/* Figma names are baked into the map PNG. Fade only their white-backed
+   hit area so the original letter placement/rotation remains unchanged.
+   #111 with a 43% white veil is approximately #777. */
+.assignedBooth::after {
+  content: "";
   position: absolute;
-  color: #848484;
-  font-size: 2.351632cqw;
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.002em;
-  white-space: nowrap;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease-out;
 }
-.vertical { display: flex; flex-direction: column; line-height: 1.1; }
-.diagonal { display: flex; align-items: center; justify-content: center; width: 6.485134%; aspect-ratio: 1; }
-.artist {
-  left: 59.484957%; top: 77.03057%;
-  border: 0; padding: 0; background: transparent;
-  cursor: pointer;
-}
-.name:focus-visible, .name[aria-expanded="true"] { color: #000; font-weight: 700; }
 @media (hover: hover) and (pointer: fine) {
-  .name:hover { color: #000; font-weight: 700; }
+  .assignedBooth:hover::after { opacity: 0.43; }
 }
-.artist:focus-visible { outline: 2px solid #111; outline-offset: 5px; }
-.artist::before { content: ""; position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; min-width: 44px; min-height: 44px; transform: translate(-50%, -50%); }
+.assignedBooth:focus-visible::after { opacity: 0.43; }
+.assignedBooth:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+@media (min-width: 1350px) {
+  .map {
+    /* Keep the 1350px map scale, but cap large desktop maps at the previous 1302px width. */
+    width: min(100%, clamp(1032.818px, calc(1032.818px + (100vw - 1350px) * 0.47225), 1302px));
+    margin-top: clamp(88px, calc(88px + (100vw - 1350px) * 0.23158), 220px);
+  }
+}
 .preview {
   position: absolute; z-index: 2;
   left: 62.934%; top: 76.474%;
@@ -74,10 +78,8 @@
 .preview[data-open="true"] { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) {
   .preview { transition: none; transform: none; }
+  .assignedBooth::after { transition: none; }
 }
-.workLink { text-decoration: none; }
-.workLink::before { content: ""; position: absolute; inset: -5px; }
-.workLink:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 .previewImage { object-fit: fill; }
 .previewShade { position: absolute; inset: 0; background: rgb(42 42 42 / 56%); }
 .previewCopy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.940653cqw; }
@@ -119,15 +121,7 @@
   .map, .desktopInstruction { display: none; }
   .tabletInstruction { display: none; }
   .compactInstruction { display: inline; }
-  .compactMap { display: block; position: relative; width: 98.65848%; aspect-ratio: 1302 / 762; margin: 40px auto 0; }
-  .mapDrawing, .tabletNames, .mobileNames { position: absolute; inset: 0; }
-  .tabletArtwork { display: block; width: 100%; height: auto; pointer-events: none; }
-  .mobileArtwork { display: none; }
-  .tabletNames { left: 1.42089%; top: 3.41864%; width: 97.9808%; height: 94.2664%; container-type: inline-size; }
-  .mobileNames { display: none; }
-  .compactName { position: absolute; font-size: 2.53445cqw; font-weight: 500; line-height: 1.285714; color: #0f0e0f; white-space: nowrap; }
-  .compactVertical { display: flex; flex-direction: column; line-height: 1; }
-  .compactDiagonal { display: flex; align-items: center; justify-content: center; width: 7.03924%; aspect-ratio: 1; }
+  .compactMap { display: block; position: relative; width: 100%; aspect-ratio: 1626 / 1150; margin: 40px auto 0; }
   .archive { margin-top: clamp(60px, 10vw + 20px, 80px); }
   .archiveGrid { grid-template-columns: 515fr 514fr; gap: 3.561525cqw; margin-top: 40px; }
   .archiveColumn { gap: 1.87441cqw; }
@@ -143,13 +137,9 @@
 @media (max-width: 480px) {
   .heading h1, .heading h2 { height: 28.334px; }
   .heading p { margin-top: 6px; }
-  .compactMap { width: 82.89474%; aspect-ratio: 315 / 541.918; }
-  .mapDrawing { width: 172.03746%; height: 58.127%; inset: 0 auto auto 0; transform-origin: top left; transform: translateX(58.127%) rotate(90deg); }
-  .tabletArtwork { display: none; }
-  .mobileArtwork { display: block; width: 100%; height: auto; pointer-events: none; }
-  .tabletNames { display: none; }
-  .mobileNames { display: block; left: 2.00952%; top: 1.66077%; width: 94.60317%; height: 97.643%; container-type: inline-size; }
-  .mobileNameBox { position: absolute; display: flex; align-items: center; justify-content: center; font-size: 4.697986cqw; font-weight: 500; line-height: 1.285714; color: #0f0e0f; white-space: nowrap; }
+  .compactMap { width: 100%; aspect-ratio: 384 / 542; }
+  .assignedLandscape, .assignedLandscapeLinks { display: none; }
+  .assignedPortrait, .assignedPortraitLinks { display: block; }
   .page :global(.site-footer__content) { column-gap: 38px; grid-template-columns: 109px minmax(0, 1fr); }
   .page :global(.site-footer__brand-copy), .page :global(.site-footer__schedule) { line-height: 16px; }
   .page :global(.site-footer__information) { gap: 16px; }

@@ -3,68 +3,56 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { spaceMapSize, spacePositions } from "./space-data";
+import { spaceBooths, mobileSpaceBooths } from "./space-booths";
 import { getSpaceWork } from "./space-works";
 import styles from "./space-page.module.css";
 
-const positions = [...spacePositions, { x: 758.855, y: 553.318, vertical: true, rotation: undefined }];
-const desktopPreviewQuery = "(min-width: 1350.0625px)";
+// Compact touch layouts navigate directly; mouse-driven PC/tablet layouts also preview.
+const desktopPreviewQuery = "(min-width: 822px) and (hover: hover) and (pointer: fine)";
 
-export function SpaceMap() {
+export function SpaceMap({ compact = false }: { compact?: boolean }) {
   const [active, setActive] = useState<number | null>(null);
-  // Retain the last card during its exit animation.
   const [lastActive, setLastActive] = useState(0);
-  const work = getSpaceWork(lastActive);
-  const position = positions[lastActive];
-  const x = position.x / spaceMapSize.width * 100;
-  const y = position.y / spaceMapSize.height * 100;
+  const work = getSpaceWork(spaceBooths[lastActive].artistKo);
+  const position = spaceBooths[lastActive];
 
   function show(index: number) {
     setLastActive(index);
     setActive(index);
   }
-
   function showDesktopPreview(index: number) {
-    if (window.matchMedia(desktopPreviewQuery).matches) {
-      show(index);
-    }
+    if (window.matchMedia(desktopPreviewQuery).matches) show(index);
   }
 
   return (
-    <div className={styles.map} aria-label="SPACE 9 전시 배치도"
-      onKeyDown={(event) => { if (event.key === "Escape") setActive(null); }}
+    <div className={compact ? styles.compactMap : styles.map} aria-label="SPACE 9 전시 배치도"
+      onKeyDown={event => { if (event.key === "Escape") setActive(null); }}
       onPointerLeave={() => setActive(null)}>
-      <Image alt="" className={styles.mapArtwork} src="/assets/figma/space/map-web-2026.svg" width={1302} height={762} priority fetchPriority="high" />
-      <div className={styles.mapLabels}>
-      {positions.map((item, index) => {
-        const assigned = getSpaceWork(index);
-        return <Link href={`/work/${assigned.id}`} prefetch={false} key={index}
-          className={`${styles.name} ${styles.artist} ${item.vertical ? styles.vertical : ""} ${item.rotation ? styles.diagonal : ""}`}
-          style={{ left: `${item.x / spaceMapSize.width * 100}%`, top: `${item.y / spaceMapSize.height * 100}%` }}
-          aria-label={`${assigned.artistKo} ${assigned.title} 작품 정보 보기 (임시 배치)`}
-          aria-expanded={active === index} aria-controls="space-project-preview"
-          onPointerEnter={(event) => { if (event.pointerType === "mouse") showDesktopPreview(index); }}
-          onPointerLeave={() => setActive(null)}
-          onFocus={() => showDesktopPreview(index)} onBlur={() => setActive(null)}
-          onClick={(event) => {
-            if (window.matchMedia(desktopPreviewQuery).matches) {
-              event.preventDefault();
-              show(index);
-            }
-          }}>
-          {item.vertical ? [..."홍길동"].map((letter, i) => <span key={i}>{letter}</span>) : <span style={item.rotation ? { transform: `rotate(${item.rotation}deg)` } : undefined}>홍길동</span>}
-        </Link>;
-      })}
-      <div id="space-project-preview" className={styles.preview} data-open={active !== null}
-        aria-hidden={active === null} role="region" aria-label={`${work.artistKo} 작품 정보`}
-        style={{ left: `${x > 48 ? x - 50.5 : x + 8}%`, top: `${Math.min(y, 65)}%` }}>
-        <Image alt="" src={work.spaceImageSrc} fill sizes="624px" className={styles.previewImage} />
-        <div className={styles.previewShade} />
-        <div className={styles.previewCopy}>
-          <p><strong>{work.artistKo}</strong><span>{work.artistEn}</span></p>
-          <h3>{work.title}</h3>
+      <Image alt="SPACE 9 작가별 부스 배치, 컨셉존과 미디어 & 굿즈존" className={styles.assignedLandscape} src="/assets/figma/space/map-assigned-2026.png" width={1626} height={1150} loading="eager" fetchPriority="high" unoptimized />
+      {compact && <Image alt="SPACE 9 작가별 세로 부스 배치" className={styles.assignedPortrait} src="/assets/figma/space/map-assigned-mobile-2026.png" width={384} height={542} loading="eager" fetchPriority="high" unoptimized />}
+      {[spaceBooths, ...(compact ? [mobileSpaceBooths] : [])].map((booths, orientation) => (
+        <div className={orientation === 0 ? styles.assignedLandscapeLinks : styles.assignedPortraitLinks} key={orientation}>
+          {booths.map((booth, index) => {
+            const assigned = getSpaceWork(booth.artistKo);
+            return <Link href={`/work/${assigned.id}`} prefetch={false} key={booth.artistKo}
+              className={styles.assignedBooth}
+              style={{ left: `${booth.x}%`, top: `${booth.y}%`, width: `${booth.width}%`, height: `${booth.height}%` }}
+              aria-label={`${assigned.artistKo} ${assigned.title} 작품 정보 보기`}
+              aria-expanded={active === index} aria-controls={compact ? "space-project-preview-compact" : "space-project-preview"}
+              onPointerEnter={event => { if (event.pointerType === "mouse") showDesktopPreview(index); }}
+              onPointerLeave={() => setActive(null)}
+              onFocus={() => showDesktopPreview(index)} onBlur={() => setActive(null)}>
+              <span className="sr-only">{booth.artistKo}</span>
+            </Link>;
+          })}
         </div>
-      </div>
+      ))}
+      <div id={compact ? "space-project-preview-compact" : "space-project-preview"} className={styles.preview} data-open={active !== null}
+        aria-hidden={active === null} role="region" aria-label={`${work.artistKo} 작품 정보`}
+        style={{ left: `${position.x > 48 ? position.x - 39 : position.x + 7}%`, top: `${Math.min(position.y + 3, 60)}%` }}>
+        <Image alt="" className={styles.previewImage} src={work.spaceImageSrc} fill sizes="(max-width: 821px) 0px, (max-width: 1350px) 48vw, 637px" />
+        <div className={styles.previewShade} />
+        <div className={styles.previewCopy}><p><strong>{work.artistKo}</strong>{work.artistEn}</p><h3>{work.title}</h3></div>
       </div>
     </div>
   );
