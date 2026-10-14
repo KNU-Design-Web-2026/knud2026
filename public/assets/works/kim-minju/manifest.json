@@ -1,0 +1,165 @@
+{
+  "artist": "김민주",
+  "thumbnail": {
+    "src": "/assets/works/kim-minju/thumbnail.webp",
+    "width": 768,
+    "height": 560,
+    "sourceFile": "김민주_웹work/김민주_썸네일/work_썸네일.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 4577831,
+    "bytes": 65098
+  },
+  "space": {
+    "src": "/assets/works/kim-minju/space.webp",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "김민주_웹work/김민주_썸네일/space_썸네일.png",
+    "originalWidth": 2600,
+    "originalHeight": 1592,
+    "originalBytes": 7553742,
+    "bytes": 137854
+  },
+  "hero": {
+    "src": "/assets/works/kim-minju/hero.webp",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "김민주_웹work/김민주_썸네일/상세페이지_썸네일.png",
+    "originalWidth": 8000,
+    "originalHeight": 4375,
+    "originalBytes": 16559366,
+    "bytes": 261636
+  },
+  "images": [
+    {
+      "src": "/assets/works/kim-minju/portfolio-001.webp",
+      "width": 1920,
+      "height": 1450,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-01.png",
+      "originalWidth": 8000,
+      "originalHeight": 6041,
+      "originalBytes": 603951,
+      "bytes": 56604
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-002.webp",
+      "width": 1920,
+      "height": 1281,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-02.png",
+      "originalWidth": 8000,
+      "originalHeight": 5338,
+      "originalBytes": 15138724,
+      "bytes": 104194
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-003.webp",
+      "width": 1920,
+      "height": 1346,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-03.png",
+      "originalWidth": 8000,
+      "originalHeight": 5609,
+      "originalBytes": 496940,
+      "bytes": 12482
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-004.webp",
+      "width": 1920,
+      "height": 1355,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-04.png",
+      "originalWidth": 8000,
+      "originalHeight": 5644,
+      "originalBytes": 3518034,
+      "bytes": 164600
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-005.webp",
+      "width": 1920,
+      "height": 1871,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-05.png",
+      "originalWidth": 8000,
+      "originalHeight": 7797,
+      "originalBytes": 400546,
+      "bytes": 29120
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-006.webp",
+      "width": 1920,
+      "height": 2473,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-06.png",
+      "originalWidth": 8000,
+      "originalHeight": 10305,
+      "originalBytes": 11010936,
+      "bytes": 299910
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-007.webp",
+      "width": 1920,
+      "height": 1779,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-07.png",
+      "originalWidth": 8000,
+      "originalHeight": 7413,
+      "originalBytes": 755578,
+      "bytes": 36284
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-008.webp",
+      "width": 1920,
+      "height": 1441,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-08.png",
+      "originalWidth": 8000,
+      "originalHeight": 6006,
+      "originalBytes": 16772703,
+      "bytes": 251270
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-009.webp",
+      "width": 1920,
+      "height": 1302,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-09.png",
+      "originalWidth": 8000,
+      "originalHeight": 5427,
+      "originalBytes": 16481730,
+      "bytes": 114256
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-010.webp",
+      "width": 1920,
+      "height": 1475,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-10.png",
+      "originalWidth": 8000,
+      "originalHeight": 6146,
+      "originalBytes": 14176962,
+      "bytes": 779744
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-011.webp",
+      "width": 1920,
+      "height": 1280,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-11.png",
+      "originalWidth": 8000,
+      "originalHeight": 5334,
+      "originalBytes": 35926712,
+      "bytes": 218712
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-012.webp",
+      "width": 1920,
+      "height": 2149,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-12.png",
+      "originalWidth": 8000,
+      "originalHeight": 8953,
+      "originalBytes": 15599797,
+      "bytes": 301202
+    },
+    {
+      "src": "/assets/works/kim-minju/portfolio-013.webp",
+      "width": 1920,
+      "height": 1537,
+      "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-13.png",
+      "originalWidth": 8000,
+      "originalHeight": 6406,
+      "originalBytes": 212591,
+      "bytes": 5702
+    }
+  ]
+}
