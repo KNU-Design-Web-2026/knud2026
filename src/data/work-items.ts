@@ -2,6 +2,7 @@ import { PROFILE_MEMBERS } from "@/data/profile-members";
 import { PROFILE_SHEET_CONTENT } from "@/data/profile-sheet-content";
 import { SUBMITTED_WORKS } from "@/data/submitted-works";
 import { WORK_INTRODUCTIONS } from "@/data/work-introductions";
+import leeNagyeongPreview from "../../public/assets/works/lee-nagyeong/thumbnail-preview.json";
 
 export type WorkItem = {
   artistEn: string;
@@ -10,6 +11,7 @@ export type WorkItem = {
   artistKo: string;
   id: number;
   imageSrc: string;
+  blurDataURL?: string;
   spaceImageSrc: string;
   title: string;
 };
@@ -40,6 +42,11 @@ const PROFILE_ENGLISH_BY_KOREAN = new Map(
   PROFILE_MEMBERS.map((member) => [member.nameKo, member.nameEn]),
 );
 
+// Thumbnail-only approvals must not enable unapproved detail/SPACE images.
+const WORK_THUMBNAIL_OVERRIDES: Readonly<Record<string, string>> = {
+  "이나경": "/assets/works/lee-nagyeong/thumbnail.webp",
+};
+
 function matchArtistEnglishName(artistKo: string) {
   return artistKo
     .split(" & ")
@@ -60,7 +67,8 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
       artistEnTab: index === 8 ? "PKR & LDH" : matchedArtistEn,
       artistKo,
       id: index + 1,
-      imageSrc: submitted?.thumbnail.src ?? "/assets/figma/work/work-placeholder.png",
+      imageSrc: submitted?.thumbnail.src ?? WORK_THUMBNAIL_OVERRIDES[artistKo] ?? "/assets/figma/work/work-placeholder.png",
+      blurDataURL: submitted?.thumbnail.blurDataURL ?? (artistKo === "이나경" ? leeNagyeongPreview.blurDataURL : undefined),
       spaceImageSrc: submitted?.space.src ?? "/assets/figma/work/work-placeholder.png",
       title: submitted || WORK_INTRODUCTIONS[artistKo]
         ? PROFILE_SHEET_CONTENT[artistKo.split(" & ")[0]].projectName.replace(/\s*\/\s*\(한글 표기 필요할 시[^)]*\)/, "")

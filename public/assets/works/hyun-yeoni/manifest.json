@@ -8,7 +8,8 @@
     "originalWidth": 384,
     "originalHeight": 280,
     "originalBytes": 22199,
-    "bytes": 10278
+    "bytes": 12312,
+    "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAQAwCdASoQAAwAA4BaJbACdDBJygAck16AdNBcTfIPcwAA/QJiCRAtUzM/xIyDr7mi3HBaYcX+W8bof56bVcTvvT46hk+nBggnrrf+XHOVh7VzNOYqJ9boEWwJTP6nVXEPlqi0/5hMb6Cbnzf50r9BeDWterGqKuFuc/vAmz/0lBvIsIrqs6o/6K1/8UIVP+eGjPib35vIv+mbYxyKBQHA9eUhWcKWAAA="
   },
   "space": {
     "src": "/assets/works/hyun-yeoni/space.webp",
@@ -18,7 +19,8 @@
     "originalWidth": 624,
     "originalHeight": 382,
     "originalBytes": 31838,
-    "bytes": 13988
+    "bytes": 13988,
+    "blurDataURL": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQAgCdASoQAAoAA4BaJbACdAYt9KzRH1ewMgAA/mue8T7Cibr8VSCNzjtNfXZkIetQ5sDv2Cvun7VcWujpohcJ+zz5jS+N02LSIz+086ZrEROd9LSFl5nKgAWu7aHZ2uwN6drgYUqMbZyq8clv+2baqiZXHTruyUjLyLv2gf26UL8Tvyb8NHizdhJMCulwJYPB3AAA"
   },
   "hero": {
     "src": "/assets/works/hyun-yeoni/hero.webp",
@@ -28,7 +30,8 @@
     "originalWidth": 1920,
     "originalHeight": 1050,
     "originalBytes": 100271,
-    "bytes": 37784
+    "bytes": 46092,
+    "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSBEAAAABD9D/iAgIBJL2B18hov9pAwBWUDggfAAAABACAJ0BKhAACQADgFolsAJ0Bit0N3+HugAA/opDgn0ZD/ozY30+KSK9AHs/9Ml/7kP0nftkMtsSc74rPeWg/2moP+PTm8luNCrJRFP7yxx7qjgF35sSMD5B7+dwi/8Hgao6bhTsLA973/yu3+5ujvK3azgsmFA19riAAAA="
   },
   "images": [
     {
@@ -39,7 +42,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 749814,
-      "bytes": 178942
+      "bytes": 237260,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoMABAAA4BaJYgCdAEPBezY6hJAAP74Ua/kA0jjSwXR48C6/JKG09jpzrStiDNPwugs1Bd79salymJKFbt24XHRN9eAAA=="
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-002.webp",
@@ -49,7 +53,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 708857,
-      "bytes": 177278
+      "bytes": 234004,
+      "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoMABAAA4BaJZACdAD1cT76nHAA/nMjvoTweJtj+uDEpDiW5C3Y+m03UTlYzTFOsAA="
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-003.webp",
@@ -59,7 +64,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 461072,
-      "bytes": 140200
+      "bytes": 187716,
+      "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAABwAQCdASoMABAAA4BaJYgCdAFAAAD+8nRTbeYoOf2CBFxO1bH4VeT9V8AAAA=="
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-004.webp",
@@ -69,7 +75,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 153540,
-      "bytes": 58922
+      "bytes": 76440,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoMABAAA4BaJYgCdH8AGEuIivQAAP72jXFkdtKf7SCbnNz5/8Vn21DJngA3oKXEB5y3pOqlqeDJxZJQAAA="
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-005.webp",
@@ -79,7 +86,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 5628878,
-      "bytes": 1126974
+      "bytes": 1414896,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQAgCdASoMABAAA4BaJZgCdH8AGLU/KwJy1DgA/vWdi1Zsr25g4FdzHtxoS4Wo9ONt/mnFbdtPkpTwErl0A1XN68JVqpePiyj1EB1kFXHWfwyuA/a4AA=="
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-006.webp",
@@ -89,7 +97,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 1332658,
-      "bytes": 257512
+      "bytes": 331802,
+      "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwAgCdASoMABAAA4BaJbACdFkAR6IRF5WiueV5VgAAzj681u8flyMZ9uEzCq0Z+eHOtdkn8DS/fpoL7mZckCllEIdnXq0Ge8gcw5Cy9WZY/LatbXxGfL2/HM68RsSz/eWf/K+g9R7zRf5Ua7IPfltv+f+JQ6WAGj+kf2cmKgNSTi5YDe6F7DxeAAA="
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-007.webp",
@@ -99,7 +108,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 6097943,
-      "bytes": 623742
+      "bytes": 942860,
+      "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQAgCdASoMABAAA4BaJbACdAEfvVBKgNcAAP5s5Yezl2SHr0jMuxXjPTIX6XACG49Wqe0mpp5PAuHCo2ffwGD9ijf1yJ5/sNPJ3DvpYreHhjfLbX8r+1MJ/8YvOgm381fX/w0r3P/aJFLbvbwhAEuj1oJEtmiJ4NTRAAAA"
     },
     {
       "src": "/assets/works/hyun-yeoni/portfolio-008.webp",
@@ -109,7 +119,8 @@
       "originalWidth": 1920,
       "originalHeight": 1946,
       "originalBytes": 6710078,
-      "bytes": 1135708
+      "bytes": 1426536,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoQABAAA4BaJbACdAYtVzfk4eKVUZAA/u1MVbN82jdanF87Xuzo7XDqHuEz6XH337gRHpkEOz+15ibhqqjApS/Qk1XdVWdZ0F568nZXtS85yS0C6YkM2vvP5TP0Skaxbd/BG2F2QcBqI7M8IvOgs1wA"
     }
   ]
 }

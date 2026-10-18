@@ -2,13 +2,14 @@
   "artist": "박수정",
   "thumbnail": {
     "src": "/assets/works/park-sujeong/thumbnail.webp",
-    "width": 768,
-    "height": 420,
+    "width": 1536,
+    "height": 840,
     "sourceFile": "박수정_웹Work/박수정_썸네일/박수정_Work.png",
     "originalWidth": 4320,
     "originalHeight": 2363,
     "originalBytes": 5481206,
-    "bytes": 61438
+    "bytes": 230414,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAkAA4BaJZQAD4/NxjsR0YogAPk7fJt9dOutPulYz8viUzkVLHyYEeFE5tka5KdKofX4ZBI8nENOCLC5p2Q42MWj2f2QEeW1I+1/QGq+YQAA"
   },
   "space": {
     "src": "/assets/works/park-sujeong/space.webp",
@@ -18,128 +19,141 @@
     "originalWidth": 4320,
     "originalHeight": 2363,
     "originalBytes": 5481206,
-    "bytes": 117348
+    "bytes": 117348,
+    "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSBIAAAABD9D/iAiIBZP8pXemENH/bAFWUDggWAAAABACAJ0BKhAACQADgFollAAPj8t8ihS8pAAA+Tt8m310660+6VjPy+JSYypY/P+DeVaZwo8h8nkbDfuzE0M8sudkd4wgl2WqZPD7tC3Led0JL0525gKcCAA="
   },
   "hero": {
     "src": "/assets/works/park-sujeong/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "박수정_웹Work/박수정_썸네일/박수정_상세.png",
     "originalWidth": 4320,
     "originalHeight": 2363,
     "originalBytes": 5481206,
-    "bytes": 188444
+    "bytes": 835136,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAkAA4BaJZQAD4/NxjsR0YogAPk7fJt9dOutPulYz8viUzkVLHyYEeFE5tka5KdKofX4ZBI8nENOCLC5p2Q42MWj2f2QEeW1I+1/QGq+YQAA"
   },
   "images": [
     {
       "src": "/assets/works/park-sujeong/portfolio-001.webp",
-      "width": 1920,
-      "height": 2242,
+      "width": 3840,
+      "height": 4484,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_001.png",
       "originalWidth": 4320,
       "originalHeight": 5044,
       "originalBytes": 6728506,
-      "bytes": 274604
+      "bytes": 1058684,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoOABAAA4BaJZwAD45PLp31YW8AAPjhu8YwvNrJMBU1m1yTK5JQlA+LczOg3USHyLh+R/HzoHImFHeZXPU9N37/6i7lbft7L8OJfEsfl+M+lQSYBAA="
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-002.webp",
-      "width": 1920,
-      "height": 2400,
+      "width": 3840,
+      "height": 4800,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_002.png",
       "originalWidth": 4320,
       "originalHeight": 5400,
       "originalBytes": 407993,
-      "bytes": 109382
+      "bytes": 283696,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoNABAAA4BaJaQAAuRuFx2AAP7h9VTeJrMmLevtyku+A8fLhdU+3P+CnPs5V1ldC4Alx2q4H8e6OT7wQcRPwAAA"
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-003.webp",
-      "width": 1920,
-      "height": 2400,
+      "width": 3840,
+      "height": 4800,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_003.png",
       "originalWidth": 4320,
       "originalHeight": 5400,
       "originalBytes": 5583914,
-      "bytes": 172496
+      "bytes": 657220,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoNABAAA4BaJZwAAugPg0zAAP72MfiRBr8Dios/8++qfv4VFIBlJF+l4xFpbesFZ8m1K89nzxNymfmI5qGvF5ovJJujMIUvC9/GgAAA"
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-004.webp",
-      "width": 1920,
-      "height": 2400,
+      "width": 3840,
+      "height": 4800,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_004.png",
       "originalWidth": 4320,
       "originalHeight": 5400,
       "originalBytes": 2295843,
-      "bytes": 123814
+      "bytes": 369992,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoNABAAA4BaJbFnyRgAogAA/vFBXV/3gtdwV6ScnZ8HWylV8yoP1iGPeTdnoGA9UexGGAAA"
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-005.webp",
-      "width": 1920,
-      "height": 2852,
+      "width": 3840,
+      "height": 5703,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_005.png",
       "originalWidth": 4320,
       "originalHeight": 6416,
       "originalBytes": 4727774,
-      "bytes": 102466
+      "bytes": 370058,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoLABAAA4BaJZACdAYwnkVKn7wAAP7v4lXH01dxeLBZQbKydgxwIp7kj4DvD+ajaukToeC7CteF9S+y+2MHCQntDs6rhSrmxDYxhI3JiABWD5T7HEnq67MYODEeFwAA"
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-006.webp",
-      "width": 1920,
-      "height": 2747,
+      "width": 3840,
+      "height": 5493,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_006.png",
       "originalWidth": 4320,
       "originalHeight": 6180,
       "originalBytes": 3800233,
-      "bytes": 153208
+      "bytes": 482740,
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAABwAQCdASoLABAAA4BaJZQCdAFAAAD+8heoDGfr3v+6yTTKmqzpjTltdKgVvyaAAAA="
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-007.webp",
-      "width": 1920,
-      "height": 2261,
+      "width": 3840,
+      "height": 4523,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_007.png",
       "originalWidth": 4320,
       "originalHeight": 5088,
       "originalBytes": 2393775,
-      "bytes": 109084
+      "bytes": 365306,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQAgCdASoOABAAA4BaJbACdAYrx2WNyt+AwAAA/vNTLSR/n1+A4wcE/0LLMrB41r+j9R6fB6FEwNU9ecMJ1vJQObZ4S1JvNSfr7vHJOji043WJivC/i7sRxk8Oqqev0rAAAA=="
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-008.webp",
-      "width": 1920,
-      "height": 3717,
+      "width": 3840,
+      "height": 7435,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_008.png",
       "originalWidth": 4320,
       "originalHeight": 8364,
       "originalBytes": 7336732,
-      "bytes": 247780
+      "bytes": 887938,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABQAgCdASoIABAAA4BaJZQCdAYpl2/2vCKYMgAA/vYgYQmTjfzbgLTZJeP8fQxPjZcBwz/xNHKECvhb9x2ZXleCGIgtQAAA"
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-009.webp",
-      "width": 1920,
-      "height": 2261,
+      "width": 3840,
+      "height": 4523,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_009.png",
       "originalWidth": 4320,
       "originalHeight": 5088,
       "originalBytes": 2671672,
-      "bytes": 138358
+      "bytes": 463198,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoOABAAA4BaJbACdAEPh6YrywYAAP7zNNXImURMs88vyx32Bfgr13wsYAzHSCl14R4Bik+2BrDifsHwoo94yT8DpIhC7msu67BX2bAF+fqVjuRVkhEO/g2SDjQAAA=="
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-010.webp",
-      "width": 1920,
-      "height": 1239,
+      "width": 3840,
+      "height": 2478,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_010.png",
       "originalWidth": 4320,
       "originalHeight": 2788,
       "originalBytes": 4302158,
-      "bytes": 139334
+      "bytes": 499306,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoQAAoAA4BaJYwCdAYt9vSD9qUZGIAA/vI040xZb49LaEG4OA2jyoGZRlkDjFvpEgcvamyHEeDJcJvNTvcl2HeEGJJ5vEHdTNfqE3tljUN6itPXjlrkAA=="
     },
     {
       "src": "/assets/works/park-sujeong/portfolio-011.webp",
-      "width": 1920,
-      "height": 1600,
+      "width": 3840,
+      "height": 3200,
       "sourceFile": "박수정_웹Work/박수정_포트폴리오/박수정_011.png",
       "originalWidth": 4320,
       "originalHeight": 3600,
       "originalBytes": 4870145,
-      "bytes": 89384
+      "bytes": 354066,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAA0AA4BaJQBdkCYjBNzHVsAA/vfqYFW62Fpo0fy9lYUpuCHpqurb4zvGdi7AQcX2UUhiSlPNpKsVlqosgAAA"
     }
   ]
 }

@@ -2,13 +2,14 @@
   "artist": "이서윤",
   "thumbnail": {
     "src": "/assets/works/lee-seoyun/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "이서윤_웹work/이서윤_썸네일/이서윤_Work.png",
     "originalWidth": 1536,
     "originalHeight": 1120,
     "originalBytes": 2352748,
-    "bytes": 35220
+    "bytes": 210676,
+    "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQAgCdASoQAAwAA4BaJZQCdAC1qycU3aAAAP7n4zB5bd4BjoMMH9vaPc3sPrd3F++QL4/+uUXXDzdCE96HBGRK5ITCqOGyfy229AcY70y0jtROwLCVBXj92yRP5ihXH+c4m/9iaZw4KAAA"
   },
   "space": {
     "src": "/assets/works/lee-seoyun/space.webp",
@@ -18,178 +19,196 @@
     "originalWidth": 2496,
     "originalHeight": 1528,
     "originalBytes": 4939156,
-    "bytes": 60938
+    "bytes": 60938,
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAoAA4BaJZQCdAC1qoxAMgAA/uqqdY2PbuX7tBcWw0yZ87tZ7FO/x/8Z0nEIGG2niVy4bSCw/5FrXYr04E6Xt2kiKHqr/3+vHA4thULzsQ5gVBqsVnqGWm2AAA=="
   },
   "hero": {
     "src": "/assets/works/lee-seoyun/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "이서윤_웹work/이서윤_썸네일/이서윤_상세.png",
     "originalWidth": 7680,
     "originalHeight": 4200,
     "originalBytes": 24139158,
-    "bytes": 110356
+    "bytes": 1006704,
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAkAA4BaJZQCdAEX5osIUAD+yqE3OtvKbv7/9NivGotqivZE8nNyfcvtGEnYTpvs7r3tskZvfA//JTcd4pm52+hK4C7tV0w9IAAA"
   },
   "images": [
     {
       "src": "/assets/works/lee-seoyun/portfolio-001.webp",
-      "width": 1920,
-      "height": 1277,
+      "width": 3840,
+      "height": 2554,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/1.png",
       "originalWidth": 7680,
       "originalHeight": 5108,
       "originalBytes": 400686,
-      "bytes": 57770
+      "bytes": 149324,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAgCdASoQAAsAA4BaJaQAAt0IFKEJr1wAAP7vatHBQrqnuwjuR9dRh1NJrZ+H3YMEnAGdk0VCwAAA"
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-002.webp",
-      "width": 1920,
-      "height": 1778,
+      "width": 3840,
+      "height": 3556,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/2.png",
       "originalWidth": 7680,
       "originalHeight": 7112,
       "originalBytes": 819215,
-      "bytes": 103046
+      "bytes": 300786,
+      "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAAAQAgCdASoQAA8AA4BaJaQAAu1/e6jzpUIAAP71nt+J6i+VXNhBGq1YT2gAAA=="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-003.webp",
-      "width": 1920,
-      "height": 1307,
+      "width": 3840,
+      "height": 2614,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/3.png",
       "originalWidth": 7680,
       "originalHeight": 5228,
       "originalBytes": 494718,
-      "bytes": 81854
+      "bytes": 216724,
+      "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAQCdASoQAAsAA4BaJaQAAxf8zXNDhgAA/vWDZjL7xWXJToVpnXamuXTMqubxNwXfrsAA"
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-004.webp",
-      "width": 1920,
-      "height": 1579,
+      "width": 3840,
+      "height": 3158,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/4.png",
       "originalWidth": 7680,
       "originalHeight": 6316,
       "originalBytes": 773737,
-      "bytes": 102874
+      "bytes": 282560,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAA0AA4BaJbAC7AELPNUs4AD+TT7uXTbm5jlroiK0df+iAXuMPybg45Vf3gYbbBJPPwiMMbJcDx7If/oxf/g4yDJW3oAA"
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-005.webp",
-      "width": 1920,
-      "height": 2311,
+      "width": 3840,
+      "height": 4622,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/5.png",
       "originalWidth": 7680,
       "originalHeight": 9244,
       "originalBytes": 784561,
-      "bytes": 117142
+      "bytes": 317832,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAQCdASoNABAAA4BaJaQAAl2V2XQAAP72rEwmGh5J6fkD0fa9cK4j1I/T7RrUW//fyJ/3rHNrEwXhNAwtVzYBYya8+JgAAAA="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-006.webp",
-      "width": 1920,
-      "height": 2428,
+      "width": 3840,
+      "height": 4856,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/6.png",
       "originalWidth": 7680,
       "originalHeight": 9712,
       "originalBytes": 7988142,
-      "bytes": 114628
+      "bytes": 407592,
+      "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQAgCdASoNABAAA4BaJaQAD5SxdmsQygUUZKAA/vNRI8QzCL83PPXIH8Flij4xilN1R9S+J4QxwF0KL8EX7HG97RCogqJZyR8X6fm/fk6/W7h5R/KhSfwN+zr1068IFFLJDc+zQmpGgAAA"
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-007.webp",
-      "width": 1920,
-      "height": 2342,
+      "width": 3840,
+      "height": 4684,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/7.png",
       "originalWidth": 7680,
       "originalHeight": 9368,
       "originalBytes": 3592692,
-      "bytes": 102090
+      "bytes": 311424,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoNABAAA4BaJZgCdAEf/Tujl/gA/opaZpHa0RSYQs/gHadfujszzhl16tZn/We0ML9LeIth2FSQBbN0znInQD4g4lvnP78opxKyCDKfHQyf4t7I8YXAwR8LdBcAAA=="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-008.webp",
-      "width": 1920,
-      "height": 2173,
+      "width": 3840,
+      "height": 4346,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/8.png",
       "originalWidth": 3840,
       "originalHeight": 4346,
       "originalBytes": 18937267,
-      "bytes": 588638
+      "bytes": 2806304,
+      "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwAgCdASoOABAAA4BaJbACdAYvX2lgHjrFklzAAP6J3wNlXAk18HliytxGV9zVRZGlGD4+F+J1klI4xjim7d69c9tZFOCfQlANakh7tHjwCibFEIUF8N3SxNjI+lGXNzAx0aYe7RlnME0G2AAAAA=="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-009.webp",
-      "width": 1920,
-      "height": 1817,
+      "width": 3840,
+      "height": 3634,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/9.png",
       "originalWidth": 7680,
       "originalHeight": 7268,
       "originalBytes": 2542052,
-      "bytes": 114542
+      "bytes": 336162,
+      "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoQAA8AA4BaJaQAAud+qbI8MAD+9ZstPbQ/8F9wHqolQmObwBEPb3eRPGAAAA=="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-010.webp",
-      "width": 1920,
-      "height": 1849,
+      "width": 3840,
+      "height": 3698,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/10.png",
       "originalWidth": 7680,
       "originalHeight": 7396,
       "originalBytes": 7549779,
-      "bytes": 188582
+      "bytes": 652758,
+      "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoQAA8AA4BaJaQAAxdvQZwAAP70O4Y8VqGd/9uZJ7TPKS38H8kxMSViV+XtDTwjl1OkIViwUAA="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-011.webp",
-      "width": 1920,
-      "height": 2125,
+      "width": 3840,
+      "height": 4250,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/11.png",
       "originalWidth": 7680,
       "originalHeight": 8500,
       "originalBytes": 12787407,
-      "bytes": 172654
+      "bytes": 673770,
+      "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoOABAAA4BaJaQAAud7eFOAAP71eEZOKn4BbF779IAIdD1gOXcS0BPvenc4AA=="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-012.webp",
-      "width": 1920,
-      "height": 2194,
+      "width": 3840,
+      "height": 4388,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/12.png",
       "originalWidth": 7680,
       "originalHeight": 8776,
       "originalBytes": 2805497,
-      "bytes": 134018
+      "bytes": 412466,
+      "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAABwAQCdASoOABAAA4BaJaVL5AGIAAD+8rgv5o0IriMR3zK+dTvDoAAA"
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-013.webp",
-      "width": 1920,
-      "height": 1407,
+      "width": 3840,
+      "height": 2814,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/13.png",
       "originalWidth": 7680,
       "originalHeight": 5628,
       "originalBytes": 1644464,
-      "bytes": 82560
+      "bytes": 239144,
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoQAAwAA4BaJaQAAujdAWShOwAA/vd4gtGGrEhY3EEp+uOJElDXcYXbAAA="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-014.webp",
-      "width": 1920,
-      "height": 1880,
+      "width": 3840,
+      "height": 3760,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/14.png",
       "originalWidth": 7680,
       "originalHeight": 7520,
       "originalBytes": 1981685,
-      "bytes": 102128
+      "bytes": 294758,
+      "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoQABAAA4BaJaQAAud7RgxLwAD+9optB+g1k+cl8fIS8pxEgBwAAA=="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-015.webp",
-      "width": 1920,
-      "height": 801,
+      "width": 3840,
+      "height": 1602,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/15.png",
       "originalWidth": 7680,
       "originalHeight": 3204,
       "originalBytes": 217941,
-      "bytes": 21906
+      "bytes": 54022,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACQAQCdASoQAAcAA4BaJaQAAouj1QAA/oay8PrD+DvX++hOb4CtMNcF0HJf+07+XmhAU0MrCXLThphAj4dyoXzxM45hxqqAAAA="
     },
     {
       "src": "/assets/works/lee-seoyun/portfolio-016.webp",
-      "width": 1920,
-      "height": 1772,
+      "width": 3840,
+      "height": 3544,
       "sourceFile": "이서윤_웹work/이서윤_포트폴리오/16.png",
       "originalWidth": 3840,
       "originalHeight": 3544,
       "originalBytes": 18296696,
-      "bytes": 470266
+      "bytes": 2506540,
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoQAA8AA4BaJQBOgMX1zmfP4Q9xgAD+932bTlaelFj11jdrMuJGZznnHcbpbUZN/D9uGSgN+Tbb09+Tvcef9E/uaf6s79bvy181bwN22ergCVEnEE/BWVKuDVEjLhR5EuKb9YIYAAA="
     }
   ]
 }

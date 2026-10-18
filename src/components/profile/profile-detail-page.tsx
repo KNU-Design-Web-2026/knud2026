@@ -74,6 +74,8 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
             <div className="profile-detail__work-copy flex flex-col gap-3 text-[#050505]">
               {work && submitted ? <Link className="profile-work-preview" href={`/work/${work.id}`} aria-label={`${detail.nameKo} ${detail.projectName} 작품 보기`}>
                 <Image alt={`${detail.projectName} 작품 대표 이미지`} src={submitted.hero.src}
+                  quality={95}
+                  placeholder={submitted.hero.blurDataURL ? "blur" : "empty"} blurDataURL={submitted.hero.blurDataURL}
                   width={submitted.hero.width} height={submitted.hero.height}
                   sizes="(max-width: 600px) 100vw, 80vw" className="block h-auto w-full" />
                 <div className="profile-work-preview__overlay">

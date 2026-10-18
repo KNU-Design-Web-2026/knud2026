@@ -8,7 +8,8 @@
     "originalWidth": 384,
     "originalHeight": 280,
     "originalBytes": 45483,
-    "bytes": 17324
+    "bytes": 21480,
+    "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQAgCdASoQAAwAA4BaJbACdAYwxbaIDtRLGcAA/b/HPe7pFbPHvbAr1zQpwjJx+AAZKE9L/cJIY2KD1xlRKxZEpy8k3oUy7X1ku3f211A8OCWUi5qQKErQNBf5Wt0ZpOEc+k2M3/9hAv7DSCAAAA=="
   },
   "space": {
     "src": "/assets/works/yang-hyeyeon/space.webp",
@@ -18,7 +19,8 @@
     "originalWidth": 624,
     "originalHeight": 382,
     "originalBytes": 73230,
-    "bytes": 27078
+    "bytes": 27078,
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoQAAoAA4BaJbACdAD0Xj+bZIAA/kQSpBGKvmwaZtSgdImN3Ej8VsPcmMngat5disZM6FNLIICVyJzBn/3rmkZcrmnyHNSD/dAN/YqXzUL01i6/zD2thpBAAAA="
   },
   "hero": {
     "src": "/assets/works/yang-hyeyeon/hero.webp",
@@ -28,7 +30,8 @@
     "originalWidth": 1920,
     "originalHeight": 1050,
     "originalBytes": 246202,
-    "bytes": 90842
+    "bytes": 119280,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAkAA4BaJbACdAD8IzIpgAD0by73o6pyyKHMXJgwsviZw6Xg1WX/LMQzC9crdaIEgIgnB3u8vPfhdwrHcAGwIVH/2GJbxUETkk/4K3cQYwAA"
   },
   "images": [
     {
@@ -39,7 +42,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 3601561,
-      "bytes": 371626
+      "bytes": 550922,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoMABAAA4BaJbACdADc51kjmwAA/uiXzGUTBLVEGsBr+oJvBbk622YBh3cHuk8m+J9MMpdpZ4djW/KvInb9lOrugBAtU9AAAAA="
     },
     {
       "src": "/assets/works/yang-hyeyeon/portfolio-002.webp",
@@ -49,7 +53,8 @@
       "originalWidth": 1920,
       "originalHeight": 1417,
       "originalBytes": 347932,
-      "bytes": 135604
+      "bytes": 179722,
+      "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoQAAwAA4BaJagAAucKwaJ9wAD+3oh2+F6plU4/5ksB/+wjaKnNfW/wVTRwAA=="
     },
     {
       "src": "/assets/works/yang-hyeyeon/portfolio-003.webp",
@@ -59,7 +64,8 @@
       "originalWidth": 1920,
       "originalHeight": 1699,
       "originalBytes": 1515916,
-      "bytes": 159878
+      "bytes": 220628,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAQCdASoQAA4AA4BaJZQAAuTjp+AAAP73LDKMD2UXyt6/MlQtzNV0AXAUj5t6dyzFrCKhiVPEV+J/h+AAAA=="
     },
     {
       "src": "/assets/works/yang-hyeyeon/portfolio-004.webp",
@@ -69,7 +75,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 1729774,
-      "bytes": 349910
+      "bytes": 479942,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoMABAAA4BaJbAAD4hK0gfaLVgAAKZXlv+4gyFKsgP7SFu2zao0SfStETKfQjm+SIYDOy607MZLULGuT4GGB//sI2ipzX1v8FU5m5hMdEAAAA=="
     },
     {
       "src": "/assets/works/yang-hyeyeon/portfolio-005.webp",
@@ -79,7 +86,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 647118,
-      "bytes": 244916
+      "bytes": 315784,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoMABAAA4BaJZwAAu1/IuLY8AD+9zd5cHcuLmbKZs6kwvrxDbcG/Au48Wa6XXuFtWUsATmmEMw0uao/zhdId2fAhzAAAA=="
     },
     {
       "src": "/assets/works/yang-hyeyeon/portfolio-006.webp",
@@ -89,7 +97,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 931349,
-      "bytes": 305840
+      "bytes": 400460,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAwAgCdASoMABAAA4BaJbACdAEfbROs3O24AAD+867vYUk/huANSxMQ+9/R7umCAfDSYdkVVBPQcFmJX0tOTU6N18FVReDQYZlu8i2e0OZVzLLMaoVlwzo+KncBahtIBL+ERcAA"
     },
     {
       "src": "/assets/works/yang-hyeyeon/portfolio-007.webp",
@@ -99,7 +108,8 @@
       "originalWidth": 1920,
       "originalHeight": 2500,
       "originalBytes": 1008364,
-      "bytes": 335648
+      "bytes": 428456,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwAgCdASoMABAAA4BaJaACdH8GJ/gYaVGpgAD+6zLM5iWbUW73hUChCCt4OIKC8LVLlHgSPVBc4acUCmerY57rPqlbFjFnkdzeCMPUA7H5SbMccym/T6uoO9vbmOn4AAA="
     }
   ]
 }

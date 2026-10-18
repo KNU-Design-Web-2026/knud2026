@@ -2,13 +2,14 @@
   "artist": "김은별",
   "thumbnail": {
     "src": "/assets/works/kim-eunbyeol/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "김은별_웹work/김은별_썸네일/김은별_WORK.png",
     "originalWidth": 1600,
     "originalHeight": 1167,
     "originalBytes": 580027,
-    "bytes": 84466
+    "bytes": 253064,
+    "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwAgCdASoQAAwAA4BaJbACdFQAmjAiJjL1VKuGUUAA/tYiOya3fWxPJvxxHAVxA+EQItSJRXkAFW2FXP5mRpzmE0+Dbji+VX9xSWYsyHun1dBFh3rTBb/i2BdQHxbwOA703NQI9x0sRBNXzM4KQeTGljpMAlBkfw9ZnjYistcIAAAA"
   },
   "space": {
     "src": "/assets/works/kim-eunbyeol/space.webp",
@@ -18,58 +19,64 @@
     "originalWidth": 2600,
     "originalHeight": 1597,
     "originalBytes": 998651,
-    "bytes": 142994
+    "bytes": 142994,
+    "blurDataURL": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4WAoAAAAQAAAADwAACQAAQUxQSBYAAAABF9D/iAgoZBsBmj/IfahHENH/5KJtVlA4IHIAAACwAQCdASoQAAoAA4BaJbACdACHvteAAP7HXoBL1NwDYUJRycFnP2r9iQtgWNQN4PzsY7JrmNXMVlro3tF0/AM7fUH05QgMPiyec3YU3zURAB6vW/cvCMhQ+6D8maxhd7RcW/e7ulnvhPgsWvXVECFgAAA="
   },
   "hero": {
     "src": "/assets/works/kim-eunbyeol/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "김은별_웹work/김은별_썸네일/김은별_상세.png",
     "originalWidth": 8000,
     "originalHeight": 4376,
     "originalBytes": 3675108,
-    "bytes": 213386
+    "bytes": 622488,
+    "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQAgCdASoQAAkAA4BaJbACdDBKAPdu5vbQAP6zeT00ckOdYu9Ek3nnpKTMxxVdSGuslsGzCZeoD8yDzDA8AyKEc3HM4DZFjHUTq2sfNlzv9395ytzSQ67GplxNrgtEt9pM/65FmS8jvuAA"
   },
   "images": [
     {
       "src": "/assets/works/kim-eunbyeol/portfolio-001.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 1921,
+      "height": 2001,
       "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_001.png",
       "originalWidth": 1921,
       "originalHeight": 2001,
       "originalBytes": 550908,
-      "bytes": 208568
+      "bytes": 267828,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoPABAAA4BaJbACdDiMwUpVuqcnzoAA/vPQJDv5UWQBJZQPUCcB+Rwkit4uvXNH1/V6qRz8H449S1JriclQVmf3LV1nqmMi89wO1tuzzb3Ywk/qDXP8zv8sd1eff1Ud8QAAAA=="
     },
     {
       "src": "/assets/works/kim-eunbyeol/portfolio-002.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 1921,
+      "height": 2001,
       "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_002.png",
       "originalWidth": 1921,
       "originalHeight": 2001,
       "originalBytes": 852274,
-      "bytes": 252366
+      "bytes": 330538,
+      "blurDataURL": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwAgCdASoPABAAA4BaJbACdDiAN42Ih0p1qThgAP5bsaZ404l0yawA2GCZ0+VlTAn8TK22iGbtwYq5geAdn9iH10rfA1Eqn9h2zmZmyf8Tg7gVQC1Kx8sQrbfP0e9PcFgJ5hoMfoHx5LIQwC7EoSru0gh7pED++7vzTh/4pmZ+iKllij4B1t4i+lihoggAAAA="
     },
     {
       "src": "/assets/works/kim-eunbyeol/portfolio-003.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 1921,
+      "height": 2001,
       "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_003.png",
       "originalWidth": 1921,
       "originalHeight": 2001,
       "originalBytes": 518270,
-      "bytes": 208102
+      "bytes": 266500,
+      "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQAgCdASoPABAAA4BaJbACdDiK946IiAgTKJFqGmAAAPz0m2kb4hjxmJbNFo6U93f0AnV8H9qyYWSWl8kW2DdU4d43LxkV4tjD0jX8n9rW/kCC6TYH1hGvINCBMC5qWc7p3XxNUY6QVKqCCUCKV2OLYjGcckILD7MoLPIHhAXOzcPmZWLm0cAA"
     },
     {
       "src": "/assets/works/kim-eunbyeol/portfolio-004.webp",
-      "width": 1920,
-      "height": 2196,
+      "width": 1921,
+      "height": 2197,
       "sourceFile": "김은별_웹work/김은별_포트폴리오/김은별_004.png",
       "originalWidth": 1921,
       "originalHeight": 2197,
       "originalBytes": 732234,
-      "bytes": 271272
+      "bytes": 351396,
+      "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwAgCdASoOABAAA4BaJbACdGuAdJWRGRZTTVKAnliQYAD8WbZRmL5avzIrumI7fZp6qSroSwsNcfppZ3MBx0WVjsnP6zeaAhYTfs7Sk2+dCbDtY3+7aoOr+95z0eAyjHllVlQ5YHqBuHUCMb/N44E1qTlDcej3Uj5OKfRohFGDgAAA"
     }
   ]
 }

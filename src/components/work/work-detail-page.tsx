@@ -14,6 +14,9 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
           alt={`${detail.title} 대표 이미지`}
           className="object-cover"
           fill
+          quality={95}
+          placeholder={detail.heroBlurDataURL ? "blur" : "empty"}
+          blurDataURL={detail.heroBlurDataURL}
           priority
           sizes="100vw"
           src={detail.heroSrc}
@@ -58,7 +61,8 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
           key={image.src}
           alt={`${detail.title} — ${detail.artistKo} 작품 상세 ${index + 1}`}
           src={image.src} width={image.width} height={image.height}
-          sizes="100vw" loading="lazy" decoding="async"
+          placeholder={image.blurDataURL ? "blur" : "empty"} blurDataURL={image.blurDataURL}
+          sizes="100vw" quality={95} loading="lazy" decoding="async"
           className="block h-auto w-full"
         />)}
       </section> : <div aria-label="추가 프로젝트 이미지 영역" className="work-detail__additional-artwork" />}

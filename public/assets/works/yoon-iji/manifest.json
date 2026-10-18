@@ -2,13 +2,14 @@
   "artist": "윤이지",
   "thumbnail": {
     "src": "/assets/works/yoon-iji/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "윤이지_웹work/윤이지_썸네일/윤이지_Work.png",
     "originalWidth": 1601,
     "originalHeight": 1167,
     "originalBytes": 2387001,
-    "bytes": 68552
+    "bytes": 342478,
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAwAA4BaJagCdAC9wMldsAAA/BtzTnwMs26EiRO+JPLET2Qd0bzGFxxvoTlTMkCx4tpf3zfVmBnG+Fp6KtIHU/+cIInt16Ywge4iE1+MrvXO/3R0IUPaAAAAAA=="
   },
   "space": {
     "src": "/assets/works/yoon-iji/space.webp",
@@ -18,138 +19,152 @@
     "originalWidth": 2601,
     "originalHeight": 1592,
     "originalBytes": 3232915,
-    "bytes": 105932
+    "bytes": 105932,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAoAA4BaJaACdAEWseF65loAAPwYwxP1kcFev7HOzpLfKLmaksl6v13gBdZypCKUrEysDPHo/Pjesb3KU/KM+PilI6KJIGrdWJbdggAAAA=="
   },
   "hero": {
     "src": "/assets/works/yoon-iji/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "윤이지_웹work/윤이지_썸네일/윤이지_상세.png",
     "originalWidth": 8001,
     "originalHeight": 4376,
     "originalBytes": 6794731,
-    "bytes": 245326
+    "bytes": 1199524,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQAgCdASoQAAkAA4BaJagCdAYsFzck5uMQwAAA/tzeWj7bWb6A4EQwqobAB9EUdHZH0+EZCwfOxDG3NbwMZ6Umvp2WUfMNS8wvz6jUNZQ1ziMHtwAAAA=="
   },
   "images": [
     {
       "src": "/assets/works/yoon-iji/portfolio-001.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_001.png",
       "originalWidth": 8001,
       "originalHeight": 10417,
       "originalBytes": 3586277,
-      "bytes": 159854
+      "bytes": 620082,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoMABAAA4BaJZwAAu0YyKR1YAD+9/B7oTTYNOBoN+v+Ne8aRcX9BevuFHPJRr9kn6tvP+89N3VZow18+R8ogAAA"
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-002.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_002.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 5952700,
-      "bytes": 194538
+      "bytes": 660994,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACQAQCdASoMABAAA4BaJQAAXJxWndAA/vi5fbvec+kImng7OlaUNQf098OpgV/yiqUVH3mXi/dNR/4bF00AAA=="
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-003.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_003.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 1986801,
-      "bytes": 134346
+      "bytes": 410602,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoMABAAA4BaJZQAAp0W1y9gAP73KfJQ6me/V1ilnor3NWDKdva+fpUqJWc5AQBLUC8XQAAA"
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-004.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_004.png",
       "originalWidth": 8001,
       "originalHeight": 10417,
       "originalBytes": 2503483,
-      "bytes": 285786
+      "bytes": 1237092,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoMABAAA4BaJYgAAsfyIvtszoAA/vCgkjJnsZb6etYjJ2p2DZu3F7T7uQEZ99NgR61HmOtKdrSyPvVWy8zCokxG22b7mcUd2uAAAA=="
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-005.webp",
-      "width": 1920,
-      "height": 2210,
+      "width": 3840,
+      "height": 4420,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_005.png",
       "originalWidth": 8001,
       "originalHeight": 9209,
       "originalBytes": 7110110,
-      "bytes": 497722
+      "bytes": 2154218,
+      "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABQAgCdASoOABAAA4BaJZACdAYtVqoayfYT4AAA/kR9VMjNemvW5ly3az949rf3A/cP5m9+o/EwXCQY+OHaxlcQOrbKT4Pmygl74E1zs+oOhdYTH9K+Vu5dHlxjAX6dQ//spdG4UAei7hst0/dZygAA"
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-006.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_006.png",
       "originalWidth": 8001,
       "originalHeight": 10417,
       "originalBytes": 24095794,
-      "bytes": 254288
+      "bytes": 1331150,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoMABAAA4BaJYwAD4tQaTygAAD+8hb21UZXbgBHW9K+uc0OfuLkHk964vzaqkRNX0QLIiVphX1lxz1yGyp2c4NVfm3wt5i1UMLvR17A/BUaTSZqvbLKPgAA"
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-007.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_007.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 19054002,
-      "bytes": 648622
+      "bytes": 2767146,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoMABAAA4BaJZgCdAYu5dCEDliiLagA/oeUZtC9wWoQY/R8W8jclKYHMfDAiPJ+MB97DjqX0mezr0RFXh8OCAlOg37YD7MFv3PLILl3hr7+acupv0wvKrJcF6t1tsI4BAAAAA=="
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-008.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_008.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 38976659,
-      "bytes": 439186
+      "bytes": 2196386,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoMABAAA4BaJQBdgB6WS5gmmM/AAP5b/7nOHDaoHb4JQD9s9tAbobh6qemRqeTgK2iRryxr4rFGWgoE+/d4elZzm96vs5/hOfsXIbwb8O9v4z0a/jY45UmpLS+egAAA"
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-009.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_009.png",
       "originalWidth": 8001,
       "originalHeight": 10417,
       "originalBytes": 20243444,
-      "bytes": 576998
+      "bytes": 2355302,
+      "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABwAgCdASoMABAAA4BaJZQCw7YsPy2EuNy2NpwAAP7Pg78Jb8wPoZxAXsuAASZhuJxC7d/EUHGW3TGzjohKAyHtOoAbF/OtSEZhZ7wU/GxDBaE0JKnm2WLSBP/dnY9lfMVnKKgWrNfmIAAA"
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-010.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_010.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 33308172,
-      "bytes": 392308
+      "bytes": 1989644,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwAgCdASoMABAAA4BaJZQAD5DwNXLC6qdSgAD+hB935V7CEGiNAegbjeN4vtzPTtwRMiZG8+JFInNxuf+7mD6Rke3liMKz6vmMJjYYJYeIUvVQr0E34Mgu0Qd/oEq9LMAAAA=="
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-011.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_011.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 24524967,
-      "bytes": 459660
+      "bytes": 2336896,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoMABAAA4BaJYgAAqy9lAtmGwAA/t38DrAwqZ7YUE/J+ngH/r5ctaNye8Xl58HB1dWPldfzAa8wq5zl6+SKYhHFZprCtvc/ALpli93ss+FOvjRrlBjQye/uCYAAAA=="
     },
     {
       "src": "/assets/works/yoon-iji/portfolio-012.webp",
-      "width": 1920,
-      "height": 1280,
+      "width": 3840,
+      "height": 2560,
       "sourceFile": "윤이지_웹work/윤이지_포트폴리오/윤이지_012.png",
       "originalWidth": 8001,
       "originalHeight": 5333,
       "originalBytes": 2724026,
-      "bytes": 55744
+      "bytes": 261234,
+      "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoQAAsAA4BaJaQAD4uwkfpraAAA/vCv3N6ZNabVtbbzCSNnH9EN6e/oXmuiC9k05GQjLQAAAAA="
     }
   ]
 }

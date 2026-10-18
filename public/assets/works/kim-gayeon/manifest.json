@@ -2,13 +2,14 @@
   "artist": "김가연",
   "thumbnail": {
     "src": "/assets/works/kim-gayeon/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "김가연_웹Work/김가연_썸네일/김가연_Work.png",
     "originalWidth": 1600,
     "originalHeight": 1167,
     "originalBytes": 1325821,
-    "bytes": 95922
+    "bytes": 376590,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAwAA4BaJYwAAudnaBAKAAD+8jvcTKVXn2O4je1H/XJm06aUz/5V8LQ/mOH5UQ1XJnPpTkVuCLSNIVPix552/BQAAA=="
   },
   "space": {
     "src": "/assets/works/kim-gayeon/space.webp",
@@ -18,388 +19,427 @@
     "originalWidth": 2600,
     "originalHeight": 1592,
     "originalBytes": 2650799,
-    "bytes": 169938
+    "bytes": 169938,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAoAA4BaJZQCsAEO9vuY7DAA/vOL8kzwxxctYUnQxeoW2BWbirhdeKJe2IGJhdCq+s0EY+eDsbAZOmg+8DBZiDAAAA=="
   },
   "hero": {
     "src": "/assets/works/kim-gayeon/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "김가연_웹Work/김가연_썸네일/김가연_상세.png",
     "originalWidth": 8000,
     "originalHeight": 4376,
     "originalBytes": 22910365,
-    "bytes": 330216
+    "bytes": 1376952,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAQCdASoQAAkAA4BaJZQAAsyhTAAA/vOo+SgCc3FpYA1AxyAMxR6HubFRQKPngPxLBBr4KPzIGfdM0R9mkgkAAAA="
   },
   "images": [
     {
       "src": "/assets/works/kim-gayeon/portfolio-001.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_001.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 1314469,
-      "bytes": 49178
+      "bytes": 164266,
+      "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoQAAkAA4BaJaQAApMgfCuAAP75yNQNY4cs8QbYaQN+bfTwZkEYahs3QAAAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-002.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_002.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 12334394,
-      "bytes": 180878
+      "bytes": 749842,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAQCdASoQAAkAA4BaJZAAAiDHMFcAAP75F/dUWla7fTk2mf9KNDc1t6Zv6xFvwbk621YA/QfKANEd7keOxR1ss5ff6MTmj+TvGxf8w0dLpxpQAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-003.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_003.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 16201237,
-      "bytes": 252250
+      "bytes": 955578,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAkAA4BaJYgCdH8AEZSbEwAA/vaSPZu4NRBwmWbK3KiGRluN58Bu0o8WEBdjx1KiDxaoH9IPfoI2QMLCktiQKRwjCd8cQAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-004.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_004.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 8910376,
-      "bytes": 197452
+      "bytes": 742486,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJZQAD4AQ4wh21AAA/vhURrezwDNxV226nVe+qgcBXyIayK3X2dk67iE3jxB7NAAAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-005.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_005.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 227926,
-      "bytes": 116906
+      "bytes": 292950,
+      "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoQAAkAA4BaJaQAAu0dcL+9oAD++St1nYwnyhTpjIE65zSNdwAAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-006.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_006.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 4211291,
-      "bytes": 131338
+      "bytes": 829982,
+      "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoQAAkAA4BaJaQAApMOtX/S4AAA/vkYbWey4N6jx2IM5+72WVK/AAsH34vdviFkAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-007.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_007.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 288017,
-      "bytes": 70020
+      "bytes": 181254,
+      "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAABwAQCdASoQAAkAA4BaJaWDrAGIAAD+85EbwNf6VbCJbqIEciX/Hu+AAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-008.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_008.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 236658,
-      "bytes": 115222
+      "bytes": 297706,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoQAAkAA4BaJaQAAu1xtF/1AAD+9OMgeA6O33lU4eN1Gm+AH3BCq+YXDOtDf4/rHGIAAAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-009.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_009.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 7949197,
-      "bytes": 211988
+      "bytes": 1425360,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAkAA4BaJaQAApQS0+fOAAD+84LNO6Z47dWyoDVPrR+Uc8GutsSonkFGO1QepcZeM6+rkIUAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-010.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_010.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 12036508,
-      "bytes": 188000
+      "bytes": 894314,
+      "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAkAA4BaJaQAAueK+uudAAD+5Gvqgo3pL60ia4qpcWtr/0d9+tFTHegAAAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-011.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_011.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 18254801,
-      "bytes": 133590
+      "bytes": 618080,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAQCdASoQAAkAA4BaJbACdAYuHZtoaAD2vYtPnf7/Gtx+oieWeWVlpnpWmRii1YY38553i81tKa227dQ8NYwoYrX2JJHIHopwCofMy9ItAqURVtPICQSVMiA/IH0QcbvFPIAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-012.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_012.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 12150636,
-      "bytes": 90648
+      "bytes": 415240,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAkAA4BaJQBOgCEQr/2AAAD+9fdl42Qc/qZIUrZAYrHY2xWncrci9HiPFj3+INn/zyR9tjSxfzp5D4R5K++D2hqeVeu15EgiJ1idjxyQdAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-013.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_013.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 5672332,
-      "bytes": 110360
+      "bytes": 360760,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAkAA4BaJbACdH8AGBiBj6vfkAD+vo+05EAe4MxifYIZkb3xciXNoByT749l+HYu+1j5xHEM8JLO3o2TqcAvi3eapf0gSEhae4THCX37r6ogAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-014.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_014.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 12969550,
-      "bytes": 179480
+      "bytes": 792180,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAkAA4BaJaQAAqzVcEilAAD++Rxv/DHpi+tj796rgipWHn+MIuuSnuFUxTKZ19cRMpUnC533UuY4PnNuLewsi+kgAAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-015.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_015.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 5863032,
-      "bytes": 61494
+      "bytes": 278514,
+      "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAQCdASoQAAkAA4BaJaQAAoXnoAAA/u+u3BYe6Jrtnl26dUFCYeWjsk/e2pRf4a5293KeVIjNBb6yK13wAAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-016.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_016.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 33218438,
-      "bytes": 659916
+      "bytes": 3047052,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAkAA4BaJaQAAud3FpYZVgAA/s9+3Lo2ZTjdHltXLcKhC12kov404DjQ/8gIe4fW5W1UCZ2cO23jvvdMIAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-017.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_017.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 7202443,
-      "bytes": 176182
+      "bytes": 675782,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAQCdASoQAAkAA4BaJaQAAvcyco0AAP75w0/iYO1t1o75aGFbR/T6AxH11Aafx0tc92V+fKtc/MWzRl/DhO1EnKw3ksgohz8kCLn3VFfzOSzAAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-018.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_018.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 9021917,
-      "bytes": 93742
+      "bytes": 780532,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACQAQCdASoQAAkAA4BaJaQAAtqJLEAA/vS1Ac163moMIjwUNW1/h6UJ9J8NBmce0pkutqTlJyanO3wcErrTbMFUmfnmghGScp2faNMv0AAAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-019.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_019.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 5840497,
-      "bytes": 132646
+      "bytes": 667618,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAQCdASoQAAkAA4BaJaQAAt4wP6wA/vXwFo4pZ47RYslIBpGpxr2OAqIqeniSLkt9+yXCYoI8K/sP0lCWSjH0LLiP6fQcLInVG08Qkd9OEYCNopXXfsAAAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-020.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_020.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 3727073,
-      "bytes": 145698
+      "bytes": 557968,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQAAkAA4BaJaQAD4APPSJzNwgAAP7SpuAgxrICwNPIgfjVZPoWNcpHsZYUd96rP0qUt9y3zvpHU6uVQeRcpvsdEjfJOgM08u8JenLaLKbmTmioAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-021.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_021.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 4549590,
-      "bytes": 138956
+      "bytes": 483690,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAgCdASoQAAkAA4BaJaQAAwF1diCQjCGQAAD+wq0g0HMoK3xu+0cneGuM3mnFbZDYhMbQsSuwc8e/n7PIt6Ztx585ujs3YZSjcaFn6gko+cAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-022.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_022.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 18420926,
-      "bytes": 87900
+      "bytes": 608766,
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQAgCdASoQAAkAA4BaJbACdAEa1mUsfpNEKxAA/t4+4KBD2oaoNPeoKG/p/O+6gtNYQuh9gLW+3iNcvEe6QL17gAhQCH1D/b30hz6jQ4copIgp7YArhS1GT2sUd3sBBPH/M/wAAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-023.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_023.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 6872796,
-      "bytes": 153038
+      "bytes": 629678,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAkAA4BaJbACdAEDqcxPlHNIAP7zZgFfxNyQRop7/j7vpaQP4lwY/MozEL5Cx42Pp/3kWtx+7rfSY9ydHt/WzNEJwF/mP23vL8BFPm0UUL6S/Fu2EAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-024.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_024.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 8605180,
-      "bytes": 121224
+      "bytes": 779878,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJQAAYCq551X+bgAA/vlRRCrc4P802Jh86e7sdc4v9liaRRqONYrQp9V0W70v6J3ct0GCOmX4SiKhrXeZbviVsdgAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-025.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_025.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 7219074,
-      "bytes": 138946
+      "bytes": 570950,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJZQAAvmGqGgyj+AA/vnHzzeVAPzWT2V4M2Fggw9F6QdpZV0RXBPOdmmqXG13LdrZOKL60N1Pnv106TF9TY9ugU0AAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-026.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_026.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 22463919,
-      "bytes": 286816
+      "bytes": 1240676,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAQCdASoQAAkAA4BaJZQAAn/ghaKccAD+7S6rjeCpUBuikJ+7Lin2AoSb+xH+t5te9ZHNFM/qZx7DrIa8GJb70+BsqrRjyAd2h2IBOI4vorwDEJTiNvTT8k2TTYABrAAAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-027.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_027.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 27485262,
-      "bytes": 260686
+      "bytes": 1346270,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAkAA4BaJZQAAq9fhIFzAAD+6l7v47riqEmkT+IzxdVroSm/7oglrxVslecpOX0tD5p3+W24P4RAw1tDcXEI1lN1JrN29ojofme0ZRUAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-028.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_028.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 26625030,
-      "bytes": 304650
+      "bytes": 1516050,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAkAA4BaJZwATgAKXm9SLjwAAP7ePoQNo4IybKXau3GKiGHPflKfJuJ3jQA36noGbqvo6P+3FS4pqBAN7tLeVRyg5jSrPhDUhvVC/x+/d1hjA3a4ewgA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-029.webp",
-      "width": 1920,
-      "height": 1177,
+      "width": 3840,
+      "height": 2354,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_029.png",
       "originalWidth": 8001,
       "originalHeight": 4904,
       "originalBytes": 22095786,
-      "bytes": 231020
+      "bytes": 1153594,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAoAA4BaJZwAAicgipUAAAD+7S7VuX/VX8fAjn1ejgEmYjdDH+YbRrNMObDcZlH3pkyniDzWZBgk0QLfeMOwu7gw0lXSiXgSiq2TB6QeVm36EAAAWAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-030.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_030.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 113179,
-      "bytes": 8342
+      "bytes": 18234,
+      "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACQAQCdASoQAAkAA4BaJaQAAuaanMAA/u7z6DkP7a+xTc9wO5AAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-031.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_031.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 12716711,
-      "bytes": 197806
+      "bytes": 1112374,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJZQAAsZV3nxC+JAA/vBJj4c2ZYWq1929OmD44qqimUcKqPQ+DUidh6EpZ8P95shRU1d/7Gj61KOWD/livu0s0vugAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-032.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_032.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 7871345,
-      "bytes": 224032
+      "bytes": 1036132,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAkAA4BaJZwAD45QK6AxybgA/sJJxqwW+QDmKLpM1AoYPxQOvV/KF4Y5eaaCVmsgK6w1HmQ+u+gWu8yAmM0JxlQG4GnfZgLjEDtwdnL3cAGlAAA="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-033.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_033.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 12567388,
-      "bytes": 192202
+      "bytes": 827740,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJZQAAujb32M3cUAA/u/MVQFrCEON3mB3bp37aY4sHag7Fc3KTf/4jhnGx9AFLAAAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-034.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_034.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 15656380,
-      "bytes": 324388
+      "bytes": 1508406,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoQAAkAA4BaJYwC7H8AGDO1ERdGUAD+YW29LOFlmuX6Zm5rUfzeDsJMW0IT2ctk+ldBTCU2XtFbGahZGHe6Jj6vc+qqrg59Ij7YxAYH9y/QAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-035.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_035.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 17255308,
-      "bytes": 423442
+      "bytes": 2646422,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAkAA4BaJaQAAuyvyrsyNoAA/tvrVT9bfuz7rZB4z8eAD+JdfdE0dJm9GkPcdcB/pS0tnrp93+29TjVVduE61a9WXAF2EkvBgAAA"
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-036.webp",
-      "width": 1920,
-      "height": 1050,
+      "width": 3840,
+      "height": 2100,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_036.png",
       "originalWidth": 8001,
       "originalHeight": 4376,
       "originalBytes": 10367868,
-      "bytes": 259900
+      "bytes": 1769050,
+      "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAkAA4BaJaQAD4zOLg86yAAA/sqBq7iutlrnwYO89cIx7eakAwBhObB+/VVqaDCU5ky0SuDuRe92IvwAAA=="
     },
     {
       "src": "/assets/works/kim-gayeon/portfolio-037.webp",
-      "width": 1920,
-      "height": 1177,
+      "width": 3840,
+      "height": 2353,
       "sourceFile": "김가연_웹Work/김가연_포트폴리오/김가연_037.png",
       "originalWidth": 5838,
       "originalHeight": 3578,
       "originalBytes": 61085,
-      "bytes": 4102
+      "bytes": 16228,
+      "blurDataURL": "data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vXgwAA="
     }
   ]
 }
