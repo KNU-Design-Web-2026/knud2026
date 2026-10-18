@@ -2,13 +2,14 @@
   "artist": "이하늘",
   "thumbnail": {
     "src": "/assets/works/lee-haneul/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1121,
     "sourceFile": "이하늘_웹work/이하늘_썸네일/이하늘_Work.png",
     "originalWidth": 1601,
     "originalHeight": 1168,
     "originalBytes": 2124648,
-    "bytes": 69992
+    "bytes": 285628,
+    "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACwAQCdASoQAAwAA4BaJbACdAEQ6RR4AP55P8vqwFqgvuxifPY+31Er/RfIVh9NLnbzZpn3YRLgvH/bz1bkL8dfNMIPR18FRG7KIdDrgMraqPt0S09XLJkisnkfv/yndJVc0P8ZuyMVZ/Yflfx0Mq2Q/yb9dw3vYcr4AA=="
   },
   "space": {
     "src": "/assets/works/lee-haneul/space.webp",
@@ -18,68 +19,75 @@
     "originalWidth": 2601,
     "originalHeight": 1592,
     "originalBytes": 4241223,
-    "bytes": 125722
+    "bytes": 125722,
+    "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQAgCdASoQAAoAA4BaJbACdAEKrtiZVR8AAPqf+nbMFn4DpWZsbpHzZvex/eq2+mHlzeNzWcDKM1+xWOpHncez6tSmUvsgW3jE17MULs3iF3h0/ZiAYJNQVeE9NE//lOyo4WR+w2/PX7X9+t802XEUO/Jv13De83zi27bgAAA="
   },
   "hero": {
     "src": "/assets/works/lee-haneul/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "이하늘_웹work/이하늘_썸네일/이하늘_상세.png",
     "originalWidth": 8000,
     "originalHeight": 4375,
     "originalBytes": 22333640,
-    "bytes": 191270
+    "bytes": 862896,
+    "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQAgCdASoQAAkAA4BaJbACdAERHyCyGSYAAP6J36lxGt4Q1b6bfP6HtNj/3OnV+q02t1L7byWxHFu1lifwnCYH5I3rtR8MIIoT4lP4KUkmWhr5Z2MlwP/xiAPSC1wET6aVg/Y/0PiK/P4N9v8ZCCEZ24Dy3o3bwAA="
   },
   "images": [
     {
       "src": "/assets/works/lee-haneul/portfolio-001.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_001.png",
       "originalWidth": 8000,
       "originalHeight": 10417,
       "originalBytes": 775578,
-      "bytes": 117662
+      "bytes": 354164,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoMABAAA4BaJYgC7AYuRwRr6sEAAP72/SBTgqVepTCjtivj2PuHaxwrt4V4wdQf3DTF7eKdoy56Ifny+Pi4na0QNOhMiGGnAOYi1W8rWocNfADn3O8p5/7fIecl5oi43y7AAA=="
     },
     {
       "src": "/assets/works/lee-haneul/portfolio-002.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5001,
       "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_002.png",
       "originalWidth": 8000,
       "originalHeight": 10418,
       "originalBytes": 797446,
-      "bytes": 108912
+      "bytes": 325394,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoMABAAA4BaJZQAD49w/DucRVWIAP74kXepC+Ob0/IgJjupS67JuBfCmFvax3FePu3/KN88F8i3//XP7Bce/phzfLrqOcU3WpSquCR7f1jeO95wHl6CQKf70hAAAA=="
     },
     {
       "src": "/assets/works/lee-haneul/portfolio-003.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_003.png",
       "originalWidth": 8000,
       "originalHeight": 10417,
       "originalBytes": 17509880,
-      "bytes": 190330
+      "bytes": 728942,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACwAgCdASoMABAAA4BaJagCdH8AgmzLT/wS7Yem4AAA/vnFXFPM6l74cq7ASy5bxj5Y86WdrJ/ipm55ajav+xMmHjB+T+K3ezki9a0G77iaTAy78sgLrBna9oTrS37Y8SNzSHotyt+NDpZ8AY/LM4GjIAA="
     },
     {
       "src": "/assets/works/lee-haneul/portfolio-004.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_004.png",
       "originalWidth": 8000,
       "originalHeight": 10417,
       "originalBytes": 12539655,
-      "bytes": 173682
+      "bytes": 773850,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwAgCdASoMABAAA4BaJQBdj+AQSZi7us4dgQRwAP75w11pNdcP6zrdkNk9kWbyy/LyE4L9PK29i86IQ7A5jDHSnA6Kcv827s/yl1b1B+O2Z3Y0HVnLVxeKuWOAAA=="
     },
     {
       "src": "/assets/works/lee-haneul/portfolio-005.webp",
-      "width": 1920,
-      "height": 1625,
+      "width": 3840,
+      "height": 3250,
       "sourceFile": "이하늘_웹work/이하늘_포트폴리오/이하늘_005.png",
       "originalWidth": 8000,
       "originalHeight": 6771,
       "originalBytes": 659628,
-      "bytes": 36678
+      "bytes": 117166,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAA4AA4BaJZwAArIoQ5S6AAD++Rh/bQCTcnVJUG2B9Il9LHt47986WSj2GZkT5CEXhEF9Xn9AAM+AAAA="
     }
   ]
 }

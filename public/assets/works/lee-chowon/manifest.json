@@ -2,13 +2,14 @@
   "artist": "이초원",
   "thumbnail": {
     "src": "/assets/works/lee-chowon/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "이초원_웹Work/이초원_썸네일/이초원_Work.png",
     "originalWidth": 1600,
     "originalHeight": 1167,
     "originalBytes": 482793,
-    "bytes": 28686
+    "bytes": 103536,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAwAA4BaJaACdADsZexsMQAA/vRfKEz6djprzDp9dq7h/xbCBV5xEnnQyFgG87dV3jfzIps8TXrtpxb4XNhLlpZwaKpZQU27vtdAAAA="
   },
   "space": {
     "src": "/assets/works/lee-chowon/space.webp",
@@ -18,88 +19,97 @@
     "originalWidth": 2600,
     "originalHeight": 1592,
     "originalBytes": 889550,
-    "bytes": 46916
+    "bytes": 46916,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoQAAoAA4BaJZgCdADvUUopdRgAAP7y6ficc7YSp6h+2rHY7IYOXndM7fkCcZiNs/m+d/6ryOhhuGxxq/hzIvVHORXAUAgA"
   },
   "hero": {
     "src": "/assets/works/lee-chowon/hero.webp",
-    "width": 1920,
-    "height": 1080,
+    "width": 3840,
+    "height": 2160,
     "sourceFile": "이초원_웹Work/이초원_썸네일/이초원_상세.png",
     "originalWidth": 8000,
     "originalHeight": 4500,
     "originalBytes": 6510305,
-    "bytes": 78710
+    "bytes": 320792,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAkAA4BaJZgCdAEfa/tuYwAA/vEjgsAWZsw2D0Z/aKmHQpdPCs9OBoULiendQnwtcNDyL2H6dTXhR5HdydW7FpcRtEAA"
   },
   "images": [
     {
       "src": "/assets/works/lee-chowon/portfolio-001.webp",
-      "width": 1920,
-      "height": 1080,
+      "width": 3840,
+      "height": 2160,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_001.png",
       "originalWidth": 8000,
       "originalHeight": 4500,
       "originalBytes": 256324,
-      "bytes": 42040
+      "bytes": 116276,
+      "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAADwAQCdASoQAAkAA4BaJZQCdH8AGBp+uAAA/vOvZmc3k+Ow//dMAAAA"
     },
     {
       "src": "/assets/works/lee-chowon/portfolio-002.webp",
-      "width": 1920,
-      "height": 1800,
+      "width": 3840,
+      "height": 3600,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_002.png",
       "originalWidth": 8000,
       "originalHeight": 7500,
       "originalBytes": 451189,
-      "bytes": 48406
+      "bytes": 143892,
+      "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAABQAQCdASoQAA8AA4BaJaQABAAAAP70Db/bN4vNbe/Dyb8br1HAAA=="
     },
     {
       "src": "/assets/works/lee-chowon/portfolio-003.webp",
-      "width": 1920,
-      "height": 1400,
+      "width": 3840,
+      "height": 2800,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_003.png",
       "originalWidth": 8000,
       "originalHeight": 5834,
       "originalBytes": 487606,
-      "bytes": 70234
+      "bytes": 202210,
+      "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAABwAQCdASoQAAwAA4BaJZwCdAFAAAD+85ne63B+YZmlKLyWwKBmyAZB4nIVrQAA"
     },
     {
       "src": "/assets/works/lee-chowon/portfolio-004.webp",
-      "width": 1920,
-      "height": 1500,
+      "width": 3840,
+      "height": 3000,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_004.png",
       "originalWidth": 8000,
       "originalHeight": 6250,
       "originalBytes": 962988,
-      "bytes": 85678
+      "bytes": 269256,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAwAA4BaJYwCdAEO+Ds5l4AA3md9iprWse1xFlfgZPQR8XMeBjNoZIsRILJKIbNS9g1f6Mvbzjap10djgAAA"
     },
     {
       "src": "/assets/works/lee-chowon/portfolio-005.webp",
-      "width": 1920,
-      "height": 1500,
+      "width": 3840,
+      "height": 3000,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_005.png",
       "originalWidth": 8000,
       "originalHeight": 6250,
       "originalBytes": 3413562,
-      "bytes": 83294
+      "bytes": 300560,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAwAA4BaJQAAW6AF7YQewAAA/vnFT4j1TlJXXjTFtYsczPKLwKc3Mjt3h0pgjAuulvqc6CwKffqj8waB3jbM8oYw8+4xd9QjifRQfwAAAA=="
     },
     {
       "src": "/assets/works/lee-chowon/portfolio-006.webp",
-      "width": 1920,
-      "height": 1500,
+      "width": 3840,
+      "height": 3000,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_006.png",
       "originalWidth": 8000,
       "originalHeight": 6250,
       "originalBytes": 8056261,
-      "bytes": 165706
+      "bytes": 1207798,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAwAA4BaJZwAAlxDchMmZAAA/vfR+rr/u5qfqYKR1rj0uTK9yMaL/OJ/xdSq2FVARZ2q3SDF6GYqankNwAAA"
     },
     {
       "src": "/assets/works/lee-chowon/portfolio-007.webp",
-      "width": 1920,
-      "height": 1500,
+      "width": 3840,
+      "height": 3000,
       "sourceFile": "이초원_웹Work/이초원_포트폴리오/이초원_007.png",
       "originalWidth": 8000,
       "originalHeight": 6250,
       "originalBytes": 3701965,
-      "bytes": 77154
+      "bytes": 325870,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAwAgCdASoQAAwAA4BaJZQCdH8AFN72Zhv5AAD++chXGYb45T/04tq+ftT9gPgrqZ10A397vW8mpLAym6q8Dta9zaYNUy4RmNFxg5AAAAA="
     }
   ]
 }

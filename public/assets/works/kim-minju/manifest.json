@@ -2,13 +2,14 @@
   "artist": "김민주",
   "thumbnail": {
     "src": "/assets/works/kim-minju/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "김민주_웹work/김민주_썸네일/work_썸네일.png",
     "originalWidth": 1600,
     "originalHeight": 1167,
     "originalBytes": 4577831,
-    "bytes": 65098
+    "bytes": 410368,
+    "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4WAoAAAAQAAAADwAACwAAQUxQSBIAAAABD9D/iAiIBZP8pfeGENH/bAJWUDggRAAAAPABAJ0BKhAADAADgFoljAJ0ARAGz4xQYAD+8zVdwGJsMD768geBaGa9vJrUVuHLKS5PxPHRo+t/Q5aHVu5aBbs6tAAA"
   },
   "space": {
     "src": "/assets/works/kim-minju/space.webp",
@@ -18,148 +19,163 @@
     "originalWidth": 2600,
     "originalHeight": 1592,
     "originalBytes": 7553742,
-    "bytes": 137854
+    "bytes": 137854,
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4WAoAAAAQAAAADwAACQAAQUxQSBIAAAABD9D/iAiIBZP8pfeGENH/bABWUDggPAAAABACAJ0BKhAACgADgFoljAJ0APoZrLlJ2EAA/u7yvW1fNxyGQMpKsI5wIElixSfwwZ1vUouefjYpRXSgAA=="
   },
   "hero": {
     "src": "/assets/works/kim-minju/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "김민주_웹work/김민주_썸네일/상세페이지_썸네일.png",
     "originalWidth": 8000,
     "originalHeight": 4375,
     "originalBytes": 16559366,
-    "bytes": 261636
+    "bytes": 1428720,
+    "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJZQCdAD0UM3c50AA/u7zfhnaQpU9s9TUzAlQ7ZTMHjaYw8ToTpLam7rGMSqasTgAAA=="
   },
   "images": [
     {
       "src": "/assets/works/kim-minju/portfolio-001.webp",
-      "width": 1920,
-      "height": 1450,
+      "width": 3840,
+      "height": 2900,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-01.png",
       "originalWidth": 8000,
       "originalHeight": 6041,
       "originalBytes": 603951,
-      "bytes": 56604
+      "bytes": 168330,
+      "blurDataURL": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAwAQCdASoQAAwAA4BaJZQAA3AA/vOMsX/ghYlt4uAAAA=="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-002.webp",
-      "width": 1920,
-      "height": 1281,
+      "width": 3840,
+      "height": 2562,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-02.png",
       "originalWidth": 8000,
       "originalHeight": 5338,
       "originalBytes": 15138724,
-      "bytes": 104194
+      "bytes": 480010,
+      "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoQAAsAA4BaJZQAArI4nFdPYAD+MYdWtUjTQvcV5cBt3Bpe3QuBe7rl20+H6WYAAAA="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-003.webp",
-      "width": 1920,
-      "height": 1346,
+      "width": 3840,
+      "height": 2692,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-03.png",
       "originalWidth": 8000,
       "originalHeight": 5609,
       "originalBytes": 496940,
-      "bytes": 12482
+      "bytes": 47054,
+      "blurDataURL": "data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBoAAAAwAQCdASoQAAsAA4BaJZQAA3AA/vPCZeLgAA=="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-004.webp",
-      "width": 1920,
-      "height": 1355,
+      "width": 3840,
+      "height": 2709,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-04.png",
       "originalWidth": 8000,
       "originalHeight": 5644,
       "originalBytes": 3518034,
-      "bytes": 164600
+      "bytes": 640824,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAsAA4BaJZQAAurbpBUGVVgA/sqURWU17gHpgkUvakPhifPtsu2UNLoZ8QbGLvOanEdQVlMWzLv3pOdy3xaD/pZgAA=="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-005.webp",
-      "width": 1920,
-      "height": 1871,
+      "width": 3840,
+      "height": 3743,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-05.png",
       "originalWidth": 8000,
       "originalHeight": 7797,
       "originalBytes": 400546,
-      "bytes": 29120
+      "bytes": 96104,
+      "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACQAQCdASoQABAAA4BaJZQAAudZtgAA/vcAeLaML06WYAAA"
     },
     {
       "src": "/assets/works/kim-minju/portfolio-006.webp",
-      "width": 1920,
-      "height": 2473,
+      "width": 3840,
+      "height": 4946,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-06.png",
       "originalWidth": 8000,
       "originalHeight": 10305,
       "originalBytes": 11010936,
-      "bytes": 299910
+      "bytes": 1101944,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoMABAAA4BaJZQAAvo1Lzf4aUAA/uidu90uTlI24QjhbA2jKYZAUljr8nX8A/eoQGoJP+R/dOzVadLMAAA="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-007.webp",
-      "width": 1920,
-      "height": 1779,
+      "width": 3840,
+      "height": 3558,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-07.png",
       "originalWidth": 8000,
       "originalHeight": 7413,
       "originalBytes": 755578,
-      "bytes": 36284
+      "bytes": 120722,
+      "blurDataURL": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAACQAQCdASoQAA8AA4BaJZQAAudU2rAA/vIW4L/hhnQSX5bxcAA="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-008.webp",
-      "width": 1920,
-      "height": 1441,
+      "width": 3840,
+      "height": 2883,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-08.png",
       "originalWidth": 8000,
       "originalHeight": 6006,
       "originalBytes": 16772703,
-      "bytes": 251270
+      "bytes": 1326998,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAwAA4BaJZQAAp1ScyltAAD+iI6kSIC6YTAGsV1esM73CWuOCqPfuqJ0GM/QtnT/2Pt/kcJLmPJz2fkCiJiqv0BDDXZAAAA="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-009.webp",
-      "width": 1920,
-      "height": 1302,
+      "width": 3840,
+      "height": 2605,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-09.png",
       "originalWidth": 8000,
       "originalHeight": 5427,
       "originalBytes": 16481730,
-      "bytes": 114256
+      "bytes": 684174,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4WAoAAAAQAAAADwAACgAAQUxQSBEAAAABD9D/iAgIBJLQxx8hov+hBwBWUDggPAAAAPABAJ0BKhAACwADgFolnAACBRnPN3cOAAD+CObq6P011NOJ5kjiwTDVxIzaQWhSx7mkpYwr/VDbdzIAAA=="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-010.webp",
-      "width": 1920,
-      "height": 1475,
+      "width": 3840,
+      "height": 2950,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-10.png",
       "originalWidth": 8000,
       "originalHeight": 6146,
       "originalBytes": 14176962,
-      "bytes": 779744
+      "bytes": 3213728,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAwAA4BaJZQAAqH2YpXb7gD+6EWfHD+JcREQ4dkdt5PX2Hk43/aNxhV3IK1q6Sg5DPnWlmAAAA=="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-011.webp",
-      "width": 1920,
-      "height": 1280,
+      "width": 3840,
+      "height": 2560,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-11.png",
       "originalWidth": 8000,
       "originalHeight": 5334,
       "originalBytes": 35926712,
-      "bytes": 218712
+      "bytes": 1799042,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAsAA4BaJZQCdAYqh2w9U6xsAPzu1sHNHdbtl4TMnaKbXYyWnGFY3EuF4Linjs2aLjIS2PP1fTHp6qEJlxEaTKPsWKOFeiyAAA=="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-012.webp",
-      "width": 1920,
-      "height": 2149,
+      "width": 3840,
+      "height": 4297,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-12.png",
       "originalWidth": 8000,
       "originalHeight": 8953,
       "originalBytes": 15599797,
-      "bytes": 301202
+      "bytes": 1205292,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoOABAAA4BaJZwAApYfZnE4gAD+62cPEHtZWOMw25Oy0J46vd6oj4fTsaaw7d6htHClluW0eVoQ1cugtPQw7wFpQgA="
     },
     {
       "src": "/assets/works/kim-minju/portfolio-013.webp",
-      "width": 1920,
-      "height": 1537,
+      "width": 3840,
+      "height": 3075,
       "sourceFile": "김민주_웹work/김민주_상세페이지/웹팀포트폴리오-13.png",
       "originalWidth": 8000,
       "originalHeight": 6406,
       "originalBytes": 212591,
-      "bytes": 5702
+      "bytes": 22526,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAAQAAAADwAADAAAQUxQSBIAAAABD9D/iAiIBZP8pfeGENH/bANWUDggGgAAADABAJ0BKhAADQADgFollAADcAD+88Jl4uAA"
     }
   ]
 }

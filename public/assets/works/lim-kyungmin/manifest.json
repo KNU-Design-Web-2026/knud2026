@@ -2,13 +2,14 @@
   "artist": "임경민",
   "thumbnail": {
     "src": "/assets/works/lim-kyungmin/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "임경민_웹work/임경민_썸네일/임경민_work.png",
     "originalWidth": 1600,
     "originalHeight": 1167,
     "originalBytes": 36548,
-    "bytes": 13850
+    "bytes": 38508,
+    "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4WAoAAAAQAAAADwAACwAAQUxQSBIAAAABD9D/iAiIBZP8pfeGENH/bAJWUDggfAAAAJACAJ0BKhAADAADgFolsAJ0ugAQiJf7tDk6rIAAAP7jySTIg7SH1RQRHpdQMHCLVPTzdskobRHelIcxQyd8H1b7cZSbqTTbqC2z0LUtxnJnO4vsqbJVzKo46NP/5ayp38f8/yP+P+T67/yLRgwf6Ov/xWqy8hP7pyrAAAA="
   },
   "space": {
     "src": "/assets/works/lim-kyungmin/space.webp",
@@ -18,88 +19,97 @@
     "originalWidth": 2600,
     "originalHeight": 1592,
     "originalBytes": 63415,
-    "bytes": 22944
+    "bytes": 22944,
+    "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwAgCdASoQAAoAA4BaJbACdLoAfg6DT9qNjgAAAP7eDyiruRXPAUub9vPCr1FhrMkKNWIF8Gjco6JR3AJ98MSFZBZ+K6yDmJdMaTx/4DddgApLXT1WKr//HFof7f9ZRhFG3/pQz37O3X/4rw/3uwAA"
   },
   "hero": {
     "src": "/assets/works/lim-kyungmin/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "임경민_웹work/임경민_썸네일/임경민_상세.png",
     "originalWidth": 8000,
     "originalHeight": 4375,
     "originalBytes": 289178,
-    "bytes": 35240
+    "bytes": 100204,
+    "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoQAAkAA4BaJbACdLoAAwwGpRaoQAD+0p0FPyl4J9YC3rOX60LCN79jJs0l7IXmKE44tPV1JYVGrGwWhbFLTmuoJXVdA8b3YpYvtWusbDALFaQd4/8cFn3bMo2KeSb//xQ0Y1t2LT/iwaS9xfbQAAAA"
   },
   "images": [
     {
       "src": "/assets/works/lim-kyungmin/portfolio-001.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 3840,
+      "height": 4000,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_001.png",
       "originalWidth": 8000,
       "originalHeight": 8334,
       "originalBytes": 2813463,
-      "bytes": 92366
+      "bytes": 277014,
+      "blurDataURL": "data:image/webp;base64,UklGRrgAAABXRUJQVlA4WAoAAAAQAAAADgAADwAAQUxQSBMAAAABD9D/iAgIBJLR9hdLIaL/E9DEAFZQOCB+AAAA8AEAnQEqDwAQAAOAWiWwAnQA+XocLeYAAP7ZVgPOkfAylCvTZsLmGzLV8vY+uxMkGRT91FndP/FZM0N0SpY80IL9Uc/aHJB1gHLyzWL73P4h14UHdYs0Brdt3b9MN0XDrZgv0K9R7f+lOFAmQl//ItGDEvU2koAA1HPEFRAA"
     },
     {
       "src": "/assets/works/lim-kyungmin/portfolio-002.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 3840,
+      "height": 4000,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_002.png",
       "originalWidth": 8000,
       "originalHeight": 8334,
       "originalBytes": 2000467,
-      "bytes": 145326
+      "bytes": 393856,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoPABAAA4BaJQBdgMX61bUAfWtoZLAA/vCmf+5/7kb2w2c7U1utB2Zr5liCbev08K5cUmpjUYk/ySU22Z4H2ZCr0VnNCyC3ksDdPL74GC6CwsGGz6CDE0IQLlbOOeqn2GlcAA=="
     },
     {
       "src": "/assets/works/lim-kyungmin/portfolio-003.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 3840,
+      "height": 4000,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_003.png",
       "originalWidth": 8000,
       "originalHeight": 8334,
       "originalBytes": 839238,
-      "bytes": 76480
+      "bytes": 222912,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoPABAAA4BaJagC7AEPh9wx2eSeAAD+9mudij1QWMLgv6fMRls68lMWbwYMrjMczjnexCYLShOqAX1e5TaDM0wAe6onrTuDBgGAGIaYgc1vdIFy7KLdgAAA"
     },
     {
       "src": "/assets/works/lim-kyungmin/portfolio-004.webp",
-      "width": 1920,
-      "height": 2000,
+      "width": 3840,
+      "height": 4000,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_004.png",
       "originalWidth": 8000,
       "originalHeight": 8334,
       "originalBytes": 969022,
-      "bytes": 91846
+      "bytes": 253276,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoPABAAA4BaJQBdgBu0u5WQAAD+9z6a1dciyZ2uIgJhj40lP5N47HdzkBU79PDjOWCNU/Ua6n4I+0jmeM18PI7AFsL2NSlhDAkv7bXAAAA="
     },
     {
       "src": "/assets/works/lim-kyungmin/portfolio-005.webp",
-      "width": 1920,
-      "height": 2286,
+      "width": 3840,
+      "height": 4572,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_005.png",
       "originalWidth": 8000,
       "originalHeight": 9526,
       "originalBytes": 972517,
-      "bytes": 90658
+      "bytes": 259482,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoNABAAA4BaJbACdADp/bFlYwAA/u48CSILOU7oQOs+kGXzT6dHDHQeXGP/diZwXS+VR3g0Rrfs2ZKGQXwMEOGWUN2xOVEmDIuAAA=="
     },
     {
       "src": "/assets/works/lim-kyungmin/portfolio-006.webp",
-      "width": 1920,
-      "height": 2286,
+      "width": 3840,
+      "height": 4572,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_006.png",
       "originalWidth": 8000,
       "originalHeight": 9526,
       "originalBytes": 1248022,
-      "bytes": 113538
+      "bytes": 332770,
+      "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAQCdASoNABAAA4BaJbACdACQytB8AAD+Fm0Rlvrg/1YJtlUmVkzAWDpTqd/wXbo/pksoOeiESbvRuy81K005jy/tlVj7e8FL4eMzJqRuIxydsWN/6+8oKPQxf+Ov0OhLX+g4M53gUNyeQFwAAA=="
     },
     {
       "src": "/assets/works/lim-kyungmin/portfolio-007.webp",
-      "width": 1920,
-      "height": 667,
+      "width": 3840,
+      "height": 1334,
       "sourceFile": "임경민_웹work/임경민_포트폴리오/임경민_007.png",
       "originalWidth": 8000,
       "originalHeight": 2780,
       "originalBytes": 118105,
-      "bytes": 9240
+      "bytes": 29194,
+      "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAQCdASoQAAYAA4BaJZwAAxedgSugAP73KrZzr6vmEvVmuJ4AAAAA"
     }
   ]
 }

@@ -2,13 +2,14 @@
   "artist": "김연수",
   "thumbnail": {
     "src": "/assets/works/kim-yeonsu/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "김연수_웹work/김연수_썸네일/김연수_Work.png",
     "originalWidth": 1601,
     "originalHeight": 1167,
     "originalBytes": 4058859,
-    "bytes": 140168
+    "bytes": 885754,
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAACwAAQUxQSBEAAAABD9D/iAgIZJPdPPwQIvofugBWUDggYgAAABACAJ0BKhAADAADgFolkAJ0Bi/9P47WsQAA/rD/086D1csD1K72nkKREhmWcVeg+tI8se2Fu0QdJ0MvzfoHNvjfg9nAIFsiO8JjpobD9sa618kpWr0dF3qAEHYYTBx1ofwA"
   },
   "space": {
     "src": "/assets/works/kim-yeonsu/space.webp",
@@ -18,17 +19,19 @@
     "originalWidth": 2601,
     "originalHeight": 1592,
     "originalBytes": 4899103,
-    "bytes": 345654
+    "bytes": 345654,
+    "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4WAoAAAAQAAAADwAACQAAQUxQSBYAAAABF9D/iAgQZNsMbRJDO/QNIvofgH81VlA4IFwAAADwAQCdASoQAAoAA4BaJZACdAEHNkfAVSAA/mFkXxPRt37PvMs2Fn/c2d7AiDROVTADaWb2Tt5XTOD4ajNCOL9xVl+KHeTmybSNHi9ueC23rMMrPAdJdLmsMbFAAA=="
   },
   "hero": {
     "src": "/assets/works/kim-yeonsu/hero.webp",
-    "width": 1920,
-    "height": 1050,
+    "width": 3840,
+    "height": 2100,
     "sourceFile": "김연수_웹work/김연수_썸네일/김연수_상세.png",
     "originalWidth": 8001,
     "originalHeight": 4376,
     "originalBytes": 6814026,
-    "bytes": 772294
+    "bytes": 3542190,
+    "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSBEAAAABD9D/iAgIBJL2B18hov+RBwBWUDggUgAAAPABAJ0BKhAACQADgFolkAJ0AL2dx5VAAAD82Ln4ERBqxY0vCPJb47pP5Ve5mwepleg0S5me9WW4rxOxAO2hTTuQvtrROBzb5N3uWir71r4AAAA="
   },
   "images": [
     {
@@ -39,7 +42,8 @@
       "originalWidth": 1920,
       "originalHeight": 2501,
       "originalBytes": 11081481,
-      "bytes": 1758730
+      "bytes": 2376544,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoMABAAA4BaJYwC7AEO9Lk3//9QAP7nSJV3xrWuAfUxU2dq+qEIx8Td+lumOt4vI4qry76M4k0iDfi9tXf+j2cCzsQ4AAAA"
     },
     {
       "src": "/assets/works/kim-yeonsu/portfolio-002.webp",
@@ -49,7 +53,8 @@
       "originalWidth": 1920,
       "originalHeight": 2501,
       "originalBytes": 2483583,
-      "bytes": 363698
+      "bytes": 532802,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoMABAAA4BaJQBdgCK57IJ1nAD+9+obp9Tdaa7sZbpw89OgJeZPPty0WG1KspChk3roiKzuKdfnTf+AtCdG4wAA"
     },
     {
       "src": "/assets/works/kim-yeonsu/portfolio-003.webp",
@@ -59,7 +64,8 @@
       "originalWidth": 1920,
       "originalHeight": 2501,
       "originalBytes": 4350119,
-      "bytes": 543842
+      "bytes": 805170,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoMABAAA4BaJZACdAD0SgifnPQAAP7okAjzIOPgc+AunzOd51azLgy7ZiQS4xAj3PkhktId6FfyFE0iId9Ht/8+c1F5R/GKnj13zHesAAA="
     },
     {
       "src": "/assets/works/kim-yeonsu/portfolio-004.webp",
@@ -69,7 +75,8 @@
       "originalWidth": 1920,
       "originalHeight": 2369,
       "originalBytes": 6824819,
-      "bytes": 1196660
+      "bytes": 1612468,
+      "blurDataURL": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4WAoAAAAQAAAADAAADwAAQUxQSBMAAAABD9D/iAgICQhP/F8pexDR/2QmAFZQOCBYAAAAUAIAnQEqDQAQAAOAWiWMAnR/ABcYAT7EA0cAAP7iGltunR1J0OPN8/KDlc3w9tTpKpT7Vr1lJckPeKgMb8GbVQ3a9sxyy6mhPhyCKlvaEcvH4/LQBvgAAA=="
     }
   ]
 }

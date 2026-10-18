@@ -2,13 +2,14 @@
   "artist": "조장원",
   "thumbnail": {
     "src": "/assets/works/jo-jangwon/thumbnail.webp",
-    "width": 768,
-    "height": 560,
+    "width": 1536,
+    "height": 1120,
     "sourceFile": "조장원_웹work/조장원_썸네일/조장원_Work.png",
     "originalWidth": 1600,
     "originalHeight": 1167,
     "originalBytes": 2713358,
-    "bytes": 139286
+    "bytes": 640984,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAwAA4BaJZQAD4hQg7w/1KTLwAD+9NGChCGVneA3vcM4jdPHhD0/Fo5EL5FKpjfbI5ZCalPP3pM9g3NZYzkfUm261w403m+sATxwXbGLCAAA"
   },
   "space": {
     "src": "/assets/works/jo-jangwon/space.webp",
@@ -18,78 +19,86 @@
     "originalWidth": 2600,
     "originalHeight": 1592,
     "originalBytes": 3575523,
-    "bytes": 283264
+    "bytes": 283264,
+    "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAoAA4BaJYwAAu1D3BX+AAD+8mN2HIfLHeACx5zr0xCx0SKbHKAmuCo3iNU0hWSezjg37KtziCPBjgHLiC+5YcVwDHT4QBCLvrG+gJItZFxqznjAAA=="
   },
   "hero": {
     "src": "/assets/works/jo-jangwon/hero.webp",
-    "width": 1920,
-    "height": 1049,
+    "width": 3840,
+    "height": 2099,
     "sourceFile": "조장원_웹work/조장원_썸네일/조장원_상세.png",
     "originalWidth": 8005,
     "originalHeight": 4375,
     "originalBytes": 5108699,
-    "bytes": 488080
+    "bytes": 2038148,
+    "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSBEAAAABD9D/iAgIBJLQt18hov+hBwBWUDggVAAAAPABAJ0BKhAACQADgFollALsAQ2mnQExkAD+8BqX7lsXZcEQqcq3hfs9kkJRU5lts8ETBnHL2c+zp+TB4oqO5jR7SbLfYcK8YQyPCXY/Tg5zUaO8AA=="
   },
   "images": [
     {
       "src": "/assets/works/jo-jangwon/portfolio-001.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_001.png",
       "originalWidth": 8000,
       "originalHeight": 10417,
       "originalBytes": 6462491,
-      "bytes": 759882
+      "bytes": 3162900,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSBoAAAABD0CQbePPvO3XiIg4EBIQHvi/VvYgov/JTFZQOCA0AAAAkAEAnQEqDAAQAAOAWiUAToAPBXr4AP2KzEP5R7pcKV92kvenS2eWQjn2yGuLd+8TGD0AAA=="
     },
     {
       "src": "/assets/works/jo-jangwon/portfolio-002.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5001,
       "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_002.png",
       "originalWidth": 8000,
       "originalHeight": 10418,
       "originalBytes": 2695282,
-      "bytes": 103468
+      "bytes": 363200,
+      "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSB0AAAABF6AQQADE37nRiIh4QJBtM7kjTHKoJ4jof+o4VgBWUDggcAAAABACAJ0BKgwAEAADgFolnAAPjAnH3TmF7AAA/ugz/Gx+7m+/WFLZAL5RzMNknyuei7J1NOTpXXfHdQHxxTdGhv5t8ol8N7X5Yq9ZawsQDwMEpZG3kO+h8/d9oI5r28PMUA6+9TnVsZ5eTd7ct4uAAAA="
     },
     {
       "src": "/assets/works/jo-jangwon/portfolio-003.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5001,
       "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_003.png",
       "originalWidth": 8000,
       "originalHeight": 10418,
       "originalBytes": 973598,
-      "bytes": 145798
+      "bytes": 411592,
+      "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSBwAAAABF6AQQADE37nRiIh4QJBtc8lKDvUEEf1P7FgBVlA4IEQAAADwAQCdASoMABAAA4BaJZwAAu1/IA00quAA/vTT4HxQlc0Q9BVeTDwkNDo310PF6yKZjGIQK5FCUpzasvIHo1J3i4AAAA=="
     },
     {
       "src": "/assets/works/jo-jangwon/portfolio-004.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_004.png",
       "originalWidth": 8001,
       "originalHeight": 10418,
       "originalBytes": 4070428,
-      "bytes": 366948
+      "bytes": 1669462,
+      "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSBsAAAABF6AQQADE37nRiIh4QJBts/ubFPUEEf3PdQUAVlA4IFIAAADwAQCdASoMABAAA4BaJZQCdAD0fteOHgAA/rybHAfv9c1/cGrSWQE70VXcQ0yzFSklzHJuS0KV//6ftU2OWKPjvqEYeRiOaVp8PlVZMKOXQAAA"
     },
     {
       "src": "/assets/works/jo-jangwon/portfolio-005.webp",
-      "width": 1920,
-      "height": 2500,
+      "width": 3840,
+      "height": 5000,
       "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_005.png",
       "originalWidth": 8001,
       "originalHeight": 10417,
       "originalBytes": 4548872,
-      "bytes": 556074
+      "bytes": 2470534,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoMABAAA4BaJZwAAv3Be/J9vfSwAPizUw686fdirpU9HqhujY+TiGSlFSjTwOwD2EZu+D4fuyEuuLAvgTI4Mrmk5m77vlI2/68+4d0l6KNoKOaZScYub6FAAAA="
     },
     {
       "src": "/assets/works/jo-jangwon/portfolio-006.webp",
-      "width": 1920,
-      "height": 1052,
+      "width": 3840,
+      "height": 2104,
       "sourceFile": "조장원_웹work/조장원_포트폴리오/조장원_006.png",
       "originalWidth": 8001,
       "originalHeight": 4384,
       "originalBytes": 349215,
-      "bytes": 32802
+      "bytes": 104510,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSBMAAAABD/D8/4iIIBZM8pfemUJE/7MFAFZQOCA6AAAAsAEAnQEqEAAJAAOAWiWUAALdChF+EAD+9hEWNIIHmM6rndFQSufJ5Fm8c2VvyF1Osk6X4Ir0DpZgAA=="
     }
   ]
 }

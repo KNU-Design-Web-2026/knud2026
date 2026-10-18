@@ -8,7 +8,8 @@
     "originalWidth": 384,
     "originalHeight": 280,
     "originalBytes": 139322,
-    "bytes": 21948
+    "bytes": 28880,
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoQAAwAA4BaJbACdDBLyIhGg413uhAA/ufuHvfGMVY8j+RzhApPdMAX46QePdOvUMFv1gaBhhZkm3FoJ+YFY3BDhv/fmbgJUbzUocD0tF5XHdYDl0tbElS2jPrpvnHeBr0AAA=="
   },
   "space": {
     "src": "/assets/works/gong-yewon/space.webp",
@@ -18,7 +19,8 @@
     "originalWidth": 624,
     "originalHeight": 382,
     "originalBytes": 259872,
-    "bytes": 35488
+    "bytes": 35488,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAwAgCdASoQAAoAA4BaJYgCdAYubFce6s1cAAD+4KwcKSBjSA3OaPHt5fWVOa4NO7pjesLu6Cb0VHWpIWELWnGxDZIJQVS5ybq7lAuy3VeneehMI6BmznPTag4JZsPDxpCxxdonAAA="
   },
   "hero": {
     "src": "/assets/works/gong-yewon/hero.webp",
@@ -28,88 +30,97 @@
     "originalWidth": 1920,
     "originalHeight": 1050,
     "originalBytes": 1639434,
-    "bytes": 158020
+    "bytes": 320326,
+    "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoQAAkAA4BaJQBOj+B7ABEVjvsutAAA/tYaWnDTVn5gUzn6alOEotmEzmpelAlMHHbgl0jXwHnvyPTcSGoFgJjkcjdbunmjz6vmfxep1KZzAV7hWXxl4AAA"
   },
   "images": [
     {
       "src": "/assets/works/gong-yewon/portfolio-001.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_001.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 2420865,
-      "bytes": 188324
+      "bytes": 294832,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoMABAAA4BaJaACdAEPPz+VG6AA99jmwEGUCDFOfBEMI0oUVTsG4ZGusHS8iB8YTvZw8F0M+itazfPwKOM3fdbFFP7D6e95PqHna0Yyf9LjccgA"
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-002.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_002.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 3332875,
-      "bytes": 298390
+      "bytes": 517048,
+      "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAwAgCdASoMABAAA4BaJZACdAYwnwlXpahLQAD+h7f2+p55b3+vSa0/Z1s/c2HiES7ViV+STmjOVsAevSveHxDrLD95I1mU+Jg5MdQ6IvPyIhANssD+nf4qL6aSk+LPjuhr2rkYJWfEfWzx0Sa6GAAA"
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-003.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_003.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 2639255,
-      "bytes": 268392
+      "bytes": 430886,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoMABAAA4BaJZQAAud13VlYAAD+mBob+Qtm3hC5fUyRFpYBGTyjuA0wBBNQLwRuCuy4DBcIFA0gF8jGcb1wcgrlCNuq52YL062YX7EAAAA="
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-004.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_004.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 4381688,
-      "bytes": 491868
+      "bytes": 792466,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAQCdASoMABAAA4BaJYgC7ACUhd71sToA/u0PDEvMNInwQNXXFA7VO+ddPFUuAtQLTeEt6oSpaURYrp+m8QOIGT80lT1/5abnw5I4YaWyvrAt+3qYeU2mnqvCNySCGL3YAAAA"
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-005.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_005.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 3099231,
-      "bytes": 256660
+      "bytes": 437686,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoMABAAA4BaJYwC7AEDonixXVM1gAD+3fqmqL06gMyg0F/JtzZDLjJDKOZ1sEcAqsHjfPI8UvMbFuP1BzprQhjlpo/d6I4eRQvWPkA/kmiAAA=="
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-006.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_006.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 3150589,
-      "bytes": 248028
+      "bytes": 452668,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoMABAAA4BaJQBYdhh4PZfQpEQA/t2A2hBhNoR6zliazjGCYdVFMCUkO17iIzMpg9EeM3nCt77VJ93mr5bFgj8PurvDaaIA5MKC8RO0wF6I1lAdutYJxneApYAAAA=="
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-007.webp",
-      "width": 1920,
-      "height": 2499,
+      "width": 1921,
+      "height": 2500,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_007.png",
       "originalWidth": 1921,
       "originalHeight": 2500,
       "originalBytes": 2733635,
-      "bytes": 326442
+      "bytes": 504518,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoMABAAA4BaJZAAAudmVW/8r7gAAPyP/f7FsixfLS556H1db5Rw4czVIJ7fj/CgUnvL4Xc7pg+ZqzlhDXRUQaHZZkCk/7tstXGtXSmqAAA="
     },
     {
       "src": "/assets/works/gong-yewon/portfolio-008.webp",
-      "width": 1920,
+      "width": 1921,
       "height": 681,
       "sourceFile": "공예원_웹work/공예원_포트폴리오/공예원_008.png",
       "originalWidth": 1921,
       "originalHeight": 681,
       "originalBytes": 6776,
-      "bytes": 2600
+      "bytes": 2532,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4WAoAAAAQAAAADwAABQAAQUxQSBMAAAABD3D//4iIIBZM8pfeF0NE/7MBAFZQOCAcAAAAkAEAnQEqEAAGAAOAWiWkAALnWbYAAP74RwAAAA=="
     }
   ]
 }
