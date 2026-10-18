@@ -11,6 +11,7 @@ export type WorkDetail = {
   category: string;
   email: string;
   heroSrc: string;
+  heroBlurDataURL?: string;
   instagram: string | null;
   storyEn: string;
   storyKo: string;
@@ -53,6 +54,7 @@ export const WORK_DETAILS: Readonly<Record<string, WorkDetail>> = Object.fromEnt
       }),
       ...(submitted && {
         heroSrc: submitted.hero.src,
+        heroBlurDataURL: submitted.hero.blurDataURL,
         heroSize: { width: submitted.hero.width, height: submitted.hero.height },
         images: submitted.images,
         storyKo: "",
