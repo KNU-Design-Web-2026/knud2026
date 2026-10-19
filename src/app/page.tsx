@@ -1,10 +1,12 @@
+import { connection } from "next/server";
 import { MainArtwork } from "@/components/main/main-artwork";
 import { MainCursor } from "@/components/main/main-cursor";
 import { SprayCanvas } from "@/components/main/spray-canvas";
 import { ComingSoon } from "@/components/maintenance/coming-soon";
 import { isMaintenanceMode } from "@/lib/maintenance-mode";
 
-export default function HomePage() {
+export default async function HomePage() {
+  await connection();
   if (isMaintenanceMode()) {
     return <ComingSoon />;
   }

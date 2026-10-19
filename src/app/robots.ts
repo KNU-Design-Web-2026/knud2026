@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
+import { connection } from "next/server";
 import { isMaintenanceMode } from "@/lib/maintenance-mode";
 
 const SITE_URL = "https://www.2026-knud-graduation.com";
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  await connection();
   if (isMaintenanceMode()) {
     return { rules: { userAgent: "*", allow: "/" }, host: SITE_URL };
   }
