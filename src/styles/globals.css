@@ -3946,8 +3946,8 @@
 
 /* Profile reading scale: preserve the artwork and mobile contact-fit rules above. */
 .profile-detail--compact {
-  --profile-reading-name-ko: clamp(3.5625rem, calc(3.333333vw + 0.75rem), 4.75rem);
-  --profile-reading-name-en: clamp(2.25rem, calc(1.578947vw + 0.917763rem), 2.8125rem);
+  --profile-reading-name-ko: clamp(3rem, calc(2.807018vw + 0.631579rem), 4rem);
+  --profile-reading-name-en: clamp(1.875rem, calc(1.403509vw + 0.690789rem), 2.375rem);
   --profile-reading-body: 1.375rem;
   --profile-reading-meta: 1.375rem;
   --profile-reading-tags: 1.1875rem;
@@ -4000,8 +4000,8 @@
 
 @media (max-width: 1020px) {
   .profile-detail--compact {
-    --profile-reading-name-ko: 2.9375rem;
-    --profile-reading-name-en: 1.75rem;
+    --profile-reading-name-ko: 2.5rem;
+    --profile-reading-name-en: 1.5rem;
     --profile-reading-body: 1.25rem;
     --profile-reading-meta: 1.1875rem;
     --profile-reading-tags: 1.0625rem;
@@ -4016,8 +4016,8 @@
 
 @media (max-width: 600px) {
   .profile-detail--compact {
-    --profile-reading-name-ko: 1.9375rem;
-    --profile-reading-name-en: 1.3125rem;
+    --profile-reading-name-ko: 1.75rem;
+    --profile-reading-name-en: 1.1875rem;
     --profile-reading-body: 0.875rem;
     --profile-reading-heading: 1.3125rem;
     --profile-reading-interview: 0.875rem;
@@ -4026,8 +4026,8 @@
 
 @media (max-width: 460px) {
   .profile-detail--compact {
-    --profile-reading-name-ko: 1.6875rem;
-    --profile-reading-name-en: 1.1875rem;
+    --profile-reading-name-ko: 1.5rem;
+    --profile-reading-name-en: 1.0625rem;
     --profile-reading-heading: 1.1875rem;
   }
 }
