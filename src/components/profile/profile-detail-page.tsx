@@ -61,7 +61,7 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
             <div className="profile-detail__interview-list flex flex-col gap-[2.5rem]">
               {detail.interview.length === 0 && <p className="text-[1.375rem]">인터뷰 준비 중</p>}
               {detail.interview.map((item) => (
-                <article className="profile-detail__interview-item grid grid-cols-2 gap-0 text-[1.375rem] leading-[1.3] tracking-[-0.048px] text-[#050505]" key={item.question}>
+                <article className="profile-detail__interview-item grid grid-cols-2 gap-0 text-[1.25rem] leading-[1.5] tracking-[-0.048px] text-[#050505]" key={item.question}>
                   <h3 className="font-bold">{item.question}</h3>
                   <p>{item.answer}</p>
                 </article>

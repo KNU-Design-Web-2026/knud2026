@@ -1118,7 +1118,7 @@
 
   .profile-detail__interview-item {
     column-gap: 0;
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     row-gap: 1.875rem;
   }
 
@@ -1213,7 +1213,7 @@
 
   .profile-detail__interview-item {
     column-gap: clamp(0rem, calc(13.333vw - 11.25rem), 4.75rem);
-    font-size: clamp(1.375rem, calc(0.351vw + 1.204rem), 1.5rem);
+    font-size: 1.25rem;
     row-gap: clamp(1.875rem, calc(8.07vw - 4.938rem), 4.75rem);
   }
 
@@ -1310,6 +1310,7 @@
   .profile-detail__interview-item {
     display: flex;
     flex-direction: column;
+    font-size: 1rem;
     gap: 1.625rem;
   }
 
@@ -1410,6 +1411,7 @@
   }
 
   .profile-detail__interview-item {
+    font-size: 0.875rem;
     gap: 1.25rem;
   }
 
