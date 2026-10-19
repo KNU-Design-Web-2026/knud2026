@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { connection } from "next/server";
 import type { PropsWithChildren } from "react";
 import { SiteCursor } from "@/components/layout/site-cursor";
 import { QaRouteBridge } from "@/components/layout/qa-route-bridge";
@@ -15,7 +16,7 @@ const pretendard = localFont({
   weight: "45 920",
 });
 
-export const metadata: Metadata = {
+const siteMetadata: Metadata = {
   metadataBase: new URL("https://www.2026-knud-graduation.com"),
   title: {
     default: "2026 경북대학교 디자인학과 졸업 전시회 : IGNITE",
@@ -42,10 +43,19 @@ export const metadata: Metadata = {
     description: "잠자는 사자가 깨어난 순간 — 제42회 경북대학교 디자인학과 졸업전시회",
     images: ["/assets/og/knud-ignite-blue.png"],
   },
-  robots: isMaintenanceMode() ? { index: false, follow: false } : undefined,
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export async function generateMetadata(): Promise<Metadata> {
+  await connection();
+  return {
+    ...siteMetadata,
+    robots: isMaintenanceMode() ? { index: false, follow: false } : { index: true, follow: true },
+  };
+}
+
+export default async function RootLayout({ children }: PropsWithChildren) {
+  // The header and holding page must not be frozen into a pre-opening build.
+  await connection();
   const maintenanceMode = isMaintenanceMode();
 
   return (

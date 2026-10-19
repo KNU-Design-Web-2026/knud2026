@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
+import { connection } from "next/server";
 import { PROFILE_DETAILS } from "@/data/profile-details";
 import { WORK_DETAILS } from "@/data/work-details";
 import { isMaintenanceMode } from "@/lib/maintenance-mode";
 
 const SITE_URL = "https://www.2026-knud-graduation.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  await connection();
   if (isMaintenanceMode()) {
     return [{ url: SITE_URL }];
   }
