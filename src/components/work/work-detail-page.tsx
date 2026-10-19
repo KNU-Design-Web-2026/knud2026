@@ -57,14 +57,16 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
       </div>
 
       {detail.images ? <section aria-label={`${detail.title} 상세 작품 이미지`} className="work-detail__portfolio">
-        {detail.images.map((image, index) => <Image
-          key={image.src}
+        {detail.images.map((image, index) => <picture className="block" key={image.src}>
+          {image.stillSrc && <source media="(prefers-reduced-motion: reduce)" srcSet={image.stillSrc} />}
+          <Image
           alt={`${detail.title} — ${detail.artistKo} 작품 상세 ${index + 1}`}
           src={image.src} width={image.width} height={image.height}
+          unoptimized={image.animated}
           placeholder={image.blurDataURL ? "blur" : "empty"} blurDataURL={image.blurDataURL}
           sizes="100vw" quality={95} loading="lazy" decoding="async"
           className="block h-auto w-full"
-        />)}
+        /></picture>)}
       </section> : <div aria-label="추가 프로젝트 이미지 영역" className="work-detail__additional-artwork" />}
       <SiteFooter />
     </article>
