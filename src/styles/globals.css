@@ -3944,6 +3944,94 @@
   }
 }
 
+/* Profile reading scale: preserve the artwork and mobile contact-fit rules above. */
+.profile-detail--compact {
+  --profile-reading-name-ko: clamp(3.5625rem, calc(3.333333vw + 0.75rem), 4.75rem);
+  --profile-reading-name-en: clamp(2.25rem, calc(1.578947vw + 0.917763rem), 2.8125rem);
+  --profile-reading-body: 1.375rem;
+  --profile-reading-meta: 1.375rem;
+  --profile-reading-tags: 1.1875rem;
+  --profile-reading-heading: clamp(2.375rem, calc(1.052632vw + 1.486842rem), 2.75rem);
+  --profile-reading-interview: 1.1875rem;
+}
+
+.profile-detail--compact .profile-detail__name-ko {
+  font-size: var(--profile-reading-name-ko);
+}
+
+.profile-detail--compact .profile-detail__name-en {
+  font-size: var(--profile-reading-name-en);
+}
+
+.profile-detail--compact .profile-detail__introduction {
+  font-size: var(--profile-reading-body);
+  line-height: 1.5;
+  max-width: 75%;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.profile-detail--compact .profile-detail__section-heading {
+  font-size: var(--profile-reading-heading);
+}
+
+.profile-detail--compact .profile-detail__interview-item {
+  font-size: var(--profile-reading-interview);
+  line-height: 1.5;
+}
+
+.profile-detail--compact .profile-work-preview__title {
+  font-size: clamp(1.4375rem, 2.96875vw, 3.5625rem);
+}
+
+.profile-detail--compact .profile-work-preview__artist {
+  font-size: clamp(0.9375rem, 1.1875vw, 1.4375rem);
+}
+
+@media (min-width: 600.0625px) {
+  .profile-detail--compact .profile-detail__meta {
+    font-size: var(--profile-reading-meta);
+  }
+
+  .profile-detail--compact .profile-detail__tags {
+    font-size: var(--profile-reading-tags);
+  }
+}
+
+@media (max-width: 1020px) {
+  .profile-detail--compact {
+    --profile-reading-name-ko: 2.9375rem;
+    --profile-reading-name-en: 1.75rem;
+    --profile-reading-body: 1.25rem;
+    --profile-reading-meta: 1.1875rem;
+    --profile-reading-tags: 1.0625rem;
+    --profile-reading-heading: 1.75rem;
+    --profile-reading-interview: 1rem;
+  }
+
+  .profile-detail--compact .profile-detail__introduction {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-detail--compact {
+    --profile-reading-name-ko: 1.9375rem;
+    --profile-reading-name-en: 1.3125rem;
+    --profile-reading-body: 0.875rem;
+    --profile-reading-heading: 1.3125rem;
+    --profile-reading-interview: 0.875rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .profile-detail--compact {
+    --profile-reading-name-ko: 1.6875rem;
+    --profile-reading-name-en: 1.1875rem;
+    --profile-reading-heading: 1.1875rem;
+  }
+}
+
 /* Compact English names on mobile; preserve Korean names and a single artist row. */
 @media (max-width: 600px) {
   .work-card__artists {
