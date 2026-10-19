@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SiteFooter } from "@/components/layout/site-footer";
 import type { WorkDetail } from "@/data/work-details";
+import { getWorkImagePlaceholder } from "@/lib/work-image-placeholder";
 
 type WorkDetailPageProps = {
   detail: WorkDetail;
@@ -15,8 +16,7 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
           className="object-cover"
           fill
           quality={95}
-          placeholder={detail.heroBlurDataURL ? "blur" : "empty"}
-          blurDataURL={detail.heroBlurDataURL}
+          placeholder={getWorkImagePlaceholder(detail.heroBlurDataURL)}
           priority
           sizes="100vw"
           src={detail.heroSrc}
@@ -57,14 +57,16 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
       </div>
 
       {detail.images ? <section aria-label={`${detail.title} 상세 작품 이미지`} className="work-detail__portfolio">
-        {detail.images.map((image, index) => <Image
-          key={image.src}
+        {detail.images.map((image, index) => <picture className="block" key={image.src}>
+          {image.stillSrc && <source media="(prefers-reduced-motion: reduce)" srcSet={image.stillSrc} />}
+          <Image
           alt={`${detail.title} — ${detail.artistKo} 작품 상세 ${index + 1}`}
           src={image.src} width={image.width} height={image.height}
-          placeholder={image.blurDataURL ? "blur" : "empty"} blurDataURL={image.blurDataURL}
+          unoptimized={image.animated}
+          placeholder={getWorkImagePlaceholder(image.blurDataURL)}
           sizes="100vw" quality={95} loading="lazy" decoding="async"
           className="block h-auto w-full"
-        />)}
+        /></picture>)}
       </section> : <div aria-label="추가 프로젝트 이미지 영역" className="work-detail__additional-artwork" />}
       <SiteFooter />
     </article>

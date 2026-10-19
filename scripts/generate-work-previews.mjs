@@ -21,7 +21,4 @@ for (const dir of await readdir(root)) {
   }
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 }
-// This artist has approval for the Work thumbnail only.
-const blurDataURL = await createWorkImagePreview(path.join(root, "lee-nagyeong/thumbnail.webp"));
-await writeFile(path.join(root, "lee-nagyeong/thumbnail-preview.json"), `${JSON.stringify({ blurDataURL }, null, 2)}\n`);
-console.log(JSON.stringify({ count: count + 1, dataURLBytes: bytes + Buffer.byteLength(blurDataURL) }));
+console.log(JSON.stringify({ count, dataURLBytes: bytes }));

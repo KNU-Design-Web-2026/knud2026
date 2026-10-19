@@ -61,6 +61,16 @@ test("시트의 긴 문장은 글자 수 제한 때문에 잘리지 않는다", 
   assert.ok(PROFILE_DETAILS["5"].interview[1].answer.length > 200);
 });
 
+test("공동 작가 두 사람의 프로필 Work는 같은 공동 작품 상세로 이동한다", () => {
+  for (const name of ["박규리", "이다혜"]) {
+    const detail = Object.values(PROFILE_DETAILS).find(item => item.nameKo === name);
+    const html = renderToStaticMarkup(React.createElement(ProfileDetailPage, { detail }));
+    assert.match(html, /href="\/work\/9"/);
+    assert.match(html, /park-gyuri-lee-dahye%2Fhero\.webp/);
+    assert.doesNotMatch(html, /작품 이미지는 준비 중입니다/);
+  }
+});
+
 test("20개 상세 경로를 빌드 시 미리 생성한다", async () => {
   const route = await import("./[id]/page.tsx");
   assert.equal(typeof route.generateStaticParams, "function");

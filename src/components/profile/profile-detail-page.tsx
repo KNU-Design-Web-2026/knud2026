@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import type { ProfileDetail } from "@/data/profile-details";
 import { WORK_ITEMS } from "@/data/work-items";
 import { SUBMITTED_WORKS } from "@/data/submitted-works";
+import { getWorkImagePlaceholder } from "@/lib/work-image-placeholder";
 
 type ProfileDetailPageProps = {
   detail: ProfileDetail;
@@ -20,8 +21,8 @@ function SectionTitle({ children, id }: { children: string; id: string }) {
 }
 
 export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
-  const work = WORK_ITEMS.find((item) => item.artistKo === detail.nameKo);
-  const submitted = SUBMITTED_WORKS[detail.nameKo];
+  const work = WORK_ITEMS.find((item) => item.artistKo.split(" & ").includes(detail.nameKo));
+  const submitted = work ? SUBMITTED_WORKS[work.artistKo] : undefined;
   return (
     <section aria-labelledby="profile-detail-title" className="profile-detail bg-white pt-[5rem]" data-contact-layout={detail.behance || detail.instagram ? "social" : "mail-only"}>
       <PageContainer className="profile-detail__container">
@@ -61,7 +62,7 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
             <div className="profile-detail__interview-list flex flex-col gap-[2.5rem]">
               {detail.interview.length === 0 && <p className="text-[1.375rem]">인터뷰 준비 중</p>}
               {detail.interview.map((item) => (
-                <article className="profile-detail__interview-item grid grid-cols-2 gap-0 text-[1.375rem] leading-[1.3] tracking-[-0.048px] text-[#050505]" key={item.question}>
+                <article className="profile-detail__interview-item grid grid-cols-2 gap-0 text-[1.25rem] leading-[1.5] tracking-[-0.048px] text-[#050505]" key={item.question}>
                   <h3 className="font-bold">{item.question}</h3>
                   <p>{item.answer}</p>
                 </article>
@@ -75,7 +76,7 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
               {work && submitted ? <Link className="profile-work-preview" href={`/work/${work.id}`} aria-label={`${detail.nameKo} ${detail.projectName} 작품 보기`}>
                 <Image alt={`${detail.projectName} 작품 대표 이미지`} src={submitted.hero.src}
                   quality={95}
-                  placeholder={submitted.hero.blurDataURL ? "blur" : "empty"} blurDataURL={submitted.hero.blurDataURL}
+                  placeholder={getWorkImagePlaceholder(submitted.hero.blurDataURL)}
                   width={submitted.hero.width} height={submitted.hero.height}
                   sizes="(max-width: 600px) 100vw, 80vw" className="block h-auto w-full" />
                 <div className="profile-work-preview__overlay">
