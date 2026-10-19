@@ -93,7 +93,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   }, [isMenuOpen]);
 
   return (
-    <div className={`h-[var(--header-height)] ${spacerBackgroundClass}`}>
+    <div className={`h-[var(--header-height)] ${spacerBackgroundClass}`} data-clarity-unmask="true">
       <header className={`fixed inset-x-0 top-0 z-50 h-[var(--header-height)] bg-black text-white transition-opacity duration-220 ease-out ${isHidden ? "pointer-events-none opacity-0" : "opacity-100"}`}>
         <PageContainer className="site-header__container flex h-full items-center justify-between gap-[clamp(0.5rem,2.35vw,2rem)]">
         <Link className="site-header__brand flex min-w-0 items-center gap-[var(--header-brand-gap)]" href="/" aria-label="KNUD 졸업전시회 메인으로 이동">

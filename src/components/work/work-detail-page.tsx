@@ -9,7 +9,7 @@ type WorkDetailPageProps = {
 
 export function WorkDetailPage({ detail }: WorkDetailPageProps) {
   return (
-    <article className="work-detail bg-white" data-submitted={Boolean(detail.images)} data-introduction={Boolean(detail.hasSubmittedIntroduction)}>
+    <article className="work-detail bg-white" data-submitted={Boolean(detail.images)} data-introduction={Boolean(detail.hasSubmittedIntroduction)} data-clarity-unmask="true">
       <section aria-labelledby="work-detail-title" className="work-detail__hero" style={detail.heroSize ? { aspectRatio: `${detail.heroSize.width} / ${detail.heroSize.height}` } : undefined}>
         <Image
           alt={`${detail.title} 대표 이미지`}
@@ -38,7 +38,7 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
             </div>
           </header>
 
-          <address className="work-detail__contact">
+          <address className="work-detail__contact" data-clarity-mask="true">
             <a href={`mailto:${detail.email}`}>
               <Image alt="이메일" height={32} src="/assets/figma/work/work-detail-mail.svg" width={32} />
               <span>{detail.email}</span>

@@ -215,24 +215,24 @@ export function MessagePage({
     <section className="message-page" data-clarity-mask="true" aria-labelledby="message-page-title" ref={pageRef}>
       <h1 className="sr-only" id="message-page-title">MESSAGE</h1>
       <div className="message-page__intro">
-        <picture className="message-page__decor">
+        <picture className="message-page__decor" data-clarity-unmask="true">
           <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-decor-mobile.png" />
           <source media="(max-width: 600px)" srcSet="/assets/figma/message/message-decor-tab-mobile.png" />
           <source media="(max-width: 1020px)" srcSet="/assets/figma/message/message-decor-tab.png" />
           <source media="(max-width: 1350px)" srcSet="/assets/figma/message/message-decor-web-tab.png" />
           <img alt="" src="/assets/figma/message/message-decor-web.png" />
         </picture>
-        <picture className="message-page__frame message-page__frame--outer">
+        <picture className="message-page__frame message-page__frame--outer" data-clarity-unmask="true">
           <source media="(max-width: 1020px)" srcSet="/assets/figma/message/message-frame-tab-outer.svg" />
           <source media="(max-width: 1350px)" srcSet="/assets/figma/message/message-frame-web-tab-outer.svg" />
           <img alt="" src="/assets/figma/message/message-frame-outer.svg" />
         </picture>
-        <picture className="message-page__frame message-page__frame--inner">
+        <picture className="message-page__frame message-page__frame--inner" data-clarity-unmask="true">
           <source media="(max-width: 1020px)" srcSet="/assets/figma/message/message-frame-tab-inner.svg" />
           <source media="(max-width: 1350px)" srcSet="/assets/figma/message/message-frame-web-tab-inner.svg" />
           <img alt="" src="/assets/figma/message/message-frame-inner.svg" />
         </picture>
-        <picture className="message-page__frame message-page__frame--compact">
+        <picture className="message-page__frame message-page__frame--compact" data-clarity-unmask="true">
           <source media="(max-width: 400px)" srcSet="/assets/figma/message/message-frame-mobile.svg" />
           <img alt="" src="/assets/figma/message/message-frame-tab-mobile.svg" />
         </picture>

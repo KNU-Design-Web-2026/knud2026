@@ -75,6 +75,7 @@ export function ProfileCard({ eager = false, member }: ProfileCardProps) {
       aria-label={`${member.nameKo} ${member.nameEn} 프로필 상세 보기`}
       className="profile-card group/profile-card block"
       href={`/profile/${member.id}`}
+      data-clarity-unmask="true"
     >
       {cardSurface}
     </Link>

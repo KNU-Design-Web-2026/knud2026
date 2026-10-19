@@ -3,7 +3,7 @@ import styles from "./coming-soon.module.css";
 
 export function ComingSoon() {
   return (
-    <section className={styles.page} aria-labelledby="coming-soon-title">
+    <section className={styles.page} aria-labelledby="coming-soon-title" data-clarity-unmask="true">
       <div className={styles.content}>
         <div className={styles.logo} role="img" aria-label="IGNITE">
           <KnudLogo eager />
