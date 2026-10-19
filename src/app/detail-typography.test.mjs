@@ -30,3 +30,12 @@ test("PC 자기소개 폭만 75%로 넓히고 글자 크기와 작은 화면 전
   const introductionRule = styles.match(/\.profile-detail--compact \.profile-detail__introduction \{([^}]+)\}/)?.[1];
   assert.doesNotMatch(introductionRule, /(?:^|\n)\s*(?:max-)?height:|line-clamp|hidden|ellipsis|position:/);
 });
+
+test("프로필 한글·영문 이름만 줄이고 소개·인터뷰 크기는 유지한다", () => {
+  assert.match(styles, /--profile-reading-name-ko: clamp\(3rem, [^;]+, 4rem\)/);
+  assert.match(styles, /--profile-reading-name-en: clamp\(1\.875rem, [^;]+, 2\.375rem\)/);
+  assert.match(styles, /@media \(max-width: 1020px\)[\s\S]*?--profile-reading-name-ko: 2\.5rem;\s*--profile-reading-name-en: 1\.5rem/);
+  assert.match(styles, /@media \(max-width: 460px\)[\s\S]*?--profile-reading-name-ko: 1\.5rem;\s*--profile-reading-name-en: 1\.0625rem/);
+  assert.match(styles, /--profile-reading-body: 1\.375rem/);
+  assert.match(styles, /--profile-reading-interview: 1\.1875rem/);
+});
