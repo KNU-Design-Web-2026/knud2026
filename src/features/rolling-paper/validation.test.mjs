@@ -18,16 +18,16 @@ assert.throws(
   /20자 이내/,
 );
 assert.throws(
-  () => parseCreateLetterInput({ to: "김가연", from: "관람객", body: "가".repeat(91) }),
-  /90자 이내/,
+  () => parseCreateLetterInput({ to: "김가연", from: "관람객", body: "가".repeat(101) }),
+  /100자 이내/,
 );
 assert.equal(
-  parseCreateLetterInput({ to: "김가연", from: "관람객", body: "가".repeat(90) }).body.length,
-  90,
+  parseCreateLetterInput({ to: "김가연", from: "관람객", body: "가".repeat(100) }).body.length,
+  100,
 );
 assert.throws(
   () => parseCreateLetterInput({ to: "김가연", from: "관람객", body: "가\n".repeat(5) + "가" }),
-  /90자 이내/,
+  /100자 이내/,
 );
 
 console.log("rolling-paper validation checks passed");

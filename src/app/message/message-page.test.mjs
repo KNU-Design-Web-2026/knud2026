@@ -44,12 +44,12 @@ const {
   normalizeMessageBody,
 } = await import(inputRulesPath);
 
-assert.equal(MESSAGE_MAX_LENGTH, 90);
+assert.equal(MESSAGE_MAX_LENGTH, 100);
 assert.equal(MESSAGE_LINE_BREAK_WEIGHT, 20);
 assert.equal(normalizeMessageBody("첫 줄\r\n둘째 줄"), "첫 줄\n둘째 줄");
 assert.equal(getMessageUsage("가\n나"), 22);
 assert.equal(normalizeMessageBody("1\n2\n3\n4\n5\n6\n7\n8").split("\n").length, 5);
-assert.equal(normalizeMessageBody("가".repeat(140)), "가".repeat(90));
+assert.equal(normalizeMessageBody("가".repeat(140)), "가".repeat(100));
 assert.ok(getMessageUsage(normalizeMessageBody("가".repeat(140))) <= MESSAGE_MAX_LENGTH);
 assert.ok(getMessageUsage(normalizeMessageBody("\n".repeat(20))) <= MESSAGE_MAX_LENGTH);
 

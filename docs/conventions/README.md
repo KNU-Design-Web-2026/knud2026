@@ -15,6 +15,7 @@
 - [디자인 문서](../design/README.md): 디자인 QA와 인터랙션 명세
 - [운영 GA 수집 경계](../operations/2026-10-19-google-analytics.md): 운영 도메인 한정 측정과 개인정보 제외 규칙
 - [운영 Clarity 수집 경계](../operations/2026-10-19-microsoft-clarity.md): 운영 도메인 한정 행동 분석과 공개 화면의 선택적 마스킹 예외
+- [MESSAGE 입력·본문 규격 검토](../design/qa/2026-10-20-message-spacing.md): 개발 브랜치의 100칸 한도(줄바꿈 20칸)와 행간·반응형 검증, 공용 DB 반영 범위
 
 ## 적용 원칙
 
