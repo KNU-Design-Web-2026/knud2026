@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
+import { createWorkImagePreview } from "../../../scripts/work-image-preview.mjs";
 
 const importer = new URL("../../../scripts/import-work-assets.mjs", import.meta.url).pathname;
 
@@ -43,7 +44,7 @@ for (const scenario of [
       for (const image of [manifest.thumbnail, manifest.space, manifest.hero, ...manifest.images]) {
         assert.match(image.blurDataURL, /^data:image\/webp;base64,/);
         const preview = await sharp(Buffer.from(image.blurDataURL.split(",")[1], "base64")).metadata();
-        assert.ok(preview.width <= 16 && preview.height <= 16);
+        assert.ok(preview.width <= image.width && preview.height <= image.height);
         assert.ok(image.blurDataURL.length < 1024);
       }
     } finally {
@@ -51,6 +52,36 @@ for (const scenario of [
     }
   });
 }
+
+test("미리보기는 사진을 구분할 해상도를 유지하고 복잡한 이미지도 4KiB 이내로 제한한다", async () => {
+  const source = await sharp({ create: { width: 1200, height: 800, channels: 3, background: "#08ade7" } })
+    .composite([{ input: Buffer.from('<svg width="1200" height="800"><rect x="300" y="200" width="600" height="400" fill="#ffdf00"/></svg>') }])
+    .png().toBuffer();
+  const dataURL = await createWorkImagePreview(source);
+  const bytes = Buffer.from(dataURL.split(",")[1], "base64");
+  const image = sharp(bytes);
+  const metadata = await image.metadata();
+  assert.equal(metadata.width, 256);
+  assert.equal(metadata.height, 171);
+  assert.ok(bytes.length <= 4096);
+  const { data, info } = await image.raw().toBuffer({ resolveWithObject: true });
+  const center = (Math.floor(info.height / 2) * info.width + Math.floor(info.width / 2)) * info.channels;
+  assert.ok(data[center] > 220 && data[center + 1] > 190 && data[center + 2] < 40);
+
+  // Deterministic noise exercises the byte-budget fallback, unlike a flat fixture.
+  const noise = Buffer.alloc(600 * 600 * 3);
+  let seed = 42;
+  for (let i = 0; i < noise.length; i++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    noise[i] = seed >>> 24;
+  }
+  const noisySource = await sharp(noise, { raw: { width: 600, height: 600, channels: 3 } }).png().toBuffer();
+  const noisyPreview = Buffer.from((await createWorkImagePreview(noisySource)).split(",")[1], "base64");
+  const noisyMetadata = await sharp(noisyPreview).metadata();
+  assert.ok(noisyPreview.length <= 4096);
+  assert.ok(noisyMetadata.width >= 64 && noisyMetadata.width <= 256);
+  assert.equal(noisyMetadata.width, noisyMetadata.height);
+});
 
 test("GIF는 원본 프레임을 보존하고 숫자 순서와 정지 미리보기를 제공한다", async () => {
   const root = await mkdtemp(path.join(tmpdir(), "knud-gif-import-"));

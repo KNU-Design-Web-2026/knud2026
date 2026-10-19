@@ -14,9 +14,10 @@ const expected = {
   "김가연": [2, 37], "김민주": [3, 13], "박수정": [10, 11], "양혜연": [11, 7], "윤이지": [12, 12],
   "이서윤": [14, 16], "이하늘": [16, 5], "임경민": [17, 7], "현연이": [19, 8],
   "김세직": [5, 9], "김지언": [8, 13], "박규리 & 이다혜": [9, 9],
+  "이나경": [13, 11],
 };
 
-test("반영 대상 17개 작품의 썸네일·작품명·연락처·번호순 상세 이미지를 연결한다", () => {
+test("반영 대상 18개 작품의 썸네일·작품명·연락처·번호순 상세 이미지를 연결한다", () => {
   assert.deepEqual(Object.keys(SUBMITTED_WORKS).sort(), Object.keys(expected).sort());
   for (const [artist, [id, count]] of Object.entries(expected)) {
     const source = SUBMITTED_WORKS[artist];
@@ -47,6 +48,8 @@ test("반영 대상 17개 작품의 썸네일·작품명·연락처·번호순 �
         assert.match(image, /srcSet=/);
       }
       assert.match(image, /background-image:/);
+      assert.match(image, /background-image:url\(&quot;data:image\/webp;base64,/);
+      assert.doesNotMatch(image, /data:image\/svg\+xml/);
     }
   }
   assert.equal(WORK_ITEMS.filter((item) => item.imageSrc.includes("work-placeholder")).length, 1);
@@ -65,8 +68,8 @@ test("김지언의 두 번째 상세는 GIF를 직접 제공하고 모션 감소
   assert.ok(html.includes(image.stillSrc));
 });
 
-test("이나경은 승인된 Work 썸네일만 사용하고 SPACE·상세 이미지는 제외한다", async () => {
-  assert.equal(SUBMITTED_WORKS["이나경"], undefined);
+test("이나경은 이전 제출본의 WORK·SPACE·대표·본문 11개를 함께 연결한다", async () => {
+  assert.ok(SUBMITTED_WORKS["이나경"]);
   const item = WORK_ITEMS.find(work => work.id === 13);
   const detail = WORK_DETAILS["13"];
   assert.equal(item.artistKo, "이나경");
@@ -74,9 +77,11 @@ test("이나경은 승인된 Work 썸네일만 사용하고 SPACE·상세 이미
   const thumbnail = await sharp(new URL(`../../../public${item.imageSrc}`, import.meta.url).pathname).metadata();
   assert.equal(thumbnail.width, 1536);
   assert.equal(thumbnail.height, 1121);
-  assert.equal(item.spaceImageSrc, "/assets/figma/work/work-placeholder.png");
-  assert.equal(detail.images, undefined);
-  assert.equal(detail.heroSrc, "/assets/figma/work/work-detail-hero.png");
+  assert.equal(item.spaceImageSrc, "/assets/works/lee-nagyeong/space.webp");
+  assert.equal(detail.images.length, 11);
+  assert.equal(detail.heroSrc, "/assets/works/lee-nagyeong/hero.webp");
+  assert.equal(detail.title, "유일 油 日");
+  assert.deepEqual(WORK_ITEMS.filter(work => work.spaceImageSrc.includes("placeholder")).map(work => work.artistKo), ["김서은"]);
   assert.equal(detail.storyKo, WORK_INTRODUCTIONS["이나경"].storyKo);
   assert.equal(detail.email, PROFILE_SHEET_CONTENT["이나경"].email);
 });
@@ -92,9 +97,11 @@ test("웹 이미지의 실제 규격이 매니페스트와 같고 원본 비율�
       assert.equal(image.width, Math.min(image.originalWidth, limit));
       assert.ok(Math.abs(image.height - image.originalHeight * image.width / image.originalWidth) <= 1);
       assert.match(image.blurDataURL, /^data:image\/webp;base64,/);
-      assert.ok(Buffer.byteLength(image.blurDataURL) < 1024, `${work.artist} preview payload`);
-      const preview = await sharp(Buffer.from(image.blurDataURL.split(",")[1], "base64")).metadata();
-      assert.ok(preview.width <= 16 && preview.height <= 16);
+      const previewBytes = Buffer.from(image.blurDataURL.split(",")[1], "base64");
+      assert.ok(previewBytes.length <= 4096, `${work.artist} preview payload`);
+      const preview = await sharp(previewBytes).metadata();
+      assert.ok(preview.width <= 256 && preview.height <= 512);
+      assert.ok(Math.max(preview.width, preview.height) >= 64, `${work.artist} recognizable preview`);
     }
   }
 });
