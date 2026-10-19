@@ -16,6 +16,7 @@ for (const scenario of [
   { artist: "이서윤", thumbs: ["이서윤_Work.png", "이서윤_SPACE.png", "이서윤_상세.png"], pages: ["10.png", "2.png", "1.png"], order: [1, 2, 10] },
   { artist: "김세직", thumbs: ["WORK_썸네일_384x280.png", "SPACE_썸네일_624x382.png", "상세페이지_썸네일_1920x1050.png"], pages: ["졸전 웹페이지_김세직-09.png", "졸전 웹페이지_김세직-01.png"], order: [1, 9] },
   { artist: "박규리 & 이다혜", artistFolder: "박규리&이다혜_웹work", thumbs: ["박규리&이다혜_Work.png", "박규리&이다혜_SPACE.png", "박규리&이다혜_상세.png"], pages: ["박규리&이다혜_002.png", "박규리&이다혜_001.png"], order: [1, 2] },
+  { artist: "김서은", folder: "김서은_포트폴리오", thumbs: ["김서은_Work.png", "졸전_웹상세-08.png", "김서은_상세.png"], pages: ["김서은_005.png", "김서은_001.png"], order: [1, 5], spaceSource: "졸전_웹상세-08.png" },
 ]) {
   test(`${scenario.artist} 제출 파일명에서도 용도별 썸네일과 숫자순 상세를 정확히 가져온다`, async () => {
     const root = await mkdtemp(path.join(tmpdir(), "knud-work-import-"));
@@ -35,12 +36,13 @@ for (const scenario of [
       }
       // Resource forks must never be interpreted as pictures.
       await sharp({ create: { width: 1, height: 1, channels: 3, background: "white" } }).png().toFile(path.join(portfolio, "._008.png"));
-      const result = spawnSync(process.execPath, [importer, source, scenario.artist, "test-artist"], { cwd: root, encoding: "utf8" });
+      const result = spawnSync(process.execPath, [importer, source, scenario.artist, "test-artist", ...(scenario.spaceSource ? ["--space-source", scenario.spaceSource] : [])], { cwd: root, encoding: "utf8" });
       assert.equal(result.status, 0, result.stderr);
       const manifest = JSON.parse(await readFile(path.join(root, "public/assets/works/test-artist/manifest.json"), "utf8"));
       assert.deepEqual([manifest.thumbnail.width, manifest.space.width, manifest.hero.width], [8, 12, 16]);
       assert.deepEqual(manifest.images.map(image => image.height), scenario.order.map(number => 20 + number));
       assert.ok(manifest.images.every(image => !image.sourceFile.includes("._")));
+      if (scenario.spaceSource) assert.ok(manifest.space.sourceFile.endsWith(scenario.spaceSource));
       for (const image of [manifest.thumbnail, manifest.space, manifest.hero, ...manifest.images]) {
         assert.match(image.blurDataURL, /^data:image\/webp;base64,/);
         const preview = await sharp(Buffer.from(image.blurDataURL.split(",")[1], "base64")).metadata();

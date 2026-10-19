@@ -55,6 +55,9 @@ test("김서은 상세 페이지에 제출된 소개·인터뷰와 최신 연락
   assert.match(html, /차근차근 앞으로 나아가는 김서은입니다/);
   assert.match(html, /instagram\.com\/seo_eun_214\//);
   assert.doesNotMatch(html, /브랜딩과 편집 디자인을 바탕으로/);
+  assert.match(html, /href="\/work\/4"/);
+  assert.match(html, /kim-seoeun%2Fhero\.webp/);
+  assert.doesNotMatch(html, /작품 이미지는 준비 중입니다/);
 });
 
 test("시트의 긴 문장은 글자 수 제한 때문에 잘리지 않는다", () => {
