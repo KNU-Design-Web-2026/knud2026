@@ -1,15 +1,28 @@
 import assert from "node:assert/strict";
-import { afterEach, test } from "node:test";
+import { afterEach, mock, test } from "node:test";
 import { NextRequest } from "next/server";
 import { proxy } from "./proxy";
 
 const originalMode = process.env.SITE_MAINTENANCE_MODE;
 
 afterEach(() => {
+  mock.timers.reset();
   if (originalMode === undefined) {
     delete process.env.SITE_MAINTENANCE_MODE;
   } else {
     process.env.SITE_MAINTENANCE_MODE = originalMode;
+  }
+});
+
+test("예약 공개는 홈뿐 아니라 직접 경로와 API에도 같은 시각에 적용된다", () => {
+  process.env.SITE_MAINTENANCE_MODE = "auto";
+  mock.timers.enable({ apis: ["Date"], now: Date.parse("2026-10-20T08:59:59.999+09:00") });
+  assert.equal(proxy(new NextRequest("https://example.com/space")).status, 307);
+  assert.equal(proxy(new NextRequest("https://example.com/api/letters")).status, 503);
+  mock.timers.tick(1);
+  for (const path of ["/", "/about", "/space", "/work/1", "/profile/1", "/message", "/api/letters"]) {
+    const response = proxy(new NextRequest(`https://example.com${path}`));
+    assert.equal(response.headers.get("x-middleware-next"), "1");
   }
 });
 
