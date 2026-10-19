@@ -13,12 +13,14 @@ for (const scenario of [
   { artist: "김민주", thumbs: ["work_썸네일.png", "space_썸네일.png", "상세페이지_썸네일.png"], pages: ["웹팀포트폴리오-10.png", "웹팀포트폴리오-02.png", "웹팀포트폴리오-01.png"], order: [1, 2, 10] },
   { artist: "이나경", thumbs: ["이나경 (work,space,상세페이지)-03.png", "이나경 (work,space,상세페이지)-02.png", "이나경 (work,space,상세페이지)-01.png"], pages: ["이나경 본문-02.png", "이나경 본문-01.png"], order: [1, 2] },
   { artist: "이서윤", thumbs: ["이서윤_Work.png", "이서윤_SPACE.png", "이서윤_상세.png"], pages: ["10.png", "2.png", "1.png"], order: [1, 2, 10] },
+  { artist: "김세직", thumbs: ["WORK_썸네일_384x280.png", "SPACE_썸네일_624x382.png", "상세페이지_썸네일_1920x1050.png"], pages: ["졸전 웹페이지_김세직-09.png", "졸전 웹페이지_김세직-01.png"], order: [1, 9] },
+  { artist: "박규리 & 이다혜", artistFolder: "박규리&이다혜_웹work", thumbs: ["박규리&이다혜_Work.png", "박규리&이다혜_SPACE.png", "박규리&이다혜_상세.png"], pages: ["박규리&이다혜_002.png", "박규리&이다혜_001.png"], order: [1, 2] },
 ]) {
   test(`${scenario.artist} 제출 파일명에서도 용도별 썸네일과 숫자순 상세를 정확히 가져온다`, async () => {
     const root = await mkdtemp(path.join(tmpdir(), "knud-work-import-"));
     try {
       const source = path.join(root, "source");
-      const artistRoot = path.join(source, `${scenario.artist}_웹work`.normalize("NFD"));
+      const artistRoot = path.join(source, (scenario.artistFolder ?? `${scenario.artist}_웹work`).normalize("NFD"));
       const thumbs = path.join(artistRoot, "썸네일");
       const portfolio = path.join(artistRoot, scenario.folder ?? "포트폴리오");
       await mkdir(thumbs, { recursive: true });
@@ -49,3 +51,33 @@ for (const scenario of [
     }
   });
 }
+
+test("GIF는 원본 프레임을 보존하고 숫자 순서와 정지 미리보기를 제공한다", async () => {
+  const root = await mkdtemp(path.join(tmpdir(), "knud-gif-import-"));
+  try {
+    const source = path.join(root, "source");
+    const artistRoot = path.join(source, "김지언_웹work");
+    const portfolio = path.join(artistRoot, "포트폴리오");
+    await mkdir(portfolio, { recursive: true });
+    for (const name of ["김지언_Work.png", "김지언_SPACE.png", "김지언_상세.png"]) {
+      await sharp({ create: { width: 16, height: 8, channels: 3, background: "white" } }).png().toFile(path.join(artistRoot, name));
+    }
+    const frames = Buffer.concat([Buffer.alloc(16 * 8 * 3, 0), Buffer.alloc(16 * 8 * 3, 255)]);
+    const gifPath = path.join(portfolio, "김지언_002.gif");
+    await sharp(frames, { raw: { width: 16, height: 16, channels: 3, pageHeight: 8 } }).gif({ delay: [100, 100], loop: 0 }).toFile(gifPath);
+    for (const n of [1, 3]) await sharp({ create: { width: 16, height: 8, channels: 3, background: "white" } }).png().toFile(path.join(portfolio, `김지언_00${n}.png`));
+    const result = spawnSync(process.execPath, [importer, source, "김지언", "test-artist"], { cwd: root, encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    const output = path.join(root, "public");
+    const manifest = JSON.parse(await readFile(path.join(output, "assets/works/test-artist/manifest.json"), "utf8"));
+    assert.deepEqual(manifest.images.map(image => path.extname(image.src)), [".webp", ".gif", ".webp"]);
+    const gif = manifest.images[1];
+    assert.equal(gif.animated, true);
+    assert.deepEqual(await readFile(path.join(output, gif.src)), await readFile(gifPath));
+    assert.equal((await sharp(path.join(output, gif.src)).metadata()).pages, 2);
+    assert.equal((await sharp(path.join(output, gif.stillSrc)).metadata()).pages ?? 1, 1);
+    assert.match(gif.blurDataURL, /^data:image\/webp;base64,/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
