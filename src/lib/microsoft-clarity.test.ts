@@ -59,14 +59,14 @@ test("유입 URL에 쿼리·해시·외부 상세 경로가 있으면 녹화를 
   }
 });
 
-test("초기 HTML 전체와 MESSAGE 본문·작성 폼은 코드에서도 명시적으로 마스킹한다", () => {
+test("초기 HTML은 기본 마스킹하고 MESSAGE의 공개 예외는 정적 장식으로 제한한다", () => {
   const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
   const message = readFileSync(new URL("../components/message/message-page.tsx", import.meta.url), "utf8");
   const client = readFileSync(new URL("../components/layout/microsoft-clarity.tsx", import.meta.url), "utf8");
   assert.match(layout, /<body data-clarity-mask="true"/);
   assert.match(layout, /process\.env\.VERCEL_ENV === "production" && <MicrosoftClarity/);
   assert.match(message, /<section className="message-page" data-clarity-mask="true"/);
-  assert.doesNotMatch(layout + message, /data-clarity-unmask/);
+  assert.doesNotMatch(layout, /data-clarity-unmask/);
   assert.match(client, /script\.async = true/);
   assert.match(client, /script\.referrerPolicy = "origin"/);
   assert.match(client, /send\.q\.push\(arguments\)/);

@@ -6,7 +6,7 @@ import styles from "./space-page.module.css";
 
 export function SpacePage() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-clarity-unmask="true">
       <div className={styles.content}>
         <section className={styles.mapSection} aria-labelledby="space-map-title">
           <div className={styles.heading}>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <section aria-labelledby="work-title" className="work-page bg-white">
+    <section aria-labelledby="work-title" className="work-page bg-white" data-clarity-unmask="true">
       <h1 className="sr-only" id="work-title">2026 경북대학교 디자인학과 졸업전시회 작품</h1>
       <WorkGrid>
         {WORK_ITEMS.map((item, index) => (

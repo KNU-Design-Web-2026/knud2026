@@ -3,7 +3,7 @@ import { PageContainer } from "@/components/layout/page-container";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer h-[var(--footer-height)] bg-knud-footer text-white">
+    <footer className="site-footer h-[var(--footer-height)] bg-knud-footer text-white" data-clarity-unmask="true">
       <PageContainer className="site-footer__container flex h-full items-center py-[var(--footer-padding-y)]">
         <div className="site-footer__content flex w-full items-center justify-between max-[1350px]:grid max-[1350px]:grid-cols-2">
           <div className="site-footer__brand flex w-98 shrink-0 flex-col gap-[var(--footer-brand-gap)] max-[1350px]:w-auto">

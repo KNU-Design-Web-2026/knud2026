@@ -64,7 +64,7 @@ function ExhibitionInformation() {
 
 export function AboutPage() {
   return (
-    <div className={styles.page} data-about-page>
+    <div className={styles.page} data-about-page data-clarity-unmask="true">
       <section className={styles.introSection}>
         <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
