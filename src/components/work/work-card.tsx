@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { WorkItem } from "@/data/work-items";
 import { WorkCardText } from "@/components/work/work-card-text";
+import { getWorkImagePlaceholder } from "@/lib/work-image-placeholder";
 
 type WorkCardProps = {
   eager?: boolean;
@@ -17,8 +18,7 @@ export function WorkCard({ eager = false, item }: WorkCardProps) {
           className="absolute top-0 left-[-14.99%] h-full w-[129.98%] max-w-none object-cover"
           fill
           quality={95}
-          placeholder={item.blurDataURL ? "blur" : "empty"}
-          blurDataURL={item.blurDataURL}
+          placeholder={getWorkImagePlaceholder(item.blurDataURL)}
           loading={eager ? "eager" : "lazy"}
           sizes="(min-width: 1350.0625px) 20vw, (min-width: 1020.0625px) 25vw, (min-width: 600.0625px) 33vw, 50vw"
           src={item.imageSrc}

@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import type { ProfileDetail } from "@/data/profile-details";
 import { WORK_ITEMS } from "@/data/work-items";
 import { SUBMITTED_WORKS } from "@/data/submitted-works";
+import { getWorkImagePlaceholder } from "@/lib/work-image-placeholder";
 
 type ProfileDetailPageProps = {
   detail: ProfileDetail;
@@ -75,7 +76,7 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
               {work && submitted ? <Link className="profile-work-preview" href={`/work/${work.id}`} aria-label={`${detail.nameKo} ${detail.projectName} 작품 보기`}>
                 <Image alt={`${detail.projectName} 작품 대표 이미지`} src={submitted.hero.src}
                   quality={95}
-                  placeholder={submitted.hero.blurDataURL ? "blur" : "empty"} blurDataURL={submitted.hero.blurDataURL}
+                  placeholder={getWorkImagePlaceholder(submitted.hero.blurDataURL)}
                   width={submitted.hero.width} height={submitted.hero.height}
                   sizes="(max-width: 600px) 100vw, 80vw" className="block h-auto w-full" />
                 <div className="profile-work-preview__overlay">
