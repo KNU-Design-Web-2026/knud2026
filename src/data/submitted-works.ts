@@ -12,6 +12,7 @@ import leeSeoyun from "../../public/assets/works/lee-seoyun/manifest.json";
 import leeHaneul from "../../public/assets/works/lee-haneul/manifest.json";
 import limKyungmin from "../../public/assets/works/lim-kyungmin/manifest.json";
 import hyunYeoni from "../../public/assets/works/hyun-yeoni/manifest.json";
+import kimSejik from "../../public/assets/works/kim-sejik/manifest.json";
 
 export type WorkImage = { src: string; width: number; height: number; blurDataURL?: string; animated?: boolean; stillSrc?: string };
 export type SubmittedWork = {
@@ -37,4 +38,5 @@ export const SUBMITTED_WORKS: Readonly<Record<string, SubmittedWork>> = {
   [leeHaneul.artist]: leeHaneul,
   [limKyungmin.artist]: limKyungmin,
   [hyunYeoni.artist]: hyunYeoni,
+  [kimSejik.artist]: kimSejik,
 };

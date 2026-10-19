@@ -1,0 +1,137 @@
+{
+  "artist": "김세직",
+  "thumbnail": {
+    "src": "/assets/works/kim-sejik/thumbnail.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAwAA4BaJYwCdAEVzxPNTQCIAP4nm2zpx4nw8UKZhPL3nE5c8JYe6YeHeN6RC+TCFZVd6lR3m1EWItSb5GtTIAW7UGDGJEvVeiAA",
+    "width": 384,
+    "height": 280,
+    "sourceFile": "김세직_웹work/김세직_썸네일/WORK_썸네일_384x280.png",
+    "originalWidth": 384,
+    "originalHeight": 280,
+    "originalBytes": 259636,
+    "bytes": 70784
+  },
+  "space": {
+    "src": "/assets/works/kim-sejik/space.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoQAAoAA4BaJYwCdAEU+eV6qX+ZAAD9eNq8yt3jhDq9pQSQhcBGes9qQsOXnP1SbeGSDw3Kha6jM1XmBGXSAG/EaDKLSAAA",
+    "width": 624,
+    "height": 382,
+    "sourceFile": "김세직_웹work/김세직_썸네일/SPACE_썸네일_624x382.png",
+    "originalWidth": 624,
+    "originalHeight": 382,
+    "originalBytes": 575216,
+    "bytes": 125326
+  },
+  "hero": {
+    "src": "/assets/works/kim-sejik/hero.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQAAkAA4BaJYwC7AEU+RecMhewAP14rsBATeVDoJCKUgdGmn7lg0mAZl4KAgdrCtVnDx6zZGaaPW5gAAA=",
+    "width": 1920,
+    "height": 1050,
+    "sourceFile": "김세직_웹work/김세직_썸네일/상세페이지_썸네일_1920x1050.png",
+    "originalWidth": 1920,
+    "originalHeight": 1050,
+    "originalBytes": 4803438,
+    "bytes": 1278158
+  },
+  "images": [
+    {
+      "src": "/assets/works/kim-sejik/portfolio-001.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoQAAkAA4BaJYwC7AEVL0snPbAA/XiuwEBN2Vb0E8KLVn5+KtrRhZLqo73apIGDFsOYEo0JunUPTgAA",
+      "width": 1920,
+      "height": 1081,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-01.png",
+      "originalWidth": 1920,
+      "originalHeight": 1081,
+      "originalBytes": 5210257,
+      "bytes": 1306942
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-002.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBoAAAAwAQCdASoQAAwAA4BaJaQAA3AA/vTcPgAAAA==",
+      "width": 1921,
+      "height": 1499,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-02.png",
+      "originalWidth": 1921,
+      "originalHeight": 1499,
+      "originalBytes": 101529,
+      "bytes": 58730
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-003.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoMABAAA4BaJZwAAudPmwgAAP74t0qibadxhjn1ArhBpxcIADBYLQAA",
+      "width": 1921,
+      "height": 2501,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-03.png",
+      "originalWidth": 1921,
+      "originalHeight": 2501,
+      "originalBytes": 209513,
+      "bytes": 136946
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-004.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAAAwAQCdASoPABAAA4BaJaQAA3AA/vR9tNXRgi3txMJ6VpF54Ez9uQm46XgcVgAA",
+      "width": 1921,
+      "height": 1995,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-04.png",
+      "originalWidth": 1921,
+      "originalHeight": 1995,
+      "originalBytes": 687094,
+      "bytes": 185904
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-005.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoPABAAA4BaJZwAAudbDxdFdgAA/vTz61yDzSTgPfhkK252Os8ABPCQ6aTB3hkEF9gwzkoZ7DDWOwoh/1WPsIAA",
+      "width": 1921,
+      "height": 2001,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-05.png",
+      "originalWidth": 1921,
+      "originalHeight": 2001,
+      "originalBytes": 2767685,
+      "bytes": 628126
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-006.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoNABAAA4BaJZQAAuaLYkKgAP735ybUzogcFtCHfH6OLEhqeevUR3PIuf3MXLR7z1Un0l7y1r00C98+5TieHwAA",
+      "width": 1921,
+      "height": 2301,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-06.png",
+      "originalWidth": 1921,
+      "originalHeight": 2301,
+      "originalBytes": 4219080,
+      "bytes": 927280
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-007.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAAAwAQCdASoPABAAA4BaJaQAA3AA/vSotd0M/HAA",
+      "width": 1921,
+      "height": 2006,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-07.png",
+      "originalWidth": 1921,
+      "originalHeight": 2006,
+      "originalBytes": 221846,
+      "bytes": 126344
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-008.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoMABAAA4BaJYwCw7EO543DkAAA/vZmf2MG3Ix8ekwuNxKX7JWO7baPa5zrQLrTI3/Cov48Lp7Pwl3M39p/WFDFl3C8AAAA",
+      "width": 1921,
+      "height": 2501,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-08.png",
+      "originalWidth": 1921,
+      "originalHeight": 2501,
+      "originalBytes": 1614106,
+      "bytes": 328888
+    },
+    {
+      "src": "/assets/works/kim-sejik/portfolio-009.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoQAAMAA4BaJaQAA3AA/vUIAAA=",
+      "width": 1921,
+      "height": 401,
+      "sourceFile": "김세직_웹work/김세직_포트폴리오/졸전 웹페이지_김세직-09.png",
+      "originalWidth": 1921,
+      "originalHeight": 401,
+      "originalBytes": 10917,
+      "bytes": 5616
+    }
+  ]
+}
