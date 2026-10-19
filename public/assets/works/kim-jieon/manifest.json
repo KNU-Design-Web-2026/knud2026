@@ -1,0 +1,183 @@
+{
+  "artist": "김지언",
+  "thumbnail": {
+    "src": "/assets/works/kim-jieon/thumbnail.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAACwAAQUxQSBwAAAABH/D5/4iIhaK2baCQDH8e3fUfgoj+Jy+qAHcXVlA4IFgAAADwAQCdASoQAAwAA4BaJZQCdH8AC4C9CGAA/vUePjBQC9Q92yPBTV89OEhTdwQYTtUKnWiB2r8piAJ+8+TfQvXZ+qFy/zPDec0xpdqH0Uk5cKZN7QD8wAAA",
+    "width": 1536,
+    "height": 1120,
+    "sourceFile": "김지언_웹work/김지언_썸네일/김지언_Work.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 2898082,
+    "bytes": 251314
+  },
+  "space": {
+    "src": "/assets/works/kim-jieon/space.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAADwAACQAAQUxQSBEAAAABD9D/iAgIBJLQxx8hov+hAwBWUDggWAAAADACAJ0BKhAACgADgFollAJ0fwATqOjSPOSAAP7wTGICeOTCq0N3w+e+dnsJE0c1PhZcFJlxZBR/B5Pab9JS2IJgwtoMUhjvWNSTCHXngyNqqpKArWAAAAA=",
+    "width": 1248,
+    "height": 762,
+    "sourceFile": "김지언_웹work/김지언_썸네일/김지언_SPACE.png",
+    "originalWidth": 2600,
+    "originalHeight": 1588,
+    "originalBytes": 6431034,
+    "bytes": 97110
+  },
+  "hero": {
+    "src": "/assets/works/kim-jieon/hero.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAkAA4BaJZQCw7DD0Va0qAD+5/8DrpG8Rq3fjiihRbJ5VBBZd97VdAaAUQp2NIT5xdWwnbegfqWT3J9dFAb54nQGsAAA",
+    "width": 3840,
+    "height": 2100,
+    "sourceFile": "김지언_웹work/김지언_썸네일/김지언_상세.png",
+    "originalWidth": 8000,
+    "originalHeight": 4375,
+    "originalBytes": 16095579,
+    "bytes": 1114168
+  },
+  "images": [
+    {
+      "src": "/assets/works/kim-jieon/portfolio-001.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAAAQAgCdASoQAAsAA4BaJZQC7AEPABTM6+wAAP7vw0MkpzvuXfOvrHYVWy59MjAAAAA=",
+      "width": 3840,
+      "height": 2706,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_001.png",
+      "originalWidth": 7680,
+      "originalHeight": 5412,
+      "originalBytes": 341989,
+      "bytes": 65440
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-002.gif",
+      "stillSrc": "/assets/works/kim-jieon/portfolio-002-poster.webp",
+      "animated": true,
+      "blurDataURL": "data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoQAAEAA4BaJaQAA3AA/vNEAAA=",
+      "width": 2880,
+      "height": 128,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_002.gif",
+      "originalWidth": 2880,
+      "originalHeight": 128,
+      "originalBytes": 2653952,
+      "bytes": 2653952
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-003.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoQAAwAA4BaJaQAAudmUh10QAD+9goPFMymB6JTWOnYl8tVt/rpnvI4QAA=",
+      "width": 3840,
+      "height": 2872,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_003.png",
+      "originalWidth": 7680,
+      "originalHeight": 5744,
+      "originalBytes": 4330139,
+      "bytes": 241464
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-004.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACQAQCdASoQAA4AA4BaJZVnyU0AiwAA/vCpT+5efcrUf6mIBV/vq9cXQyuGDXygAAA=",
+      "width": 3840,
+      "height": 3382,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_004.png",
+      "originalWidth": 7680,
+      "originalHeight": 6764,
+      "originalBytes": 511058,
+      "bytes": 206532
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-005.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAA4AA4BaJZQAAuQXSbAAAP72CVBoTZOKYry1datTo8FjxLui57BjlKIExhS8AAA=",
+      "width": 3840,
+      "height": 3274,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_005.png",
+      "originalWidth": 7680,
+      "originalHeight": 6548,
+      "originalBytes": 673339,
+      "bytes": 158448
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-006.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoPABAAA4BaJZQAAudf+FyHYAD+9gLyk11BYpcSUWz/Rj0TpsO7IFrwvOGnEZHX4QWWnqDHwE4Y8HUfgj9G9AAA",
+      "width": 3840,
+      "height": 3984,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_006.png",
+      "originalWidth": 7680,
+      "originalHeight": 7968,
+      "originalBytes": 15852850,
+      "bytes": 858120
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-007.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAABwAQCdASoQAAoAA4BaJZwCw7FAAAD+8gsfKoguJaX7wlXlaRCh/RB+AJAAAA==",
+      "width": 3840,
+      "height": 2430,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_007.png",
+      "originalWidth": 7680,
+      "originalHeight": 4860,
+      "originalBytes": 489412,
+      "bytes": 151592
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-008.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAABwAQCdASoQAAsAA4BaJZQC7AFAAAD+8GecxcUW7APKpmv7vmUWQAAA",
+      "width": 3840,
+      "height": 2694,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_008.png",
+      "originalWidth": 7680,
+      "originalHeight": 5388,
+      "originalBytes": 636838,
+      "bytes": 158506
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-009.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoMABAAA4BaJZwAAtz1L9wIAP72Cs/i0SrUG+xstKAoVz86+kL8JT6mGQphImXgAAA=",
+      "width": 3840,
+      "height": 5000,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_009.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 3589406,
+      "bytes": 602716
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-010.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4WAoAAAAQAAAADwAADgAAQUxQSBEAAAABD9D/iAgIBJLQ198gov+hBwBWUDggSAAAABACAJ0BKhAADwADgFolnAACx/ee1HJcarAA/vYT3TEzQwb1EMm+4iC66ivWkQfxy8vTzVjANpFoKdlkb/quAE71XMA3seAAAA==",
+      "width": 3840,
+      "height": 3601,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_010.png",
+      "originalWidth": 8000,
+      "originalHeight": 7502,
+      "originalBytes": 4633327,
+      "bytes": 486712
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-011.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwAgCdASoQAA4AA4BaJZQAD5DwcC61K94/1RTgAP7npH7DXVUeEcv6ftNyUGEBNyovaWgt7DpoB+uHvSwdgvXHCDdbTaiRDD8darOPbmz4LoUjYTh2MwQmvWZAAA==",
+      "width": 3840,
+      "height": 3468,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_011.png",
+      "originalWidth": 7680,
+      "originalHeight": 6936,
+      "originalBytes": 28590827,
+      "bytes": 1099222
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-012.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoQAA8AA4BaJZwAApZi3++QAAD+9hlBsZnWPpnQxM4m9tQ4iTKrH82i//wC9PKcrfhAAA==",
+      "width": 3840,
+      "height": 3556,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_012.png",
+      "originalWidth": 7680,
+      "originalHeight": 7112,
+      "originalBytes": 8685884,
+      "bytes": 622580
+    },
+    {
+      "src": "/assets/works/kim-jieon/portfolio-013.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAA0AA4BaJZwAAuY0VhgojQAA/u+8Bx6CnY6eqfcu9bUsVoYXSLCpnBai7vm2S33YE0lBS2UjpAdvfGJ8m/0AAAA=",
+      "width": 3840,
+      "height": 3128,
+      "sourceFile": "김지언_웹work/김지언_포트폴리오/김지언_013.png",
+      "originalWidth": 7680,
+      "originalHeight": 6256,
+      "originalBytes": 16457718,
+      "bytes": 876818
+    }
+  ]
+}
