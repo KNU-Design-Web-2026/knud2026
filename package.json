@@ -11,7 +11,7 @@
     "perf:archive:before": "node scripts/performance/generate-archive-before.mjs",
     "perf:archive:after": "node scripts/performance/generate-archive-after.mjs",
     "test:archive-performance": "node --test src/app/experiments/archive-performance/**/*.test.mjs",
-    "test:rolling-paper": "tsx --test src/features/rolling-paper/*.test.mjs && node src/app/message/message-page.test.mjs"
+    "test:rolling-paper": "tsx --test src/features/rolling-paper/*.test.mjs src/lib/message-input.test.ts && node src/app/message/message-page.test.mjs"
   },
   "dependencies": {
     "next": "^16.3.0",
