@@ -1,0 +1,137 @@
+{
+  "artist": "박규리 & 이다혜",
+  "thumbnail": {
+    "src": "/assets/works/park-gyuri-lee-dahye/thumbnail.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4WAoAAAAQAAAADwAACwAAQUxQSBIAAAABD9D/iAiIBZP8pfeGENH/bAJWUDggVgAAAPABAJ0BKhAADAADgFolAE6AIgnGw/cMAAD+9eS+Y12gqNc9ofwNeQEDY/Uk0KWfcJYeTNmA8d/Io8aG+klPt5XcLJfLtXotZiR1Vh7bbmRhIbMmAAAA",
+    "width": 1536,
+    "height": 1120,
+    "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_썸네일/박규리&이다혜_Work.png",
+    "originalWidth": 1600,
+    "originalHeight": 1167,
+    "originalBytes": 2562083,
+    "bytes": 340266
+  },
+  "space": {
+    "src": "/assets/works/park-gyuri-lee-dahye/space.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4WAoAAAAQAAAADwAACQAAQUxQSBgAAAABH/D7/4iIBUG2zSQnuZPeIKL/yaUKsApWUDggVgAAANABAJ0BKhAACgADgFolAE6AI/+HjoE0AP715Lp0HxpuZwiQAfkBh9VTL8P6fd0b1zFfm9Q0e7Od3ltih7wHoLxTU1B1yv+MnTtxUhbXvpRUsH6GyMAA",
+    "width": 1248,
+    "height": 764,
+    "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_썸네일/박규리&이다혜_SPACE.png",
+    "originalWidth": 2600,
+    "originalHeight": 1592,
+    "originalBytes": 4060737,
+    "bytes": 114692
+  },
+  "hero": {
+    "src": "/assets/works/park-gyuri-lee-dahye/hero.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSBMAAAABD9D/iAgQZNt05qc/Q0T/o30AAFZQOCBOAAAAMAIAnQEqEAAJAAOAWiUATo/gAzLl8cYJTgAA/vXkvmNdphXHLsu8YkUrNYoY6P42Gg4sCo39M4bvrDay4B40uEvIr2hfWLNZ64YMVgAA",
+    "width": 3840,
+    "height": 2100,
+    "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_썸네일/박규리&이다혜_상세.png",
+    "originalWidth": 8000,
+    "originalHeight": 4375,
+    "originalBytes": 6459186,
+    "bytes": 944964
+  },
+  "images": [
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-001.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAA8AA4BaJbACsAD0SBE0/IAA/vR8ZcRvCrJBXsZq9mArC0x+/fkvg+MiAjqzmfkJqF+udnwqHfAnMOdnmsaJLNMh/lJjQ48WIAAA",
+      "width": 3840,
+      "height": 3559,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_001.png",
+      "originalWidth": 8000,
+      "originalHeight": 7415,
+      "originalBytes": 2432059,
+      "bytes": 393080
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-002.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoMABAAA4BaJZwAAp3RSFthgAAA/vJwHVBoU8zY3MmP+m5n39YDD69oPTYJ1kp+TRuB5GRdYs8n7TH3MSO6DpbskWnn2cGAmq2KddLqPEqWlCk/4AArcgAA",
+      "width": 3840,
+      "height": 5000,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_002.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 3553706,
+      "bytes": 1009364
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-003.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAA0AA4BaJaQAAqo66y5sAAD++BlxkpyXAUQXf1QBIsyLjK8d9W7zg0AMH2zA/Cer/VvEWFSzGbWXEPcEYiAWNfkIAAAA",
+      "width": 3840,
+      "height": 3155,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_003.png",
+      "originalWidth": 8000,
+      "originalHeight": 6573,
+      "originalBytes": 4178200,
+      "bytes": 461466
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-004.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoOABAAA4BaJQAAXOnQ3IAAAP1T/paCGQgPVaU47dMCOrFQdv5X/7k9iVYAasUAsFVcgiUfwQj2f20ZwhTywAAA",
+      "width": 3840,
+      "height": 4358,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_004.png",
+      "originalWidth": 8000,
+      "originalHeight": 9080,
+      "originalBytes": 9067246,
+      "bytes": 870706
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-005.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoPABAAA4BaJYwAAvrdV9c0oAD+9DtLyIxh7LnY33NnKakfqXitGvXuYMi81/0/+SMAY3PEaz/AAA==",
+      "width": 3840,
+      "height": 4049,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_005.png",
+      "originalWidth": 8000,
+      "originalHeight": 8436,
+      "originalBytes": 12253111,
+      "bytes": 805212
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-006.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAkAA4BaJZwAAjyMsSSAAP7yuAoP8DIbnT921tWzMBaadThgp0zzwgA=",
+      "width": 3840,
+      "height": 2058,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_006.png",
+      "originalWidth": 8000,
+      "originalHeight": 4288,
+      "originalBytes": 3646222,
+      "bytes": 262238
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-007.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQAgCdASoMABAAA4BaJbAC7AEVy0UsjmY8AP7v0iz/eXcIIb2DPgYzvZfl9KcrncyzBdz7yv3ERMq5sF39FmcfhU3BIbI4SIsIkwWrCQxF3rFk9z1dF6sIKE/kYFZX+y+MaqGqmxg6FAAA",
+      "width": 3840,
+      "height": 5000,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_007.png",
+      "originalWidth": 8000,
+      "originalHeight": 10417,
+      "originalBytes": 23788924,
+      "bytes": 2760776
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-008.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABQAgCdASoMABAAA4BaJbACdAYw72guD9x98QAA99/2i69Q3uSZOQZdrerHFawXKFNRXUFYMdRnKIO+4+8KgtvYApcI5n0KlUlPdmdSOVgnz1TegXYMTDGQFhIE8xHC3e1IsAAA",
+      "width": 3840,
+      "height": 4926,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_008.png",
+      "originalWidth": 8000,
+      "originalHeight": 10263,
+      "originalBytes": 24610385,
+      "bytes": 2921466
+    },
+    {
+      "src": "/assets/works/park-gyuri-lee-dahye/portfolio-009.webp",
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoQAA0AA4BaJagCdADxGWV66FgAAP7viaX2NN+zn9kIxfmzEBAB7sNICLWmrPv8vu/3svIlzX7l7fXfcQLWraD/MI+XpseLgw5Rj15hEtrAzbQtsu8HX0IXV3+ldl+OAAA=",
+      "width": 3840,
+      "height": 3204,
+      "sourceFile": "박규리&이다혜_웹work/박규리&이다혜_포트폴리오/박규리&이다혜_009.png",
+      "originalWidth": 8000,
+      "originalHeight": 6674,
+      "originalBytes": 3821156,
+      "bytes": 788632
+    }
+  ]
+}
