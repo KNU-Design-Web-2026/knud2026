@@ -1,6 +1,5 @@
 import { SiteFooter } from "@/components/layout/site-footer";
-import { ArchiveGallery } from "./archive-gallery";
-import { s3ArchiveImages } from "./space-data";
+import { archiveColumns, archiveColumnWidths } from "./space-data";
 import { SpaceMap } from "./space-map";
 import { CompactSpaceMap } from "./compact-space-map";
 import styles from "./space-page.module.css";
@@ -26,7 +25,19 @@ export function SpacePage() {
             <h2 id="space-archive-title">Archive</h2>
             <p>IGNITE의 모든 순간을 담은 아카이브입니다.</p>
           </div>
-          <ArchiveGallery images={s3ArchiveImages} />
+          <div className={styles.archiveGrid} data-archive-layout="placeholder" aria-hidden="true">
+            {archiveColumns.map((heights, columnIndex) => (
+              <div className={styles.archiveColumn} key={columnIndex}>
+                {heights.map((height, panelIndex) => (
+                  <div
+                    className={styles.archivePanel}
+                    key={panelIndex}
+                    style={{ aspectRatio: `${archiveColumnWidths[columnIndex]} / ${height}` }}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
         </section>
       </div>
       <SiteFooter />
