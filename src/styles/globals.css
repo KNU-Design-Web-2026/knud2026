@@ -3504,9 +3504,12 @@
 .message-card {
   /* Figma 2584:30326: 7.821px between text blocks at a 12px type scale. */
   --message-copy-gap: 13.035px;
+  --message-body-leading: 1.45;
+  --message-body-scale: 1.05;
+  --message-label-scale: 1.1;
   aspect-ratio: 1;
   display: block;
-  padding: 26px 32px;
+  padding: 27px 33px;
 }
 
 .message-card__content {
@@ -3527,7 +3530,7 @@
 .message-card__to,
 .message-card__from,
 .message-card__body {
-  font-size: 20px;
+  font-size: calc(20px * var(--message-label-scale));
   line-height: 1.3;
   letter-spacing: -0.002em;
 }
@@ -3543,9 +3546,11 @@
 }
 
 .message-card__body {
-  max-height: calc(9 * 1.3em);
-  font-size: 19px;
+  max-height: calc(9em * var(--message-body-leading));
+  font-size: calc(19px * var(--message-body-scale));
   font-weight: 500;
+  line-height: var(--message-body-leading);
+  letter-spacing: 0.012em;
   overflow-wrap: anywhere;
   word-break: break-word;
   -webkit-line-clamp: 9;
@@ -3555,18 +3560,19 @@
 @media (min-width: 1440px) and (max-width: 1919px) {
   .message-card {
     --message-copy-gap: clamp(10.428px, calc(0.543104vw + 2.607px), 13.035px);
-    padding: clamp(14px, calc(2.5vw - 22px), 26px)
-      clamp(22px, calc(2.0833vw - 8px), 32px);
+    --message-body-scale: 1.03;
+    padding: clamp(15px, calc(2.5vw - 21px), 27px)
+      clamp(23px, calc(2.0833vw - 7px), 33px);
   }
 
   .message-card__to,
   .message-card__from,
   .message-card__body {
-    font-size: clamp(16px, calc(0.8333vw + 4px), 20px);
+    font-size: calc(clamp(16px, calc(0.8333vw + 4px), 20px) * var(--message-label-scale));
   }
 
   .message-card__body {
-    font-size: clamp(15px, calc(0.8333vw + 3px), 19px);
+    font-size: calc(clamp(15px, calc(0.8333vw + 3px), 19px) * var(--message-body-scale));
   }
 }
 
@@ -3584,17 +3590,18 @@
 
   .message-card {
     --message-copy-gap: clamp(10.428px, calc(0.789921vw + 2.369163px), 13.035px);
-    padding: clamp(16px, calc(3.03vw - 14.9px), 26px) clamp(24px, calc(2.424vw - 0.73px), 32px);
+    padding: clamp(17px, calc(3.03vw - 13.9px), 27px)
+      clamp(25px, calc(2.424vw + 0.27px), 33px);
   }
 
   .message-card__to,
   .message-card__from,
   .message-card__body {
-    font-size: clamp(16px, calc(1.212vw + 3.636px), 20px);
+    font-size: calc(clamp(16px, calc(1.212vw + 3.636px), 20px) * var(--message-label-scale));
   }
 
   .message-card__body {
-    font-size: clamp(15px, calc(1.212vw + 2.636px), 19px);
+    font-size: calc(clamp(15px, calc(1.212vw + 2.636px), 19px) * var(--message-body-scale));
   }
 }
 
@@ -3612,20 +3619,28 @@
   }
 }
 
+@media (max-width: 1019px) {
+  .message-card {
+    --message-body-scale: 1.02;
+    --message-label-scale: 1.08;
+  }
+}
+
 @media (min-width: 601px) and (max-width: 1019px) {
   .message-card {
     --message-copy-gap: clamp(9.1245px, calc(0.310233vw + 7.258495px), 10.428px);
-    padding: clamp(12px, 1.5vw, 16px) clamp(20px, 3vw, 24px);
+    padding: clamp(13px, calc(1.5vw + 1px), 17px)
+      clamp(21px, calc(3vw + 1px), 25px);
   }
 
   .message-card__to,
   .message-card__from,
   .message-card__body {
-    font-size: clamp(14px, calc(0.476vw + 11.14px), 16px);
+    font-size: calc(clamp(14px, calc(0.476vw + 11.14px), 16px) * var(--message-label-scale));
   }
 
   .message-card__body {
-    font-size: clamp(13px, calc(0.476vw + 10.14px), 15px);
+    font-size: calc(clamp(13px, calc(0.476vw + 10.14px), 15px) * var(--message-body-scale));
   }
 }
 
@@ -3644,7 +3659,8 @@
     --message-copy-gap: clamp(7.821px, calc(0.65175vw + 5.214px), 9.1245px);
     aspect-ratio: 1.02;
     display: block;
-    padding: clamp(8px, 2vw, 12px) clamp(8px, calc(6vw - 16px), 20px);
+    padding: clamp(9px, calc(2vw + 1px), 13px)
+      clamp(9px, calc(6vw - 15px), 21px);
   }
 
   .message-card::before {
@@ -3658,7 +3674,7 @@
   .message-card__to,
   .message-card__from,
   .message-card__body {
-    font-size: clamp(12px, calc(1vw + 8px), 14px);
+    font-size: calc(clamp(12px, calc(1vw + 8px), 14px) * var(--message-label-scale));
   }
 
   .message-card__from {
@@ -3666,18 +3682,37 @@
   }
 
   .message-card__body {
-    max-height: calc(9 * 1.3em);
-    font-size: clamp(11px, calc(1vw + 7px), 13px);
+    max-height: calc(9em * var(--message-body-leading));
+    font-size: calc(clamp(11px, calc(1vw + 7px), 13px) * var(--message-body-scale));
     -webkit-line-clamp: 9;
     line-clamp: 9;
   }
 }
 
 @media (max-width: 480px) {
+  .message-card {
+    --message-label-scale: 1.05;
+    /* Preserve space for 100 characters and a long sender on the smallest papers. */
+    padding: clamp(8px, 2vw, 12px) clamp(8px, calc(6vw - 16px), 20px);
+  }
+
   .message-card__body {
-    max-height: calc(7 * 1.3em);
-    -webkit-line-clamp: 7;
-    line-clamp: 7;
+    max-height: none;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+}
+
+/* Compact leading preserves the restored paper insets on narrower cards. */
+@media (max-width: 700px) {
+  .message-card {
+    --message-body-leading: 1.3;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1799px) {
+  .message-card {
+    --message-body-leading: 1.32;
   }
 }
 
@@ -3693,7 +3728,7 @@
   }
 
   .message-card__body {
-    max-height: calc(10 * 1.3em);
+    max-height: calc(10em * var(--message-body-leading));
     -webkit-line-clamp: 10;
     line-clamp: 10;
   }
