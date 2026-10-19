@@ -41,3 +41,11 @@
 - 공동 작품은 본문 9장과 품질 95 대표 이미지 로딩을 확인했고, 이다혜 프로필도 `/work/9`로 연결된다. 해당 검수 중 브라우저 오류 로그는 없었다.
 - 기록 화면: `screenshots/work-detail-typography-desktop.png`, `screenshots/profile-interview-typography-desktop.png`, `screenshots/profile-interview-typography-mobile.png`.
 - 이번 반영은 `feat/remaining-artworks` 개발 브랜치에서 작업 단위별 커밋으로 관리한다. 운영 배포는 별도 승인 대상으로 이번 작업에서는 수행하지 않는다. 운영의 10월 20일 오전 9시 공개 예약은 기존대로 유지한다.
+
+## 이나경 기존 제출본 추가 승인
+
+- 후속 요청에 따라 이전의 이나경 작품 제외 조건을 해제하고 기존 제출 자료를 우선 사용한다.
+- `웹 1차` 폴더에는 이나경 자료가 없으며, 실제 사용한 원본은 기존에 제외했던 `웹2차/이나경_웹work`의 파일이다. 새 제출본으로 해석하거나 원본을 수정하지 않는다.
+- `/work/13`에 대표 이미지와 본문 11장을 번호순으로 연결하며 WORK·SPACE 썸네일과 `/profile/13`의 Work 미리보기도 같은 자료를 사용한다.
+- 기존 고화질 WebP·blur placeholder·lazy loading 정책을 유지하고, 썸네일만 별도 등록하던 예외와 중복 미리보기 JSON은 제거한다.
+- 이 추가 승인 이후 완전한 작품 자료는 18개 프로젝트이며, SPACE 썸네일이 미등록인 작가는 김서은 한 명이다. 위의 17개 기록은 이 추가 승인 이전 시점의 기록이다.
