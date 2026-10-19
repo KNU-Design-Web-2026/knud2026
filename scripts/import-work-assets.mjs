@@ -4,9 +4,10 @@ import sharp from "sharp";
 import { createWorkImagePreview } from "./work-image-preview.mjs";
 
 // Generate web copies only; never modify the designers' source directory.
-const [sourceRoot, artist, slug] = process.argv.slice(2);
-if (!sourceRoot || !artist || !/^[a-z-]+$/.test(slug ?? "")) {
-  throw new Error("Usage: node scripts/import-work-assets.mjs <source root> <artist> <slug>");
+const [sourceRoot, artist, slug, ...options] = process.argv.slice(2);
+const spaceSourceName = options.length === 2 && options[0] === "--space-source" ? options[1].normalize("NFC") : undefined;
+if (!sourceRoot || !artist || !/^[a-z-]+$/.test(slug ?? "") || (options.length && (!spaceSourceName || path.basename(spaceSourceName) !== spaceSourceName))) {
+  throw new Error("Usage: node scripts/import-work-assets.mjs <source root> <artist> <slug> [--space-source <filename>]");
 }
 const entries = await readdir(sourceRoot);
 const normalizedArtist = artist.replace(/\s/g, "");
@@ -60,7 +61,9 @@ async function convert(source, basename, maxWidth) {
   };
 }
 function selectSource(pattern) {
-  const matches = files.filter(file => pattern.test(path.basename(file).normalize("NFC")));
+  const matches = files.filter(file => typeof pattern === "string"
+    ? path.basename(file).normalize("NFC") === pattern
+    : pattern.test(path.basename(file).normalize("NFC")));
   if (matches.length !== 1) throw new Error(`Expected one source for ${artist}/${pattern}, got ${matches.length}`);
   return matches[0];
 }
@@ -68,7 +71,7 @@ function selectSource(pattern) {
 // 01 = 8001px hero, 02 = 2601px SPACE, 03 = 1601px Work.
 const numberedPack = artist === "이나경";
 const thumbnailSource = selectSource(numberedPack ? /\(work,space,상세페이지\)-03\.png$/i : /(?:_work|^work_썸네일(?:_\d+x\d+)?)\.png$/i);
-const spaceSource = selectSource(numberedPack ? /\(work,space,상세페이지\)-02\.png$/i : /(?:_space|^space_썸네일(?:_\d+x\d+)?)\.png$/i);
+const spaceSource = selectSource(spaceSourceName ?? (numberedPack ? /\(work,space,상세페이지\)-02\.png$/i : /(?:_space|^space_썸네일(?:_\d+x\d+)?)\.png$/i));
 const heroSource = selectSource(numberedPack ? /\(work,space,상세페이지\)-01\.png$/i : /(?:_상세|^상세페이지_썸네일(?:_\d+x\d+)?)\.png$/);
 const portfolioSources = files.filter(file => {
   const relative = path.relative(path.join(sourceRoot, folder), file).normalize("NFC");
