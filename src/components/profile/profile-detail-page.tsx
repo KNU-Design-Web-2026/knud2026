@@ -24,7 +24,7 @@ export function ProfileDetailPage({ detail }: ProfileDetailPageProps) {
   const work = WORK_ITEMS.find((item) => item.artistKo.split(" & ").includes(detail.nameKo));
   const submitted = work ? SUBMITTED_WORKS[work.artistKo] : undefined;
   return (
-    <section aria-labelledby="profile-detail-title" className="profile-detail bg-white pt-[5rem]" data-contact-layout={detail.behance || detail.instagram ? "social" : "mail-only"}>
+    <section aria-labelledby="profile-detail-title" className="profile-detail profile-detail--compact bg-white pt-[5rem]" data-contact-layout={detail.behance || detail.instagram ? "social" : "mail-only"}>
       <PageContainer className="profile-detail__container">
         <div className="profile-detail__content flex flex-col gap-[5rem] pb-[5rem]">
           <article className="profile-detail__intro flex items-end gap-[3.6875rem]">

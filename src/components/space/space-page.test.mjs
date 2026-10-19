@@ -5,7 +5,7 @@ import * as spaceData from "./space-data.ts";
 
 const { archiveColumns } = spaceData;
 
-test("S3 Archive 테스트 데이터는 서로 다른 원본 이미지 40장을 제공한다", () => {
+test("독립 성능 실험용 S3 데이터는 서로 다른 원본 이미지 40장을 유지한다", () => {
   const images = spaceData.s3ArchiveImages;
 
   assert.equal(images?.length, 40);
@@ -17,15 +17,29 @@ test("S3 Archive 테스트 데이터는 서로 다른 원본 이미지 40장을 
 
 test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다", () => {
   assert.deepEqual(archiveColumns.map(column => column.length), [3, 5, 4]);
+  assert.deepEqual(spaceData.archiveColumnWidths, [515, 514, 515]);
   for (const height of archiveColumns.flat()) assert.ok(height > 0);
 });
 
-test("실제 Space Archive는 화면 크기로 최적화한 S3 이미지 40장을 6장씩 요청한다", async () => {
+test("실제 Space Archive는 테스트 사진 대신 정적인 기본색 패널만 표시한다", async () => {
   const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
+  const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
+
+  assert.doesNotMatch(page, /ArchiveGallery|s3ArchiveImages|<img|<Image|backgroundImage/);
+  assert.match(page, /data-archive-layout="placeholder"/);
+  assert.match(page, /archiveColumns\.map/);
+  assert.match(page, /className=\{styles\.archiveColumn\}/);
+  assert.match(page, /className=\{styles\.archivePanel\}/);
+  assert.match(page, /aspectRatio: `\$\{archiveColumnWidths\[columnIndex\]\} \/ \$\{height\}`/);
+  assert.match(css, /\.archivePanel \{ background: #d9d9d9; \}/);
+  assert.match(css, /\.archiveGrid \{ display: grid; grid-template-columns: 515fr 514fr 515fr;/);
+  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archiveColumn:last-child \{ display: none; \}/);
+});
+
+test("독립 성능 실험의 갤러리는 이미지 6장씩 요청하는 동작을 유지한다", async () => {
   const gallery = await readFile(new URL("./archive-gallery.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
 
-  assert.match(page, /<ArchiveGallery images=\{s3ArchiveImages\}/);
   assert.match(gallery, /const batchSize = 6/);
   assert.match(gallery, /loading="eager"/);
   assert.match(gallery, /decoding="async"/);
