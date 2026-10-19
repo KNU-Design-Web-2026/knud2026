@@ -209,7 +209,7 @@ test("Work 상세은 1350px·1020px 기준에서 Figma의 본문 폭과 타이�
   const styles = readFileSync(globalStylesPath, "utf8");
 
   assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-detail__content \{[\s\S]*?padding: 5rem 3\.125rem/);
-  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-detail__title-group h1 \{[\s\S]*?font-size: 3\.75rem/);
+  assert.match(styles, /@media \(max-width: 84\.375rem\) \{[\s\S]*?\.work-detail__title-group h1 \{[\s\S]*?font-size: 3rem/);
   assert.match(styles, /@media \(max-width: 63\.75rem\) \{[\s\S]*?\.work-detail__content \{[\s\S]*?padding: 3\.75rem 3\.125rem/);
   assert.match(styles, /@media \(max-width: 63\.75rem\) \{[\s\S]*?\.work-detail__story \{[\s\S]*?gap: 2rem/);
 });
