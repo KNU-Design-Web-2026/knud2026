@@ -13,7 +13,7 @@ import leeHaneul from "../../public/assets/works/lee-haneul/manifest.json";
 import limKyungmin from "../../public/assets/works/lim-kyungmin/manifest.json";
 import hyunYeoni from "../../public/assets/works/hyun-yeoni/manifest.json";
 
-export type WorkImage = { src: string; width: number; height: number; blurDataURL?: string };
+export type WorkImage = { src: string; width: number; height: number; blurDataURL?: string; animated?: boolean; stillSrc?: string };
 export type SubmittedWork = {
   artist: string;
   thumbnail: WorkImage;
