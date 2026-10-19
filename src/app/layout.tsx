@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { connection } from "next/server";
 import type { PropsWithChildren } from "react";
 import { GoogleAnalytics } from "@/components/layout/google-analytics";
+import { MicrosoftClarity } from "@/components/layout/microsoft-clarity";
 import { SiteCursor } from "@/components/layout/site-cursor";
 import { QaRouteBridge } from "@/components/layout/qa-route-bridge";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -61,12 +62,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html className={pretendard.variable} lang="ko" style={maintenanceMode ? { backgroundColor: "#fff" } : undefined}>
-      <body style={maintenanceMode ? { backgroundColor: "#fff" } : undefined}>
+      <body data-clarity-mask="true" style={maintenanceMode ? { backgroundColor: "#fff" } : undefined}>
         {!maintenanceMode && <QaRouteBridge />}
         {!maintenanceMode && <SiteHeader />}
         <main>{children}</main>
         {!maintenanceMode && <SiteCursor />}
         {process.env.VERCEL_ENV === "production" && <GoogleAnalytics environment="production" />}
+        {process.env.VERCEL_ENV === "production" && <MicrosoftClarity environment="production" />}
       </body>
     </html>
   );

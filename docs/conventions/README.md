@@ -14,6 +14,7 @@
 - [ADR-0003](../architecture/adr/0003-use-pressure-assisted-layered-spray-rendering.md): 메인 스프레이 렌더링 선정 근거
 - [디자인 문서](../design/README.md): 디자인 QA와 인터랙션 명세
 - [운영 GA 수집 경계](../operations/2026-10-19-google-analytics.md): 운영 도메인 한정 측정과 개인정보 제외 규칙
+- [운영 Clarity 수집 경계](../operations/2026-10-19-microsoft-clarity.md): 운영 도메인 한정 행동 분석과 엄격한 텍스트 마스킹
 
 ## 적용 원칙
 
@@ -32,6 +33,7 @@
 - 초기에는 별도 NestJS 애플리케이션이나 모노레포를 만들지 않는다.
 - UI 상태 문서화는 Storybook, 시각 회귀와 디자이너 검수는 Chromatic을 사용한다.
 - 운영 방문 분석은 GA4로 수행한다. 개발·검수 배포와 MESSAGE 입력 내용은 수집하지 않는다.
+- 운영 행동 분석은 Clarity의 쿠키 없는 제한 모드로 수행한다. 초기 HTML 전체와 MESSAGE 텍스트를 마스킹하고 개발·검수 주소에서는 태그를 요청하지 않는다.
 
 ## 아직 확정하지 않는 항목
 
