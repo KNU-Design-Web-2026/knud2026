@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { connection } from "next/server";
 import type { PropsWithChildren } from "react";
+import { GoogleAnalytics } from "@/components/layout/google-analytics";
 import { SiteCursor } from "@/components/layout/site-cursor";
 import { QaRouteBridge } from "@/components/layout/qa-route-bridge";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -65,6 +66,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         {!maintenanceMode && <SiteHeader />}
         <main>{children}</main>
         {!maintenanceMode && <SiteCursor />}
+        {process.env.VERCEL_ENV === "production" && <GoogleAnalytics environment="production" />}
       </body>
     </html>
   );
