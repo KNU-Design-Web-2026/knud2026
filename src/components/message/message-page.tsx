@@ -212,7 +212,7 @@ export function MessagePage({
   };
 
   return (
-    <section className="message-page" aria-labelledby="message-page-title" ref={pageRef}>
+    <section className="message-page" data-clarity-mask="true" aria-labelledby="message-page-title" ref={pageRef}>
       <h1 className="sr-only" id="message-page-title">MESSAGE</h1>
       <div className="message-page__intro">
         <picture className="message-page__decor">
