@@ -89,7 +89,7 @@ test("About 포스터는 최신 최종 포스터의 원본 비율과 자산 크�
   assert.equal(page.match(/src=\{posterImage\}/g)?.length, 2);
   assert.equal(page.match(/height=\{2560\}/g)?.length, 2);
   assert.equal(page.match(/width=\{1808\}/g)?.length, 2);
-  assert.equal(page.match(/sizes="\(max-width: 821px\) 440px, 434px"/g)?.length, 2);
+  assert.equal(page.match(/sizes="(?:\(min-width: 1921px\) 22\.604167vw, )?\(max-width: 821px\) 440px, 434px"/g)?.length, 2);
   assert.doesNotMatch(page, /posterImage[^>]*unoptimized/);
 });
 
@@ -121,7 +121,7 @@ test("포스터와 졸업준비팀 사진은 반응형 이미지 최적화를 �
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
   const carousel = await readFile(new URL("./about-team-carousel.tsx", import.meta.url), "utf8");
 
-  assert.match(carousel, /sizes="\(max-width: 1020px\) 414px, \(max-width: 1919px\) 44vw, 690px"/);
+  assert.match(carousel, /sizes="\(min-width: 1921px\) 35\.9375vw, \(max-width: 1020px\) 414px, \(max-width: 1919px\) 44vw, 690px"/);
   assert.doesNotMatch(carousel, /unoptimized/);
   assert.equal(page.match(/src=\{posterImage\}/g)?.length, 2);
 });

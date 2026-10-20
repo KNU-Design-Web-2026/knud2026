@@ -57,6 +57,18 @@
   white-space: nowrap;
 }
 
+@media (width > 1920px) {
+  .track {
+    padding-inline: 7.8125vw;
+    gap: 3.541667vw;
+  }
+  .card { width: 35.9375vw; }
+  .caption {
+    margin-top: 1.25vw;
+    font-size: 1.25vw;
+  }
+}
+
 @media (min-width: 1021px) and (max-width: 1919px) {
   .track {
     padding-left: clamp(50px, calc(-184.211px + 17.544vw), 150px);

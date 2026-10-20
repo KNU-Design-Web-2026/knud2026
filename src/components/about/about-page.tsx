@@ -68,7 +68,7 @@ export function AboutPage() {
       <section className={styles.introSection}>
         <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
           <div className={styles.introWideInner}>
-            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
+            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(min-width: 1921px) 22.604167vw, (max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
             <IntroductionCopy />
           </div>
         </div>

@@ -71,7 +71,7 @@ export function AboutTeamCarousel({ teams }: AboutTeamCarouselProps) {
               className={styles.image}
               draggable={false}
               height={team.height}
-              sizes="(max-width: 1020px) 414px, (max-width: 1919px) 44vw, 690px"
+              sizes="(min-width: 1921px) 35.9375vw, (max-width: 1020px) 414px, (max-width: 1919px) 44vw, 690px"
               src={team.image}
               width={team.width}
             />

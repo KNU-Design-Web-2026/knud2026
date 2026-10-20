@@ -372,6 +372,112 @@
   padding: 154px 0 var(--content-page-edge-gap);
 }
 
+/* The desktop artwork is a 1920px composition. Scale its geometry together so
+   edge-aligned papers still reach the viewport edge on larger monitors. */
+@media (width > 1920px) {
+  .page { --about-wide-unit: calc(100vw / 1920); }
+  .introSection {
+    height: calc(981 * var(--about-wide-unit) + var(--content-page-edge-gap));
+  }
+  .introWide {
+    width: calc(1568 * var(--about-wide-unit));
+    height: calc(746 * var(--about-wide-unit));
+    padding: calc(26 * var(--about-wide-unit));
+    border-width: calc(10 * var(--about-wide-unit));
+  }
+  .introWideInner {
+    grid-template-columns: calc(434 * var(--about-wide-unit)) minmax(0, 1fr);
+    padding: calc(39 * var(--about-wide-unit)) calc(72 * var(--about-wide-unit));
+    gap: calc(68 * var(--about-wide-unit));
+  }
+  .posterWide {
+    width: calc(434 * var(--about-wide-unit));
+    height: calc(615 * var(--about-wide-unit));
+  }
+  .introductionBody h1 { font-size: calc(32 * var(--about-wide-unit)); }
+  .introductionParagraphs {
+    margin-top: calc(24 * var(--about-wide-unit));
+    font-size: calc(24 * var(--about-wide-unit));
+  }
+  .introductionParagraphs p + p { margin-top: calc(24 * var(--about-wide-unit)); }
+  .introductionCopy a {
+    margin-top: calc(40 * var(--about-wide-unit));
+    font-size: calc(20 * var(--about-wide-unit));
+  }
+  .offlineSection {
+    width: 100%;
+    height: calc(820 * var(--about-wide-unit));
+    margin-top: calc(61 * var(--about-wide-unit));
+  }
+  .offlineSection h2, .professorsSection h2, .committeeSection h2 {
+    font-size: calc(80 * var(--about-wide-unit));
+  }
+  .offlineSection h2 { left: calc(150 * var(--about-wide-unit)); }
+  .offlineWide {
+    top: calc(282 * var(--about-wide-unit));
+    left: calc(75 * var(--about-wide-unit));
+    width: calc(1620 * var(--about-wide-unit));
+    height: calc(538 * var(--about-wide-unit));
+  }
+  .professorsSection {
+    height: calc(850 * var(--about-wide-unit));
+    margin-top: calc(250 * var(--about-wide-unit));
+  }
+  .professorsSection h2 { margin-left: calc(150 * var(--about-wide-unit)); }
+  .professorsPanel {
+    --professors-paper-top: calc(158 * var(--about-wide-unit));
+    --professors-paper-height: calc(668 * var(--about-wide-unit));
+    width: calc(1580 * var(--about-wide-unit));
+    height: calc(826 * var(--about-wide-unit));
+    margin-top: calc(-80 * var(--about-wide-unit));
+  }
+  .professorsPanel .panelPaper { width: calc(1572 * var(--about-wide-unit)); }
+  .professorsGrid {
+    width: calc(607 * var(--about-wide-unit));
+    margin-left: calc(353 * var(--about-wide-unit));
+    column-gap: calc(85 * var(--about-wide-unit));
+    row-gap: calc(51 * var(--about-wide-unit));
+    font-size: calc(24 * var(--about-wide-unit));
+  }
+  .professorsGrid strong {
+    margin-top: calc(14 * var(--about-wide-unit));
+    font-size: calc(32 * var(--about-wide-unit));
+  }
+  .committeeSection {
+    height: calc(931 * var(--about-wide-unit));
+    margin-top: calc(234 * var(--about-wide-unit));
+  }
+  .committeeSection h2 {
+    width: calc(789 * var(--about-wide-unit));
+    margin-left: calc(980 * var(--about-wide-unit));
+  }
+  .committeePanel {
+    width: calc(1670 * var(--about-wide-unit));
+    height: calc(675 * var(--about-wide-unit));
+    margin-top: calc(80 * var(--about-wide-unit));
+    margin-left: calc(250 * var(--about-wide-unit));
+  }
+  .committeeInformation {
+    width: calc(992 * var(--about-wide-unit));
+    margin-left: calc(292 * var(--about-wide-unit));
+    grid-template-columns: calc(274 * var(--about-wide-unit)) minmax(0, 1fr);
+    column-gap: calc(91 * var(--about-wide-unit));
+    font-size: calc(24 * var(--about-wide-unit));
+  }
+  .committeeChairs, .committeeTeams { row-gap: calc(30 * var(--about-wide-unit)); }
+  .chairNames { row-gap: calc(18 * var(--about-wide-unit)); }
+  .committeeTeams > div {
+    grid-template-columns: calc(224 * var(--about-wide-unit)) minmax(0, 1fr);
+  }
+  .committeeIllustration {
+    bottom: calc(10 * var(--about-wide-unit));
+    left: calc(70 * var(--about-wide-unit));
+    width: calc(527 * var(--about-wide-unit));
+    height: calc(326 * var(--about-wide-unit));
+  }
+  .teamsSection { padding-top: calc(154 * var(--about-wide-unit)); }
+}
+
 @media (min-width: 1351px) and (max-width: 1919px) {
   .introSection {
     --about-intro-original-top: calc(-68.158px + 15.7895vw);
