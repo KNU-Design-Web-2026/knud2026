@@ -762,6 +762,16 @@
   flex: 0 0 auto;
 }
 
+.work-detail__contact a > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.work-detail__contact-name {
+  display: block;
+  font-weight: 600;
+}
+
 .work-detail__story {
   display: grid;
   gap: 2.5rem;

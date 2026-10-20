@@ -10,6 +10,7 @@ export type WorkDetail = {
   artistKo: string;
   category: string;
   email: string;
+  emails?: readonly { artistKo: string; email: string }[];
   heroSrc: string;
   heroBlurDataURL?: string;
   instagram: string | null;
@@ -46,6 +47,10 @@ export const WORK_DETAILS: Readonly<Record<string, WorkDetail>> = Object.fromEnt
       artistEnMobile: item.artistEnMobile,
       artistEnTab: item.artistEnTab,
       artistKo: item.artistKo,
+      emails: item.artistKo.split(" & ").map((artistKo) => ({
+        artistKo,
+        email: PROFILE_SHEET_CONTENT[artistKo].email,
+      })),
       ...((submitted || introduction) && {
         title: item.title,
         category: profile.tags.join(" / "),

@@ -8,6 +8,7 @@ type WorkDetailPageProps = {
 };
 
 export function WorkDetailPage({ detail }: WorkDetailPageProps) {
+  const emails = detail.emails ?? [{ artistKo: detail.artistKo, email: detail.email }];
   return (
     <article className="work-detail bg-white" data-submitted={Boolean(detail.images)} data-introduction={Boolean(detail.hasSubmittedIntroduction)} data-clarity-unmask="true">
       <section aria-labelledby="work-detail-title" className="work-detail__hero" style={detail.heroSize ? { aspectRatio: `${detail.heroSize.width} / ${detail.heroSize.height}` } : undefined}>
@@ -39,10 +40,10 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
           </header>
 
           <address className="work-detail__contact" data-clarity-mask="true">
-            <a href={`mailto:${detail.email}`}>
+            {emails.map((contact) => <a href={`mailto:${contact.email}`} key={contact.artistKo}>
               <Image alt="이메일" height={32} src="/assets/figma/work/work-detail-mail.svg" width={32} />
-              <span>{detail.email}</span>
-            </a>
+              <span>{emails.length > 1 && <span className="work-detail__contact-name">{contact.artistKo}</span>}{contact.email}</span>
+            </a>)}
             {detail.instagram && <a href={`https://www.instagram.com/${detail.instagram}`} rel="noreferrer" target="_blank">
               <Image alt="Instagram" height={32} src="/assets/figma/work/work-detail-instagram.svg" width={32} />
               <span>{detail.instagram}</span>
