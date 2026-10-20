@@ -134,7 +134,7 @@ export const PROFILE_SHEET_CONTENT: Readonly<Record<string, ProfileSheetContent>
     ]
   },
   "양혜연": {
-    "projectName": "MOOEE / (한글 표기 필요할 시 : 무이)",
+    "projectName": "MOOEE",
     "tags": [
       "BRANDING",
       "PACKAGE"

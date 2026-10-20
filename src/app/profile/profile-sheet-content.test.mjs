@@ -60,6 +60,14 @@ test("김서은 상세 페이지에 제출된 소개·인터뷰와 최신 연락
   assert.doesNotMatch(html, /작품 이미지는 준비 중입니다/);
 });
 
+test("양혜연 작품 연결은 내부 한글 표기 안내 없이 MOOEE만 표시한다", () => {
+  const html = renderToStaticMarkup(React.createElement(ProfileDetailPage, { detail: PROFILE_DETAILS["11"] }));
+  assert.match(html, /class="profile-work-preview__title">MOOEE<\/h3>/);
+  assert.match(html, /aria-label="양혜연 MOOEE 작품 보기"/);
+  assert.match(html, /alt="MOOEE 작품 대표 이미지"/);
+  assert.doesNotMatch(html, /한글 표기 필요할 시/);
+});
+
 test("시트의 긴 문장은 글자 수 제한 때문에 잘리지 않는다", () => {
   assert.ok(PROFILE_DETAILS["5"].interview[1].answer.length > 200);
 });
