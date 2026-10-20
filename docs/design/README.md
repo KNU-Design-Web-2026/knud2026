@@ -32,6 +32,7 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-10-20 대형 모니터 비례 확장 및 SPACE 지도 간격](./qa/2026-10-20-ultrawide-layout.md)
 - [2026-10-20 SPACE 지도 원본 벡터 반영](./qa/2026-10-20-space-vector-maps.md)
 - [2026-10-20 MESSAGE Safari 작성자 잘림 핫픽스](./qa/2026-10-20-message-sender-hotfix.md)
 - [2026-10-19 프로필 상세 크기·소개 폭 검수](./qa/2026-10-19-profile-reading-width.md)

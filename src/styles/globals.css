@@ -3761,6 +3761,41 @@
   }
 }
 
+/* Continue the 1920px scene proportionally beyond the largest design frame.
+   Keep the existing <=1920px form, post-it typography and Safari sizing rules. */
+@media (width > 1920px) {
+  .message-page {
+    --message-form-width: 67.152708vw;
+    --message-outer-frame-width: 70.23151vw;
+    --message-frame-top: 13.298958vw;
+    --message-web-decor-height: 100.208333vw;
+  }
+  .message-page__decor {
+    top: -7.291667vw;
+    width: 100%;
+  }
+  .message-page__intro {
+    height: calc(var(--message-web-decor-height) - 7.291667vw);
+  }
+  .message-list-container { padding-inline: 7.8125vw !important; }
+  .message-list, .message-list-status { width: 100%; }
+  .message-list {
+    --message-card-stagger: 7.083333vw;
+    column-gap: 2.447917vw;
+    row-gap: 2.604167vw;
+  }
+  .message-card {
+    --message-copy-gap: 0.678906vw;
+    padding: 1.40625vw 1.71875vw;
+  }
+  .message-card__to, .message-card__from {
+    font-size: calc(1.041667vw * var(--message-label-scale));
+  }
+  .message-card__body {
+    font-size: calc(0.989583vw * var(--message-body-scale));
+  }
+}
+
 /* Profile intro variants from Figma 3202:10030–11148.
    Reference widths: 400 / 600 / 1020 / 1350 / 1920; interpolate only between them.
    Contact rows stay in document flow so real addresses may wrap without overlap. */

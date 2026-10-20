@@ -74,7 +74,7 @@ function SpaceProjectPreview({ work, position, open, compact }: {
       style={{ left: `${position.x > 48 ? position.x - 39 : position.x + 7}%`, top: `${Math.min(position.y + 3, 60)}%` }}>
       <div className={styles.previewContent} data-ready={imageState === "ready"}>
         <Image alt="" className={styles.previewImage} src={work.spaceImageSrc} fill
-          loading="eager" sizes="(max-width: 821px) 0px, (max-width: 1350px) 48vw, 637px"
+          loading="eager" sizes="(max-width: 821px) 0px, (max-width: 1350px) 48vw, (min-width: 1921px) 33.17vw, 637px"
           onLoad={() => setImageState("ready")} onError={() => setImageState("error")} />
         <div className={styles.previewShade} />
         <div className={styles.previewCopy}><p><strong>{work.artistKo}</strong>{work.artistEn}</p><h3>{work.title}</h3></div>
