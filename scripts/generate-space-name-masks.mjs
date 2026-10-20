@@ -1,10 +1,11 @@
 import sharp from "sharp";
 
-// Keep the raster lettering's exact placement, including angled names. Exclude
-// coloured map lines so hovering a hit area cannot tint the surrounding map.
-for (const name of ["map-assigned-2026", "map-assigned-mobile-2026"]) {
+// These masks only drive the hover fade; the visible maps remain vector SVGs.
+// Rasterize from the same exports at high density to retain exact lettering
+// alignment on high-DPR screens and exclude coloured map lines from the mask.
+for (const [name, scale] of [["map-assigned-2026", 8], ["map-assigned-mobile-2026", 4]]) {
   const base = new URL(`../public/assets/figma/space/${name}`, import.meta.url);
-  const { data, info } = await sharp(`${base.pathname}.png`)
+  const { data, info } = await sharp(`${base.pathname}.svg`, { density: 72 * scale })
     .flatten({ background: "#fff" })
     .removeAlpha()
     .raw()

@@ -33,14 +33,14 @@
 .map {
   position: relative;
   width: min(100%, calc(80.37037% + (100vw - 1020px) * 0.12));
-  aspect-ratio: 1626 / 1150;
+  aspect-ratio: 560 / 396;
   margin: clamp(88px, calc(120px - (100vw - 1020px) * 0.09697), 120px) auto 0;
 }
 .assignedLandscape, .assignedPortrait { position: absolute; inset: 0; width: 100%; height: auto; pointer-events: none; }
 .assignedPortrait, .assignedPortraitLinks { display: none; }
 .assignedLandscapeLinks, .assignedPortraitLinks { position: absolute; inset: 0; }
 .assignedBooth { position: absolute; cursor: pointer; }
-/* Letter-shaped masks preserve raster placement without fading blue map lines. */
+/* High-density letter masks fade only the vector lettering, never the blue lines. */
 .assignedLandscapeLinks { --name-mask: url("/assets/figma/space/map-assigned-2026-name-mask.png"); }
 .assignedPortraitLinks { --name-mask: url("/assets/figma/space/map-assigned-mobile-2026-name-mask.png"); }
 .assignedBooth::after {
@@ -133,7 +133,7 @@
   .map, .desktopInstruction { display: none; }
   .tabletInstruction { display: none; }
   .compactInstruction { display: inline; }
-  .compactMap { display: block; position: relative; width: 100%; aspect-ratio: 1626 / 1150; margin: 40px auto 0; }
+  .compactMap { display: block; position: relative; width: 100%; aspect-ratio: 560 / 396; margin: 40px auto 0; }
   .archive { margin-top: clamp(60px, 10vw + 20px, 80px); }
   .archiveGrid { grid-template-columns: 515fr 514fr; gap: 3.561525cqw; margin-top: 40px; }
   .archiveColumn { gap: 1.87441cqw; }

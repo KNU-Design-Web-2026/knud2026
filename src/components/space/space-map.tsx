@@ -28,8 +28,8 @@ export function SpaceMap({ compact = false }: { compact?: boolean }) {
     <div className={compact ? styles.compactMap : styles.map} aria-label="SPACE 9 전시 배치도"
       onKeyDown={event => { if (event.key === "Escape") setActive(null); }}
       onPointerLeave={() => setActive(null)}>
-      <Image alt="SPACE 9 작가별 부스 배치, 컨셉존과 미디어 & 굿즈존" className={styles.assignedLandscape} src="/assets/figma/space/map-assigned-2026.png" width={1626} height={1150} loading="eager" fetchPriority="high" unoptimized />
-      {compact && <Image alt="SPACE 9 작가별 세로 부스 배치" className={styles.assignedPortrait} src="/assets/figma/space/map-assigned-mobile-2026.png" width={384} height={542} loading="eager" fetchPriority="high" unoptimized />}
+      <Image alt="SPACE 9 작가별 부스 배치, 컨셉존과 미디어 & 굿즈존" className={styles.assignedLandscape} src="/assets/figma/space/map-assigned-2026.svg" width={560} height={396} loading="eager" fetchPriority="high" unoptimized />
+      {compact && <Image alt="SPACE 9 작가별 세로 부스 배치" className={styles.assignedPortrait} src="/assets/figma/space/map-assigned-mobile-2026.svg" width={384} height={542} loading="eager" fetchPriority="high" unoptimized />}
       {[spaceBooths, ...(compact ? [mobileSpaceBooths] : [])].map((booths, orientation) => (
         <div className={orientation === 0 ? styles.assignedLandscapeLinks : styles.assignedPortraitLinks} key={orientation}>
           {booths.map((booth, index) => {
