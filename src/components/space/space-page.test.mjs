@@ -77,7 +77,7 @@ test("S3 원본 경로는 유지하되 Next Image의 반응형 전송과 제한�
 
 test("Space 지도는 실제 부스 자산과 접근 가능한 미리보기 제어를 사용한다", async () => {
   const map = await readFile(new URL("./space-map.tsx", import.meta.url), "utf8");
-  for (const asset of ["map-assigned-2026.png", "map-assigned-mobile-2026.png"]) {
+  for (const asset of ["map-assigned-2026.svg", "map-assigned-mobile-2026.svg"]) {
     assert.ok(map.includes(asset));
     assert.ok((await readFile(new URL(`../../../public/assets/figma/space/${asset}`, import.meta.url))).length > 0);
   }
