@@ -61,7 +61,7 @@ export async function listPublicLetters(fetchImplementation: typeof fetch = fetc
   const query = new URLSearchParams({
     select: "id,recipient,sender,body,created_at",
     hidden_at: "is.null",
-    order: "created_at.asc",
+    order: "created_at.desc,id.desc",
     limit: String(LETTER_LIST_LIMIT),
   });
   const response = await fetchImplementation(`${url}/rest/v1/public_letters?${query}`, {
