@@ -17,7 +17,7 @@ const letters = await listPublicLetters(async (url, init) => {
 
 assert.match(listRequest.url, /public_letters/);
 assert.match(listRequest.url, /hidden_at=is.null/);
-assert.match(listRequest.url, /order=created_at.asc/);
+assert.equal(new URL(listRequest.url).searchParams.get("order"), "created_at.desc,id.desc");
 assert.equal(listRequest.init.headers.apikey, "server-only-test-key");
 assert.deepEqual(letters[0], {
   id: "7",
