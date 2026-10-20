@@ -42,7 +42,7 @@ export function WorkDetailPage({ detail }: WorkDetailPageProps) {
           <address className="work-detail__contact" data-clarity-mask="true">
             {emails.map((contact) => <a href={`mailto:${contact.email}`} key={contact.artistKo}>
               <Image alt="이메일" height={32} src="/assets/figma/work/work-detail-mail.svg" width={32} />
-              <span>{emails.length > 1 && <span className="work-detail__contact-name">{contact.artistKo}</span>}{contact.email}</span>
+              <span>{emails.length > 1 && <span className="work-detail__contact-name">{contact.artistKo} · </span>}{contact.email}</span>
             </a>)}
             {detail.instagram && <a href={`https://www.instagram.com/${detail.instagram}`} rel="noreferrer" target="_blank">
               <Image alt="Instagram" height={32} src="/assets/figma/work/work-detail-instagram.svg" width={32} />

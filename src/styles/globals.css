@@ -768,8 +768,8 @@
 }
 
 .work-detail__contact-name {
-  display: block;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .work-detail__story {
