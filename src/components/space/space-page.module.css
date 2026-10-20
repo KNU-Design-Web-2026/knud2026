@@ -34,7 +34,7 @@
   position: relative;
   width: min(100%, calc(80.37037% + (100vw - 1020px) * 0.12));
   aspect-ratio: 560 / 396;
-  margin: clamp(88px, calc(120px - (100vw - 1020px) * 0.09697), 120px) auto 0;
+  margin: clamp(40px, 4.166667vw, 80px) auto 0;
 }
 .assignedLandscape, .assignedPortrait { position: absolute; inset: 0; width: 100%; height: auto; pointer-events: none; }
 .assignedPortrait, .assignedPortraitLinks { display: none; }
@@ -66,7 +66,6 @@
   .map {
     /* Keep the 1350px map scale, but cap large desktop maps at the previous 1302px width. */
     width: min(100%, clamp(1032.818px, calc(1032.818px + (100vw - 1350px) * 0.47225), 1302px));
-    margin-top: clamp(88px, calc(88px + (100vw - 1350px) * 0.23158), 220px);
   }
 }
 .preview {
@@ -98,7 +97,7 @@
 .previewCopy p { display: flex; gap: 1.023cqw; font-size: 1.410979cqw; line-height: 1.3; letter-spacing: -0.002em; }
 .previewCopy strong { font-weight: 700; }
 .previewCopy h3 { font-size: 3.135509cqw; font-weight: 700; line-height: 1.3; letter-spacing: -0.002em; }
-.archive { margin-top: 20.37037cqw; }
+.archive { margin-top: clamp(60px, 6.25vw, 120px); }
 .archiveHeading h2 { height: 5.147746cqw; }
 .archiveGrid { display: grid; grid-template-columns: 515fr 514fr 515fr; gap: 2.345679cqw; margin-top: 7.037037cqw; }
 .archiveColumn { display: flex; flex-direction: column; gap: 1.234568cqw; }
@@ -133,8 +132,8 @@
   .map, .desktopInstruction { display: none; }
   .tabletInstruction { display: none; }
   .compactInstruction { display: inline; }
-  .compactMap { display: block; position: relative; width: 100%; aspect-ratio: 560 / 396; margin: 40px auto 0; }
-  .archive { margin-top: clamp(60px, 10vw + 20px, 80px); }
+  .compactMap { display: block; position: relative; width: 100%; aspect-ratio: 560 / 396; margin: clamp(20px, 4vw, 32px) auto 0; }
+  .archive { margin-top: clamp(32px, 6vw, 48px); }
   .archiveGrid { grid-template-columns: 515fr 514fr; gap: 3.561525cqw; margin-top: 40px; }
   .archiveColumn { gap: 1.87441cqw; }
   .archiveColumn:last-child { display: none; }
@@ -156,4 +155,10 @@
   .page :global(.site-footer__brand-copy), .page :global(.site-footer__schedule) { line-height: 16px; }
   .page :global(.site-footer__information) { gap: 16px; }
   .page :global(.site-footer__information a), .page :global(.site-footer__copyright) { font-size: 11px; line-height: 14px; }
+}
+
+/* Continue the 1920px composition instead of leaving a capped canvas on wide displays. */
+@media (width > 1920px) {
+  .content { width: 84.375%; }
+  .map { width: 80.37037%; }
 }
