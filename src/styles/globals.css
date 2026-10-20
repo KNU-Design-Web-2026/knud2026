@@ -3508,13 +3508,17 @@
   --message-body-scale: 1.05;
   --message-label-scale: 1.1;
   aspect-ratio: 1;
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 27px 33px;
 }
 
 .message-card__content {
   display: flex;
-  height: 100%;
+  /* Some WebKit versions include padding in 100% heights on aspect-ratio cards. */
+  flex: 1;
+  height: auto;
+  min-height: 0;
   min-width: 0;
   flex-direction: column;
   justify-content: space-between;
@@ -3658,7 +3662,7 @@
   .message-card {
     --message-copy-gap: clamp(7.821px, calc(0.65175vw + 5.214px), 9.1245px);
     aspect-ratio: 1.02;
-    display: block;
+    display: flex;
     padding: clamp(9px, calc(2vw + 1px), 13px)
       clamp(9px, calc(6vw - 15px), 21px);
   }
@@ -3668,7 +3672,7 @@
   }
 
   .message-card__content {
-    height: 100%;
+    height: auto;
   }
 
   .message-card__to,
