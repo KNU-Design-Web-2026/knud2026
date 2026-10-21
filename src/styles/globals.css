@@ -1823,6 +1823,9 @@
 }
 
 .mobile-menu-panel {
+  max-height: calc(100dvh - var(--header-height));
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
