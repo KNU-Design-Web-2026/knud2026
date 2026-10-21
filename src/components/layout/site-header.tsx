@@ -77,6 +77,13 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
     }
 
     const previousOverflow = document.body.style.overflow;
+    // Tailwind's max-[1350px] variants exclude 1350px itself.
+    const mobileViewport = window.matchMedia("(width < 1350px)");
+    const closeOnDesktop = () => {
+      if (!mobileViewport.matches) {
+        setIsMenuOpen(false);
+      }
+    };
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsMenuOpen(false);
@@ -85,10 +92,12 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
 
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", closeOnEscape);
+    mobileViewport.addEventListener("change", closeOnDesktop);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
+      mobileViewport.removeEventListener("change", closeOnDesktop);
     };
   }, [isMenuOpen]);
 

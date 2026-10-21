@@ -1844,6 +1844,13 @@
   transition-delay: 0s;
 }
 
+/* Hide immediately at the desktop breakpoint while the open-state effect cleans up. */
+@media (min-width: 1350px) {
+  .mobile-menu-panel {
+    display: none;
+  }
+}
+
 .mobile-menu-backdrop {
   visibility: hidden;
   pointer-events: none;
