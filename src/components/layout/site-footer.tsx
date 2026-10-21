@@ -29,7 +29,7 @@ export function SiteFooter() {
           <div className="site-footer__information flex w-151.25 shrink-0 flex-col gap-[var(--footer-content-gap)] text-[var(--footer-font-size)] leading-[1.3] font-bold tracking-[-0.02em] max-[1350px]:w-auto">
             <div className="site-footer__schedule">
               <p>2026.10.20 TUE — 2026.10.30 FRI</p>
-              <p>9AM — 6PM</p>
+              <p>10AM — 6PM</p>
               <p>경북대학교 SPACE 9</p>
             </div>
             <a className="site-footer__instagram text-knud-footer-muted" href="https://www.instagram.com/knu_design_exhibition" target="_blank" rel="noreferrer">
