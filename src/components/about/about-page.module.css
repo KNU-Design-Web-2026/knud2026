@@ -1181,21 +1181,3 @@
     height: calc(647.417px - 0.333vw);
   }
 }
-
-@media (max-width: 420px) {
-  .professorsGrid > :nth-child(1) {
-    order: 4;
-  }
-
-  .professorsGrid > :nth-child(2) {
-    order: 3;
-  }
-
-  .professorsGrid > :nth-child(3) {
-    order: 1;
-  }
-
-  .professorsGrid > :nth-child(4) {
-    order: 2;
-  }
-}
