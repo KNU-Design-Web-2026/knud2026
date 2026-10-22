@@ -11,7 +11,12 @@ const fullIntroduction = [
   "이러한 흐름을 사자의 행동에 비유하여, 축적은 도약을 위해 힘을 모으는 순간, 점화는 목표를 향해 도약하는 순간, 폭발은 사자의 포효와 함께 에너지와 존재감이 주변으로 확산되는 모습으로 표현하였습니다.",
 ];
 
-const professors = ["이경용", "조철희", "안지선", "이재민"];
+const professors = [
+  { name: "이경용", role: "졸업전시 지도교수" },
+  { name: "조철희", role: "졸업전시 지도교수" },
+  { name: "안지선", role: "졸업전시 총괄 지도교수" },
+  { name: "이재민", role: "졸업전시 지도교수" },
+];
 
 const committee = [
   ["기획 및 전시팀", "윤이지 김가연 김지언 박규리 이다혜 현연이"],
@@ -109,9 +114,9 @@ export function AboutPage() {
               <img alt="" src="/assets/figma/about/professors-wave.svg" />
             </picture>
             <div className={styles.professorsGrid}>
-              {professors.map((name) => (
+              {professors.map(({ name, role }) => (
                 <div key={name}>
-                  <p>경북대학교 디자인학과 교수</p>
+                  <p>{role}</p>
                   <strong>{name}</strong>
                 </div>
               ))}
