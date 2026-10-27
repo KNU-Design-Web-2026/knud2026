@@ -172,6 +172,8 @@ assert.match(styles, /font-size:\s*clamp\(1rem, 1\.042vw, 1\.25rem\)/);
 assert.match(styles, /font-size:\s*clamp\(0\.75rem, 1\.3vw, 0\.875rem\)/);
 assert.match(styles, /font-size:\s*clamp\(0\.5625rem, 2\.1vw, 0\.75rem\)/);
 assert.match(styles, /\.message-page\[data-message-motion-ready="true"\] \[data-message-reveal\] > \.message-card__surface\s*\{[\s\S]*opacity 620ms[\s\S]*translate 760ms/);
+assert.match(styles, /\.message-card__surface\s*\{[^}]*display: flex;[^}]*flex-direction: column;/,
+  "the paper surface must stretch the flex content so From stays at the bottom");
 assert.match(styles, /\.message-page\[data-message-motion-ready="true"\] \.message-list \.message-card\[data-message-reveal\] > \.message-card__surface\s*\{/);
 assert.match(styles, /\.message-list \.message-card\[data-message-visible="true"\] > \.message-card__surface\s*\{[\s\S]*opacity: 1;[\s\S]*translate: 0 0;/);
 assert.doesNotMatch(styles, /--message-card-layout-y|--message-card-motion-y/);

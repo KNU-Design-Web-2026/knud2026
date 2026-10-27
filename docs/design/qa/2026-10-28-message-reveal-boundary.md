@@ -18,3 +18,9 @@
 - 세 뷰포트 모두 149개 카드의 감지 영역과 surface 높이가 같고, From.이 surface 하단 안쪽에 위치하며 가로 넘침이 없다.
 - 재진입 확인: visible true → false → true, surface translate 0 → 24px → 0.
 - 운영 DB에 테스트 메시지를 작성하지 않았고 배포하지 않았다. Safari/WebKit은 이번 검증에 포함하지 않았다.
+
+## 운영 반영 시 보완
+
+- PR #49 운영 확인에서 surface가 block 컨테이너여서 기존 `content { flex: 1; height: auto }`가 늘어나지 않아 From.이 위로 붙는 회귀를 발견했다.
+- surface를 세로 flex 컨테이너로 지정해 기존 내용 영역의 하단 정렬을 복구한다.
+- 이전의 `fromFits` 검증은 잘림 여부만 검사해 하단 정렬 회귀를 잡지 못했다. 추가 검수는 카드 하단과 From. 하단의 차이가 실제 bottom padding과 같은지 비교한다.
