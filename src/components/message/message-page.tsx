@@ -37,20 +37,22 @@ function MessageCard({
 
   return (
     <article
-      className={`message-card${isInitialRevealActive ? " message-card--initial-reveal" : ""}`}
+      className="message-card"
       data-message-reveal
       data-message-visible="false"
       data-node-id="1742:88482"
       style={initialRevealStyle}
     >
-      <div className="message-card__content">
-        <div className="message-card__copy">
-          <p className="message-card__to">
-            To. <strong className="message-card__recipient-name">{message.to}</strong>
-          </p>
-          <p className="message-card__body">{message.body}</p>
+      <div className={`message-card__surface${isInitialRevealActive ? " message-card--initial-reveal" : ""}`}>
+        <div className="message-card__content">
+          <div className="message-card__copy">
+            <p className="message-card__to">
+              To. <strong className="message-card__recipient-name">{message.to}</strong>
+            </p>
+            <p className="message-card__body">{message.body}</p>
+          </div>
+          <p className="message-card__from">From. {message.from}</p>
         </div>
-        <p className="message-card__from">From. {message.from}</p>
       </div>
     </article>
   );
@@ -154,6 +156,7 @@ export function MessagePage({
       { rootMargin: "0px 0px -8%", threshold: 0.12 },
     );
 
+    // Observe fixed shells, never the translated paper inside them.
     revealTargets.forEach((target) => observer.observe(target));
 
     return () => {

@@ -4157,20 +4157,35 @@
   }
 }
 
-/* Message scroll reveal: keep the existing staggered composition, then add
-   only a small vertical settle and opacity change as cards enter or leave. */
-.message-page[data-message-motion-ready="true"] [data-message-reveal] {
+/* Keep the observed shell fixed. Translating the observed element at the
+   viewport edge would feed the reveal motion back into IntersectionObserver. */
+.message-card[data-message-reveal] {
+  position: relative;
+  overflow: visible;
+  background: transparent;
+}
+
+.message-card__surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #f3f3f3;
+  /* Inherit the existing responsive paper margins without changing its size. */
+  padding: inherit;
+}
+
+.message-page[data-message-motion-ready="true"] [data-message-reveal] > .message-card__surface {
   transition:
     opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
     translate 760ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-reveal] {
+.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-reveal] > .message-card__surface {
   opacity: 0;
   translate: 0 1.5rem;
 }
 
-.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-visible="true"] {
+.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-visible="true"] > .message-card__surface {
   opacity: 1;
   translate: 0 0;
 }
