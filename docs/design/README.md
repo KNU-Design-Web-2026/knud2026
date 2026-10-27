@@ -32,6 +32,8 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-10-28 MESSAGE 상단 경계 애니메이션 떨림](./qa/2026-10-28-message-reveal-boundary.md)
+- [2026-10-28 MESSAGE 공개 메시지 전체 조회](./qa/2026-10-28-message-full-history.md)
 - [2026-10-20 대형 모니터 비례 확장 및 SPACE 지도 간격](./qa/2026-10-20-ultrawide-layout.md)
 - [2026-10-20 SPACE 지도 원본 벡터 반영](./qa/2026-10-20-space-vector-maps.md)
 - [2026-10-20 MESSAGE Safari 작성자 잘림 핫픽스](./qa/2026-10-20-message-sender-hotfix.md)
