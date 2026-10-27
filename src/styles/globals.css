@@ -4168,6 +4168,8 @@
 .message-card__surface {
   position: absolute;
   inset: 0;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: #f3f3f3;
   /* Inherit the existing responsive paper margins without changing its size. */
