@@ -1,4 +1,4 @@
-import { LETTER_LIST_LIMIT, type CreateLetterInput, type Letter } from "./model";
+import { LETTER_LIST_PAGE_SIZE, type CreateLetterInput, type Letter } from "./model";
 
 type SupabaseLetterRow = {
   id: number | string;
@@ -58,23 +58,31 @@ async function readErrorMessage(response: Response) {
 
 export async function listPublicLetters(fetchImplementation: typeof fetch = fetch) {
   const { url, serviceRoleKey } = readRepositoryConfig();
-  const query = new URLSearchParams({
-    select: "id,recipient,sender,body,created_at",
-    hidden_at: "is.null",
-    order: "created_at.desc,id.desc",
-    limit: String(LETTER_LIST_LIMIT),
-  });
-  const response = await fetchImplementation(`${url}/rest/v1/public_letters?${query}`, {
-    headers: requestHeaders(serviceRoleKey),
-    cache: "no-store",
-  });
+  const letters: Letter[] = [];
+  let offset = 0;
 
-  if (!response.ok) {
-    throw new LetterRepositoryError("메시지를 불러오지 못했습니다.", "request_failed");
+  while (true) {
+    const query = new URLSearchParams({
+      select: "id,recipient,sender,body,created_at",
+      hidden_at: "is.null",
+      order: "created_at.desc,id.desc",
+      limit: String(LETTER_LIST_PAGE_SIZE),
+      offset: String(offset),
+    });
+    const response = await fetchImplementation(`${url}/rest/v1/public_letters?${query}`, {
+      headers: requestHeaders(serviceRoleKey),
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new LetterRepositoryError("메시지를 불러오지 못했습니다.", "request_failed");
+    }
+
+    const rows = (await response.json()) as SupabaseLetterRow[];
+    letters.push(...rows.map(toLetter));
+    if (rows.length < LETTER_LIST_PAGE_SIZE) return letters;
+    offset += rows.length;
   }
-
-  const rows = (await response.json()) as SupabaseLetterRow[];
-  return rows.map(toLetter);
 }
 
 export async function insertPublicLetter(

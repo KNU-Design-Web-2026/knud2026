@@ -6,7 +6,7 @@ export const RECIPIENT_OPTIONS = [
 
 export const DEFAULT_RECIPIENT = RECIPIENT_OPTIONS[0];
 export const LETTER_SENDER_MAX_LENGTH = 20;
-export const LETTER_LIST_LIMIT = 100;
+export const LETTER_LIST_PAGE_SIZE = 100;
 
 export type Recipient = (typeof RECIPIENT_OPTIONS)[number];
 
