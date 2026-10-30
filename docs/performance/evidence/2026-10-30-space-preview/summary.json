@@ -1,0 +1,99 @@
+{
+  "scope": "Previously measured, WITHOUT video or tracing; not the recording sessions",
+  "metrics": {
+    "baseline": {
+      "sha256": "4271c224fc0befdd12a8f568f0779e9a15a8c602f41abbd383d8653cf2aec738",
+      "capturedAt": "2026-10-30T08:04:24.297Z",
+      "sha": "5328fc2",
+      "summary": [
+        {
+          "network": "normal",
+          "cache": "cold",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 7.649999618530273,
+          "readySamples": 10,
+          "readyMedianMs": 7.649999618530273
+        },
+        {
+          "network": "normal",
+          "cache": "warm",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 4.050000190734863,
+          "readySamples": 10,
+          "readyMedianMs": 4.050000190734863
+        },
+        {
+          "network": "slow",
+          "cache": "cold",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 821.8499999046326,
+          "readySamples": 10,
+          "readyMedianMs": 821.8499999046326
+        },
+        {
+          "network": "slow",
+          "cache": "warm",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 4.5,
+          "readySamples": 10,
+          "readyMedianMs": 4.5
+        }
+      ]
+    },
+    "candidate": {
+      "sha256": "d6e8b793a18ba325517304d7e001e63734cbca1795cd782bf42b78ca786045b1",
+      "capturedAt": "2026-10-30T08:04:39.263Z",
+      "sha": "5328fc2+working-tree",
+      "summary": [
+        {
+          "network": "normal",
+          "cache": "cold",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 7.949999809265137,
+          "readySamples": 10,
+          "readyMedianMs": 7.949999809265137
+        },
+        {
+          "network": "normal",
+          "cache": "warm",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 3.3499999046325684,
+          "readySamples": 10,
+          "readyMedianMs": 3.75
+        },
+        {
+          "network": "slow",
+          "cache": "cold",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 7.950000286102295,
+          "readySamples": 10,
+          "readyMedianMs": 824.2499995231628
+        },
+        {
+          "network": "slow",
+          "cache": "warm",
+          "samples": 10,
+          "timeouts": 0,
+          "informationSamples": 10,
+          "informationMedianMs": 3.8499999046325684,
+          "readySamples": 10,
+          "readyMedianMs": 3.8499999046325684
+        }
+      ]
+    }
+  }
+}
