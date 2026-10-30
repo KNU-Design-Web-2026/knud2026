@@ -1,0 +1,987 @@
+{
+  "capturedAt": "2026-10-30T08:04:24.297Z",
+  "baseURL": "http://127.0.0.1:3101",
+  "label": "baseline",
+  "sha": "5328fc2",
+  "browser": "149.0.7827.55",
+  "platform": "darwin",
+  "arch": "arm64",
+  "runs": 10,
+  "viewport": [
+    1920,
+    1080
+  ],
+  "conditions": {
+    "slow": {
+      "latencyMs": 400,
+      "downBytesPerSecond": 50000,
+      "upBytesPerSecond": 25000
+    },
+    "throttlePhase": "selection only",
+    "serviceWorkers": "block",
+    "routing": false,
+    "serverImageCache": "warm"
+  },
+  "results": [
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 1,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 5.90000057220459,
+      "previewMs": null,
+      "readyMs": 5.90000057220459,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1.5999994277954102,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 2,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7.5,
+      "previewMs": null,
+      "readyMs": 7.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 0.9000005722045898,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 3,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7.59999942779541,
+      "previewMs": null,
+      "readyMs": 7.59999942779541,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 4,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7.699999809265137,
+      "previewMs": null,
+      "readyMs": 7.699999809265137,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1.1999998092651367,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 5,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7,
+      "previewMs": null,
+      "readyMs": 7,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 6,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7.800000190734863,
+      "previewMs": null,
+      "readyMs": 7.800000190734863,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1.1999998092651367,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 7,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7.699999809265137,
+      "previewMs": null,
+      "readyMs": 7.699999809265137,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 0.9000005722045898,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 8,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 6.800000190734863,
+      "previewMs": null,
+      "readyMs": 6.800000190734863,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 9,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 7.800000190734863,
+      "previewMs": null,
+      "readyMs": 7.800000190734863,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 1.1999998092651367,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "cold",
+      "run": 10,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 8,
+      "previewMs": null,
+      "readyMs": 8,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 0.9000005722045898,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 1,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 9.5,
+      "previewMs": null,
+      "readyMs": 9.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.3000001907348633,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 2,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.199999809265137,
+      "previewMs": null,
+      "readyMs": 4.199999809265137,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 0.8999996185302734,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 3,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 3.6000003814697266,
+      "previewMs": null,
+      "readyMs": 3.6000003814697266,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 4,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 3.6000003814697266,
+      "previewMs": null,
+      "readyMs": 3.6000003814697266,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 5,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.799999237060547,
+      "previewMs": null,
+      "readyMs": 4.799999237060547,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.0999994277954102,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 6,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 3.90000057220459,
+      "previewMs": null,
+      "readyMs": 3.90000057220459,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 0.8999996185302734,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 7,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 3.40000057220459,
+      "previewMs": null,
+      "readyMs": 3.40000057220459,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 8,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.5,
+      "previewMs": null,
+      "readyMs": 4.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.0999994277954102,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 9,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.5,
+      "previewMs": null,
+      "readyMs": 4.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "normal",
+      "cache": "warm",
+      "run": 10,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 3.6999998092651367,
+      "previewMs": null,
+      "readyMs": 3.6999998092651367,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 1,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 826.3000001907349,
+      "previewMs": null,
+      "readyMs": 826.3000001907349,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 813.1999998092651,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 2,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 825.5,
+      "previewMs": null,
+      "readyMs": 825.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 811.9000005722046,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 3,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 818.6000003814697,
+      "previewMs": null,
+      "readyMs": 818.6000003814697,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 812.3999996185303,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 4,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 818.9000005722046,
+      "previewMs": null,
+      "readyMs": 818.9000005722046,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 812.0999994277954,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 5,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 819.6000003814697,
+      "previewMs": null,
+      "readyMs": 819.6000003814697,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 811.5,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 6,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 821.5999994277954,
+      "previewMs": null,
+      "readyMs": 821.5999994277954,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 813.5,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 7,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 822.1000003814697,
+      "previewMs": null,
+      "readyMs": 822.1000003814697,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 812.6000003814697,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 8,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 824.6000003814697,
+      "previewMs": null,
+      "readyMs": 824.6000003814697,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 812.3999996185303,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 9,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 824.1999998092651,
+      "previewMs": null,
+      "readyMs": 824.1999998092651,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 812.3999996185303,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "cold",
+      "run": 10,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 818.5,
+      "previewMs": null,
+      "readyMs": 818.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": false,
+          "duration": 812.3999996185303,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 1,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 2.40000057220459,
+      "previewMs": null,
+      "readyMs": 2.40000057220459,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1999998092651367,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 2,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.5,
+      "previewMs": null,
+      "readyMs": 4.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 3,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 6.59999942779541,
+      "previewMs": null,
+      "readyMs": 6.59999942779541,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 4,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 3.5,
+      "previewMs": null,
+      "readyMs": 3.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 5,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 2,
+      "previewMs": null,
+      "readyMs": 2,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1999998092651367,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 6,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.699999809265137,
+      "previewMs": null,
+      "readyMs": 4.699999809265137,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.2000007629394531,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 7,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.100000381469727,
+      "previewMs": null,
+      "readyMs": 4.100000381469727,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.1000003814697266,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 8,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.5,
+      "previewMs": null,
+      "readyMs": 4.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.0999994277954102,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 9,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.600000381469727,
+      "previewMs": null,
+      "readyMs": 4.600000381469727,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.2000007629394531,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    },
+    {
+      "network": "slow",
+      "cache": "warm",
+      "run": 10,
+      "initialTransfer": {
+        "htmlEncodedBytes": 10909,
+        "scriptEncodedBytes": 918564
+      },
+      "informationMs": 4.5,
+      "previewMs": null,
+      "readyMs": 4.5,
+      "finalSrc": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+      "timedOut": false,
+      "selectionResourceEntries": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3101/_next/image?url=%2Fassets%2Fworks%2Fyoon-iji%2Fspace.webp&w=640&q=75",
+          "beforeSelection": true,
+          "duration": 1.6999998092651367,
+          "transferSize": 20076,
+          "encodedBodySize": 19776
+        }
+      ]
+    }
+  ]
+}

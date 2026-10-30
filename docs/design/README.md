@@ -32,6 +32,10 @@ docs/design/
 
 ## 현재 기록
 
+- [2026-10-30 SPACE 저속 연결 개선과 원시 측정 기록](../performance/2026-10-30-space-preview-resilience.md)
+- [2026-10-30 SPACE 이미지 대기·오류 복구 검증](./qa/2026-10-30-space-preview-resilience.md)
+- [2026-10-30 Playwright 영상·trace 증거 기록](./qa/2026-10-30-space-playwright-evidence.md)
+
 - [2026-10-28 MESSAGE 상단 경계 애니메이션 떨림](./qa/2026-10-28-message-reveal-boundary.md)
 - [2026-10-28 MESSAGE 공개 메시지 전체 조회](./qa/2026-10-28-message-full-history.md)
 - [2026-10-20 대형 모니터 비례 확장 및 SPACE 지도 간격](./qa/2026-10-20-ultrawide-layout.md)

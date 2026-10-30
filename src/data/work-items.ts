@@ -12,6 +12,7 @@ export type WorkItem = {
   imageSrc: string;
   blurDataURL?: string;
   spaceImageSrc: string;
+  spacePreviewDataURL?: string;
   title: string;
 };
 
@@ -64,6 +65,7 @@ export const WORK_ITEMS: readonly WorkItem[] = Array.from(
       imageSrc: submitted?.thumbnail.src ?? "/assets/figma/work/work-placeholder.png",
       blurDataURL: submitted?.thumbnail.blurDataURL,
       spaceImageSrc: submitted?.space.src ?? "/assets/figma/work/work-placeholder.png",
+      spacePreviewDataURL: submitted?.space.blurDataURL,
       title: submitted || WORK_INTRODUCTIONS[artistKo]
         ? PROFILE_SHEET_CONTENT[artistKo.split(" & ")[0]].projectName.replace(/\s*\/\s*\(한글 표기 필요할 시[^)]*\)/, "")
         : "작품이름",
