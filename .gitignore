@@ -13,3 +13,8 @@ coverage/
 
 # Local-only performance fixtures. Regenerate with package scripts.
 /public/performance-fixtures/
+
+# Reproducible browser/performance evidence is kept locally, not in source control.
+/artifacts/
+/playwright-report/
+/test-results/

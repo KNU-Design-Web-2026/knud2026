@@ -5,5 +5,7 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 export default defineConfig([
   ...nextVitals,
   ...nextTypeScript,
-  globalIgnores([".next/**", "node_modules/**", "coverage/**"]),
+  // Playwright's generated report includes third-party viewer bundles, not
+  // application source. Keep recordings/reports out of source linting.
+  globalIgnores([".next/**", "node_modules/**", "coverage/**", "artifacts/**", "playwright-report/**", "test-results/**"]),
 ]);
