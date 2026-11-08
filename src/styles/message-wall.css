@@ -1,0 +1,761 @@
+.message-list-container {
+  /* Keep the 1,620px Figma grid centered with its 150px minimum canvas margin. */
+  position: relative;
+  z-index: 1;
+  padding-inline: 150px !important;
+}
+
+.message-list-status {
+  width: min(1620px, 100%);
+  min-height: 1.5em;
+  margin: 0 auto 24px;
+  color: #4f4f4f;
+  font-size: clamp(0.875rem, 1.042vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.message-list-status:empty {
+  display: none;
+}
+
+/* Translated post-its may extend past their grid track; the opaque footer must stay above them. */
+.message-page .site-footer {
+  position: relative;
+  z-index: 5;
+}
+
+.message-list {
+  display: grid;
+  width: min(1620px, 100%);
+  margin: 0 auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 47px;
+  row-gap: 50px;
+}
+
+.message-card {
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+  overflow: hidden;
+  background: #f3f3f3;
+  padding: 30.573px 40.267px;
+}
+
+.message-card__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.message-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message-card__to,
+.message-card__from {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.message-card__to {
+  font-weight: 400;
+}
+
+.message-card__recipient-name {
+  font-weight: 700;
+}
+
+.message-card__body {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 9;
+  line-clamp: 9;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.04px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.message-card--skeleton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ededed;
+}
+
+.message-card__skeleton-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.875rem);
+}
+
+.message-card__skeleton-line {
+  width: 100%;
+  height: clamp(0.75rem, 1.15vw, 1.125rem);
+  border-radius: 999px;
+  background: #d9d9d9;
+  animation: message-skeleton-pulse 1.4s ease-in-out infinite alternate;
+}
+
+.message-card__skeleton-line--to {
+  width: 42%;
+}
+
+.message-card__skeleton-line--short {
+  width: 68%;
+}
+
+.message-card__skeleton-line--from {
+  width: 36%;
+}
+
+@keyframes message-skeleton-pulse {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* The streamed skeleton keeps the wall geometry visible while the server waits
+   for letters. Real cards then enter once, before scroll-based reveals take over. */
+.message-card--initial-reveal {
+  animation: message-card-initial-reveal 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--message-initial-reveal-delay, 0ms);
+}
+
+@keyframes message-card-initial-reveal {
+  from {
+    opacity: 0;
+    translate: 0 1.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-card__skeleton-line {
+    animation: none;
+  }
+}
+
+/* Figma frame 1742:88621 — 1350px */
+@media (max-width: 1350px) {
+
+  .message-list-container {
+    padding-inline: 50px !important;
+  }
+  .message-list {
+    width: min(1249.748px, 100%);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 50.916px;
+  }
+  .message-card {
+    padding: 33px 46px;
+  }
+  .message-card__copy {
+    gap: 19.286px;
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: 16px;
+  }
+  .message-card__body {
+    font-size: 16px;
+    letter-spacing: -0.04px;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
+  }
+}
+
+/* Figma frame 1742:92591 — 1020px */
+@media (max-width: 1020px) {
+
+  .message-list-container {
+    padding-inline: 102px !important;
+  }
+  .message-list {
+    width: min(816.194px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50.916px;
+  }
+  .message-card__body {
+    font-size: 14px;
+    line-height: 1.3;
+    -webkit-line-clamp: 11;
+    line-clamp: 11;
+  }
+}
+
+/* Figma frame 1742:96389 — 600px */
+@media (max-width: 600px) {
+
+  .message-list-container {
+    padding-inline: 44px !important;
+  }
+  .message-list {
+    width: min(512px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32.015px;
+  }
+  .message-card {
+    padding: 17px 28px 17px 20px;
+  }
+  .message-card__copy {
+    gap: 12.127px;
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: 12px;
+  }
+  .message-card__body {
+    font-size: 14px;
+    letter-spacing: -0.028px;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+  }
+}
+
+/* Figma frame 1742:100190 — 400px */
+@media (max-width: 400px) {
+
+  .message-list-container {
+    padding-inline: 16px !important;
+  }
+  .message-list {
+    width: min(368px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+  .message-card {
+    padding: 15px 20px 15px 14px;
+  }
+  .message-card__copy {
+    gap: 8.979px;
+  }
+  .message-card__body {
+    font-size: 12px;
+    letter-spacing: -0.024px;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+}
+
+/*
+ * Message responsive interpolation
+ *
+ * Figma provides reference frames at 1920, 1350, 1020, 600, and 400px.  The
+ * first implementation swapped every pixel value at those boundaries, which
+ * made the form and cards visibly jump while resizing.  Keep the structural
+ * changes (three to two columns and the compact mobile form), but interpolate
+ * all dimensions within each structure with fluid values.
+ */
+@media (min-width: 601px) {
+
+  .message-list-container {
+    padding-inline: clamp(3rem, 7.8125vw, 9.375rem) !important;
+  }
+
+  .message-list {
+    width: min(101.25rem, 100%);
+    gap: var(--message-card-gap);
+  }
+
+  .message-card {
+    padding: clamp(2rem, 2.135vw, 2.5625rem) clamp(2.5rem, 2.8125vw, 3.375rem);
+  }
+
+  .message-card__copy {
+    gap: clamp(1rem, 1.302vw, 1.5625rem);
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: clamp(1rem, 1.042vw, 1.25rem);
+  }
+  .message-card__body {
+    font-size: clamp(1.25rem, 1.4583vw, 1.75rem);
+  }
+}
+
+/* Keep laptop-width screens, including the 14-inch MacBook Pro, on four columns. */
+@media (min-width: 1440px) {
+  .message-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 47px;
+    row-gap: 50px;
+  }
+
+  .message-card {
+    padding: 30.573px 40.267px;
+  }
+
+  .message-card__copy {
+    gap: 15px;
+  }
+
+}
+
+@media (min-width: 601px) and (max-width: 63.75rem) {
+  .message-list-container {
+    padding-inline: clamp(3rem, 7.8125vw, 5rem) !important;
+  }
+  .message-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .message-list-container {
+    padding-inline: clamp(1rem, 7.33vw, 2.75rem) !important;
+  }
+  .message-list {
+    width: min(32rem, 100%);
+    gap: clamp(1.125rem, 5.336vw, 2rem);
+  }
+  .message-card {
+    padding: clamp(0.9375rem, 2.833vw, 1.0625rem)
+      clamp(1.25rem, 4.667vw, 1.75rem);
+  }
+  .message-card__copy {
+    gap: clamp(0.5625rem, 2.021vw, 0.758rem);
+  }
+  .message-card__to,
+  .message-card__from {
+    font-size: 0.75rem;
+  }
+  .message-card__body {
+    font-size: clamp(0.75rem, 2.333vw, 0.875rem);
+  }
+}
+
+/* Keep the compact cards readable without forcing their copy beyond the edge. */
+@media (max-width: 600px) {
+
+  .message-card__to,
+  .message-card__from {
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
+  }
+
+  .message-card__body {
+    font-size: clamp(0.625rem, 2vw, 0.75rem);
+    line-height: 1.3;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+  }
+}
+
+@media (max-width: 400px) {
+  .message-card__body {
+    font-size: 10px;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+  }
+}
+
+/* Pull the message wall into the lower edge of the decorative scene. */
+.message-list-container {
+  --message-list-lift: clamp(12rem, 18vw, 15rem);
+  --message-list-footer-gap: clamp(6.25rem, 8vw, 10rem);
+
+  margin-top: calc(-1 * var(--message-list-lift));
+  padding-bottom: var(--message-list-footer-gap);
+}
+
+@media (min-width: 37.5625rem) and (max-width: 63.75rem) {
+  .message-list-container {
+    --message-list-lift: clamp(3rem, 10vw, 6rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .message-list-container {
+    --message-list-lift: clamp(2rem, 8vw, 3rem);
+    --message-list-footer-gap: 4rem;
+  }
+}
+
+/* Alternate columns vertically without changing the chronological DOM order. */
+.message-list {
+  --message-card-stagger: clamp(7rem, 7.1vw, 8.5rem);
+
+  padding-bottom: var(--message-card-stagger);
+}
+
+.message-card:nth-child(4n + 2),
+.message-card:nth-child(4n + 4) {
+  transform: translateY(var(--message-card-stagger));
+}
+
+/* Keep the three-column rhythm below the spray illustration. */
+@media (min-width: 1150px) and (max-width: 1439px) {
+  .message-list-container {
+    /* Preserve the three-column rhythm while keeping the whole first row
+       below the spray illustration. */
+    --message-list-lift: clamp(9rem, 11vw, 11rem);
+  }
+
+  .message-list {
+    --message-card-stagger: clamp(6rem, 8vw, 8rem);
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .message-card:nth-child(4n + 2),
+  .message-card:nth-child(4n + 4) {
+    transform: none;
+  }
+
+  .message-card:nth-child(3n + 2) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
+
+@media (max-width: 1149px) {
+  .message-list {
+    --message-card-stagger: clamp(4.5rem, 10vw, 7rem);
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .message-card:nth-child(4n + 2),
+  .message-card:nth-child(4n + 4),
+  .message-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .message-card:nth-child(2n) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
+
+/* The mobile columns retain the staggered composition. */
+@media (max-width: 600px) {
+  .message-list {
+    --message-card-stagger: clamp(3.5rem, 13vw, 4.875rem);
+  }
+}
+
+/* Figma message post-its: fixed paper and type scale across the five reference widths. */
+.message-card {
+  /* Figma 2584:30326: 7.821px between text blocks at a 12px type scale. */
+  --message-copy-gap: 13.035px;
+  --message-body-leading: 1.45;
+  --message-body-scale: 1.05;
+  --message-label-scale: 1.1;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 27px 33px;
+}
+
+.message-card__content {
+  display: flex;
+  /* Some WebKit versions include padding in 100% heights on aspect-ratio cards. */
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--message-copy-gap);
+}
+
+.message-card__copy {
+  min-height: 0;
+  overflow: hidden;
+  gap: var(--message-copy-gap);
+}
+
+.message-card__to,
+.message-card__from,
+.message-card__body {
+  font-size: calc(20px * var(--message-label-scale));
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.message-card__to,
+.message-card__from {
+  font-weight: 700;
+}
+
+.message-card__from {
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+.message-card__body {
+  max-height: calc(9em * var(--message-body-leading));
+  font-size: calc(19px * var(--message-body-scale));
+  font-weight: 500;
+  line-height: var(--message-body-leading);
+  letter-spacing: 0.012em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-line-clamp: 9;
+  line-clamp: 9;
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .message-card {
+    --message-copy-gap: clamp(10.428px, calc(0.543104vw + 2.607px), 13.035px);
+    --message-body-scale: 1.03;
+    padding: clamp(15px, calc(2.5vw - 21px), 27px)
+      clamp(23px, calc(2.0833vw - 7px), 33px);
+  }
+
+  .message-card__to,
+  .message-card__from,
+  .message-card__body {
+    font-size: calc(clamp(16px, calc(0.8333vw + 4px), 20px) * var(--message-label-scale));
+  }
+
+  .message-card__body {
+    font-size: calc(clamp(15px, calc(0.8333vw + 3px), 19px) * var(--message-body-scale));
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1439px) {
+  .message-list-container {
+    padding-inline: 50px !important;
+  }
+
+  .message-list {
+    width: 100%;
+    max-width: 1249.57px;
+    column-gap: clamp(25px, calc(13.636vw - 114.09px), 70px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .message-card {
+    --message-copy-gap: clamp(10.428px, calc(0.789921vw + 2.369163px), 13.035px);
+    padding: clamp(17px, calc(3.03vw - 13.9px), 27px)
+      clamp(25px, calc(2.424vw + 0.27px), 33px);
+  }
+
+  .message-card__to,
+  .message-card__from,
+  .message-card__body {
+    font-size: calc(clamp(16px, calc(1.212vw + 3.636px), 20px) * var(--message-label-scale));
+  }
+
+  .message-card__body {
+    font-size: calc(clamp(15px, calc(1.212vw + 2.636px), 19px) * var(--message-body-scale));
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1149px) {
+  .message-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .message-card:nth-child(2n) {
+    transform: none;
+  }
+
+  .message-card:nth-child(3n + 2) {
+    transform: translateY(var(--message-card-stagger));
+  }
+}
+
+@media (max-width: 1019px) {
+  .message-card {
+    --message-body-scale: 1.02;
+    --message-label-scale: 1.08;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1019px) {
+  .message-card {
+    --message-copy-gap: clamp(9.1245px, calc(0.310233vw + 7.258495px), 10.428px);
+    padding: clamp(13px, calc(1.5vw + 1px), 17px)
+      clamp(21px, calc(3vw + 1px), 25px);
+  }
+
+  .message-card__to,
+  .message-card__from,
+  .message-card__body {
+    font-size: calc(clamp(14px, calc(0.476vw + 11.14px), 16px) * var(--message-label-scale));
+  }
+
+  .message-card__body {
+    font-size: calc(clamp(13px, calc(0.476vw + 10.14px), 15px) * var(--message-body-scale));
+  }
+}
+
+@media (max-width: 600px) {
+  .message-list-container {
+    padding-inline: clamp(10px, calc(5vw - 10px), 20px) !important;
+  }
+
+  .message-list {
+    width: 100%;
+    max-width: none;
+    column-gap: clamp(10px, calc(18.5vw - 64px), 47px);
+  }
+
+  .message-card {
+    --message-copy-gap: clamp(7.821px, calc(0.65175vw + 5.214px), 9.1245px);
+    aspect-ratio: 1.02;
+    display: flex;
+    padding: clamp(9px, calc(2vw + 1px), 13px)
+      clamp(9px, calc(6vw - 15px), 21px);
+  }
+
+  .message-card::before {
+    display: none;
+  }
+
+  .message-card__content {
+    height: auto;
+  }
+
+  .message-card__to,
+  .message-card__from,
+  .message-card__body {
+    font-size: calc(clamp(12px, calc(1vw + 8px), 14px) * var(--message-label-scale));
+  }
+
+  .message-card__from {
+    margin-top: 0;
+  }
+
+  .message-card__body {
+    max-height: calc(9em * var(--message-body-leading));
+    font-size: calc(clamp(11px, calc(1vw + 7px), 13px) * var(--message-body-scale));
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-card {
+    --message-label-scale: 1.05;
+    /* Preserve space for 100 characters and a long sender on the smallest papers. */
+    padding: clamp(8px, 2vw, 12px) clamp(8px, calc(6vw - 16px), 20px);
+  }
+
+  .message-card__body {
+    max-height: none;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+}
+
+/* Compact leading preserves the restored paper insets on narrower cards. */
+@media (max-width: 700px) {
+  .message-card {
+    --message-body-leading: 1.3;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1799px) {
+  .message-card {
+    --message-body-leading: 1.32;
+  }
+}
+
+/* Keep two staggered columns on small phones without shrinking the text. */
+@media (min-width: 320px) and (max-width: 399px) {
+  .message-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .message-card {
+    height: clamp(182px, calc(472px - 72.5vw), 240px);
+    padding-block: 6px;
+  }
+
+  .message-card__body {
+    max-height: calc(10em * var(--message-body-leading));
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
+  }
+}
+
+/* Only unusually narrow viewports need a single readable column. */
+@media (max-width: 319px) {
+  .message-list {
+    max-width: 185px;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
+  }
+
+  .message-card:nth-child(2n) {
+    transform: none;
+  }
+}
+
+/* Continue the 1920px scene proportionally beyond the largest design frame.
+   Keep the existing <=1920px form, post-it typography and Safari sizing rules. */
+@media (width > 1920px) {
+  .message-list-container { padding-inline: 7.8125vw !important; }
+  .message-list, .message-list-status { width: 100%; }
+  .message-list {
+    --message-card-stagger: 7.083333vw;
+    column-gap: 2.447917vw;
+    row-gap: 2.604167vw;
+  }
+  .message-card {
+    --message-copy-gap: 0.678906vw;
+    padding: 1.40625vw 1.71875vw;
+  }
+  .message-card__to, .message-card__from {
+    font-size: calc(1.041667vw * var(--message-label-scale));
+  }
+  .message-card__body {
+    font-size: calc(0.989583vw * var(--message-body-scale));
+  }
+}
+
+/* Keep the observed shell fixed. Translating the observed element at the
+   viewport edge would feed the reveal motion back into IntersectionObserver. */
+.message-card[data-message-reveal] {
+  position: relative;
+  overflow: visible;
+  background: transparent;
+}
+
+.message-card__surface {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f3f3f3;
+  /* Inherit the existing responsive paper margins without changing its size. */
+  padding: inherit;
+}
+
+.message-page[data-message-motion-ready="true"] [data-message-reveal] > .message-card__surface {
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 760ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-reveal] > .message-card__surface {
+  opacity: 0;
+  translate: 0 1.5rem;
+}
+
+.message-page[data-message-motion-ready="true"] .message-list .message-card[data-message-visible="true"] > .message-card__surface {
+  opacity: 1;
+  translate: 0 0;
+}

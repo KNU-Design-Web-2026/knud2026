@@ -7,7 +7,7 @@ const sprayCanvasPath = new URL("./spray-canvas.tsx", import.meta.url);
 const heroMotionPath = new URL("./hero-motion.tsx", import.meta.url);
 const heroMotionStylesPath = new URL("./hero-motion.css", import.meta.url);
 const heroGeneratorPath = new URL("../../../scripts/generate-hero-motion.py", import.meta.url);
-const stylesPath = new URL("../../styles/globals.css", import.meta.url);
+const stylesPath = new URL("../../styles/hero.css", import.meta.url);
 
 test("일반 사이트 커서는 34px × 40.33px 규격을 사용한다", () => {
   const cursor = readFileSync(siteCursorPath, "utf8");

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-const styles = readFileSync(new URL("../styles/globals.css", import.meta.url), "utf8");
+const styles = ["work.css", "profile-detail.css"].map((file) => readFileSync(new URL("../styles/" + file, import.meta.url), "utf8")).join("\n");
 
 test("작품 설명은 PC 20px과 여유 있는 행간을 사용하고 모바일 16px은 유지한다", () => {
   const body = styles.match(/\.work-detail__story p \{([^}]+)\}/)?.[1];

@@ -1,0 +1,13 @@
+[data-about-reveal] {
+  opacity: var(--about-progress, 0);
+  /* 중앙 정렬용 transform과 등장 모션을 분리한다. */
+  translate: 0 calc(140px * (1 - var(--about-progress, 0)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-about-reveal] {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}

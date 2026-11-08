@@ -19,7 +19,7 @@ test("헤더 보정 배경은 파란색 Hero가 바로 이어지는 경로에서
 
 test("작은 모바일 폭에서는 커스텀 커서를 활성화하지 않는다", async () => {
   const cursor = await readFile(new URL("./site-cursor.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
 
   assert.match(cursor, /min-width: 600\.0625px/);
   assert.match(cursor, /addEventListener\("change", syncCursorMode\)/);
@@ -63,7 +63,7 @@ test("데스크톱과 모바일 헤더는 작품 메뉴를 WORKS로 표시한다
 
 test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경으로 표시한다", async () => {
   const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
 
   assert.match(header, /isActive && "bg-knud-navigation-active font-normal text-knud-ink"/);
   assert.doesNotMatch(header, /isActive && "font-bold text-knud-navigation-active after:/);
@@ -75,7 +75,7 @@ test("모바일 메뉴의 현재 페이지는 전체 항목을 노란색 배경�
 
 test("1350–1920px 헤더는 노트북 폭에서 텍스트를 축소하고 좌우 여백을 보간한다", async () => {
   const tokens = await readFile(new URL("../../styles/tokens.css", import.meta.url), "utf8");
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
   const header = await readFile(new URL("./site-header.tsx", import.meta.url), "utf8");
   const desktop = tokens.match(/@media \(min-width: 1350px\) \{([\s\S]*?)\n\}/)?.[1];
   assert.ok(desktop);
@@ -95,14 +95,14 @@ test("1350–1920px 헤더는 노트북 폭에서 텍스트를 축소하고 좌�
 });
 
 test("600px 헤더의 햄버거 아이콘은 Figma 기준 33px 폭을 확보한다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
 
   assert.match(styles, /width: clamp\(1\.2890625rem, calc\(6\.1875vw - 0\.2578125rem\), 2\.0625rem\)/);
   assert.match(styles, /height: clamp\(1rem, 4vw, 1\.5rem\)/);
 });
 
 test("데스크톱 메뉴의 hover 배경 이미지는 느린 전환으로 표시한다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
 
   assert.match(styles, /\.header-nav-link__decoration \{[\s\S]*?opacity 620ms/);
   assert.match(styles, /\.header-nav-link:hover \.header-nav-link__decoration[\s\S]*?opacity 700ms/);

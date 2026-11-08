@@ -8,7 +8,7 @@ const detailRoutePath = new URL("./[id]/page.tsx", import.meta.url);
 test("Work 이미지는 중앙 작품명·작가명과 hover/focus 및 터치 대체 상태를 제공한다", async () => {
   const [component, styles] = await Promise.all([
     readFile(detailComponentPath, "utf8"),
-    readFile(new URL("../../styles/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../../styles/profile-detail.css", import.meta.url), "utf8"),
   ]);
   assert.match(component, /className="profile-work-preview"/);
   assert.match(component, /className="profile-work-preview__title">\{detail\.projectName\}/);
@@ -37,7 +37,7 @@ test("상세 페이지는 기존 프로필과 인터뷰 레이아웃을 유지�
 test("상세 페이지는 Figma 기준 폭에서 콘텐츠 구성을 전환한다", async () => {
   const [component, styles] = await Promise.all([
     readFile(detailComponentPath, "utf8"),
-    readFile(new URL("../../styles/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../../styles/profile-detail.css", import.meta.url), "utf8"),
   ]);
 
   assert.match(component, /profile-detail__intro/);
@@ -54,13 +54,13 @@ test("상세 페이지는 Figma 기준 폭에서 콘텐츠 구성을 전환한�
 });
 
 test("프로필 상세는 1350px 이전의 컴팩트한 Web 레이아웃을 기본으로 사용한다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/profile-detail.css", import.meta.url), "utf8");
 
   assert.match(styles, /\.profile-detail__container \{[\s\S]*?padding-inline: 3\.125rem;/);
 });
 
 test("1350px 이상에서는 Web 원본 비율까지 연속적으로 확장한다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/profile-detail.css", import.meta.url), "utf8");
 
   assert.match(styles, /@media \(min-width: 1350\.1px\)[\s\S]*?padding-inline: clamp\(3\.125rem,[\s\S]*?9\.375rem\)/);
   assert.match(styles, /@media \(min-width: 1350\.1px\)[\s\S]*?flex: 0 0 clamp\(23\.3125rem,[\s\S]*?31\.25rem\)/);
@@ -68,14 +68,14 @@ test("1350px 이상에서는 Web 원본 비율까지 연속적으로 확장한�
 });
 
 test("상세 페이지는 좁은 뷰포트에서 가로 넘침으로 배경이 드러나지 않는다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/profile-detail.css", import.meta.url), "utf8");
 
   assert.match(styles, /\.profile-detail \{[\s\S]*?max-width: 100%;[\s\S]*?overflow-x: clip;[\s\S]*?width: 100%;/);
   assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.profile-detail__intro \{[\s\S]*?min-width: 0;/);
 });
 
 test("iPhone SE 폭에서는 긴 프로필 태그가 줄바꿈된다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/profile-detail.css", import.meta.url), "utf8");
 
   assert.match(styles, /@media \(max-width: 460px\)[\s\S]*?\.profile-detail__tags \{[\s\S]*?flex-wrap: wrap;[\s\S]*?gap: 0 0\.625rem;[\s\S]*?font-size: 0\.875rem;/);
 });

@@ -6,7 +6,7 @@ import { PROFILE_MEMBERS } from "../../data/profile-members.ts";
 const profilePagePath = new URL("./page.tsx", import.meta.url);
 const profileCardPath = new URL("../../components/profile/profile-card.tsx", import.meta.url);
 const profileMembersPath = new URL("../../data/profile-members.ts", import.meta.url);
-const globalStylesPath = new URL("../../styles/globals.css", import.meta.url);
+const globalStylesPath = new URL("../../styles/profile-card.css", import.meta.url);
 const tokensPath = new URL("../../styles/tokens.css", import.meta.url);
 
 test("Profile 경로는 Figma의 20개 프로필 카드를 렌더한다", () => {
@@ -171,7 +171,7 @@ test("Profile은 1100px부터 태블릿 3열 레이아웃과 프레임으로 전
 
 test("공통 헤더는 중간 폭에서 제목과 메뉴 아이콘을 연속적으로 축소한다", () => {
   const header = readFileSync(new URL("../../components/layout/site-header.tsx", import.meta.url), "utf8");
-  const globalStyles = readFileSync(globalStylesPath, "utf8");
+  const globalStyles = readFileSync(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
   const tokens = readFileSync(tokensPath, "utf8");
 
   assert.match(header, /site-header__brand/);
