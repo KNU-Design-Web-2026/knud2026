@@ -1,0 +1,230 @@
+import {
+  canStartPaintDrip,
+  createPaintDensity,
+  createPaintDrip,
+  createPaintStamp,
+  DRIP_COOLDOWN,
+  DRIP_ELIGIBILITY_TIME,
+  DRIP_SETTLE_TIME,
+  findScheduledDrip,
+  PAINT_HOLD,
+  PAINT_LIFETIME,
+} from "./spray-paint";
+import type { PaintStamp, Point } from "./spray-paint";
+import { getSprayRenderPlan } from "./spray-render-schedule";
+import { createSprayTextureCache } from "./spray-texture";
+import { createSprayRenderer } from "./spray-renderer";
+
+const STAMP_SPACING = 12;
+const MAX_DEVICE_PIXEL_RATIO = 2;
+const SPRAY_COLORS = ["#F8D622", "#FF3030", "#F7F7F2", "#FD9519", "#41C9F9"];
+const SLOW_SPEED = 0.22; // CSS px/ms; mouse pressure is not a force measurement.
+const nextDripDistance = () => 90 + Math.random() * 90;
+
+export function mountSprayCanvas(hero: HTMLElement, sprayZone: HTMLElement, canvas: HTMLCanvasElement) {
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  const textureCache = createSprayTextureCache();
+  const renderer = createSprayRenderer(context, textureCache);
+
+  let stamps: PaintStamp[] = [];
+  let lastPoint: Point | null = null;
+  let latestInput: (Point & { at: number }) | null = null;
+  let pointerId: number | null = null;
+  let frame: number | null = null;
+  let wakeTimer: number | null = null;
+  let colorIndex = -1;
+  let activeColor = SPRAY_COLORS[0];
+  let settledSince = 0;
+  let lastDripAt = -Infinity;
+  let distanceUntilDrip = nextDripDistance();
+  let nextDensity = createPaintDensity();
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  const enabled = () => finePointer.matches && !reducedMotion.matches;
+
+  const cancelWake = () => {
+    if (wakeTimer === null) return;
+    window.clearTimeout(wakeTimer);
+    wakeTimer = null;
+  };
+  const requestRender = () => {
+    cancelWake();
+    if (frame === null) frame = window.requestAnimationFrame(render);
+  };
+  const scheduleWake = (at: number) => {
+    cancelWake();
+    wakeTimer = window.setTimeout(() => {
+      wakeTimer = null;
+      requestRender();
+    }, Math.max(1, Math.ceil(at - performance.now())));
+  };
+
+  const resizeCanvas = () => {
+    cancelWake();
+    ({ height, width } = hero.getBoundingClientRect());
+    dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    renderer.clear();
+    // Existing marks use coordinates from the old artwork dimensions.
+    stamps = [];
+    lastPoint = null;
+    latestInput = null;
+  };
+
+  function render(now: number) {
+    frame = null;
+    stamps = stamps.filter((stamp) => now - stamp.createdAt < PAINT_LIFETIME);
+
+    const wetStamp = stamps.at(-1);
+    // Already deposited paint can begin flowing after the pointer has moved
+    // away or been released; randomness is sampled at deposition, not per frame.
+    let dripCandidate = findScheduledDrip(stamps, now, lastDripAt);
+    if (!dripCandidate && pointerId !== null && latestInput && wetStamp &&
+        now - settledSince >= DRIP_SETTLE_TIME &&
+        Math.hypot(latestInput.x - wetStamp.x, latestInput.y - wetStamp.y) < wetStamp.bodyHeight &&
+        canStartPaintDrip(stamps, wetStamp, now, lastDripAt)) {
+      dripCandidate = wetStamp;
+    }
+    if (dripCandidate) {
+      dripCandidate.drip = createPaintDrip(dripCandidate, now);
+      lastDripAt = now;
+    }
+
+    renderer.render(stamps, now, width, height, dpr);
+    const wakeTimes: number[] = [];
+    const wetStampIsNearPointer = pointerId !== null && latestInput && wetStamp &&
+      now - wetStamp.createdAt < DRIP_ELIGIBILITY_TIME &&
+      Math.hypot(latestInput.x - wetStamp.x, latestInput.y - wetStamp.y) < wetStamp.bodyHeight;
+    if (wetStampIsNearPointer) {
+      const settleAt = settledSince + DRIP_SETTLE_TIME;
+      if (settleAt > now && settleAt < wetStamp.createdAt + DRIP_ELIGIBILITY_TIME) wakeTimes.push(settleAt);
+      else if (!wetStamp.drip && lastDripAt + DRIP_COOLDOWN > now) wakeTimes.push(lastDripAt + DRIP_COOLDOWN);
+    }
+    const scheduledDripWaitingForCooldown = stamps.some((stamp) => !stamp.drip && stamp.dripAt !== null &&
+      stamp.dripAt <= now && now - stamp.createdAt < DRIP_ELIGIBILITY_TIME);
+    if (scheduledDripWaitingForCooldown && lastDripAt + DRIP_COOLDOWN > now) {
+      wakeTimes.push(lastDripAt + DRIP_COOLDOWN);
+    }
+    const plan = getSprayRenderPlan(stamps, now, {
+      dripEligibilityTime: DRIP_ELIGIBILITY_TIME,
+      paintHold: PAINT_HOLD,
+      paintLifetime: PAINT_LIFETIME,
+    }, wakeTimes);
+    if (plan.animate) frame = window.requestAnimationFrame(render);
+    else if (plan.wakeAt !== null) scheduleWake(plan.wakeAt);
+  }
+
+  const addStamp = (point: Point, direction: number | null) => {
+    const stamp = createPaintStamp(point, performance.now(), direction, activeColor);
+    stamp.density = nextDensity();
+    if (direction !== null) {
+      distanceUntilDrip -= STAMP_SPACING;
+      if (distanceUntilDrip <= 0) {
+        stamp.dripAt = stamp.createdAt + 180 + Math.random() * 240;
+        distanceUntilDrip = nextDripDistance();
+      }
+    }
+    stamps.push(stamp);
+    requestRender();
+  };
+
+  const pointFromEvent = (event: PointerEvent): Point => {
+    const bounds = hero.getBoundingClientRect();
+    return { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
+  };
+
+  const sprayAlongPath = (next: Point) => {
+    if (!lastPoint) { addStamp(next, null); lastPoint = next; return; }
+    const dx = next.x - lastPoint.x;
+    const dy = next.y - lastPoint.y;
+    const distance = Math.hypot(dx, dy);
+    const steps = Math.min(Math.floor(distance / STAMP_SPACING), 10);
+    if (steps === 0) return;
+    const direction = Math.atan2(dy, dx);
+    for (let step = 1; step <= steps; step += 1) {
+      const progress = step * STAMP_SPACING / distance;
+      addStamp({ x: lastPoint.x + dx * progress, y: lastPoint.y + dy * progress }, direction);
+    }
+    const covered = steps * STAMP_SPACING / distance;
+    lastPoint = { x: lastPoint.x + dx * covered, y: lastPoint.y + dy * covered };
+  };
+
+  const stop = () => {
+    const capturedId = pointerId;
+    pointerId = null;
+    lastPoint = null;
+    latestInput = null;
+    if (capturedId !== null && sprayZone.hasPointerCapture(capturedId)) sprayZone.releasePointerCapture(capturedId);
+    requestRender();
+  };
+  const handlePointerDown = (event: PointerEvent) => {
+    if (!enabled() || event.button !== 0 || pointerId !== null) return;
+    pointerId = event.pointerId;
+    colorIndex = (colorIndex + 1) % SPRAY_COLORS.length;
+    activeColor = SPRAY_COLORS[colorIndex];
+    sprayZone.setPointerCapture(event.pointerId);
+    const point = pointFromEvent(event);
+    settledSince = performance.now();
+    latestInput = { ...point, at: settledSince };
+    lastPoint = point;
+    distanceUntilDrip = nextDripDistance();
+    nextDensity = createPaintDensity();
+    addStamp(point, null);
+  };
+  const handlePointerMove = (event: PointerEvent) => {
+    if (event.pointerId !== pointerId) return;
+    const point = pointFromEvent(event);
+    const now = performance.now();
+    if (latestInput && Math.hypot(point.x - latestInput.x, point.y - latestInput.y) / Math.max(1, now - latestInput.at) > SLOW_SPEED) {
+      settledSince = now;
+    }
+    latestInput = { ...point, at: now };
+    sprayAlongPath(point);
+  };
+  const handlePointerEnd = (event: PointerEvent) => {
+    if (event.pointerId === pointerId) stop();
+  };
+  const reset = () => {
+    stop();
+    stamps = [];
+    renderer.clear();
+    if (frame !== null) window.cancelAnimationFrame(frame);
+    frame = null;
+    cancelWake();
+    context.clearRect(0, 0, width, height);
+  };
+  const handleVisibility = () => { if (document.hidden) reset(); };
+
+  resizeCanvas();
+  const resizeObserver = new ResizeObserver(resizeCanvas);
+  resizeObserver.observe(hero);
+  sprayZone.addEventListener("pointerdown", handlePointerDown);
+  sprayZone.addEventListener("pointermove", handlePointerMove);
+  sprayZone.addEventListener("pointerup", handlePointerEnd);
+  sprayZone.addEventListener("pointercancel", handlePointerEnd);
+  sprayZone.addEventListener("lostpointercapture", handlePointerEnd);
+  finePointer.addEventListener("change", reset);
+  reducedMotion.addEventListener("change", reset);
+  window.addEventListener("blur", reset);
+  document.addEventListener("visibilitychange", handleVisibility);
+  return () => {
+    reset();
+    textureCache.dispose();
+    resizeObserver.disconnect();
+    sprayZone.removeEventListener("pointerdown", handlePointerDown);
+    sprayZone.removeEventListener("pointermove", handlePointerMove);
+    sprayZone.removeEventListener("pointerup", handlePointerEnd);
+    sprayZone.removeEventListener("pointercancel", handlePointerEnd);
+    sprayZone.removeEventListener("lostpointercapture", handlePointerEnd);
+    finePointer.removeEventListener("change", reset);
+    reducedMotion.removeEventListener("change", reset);
+    window.removeEventListener("blur", reset);
+    document.removeEventListener("visibilitychange", handleVisibility);
+  };
+}

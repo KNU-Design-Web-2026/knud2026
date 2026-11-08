@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const siteCursorPath = new URL("../layout/site-cursor.tsx", import.meta.url);
-const sprayCanvasPath = new URL("./spray-canvas.tsx", import.meta.url);
+const sprayControllerPath = new URL("./spray-controller.ts", import.meta.url);
 const heroMotionPath = new URL("./hero-motion.tsx", import.meta.url);
 const heroMotionStylesPath = new URL("./hero-motion.css", import.meta.url);
 const heroGeneratorPath = new URL("../../../scripts/generate-hero-motion.py", import.meta.url);
@@ -46,7 +46,7 @@ test("사자와 스프레이는 폭발 타이밍에 반동하고 모바일에서
 });
 
 test("스프레이 색상은 KNUD 팔레트의 주황·파랑을 사용하고 연두를 제외한다", () => {
-  const spray = readFileSync(sprayCanvasPath, "utf8");
+  const spray = readFileSync(sprayControllerPath, "utf8");
 
   assert.match(spray, /#FD9519/);
   assert.match(spray, /#41C9F9/);
