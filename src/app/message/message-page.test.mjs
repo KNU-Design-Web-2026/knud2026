@@ -30,7 +30,11 @@ assert.equal(existsSync(figmaBodyLimitMigrationPath), true, "90-character databa
 
 const route = readFileSync(routePath, "utf8");
 const loadingRoute = readFileSync(loadingRoutePath, "utf8");
-const component = readFileSync(componentPath, "utf8");
+const component = [
+  componentPath,
+  new URL("../../components/message/message-composer.tsx", import.meta.url),
+  new URL("../../components/message/message-wall.tsx", import.meta.url),
+].map((path) => readFileSync(path, "utf8")).join("\n");
 const data = readFileSync(dataPath, "utf8");
 const styles = stylesPaths.map((path) => readFileSync(path, "utf8")).join("\n");
 const apiRoute = readFileSync(apiRoutePath, "utf8");
@@ -65,7 +69,8 @@ assert.match(component, /initialMessages: Letter\[\]/);
 assert.match(component, /useState<Letter\[\]>\(\(\) =>[\s\S]*initialMessages[\s\S]*\.sort/);
 assert.match(component, /messageList\.map/);
 assert.match(component, /Date\.parse\(b\.createdAt\) - Date\.parse\(a\.createdAt\)/);
-assert.match(component, /setMessageList\(\(current\) => \[\s*payload\.letter!,[\s\S]*\.\.\.current\.filter/);
+assert.match(component, /onPublished\(payload\.letter\)/);
+assert.match(component, /setMessageList\(\(current\) => \[letter, \.\.\.current\.filter/);
 assert.match(component, /To\./);
 assert.match(component, /From\./);
 assert.match(component, /useState<Recipient>\(DEFAULT_RECIPIENT\)/);
