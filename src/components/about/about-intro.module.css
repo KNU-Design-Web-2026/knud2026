@@ -1,0 +1,301 @@
+.introSection {
+  --about-intro-original-top: 235px;
+  --about-intro-edge-shift: calc(var(--about-intro-original-top) - var(--content-page-edge-gap));
+
+  position: relative;
+  height: calc(1216px - var(--about-intro-edge-shift));
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #06affd 0%,
+    #06affd 45.941%,
+    #f1f1f1 100%
+  );
+}
+
+.introWide {
+  position: absolute;
+  top: var(--content-page-edge-gap);
+  left: 50%;
+  box-sizing: border-box;
+  width: 1568px;
+  height: 746px;
+  padding: 26px;
+  transform: translateX(-50%) scale(var(--about-depth-scale, 1));
+  filter: blur(var(--about-depth-blur, 0px));
+  border: 10px solid #838383;
+  background: #fcd519;
+}
+
+.introWideInner {
+  display: grid;
+  grid-template-columns: 434px minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 39px 72px;
+  gap: 68px;
+  background: #fff;
+}
+
+.posterWide {
+  display: block;
+  width: 434px;
+  height: 615px;
+  object-fit: cover;
+}
+
+.introductionCopy {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.introductionBody h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.introductionParagraphs {
+  margin-top: 24px;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.introductionParagraphs p + p {
+  margin-top: 24px;
+}
+
+.introductionCopy a {
+  margin-top: 40px;
+  color: #808080;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+  text-decoration: none;
+}
+
+.introNarrow {
+  display: none;
+}
+
+/* The desktop artwork is a 1920px composition. Scale its geometry together so
+   edge-aligned papers still reach the viewport edge on larger monitors. */
+@media (width > 1920px) {
+  .introSection {
+    height: calc(981 * var(--about-wide-unit) + var(--content-page-edge-gap));
+  }
+  .introWide {
+    width: calc(1568 * var(--about-wide-unit));
+    height: calc(746 * var(--about-wide-unit));
+    padding: calc(26 * var(--about-wide-unit));
+    border-width: calc(10 * var(--about-wide-unit));
+  }
+  .introWideInner {
+    grid-template-columns: calc(434 * var(--about-wide-unit)) minmax(0, 1fr);
+    padding: calc(39 * var(--about-wide-unit)) calc(72 * var(--about-wide-unit));
+    gap: calc(68 * var(--about-wide-unit));
+  }
+  .posterWide {
+    width: calc(434 * var(--about-wide-unit));
+    height: calc(615 * var(--about-wide-unit));
+  }
+  .introductionBody h1 { font-size: calc(32 * var(--about-wide-unit)); }
+  .introductionParagraphs {
+    margin-top: calc(24 * var(--about-wide-unit));
+    font-size: calc(24 * var(--about-wide-unit));
+  }
+  .introductionParagraphs p + p { margin-top: calc(24 * var(--about-wide-unit)); }
+  .introductionCopy a {
+    margin-top: calc(40 * var(--about-wide-unit));
+    font-size: calc(20 * var(--about-wide-unit));
+  }
+}
+
+@media (min-width: 1351px) and (max-width: 1919px) {
+  .introSection {
+    --about-intro-original-top: calc(-68.158px + 15.7895vw);
+
+    height: calc((903px + 16.2963vw) - var(--about-intro-edge-shift));
+  }
+
+  .introWide {
+    top: var(--content-page-edge-gap);
+    width: calc(348.632px + 63.1579vw);
+    height: calc(800.105px - 2.807vw);
+  }
+
+  .introWideInner {
+    padding-right: calc(-12.474px + 4.398vw);
+    padding-left: calc(-12.474px + 4.398vw);
+    gap: calc(41.053px + 1.404vw);
+  }
+
+  .introductionParagraphs {
+    font-size: calc(10.526px + 0.702vw);
+  }
+
+  .introductionCopy a {
+    font-size: calc(13.263px + 0.351vw);
+  }
+}
+
+@media (min-width: 822px) and (max-width: 1350px) {
+  .introSection {
+    --about-intro-original-top: calc(-18.636px + 12.121vw);
+
+    height: calc((-296.909px + 105.294vw) - var(--about-intro-edge-shift));
+  }
+
+  .introWide {
+    top: var(--content-page-edge-gap);
+    width: calc(-37.636px + 92.121vw);
+    height: calc(-39.818px + 59.394vw);
+    padding: calc(-0.793px + 1.984vw);
+    border-width: calc(-0.309px + 0.764vw);
+  }
+
+  .introWideInner {
+    grid-template-columns: calc(-12.182px + 33.03vw) minmax(0, 1fr);
+    padding: calc(-18.273px + 4.727vw) calc(-1.455px + 4.545vw);
+    gap: calc(-1.455px + 4.545vw);
+  }
+
+  .posterWide {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 434 / 615;
+  }
+
+  .introductionBody h1 {
+    font-size: clamp(18px, calc(-0.727px + 2.424vw), 32px);
+  }
+
+  .introductionParagraphs {
+    margin-top: clamp(14px, calc(0.091px + 1.364vw), 24px);
+    font-size: clamp(12px, calc(3.636px + 1.212vw), 20px);
+  }
+
+  .introductionParagraphs p + p {
+    margin-top: clamp(12px, calc(-1.091px + 1.818vw), 24px);
+  }
+
+  .introductionCopy a {
+    margin-top: clamp(20px, calc(-1.818px + 3.03vw), 40px);
+    font-size: clamp(12px, calc(1.091px + 1.515vw), 18px);
+  }
+}
+
+@media (min-width: 822px) and (max-width: 1020px) {
+  .introductionBody h1 {
+    font-size: calc(-8.51px + 3.187vw);
+  }
+
+  .introductionParagraphs {
+    margin-top: calc(-2.255px + 1.594vw);
+    font-size: calc(-6.348px + 2.191vw);
+  }
+
+  .introductionParagraphs p + p {
+    margin-top: calc(3.872px + 0.797vw);
+  }
+
+  .introductionCopy a {
+    margin-top: calc(-4.382px + 2.39vw);
+    font-size: calc(-0.227px + 1.395vw);
+  }
+}
+
+/* Keep the mobile composition through the 770px transition range. */
+@media (max-width: 821px) {
+  .introSection {
+    --about-intro-original-top: clamp(81px, calc(93px - 2vw), 85px);
+
+    height: auto;
+    min-height: calc(clamp(1167px, calc(1027px + 35vw), 1237px) - var(--about-intro-edge-shift));
+  }
+
+  .introWide {
+    display: none;
+  }
+
+  .introNarrow {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: inherit;
+    padding-top: calc(clamp(628px, calc(404px + 56vw), 740px) - var(--about-intro-edge-shift));
+    padding-bottom: 60px;
+  }
+
+  .posterNarrow {
+    position: absolute;
+    top: var(--content-page-edge-gap);
+    left: 50%;
+    display: block;
+    width: clamp(356px, calc(188px + 42vw), 440px);
+    height: auto;
+    transform: translateX(-50%) scale(var(--about-depth-scale, 1));
+    filter: blur(var(--about-depth-blur, 0px));
+    aspect-ratio: 2893 / 4096;
+    object-fit: cover;
+  }
+
+  .introNarrowFrame {
+    position: relative;
+    left: 50%;
+    box-sizing: border-box;
+    /* Figma uses an outside 4px stroke: include 8px in the CSS border box. */
+    width: min(calc(100% - 24px), clamp(365px, calc(37px + 82vw), 529px));
+    min-height: clamp(380px, calc(746px - 61vw), 502px);
+    height: auto;
+    padding: 14.5px clamp(13.5px, calc(8.5px + 1.25vw), 16px);
+    transform: translateX(-50%) scale(var(--about-depth-scale, 1));
+    /* iOS Safari repeats filtered border pixels while this frame scales. */
+    filter: none;
+    border: 4px solid #838383;
+    background: #fcd519;
+  }
+
+  .introNarrowInner {
+    width: 100%;
+    min-height: clamp(343px, calc(709px - 61vw), 465px);
+    padding: clamp(12px, calc(24px - 2vw), 16px)
+      clamp(12px, calc(-8px + 5vw), 22px);
+    background: #fff;
+  }
+
+  .introNarrow .introductionCopy {
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .introNarrow .introductionBody h1 {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .introNarrow .introductionParagraphs {
+    margin-top: clamp(14px, calc(10px + 1vw), 16px);
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .introNarrow .introductionParagraphs p + p {
+    margin-top: 18px;
+  }
+
+  .introNarrow .introductionCopy a {
+    margin-top: clamp(12px, calc(36px - 4vw), 20px);
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
