@@ -4,6 +4,9 @@ import { AboutTeamCarousel } from "@/components/about/about-team-carousel";
 import { SiteFooter } from "@/components/layout/site-footer";
 import posterImage from "../../../public/assets/figma/about/poster.png";
 import styles from "./about-page.module.css";
+import introStyles from "./about-intro.module.css";
+import offlineStyles from "./about-offline.module.css";
+import creditsStyles from "./about-credits.module.css";
 
 const fullIntroduction = [
   "IGNITE는 우리가 4년 동안 축적해 온 디자인적 고민을 더 큰 가능성으로 확장하는 첫 점화의 순간을 의미합니다. 잠재되어 있던 에너지가 졸업전시를 통해 하나의 불꽃으로 피어나고, 더 큰 가능성을 향해 번져 나가는 시작을 담아냅니다. 이 전시는 4년 동안 축적해 온 경험과 가능성을 새로운 시작으로 연결하며, 단순히 결과물을 선보이는 것을 넘어 각자의 개성과 도전 정신을 공유하고, 개개인의 가능성이 하나의 에너지로 모여 새로운 가치를 만들어가는 장을 지향합니다.",
@@ -18,14 +21,6 @@ const professors = [
   { name: "이재민", role: "졸업전시 지도교수" },
 ];
 
-const committee = [
-  ["기획 및 전시팀", "윤이지 김가연 김지언 박규리 이다혜 현연이"],
-  ["비주얼 브랜딩팀", "박규리 공예원 김민주 김은별 박수정 양혜연"],
-  ["영상팀", "이다혜 이나경 이초원 이하늘"],
-  ["웹팀", "김지언 김서은 김세직 이서윤"],
-  ["편집팀", "현연이 김연수 임경민 조장원"],
-];
-
 const teams = [
   { name: "기획 및 전시팀", members: "윤이지 김가연 김지언 박규리 이다혜 현연이", image: "/assets/figma/about/team-planning-2026.jpg", width: 1600, height: 1200 },
   { name: "비주얼 브랜딩팀", members: "박규리 공예원 김민주 김은별 박수정 양혜연", image: "/assets/figma/about/team-branding-2026.jpg", width: 1600, height: 1200 },
@@ -37,10 +32,10 @@ const teams = [
 function IntroductionCopy() {
 
   return (
-    <div className={styles.introductionCopy}>
-      <div className={styles.introductionBody}>
+    <div className={introStyles.introductionCopy}>
+      <div className={introStyles.introductionBody}>
         <h1>잠자는 사자가 깨어난 순간</h1>
-        <div className={styles.introductionParagraphs}>
+        <div className={introStyles.introductionParagraphs}>
           {fullIntroduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </div>
@@ -51,7 +46,7 @@ function IntroductionCopy() {
 
 function ExhibitionInformation() {
   return (
-    <div className={styles.exhibitionInformation}>
+    <div className={offlineStyles.exhibitionInformation}>
       <div>
         <strong>2026.10.20(화) — 10.30(금)</strong>
         <dl>
@@ -70,50 +65,50 @@ function ExhibitionInformation() {
 export function AboutPage() {
   return (
     <div className={styles.page} data-about-page data-clarity-unmask="true">
-      <section className={styles.introSection}>
-        <div className={styles.introWide} data-about-reveal="scale" data-about-depth>
-          <div className={styles.introWideInner}>
-            <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterWide} fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(min-width: 1921px) 22.604167vw, (max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
+      <section className={introStyles.introSection}>
+        <div className={introStyles.introWide} data-about-reveal="scale" data-about-depth>
+          <div className={introStyles.introWideInner}>
+            <Image alt="2026 KNUD 졸업전시회 포스터" className={introStyles.posterWide} fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(min-width: 1921px) 22.604167vw, (max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
             <IntroductionCopy />
           </div>
         </div>
 
-        <div className={styles.introNarrow} data-about-reveal="scale">
-          <Image alt="2026 KNUD 졸업전시회 포스터" className={styles.posterNarrow} data-about-depth fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
-          <div className={styles.introNarrowFrame} data-about-depth>
-            <div className={styles.introNarrowInner}><IntroductionCopy /></div>
+        <div className={introStyles.introNarrow} data-about-reveal="scale">
+          <Image alt="2026 KNUD 졸업전시회 포스터" className={introStyles.posterNarrow} data-about-depth fetchPriority="high" height={2560} loading="eager" placeholder="blur" sizes="(max-width: 821px) 440px, 434px" src={posterImage} width={1808} />
+          <div className={introStyles.introNarrowFrame} data-about-depth>
+            <div className={introStyles.introNarrowInner}><IntroductionCopy /></div>
           </div>
         </div>
       </section>
 
       <main className={styles.mainContent}>
-        <section className={styles.offlineSection}>
+        <section className={offlineStyles.offlineSection}>
           <h2 data-about-reveal="rise">Offline Exhibition</h2>
-          <div className={styles.offlineWide} data-about-reveal="rise">
-            <Image alt="2026 KNUD 오프라인 전시 위치와 관람 안내" className={styles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
-            <span aria-hidden className={styles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
-            <span className={styles.exhibitionHours}>10:00 — 18:00</span>
+          <div className={offlineStyles.offlineWide} data-about-reveal="rise">
+            <Image alt="2026 KNUD 오프라인 전시 위치와 관람 안내" className={offlineStyles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
+            <span aria-hidden className={offlineStyles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
+            <span className={offlineStyles.exhibitionHours}>10:00 — 18:00</span>
           </div>
-          <div className={styles.offlineNarrow} data-about-reveal="rise">
-            <div className={styles.mapCrop}>
-              <div className={styles.mapArtwork}>
-                <Image alt="경북대학교 SPACE 9 전시 위치 지도" className={styles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
-                <span aria-hidden className={styles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
+          <div className={offlineStyles.offlineNarrow} data-about-reveal="rise">
+            <div className={offlineStyles.mapCrop}>
+              <div className={offlineStyles.mapArtwork}>
+                <Image alt="경북대학교 SPACE 9 전시 위치 지도" className={offlineStyles.offlineArtwork} height={538} src="/assets/figma/about/offline-exhibition-detail.png" unoptimized width={1620} />
+                <span aria-hidden className={offlineStyles.mapVenueLabel}>경북대학교 대강당<br />SPACE 9</span>
               </div>
             </div>
             <ExhibitionInformation />
           </div>
         </section>
 
-        <section className={styles.professorsSection}>
+        <section className={creditsStyles.professorsSection}>
           <h2 data-about-reveal="rise">Faculty</h2>
-          <div className={styles.professorsPanel} data-about-reveal="rise">
-            <picture className={styles.panelPaper}>
+          <div className={creditsStyles.professorsPanel} data-about-reveal="rise">
+            <picture className={creditsStyles.panelPaper}>
               <source media="(max-width: 400px)" srcSet="/assets/figma/about/professors-wave-mobile.svg" />
               <source media="(max-width: 821px)" srcSet="/assets/figma/about/professors-wave-tab-mobile.svg" />
               <img alt="" src="/assets/figma/about/professors-wave.svg" />
             </picture>
-            <div className={styles.professorsGrid}>
+            <div className={creditsStyles.professorsGrid}>
               {professors.map(({ name, role }) => (
                 <div key={name}>
                   <p>{role}</p>
@@ -124,7 +119,7 @@ export function AboutPage() {
             <Image
               alt=""
               aria-hidden
-              className={`${styles.professorsLion} ${styles.professorsLionWide}`}
+              className={`${creditsStyles.professorsLion} ${creditsStyles.professorsLionWide}`}
               height={895}
               src="/assets/figma/about/professors-lion-transparent.png"
               unoptimized
@@ -133,7 +128,7 @@ export function AboutPage() {
             <Image
               alt=""
               aria-hidden
-              className={`${styles.professorsLion} ${styles.professorsLionNarrow}`}
+              className={`${creditsStyles.professorsLion} ${creditsStyles.professorsLionNarrow}`}
               height={216}
               src="/assets/figma/about/professors-lion-tab-mobile.svg"
               unoptimized
@@ -142,29 +137,29 @@ export function AboutPage() {
           </div>
         </section>
 
-        <section className={styles.committeeSection}>
+        <section className={creditsStyles.committeeSection}>
           <h2 data-about-reveal="rise"><span>Graduation</span><span>Committee Members</span></h2>
-          <div className={styles.committeePanel} data-about-reveal="rise">
-            <picture className={styles.panelPaper}>
+          <div className={creditsStyles.committeePanel} data-about-reveal="rise">
+            <picture className={creditsStyles.panelPaper}>
               <source media="(max-width: 400px)" srcSet="/assets/figma/about/committee-wave-mobile.svg" />
               <source media="(max-width: 821px)" srcSet="/assets/figma/about/committee-wave-tab-mobile.svg" />
               <img alt="" src="/assets/figma/about/committee-wave.svg" />
             </picture>
-            <div className={styles.committeeInformation}>
-              <div className={styles.committeeChairs}>
+            <div className={creditsStyles.committeeInformation}>
+              <div className={creditsStyles.committeeChairs}>
                 <strong>졸업준비 위원회</strong>
-                <span className={styles.chairNames}>
+                <span className={creditsStyles.chairNames}>
                   <span>윤이지</span>
                   <span>김가연</span>
                 </span>
               </div>
-              <div className={styles.committeeTeams}>
-                {committee.map(([role, members]) => (
-                  <div key={role}><strong>{role}</strong><span>{members}</span></div>
+              <div className={creditsStyles.committeeTeams}>
+                {teams.map(({ name, members }) => (
+                  <div key={name}><strong>{name}</strong><span>{members}</span></div>
                 ))}
               </div>
             </div>
-            <Image alt="" aria-hidden className={styles.committeeIllustration} height={326} src="/assets/figma/about/committee-illustration-transparent.png" unoptimized width={527} />
+            <Image alt="" aria-hidden className={creditsStyles.committeeIllustration} height={326} src="/assets/figma/about/committee-illustration-transparent.png" unoptimized width={527} />
           </div>
         </section>
 

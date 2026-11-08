@@ -1,0 +1,229 @@
+.offlineSection {
+  position: relative;
+  width: 1920px;
+  height: 820px;
+  margin-top: 61px;
+}
+
+.offlineSection h2 {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.002em;
+}
+
+.offlineSection h2 {
+  position: absolute;
+  top: 0;
+  left: 150px;
+}
+
+.offlineWide {
+  position: absolute;
+  top: 282px;
+  left: 75px;
+  width: 1620px;
+  height: 538px;
+  container-type: inline-size;
+}
+
+.offlineArtwork {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mapVenueLabel {
+  position: absolute;
+  display: flex;
+  left: 27.963%;
+  top: 22.491%;
+  width: 10.926%;
+  height: 10.781%;
+  align-items: center;
+  justify-content: center;
+  background: #fcd519;
+  color: #111;
+  font-size: 1.111cqw;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.offlineNarrow {
+  display: none;
+}
+
+/* Replace the raster artwork's outdated hyphen with editable exhibition hours. */
+.exhibitionHours {
+  position: absolute;
+  left: 74.383%;
+  top: 51.115%;
+  width: 24%;
+  padding-bottom: 2px;
+  background: #f1f1f1;
+  color: #000;
+  font-size: 1.4815cqw;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* The desktop artwork is a 1920px composition. Scale its geometry together so
+   edge-aligned papers still reach the viewport edge on larger monitors. */
+@media (width > 1920px) {
+  .offlineSection {
+    width: 100%;
+    height: calc(820 * var(--about-wide-unit));
+    margin-top: calc(61 * var(--about-wide-unit));
+  }
+  .offlineSection h2 {
+    font-size: calc(80 * var(--about-wide-unit));
+  }
+  .offlineSection h2 { left: calc(150 * var(--about-wide-unit)); }
+  .offlineWide {
+    top: calc(282 * var(--about-wide-unit));
+    left: calc(75 * var(--about-wide-unit));
+    width: calc(1620 * var(--about-wide-unit));
+    height: calc(538 * var(--about-wide-unit));
+  }
+}
+
+@media (min-width: 1351px) and (max-width: 1919px) {
+
+  .offlineSection {
+    width: 100vw;
+    height: calc(-89.474px + 47.368vw);
+    margin-top: calc(57.895px + 0.164vw);
+  }
+
+  .offlineSection h2 {
+    font-size: calc(12.632px + 3.509vw);
+  }
+
+  .offlineSection h2 {
+    left: calc(-184.211px + 17.544vw);
+  }
+
+  .offlineWide {
+    top: calc(-91.737px + 19.46vw);
+    left: calc(-5.842px + 4.211vw);
+    width: calc(366.947px + 65.263vw);
+    height: auto;
+  }
+}
+
+@media (min-width: 822px) and (max-width: 1350px) {
+
+  .offlineSection {
+    width: 100vw;
+    height: clamp(406px, calc(-39.091px + 43.636vw), 550px);
+    margin-top: clamp(22px, calc(-95.273px + 11.515vw), 60px);
+  }
+
+  .offlineSection h2 {
+    font-size: clamp(50px, calc(19.091px + 3.03vw), 60px);
+  }
+
+  .offlineSection h2 {
+    left: clamp(50px, calc(46.909px + 0.303vw), 51px);
+  }
+
+  .offlineWide {
+    --offline-side: clamp(38px, 4.902vw, 51px);
+
+    top: clamp(129px, calc(-0.818px + 12.727vw), 171px);
+    left: var(--offline-side);
+    width: calc(100vw - var(--offline-side) - var(--offline-side));
+    max-width: none;
+    height: auto;
+  }
+}
+
+/* Keep the mobile composition through the 770px transition range. */
+@media (max-width: 821px) {
+
+  .offlineSection {
+    width: clamp(398px, calc(66px + 83vw), 564px);
+    height: clamp(610px, calc(476px + 33.5vw), 677px);
+    margin-top: clamp(15px, calc(63px - 8vw), 31px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .offlineSection h2 {
+    font-size: clamp(22px, calc(2px + 5vw), 32px);
+  }
+
+  .offlineSection h2 {
+    position: static;
+    width: 100%;
+    padding-left: clamp(10px, 3.333vw, 20px);
+  }
+
+  .offlineWide {
+    display: none;
+  }
+
+  .offlineNarrow {
+    display: flex;
+    width: 100%;
+    margin-top: clamp(31px, calc(-41px + 18vw), 67px);
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mapCrop {
+    position: relative;
+    width: clamp(380px, calc(56px + 81vw), 542px);
+    overflow: hidden;
+    aspect-ratio: 851.433 / 538;
+  }
+
+  .mapArtwork {
+    position: absolute;
+    top: 0;
+    left: -25.84%;
+    width: 190.27%;
+    max-width: none;
+    height: 100%;
+    container-type: inline-size;
+  }
+
+  .exhibitionInformation {
+    display: flex;
+    width: 250px;
+    margin-top: clamp(38px, calc(18px + 5vw), 48px);
+    flex-direction: column;
+    gap: 46px;
+    text-align: center;
+  }
+
+  .exhibitionInformation > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .exhibitionInformation strong {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .exhibitionInformation dl,
+  .exhibitionInformation p {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .exhibitionInformation dl {
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .exhibitionInformation dl > div {
+    display: grid;
+    grid-template-columns: 52px auto;
+    text-align: left;
+  }
+}

@@ -16,7 +16,7 @@ test("공통 푸터는 최신 전시 종료일과 SPACE 9 장소명을 모든 �
 
 test("400px 모바일 푸터는 Figma의 두 열 배치와 고정 줄바꿈을 유지한다", async () => {
   const footer = await readFile(new URL("./site-footer.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
 
   assert.match(footer, /site-footer__copyright-line/);
   assert.equal(footer.match(/site-footer__brand-line/g)?.length, 5);
@@ -30,7 +30,7 @@ test("400px 모바일 푸터는 Figma의 두 열 배치와 고정 줄바꿈을 �
 });
 
 test("400px 미만 푸터는 열 간격과 정보 글자를 함께 축소해 가로 넘침을 막는다", async () => {
-  const styles = await readFile(new URL("../../styles/globals.css", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../../styles/site-shell.css", import.meta.url), "utf8");
 
   assert.match(styles, /column-gap: clamp\(0\.5rem, calc\(37\.5vw - 7rem\), 2\.375rem\);/);
   assert.match(styles, /font-size: clamp\(0\.5625rem, calc\(2\.5vw \+ 0\.0625rem\), 0\.6875rem\);/);

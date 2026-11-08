@@ -9,7 +9,7 @@ const dataPath = fileURLToPath(new URL("../../data/messages.ts", import.meta.url
 const inputRulesPath = fileURLToPath(new URL("../../lib/message-input.ts", import.meta.url));
 const modelPath = fileURLToPath(new URL("../../features/rolling-paper/model.ts", import.meta.url));
 const apiRoutePath = fileURLToPath(new URL("../api/letters/route.ts", import.meta.url));
-const stylesPath = fileURLToPath(new URL("../../styles/globals.css", import.meta.url));
+const stylesPaths = ["message-form.css", "message-wall.css"].map((file) => new URL("../../styles/" + file, import.meta.url));
 const bodyLimitMigrationPath = fileURLToPath(
   new URL("../../../supabase/migrations/20260916000100_expand_public_letter_body_limit.sql", import.meta.url),
 );
@@ -24,15 +24,19 @@ assert.equal(existsSync(dataPath), true, "message data should exist");
 assert.equal(existsSync(inputRulesPath), true, "message input rules should exist");
 assert.equal(existsSync(modelPath), true, "rolling-paper model should exist");
 assert.equal(existsSync(apiRoutePath), true, "letters API route should exist");
-assert.equal(existsSync(stylesPath), true, "global styles should exist");
+assert.ok(stylesPaths.every((path) => existsSync(path)), "message styles should exist");
 assert.equal(existsSync(bodyLimitMigrationPath), true, "150-character database migration should exist");
 assert.equal(existsSync(figmaBodyLimitMigrationPath), true, "90-character database migration should exist");
 
 const route = readFileSync(routePath, "utf8");
 const loadingRoute = readFileSync(loadingRoutePath, "utf8");
-const component = readFileSync(componentPath, "utf8");
+const component = [
+  componentPath,
+  new URL("../../components/message/message-composer.tsx", import.meta.url),
+  new URL("../../components/message/message-wall.tsx", import.meta.url),
+].map((path) => readFileSync(path, "utf8")).join("\n");
 const data = readFileSync(dataPath, "utf8");
-const styles = readFileSync(stylesPath, "utf8");
+const styles = stylesPaths.map((path) => readFileSync(path, "utf8")).join("\n");
 const apiRoute = readFileSync(apiRoutePath, "utf8");
 const bodyLimitMigration = readFileSync(bodyLimitMigrationPath, "utf8");
 const figmaBodyLimitMigration = readFileSync(figmaBodyLimitMigrationPath, "utf8");
@@ -65,7 +69,8 @@ assert.match(component, /initialMessages: Letter\[\]/);
 assert.match(component, /useState<Letter\[\]>\(\(\) =>[\s\S]*initialMessages[\s\S]*\.sort/);
 assert.match(component, /messageList\.map/);
 assert.match(component, /Date\.parse\(b\.createdAt\) - Date\.parse\(a\.createdAt\)/);
-assert.match(component, /setMessageList\(\(current\) => \[\s*payload\.letter!,[\s\S]*\.\.\.current\.filter/);
+assert.match(component, /onPublished\(payload\.letter\)/);
+assert.match(component, /setMessageList\(\(current\) => \[letter, \.\.\.current\.filter/);
 assert.match(component, /To\./);
 assert.match(component, /From\./);
 assert.match(component, /useState<Recipient>\(DEFAULT_RECIPIENT\)/);
@@ -191,7 +196,7 @@ assert.ok(figmaPostItStyles, "Figma post-it sizing rules should exist");
 assert.match(figmaPostItStyles, /\.message-card\s*\{[\s\S]*?aspect-ratio:\s*1/);
 assert.match(figmaPostItStyles, /@media \(min-width:\s*1020px\) and \(max-width:\s*1149px\)[\s\S]*?grid-template-columns:\s*repeat\(3/);
 assert.match(figmaPostItStyles, /@media \(max-width:\s*600px\)[\s\S]*?\.message-card\s*\{[\s\S]*?aspect-ratio:\s*1\.02/);
-assert.match(figmaPostItStyles, /@media \(max-width:\s*600px\)[\s\S]*?font-size:\s*clamp\(12px, calc\(1vw \+ 8px\), 14px\)/);
+assert.match(figmaPostItStyles, /@media \(max-width:\s*600px\)[\s\S]*?\.message-card__from,\s*\.message-card__body\s*\{[^}]*font-size:\s*calc\(clamp\(12px, calc\(1vw \+ 8px\), 14px\) \* var\(--message-label-scale\)\)/);
 assert.match(figmaPostItStyles, /\.message-card__body\s*\{[\s\S]*?font-weight:\s*500/);
 assert.match(figmaPostItStyles, /@media \(min-width:\s*320px\) and \(max-width:\s*399px\)[\s\S]*?grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
 assert.match(figmaPostItStyles, /@media \(max-width:\s*319px\)[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\)/);

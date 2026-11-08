@@ -8,7 +8,7 @@ const workItemsPath = new URL("../../data/work-items.ts", import.meta.url);
 const workDetailDataPath = new URL("../../data/work-details.ts", import.meta.url);
 const workDetailRoutePath = new URL("./[id]/page.tsx", import.meta.url);
 const workDetailPagePath = new URL("../../components/work/work-detail-page.tsx", import.meta.url);
-const globalStylesPath = new URL("../../styles/globals.css", import.meta.url);
+const globalStylesPath = new URL("../../styles/work.css", import.meta.url);
 const tokensPath = new URL("../../styles/tokens.css", import.meta.url);
 
 test("작품 소개는 국문·영문 모두 양쪽 정렬 없이 자연스러운 간격을 유지한다", () => {

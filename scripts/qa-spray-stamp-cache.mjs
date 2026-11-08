@@ -8,7 +8,7 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright")
 const output = resolve(process.env.SPRAY_QA_OUTPUT || "artifacts/spray-stamp-cache");
 await mkdir(output, { recursive: true });
 const modules = {};
-for (const name of ["spray-paint", "spray-texture", "spray-stamp-groups", "spray-renderer"]) {
+for (const name of ["spray-paint", "spray-texture", "spray-stamp-groups", "spray-dirty-tiles", "spray-renderer"]) {
   const source = await readFile(new URL(`../src/components/main/${name}.ts`, import.meta.url), "utf8");
   modules[`/${name}.js`] = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText
     .replace(/from "\.\/(spray-[^"]+)"/g, 'from "./$1.js"');

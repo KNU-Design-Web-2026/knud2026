@@ -2,9 +2,18 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+const aboutStyleFiles = ["page", "intro", "offline", "credits"];
+
+async function readAboutStyles() {
+  const sources = await Promise.all(aboutStyleFiles.map((section) =>
+    readFile(new URL("./about-" + section + ".module.css", import.meta.url), "utf8"),
+  ));
+  return sources.join("\n");
+}
+
 test("600px부터 821px까지 About 페이지는 600px 이하 공통 프레임 토큰을 유지한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(page, /data-about-page/);
   assert.match(styles, /@media \(min-width: 37\.5rem\) and \(max-width: 51\.3125rem\)/);
@@ -14,7 +23,7 @@ test("600px부터 821px까지 About 페이지는 600px 이하 공통 프레임 �
 });
 
 test("822px부터 1020px까지 소개 프레임이 뷰포트와 함께 축소된다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /width: calc\(-37\.636px \+ 92\.121vw\)/);
   assert.match(styles, /height: calc\(-39\.818px \+ 59\.394vw\)/);
@@ -23,14 +32,14 @@ test("822px부터 1020px까지 소개 프레임이 뷰포트와 함께 축소된
 });
 
 test("중간 화면의 소개 영역 높이와 제목 크기가 고정 하한 없이 보간된다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /height: calc\(\(-296\.909px \+ 105\.294vw\) - var\(--about-intro-edge-shift\)\)/);
   assert.match(styles, /font-size: clamp\(18px, calc\(-0\.727px \+ 2\.424vw\), 32px\)/);
 });
 
 test("About 첫·마지막 콘텐츠는 모든 화면에서 Profile 기준에 시각 보정값을 더한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /--about-intro-edge-shift: calc\(var\(--about-intro-original-top\) - var\(--content-page-edge-gap\)\)/);
   assert.match(styles, /\.introWide \{[\s\S]*?top: var\(--content-page-edge-gap\)/);
@@ -41,7 +50,7 @@ test("About 첫·마지막 콘텐츠는 모든 화면에서 Profile 기준에 �
 });
 
 test("822px부터 1020px까지 소개 텍스트와 문단 간격을 함께 축소한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /@media \(min-width: 822px\) and \(max-width: 1020px\)/);
   assert.match(styles, /font-size: calc\(-6\.348px \+ 2\.191vw\)/);
@@ -50,7 +59,7 @@ test("822px부터 1020px까지 소개 텍스트와 문단 간격을 함께 축�
 });
 
 test("소개 문단은 모든 화면에서 한글 단어 중간 줄바꿈을 피한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(
     styles,
@@ -63,7 +72,7 @@ test("소개 문단은 모든 화면에서 한글 단어 중간 줄바꿈을 피
 });
 
 test("About Instagram 링크는 모든 화면에서 밑줄을 표시하지 않는다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: none;/);
   assert.doesNotMatch(styles, /\.introductionCopy a \{[\s\S]*?text-decoration: underline;/);
@@ -79,7 +88,9 @@ test("교수진 섹션 제목은 Faculty로 표시한다", async () => {
 test("위원회와 팀 소개는 기획 및 전시팀 명칭을 동일하게 사용한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
 
-  assert.equal(page.match(/"기획 및 전시팀"/g)?.length, 2);
+  assert.equal(page.match(/"기획 및 전시팀"/g)?.length, 1);
+  assert.match(page, /teams\.map\(\(\{ name, members \}\)/);
+  assert.match(page, /<AboutTeamCarousel teams=\{teams\}/);
   assert.doesNotMatch(page, /"기획팀"/);
 });
 
@@ -127,7 +138,7 @@ test("포스터와 졸업준비팀 사진은 반응형 이미지 최적화를 �
 });
 
 test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 유지한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /\.professorsGrid \{[\s\S]*?margin-left: 353px;/);
   assert.match(styles, /margin-left: calc\(-206\.16px \+ 29\.123vw\)/);
@@ -136,7 +147,7 @@ test("웹 교수진 패널의 사자는 Figma 비율과 우측 하단 배치를 
 });
 
 test("822px 이상 교수진 사자는 패널 기준 비율로 함께 이동한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /\.professorsLion \{[\s\S]*?bottom: calc\(15\.08% - 5vw\);[\s\S]*?left: 64%;[\s\S]*?width: 36%;[\s\S]*?height: auto;/);
   assert.doesNotMatch(styles, /bottom: calc\(49\.211px - 1\.053vw\)/);
@@ -147,7 +158,7 @@ test("822px 이상 교수진 사자는 패널 기준 비율로 함께 이동한�
 });
 
 test("중간 웹 위원회 텍스트는 Figma 좌표와 크기로 보간된다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /--committee-info-left: calc\(-58\.366px \+ 24\.62vw\)/);
   assert.match(styles, /width: calc\(64\.547px \+ 64\.404vw\)/);
@@ -159,7 +170,7 @@ test("중간 웹 위원회 텍스트는 Figma 좌표와 크기로 보간된다",
 });
 
 test("지도와 전시 정보 이미지는 1020px 이하에서도 대칭 여백을 유지한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /--offline-side: clamp\(38px, 4\.902vw, 51px\)/);
   assert.match(styles, /left: var\(--offline-side\)/);
@@ -173,7 +184,7 @@ test("오프라인 전시 정보는 모든 반응형 화면에서 최신 장소�
   assert.match(page, /2026\.10\.20\(화\) — 10\.30\(금\)/);
   assert.match(page, /10\.20\(화\) 15:00/);
   assert.match(page, /10:00 — 18:00/);
-  assert.match(page, /className=\{styles\.exhibitionHours\}>10:00 — 18:00/);
+  assert.match(page, /className=\{offlineStyles\.exhibitionHours\}>10:00 — 18:00/);
   assert.match(page, /경북대학교 SPACE 9/);
   assert.match(page, /대구 북구 대학로 80 경북대학교 SPACE 9/);
   assert.doesNotMatch(page, /10\.31\(토\)/);
@@ -183,9 +194,9 @@ test("오프라인 전시 정보는 모든 반응형 화면에서 최신 장소�
 
 test("지도 위치 라벨은 다섯 반응형 화면에서 SPACE 9 표기를 덮어쓴다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
-  assert.equal(page.match(/className=\{styles\.mapVenueLabel\}/g)?.length, 2);
+  assert.equal(page.match(/className=\{offlineStyles\.mapVenueLabel\}/g)?.length, 2);
   assert.equal(page.match(/경북대학교 대강당<br \/>SPACE 9/g)?.length, 2);
   assert.match(styles, /\.mapVenueLabel \{[\s\S]*?background: #fcd519;/);
   assert.match(styles, /left: 27\.963%;[\s\S]*?top: 22\.491%;/);
@@ -193,7 +204,7 @@ test("지도 위치 라벨은 다섯 반응형 화면에서 SPACE 9 표기를 �
 });
 
 test("821px 이하 관람 시간 텍스트는 정보 영역의 시각 중심에 배치한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(
     styles,
@@ -203,7 +214,7 @@ test("821px 이하 관람 시간 텍스트는 정보 영역의 시각 중심에 
 });
 
 test("모바일 위원회 텍스트는 Figma 좌측 여백과 글자 크기를 유지한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /width: clamp\(276px, calc\(46px \+ 57\.5vw\), 391px\)/);
   assert.match(styles, /margin-left: clamp\(66px, calc\(10px \+ 14vw\), 94px\)/);
@@ -213,7 +224,7 @@ test("모바일 위원회 텍스트는 Figma 좌측 여백과 글자 크기를 �
 });
 
 test("모든 반응형 구간의 파란 패널 텍스트는 위아래 여백을 동일하게 유지한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(
     styles,
@@ -231,9 +242,9 @@ test("모든 반응형 구간의 파란 패널 텍스트는 위아래 여백을 
 
 test("위원회 일러스트와 위원장 이름 간격을 조정한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
-  assert.match(page, /className=\{styles\.chairNames\}/);
+  assert.match(page, /className=\{creditsStyles\.chairNames\}/);
   assert.match(page, /<span>윤이지<\/span>[\s\S]*?<span>김가연<\/span>/);
   assert.match(styles, /\.chairNames \{[\s\S]*?row-gap: 18px;/);
   assert.match(styles, /\.committeeIllustration \{[\s\S]*?bottom: 10px;[\s\S]*?left: 70px;/);
@@ -244,7 +255,7 @@ test("위원회 일러스트와 위원장 이름 간격을 조정한다", async 
 
 test("모바일과 태블릿의 교수진 사자는 Figma 전용 에셋과 규격을 사용한다", async () => {
   const page = await readFile(new URL("./about-page.tsx", import.meta.url), "utf8");
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
   const artwork = await readFile(
     new URL("../../../public/assets/figma/about/professors-lion-tab-mobile.svg", import.meta.url),
     "utf8",
@@ -264,7 +275,7 @@ test("모바일과 태블릿의 교수진 사자는 Figma 전용 에셋과 규�
 });
 
 test("600px Figma 탭 시안의 교수진과 위원회 패널 비율을 유지한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /height: max\(246px, calc\(42px \+ 51vw\)\)/);
   assert.match(styles, /width: 62\.943%;/);
@@ -276,7 +287,7 @@ test("600px Figma 탭 시안의 교수진과 위원회 패널 비율을 유지�
 });
 
 test("821px 이하 교수진과 위원회는 clamp 기반의 모바일 구성을 사용한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /@media \(max-width: 821px\)/);
   assert.match(styles, /\.professorsSection \{[\s\S]*?width: max\(398px, calc\(66px \+ 83vw\)\)/);
@@ -295,7 +306,7 @@ test("821px 이하에서는 교수진과 위원회에 동일한 탭·모바일 �
 });
 
 test("600px부터 821px까지 교수진 패널은 빈 공간을 줄이는 완만한 높이 보간을 사용한다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /@media \(min-width: 600\.0625px\) and \(max-width: 821px\)/);
   assert.match(styles, /\.professorsSection \{[\s\S]*?height: calc\(260\.68px \+ 24\.887vw\)/);
@@ -303,7 +314,7 @@ test("600px부터 821px까지 교수진 패널은 빈 공간을 줄이는 완만
 });
 
 test("650px부터 800px까지 Graduation 파란 패널은 asset 여백만큼 높이를 줄인다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /@media \(min-width: 650px\) and \(max-width: 800px\)/);
   assert.match(styles, /\.committeeSection \{[\s\S]*?height: calc\(661\.667px \+ 14\.667vw\)/);
@@ -312,7 +323,7 @@ test("650px부터 800px까지 Graduation 파란 패널은 asset 여백만큼 높
 });
 
 test("650px부터 800px까지 Faculty 파란 패널은 사자와 텍스트를 유지하며 높이를 줄인다", async () => {
-  const styles = await readFile(new URL("./about-page.module.css", import.meta.url), "utf8");
+  const styles = await readAboutStyles();
 
   assert.match(styles, /\.professorsSection \{[\s\S]*?height: calc\(434\.013px - 1\.78vw\)/);
   assert.match(styles, /\.professorsPanel \{[\s\S]*?height: calc\(323\.023px \+ 6\.385vw\)/);
