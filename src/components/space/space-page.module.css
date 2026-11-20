@@ -99,18 +99,14 @@
 .archive { margin-top: clamp(60px, 6.25vw, 120px); }
 .archiveHeading h2 { height: 5.147746cqw; scroll-margin-top: calc(var(--header-height) + 24px); }
 .archiveGrid { display: grid; grid-template-columns: 515fr 514fr 515fr; gap: 2.345679cqw; margin-top: 7.037037cqw; }
-.exhibitionArchive { --archive-row-gap: 1.234568cqw; align-items: start; row-gap: var(--archive-row-gap); padding: 0; list-style: none; }
-.exhibitionArchive + .exhibitionArchive { margin-top: 0; }
-/* Tracks are approximately 1/60 of a column width. Sparse placement keeps
-   reading order while letting the next photo sit under the shortest stack. */
-.exhibitionArchiveOpening { grid-auto-rows: 0.53cqw; row-gap: 0; align-items: stretch; }
-.exhibitionArchiveOpening li { min-height: 0; margin-bottom: var(--archive-row-gap); }
-.exhibitionArchiveLink { display: block; background: #d9d9d9; cursor: zoom-in; }
+/* Sparse placement preserves reading order. The gap belongs to each photo,
+   not to the small grid tracks that size the staggered frames. */
+.archiveGrid.exhibitionArchive { --archive-row-gap: 1.234568cqw; grid-auto-rows: 1.59cqw; row-gap: 0; padding: 0; list-style: none; }
+.exhibitionArchive li { min-height: 0; margin-bottom: var(--archive-row-gap); }
+.exhibitionArchiveLink { display: block; height: 100%; background: #d9d9d9; cursor: zoom-in; }
 .exhibitionArchiveLink:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
-.exhibitionArchiveLink img { display: block; width: 100%; height: auto; }
-.exhibitionArchiveOpening .exhibitionArchiveLink,
-.exhibitionArchiveOpening .exhibitionArchiveLink img { height: 100%; }
-.exhibitionArchiveOpening .exhibitionArchiveLink img { object-fit: cover; }
+.exhibitionArchiveLink img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.exhibitionArchiveLink[data-uncropped] img { background: #fff; object-fit: contain; }
 .archivePhotoGrid { --archive-column-count: 3; display: grid; grid-auto-flow: row; align-items: start; }
 .archivePhotoGrid[data-masonry-ready="true"] { position: relative; display: block; }
 .archivePhoto { overflow: hidden; background: #d9d9d9 center / cover no-repeat; }
@@ -143,8 +139,7 @@
   .compactMap { display: block; position: relative; width: 100%; aspect-ratio: 560 / 396; margin: clamp(20px, 4vw, 32px) auto 0; }
   .archive { margin-top: clamp(32px, 6vw, 48px); }
   .archiveGrid { grid-template-columns: 515fr 514fr; gap: 3.561525cqw; margin-top: 40px; }
-  .exhibitionArchive { --archive-row-gap: 1.87441cqw; row-gap: var(--archive-row-gap); }
-  .exhibitionArchiveOpening { grid-auto-rows: 0.804cqw; row-gap: 0; }
+  .archiveGrid.exhibitionArchive { --archive-row-gap: 1.87441cqw; grid-auto-rows: 2.412cqw; }
   .archivePhotoGrid { --archive-column-count: 2; grid-template-columns: 515fr 514fr; }
   .page :global(.site-footer__schedule),
   .page :global(.site-footer__copyright) { white-space: normal; overflow-wrap: anywhere; }
