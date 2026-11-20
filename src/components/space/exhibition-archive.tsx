@@ -1,5 +1,6 @@
 import photos from "@/data/exhibition-archive.json";
 
+import { ExhibitionArchiveReveal } from "./exhibition-archive-reveal";
 import styles from "./space-page.module.css";
 
 const assetDirectory = "/assets/archive-2026";
@@ -87,8 +88,8 @@ export function ExhibitionArchive() {
   });
 
   return (
-    <ul className={`${styles.archiveGrid} ${styles.exhibitionArchive}`}>
+    <ExhibitionArchiveReveal className={`${styles.archiveGrid} ${styles.exhibitionArchive}`}>
       {cards}
-    </ul>
+    </ExhibitionArchiveReveal>
   );
 }
