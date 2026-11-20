@@ -11,7 +11,7 @@ test("Archive stays staggered from the first photo to the last without changing 
   const cards = await photos.evaluateAll(elements =>
     elements.map(element => {
       const image = element as HTMLImageElement;
-      const bounds = image.getBoundingClientRect();
+      const bounds = (image.closest("li") ?? image).getBoundingClientRect();
       return {
         id: image.getAttribute("src")?.match(/\/(\d+)-/)?.[1],
         width: bounds.width,
@@ -58,6 +58,38 @@ test("Archive stays staggered from the first photo to the last without changing 
     expect(cards.find(card => card.id === id)?.fit).toBe("contain");
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+});
+
+test("Archive replays the Message-style reveal without moving the observed card", async ({ page }) => {
+  await page.goto("/space");
+  const link = page.getByRole("region", { name: "Archive" }).getByRole("link").nth(20);
+  const shell = link.locator("..");
+  await expect(link).toHaveCSS("opacity", "0");
+  await expect(link).toHaveCSS("translate", "0px 24px");
+  await expect(link).toHaveCSS("transition-duration", "0.62s, 0.76s");
+
+  const initialTop = await shell.evaluate(element => element.getBoundingClientRect().top + window.scrollY);
+  await link.scrollIntoViewIfNeeded();
+  await expect(link).toHaveCSS("opacity", "1");
+  await expect(link).toHaveCSS("translate", "none");
+
+  // Leave through the upper edge, where observing a translated card could make it re-enter.
+  await shell.evaluate(element => window.scrollBy(0, element.getBoundingClientRect().bottom + 8));
+  await expect(link).toHaveCSS("opacity", "0");
+  await expect(link).toHaveCSS("translate", "0px 24px");
+  expect(await shell.evaluate(element => element.getBoundingClientRect().top + window.scrollY)).toBeCloseTo(initialTop, 1);
+
+  await link.scrollIntoViewIfNeeded();
+  await expect(link).toHaveCSS("opacity", "1");
+});
+
+test("Archive keeps images visible when reduced motion is enabled", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/space");
+  const link = page.getByRole("region", { name: "Archive" }).getByRole("link").nth(20);
+  await link.scrollIntoViewIfNeeded();
+  await expect(link).toHaveCSS("opacity", "1");
+  await expect(link).toHaveCSS("translate", "none");
 });
 
 test("Archive requests nearby thumbnails and only opens the full-size copy on activation", async ({ context, page }) => {
