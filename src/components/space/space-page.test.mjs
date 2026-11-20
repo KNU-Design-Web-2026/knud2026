@@ -1,9 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
+import sharp from "sharp";
 import * as spaceData from "./space-data.ts";
-
-const { archiveColumns } = spaceData;
 
 test("독립 성능 실험용 S3 데이터는 서로 다른 원본 이미지 40장을 유지한다", () => {
   const images = spaceData.s3ArchiveImages;
@@ -15,25 +14,25 @@ test("독립 성능 실험용 S3 데이터는 서로 다른 원본 이미지 40�
   assert.ok(images?.every(image => image.width > 0 && image.height > 0));
 });
 
-test("아카이브는 Figma의 세 열과 열별 패널 비율을 유지한다", () => {
-  assert.deepEqual(archiveColumns.map(column => column.length), [3, 5, 4]);
-  assert.deepEqual(spaceData.archiveColumnWidths, [515, 514, 515]);
-  for (const height of archiveColumns.flat()) assert.ok(height > 0);
-});
+test("2026 전시사진의 모든 웹 사본은 순서와 원본 비율을 유지한다", async () => {
+  const manifest = JSON.parse(await readFile(new URL("../../data/exhibition-archive.json", import.meta.url), "utf8"));
+  assert.equal(manifest.length, 79);
+  assert.equal(new Set(manifest.map(photo => photo.id)).size, 79);
+  assert.deepEqual(manifest.map(photo => photo.id), manifest.map(photo => photo.id).sort());
+  assert.deepEqual(manifest.filter(photo => photo.width !== 2048 || photo.height !== 1365), [
+    { id: "111", width: 2020, height: 2048 },
+    { id: "138", width: 2048, height: 1667 },
+  ]);
 
-test("실제 Space Archive는 테스트 사진 대신 정적인 기본색 패널만 표시한다", async () => {
-  const page = await readFile(new URL("./space-page.tsx", import.meta.url), "utf8");
-  const css = await readFile(new URL("./space-page.module.css", import.meta.url), "utf8");
-
-  assert.doesNotMatch(page, /ArchiveGallery|s3ArchiveImages|<img|<Image|backgroundImage/);
-  assert.match(page, /data-archive-layout="placeholder"/);
-  assert.match(page, /archiveColumns\.map/);
-  assert.match(page, /className=\{styles\.archiveColumn\}/);
-  assert.match(page, /className=\{styles\.archivePanel\}/);
-  assert.match(page, /aspectRatio: `\$\{archiveColumnWidths\[columnIndex\]\} \/ \$\{height\}`/);
-  assert.match(css, /\.archivePanel \{ background: #d9d9d9; \}/);
-  assert.match(css, /\.archiveGrid \{ display: grid; grid-template-columns: 515fr 514fr 515fr;/);
-  assert.match(css, /@media \(max-width: 821px\) \{[\s\S]*?\.archiveColumn:last-child \{ display: none; \}/);
+  for (const { id, width, height } of manifest) {
+    for (const [variant, expectedWidth] of [[480, 480], [800, 800], [1280, 1280], ["full", width]]) {
+      const file = await readFile(new URL(`../../../public/assets/archive-2026/${id}-${variant}.webp`, import.meta.url));
+      const metadata = await sharp(file).metadata();
+      assert.equal(metadata.format, "webp", `${id}-${variant}`);
+      assert.equal(metadata.width, expectedWidth, `${id}-${variant}`);
+      assert.ok(Math.abs(metadata.height - height * expectedWidth / width) <= 1, `${id}-${variant} aspect ratio`);
+    }
+  }
 });
 
 test("독립 성능 실험의 갤러리는 이미지 6장씩 요청하는 동작을 유지한다", async () => {
