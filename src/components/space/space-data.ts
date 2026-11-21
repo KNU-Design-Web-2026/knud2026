@@ -1,14 +1,4 @@
 import archiveWebImages from "@/data/archive-web-images.json";
-
-
-// These neutral panels are part of the supplied design, not loaded photographs.
-export const archiveColumnWidths = [515, 514, 515] as const;
-export const archiveColumns = [
-  [451.7957, 289, 667.744],
-  [287.9956, 287.9956, 553.8401, 553.8401, 553.8401],
-  [702.6595, 451.7957, 451.7957, 702.6595],
-];
-
 const s3ArchiveBaseUrl = "https://design-graduation-image.s3.ap-northeast-2.amazonaws.com/archive";
 
 // 2025 Archive 원본 40장의 실제 intrinsic size. 테스트 중에도 이미지 비율을
